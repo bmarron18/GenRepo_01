@@ -1,0 +1,374 @@
+title: 		getting LANDIS-II (32-bit) up and running on Linux, part 2
+author: 	bmarron
+date:		13 Aug 2015
+repository:	https://github.com/bmarron18/Repro_2.git
+
+#################
+Acknowledgements
+#################
+
+	#initial training and support in LANDIS-II was provided by Dr. Rob Scheller, Dr. Melissa Lucash, 
+	#and the LANDIS-II Foundation
+
+	#Thank you!!
+
+################
+computer system
+################
+System:    Linux Kernel: 3.16.0-45-generic i686 (32 bit, gcc: 4.8.2) 
+           Desktop: Xfce 4.11.8 (Gtk 2.24.23) Distro: Ubuntu 14.04 trusty
+Machine:   System: Hewlett-Packard product: HP Compaq 6710b (RM406UT#ABA) version: F.11
+           Mobo: Hewlett-Packard model: 30C0 version: KBC Version 71.2E
+           Bios: Hewlett-Packard version: 68DDU Ver. F.11 date: 04/10/2008
+CPU:       Dual core Intel Core2 Duo CPU T8100 (-MCP-) cache: 3072 KB bmips: 8378.96 
+           Clock Speeds: 1: 800.00 MHz 2: 1200.00 MHz
+
+LANDIS:	   LANDIS-II (32-bit) and Age Only Succession installed
+	   (see 'getting LANDIS-II (32-bit) up and running on Linux, part 1' if these are not yet installed)
+
+
+################
+Step-by-step
+################
+
+==== STEP 1. install the extension, 'Output Max Species Age 2.0.2' ==========================================
+
+		#download 'LANDIS-II Output Max Species Age 2.0.2-setup.exe' from 
+			http://www.landis-ii.org 
+		#right-click on the file and open the .exe file with "Wine Windows Program Loader"
+		#follow the installation wizard instructions
+
+		#note: you cannot change any of the targeted installation directories
+
+
+==== STEP 2. post-installation observations and manipulations ===========================================================
+
+		#use the desktop GUI to modify LANDIS-II folders and files
+		#go to
+			~/.wine/drive_c/Program Files/LANDIS-II/
+
+
+------ observations -----------------------------------------------------------------------------------------
+		#the installation has added the following files/folders in 
+			~/.wine/drive_c/Program Files/LANDIS-II:
+				* /plug-ins 				(contains a file, 'Max Age Output 2.0.txt')
+				* /v6/examples/output-max-spp-age 	(contains sample scenario files)
+
+		#the installation has added the following files in 
+			~/.wine/drive_c/Program Files/LANDIS-II/v6/bin/extensions/
+				--Landis.Extension.Output.MaxSpeciesAge.dll
+
+		#very important!!
+		#the installation HAS NOT (automatically) modified the file, 'extensions.xml'
+		#'extensions.xml' is found in 
+			~/.wine/drive_c/Program Files/LANDIS-II/v6/bin/extensions/
+
+------ manipulations ----------------------------------------------------------------------------------------
+		1. move the file, 'Max Age Output 2.0.txt' to 
+			~/.wine/drive_c/Program Files/LANDIS-II/v6/ext-info/
+
+		2. delete the 'plug-ins'folder at 
+			~/.wine/drive_c/Program Files/LANDIS-II/plug-ins
+
+		3. modify the 'extensions.xml' file (exactly as below) using a simple text editor (eg, Leafpad, Mousepad, etc) in 
+			~/.wine/drive_c/Program Files/LANDIS-II/v6/bin/extensions/
+
+<?xml version="1.0" encoding="utf-8"?>
+<ExtensionDataset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Extensions>
+    <Extension Name="Age-only Succession" Version="4.1">
+      <Type>succession</Type>
+      <Assembly>Landis.Extension.Succession.AgeOnly</Assembly>
+      <Class>Landis.Extension.Succession.AgeOnly.PlugIn</Class>
+      <Description>Succession with age cohorts</Description>
+    </Extension>
+    <Extension Name="Output Max Species Age" Version="2.0">
+      <Type>output</Type>
+      <Assembly>Landis.Extension.Output.MaxSpeciesAge</Assembly>
+      <Class>Landis.Extension.Output.MaxSpeciesAge.PlugIn</Class>
+      <Description>Maximum age output maps</Description>
+    </Extension>
+  </Extensions>
+</ExtensionDataset>
+
+
+		4. using a web browser, download all of the files in the 'scenario1' folder found in the GitHub repository
+			https://github.com/bmarron18/Repro_2.git/LANDIS/scenario1
+
+		5. copy the entire contents of the 'scenario1' folder (as loose files) to 
+			~/.wine/drive_c/Program Files/LANDIS-II/v6/bin/
+
+
+
+==== STEP 3. check the updated extensions ==================================================
+		#open a (Linux) Wine command line
+		#to exit back to Linux from Wine, hit the <esc> button
+$ wine cmd
+Wine CMD Version 5.1.2600 (1.6.2)
+
+		#should get a 'Windows' prompt
+Z:\home\bmarron>
+
+		#change to
+			C:\Program Files directory
+Z:\home\bmarron> C:
+C:\Program Files
+
+
+		#change to
+			C:\Program Files\LANDIS-II\v6\bin
+
+C:\Program Files> cd LANDIS-II\v6\bin
+C:\Program Files\LANDIS-II\v6\bin>
+
+
+		#run the extensions program, 'Landis.Extensions.exe'
+C:\Program Files\LANDIS-II\v6\bin> Landis.Extensions.exe
+
+
+		#the following output is expected
+
+LANDIS-II 6.0
+Extensions Administration Tool 6.0
+Copyright 2005-2006 University of Wisconsin
+Copyright 2011 Portland State University
+
+Extension               Description
+---------               -----------
+Age-only Succession     Succession with age cohorts
+Output Max Species Age  Maximum age output maps
+
+
+
+==== STEP 4. run the age-only-scenario in LANDIS-II ==================================================
+
+		#run LANDIS-II using the age-only-scenario
+C:\Program Files\LANDIS-II\v6\bin>Landis.Console-6.0.exe age-only-scenario.txt
+
+
+		#the following screen output is expected
+LANDIS-II 6.0 (official release)
+
+Loading scenario from file "age-only-scenario.txt" ...
+Loading species data from file "species.txt" ...
+Loading ecoregions from file "ecoregions.txt" ...
+Initializing landscape from ecoregions map "ecoregions.gis" ...
+Cell length = 100 m, cell area = 1 ha
+Map dimensions: 99 rows by 99 columns = 9,801 cells
+Sites: 9,801 active (100.0 %), 0 inactive (0.0 %)
+  reading in ecoregion from ecoregions.gis 
+Loading Age-only Succession extension ...
+   Registering Data:  Succession.AgeCohorts.
+   Loading dynamic input data from file "age-only-succession-dynamic-inputs.txt" ...
+  Dynamic Input Parser:  Add new year = 0.
+   Registering Data:  TimeOfLastSuccession.
+   Registering Data:  Shade.
+   Creating Dispersal Neighborhood List.
+   Dispersal:  NeighborRadius=5050, CellLength=100, numCellRadius=50
+   Loading initial communities from file "./initial-communities.txt" ...
+   Reading initial communities map "./initial-communities.gis" ...
+Current time: 10
+Running Age-only Succession ...
+Ageing cohorts ...
+% done:   0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
+          |----|----|----|----|----|----|----|----|----|----|
+Progress: +++++++++++++++++++++++++++++++++++++++++++++++++++
+Computing shade ...
+% done:   0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
+          |----|----|----|----|----|----|----|----|----|----|
+Progress: +++++++++++++++++++++++++++++++++++++++++++++++++++
+Cohort reproduction ...
+% done:   0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
+          |----|----|----|----|----|----|----|----|----|----|
+Progress: +++++++++++++++++++++++++++++++++++++++++++++++++++
+Current time: 20
+Running Age-only Succession ...
+Ageing cohorts ...
+% done:   0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
+          |----|----|----|----|----|----|----|----|----|----|
+Progress: +++++++++++++++++++++++++++++++++++++++++++++++++++
+Computing shade ...
+% done:   0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
+          |----|----|----|----|----|----|----|----|----|----|
+Progress: +++++++++++++++++++++++++++++++++++++++++++++++++++
+Cohort reproduction ...
+% done:   0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
+          |----|----|----|----|----|----|----|----|----|----|
+Progress: +++++++++++++++++++++++++++++++++++++++++++++++++++
+Current time: 30
+Running Age-only Succession ...
+Ageing cohorts ...
+% done:   0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
+          |----|----|----|----|----|----|----|----|----|----|
+Progress: +++++++++++++++++++++++++++++++++++++++++++++++++++
+Computing shade ...
+% done:   0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
+          |----|----|----|----|----|----|----|----|----|----|
+Progress: +++++++++++++++++++++++++++++++++++++++++++++++++++
+Cohort reproduction ...
+% done:   0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
+          |----|----|----|----|----|----|----|----|----|----|
+Progress: +++++++++++++++++++++++++++++++++++++++++++++++++++
+Current time: 40
+Running Age-only Succession ...
+Ageing cohorts ...
+% done:   0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
+          |----|----|----|----|----|----|----|----|----|----|
+Progress: +++++++++++++++++++++++++++++++++++++++++++++++++++
+Computing shade ...
+% done:   0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
+          |----|----|----|----|----|----|----|----|----|----|
+Progress: +++++++++++++++++++++++++++++++++++++++++++++++++++
+Cohort reproduction ...
+% done:   0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
+          |----|----|----|----|----|----|----|----|----|----|
+Progress: +++++++++++++++++++++++++++++++++++++++++++++++++++
+Current time: 50
+Running Age-only Succession ...
+Ageing cohorts ...
+% done:   0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
+          |----|----|----|----|----|----|----|----|----|----|
+Progress: +++++++++++++++++++++++++++++++++++++++++++++++++++
+Computing shade ...
+% done:   0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
+          |----|----|----|----|----|----|----|----|----|----|
+Progress: +++++++++++++++++++++++++++++++++++++++++++++++++++
+Cohort reproduction ...
+% done:   0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
+          |----|----|----|----|----|----|----|----|----|----|
+Progress: +++++++++++++++++++++++++++++++++++++++++++++++++++
+Current time: 60
+Running Age-only Succession ...
+Ageing cohorts ...
+% done:   0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
+          |----|----|----|----|----|----|----|----|----|----|
+Progress: +++++++++++++++++++++++++++++++++++++++++++++++++++
+Computing shade ...
+% done:   0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
+          |----|----|----|----|----|----|----|----|----|----|
+Progress: +++++++++++++++++++++++++++++++++++++++++++++++++++
+Cohort reproduction ...
+% done:   0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
+          |----|----|----|----|----|----|----|----|----|----|
+Progress: +++++++++++++++++++++++++++++++++++++++++++++++++++
+Current time: 70
+Running Age-only Succession ...
+Ageing cohorts ...
+% done:   0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
+          |----|----|----|----|----|----|----|----|----|----|
+Progress: +++++++++++++++++++++++++++++++++++++++++++++++++++
+Computing shade ...
+% done:   0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
+          |----|----|----|----|----|----|----|----|----|----|
+Progress: +++++++++++++++++++++++++++++++++++++++++++++++++++
+Cohort reproduction ...
+% done:   0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
+          |----|----|----|----|----|----|----|----|----|----|
+Progress: +++++++++++++++++++++++++++++++++++++++++++++++++++
+Current time: 80
+Running Age-only Succession ...
+Ageing cohorts ...
+% done:   0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
+          |----|----|----|----|----|----|----|----|----|----|
+Progress: +++++++++++++++++++++++++++++++++++++++++++++++++++
+Computing shade ...
+% done:   0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
+          |----|----|----|----|----|----|----|----|----|----|
+Progress: +++++++++++++++++++++++++++++++++++++++++++++++++++
+Cohort reproduction ...
+% done:   0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
+          |----|----|----|----|----|----|----|----|----|----|
+Progress: +++++++++++++++++++++++++++++++++++++++++++++++++++
+Current time: 90
+Running Age-only Succession ...
+Ageing cohorts ...
+% done:   0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
+          |----|----|----|----|----|----|----|----|----|----|
+Progress: +++++++++++++++++++++++++++++++++++++++++++++++++++
+Computing shade ...
+% done:   0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
+          |----|----|----|----|----|----|----|----|----|----|
+Progress: +++++++++++++++++++++++++++++++++++++++++++++++++++
+Cohort reproduction ...
+% done:   0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
+          |----|----|----|----|----|----|----|----|----|----|
+Progress: +++++++++++++++++++++++++++++++++++++++++++++++++++
+Current time: 100
+Running Age-only Succession ...
+Ageing cohorts ...
+% done:   0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
+          |----|----|----|----|----|----|----|----|----|----|
+Progress: +++++++++++++++++++++++++++++++++++++++++++++++++++
+Computing shade ...
+% done:   0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
+          |----|----|----|----|----|----|----|----|----|----|
+Progress: +++++++++++++++++++++++++++++++++++++++++++++++++++
+Cohort reproduction ...
+% done:   0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
+          |----|----|----|----|----|----|----|----|----|----|
+Progress: +++++++++++++++++++++++++++++++++++++++++++++++++++
+Model run is complete.
+
+
+		#the details of the run can be examined in log file at 
+			~/.wine/drive_c/Program Files/LANDIS-II/v6/bin/Landis-log.txt
+
+
+
+
+==== STEP 5. run the age-only-scenario_mod1 in LANDIS-II ==================================================
+
+		#run LANDIS-II using the age-only-scenario_mod1.txt
+C:\Program Files\LANDIS-II\v6\bin>Landis.Console-6.0.exe age-only-scenario_mod1.txt
+
+		#the following screen output is expected
+LANDIS-II 6.0 (official release)
+
+Loading scenario from file "age-only-scenario_mod1.txt" ...
+...
+...
+...
+...
+Progress: +++++++++++++++++++++++++++++++++++++++++++++++++++
+Running Output Max Species Age ...
+   Writing maximum age map for abiebals to output/max-spp-age/abiebals-100.img ...
+dataset created: output/max-spp-age/abiebals-100.img
+   Writing maximum age map for tiliamer to output/max-spp-age/tiliamer-100.img ...
+dataset created: output/max-spp-age/tiliamer-100.img
+   Writing maximum age map for all species to output/max-spp-age/AllSppMaxAge-100.img ...
+dataset created: output/max-spp-age/AllSppMaxAge-100.img
+Model run is complete.
+
+
+
+==== STEP 6. check the new outputs =====================================================
+
+		#leave the (Linux) Wine terminal open but switch to the desktop GUI
+		#go to
+			~/.wine/drive_c/Program Files/LANDIS-II/v6/bin/		
+
+		#LANDIS-II has added the directory 'output/max-spp-age'
+		#go to
+			~/.wine/drive_c/Program Files/LANDIS-II/v6/bin/output/max-spp-age
+
+		#the expected output files include a set of 16, *.img (output) files,
+			abiebals-0.img
+			abiebals-20.img
+			abiebals-40.img
+			abiebals-60.img
+			abiebals-80.img
+			abiebals-100.img
+			AllSppMaxAge-0.img
+			...
+			AllSppMaxAge-100.img
+			tiliamer-0.img
+			...
+			tiliamer-100.img
+
+
+
+
+
+
+
+

@@ -31,6 +31,7 @@ Step-by-step
 
 ==== STEP 1. install Wine 1.6 (a Windows emulator) ===============================
 	#Wine will be in a (hidden) directory (eg /home/bmarron/.wine/)
+	#open a Linux command line
 
 $ sudo add-apt-repository ppa:ubuntu-wine/ppa
 $ sudo apt-get update
@@ -39,10 +40,11 @@ $ dpkg --configure -a
 
 
 ==== STEP 2. install Mono Runtime ====================================
-		#use command line or Synaptic
+		#use the command line or Synaptic
+
 $ sudo apt-get install mono-complete
 
-	#installed mono files
+	#these should be the installed 'mono' files
 
 ||/ Name           Version      Architecture Description
 +++-==============-============-============-=================================
@@ -70,35 +72,42 @@ ii  monodoc-manual 3.2.8+dfsg-4 all          compiled XML documentation from t
 
 ===== STEP 3. obtain 32-bit LANDIS-II (from Dr. Rob Scheller) =========================
 		#go to 
-https://drive.google.com/file/d/0B6eUM6Se6MFBUTdOaHFWY25WX0E/view?usp=sharing
+			https://drive.google.com/file/d/0B6eUM6Se6MFBUTdOaHFWY25WX0E/view?usp=sharing
 
 		#download the file, 'LANDIS-II-6.0-setup32.exe'
 		#right-click on the file and open the .exe file with "Wine Windows Program Loader"
 		#follow the installation wizard instructions
-		#(Note: you cannot change any of the targeted installation directories)
+
+		#note: you cannot change any of the targeted installation directories
 
 
 ==== STEP 4. Check access to LANDIS-II through Wine =============
 
-		#open a Linux command line terminal
-		#(Note: to exit back to Linux from Wine, hit the <esc> button)
+		#open a Linux command line
+		#run Wine
+		#to exit back to Linux from Wine, hit the <esc> button
 $ wine cmd
 Wine CMD Version 5.1.2600 (1.6.2)
 
 		#should get a 'Windows' prompt
 Z:\home\bmarron>
 
-		#change to the C:\Program Files directory
+		#change to
+			C:\Program Files directory
 Z:\home\bmarron> C:
 C:\Program Files
 
 
-		#change to the C:\Program Files\LANDIS-II\v6\bin directory
+		#change to
+			C:\Program Files\LANDIS-II\v6\bin
+
 C:\Program Files> cd LANDIS-II\v6\bin
 C:\Program Files\LANDIS-II\v6\bin>
 
-		#run the extensions program
+
+		#run the extensions program, 'Landis.Extensions.exe'
 C:\Program Files\LANDIS-II\v6\bin> Landis.Extensions.exe
+
 
 		#the following output is expected
 LANDIS-II 6.0
@@ -112,72 +121,96 @@ No extensions are installed.
 
 ==== STEP 5. general prep of LANDIS-II folders and files ============================
 
-		#use the desktop GUI to modify LANDIS-II folders and files
-		#go to 
-~/.wine/drive_c/Program Files/LANDIS-II/
-			*delete the folder /bin (has unusable batch files; *.cmds)
+		#leave the (Linux) Wine terminal open but switch to the desktop GUI to modify 
+		#the following LANDIS-II folders and files
+
 
 		#go to 
-~/.wine/drive_c/Program Files/LANDIS-II/v6
-			*delete the folder /docs (copy 'em elsewhere)
+			~/.wine/drive_c/Program Files/LANDIS-II/
+		#delete the folder 
+			~/.wine/drive_c/Program Files/LANDIS-II/bin 	(unusable batch files; *.cmds)
+
+		#go to 
+			~/.wine/drive_c/Program Files/LANDIS-II/v6
+		#delete the folder ~/.wine/drive_c/Program Files/LANDIS-II/docs 	(copy 'em elsewhere)
+
+
 
 		#very important!!
 		#go to 
-~/.wine/drive_c/Program Files/LANDIS-II/v6/GDAL/1.9/
-			*copy the entire contents of the /GDAL/1.9/ folder (as loose files) to 
-			 ~/.wine/drive_c/Program Files/LANDIS-II/v6/bin
+			~/.wine/drive_c/Program Files/LANDIS-II/v6/GDAL/1.9/
+
+		#copy the entire contents of 
+			~/.wine/drive_c/Program Files/LANDIS-II/GDAL/1.9/ to
+			~/.wine/drive_c/Program Files/LANDIS-II/v6/bin
+
+		#do not put these files in a new folder; leave as loose files in /v6/bin
 
 
 ==== STEP 6. get acquainted with the 'extensions.xml' file ========================
+
 		#go to
-~/.wine/drive_c/Program Files/LANDIS-II/v6/bin/extensions/
+			~/.wine/drive_c/Program Files/LANDIS-II/v6/bin/extensions/
 
 		#open the file 'extensions.xml' in a simple text editor (Leafpad, Mousepad, etc)
 		#observe the contents
 
 
 ==== STEP 7. install the extension, Age-only Succession 4.1 ========================
-		#download 'LANDIS_II Age-only Succession 4.1-setup.exe' from http://www.landis-ii.org 
+
+		#download 'LANDIS_II Age-only Succession 4.1-setup.exe' from 
+			http://www.landis-ii.org 
 		#right-click on the file and open the .exe file with "Wine Windows Program Loader"
 		#follow the installation wizard instructions
-		#Note: you cannot change any of the targeted installation directories
 
-		#the installation has added the following folders in ~/.wine/drive_c/Program Files/LANDIS-II/:
-			* /uninstall
-			* /ext-info
-			* /examples
-			* /docs
+		#note: you cannot change any of the targeted installation directories
 
-		#the installation has added the following files in ~/.wine/drive_c/Program Files/LANDIS-II/v6/bin/extensions/
-			--Landis.Library.Succession.dll
-			--Landis.Library.Cohorts.dll
-			--Landis.Library.AgeOnlyCohorts.dll
-			--Landis.Extension.Succession.AgeOnly.dll
+		#the extension installation has added the following folders in 
+			~/.wine/drive_c/Program Files/LANDIS-II/:
+				* /uninstall
+				* /ext-info
+				* /examples
+				* /docs
+
+		#the installation also has added the following files in 
+			~/.wine/drive_c/Program Files/LANDIS-II/v6/bin/extensions/
+				--Landis.Library.Succession.dll
+				--Landis.Library.Cohorts.dll
+				--Landis.Library.AgeOnlyCohorts.dll
+				--Landis.Extension.Succession.AgeOnly.dll
+
 
 		#very important!!
-		#the installation has automatically modified the file, 'extensions.xml'
-		#(Note that this will not be the case for other extensions)
+		#the installation has automatically modified the file, 'extensions.xml'in 
+			~/.wine/drive_c/Program Files/LANDIS-II/v6/bin/extensions/
 
-		#explore the contents of the new folders, especially the modified 'extensions.xml' file
+		#automatic updating of the extensions.xml file will not be the case for other extensions
 
-		#delete ~/.wine/drive_c/Program Files/LANDIS-II/uninstall
-		#delete ~/.wine/drive_c/Program Files/LANDIS-II/docs
+		#explore the contents of the new folders
+		#explore the modified 'extensions.xml' file in a simple text editor
+		#then
 
-
+		#delete 
+			~/.wine/drive_c/Program Files/LANDIS-II/uninstall
+		#delete 
+			~/.wine/drive_c/Program Files/LANDIS-II/docs
 
 
 ==== STEP 8. scenario prep of LANDIS-II folders and files ============================
 
 		#go to 
-~.wine/drive_c/Program Files/LANDIS-II/v6/examples/Age-only Succession/
+			~.wine/drive_c/Program Files/LANDIS-II/v6/examples/Age-only Succession/
 
 		#copy the entire contents of the /Age-only Succession folder (as loose files) to 
-		 ~/.wine/drive_c/Program Files/LANDIS-II/v6/bin
-		#after copying all files, delete the SimpleBatchFile.bat in /v6/bin
+		 	~/.wine/drive_c/Program Files/LANDIS-II/v6/bin
 
-==== STEP 9. check on new extension =============================================
-		#return to the Linux command line
-		#open Wine and go to C:\Program Files
+		#delete the file, 'SimpleBatchFile.bat' in 
+			~/.wine/drive_c/Program Files/LANDIS-II/v6/bin
+
+==== STEP 9. check on the new extension =============================================
+		#return to the (Linux) Wine command line
+		# go to
+			C:\Program Files\LANDIS-II\v6\bin>
 		#run the extensions program
 
 C:\Program Files\LANDIS-II\v6\bin>Landis.Extensions.exe
@@ -195,11 +228,13 @@ Age-only Succession  Succession with age cohorts
 
 
 
-==== STEP 10. run LANDIS =======================================
-		#return to the Linux command line
-		#open Wine and go to C:\Program Files
-		#run LANDIS using the program, 'Landis.Console-6.0.exe' plus 'scenario.txt'
-		#from C:\Program Files\LANDIS-II\v6\bin 
+==== STEP 10. run LANDIS-II =======================================
+		#go to
+			C:\Program Files\LANDIS-II\v6\bin>
+
+		#run LANDIS-II using 
+			-- the 'Landis.Console-6.0.exe' program plus 
+			-- a scenario (.txt) file
 
 C:\Program Files\LANDIS-II\v6\bin>Landis.Console-6.0.exe scenario.txt
 
