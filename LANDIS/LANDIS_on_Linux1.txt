@@ -1,6 +1,7 @@
-title: 	getting LANDIS-II (32-bit) up and running on Linux, part 1
-author: bmarron
-date:	12 Aug 2015
+title: 		getting LANDIS-II (32-bit) up and running on Linux, part 1
+author: 	bmarron
+date:		12 Aug 2015
+repository:	https://github.com/bmarron18/Repro_2.git
 
 
 #################
