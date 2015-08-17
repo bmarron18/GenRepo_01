@@ -1,6 +1,6 @@
-title: 		getting LANDIS-II (32-bit) up and running on Linux, part 1
+title: 		LANDIS-II (32-bit) on Linux, part 1
 author: 	bmarron
-date:		12 Aug 2015
+date(rev.1):	12 Aug 2015
 repository:	https://github.com/bmarron18/Repro_2.git
 
 
@@ -13,9 +13,13 @@ Acknowledgements
 
 	#Thank you!!
 
-################
-computer system
-################
+####################
+my computer system
+###################
+	#system configuration used for this tutorial
+
+$ inxi -SMCx
+
 System:    Linux Kernel: 3.16.0-45-generic i686 (32 bit, gcc: 4.8.2) 
            Desktop: Xfce 4.11.8 (Gtk 2.24.23) Distro: Ubuntu 14.04 trusty
 Machine:   System: Hewlett-Packard product: HP Compaq 6710b (RM406UT#ABA) version: F.11
@@ -30,21 +34,35 @@ Step-by-step
 ################
 
 ==== STEP 1. install Wine 1.6 (a Windows emulator) ===============================
-	#Wine will be in a (hidden) directory (eg /home/bmarron/.wine/)
-	#open a Linux command line
+
+	#Imortant: Wine will be in a (hidden) directory (eg ~/.wine/) that will ultimately hold LANDIS-II 
+	#to install, open a Linux command line terminal
 
 $ sudo add-apt-repository ppa:ubuntu-wine/ppa
 $ sudo apt-get update
 $ sudo apt-get install wine1.6
 $ dpkg --configure -a
 
+	#these should be the installed 'wine' files
+$ dpkg-query --list 'wine*'
+
+||/ Name           Version      Architecture Description
++++-==============-============-============-=================================
+ii  wine-gecko2.21 2.21-0ubuntu i386         Microsoft Windows compatibility l
+ii  wine-mono0.0.8 0.0.8-0ubunt all          Microsoft Windows compatibility l
+ii  wine1.6        1:1.6.2-0ubu i386         Microsoft Windows Compatibility L
+ii  wine1.6-i386   1:1.6.2-0ubu i386         Microsoft Windows Compatibility L
+ii  winetricks     0.0+20140302 all          Microsoft Windows Compatibility L
+
+
 
 ==== STEP 2. install Mono Runtime ====================================
-		#use the command line or Synaptic
 
+		#to install, use the command line (or the Synaptic Package Manager)
 $ sudo apt-get install mono-complete
 
 	#these should be the installed 'mono' files
+$ dpkg-query --list 'mono*'
 
 ||/ Name           Version      Architecture Description
 +++-==============-============-============-=================================
@@ -70,22 +88,23 @@ ii  monodoc-manual 3.2.8+dfsg-4 all          compiled XML documentation from t
 
 
 
-===== STEP 3. obtain 32-bit LANDIS-II (from Dr. Rob Scheller) =========================
-		#go to 
+===== STEP 3. install LANDIS-II 6.0 (32-bit) =====================================
+
+		# LANDIS-II is made availble thanks to Dr. Rob Scheller
+		#to obtain the installation (setup) file 'LANDIS-II-6.0-setup32.exe' go to 
 			https://drive.google.com/file/d/0B6eUM6Se6MFBUTdOaHFWY25WX0E/view?usp=sharing
 
 		#download the file, 'LANDIS-II-6.0-setup32.exe'
 		#right-click on the file and open the .exe file with "Wine Windows Program Loader"
 		#follow the installation wizard instructions
 
-		#note: you cannot change any of the targeted installation directories
+		#Important: you cannot change any of the targeted installation directories!
 
 
-==== STEP 4. Check access to LANDIS-II through Wine =============
+==== STEP 4. Check access of LANDIS-II through Wine =============
 
-		#open a Linux command line
-		#run Wine
-		#to exit back to Linux from Wine, hit the <esc> button
+		#open a Linux command line terminal
+		#Important: to exit back to Linux from Wine, hit the <esc> button
 $ wine cmd
 Wine CMD Version 5.1.2600 (1.6.2)
 
@@ -104,12 +123,14 @@ C:\Program Files
 C:\Program Files> cd LANDIS-II\v6\bin
 C:\Program Files\LANDIS-II\v6\bin>
 
+		#check access by running the LANDIS-II 'extensions installed?' query 
+		#(ie, run the extensions program, 'Landis.Extensions.exe')
 
-		#run the extensions program, 'Landis.Extensions.exe'
 C:\Program Files\LANDIS-II\v6\bin> Landis.Extensions.exe
 
 
 		#the following output is expected
+		#and suggests that the LANDIS-through-Wine interface is working
 LANDIS-II 6.0
 Extensions Administration Tool 6.0
 Copyright 2005-2006 University of Wisconsin
@@ -119,100 +140,94 @@ No extensions are installed.
 
 
 
-==== STEP 5. general prep of LANDIS-II folders and files ============================
+==== STEP 5. general prep of LANDIS-II folders and files for Linux ============================
 
-		#leave the (Linux) Wine terminal open but switch to the desktop GUI to modify 
-		#the following LANDIS-II folders and files
+		#leave the command line terminal open but switch to the desktop GUI
+		#modify the following LANDIS-II folders and files
 
-
+		a.
 		#go to 
 			~/.wine/drive_c/Program Files/LANDIS-II/
 		#delete the folder 
-			~/.wine/drive_c/Program Files/LANDIS-II/bin 	(unusable batch files; *.cmds)
-
+			~/.wine/drive_c/Program Files/LANDIS-II/bin 	(Linux-unusable batch files; *.cmds)
+		b.
 		#go to 
 			~/.wine/drive_c/Program Files/LANDIS-II/v6
 		#delete the folder ~/.wine/drive_c/Program Files/LANDIS-II/docs 	(copy 'em elsewhere)
 
-
-
+		c.
 		#very important!!
 		#go to 
 			~/.wine/drive_c/Program Files/LANDIS-II/v6/GDAL/1.9/
 
-		#copy the entire contents of 
+		#copy the entire contents (NOT the folder but the actual files) of 
 			~/.wine/drive_c/Program Files/LANDIS-II/GDAL/1.9/ to
 			~/.wine/drive_c/Program Files/LANDIS-II/v6/bin
 
-		#do not put these files in a new folder; leave as loose files in /v6/bin
+		#there are 34 *.dll files
+		#do not put these 34 files in a new folder; leave 'em as loose files in the /v6/bin folder
 
 
 ==== STEP 6. get acquainted with the 'extensions.xml' file ========================
 
 		#go to
-			~/.wine/drive_c/Program Files/LANDIS-II/v6/bin/extensions/
+			~/.wine/drive_c/Program Files/LANDIS-II/v6/bin/extensions/extensions.xml
 
 		#open the file 'extensions.xml' in a simple text editor (Leafpad, Mousepad, etc)
-		#observe the contents
+		#observe the contents carefully (written in HTML)
 
 
 ==== STEP 7. install the extension, Age-only Succession 4.1 ========================
 
+		a.
 		#download 'LANDIS_II Age-only Succession 4.1-setup.exe' from 
 			http://www.landis-ii.org 
-		#right-click on the file and open the .exe file with "Wine Windows Program Loader"
+		#right-click on LANDIS_II Age-only Succession 4.1-setup.exe and open with "Wine Windows Program Loader"
 		#follow the installation wizard instructions
 
-		#note: you cannot change any of the targeted installation directories
+		#Important: you cannot change any of the targeted installation directories!
 
-		#the extension installation has added the following folders in 
-			~/.wine/drive_c/Program Files/LANDIS-II/:
-				* /uninstall
-				* /ext-info
-				* /examples
-				* /docs
+		#the Age-only succession (extension) installation has added the following folders (w/ misc files):
+				* ~/.wine/drive_c/Program Files/LANDIS-II/uninstall
+				* ~/.wine/drive_c/Program Files/LANDIS-II/ext-info
+				* ~/.wine/drive_c/Program Files/LANDIS-II/examples
+				* ~/.wine/drive_c/Program Files/LANDIS-II/docs
 
-		#the installation also has added the following files in 
-			~/.wine/drive_c/Program Files/LANDIS-II/v6/bin/extensions/
-				--Landis.Library.Succession.dll
-				--Landis.Library.Cohorts.dll
-				--Landis.Library.AgeOnlyCohorts.dll
-				--Landis.Extension.Succession.AgeOnly.dll
+		#the Age-only succession installation has added the following 4 extension-specific files:
+				* ~/.wine/drive_c/Program Files/LANDIS-II/v6/bin/extensions/Landis.Library.Succession.dll
+				* ~/.wine/drive_c/Program Files/LANDIS-II/v6/bin/extensions/Landis.Library.Cohorts.dll
+				* ~/.wine/drive_c/Program Files/LANDIS-II/v6/bin/extensions/Landis.Library.AgeOnlyCohorts.dll
+				* ~/.wine/drive_c/Program Files/LANDIS-II/v6/bin/extensions/Landis.Extension.Succession.AgeOnly.dll
 
+		#the Age-only succession installation has automatically modified the file, 'extensions.xml': 
+				* ~/.wine/drive_c/Program Files/LANDIS-II/v6/bin/extensions/
 
-		#very important!!
-		#the installation has automatically modified the file, 'extensions.xml'in 
-			~/.wine/drive_c/Program Files/LANDIS-II/v6/bin/extensions/
+		#Important: automatic updating of the extensions.xml file will NOT be the case for other extensions!
 
-		#automatic updating of the extensions.xml file will not be the case for other extensions
+		b.
+		#explore the contents of the newly installed folders (optional)
+		#explore the modified 'extensions.xml' file in a simple text editor (required)
 
-		#explore the contents of the new folders
-		#explore the modified 'extensions.xml' file in a simple text editor
-		#then
-
+		c.
 		#delete 
 			~/.wine/drive_c/Program Files/LANDIS-II/uninstall
+
+		d.
+		#copy the Age-only Succession 4.1 .pdf manual to your LANDIS docs file
 		#delete 
 			~/.wine/drive_c/Program Files/LANDIS-II/docs
 
 
-==== STEP 8. scenario prep of LANDIS-II folders and files ============================
+==== STEP 8. check on the installation of the Age-only Succession 4.1 extension =============================================
 
-		#go to 
-			~.wine/drive_c/Program Files/LANDIS-II/v6/examples/Age-only Succession/
+		#return to the Linux (running Wine) command line terminal
 
-		#copy the entire contents of the /Age-only Succession folder (as loose files) to 
-		 	~/.wine/drive_c/Program Files/LANDIS-II/v6/bin
-
-		#delete the file, 'SimpleBatchFile.bat' in 
-			~/.wine/drive_c/Program Files/LANDIS-II/v6/bin
-
-==== STEP 9. check on the new extension =============================================
-		#return to the (Linux) Wine command line
+		a.
 		# go to
 			C:\Program Files\LANDIS-II\v6\bin>
-		#run the extensions program
 
+		b.
+		#run the extensions program, 'Landis.Extensions.exe'
 C:\Program Files\LANDIS-II\v6\bin>Landis.Extensions.exe
 
 		#the following output is now expected
@@ -227,14 +242,197 @@ Extension            Description
 Age-only Succession  Succession with age cohorts
 
 
+==== STEP 9. prepare to run the Age-only Succession 4.1 example scenario  ============================
+		
+		#return to the desktop GUI
+
+		a.
+		#go to 
+			~.wine/drive_c/Program Files/LANDIS-II/v6/examples/Age-only Succession/
+
+		#open the scenario.txt file with a simple text editor
+			~.wine/drive_c/Program Files/LANDIS-II/v6/examples/Age-only Succession/scenario.txt
+		#add quotation marks to the string, <age-only-succession.txt> as shown below and save changes
+
+LandisData  Scenario
+
+Duration  50
+
+Species   species.txt
+
+Ecoregions      ./ecoregions.txt
+EcoregionsMap   ./ecoregions.gis
+
+CellLength  100 << meters, 100 x 100 m = 1 ha
+
+
+>> Succession Extension     Initialization File
+>> --------------------     -------------------
+   "Age-only Succession"    "age-only-succession.txt"	(<== add quotes here)
+
+		b.
+		#copy the entire contents of the /Age-only Succession folder (as loose files) to 
+		 	~/.wine/drive_c/Program Files/LANDIS-II/v6/bin
+
+		c.
+		#delete the file, 'SimpleBatchFile.bat' in 
+			~/.wine/drive_c/Program Files/LANDIS-II/v6/bin
+
 
 ==== STEP 10. run LANDIS-II =======================================
+
+		#return to the Linux (running Wine) command line
+
+		a.
 		#go to
 			C:\Program Files\LANDIS-II\v6\bin>
 
-		#run LANDIS-II using 
-			-- the 'Landis.Console-6.0.exe' program plus 
-			-- a scenario (.txt) file
+		b.
+		#run the Age-only Succession 4.1 example scenario 
+C:\Program Files\LANDIS-II\v6\bin> Landis.Console-6.0.exe scenario.txt
 
-C:\Program Files\LANDIS-II\v6\bin>Landis.Console-6.0.exe scenario.txt
 
+		#Important: always run LANDIS-II (32-bit) using a syntax that contains
+		#Landis.Console-6.0.exe followed by a scenario (.txt) file
+
+		#the following output is expected in the Linux (Wine) terminal:
+
+LANDIS-II 6.0 (official release)
+
+Loading scenario from file "scenario.txt" ...
+Initialized random number generator with seed = 1,934,171,420
+Loading species data from file "species.txt" ...
+Loading ecoregions from file "./ecoregions.txt" ...
+Initializing landscape from ecoregions map "./ecoregions.gis" ...
+Cell length = 100 m, cell area = 1 ha
+Map dimensions: 99 rows by 99 columns = 9,801 cells
+Sites: 9,801 active (100.0 %), 0 inactive (0.0 %)
+  reading in ecoregion from ./ecoregions.gis 
+Loading Age-only Succession extension ...
+   Registering Data:  Succession.AgeCohorts.
+   Loading dynamic input data from file "age-only-succession-dynamic-inputs.txt" ...
+  Dynamic Input Parser:  Add new year = 0.
+   Registering Data:  TimeOfLastSuccession.
+   Registering Data:  Shade.
+   Creating Dispersal Neighborhood List.
+   Dispersal:  NeighborRadius=5050, CellLength=100, numCellRadius=50
+   Loading initial communities from file "./initial-communities.txt" ...
+   Reading initial communities map "./initial-communities.gis" ...
+Current time: 10
+Running Age-only Succession ...
+Ageing cohorts ...
+% done:   0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
+          |----|----|----|----|----|----|----|----|----|----|
+Progress: +++++++++++++++++++++++++++++++++++++++++++++++++++
+Computing shade ...
+% done:   0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
+          |----|----|----|----|----|----|----|----|----|----|
+Progress: +++++++++++++++++++++++++++++++++++++++++++++++++++
+Cohort reproduction ...
+% done:   0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
+          |----|----|----|----|----|----|----|----|----|----|
+Progress: +++++++++++++++++++++++++++++++++++++++++++++++++++
+Current time: 20
+Running Age-only Succession ...
+Ageing cohorts ...
+% done:   0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
+          |----|----|----|----|----|----|----|----|----|----|
+Progress: +++++++++++++++++++++++++++++++++++++++++++++++++++
+Computing shade ...
+% done:   0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
+          |----|----|----|----|----|----|----|----|----|----|
+Progress: +++++++++++++++++++++++++++++++++++++++++++++++++++
+Cohort reproduction ...
+% done:   0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
+          |----|----|----|----|----|----|----|----|----|----|
+Progress: +++++++++++++++++++++++++++++++++++++++++++++++++++
+Current time: 30
+Running Age-only Succession ...
+Ageing cohorts ...
+% done:   0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
+          |----|----|----|----|----|----|----|----|----|----|
+Progress: +++++++++++++++++++++++++++++++++++++++++++++++++++
+Computing shade ...
+% done:   0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
+          |----|----|----|----|----|----|----|----|----|----|
+Progress: +++++++++++++++++++++++++++++++++++++++++++++++++++
+Cohort reproduction ...
+% done:   0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
+          |----|----|----|----|----|----|----|----|----|----|
+Progress: +++++++++++++++++++++++++++++++++++++++++++++++++++
+Current time: 40
+Running Age-only Succession ...
+Ageing cohorts ...
+% done:   0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
+          |----|----|----|----|----|----|----|----|----|----|
+Progress: +++++++++++++++++++++++++++++++++++++++++++++++++++
+Computing shade ...
+% done:   0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
+          |----|----|----|----|----|----|----|----|----|----|
+Progress: +++++++++++++++++++++++++++++++++++++++++++++++++++
+Cohort reproduction ...
+% done:   0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
+          |----|----|----|----|----|----|----|----|----|----|
+Progress: +++++++++++++++++++++++++++++++++++++++++++++++++++
+Current time: 50
+Running Age-only Succession ...
+Ageing cohorts ...
+% done:   0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
+          |----|----|----|----|----|----|----|----|----|----|
+Progress: +++++++++++++++++++++++++++++++++++++++++++++++++++
+Computing shade ...
+% done:   0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
+          |----|----|----|----|----|----|----|----|----|----|
+Progress: +++++++++++++++++++++++++++++++++++++++++++++++++++
+Cohort reproduction ...
+% done:   0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
+          |----|----|----|----|----|----|----|----|----|----|
+Progress: +++++++++++++++++++++++++++++++++++++++++++++++++++
+Model run is complete.
+
+
+
+==== STEP 11. verify the LANDIS-II run from the Landis-log.txt file =======================================
+
+		#return to the desktop GUI
+
+		a.
+		#go to
+			~/.wine/drive_c/Program Files/functioning_LANDIS-II_1/v6/bin/Landis-log.txt
+		#open the Landis-log.txt file in a simple text editor
+		#the following output is expected
+
+2015-08-17 11:14:22,744 - LANDIS-II 6.0 (official release)
+2015-08-17 11:14:22,771 - 
+2015-08-17 11:14:22,947 - Loading scenario from file "scenario.txt" ...
+2015-08-17 11:14:23,250 - Initialized random number generator with seed = 1,934,171,420
+2015-08-17 11:14:23,250 - Loading species data from file "species.txt" ...
+2015-08-17 11:14:23,267 - Loading ecoregions from file "./ecoregions.txt" ...
+2015-08-17 11:14:23,278 - Initializing landscape from ecoregions map "./ecoregions.gis" ...
+2015-08-17 11:14:23,312 - Cell length = 100 m, cell area = 1 ha
+2015-08-17 11:14:23,314 - Map dimensions: 99 rows by 99 columns = 9,801 cells
+2015-08-17 11:14:23,325 - Sites: 9,801 active (100.0 %), 0 inactive (0.0 %)
+2015-08-17 11:14:23,335 - Loading Age-only Succession extension ...
+2015-08-17 11:14:23,380 -    Registering Data:  Succession.AgeCohorts.
+2015-08-17 11:14:23,383 -    Loading dynamic input data from file "age-only-succession-dynamic-inputs.txt" ...
+2015-08-17 11:14:23,389 -   Dynamic Input Parser:  Add new year = 0.
+2015-08-17 11:14:23,398 -    Registering Data:  TimeOfLastSuccession.
+2015-08-17 11:14:23,398 -    Registering Data:  Shade.
+2015-08-17 11:14:23,399 -    Creating Dispersal Neighborhood List.
+2015-08-17 11:14:23,399 -    Dispersal:  NeighborRadius=5050, CellLength=100, numCellRadius=50
+2015-08-17 11:14:23,423 -    Loading initial communities from file "./initial-communities.txt" ...
+2015-08-17 11:14:23,439 -    Reading initial communities map "./initial-communities.gis" ...
+2015-08-17 11:14:23,567 - Current time: 10
+2015-08-17 11:14:23,568 - Running Age-only Succession ...
+2015-08-17 11:14:24,727 - Current time: 20
+2015-08-17 11:14:24,727 - Running Age-only Succession ...
+2015-08-17 11:14:25,140 - Current time: 30
+2015-08-17 11:14:25,140 - Running Age-only Succession ...
+2015-08-17 11:14:25,405 - Current time: 40
+2015-08-17 11:14:25,405 - Running Age-only Succession ...
+2015-08-17 11:14:25,556 - Current time: 50
+2015-08-17 11:14:25,557 - Running Age-only Succession ...
+2015-08-17 11:14:25,693 - Model run is complete.
+
+
+		Congrats!! the basic LANDIS-II (32-bit) is now up and running!
