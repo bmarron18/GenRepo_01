@@ -88,7 +88,10 @@ Step-by-step
 		#go to
 			~/.wine/drive_c/Program Files/LANDIS-II/v6/bin/extensions/extensions.xml
 
-		#modify 'extensions.xml' file (exactly as below):
+		#modify the 'extensions.xml' file with the information found in 
+			~/.wine/drive_c/Program Files/LANDIS-II/v6/ext-info/Max Age Output 2.0.txt
+
+		#modify the 'extensions.xml' file exactly as below:
 
 <?xml version="1.0" encoding="utf-8"?>
 <ExtensionDataset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
@@ -190,7 +193,7 @@ Output Max Species Age  Maximum age output maps
 		#go to
 			~/.wine/drive_c/Program Files/LANDIS-II/v6/examples/output-cohort-stats/
 
-		#copy the following files (all EXCEPT SimpleBatchFile.bat, scenario.txt, base-fire-6.0.txt):
+		#copy the following files (all files EXCEPT SimpleBatchFile.bat, scenario.txt, base-fire-6.0.txt):
 
 age-only-succession-dynamic-inputs.txt  
 age-only-succession.txt        
@@ -530,7 +533,7 @@ abiebals-45.img  AllSppMaxAge-35.img  tiliamer-25.img
 		#go to
 			~/.wine/drive_c/Program Files/LANDIS-II/v6/bin/max-spp-age/	
 
-		#copy the folder with the output files
+		#copy the folder with the  33, *.img output files
 			--from: ~/.wine/drive_c/Program Files/LANDIS-II/v6/bin/max-spp-age/
 			--to: ~/Desktop/max-spp-age
 
@@ -541,7 +544,6 @@ abiebals-45.img  AllSppMaxAge-35.img  tiliamer-25.img
 library(raster)
 library(sp)
 library(rgdal)
-
 
 	
 ---- raster-ize output *.img files ---------------------------------------------------
@@ -583,7 +585,7 @@ abiebals50 <-raster(test)
 ---- look at some of the output files individually ------------------------------------
 
 plot(abiebals0)
-
+plot(abiebals10)
 etc.
 
 

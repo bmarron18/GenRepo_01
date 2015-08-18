@@ -36,7 +36,8 @@ Step-by-step
 ==== STEP 1. install Wine 1.6 (a Windows emulator) ===============================
 
 	#Imortant: Wine will be in a (hidden) directory (eg ~/.wine/) that will ultimately hold LANDIS-II 
-	#to install, open a Linux command line terminal
+	#open a Linux command line terminal
+	#install Wine
 
 $ sudo add-apt-repository ppa:ubuntu-wine/ppa
 $ sudo apt-get update
@@ -58,7 +59,9 @@ ii  winetricks     0.0+20140302 all          Microsoft Windows Compatibility L
 
 ==== STEP 2. install Mono Runtime ====================================
 
-		#to install, use the command line (or the Synaptic Package Manager)
+	#open a Linux command line terminal (or the Synaptic Package Manager)
+	#install Mono		
+
 $ sudo apt-get install mono-complete
 
 	#these should be the installed 'mono' files
@@ -129,8 +132,8 @@ C:\Program Files\LANDIS-II\v6\bin>
 C:\Program Files\LANDIS-II\v6\bin> Landis.Extensions.exe
 
 
-		#the following output is expected
-		#and suggests that the LANDIS-through-Wine interface is working
+		#the following output is expected and suggests that the LANDIS-through-Wine interface is working:
+
 LANDIS-II 6.0
 Extensions Administration Tool 6.0
 Copyright 2005-2006 University of Wisconsin
@@ -142,7 +145,7 @@ No extensions are installed.
 
 ==== STEP 5. general prep of LANDIS-II folders and files for Linux ============================
 
-		#leave the command line terminal open but switch to the desktop GUI
+		#switch to the desktop GUI (leave the Linux (Wine) command line terminal open)
 		#modify the following LANDIS-II folders and files
 
 		a.
@@ -161,11 +164,22 @@ No extensions are installed.
 			~/.wine/drive_c/Program Files/LANDIS-II/v6/GDAL/1.9/
 
 		#copy the entire contents (NOT the folder but the actual files) of 
-			~/.wine/drive_c/Program Files/LANDIS-II/GDAL/1.9/ to
-			~/.wine/drive_c/Program Files/LANDIS-II/v6/bin
+			--from: ~/.wine/drive_c/Program Files/LANDIS-II/GDAL/1.9/
+			--to: ~/.wine/drive_c/Program Files/LANDIS-II/v6/bin
 
 		#there are 34 *.dll files
-		#do not put these 34 files in a new folder; leave 'em as loose files in the /v6/bin folder
+
+cairo.dll           hdf5dll.dll   libpq.dll           pdflib.dll
+cfitsio.dll         iconv.dll     libtiff.dll         proj.dll
+freexl.dll          libcurl.dll   libxml2.dll         spatialite.dll
+fribidi.dll         libeay32.dll  lti_dsdk.dll        sqlite3.dll
+ftgl.dll            libecwj2.dll  lti_lidar_dsdk.dll  ssleay32.dll
+gdal19.dll          libexpat.dll  netcdf.dll          xerces-c_2_8.dll
+gdalconst_wrap.dll  libfcgi.dll   ogr_wrap.dll        zlib1.dll
+gdal_wrap.dll       libmap.dll    openjpeg.dll
+geos_c.dll          libmysql.dll  osr_wrap.dll
+
+		#do not put these 34 files in a new folder; leave them as loose files in the /v6/bin folder
 
 
 ==== STEP 6. get acquainted with the 'extensions.xml' file ========================
@@ -220,7 +234,7 @@ No extensions are installed.
 
 ==== STEP 8. check on the installation of the Age-only Succession 4.1 extension ====================
 
-		#return to the Linux (running Wine) command line terminal
+		#return to the Linux (Wine) command line terminal
 
 		a.
 		# go to
@@ -230,7 +244,7 @@ No extensions are installed.
 		#run the extensions program, 'Landis.Extensions.exe'
 C:\Program Files\LANDIS-II\v6\bin>Landis.Extensions.exe
 
-		#the following output is now expected
+		#the following output is now expected:
 
 LANDIS-II 6.0
 Extensions Administration Tool 6.0
@@ -248,11 +262,10 @@ Age-only Succession  Succession with age cohorts
 
 		a.
 		#go to 
-			~.wine/drive_c/Program Files/LANDIS-II/v6/examples/Age-only Succession/
-
-		#open the scenario.txt file with a simple text editor
 			~.wine/drive_c/Program Files/LANDIS-II/v6/examples/Age-only Succession/scenario.txt
-		#add quotation marks to the string, <age-only-succession.txt> as shown below and save changes
+
+		#open the file 'scenario.txt' in a simple text editor
+		#comment out Line 15 and add a new Line 16 exactly as shown below: 
 
 LandisData  Scenario
 
@@ -268,28 +281,43 @@ CellLength  100 << meters, 100 x 100 m = 1 ha
 
 >> Succession Extension     Initialization File
 >> --------------------     -------------------
-   "Age-only Succession"    "age-only-succession.txt"	(<== add quotes here)
+>>   "Age-only Succession"    age-only-succession.txt		<== Line 15
+    "Age-only Succession"    "age-only-succession.txt"		<== new Line 16
+
+		#save the changes in a new file named 'scenario_mod1.txt' (use the Save As.. )
 
 		b.
-		#copy the entire contents of the /Age-only Succession folder (as loose files) to 
-		 	~/.wine/drive_c/Program Files/LANDIS-II/v6/bin
+		#go to
+			~/.wine/drive_c/Program Files/LANDIS-II/v6/examples/Age-only Succession/
 
-		c.
-		#delete the file, 'SimpleBatchFile.bat' in 
-			~/.wine/drive_c/Program Files/LANDIS-II/v6/bin
+		#copy the following files (all files EXCEPT SimpleBatchFile.bat and scenario.txt):
+
+age-only-succession.txt 
+age-only-succession-dynamic-inputs.txt  
+ecoregions.gis                          
+ecoregions.txt
+initial-communities.txt                        
+initial-communities.gis
+scenario_mod1.txt
+species.txt
+
+		#paste the 8 files above directly into
+			~/.wine/drive_c/Program Files/LANDIS-II/v6/bin/
+
+		#Important: keep these as loose files in /v6/bib; DO NOT put them in any folder.
 
 
 ==== STEP 10. run LANDIS-II =======================================
 
-		#return to the Linux (running Wine) command line
+		#return to the Linux (Wine) command line
 
 		a.
 		#go to
 			C:\Program Files\LANDIS-II\v6\bin>
 
 		b.
-		#run the Age-only Succession 4.1 example scenario 
-C:\Program Files\LANDIS-II\v6\bin> Landis.Console-6.0.exe scenario.txt
+		#run the Age-only Succession 4.1 example scenario
+			C:\Program Files\LANDIS-II\v6\bin> Landis.Console-6.0.exe scenario.txt
 
 
 		#Important: always run LANDIS-II (32-bit) using a syntax that contains
@@ -400,7 +428,7 @@ Model run is complete.
 		#go to
 			~/.wine/drive_c/Program Files/functioning_LANDIS-II_1/v6/bin/Landis-log.txt
 		#open the Landis-log.txt file in a simple text editor
-		#the following output is expected
+		#the following log output is expected:
 
 2015-08-17 11:14:22,744 - LANDIS-II 6.0 (official release)
 2015-08-17 11:14:22,771 - 
