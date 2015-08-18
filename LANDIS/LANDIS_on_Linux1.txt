@@ -463,4 +463,4 @@ Model run is complete.
 2015-08-17 11:14:25,693 - Model run is complete.
 
 
-		Congrats!! the basic LANDIS-II (32-bit) is now up and running!
+	Congrats!! a basic configuration of LANDIS-II 6.0 (32-bit) is now up and running in Linux!
