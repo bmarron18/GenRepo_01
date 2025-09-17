@@ -1,0 +1,87 @@
+
+apt-key list >> ~/Desktop/PPAKeyList.txt 
+
+
+/etc/apt/trusted.gpg
+--------------------
+pub   1024D/437D05B5 2004-09-12
+uid                  Ubuntu Archive Automatic Signing Key <ftpmaster@ubuntu.com>
+sub   2048g/79164387 2004-09-12
+
+pub   4096R/C0B21F32 2012-05-11
+uid                  Ubuntu Archive Automatic Signing Key (2012) <ftpmaster@ubuntu.com>
+
+pub   4096R/EFE21092 2012-05-11
+uid                  Ubuntu CD Image Automatic Signing Key (2012) <cdimage@ubuntu.com>
+
+pub   1024D/FBB75451 2004-12-30
+uid                  Ubuntu CD Image Automatic Signing Key <cdimage@ubuntu.com>
+
+pub   2048R/E084DAB9 2010-10-19 [expires: 2020-10-16]
+uid                  Michael Rutter <marutter@gmail.com>
+sub   2048R/1CFF3E8F 2010-10-19 [expires: 2020-10-16]
+
+pub   4096R/D38B4796 2016-04-12
+uid                  Google Inc. (Linux Packages Signing Authority) <linux-packages-keymaster@google.com>
+sub   4096R/640DB551 2016-04-12 [expires: 2019-04-12]
+sub   4096R/997C215E 2017-01-24 [expires: 2020-01-24]
+
+pub   4096R/DE9E3B09 2017-12-15
+uid                  https://packagecloud.io/AtomEditor/atom (https://packagecloud.io/docs#gpg_signing) <support@packagecloud.io>
+sub   4096R/C0A35108 2017-12-15
+
+/etc/apt/trusted.gpg.d/debian-archive-jessie-automatic.gpg
+----------------------------------------------------------
+pub   4096R/2B90D010 2014-11-21 [expires: 2022-11-19]
+uid                  Debian Archive Automatic Signing Key (8/jessie) <ftpmaster@debian.org>
+
+/etc/apt/trusted.gpg.d/debian-archive-jessie-security-automatic.gpg
+-------------------------------------------------------------------
+pub   4096R/C857C906 2014-11-21 [expires: 2022-11-19]
+uid                  Debian Security Archive Automatic Signing Key (8/jessie) <ftpmaster@debian.org>
+
+/etc/apt/trusted.gpg.d/debian-archive-jessie-stable.gpg
+-------------------------------------------------------
+pub   4096R/518E17E1 2013-08-17 [expires: 2021-08-15]
+uid                  Jessie Stable Release Key <debian-release@lists.debian.org>
+
+/etc/apt/trusted.gpg.d/debian-archive-squeeze-automatic.gpg
+-----------------------------------------------------------
+pub   4096R/473041FA 2010-08-27 [expired: 2018-03-05]
+uid                  Debian Archive Automatic Signing Key (6.0/squeeze) <ftpmaster@debian.org>
+
+/etc/apt/trusted.gpg.d/debian-archive-squeeze-stable.gpg
+--------------------------------------------------------
+pub   4096R/B98321F9 2010-08-07 [expired: 2017-08-05]
+uid                  Squeeze Stable Release Key <debian-release@lists.debian.org>
+
+/etc/apt/trusted.gpg.d/debian-archive-wheezy-automatic.gpg
+----------------------------------------------------------
+pub   4096R/46925553 2012-04-27 [expires: 2020-04-25]
+uid                  Debian Archive Automatic Signing Key (7.0/wheezy) <ftpmaster@debian.org>
+
+/etc/apt/trusted.gpg.d/debian-archive-wheezy-stable.gpg
+-------------------------------------------------------
+pub   4096R/65FFB764 2012-05-08 [expires: 2019-05-07]
+uid                  Wheezy Stable Release Key <debian-release@lists.debian.org>
+
+/etc/apt/trusted.gpg.d/jonathonf_ubuntu_texlive.gpg
+---------------------------------------------------
+pub   4096R/F06FC659 2015-01-07
+uid                  Launchpad PPA for J Fernyhough
+
+/etc/apt/trusted.gpg.d/latexila_ubuntu_ppa.gpg
+----------------------------------------------
+pub   1024R/E9FF11F6 2011-02-13
+uid                  Launchpad PPA for LaTeXila
+
+/etc/apt/trusted.gpg.d/lubuntu-desktop_ubuntu_ppa.gpg
+-----------------------------------------------------
+pub   1024R/CF57B0F4 2009-08-13
+uid                  Launchpad PPA for Lubuntu
+
+/etc/apt/trusted.gpg.d/webupd8team_ubuntu_y-ppa-manager.gpg
+-----------------------------------------------------------
+pub   1024R/EEA14886 2010-05-04
+uid                  Launchpad VLC
+

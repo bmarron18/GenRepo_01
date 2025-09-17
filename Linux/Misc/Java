@@ -1,0 +1,31 @@
+	---Java Development Kit (jdk) ---
+
+*Java - a technology from Oracle (formerly: Sun Microsystems). There are several implementations, 
+of which the free OpenJDK Development Kit (JDK) is the easiest to install and the default version of Java 
+that Ubuntu uses.
+*For Ubuntu 10.04.4, 10.10 and 11.04 (32/64-bit) on the official repositories only the 6th version of OpenJDK 
+is available.
+
+#Installed
+$ sudo apt-get install -y openjdk-6-jdk
+$sudo R CMD javareconf
+
+Java version     : 1.6.0_30
+Java home path   : /usr/lib/jvm/java-6-openjdk-i386/jre
+Java compiler    : /usr/bin/javac
+Java headers gen.: /usr/bin/javah
+Java archive tool: /usr/bin/jar
+
+trying to compile and link a JNI progam 
+detected JNI cpp flags    : -I$(JAVA_HOME)/../include
+detected JNI linker flags : -L$(JAVA_HOME)/lib/i386/server -ljvm
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I/usr/lib/jvm/java-6-openjdk-i386/jre/../include     -fpic  -O3 -pipe  -g  -c conftest.c -o conftest.o
+gcc -std=gnu99 -shared -o conftest.so conftest.o -L/usr/lib/jvm/java-6-openjdk-i386/jre/lib/i386/server -ljvm -L/usr/lib/R/lib -lR
+
+
+JAVA_HOME        : /usr/lib/jvm/java-6-openjdk-i386/jre
+Java library path: $(JAVA_HOME)/lib/i386/server
+JNI cpp flags    : -I$(JAVA_HOME)/../include
+JNI linker flags : -L$(JAVA_HOME)/lib/i386/server -ljvm
+Updating Java configuration in /usr/lib/R
+Done.

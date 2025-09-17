@@ -1,0 +1,102 @@
+This is TeX, Version 3.1415926 (TeX Live 2013/Debian) (format=tex 2015.6.20)  4 MAY 2016 10:09
+**draftwatermark.ins
+(./draftwatermark.ins
+(/usr/share/texlive/texmf-dist/tex/latex/base/docstrip.tex
+\blockLevel=\count26
+\emptyLines=\count27
+\processedLines=\count28
+\commentsRemoved=\count29
+\commentsPassed=\count30
+\codeLinesPassed=\count31
+\TotalprocessedLines=\count32
+\TotalcommentsRemoved=\count33
+\TotalcommentsPassed=\count34
+\TotalcodeLinesPassed=\count35
+\NumberOfFiles=\count36
+\inFile=\read0
+\inputcheck=\read1
+\@tempcnta=\count37
+\off@0=\count38
+\off@1=\count39
+\off@2=\count40
+\off@3=\count41
+\off@4=\count42
+\off@5=\count43
+\off@6=\count44
+\off@7=\count45
+\off@8=\count46
+\off@9=\count47
+\off@10=\count48
+\off@11=\count49
+\off@12=\count50
+\off@13=\count51
+\off@14=\count52
+\off@15=\count53
+\@temptokena=\toks12
+\@maxfiles=\count54
+\@maxoutfiles=\count55
+
+Utility: `docstrip' 2.5d <2005/07/29>
+English documentation    <1999/03/31>
+
+**********************************************************
+* This program converts documented macro-files into fast *
+* loadable files by stripping off (nearly) all comments! *
+**********************************************************
+
+********************************************************
+* No Configuration file found, using default settings. *
+********************************************************
+
+)
+*** Generating the LaTeX2e package files ***
+
+Generating file(s) draftwatermark.sty 
+\openout0 = `draftwatermark.sty'.
+
+
+Processing file draftwatermark.dtx (draftwatermark) -> draftwatermark.sty
+File draftwatermark.dtx ended by \endinput.
+Lines  processed: 528
+Comments removed: 377
+Comments  passed: 1
+Codelines passed: 145
+
+*** Generating the example files ***
+
+Generating file(s) test_draftwatermark.tex 
+\openout0 = `test_draftwatermark.tex'.
+
+
+Processing file draftwatermark.dtx (samplecode) -> test_draftwatermark.tex
+File draftwatermark.dtx ended by \endinput.
+Lines  processed: 528
+Comments removed: 377
+Comments  passed: 1
+Codelines passed: 145
+
+***********************************************************
+*
+* To finish the installation you have to move the following
+* file(s) into a directory searched by TeX:
+*
+*   draftwatermark.sty
+*
+*
+* To produce the documentation run draftwatermark.dtx
+* through LaTeX (or maybe pdfLaTeX).
+* Process draftwatermark.idx file by:
+*     makeindex -s gind.ist draftwatermark
+* Process draftwatermark.glo file by:
+*     makeindex -s gglo.ist -o draftwatermark.gls draftwatermark.glo
+* Re run through LaTeX the draftwatermark.dtx file as necessary
+*
+***********************************************************
+Overall statistics:
+Files  processed: 2
+Lines  processed: 1056
+Comments removed: 754
+Comments  passed: 2
+Codelines passed: 290
+ )
+No pages of output.

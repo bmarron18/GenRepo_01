@@ -1,0 +1,64 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Project Title: LANDIS-II SOFTWARE ENHANCEMENT
+% Grant/Agreement Number: 14-JV-11242313-112
+% Cooperator Name: PORTLAND STATE UNIVERSITY
+% Performance Start Date: 08/05/2014
+% Performance End Date: 12/31/2016
+% Report Source: Cooperator
+% Report Due Date: 03/31/2017
+
+
+% Internal Project Title: LANDIS_Upgrades_Project
+% Internal Project Number: 2016SoE021
+% Original: bmarron, 5 Jan 2017
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[letterpaper,11pt]{texMemo}
+
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{apacite}
+\usepackage[english]{babel}
+\usepackage{comment}
+\usepackage{csquotes}
+
+\setlength{\parindent}{0pt}
+
+\memoto{Eric Gustafson}
+\memofrom{Rob Scheller}
+\memosubject{Progress report on Grant/Agreement 14-JV-11242313-112 (LANDIS-II Software Enhancement)}
+\memodate{\today}
+\logo{\includegraphics[width=0.35\textwidth]{graphics/psulogo_horiz_msword.jpeg}}
+
+\begin{document}
+\maketitle
+The goals of the LANDIS-II Software Enhancement Project (\enquote{Project}) include:
+\begin{enumerate}
+  \item The streamlining and restructuring of LANDIS-II extension repositories to eliminate redundancies, to provide a more scientist-friendly interface for extension rebuilding and modification, and to fully utilize the capabilities of GitHub for version control and records and source code deposition.
+  \item The resolution of various issues associated with LANDIS-II extension repositories such as bug fixes and enhancements.
+  \item The creation of new, user options for using LANDIS-II such as a game-style, interactive interface and templates for all-in-one, LANDIS-II modeling and data processing. 
+\end{enumerate}
+
+To meet the goals of the Project a small team of programmers and a project manager were hired and a simple project management structure was developed. The project management structure provides weekly project updates, tracks work hours and expenses and ties them to project goals, and institutes an effective set of QA/QC protocols for all changes to LANDIS-II repositories.\\
+
+Progress of the Project to date includes the following general and specific items:
+\begin{itemize}
+  \item Extension-Base-Harvest has been successfully streamlined and restructured and the new format now serves as a template for other extension repositories. The template includes a new .txt file that provides basic background information on the relationship between C\# programming and the LANDIS-II model as well as step-by-step instructions for rebuilding an extension from source code. Other repositories are in the process of being structured using the new template.
+  \item  A new repository (Support-Library-DLLs) has been created to house all of the .dll files required to rebuild extensions. This new repository works in conjunction with the new repository template and eliminates the need to access archived Google Code repositories and the need to use an SDK interface. Requisite .dll files will continue to be added to this repository. 
+  \item Core-Model has been evaluated and the Linux-based build structure has been separated from the Windows-based build structure. Current efforts are focused on the Windows-based build structure.
+  \item Issues in Extension-Base-Harvest, Core-Model, LANDVIZ, and Extension-Biomass-Harvest have been prioritized, clarified and assigned to team members. Team members are currently engaged in the resolution of issues in these repositories.
+  \item Preliminary sketches have been designed for a game-style, interactive interface.
+\end{itemize}
+
+Over the next few weeks the Project will continue to move through the LANDIS-II repositories performing repository restructuring and issues resolution as needed. It is anticipated that by spring the Project team will have completed Goal 1 and Goal 2 and begin the development of new user interfaces (Goal 3) .\\
+
+
+
+
+\end{document}

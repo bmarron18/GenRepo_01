@@ -1,0 +1,612 @@
+Title:			Compu Info, UUID and partitions
+Project Descriptor:	
+Project ID:		
+Author:			bmarron
+Origin Date:		31 July 2017
+Final Date:		
+
+#################
+HP - 15t Laptop
+##################
+
+
+Tracking Number:	716492014073
+Serial Number:		CND72001NT
+
+
+
+https://support.hp.com/hk-en/document/c03801890#AbT0
+Reboot 
+Tap ESC key to access Startup Menu
+Tap F10 to access UEFI menu -- a weird one called hydsys?
+
+
+
+bruce@bruce-HP-Notebook:~$ lsblk -f
+NAME   FSTYPE LABEL            UUID                                 MOUNTPOINT
+sda                                                                 
+├─sda4 ntfs   Windows RE tools 1EFEA4D4FEA4A58D                     
+├─sda2                                                              
+├─sda5 ext4   Linux            8562815c-6a84-4f9e-b383-117398522254 /
+├─sda3 ntfs   Windows          668A39DF8A39AC85                     
+├─sda1 vfat                    8A87-74D4                            /boot/efi
+└─sda6 swap   Linux            077bcb7a-1d57-4497-a8c2-6a82a339e01a [SWAP]
+
+
+
+UUID shown by blkid is for file system
+PARTUUID is for "partition" of GPT
+
+bruce@bruce-HP-Notebook:~$ sudo blkid
+/dev/sda1: UUID="8A87-74D4" TYPE="vfat" PARTLABEL="EFI system partition" PARTUUID="1d1c5951-3f9e-4ed9-a9d6-46f9a4ae130d"
+/dev/sda2: PARTLABEL="Microsoft reserved partition" PARTUUID="19ad5222-63f8-46e1-99ba-19a08a3a17ed"
+/dev/sda3: LABEL="Windows" UUID="668A39DF8A39AC85" TYPE="ntfs" PARTLABEL="Basic data partition" PARTUUID="0e6e6530-d3c7-47d6-9568-e843d631b390"
+/dev/sda4: LABEL="Windows RE tools" UUID="1EFEA4D4FEA4A58D" TYPE="ntfs" PARTLABEL="Basic data partition" PARTUUID="96f61c32-81a1-478a-a85e-416fd3395aec"
+/dev/sda5: UUID="8562815c-6a84-4f9e-b383-117398522254" TYPE="ext4" PARTUUID="9a54fcc9-e7f3-4ca7-822b-c90b38847745"
+/dev/sda6: UUID="077bcb7a-1d57-4497-a8c2-6a82a339e01a" TYPE="swap" PARTUUID="fe307ec7-bff8-4c33-8edd-dad364b54df7"
+
+
+bruce@bruce-HP-Notebook:~$ ls -l /dev/disk/by-uuid
+total 0
+lrwxrwxrwx 1 root root 10 Jul 31 07:25 077bcb7a-1d57-4497-a8c2-6a82a339e01a -> ../../sda6
+lrwxrwxrwx 1 root root 10 Jul 31 07:25 1EFEA4D4FEA4A58D -> ../../sda4
+lrwxrwxrwx 1 root root 10 Jul 31 07:25 668A39DF8A39AC85 -> ../../sda3
+lrwxrwxrwx 1 root root 10 Jul 31 07:25 8562815c-6a84-4f9e-b383-117398522254 -> ../../sda5
+lrwxrwxrwx 1 root root 10 Jul 31 07:25 8A87-74D4 -> ../../sda1
+
+
+$ sudo fdisk -l
+Disk /dev/sda: 119.2 GiB, 128035676160 bytes, 250069680 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 4096 bytes
+I/O size (minimum/optimal): 4096 bytes / 4096 bytes
+Disklabel type: gpt
+Disk identifier: 3137076F-D76E-4050-856F-9EF7B6D183C8
+
+Device         Start       End   Sectors  Size Type
+/dev/sda1       2048    534527    532480  260M EFI System
+/dev/sda2     534528    567295     32768   16M Microsoft reserved
+/dev/sda3     567296 145651711 145084416 69.2G Microsoft basic data
+/dev/sda4  248051712 250058751   2007040  980M Windows recovery environment
+/dev/sda5  145651712 231446527  85794816 40.9G Linux filesystem
+/dev/sda6  231446528 248051711  16605184  7.9G Linux swap
+
+Partition table entries are not in disk order.
+
+
+
+----- /etc/fstab for bruce-HP-Notebook ----------------------------------------------------------
+# /etc/fstab: static file system information.
+#
+# Use 'blkid' to print the universally unique identifier for a
+# device; this may be used with UUID= as a more robust way to name devices
+# that works even if disks are added and removed. See fstab(5).
+#
+# <file system> 				<mount point>   	<type>  	<options>      		<dump>  <pass>
+# / was on /dev/sda5 during installation
+UUID=8562815c-6a84-4f9e-b383-117398522254 		/               ext4   		errors=remount-ro 	0       1
+# /boot/efi was on /dev/sda1 during installation
+UUID=8A87-74D4  					/boot/efi       vfat    	umask=0077      	0       1
+# swap was on /dev/sda6 during installation
+UUID=077bcb7a-1d57-4497-a8c2-6a82a339e01a 		none    	swap    	sw             		0       0
+-----------------------------------------------------------------------------------------------------
+
+
+---- /etc/default/grub for bruce-HP-Notebook ----------------------------------------------------------
+# If you change this file, run 'update-grub' afterwards to update
+# /boot/grub/grub.cfg.
+# For full documentation of the options in this file, see:
+#   info -f grub -n 'Simple configuration'
+
+GRUB_DEFAULT=0
+#GRUB_HIDDEN_TIMEOUT=0
+GRUB_HIDDEN_TIMEOUT_QUIET=true
+GRUB_TIMEOUT=10
+GRUB_DISTRIBUTOR=`lsb_release -i -s 2> /dev/null || echo Debian`
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"
+GRUB_CMDLINE_LINUX=""
+
+# Uncomment to enable BadRAM filtering, modify to suit your needs
+# This works with Linux (no patch required) and with any kernel that obtains
+# the memory map information from GRUB (GNU Mach, kernel of FreeBSD ...)
+#GRUB_BADRAM="0x01234567,0xfefefefe,0x89abcdef,0xefefefef"
+
+# Uncomment to disable graphical terminal (grub-pc only)
+#GRUB_TERMINAL=console
+
+# The resolution used on graphical terminal
+# note that you can use only modes which your graphic card supports via VBE
+# you can see them in real GRUB with the command `vbeinfo'
+#GRUB_GFXMODE=640x480
+
+# Uncomment if you don't want GRUB to pass "root=UUID=xxx" parameter to Linux
+#GRUB_DISABLE_LINUX_UUID=true
+
+# Uncomment to disable generation of recovery mode menu entries
+#GRUB_DISABLE_RECOVERY="true"
+
+# Uncomment to get a beep at grub start
+#GRUB_INIT_TUNE="480 440 1"
+------------------------------------------------------------------------------------------------------------
+
+
+----- /boot/grub/grub.cfg  for bruce-HP-Notebook -------------------------------------------------------------------------------
+#
+# DO NOT EDIT THIS FILE
+#
+# It is automatically generated by grub-mkconfig using templates
+# from /etc/grub.d and settings from /etc/default/grub
+#
+
+### BEGIN /etc/grub.d/00_header ###
+if [ -s $prefix/grubenv ]; then
+  set have_grubenv=true
+  load_env
+fi
+if [ "${next_entry}" ] ; then
+   set default="${next_entry}"
+   set next_entry=
+   save_env next_entry
+   set boot_once=true
+else
+   set default="0"
+fi
+
+if [ x"${feature_menuentry_id}" = xy ]; then
+  menuentry_id_option="--id"
+else
+  menuentry_id_option=""
+fi
+
+export menuentry_id_option
+
+if [ "${prev_saved_entry}" ]; then
+  set saved_entry="${prev_saved_entry}"
+  save_env saved_entry
+  set prev_saved_entry=
+  save_env prev_saved_entry
+  set boot_once=true
+fi
+
+function savedefault {
+  if [ -z "${boot_once}" ]; then
+    saved_entry="${chosen}"
+    save_env saved_entry
+  fi
+}
+function recordfail {
+  set recordfail=1
+  if [ -n "${have_grubenv}" ]; then if [ -z "${boot_once}" ]; then save_env recordfail; fi; fi
+}
+function load_video {
+  if [ x$feature_all_video_module = xy ]; then
+    insmod all_video
+  else
+    insmod efi_gop
+    insmod efi_uga
+    insmod ieee1275_fb
+    insmod vbe
+    insmod vga
+    insmod video_bochs
+    insmod video_cirrus
+  fi
+}
+
+if [ x$feature_default_font_path = xy ] ; then
+   font=unicode
+else
+insmod part_gpt
+insmod ext2
+set root='hd0,gpt5'
+if [ x$feature_platform_search_hint = xy ]; then
+  search --no-floppy --fs-uuid --set=root --hint-bios=hd0,gpt5 --hint-efi=hd0,gpt5 --hint-baremetal=ahci0,gpt5  8562815c-6a84-4f9e-b383-117398522254
+else
+  search --no-floppy --fs-uuid --set=root 8562815c-6a84-4f9e-b383-117398522254
+fi
+    font="/usr/share/grub/unicode.pf2"
+fi
+
+if loadfont $font ; then
+  set gfxmode=auto
+  load_video
+  insmod gfxterm
+  set locale_dir=$prefix/locale
+  set lang=en_US
+  insmod gettext
+fi
+terminal_output gfxterm
+if [ "${recordfail}" = 1 ] ; then
+  set timeout=30
+else
+  if [ x$feature_timeout_style = xy ] ; then
+    set timeout_style=menu
+    set timeout=10
+  # Fallback normal timeout code in case the timeout_style feature is
+  # unavailable.
+  else
+    set timeout=10
+  fi
+fi
+### END /etc/grub.d/00_header ###
+
+### BEGIN /etc/grub.d/05_debian_theme ###
+set menu_color_normal=white/black
+set menu_color_highlight=black/light-gray
+### END /etc/grub.d/05_debian_theme ###
+
+### BEGIN /etc/grub.d/10_linux ###
+function gfxmode {
+	set gfxpayload="${1}"
+	if [ "${1}" = "keep" ]; then
+		set vt_handoff=vt.handoff=7
+	else
+		set vt_handoff=
+	fi
+}
+if [ "${recordfail}" != 1 ]; then
+  if [ -e ${prefix}/gfxblacklist.txt ]; then
+    if hwmatch ${prefix}/gfxblacklist.txt 3; then
+      if [ ${match} = 0 ]; then
+        set linux_gfx_mode=keep
+      else
+        set linux_gfx_mode=text
+      fi
+    else
+      set linux_gfx_mode=text
+    fi
+  else
+    set linux_gfx_mode=keep
+  fi
+else
+  set linux_gfx_mode=text
+fi
+export linux_gfx_mode
+menuentry 'Ubuntu' --class ubuntu --class gnu-linux --class gnu --class os $menuentry_id_option 'gnulinux-simple-8562815c-6a84-4f9e-b383-117398522254' {
+	recordfail
+	load_video
+	gfxmode $linux_gfx_mode
+	insmod gzio
+	if [ x$grub_platform = xxen ]; then insmod xzio; insmod lzopio; fi
+	insmod part_gpt
+	insmod ext2
+	set root='hd0,gpt5'
+	if [ x$feature_platform_search_hint = xy ]; then
+	  search --no-floppy --fs-uuid --set=root --hint-bios=hd0,gpt5 --hint-efi=hd0,gpt5 --hint-baremetal=ahci0,gpt5  8562815c-6a84-4f9e-b383-117398522254
+	else
+	  search --no-floppy --fs-uuid --set=root 8562815c-6a84-4f9e-b383-117398522254
+	fi
+        linux	/boot/vmlinuz-4.10.0-27-generic root=UUID=8562815c-6a84-4f9e-b383-117398522254 ro  quiet splash $vt_handoff
+	initrd	/boot/initrd.img-4.10.0-27-generic
+}
+submenu 'Advanced options for Ubuntu' $menuentry_id_option 'gnulinux-advanced-8562815c-6a84-4f9e-b383-117398522254' {
+	menuentry 'Ubuntu, with Linux 4.10.0-27-generic' --class ubuntu --class gnu-linux --class gnu --class os $menuentry_id_option 'gnulinux-4.10.0-27-generic-advanced-8562815c-6a84-4f9e-b383-117398522254' {
+		recordfail
+		load_video
+		gfxmode $linux_gfx_mode
+		insmod gzio
+		if [ x$grub_platform = xxen ]; then insmod xzio; insmod lzopio; fi
+		insmod part_gpt
+		insmod ext2
+		set root='hd0,gpt5'
+		if [ x$feature_platform_search_hint = xy ]; then
+		  search --no-floppy --fs-uuid --set=root --hint-bios=hd0,gpt5 --hint-efi=hd0,gpt5 --hint-baremetal=ahci0,gpt5  8562815c-6a84-4f9e-b383-117398522254
+		else
+		  search --no-floppy --fs-uuid --set=root 8562815c-6a84-4f9e-b383-117398522254
+		fi
+		echo	'Loading Linux 4.10.0-27-generic ...'
+	        linux	/boot/vmlinuz-4.10.0-27-generic root=UUID=8562815c-6a84-4f9e-b383-117398522254 ro  quiet splash $vt_handoff
+		echo	'Loading initial ramdisk ...'
+		initrd	/boot/initrd.img-4.10.0-27-generic
+	}
+	menuentry 'Ubuntu, with Linux 4.10.0-27-generic (upstart)' --class ubuntu --class gnu-linux --class gnu --class os $menuentry_id_option 'gnulinux-4.10.0-27-generic-init-upstart-8562815c-6a84-4f9e-b383-117398522254' {
+		recordfail
+		load_video
+		gfxmode $linux_gfx_mode
+		insmod gzio
+		if [ x$grub_platform = xxen ]; then insmod xzio; insmod lzopio; fi
+		insmod part_gpt
+		insmod ext2
+		set root='hd0,gpt5'
+		if [ x$feature_platform_search_hint = xy ]; then
+		  search --no-floppy --fs-uuid --set=root --hint-bios=hd0,gpt5 --hint-efi=hd0,gpt5 --hint-baremetal=ahci0,gpt5  8562815c-6a84-4f9e-b383-117398522254
+		else
+		  search --no-floppy --fs-uuid --set=root 8562815c-6a84-4f9e-b383-117398522254
+		fi
+		echo	'Loading Linux 4.10.0-27-generic ...'
+	        linux	/boot/vmlinuz-4.10.0-27-generic root=UUID=8562815c-6a84-4f9e-b383-117398522254 ro  quiet splash $vt_handoff init=/sbin/upstart
+		echo	'Loading initial ramdisk ...'
+		initrd	/boot/initrd.img-4.10.0-27-generic
+	}
+	menuentry 'Ubuntu, with Linux 4.10.0-27-generic (recovery mode)' --class ubuntu --class gnu-linux --class gnu --class os $menuentry_id_option 'gnulinux-4.10.0-27-generic-recovery-8562815c-6a84-4f9e-b383-117398522254' {
+		recordfail
+		load_video
+		insmod gzio
+		if [ x$grub_platform = xxen ]; then insmod xzio; insmod lzopio; fi
+		insmod part_gpt
+		insmod ext2
+		set root='hd0,gpt5'
+		if [ x$feature_platform_search_hint = xy ]; then
+		  search --no-floppy --fs-uuid --set=root --hint-bios=hd0,gpt5 --hint-efi=hd0,gpt5 --hint-baremetal=ahci0,gpt5  8562815c-6a84-4f9e-b383-117398522254
+		else
+		  search --no-floppy --fs-uuid --set=root 8562815c-6a84-4f9e-b383-117398522254
+		fi
+		echo	'Loading Linux 4.10.0-27-generic ...'
+	        linux	/boot/vmlinuz-4.10.0-27-generic root=UUID=8562815c-6a84-4f9e-b383-117398522254 ro recovery nomodeset 
+		echo	'Loading initial ramdisk ...'
+		initrd	/boot/initrd.img-4.10.0-27-generic
+	}
+	menuentry 'Ubuntu, with Linux 4.8.0-58-generic' --class ubuntu --class gnu-linux --class gnu --class os $menuentry_id_option 'gnulinux-4.8.0-58-generic-advanced-8562815c-6a84-4f9e-b383-117398522254' {
+		recordfail
+		load_video
+		gfxmode $linux_gfx_mode
+		insmod gzio
+		if [ x$grub_platform = xxen ]; then insmod xzio; insmod lzopio; fi
+		insmod part_gpt
+		insmod ext2
+		set root='hd0,gpt5'
+		if [ x$feature_platform_search_hint = xy ]; then
+		  search --no-floppy --fs-uuid --set=root --hint-bios=hd0,gpt5 --hint-efi=hd0,gpt5 --hint-baremetal=ahci0,gpt5  8562815c-6a84-4f9e-b383-117398522254
+		else
+		  search --no-floppy --fs-uuid --set=root 8562815c-6a84-4f9e-b383-117398522254
+		fi
+		echo	'Loading Linux 4.8.0-58-generic ...'
+	        linux	/boot/vmlinuz-4.8.0-58-generic root=UUID=8562815c-6a84-4f9e-b383-117398522254 ro  quiet splash $vt_handoff
+		echo	'Loading initial ramdisk ...'
+		initrd	/boot/initrd.img-4.8.0-58-generic
+	}
+	menuentry 'Ubuntu, with Linux 4.8.0-58-generic (upstart)' --class ubuntu --class gnu-linux --class gnu --class os $menuentry_id_option 'gnulinux-4.8.0-58-generic-init-upstart-8562815c-6a84-4f9e-b383-117398522254' {
+		recordfail
+		load_video
+		gfxmode $linux_gfx_mode
+		insmod gzio
+		if [ x$grub_platform = xxen ]; then insmod xzio; insmod lzopio; fi
+		insmod part_gpt
+		insmod ext2
+		set root='hd0,gpt5'
+		if [ x$feature_platform_search_hint = xy ]; then
+		  search --no-floppy --fs-uuid --set=root --hint-bios=hd0,gpt5 --hint-efi=hd0,gpt5 --hint-baremetal=ahci0,gpt5  8562815c-6a84-4f9e-b383-117398522254
+		else
+		  search --no-floppy --fs-uuid --set=root 8562815c-6a84-4f9e-b383-117398522254
+		fi
+		echo	'Loading Linux 4.8.0-58-generic ...'
+	        linux	/boot/vmlinuz-4.8.0-58-generic root=UUID=8562815c-6a84-4f9e-b383-117398522254 ro  quiet splash $vt_handoff init=/sbin/upstart
+		echo	'Loading initial ramdisk ...'
+		initrd	/boot/initrd.img-4.8.0-58-generic
+	}
+	menuentry 'Ubuntu, with Linux 4.8.0-58-generic (recovery mode)' --class ubuntu --class gnu-linux --class gnu --class os $menuentry_id_option 'gnulinux-4.8.0-58-generic-recovery-8562815c-6a84-4f9e-b383-117398522254' {
+		recordfail
+		load_video
+		insmod gzio
+		if [ x$grub_platform = xxen ]; then insmod xzio; insmod lzopio; fi
+		insmod part_gpt
+		insmod ext2
+		set root='hd0,gpt5'
+		if [ x$feature_platform_search_hint = xy ]; then
+		  search --no-floppy --fs-uuid --set=root --hint-bios=hd0,gpt5 --hint-efi=hd0,gpt5 --hint-baremetal=ahci0,gpt5  8562815c-6a84-4f9e-b383-117398522254
+		else
+		  search --no-floppy --fs-uuid --set=root 8562815c-6a84-4f9e-b383-117398522254
+		fi
+		echo	'Loading Linux 4.8.0-58-generic ...'
+	        linux	/boot/vmlinuz-4.8.0-58-generic root=UUID=8562815c-6a84-4f9e-b383-117398522254 ro recovery nomodeset 
+		echo	'Loading initial ramdisk ...'
+		initrd	/boot/initrd.img-4.8.0-58-generic
+	}
+	menuentry 'Ubuntu, with Linux 4.8.0-56-generic' --class ubuntu --class gnu-linux --class gnu --class os $menuentry_id_option 'gnulinux-4.8.0-56-generic-advanced-8562815c-6a84-4f9e-b383-117398522254' {
+		recordfail
+		load_video
+		gfxmode $linux_gfx_mode
+		insmod gzio
+		if [ x$grub_platform = xxen ]; then insmod xzio; insmod lzopio; fi
+		insmod part_gpt
+		insmod ext2
+		set root='hd0,gpt5'
+		if [ x$feature_platform_search_hint = xy ]; then
+		  search --no-floppy --fs-uuid --set=root --hint-bios=hd0,gpt5 --hint-efi=hd0,gpt5 --hint-baremetal=ahci0,gpt5  8562815c-6a84-4f9e-b383-117398522254
+		else
+		  search --no-floppy --fs-uuid --set=root 8562815c-6a84-4f9e-b383-117398522254
+		fi
+		echo	'Loading Linux 4.8.0-56-generic ...'
+	        linux	/boot/vmlinuz-4.8.0-56-generic root=UUID=8562815c-6a84-4f9e-b383-117398522254 ro  quiet splash $vt_handoff
+		echo	'Loading initial ramdisk ...'
+		initrd	/boot/initrd.img-4.8.0-56-generic
+	}
+	menuentry 'Ubuntu, with Linux 4.8.0-56-generic (upstart)' --class ubuntu --class gnu-linux --class gnu --class os $menuentry_id_option 'gnulinux-4.8.0-56-generic-init-upstart-8562815c-6a84-4f9e-b383-117398522254' {
+		recordfail
+		load_video
+		gfxmode $linux_gfx_mode
+		insmod gzio
+		if [ x$grub_platform = xxen ]; then insmod xzio; insmod lzopio; fi
+		insmod part_gpt
+		insmod ext2
+		set root='hd0,gpt5'
+		if [ x$feature_platform_search_hint = xy ]; then
+		  search --no-floppy --fs-uuid --set=root --hint-bios=hd0,gpt5 --hint-efi=hd0,gpt5 --hint-baremetal=ahci0,gpt5  8562815c-6a84-4f9e-b383-117398522254
+		else
+		  search --no-floppy --fs-uuid --set=root 8562815c-6a84-4f9e-b383-117398522254
+		fi
+		echo	'Loading Linux 4.8.0-56-generic ...'
+	        linux	/boot/vmlinuz-4.8.0-56-generic root=UUID=8562815c-6a84-4f9e-b383-117398522254 ro  quiet splash $vt_handoff init=/sbin/upstart
+		echo	'Loading initial ramdisk ...'
+		initrd	/boot/initrd.img-4.8.0-56-generic
+	}
+	menuentry 'Ubuntu, with Linux 4.8.0-56-generic (recovery mode)' --class ubuntu --class gnu-linux --class gnu --class os $menuentry_id_option 'gnulinux-4.8.0-56-generic-recovery-8562815c-6a84-4f9e-b383-117398522254' {
+		recordfail
+		load_video
+		insmod gzio
+		if [ x$grub_platform = xxen ]; then insmod xzio; insmod lzopio; fi
+		insmod part_gpt
+		insmod ext2
+		set root='hd0,gpt5'
+		if [ x$feature_platform_search_hint = xy ]; then
+		  search --no-floppy --fs-uuid --set=root --hint-bios=hd0,gpt5 --hint-efi=hd0,gpt5 --hint-baremetal=ahci0,gpt5  8562815c-6a84-4f9e-b383-117398522254
+		else
+		  search --no-floppy --fs-uuid --set=root 8562815c-6a84-4f9e-b383-117398522254
+		fi
+		echo	'Loading Linux 4.8.0-56-generic ...'
+	        linux	/boot/vmlinuz-4.8.0-56-generic root=UUID=8562815c-6a84-4f9e-b383-117398522254 ro recovery nomodeset 
+		echo	'Loading initial ramdisk ...'
+		initrd	/boot/initrd.img-4.8.0-56-generic
+	}
+	menuentry 'Ubuntu, with Linux 4.4.0-87-generic' --class ubuntu --class gnu-linux --class gnu --class os $menuentry_id_option 'gnulinux-4.4.0-87-generic-advanced-8562815c-6a84-4f9e-b383-117398522254' {
+		recordfail
+		load_video
+		gfxmode $linux_gfx_mode
+		insmod gzio
+		if [ x$grub_platform = xxen ]; then insmod xzio; insmod lzopio; fi
+		insmod part_gpt
+		insmod ext2
+		set root='hd0,gpt5'
+		if [ x$feature_platform_search_hint = xy ]; then
+		  search --no-floppy --fs-uuid --set=root --hint-bios=hd0,gpt5 --hint-efi=hd0,gpt5 --hint-baremetal=ahci0,gpt5  8562815c-6a84-4f9e-b383-117398522254
+		else
+		  search --no-floppy --fs-uuid --set=root 8562815c-6a84-4f9e-b383-117398522254
+		fi
+		echo	'Loading Linux 4.4.0-87-generic ...'
+		linux	/boot/vmlinuz-4.4.0-87-generic.efi.signed root=UUID=8562815c-6a84-4f9e-b383-117398522254 ro  quiet splash $vt_handoff
+		echo	'Loading initial ramdisk ...'
+		initrd	/boot/initrd.img-4.4.0-87-generic
+	}
+	menuentry 'Ubuntu, with Linux 4.4.0-87-generic (upstart)' --class ubuntu --class gnu-linux --class gnu --class os $menuentry_id_option 'gnulinux-4.4.0-87-generic-init-upstart-8562815c-6a84-4f9e-b383-117398522254' {
+		recordfail
+		load_video
+		gfxmode $linux_gfx_mode
+		insmod gzio
+		if [ x$grub_platform = xxen ]; then insmod xzio; insmod lzopio; fi
+		insmod part_gpt
+		insmod ext2
+		set root='hd0,gpt5'
+		if [ x$feature_platform_search_hint = xy ]; then
+		  search --no-floppy --fs-uuid --set=root --hint-bios=hd0,gpt5 --hint-efi=hd0,gpt5 --hint-baremetal=ahci0,gpt5  8562815c-6a84-4f9e-b383-117398522254
+		else
+		  search --no-floppy --fs-uuid --set=root 8562815c-6a84-4f9e-b383-117398522254
+		fi
+		echo	'Loading Linux 4.4.0-87-generic ...'
+		linux	/boot/vmlinuz-4.4.0-87-generic.efi.signed root=UUID=8562815c-6a84-4f9e-b383-117398522254 ro  quiet splash $vt_handoff init=/sbin/upstart
+		echo	'Loading initial ramdisk ...'
+		initrd	/boot/initrd.img-4.4.0-87-generic
+	}
+	menuentry 'Ubuntu, with Linux 4.4.0-87-generic (recovery mode)' --class ubuntu --class gnu-linux --class gnu --class os $menuentry_id_option 'gnulinux-4.4.0-87-generic-recovery-8562815c-6a84-4f9e-b383-117398522254' {
+		recordfail
+		load_video
+		insmod gzio
+		if [ x$grub_platform = xxen ]; then insmod xzio; insmod lzopio; fi
+		insmod part_gpt
+		insmod ext2
+		set root='hd0,gpt5'
+		if [ x$feature_platform_search_hint = xy ]; then
+		  search --no-floppy --fs-uuid --set=root --hint-bios=hd0,gpt5 --hint-efi=hd0,gpt5 --hint-baremetal=ahci0,gpt5  8562815c-6a84-4f9e-b383-117398522254
+		else
+		  search --no-floppy --fs-uuid --set=root 8562815c-6a84-4f9e-b383-117398522254
+		fi
+		echo	'Loading Linux 4.4.0-87-generic ...'
+		linux	/boot/vmlinuz-4.4.0-87-generic.efi.signed root=UUID=8562815c-6a84-4f9e-b383-117398522254 ro recovery nomodeset 
+		echo	'Loading initial ramdisk ...'
+		initrd	/boot/initrd.img-4.4.0-87-generic
+	}
+	menuentry 'Ubuntu, with Linux 4.4.0-83-generic' --class ubuntu --class gnu-linux --class gnu --class os $menuentry_id_option 'gnulinux-4.4.0-83-generic-advanced-8562815c-6a84-4f9e-b383-117398522254' {
+		recordfail
+		load_video
+		gfxmode $linux_gfx_mode
+		insmod gzio
+		if [ x$grub_platform = xxen ]; then insmod xzio; insmod lzopio; fi
+		insmod part_gpt
+		insmod ext2
+		set root='hd0,gpt5'
+		if [ x$feature_platform_search_hint = xy ]; then
+		  search --no-floppy --fs-uuid --set=root --hint-bios=hd0,gpt5 --hint-efi=hd0,gpt5 --hint-baremetal=ahci0,gpt5  8562815c-6a84-4f9e-b383-117398522254
+		else
+		  search --no-floppy --fs-uuid --set=root 8562815c-6a84-4f9e-b383-117398522254
+		fi
+		echo	'Loading Linux 4.4.0-83-generic ...'
+		linux	/boot/vmlinuz-4.4.0-83-generic.efi.signed root=UUID=8562815c-6a84-4f9e-b383-117398522254 ro  quiet splash $vt_handoff
+		echo	'Loading initial ramdisk ...'
+		initrd	/boot/initrd.img-4.4.0-83-generic
+	}
+	menuentry 'Ubuntu, with Linux 4.4.0-83-generic (upstart)' --class ubuntu --class gnu-linux --class gnu --class os $menuentry_id_option 'gnulinux-4.4.0-83-generic-init-upstart-8562815c-6a84-4f9e-b383-117398522254' {
+		recordfail
+		load_video
+		gfxmode $linux_gfx_mode
+		insmod gzio
+		if [ x$grub_platform = xxen ]; then insmod xzio; insmod lzopio; fi
+		insmod part_gpt
+		insmod ext2
+		set root='hd0,gpt5'
+		if [ x$feature_platform_search_hint = xy ]; then
+		  search --no-floppy --fs-uuid --set=root --hint-bios=hd0,gpt5 --hint-efi=hd0,gpt5 --hint-baremetal=ahci0,gpt5  8562815c-6a84-4f9e-b383-117398522254
+		else
+		  search --no-floppy --fs-uuid --set=root 8562815c-6a84-4f9e-b383-117398522254
+		fi
+		echo	'Loading Linux 4.4.0-83-generic ...'
+		linux	/boot/vmlinuz-4.4.0-83-generic.efi.signed root=UUID=8562815c-6a84-4f9e-b383-117398522254 ro  quiet splash $vt_handoff init=/sbin/upstart
+		echo	'Loading initial ramdisk ...'
+		initrd	/boot/initrd.img-4.4.0-83-generic
+	}
+	menuentry 'Ubuntu, with Linux 4.4.0-83-generic (recovery mode)' --class ubuntu --class gnu-linux --class gnu --class os $menuentry_id_option 'gnulinux-4.4.0-83-generic-recovery-8562815c-6a84-4f9e-b383-117398522254' {
+		recordfail
+		load_video
+		insmod gzio
+		if [ x$grub_platform = xxen ]; then insmod xzio; insmod lzopio; fi
+		insmod part_gpt
+		insmod ext2
+		set root='hd0,gpt5'
+		if [ x$feature_platform_search_hint = xy ]; then
+		  search --no-floppy --fs-uuid --set=root --hint-bios=hd0,gpt5 --hint-efi=hd0,gpt5 --hint-baremetal=ahci0,gpt5  8562815c-6a84-4f9e-b383-117398522254
+		else
+		  search --no-floppy --fs-uuid --set=root 8562815c-6a84-4f9e-b383-117398522254
+		fi
+		echo	'Loading Linux 4.4.0-83-generic ...'
+		linux	/boot/vmlinuz-4.4.0-83-generic.efi.signed root=UUID=8562815c-6a84-4f9e-b383-117398522254 ro recovery nomodeset 
+		echo	'Loading initial ramdisk ...'
+		initrd	/boot/initrd.img-4.4.0-83-generic
+	}
+}
+
+### END /etc/grub.d/10_linux ###
+
+### BEGIN /etc/grub.d/20_linux_xen ###
+
+### END /etc/grub.d/20_linux_xen ###
+
+### BEGIN /etc/grub.d/20_memtest86+ ###
+### END /etc/grub.d/20_memtest86+ ###
+
+### BEGIN /etc/grub.d/30_os-prober ###
+menuentry 'Windows Boot Manager (on /dev/sda1)' --class windows --class os $menuentry_id_option 'osprober-efi-8A87-74D4' {
+	insmod part_gpt
+	insmod fat
+	set root='hd0,gpt1'
+	if [ x$feature_platform_search_hint = xy ]; then
+	  search --no-floppy --fs-uuid --set=root --hint-bios=hd0,gpt1 --hint-efi=hd0,gpt1 --hint-baremetal=ahci0,gpt1  8A87-74D4
+	else
+	  search --no-floppy --fs-uuid --set=root 8A87-74D4
+	fi
+	chainloader /EFI/Microsoft/Boot/bootmgfw.efi
+}
+set timeout_style=menu
+if [ "${timeout}" = 0 ]; then
+  set timeout=10
+fi
+### END /etc/grub.d/30_os-prober ###
+
+### BEGIN /etc/grub.d/30_uefi-firmware ###
+menuentry 'System setup' $menuentry_id_option 'uefi-firmware' {
+	fwsetup
+}
+### END /etc/grub.d/30_uefi-firmware ###
+
+### BEGIN /etc/grub.d/40_custom ###
+# This file provides an easy way to add custom menu entries.  Simply type the
+# menu entries you want to add after this comment.  Be careful not to change
+# the 'exec tail' line above.
+### END /etc/grub.d/40_custom ###
+
+### BEGIN /etc/grub.d/41_custom ###
+if [ -f  ${config_directory}/custom.cfg ]; then
+  source ${config_directory}/custom.cfg
+elif [ -z "${config_directory}" -a -f  $prefix/custom.cfg ]; then
+  source $prefix/custom.cfg;
+fi
+### END /etc/grub.d/41_custom ###
+
+--------------------------------------------------------------------------------------------------------
+

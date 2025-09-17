@@ -1,0 +1,28 @@
+Title:			functions/classes/methods
+Project:	
+Record:		
+Author:			bmarron
+Origin Date:		21 Apr 2016
+
+##############
+*args
+**kwargs
+##############
+http://stackoverflow.com/questions/36901/what-does-double-star-and-star-do-for-python-parameters
+
+
+########################################################
+what functions/classes/methods are available in a module? 
+#########################################################
+
+http://stackoverflow.com/questions/139180/listing-all-functions-in-a-python-module
+
+import netCDF4
+import xarray as xr
+   
+In [6]: dir(netCDF4)
+In [7]: dir(xr)
+
+ 
+ 
+ 

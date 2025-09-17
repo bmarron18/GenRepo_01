@@ -1,0 +1,7 @@
+PWD /home/bruce/Desktop/Re-Generar/Active/Templates/Reports/Business_report_format
+INPUT /etc/texmf/web2c/texmf.cnf
+INPUT /usr/share/texmf/web2c/texmf.cnf
+INPUT /usr/share/texlive/texmf-dist/web2c/texmf.cnf
+INPUT /var/lib/texmf/web2c/xetex/xelatex.fmt
+INPUT defs.tex
+OUTPUT defs.log

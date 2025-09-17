@@ -1,0 +1,34 @@
+
+###############
+latex2rtf
+latex2png
+############
+https://sourceforge.net/projects/latex2rtf/?source=typ_redirect
+LaTeX to RTF convertor that handles equations, figures, and cross-refe 
+(Installed w/ Software Center)
+
+
+LaTex to Word thru Latex2rtf and LibreOffice
+	a. Open .tex doc in Cream to change citations (\citep{} ==> ...citation...) which translate poorly
+	b. build the .pdf
+
+	c. go to folder where .tex is plus all other files (latex2rtf needs alot of the supplemental files!)
+	d. translate to .rtf (see below)
+
+	e. open in LibreOffice, save as .odt, turn on track changes, save as .docx
+
+
+
+latex2rtf -o ~/Desktop/check.rtf *.tex
+
+
+USE:
+$ man latex2rtf
+latex2rtf -o outputfile.rtf inputfile.tex
+
+
+
+
+
+
+

@@ -1,0 +1,55 @@
+Title:			git usage4
+Project Descriptor:	LANDISII Upgrades Corrections Project 
+Project ID:		2016SoE021	
+Author:			bmarron
+Origin Date:		17 Sept 2015
+Revision Date:		24 Nov 2016
+
+#############
+references
+###############
+
+
+
+############################################################
+GitHub workflow guide: Maintainer
+keep Maintainer's FORKED repo current with ORIGINAL_REPO
+#############################################################
+
+==== STEP1: Set up sync to keep Maintainer's GitHub current with ORIGINAL_REPO ==================
+
+	a. clone a fresh LOCAL repo from the FORKED repo and specify a LOCAL remote named, 
+	   'upstream' that links to the ORIGINAL_OWNER/ORIGINAL_REPO
+	a1. create a Desktop folder, <name of repo>_sync
+	a1. after, check: should have two LOCAL repo connectionss, 'origin' and 'upstream' with fetch and push capabilities
+
+$ cd ~/Desktop/BaseHarvest_sync
+$ git clone https://github.com/bmarron18/Extension-Base-Harvest.git
+$ cd ~/Desktop/BaseHarvest_sync/Extension-Base-Harvest
+$ git remote add upstream https://github.com/LANDIS-II-Foundation/Extension-Base-Harvest.git
+$ git remote -v
+
+==== STEP2: update the FORKED repo from the ORIGINAL_REPO via the LOCAL repo ==================
+
+	b.  fetch changes from ORIGINAL_REPO to LOCAL repo ==> merge changes from ORIGINAL repo to LOCAL repo ==> push changes to FORKED repo
+	b1. The push to the forked repo is what keeps the forked repo in sync
+	b2. $ git push [forked repo remote name] [local repo branch name] requires collaborator authetication
+
+
+$ git fetch upstream
+$ git checkout master
+$ git merge upstream/master
+$ git push origin master
+Username for 'https://github.com': bmarron18
+Password for 'https://bmarron18@github.com': 756vop7C
+$ git status
+
+===== STEP3: delete the LOCAL repo ==========================================
+
+	c. delete LOCAL repo in Desktop folder, <name of repo>_sync
+
+
+
+
+
+

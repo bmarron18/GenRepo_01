@@ -1,0 +1,128 @@
+\documentclass[noback]{psuposter}
+
+%%\documentclass[noback,portrait]{psuposter}
+%% To make a poster in portrait, use the "portrait" option to
+%% documentclass as shown above.
+
+\usepackage{mathptmx}
+\usepackage{xspace}
+\usepackage{amsmath}
+\usepackage{pifont}
+\usepackage{psfrag}
+\usepackage{wrapfig}
+\usepackage{changepage}% has {adjustwidth}{<leftmargin>}{<rightmargin>} for tabbing in a column env.
+
+
+%% Not needed for most posters %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%\renewcommand{\poster@ancimage}{/tmp/empty.ps}
+\newcommand{\don}{\ensuremath{d_{\textsc{ON}}}}
+\newcommand{\doff}{\ensuremath{d_{\textsc{OFF}}}}
+\newcommand{\dsoma}{\ensuremath{d_{\textsc{SOMA}}} \xspace}
+\newcommand{\um}{\ensuremath{\mu \text{m}}\xspace}
+\newcommand{\dmin}{d$_{\textup{min}}$\xspace}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%sensitive to length of title; may need to adjust font size
+\title{\Huge One Approach for Evaluating the Ecological Sustainability of Agricultural Practices at the Landscape-scale}
+%%\subtitle{The poster subtitle here}
+\author{Bruce D. Marron$^1$}
+\address{$^1$Portland State University, USA.}
+
+\makeposter
+
+\subsection{The Motivation}
+\centerline{\includegraphics[width=20cm]{figs/Image1c.eps}}
+
+Planetary-scale trends demand sustainable agriculture but no one knows what 'sustainable agriculture' really means or what it looks like at the landscape scale.  Bucket lists abound but a robust and flexible methodology for adequately differentiating agricultural practices with respect to their ecological impact is not available. This is because it is quite difficult to scientifically study the dynamics of the complex systems involved:  agro-ecological landscapes are coupled, complex adaptive systems that evolve in time and in space over multiple scales of both.
+\subsection{The Questions}    
+\begin{itemize}
+\item How can we design robust and adaptive food production systems at a regionally-specific, landscape scale?
+\item How can the dynamics of agro-ecological systems be used to develop synoptic keys for the classification of agricultural practices along the continuum of ecological resiliency? (Is a food production system ecologically sustainable or not?
+\item What is the relationship between landscape-scale disturbance regimes, agricultural output, and biodiversity?
+\item At any given time, which landscape mosaic is the 'most appropriate' one? How should we best manage succession and biodiversity at the landscape scale? 
+\item How can we best monitor the state of ecological resources on a landscape? What are the state variables (necessary and sufficient) needed to assess the ecological health and resiliency of a given agro-ecological landscape pattern? 
+\item How can we best use simulation to evaluate the ecological health and resiliency of new landscape pattern designs? 
+\item What are the critical elements and processes shared by historical examples of both successful (e.g., \textit{milpa)} and disastrous (e.g., Dust Bowl) agro-ecological practices that can inform our transition to sustainable agriculture at the global scale?
+\end{itemize}
+\columnbreak
+%
+\subsection{The Proposed Methodology}
+\centerline{\includegraphics[height=15cm]{figs/Image2.eps}}
+%
+\subsection{The Proposed Heuristic}
+%\vspace{-.5cm}
+listening \includegraphics[height=7cm]{figs/Image3.eps}
+\ plus \ \includegraphics[height=7cm]{figs/Image4.eps} 
+translating (= aabbcdddd) \\ 
+yields \includegraphics[height=8cm]{figs/Image5.eps}
+\vspace{-1cm}
+%
+%
+\subsection{The Proposed Algorithm}
+%\vspace{-2cm}
+\textbf{Level I: Build an m-dimensional vector of state variables.}
+\begin{adjustwidth}{1cm}{}
+{\small  Step 1. Select the set of key monitoring variables (KMVs)\\
+Step 2. Fix the n-dimensional vector of required empirical variables (REVs)
+}
+\end{adjustwidth}
+%\vspace{-.5cm}
+\textbf{Level II: Define a set of landscape reference scenarios.}
+%\vspace{-1cm}
+\begin{adjustwidth}{1cm}{}
+{\small Step 3a. Define five reference systems of human impact and presence on the landscape (so-called HIP classes) by \% agriculture \% forest, and \% built environment\\
+Step 3b. Define HIP subclass1 (agribusiness practices) and HIP subclass2 (agroecology practices)
+}
+\end{adjustwidth}
+%\vspace{-.5cm}
+\textbf{Level III: Translate the landscape reference scenarios to LANDIS-II.}
+%\vspace{-1cm}
+\begin{adjustwidth}{1cm}{}
+{\small Step 4a. Define the set of landscape patches for each of the reference systems defined by an HIP subclass\\
+Step 4b. Provide each patch-type with a unique moniker, a unique MapCode, a species list, and species age distribution for building LANDIS-II 'initial communities' files\\
+Step 5. Operationalize the LANDIS-II model for each of the HIP subclass reference systems. "Operationalize" means to parameterize, calibrate (validate) and define the simulation settings for each model
+}
+\end{adjustwidth}
+%\vspace{-.5cm}
+
+\columnbreak
+
+\textbf{Level IV: Build a landscape reference scenario codebook.}
+\begin{adjustwidth}{1cm}{}
+{\small Step 6. Perform multiple simulation runs for each of the HIP subclasses (each dataset is a time series (t = 20) of the n-dimensional REVV); transform all raw output data (REVVs) to KMVVs keeping time stamps intact\\
+Step 7. Define a set of unique landscape morphs (states) for each landscape reference scenario using a feature extraction method; morphs are derived from the collection of KMVVs generated by LANDIS-II \\
+Step 8a. Codify the morphs generated by each landscape reference scenario by giving each one a unique character symbol \\
+Step 8b. Compile the symbols, their prototype (reproduction) KMVVs, and their probability distributions into the complete landscape reference scenario codebook: the collection of Alphabet1 from HIP subclass1 plus Alphabet2 from HIP subclass2 (removing duplications)
+}
+\end{adjustwidth}
+%
+\textbf{Level V: Build m-order Markov chains (bigram models) for the reference landscape scenarios.}
+\begin{adjustwidth}{1cm}{}
+{\small Step 9. Apply the landscape reference scenario codebook to the original KMVV data set to obtain landscape morph time series data (sequences of symbols) for each reference scenario\\
+Step 10. Extract empirical frequencies from the time series data and use them to derive 1-step conditional probabilities; define a bigram model from the conditional probabilities
+}
+\end{adjustwidth}
+%
+\textbf{Level VI: Define agro-ecological sustainability for a given landscape.}
+\begin{adjustwidth}{1cm}{}
+{\small Step 11. Evaluate the ecological implications of the correlations evident in the transition (stochastic) matrices; define a landscape-specific, sustainability shift space where the "forbidden blocks" are thresholds in the stationary distribution of landscape morphs \\
+Step 12. Use ecological and biological principles to evaluate agro-ecological sustainability by examining the fluxes in the components of the KMVV relative to the sequence of morphs appearing over time
+}
+\end{adjustwidth}
+%
+\textbf{Level VII: Evaluate the sustainability vocabulary of extant and novel landscape designs.}
+
+
+
+\subsection{Some Exploratory Results}
+
+
+{\blue \bfseries Acknowledgements:} Wellcome Trust (SJE) and NIH
+EY06669 (JBT).  Thanks to Heinz W\"{a}ssle for providing map W81s.
+
+\end{document}
+
+% LocalWords:  RGCs

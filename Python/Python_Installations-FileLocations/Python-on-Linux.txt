@@ -1,0 +1,101 @@
+--- version of Pyhton running---
+$ python3
+Python 3.10.12 (main, Aug 15 2025, 14:32:43) [GCC 11.4.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>>
+
+
+>>> import sys
+    print(sys.version)
+Python 3.10.12 (main, Aug 15 2025, 14:32:43) [GCC 11.4.0] on linux
+[cntrl-d to exit Python shell]
+
+
+In Spyder
+	import sys
+	print(sys.version)
+3.11.13 | packaged by conda-forge | (main, Jun  4 2025, 14:48:23) [GCC 13.3.0]
+
+
+
+
+
+
+
+--- pip: install modules ----------
+$ pip install google-genai
+
+
+--- pip: find an installed module ------
+
+$ pip show google-genai
+Name: google-genai
+Version: 1.36.0
+Summary: GenAI Python SDK
+Home-page: 
+Author: 
+Author-email: Google LLC <googleapis-packages@google.com>
+License: Apache-2.0
+Location: /home/bmarron/.local/lib/python3.10/site-packages
+Requires: anyio, google-auth, httpx, pydantic, requests, tenacity, typing-extensions, websockets
+
+
+$ pip show virtualenv
+	Name: virtualenv
+	Version: 20.13.0+ds
+	Summary: Virtual Python Environment builder
+	Home-page: https://virtualenv.pypa.io/
+	Author: Bernat Gabor
+	Author-email: gaborjbernat@gmail.com
+	License: MIT
+	Location: /usr/lib/python3/dist-packages
+	Requires: distlib, filelock, platformdirs, six
+
+
+
+--- file system hierarchy
+
+* System-wide packages (installed by package managers like apt or yum)
+	/usr/lib$ ls
+		python2.7
+		python3
+			[MANY files and directories]
+		python3.10
+			[many .py files]
+		python3.11
+			[distutils  lib2to3  lib-dynload]
+		python3.8
+			[MANY files and directories]
+
+* Other possible areas of installation
+	/usr/local/lib$ ls
+		python2.7  python3.10  python3.8  R
+	/usr/local/lib/python3.10/dist-packages$ ls
+		[none]
+	/usr/local/lib/python3.8/dist-packages$ ls
+		[none]
+
+
+* User-specific packages (installed without sudo):
+    ~/.local/lib/pythonX.Y/site-packages/ (where ~ represents the user's home directory)
+
+	~/.local/lib$ ls
+		python3.10
+	~/.local/lib/python3.10/site-packages$ ls
+		[MANY files and Directories]
+
+
+
+---	Python modules available (i.e. installed) on a machine	---
+		
+$ python3
+Python 3.10.12 (main, Aug 15 2025, 14:32:43) [GCC 11.4.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+
+>>> help ('modules')
+
+Please wait a moment while I gather a list of all available modules...
+..... MANY!!
+
+Enter any module name to get more help.  Or, type "modules spam" to search
+for modules whose name or summary contain the string "spam".

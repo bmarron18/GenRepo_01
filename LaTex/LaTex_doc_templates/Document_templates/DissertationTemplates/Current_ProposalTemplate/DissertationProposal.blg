@@ -1,0 +1,62 @@
+This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: DissertationProposal.aux
+The style file: /usr/local/share/texmf/tex/latex/apacite/apacite.bst
+Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
+Reallocated global_strs (elt_size=20001) to 20 items from 10.
+Reallocated glb_str_end (elt_size=4) to 20 items from 10.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: /home/bruce/Desktop/BibTex/My_Library_20170125.bib
+I was expecting a `,' or a `}'---line 14 of file /home/bruce/Desktop/BibTex/My_Library_20170125.bib
+ : 
+ : @article{lynch_root_1995,
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+apacite.bst [2013/07/21 v6.03 APA bibliography style]
+You've used 57 entries,
+            6951 wiz_defined-function locations,
+            1657 strings with 23567 characters,
+and the built_in function-call counts, 123158 in all, are:
+= -- 14944
+> -- 1039
+< -- 6280
++ -- 6990
+- -- 126
+* -- 8236
+:= -- 23060
+add.period$ -- 220
+call.type$ -- 57
+change.case$ -- 1001
+chr.to.int$ -- 0
+cite$ -- 114
+duplicate$ -- 3668
+empty$ -- 4517
+format.name$ -- 1913
+if$ -- 22586
+int.to.chr$ -- 0
+int.to.str$ -- 171
+missing$ -- 0
+newline$ -- 1489
+num.names$ -- 457
+pop$ -- 1821
+preamble$ -- 1
+purify$ -- 260
+quote$ -- 0
+skip$ -- 7322
+stack$ -- 0
+substring$ -- 7609
+swap$ -- 2013
+text.length$ -- 152
+text.prefix$ -- 0
+top$ -- 1
+type$ -- 4560
+warning$ -- 0
+while$ -- 665
+width$ -- 0
+write$ -- 1886
+(There was 1 error message)

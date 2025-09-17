@@ -1,0 +1,419 @@
+Title:			Python interpreter (Python shell)
+Project:	
+Record:		
+Author:		
+Origin Date:		20 Oct 2015
+
+
+################
+Python Tutorials
+################
+https://sites.pitt.edu/~naraehan/python3
+
+
+##########################
+No IDE (eg Spyder)
+start/quit python shell from
+Linux
+##########################
+
+bmarron@bmarron-HP-Laptop-15t-dy100:~/anaconda3$ python3
+Python 3.10.12 (main, Nov  6 2024, 20:22:13) [GCC 11.4.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> 
+
+	#to exit Python 
+>>> <ctrl-d>
+bmarron@bmarron-HP-Laptop-15t-dy100:~/anaconda3$
+
+
+
+###########
+path to file
+############
+https://stackoverflow.com/questions/7165749/open-file-in-a-relative-location-in-python
+
+import os
+
+script_dir = os.path.dirname(__file__) #<-- absolute dir the script is in
+rel_path = "2091/data.txt"
+abs_file_path = os.path.join(script_dir, rel_path)
+
+
+
+
+###########
+Terms and Symbols
+###########
+
+(1) create a Service Account, (2) create and save a Key for the Service Account; (3) export GOOGLE_APPLICATION_CREDENTIALS set to the path to the Key; (4) run code using Google libraries that use the value of GOOGLE_APPLICATION_CREDENTIALS to auth.
+
+
+
+
+
+##############
+basic objects
+################
+
+https://www.toptal.com/python/python-class-attributes-an-overly-thorough-guide
+
+class
+	a bounded space (object)
+
+
+attributes ==> constants, definied objects, actions, methods (fxns), 
+	class attributes 
+		may be shared across every object of a class
+	
+	instance attributes
+		unique to each object of the class
+
+
+methods
+constructor / initializer
+variable
+object
+instance of an object
+
+namespace
+	a mapping from names to objects, with the property that there is zero relation between names in 
+	different namespaces. 
+
+
+
+
+	# create the 'Dog' class
+		define attributes
+		call methods
+		
+	# '__init__'
+		function called a constructor, or initializer
+		
+	# 'self'
+		variable that represents the instance of the object itself (most object-oriented languages pass 
+		this as a hidden parameter to the methods defined on an object; Python does not ==> declared 
+		explicitly
+		
+	#difference between a class and an object  
+		 __init__ doesn't initialize a class, it initializes an instance of a class (ie, an object)
+	# 'self.legs' is an attribute called legs of the object in the variable self. 
+	# Attributes are kind of like variables, but they describe the state of an object, or particular 
+	actions/methods (functions) available to the object
+	# 
+
+>>> class Dog(object):
+    census = []							<== census as a class attribute with value []
+    def __init__(self, legs, colour):
+        self.legs = legs
+        self.colour = colour
+	Dog.census.append(self)
+
+>>> fido = Dog(4, "brown")
+>>> spot = Dog(3, "mostly yellow")
+>>> Dog.census
+[<__main__.Dog instance at 0xb7177d6c>, <__main__.Dog instance at 0xb7177cac>]
+
+
+
+
+
+###################################################
+objects in the active interpreter session
+##################################################
+
+	#will give you the list of in-scope variables (objects)
+>>> dir() 
+
+	#will give you a dictionary of global variables (objects)
+>>> globals()
+
+	#will give you a dictionary of local variables (objects)
+>>> locals() 
+
+
+
+	#delete individual objects by name
+>>> del Dog
+
+	#remove multiple objects from globals() by name
+	#only deletes names that do not start with an underscore
+	#no built-in function to clear all objects ==> exit and restart the interpreter
+
+>>> for name in dir():
+    if not name.startswith('_'):
+        del globals()[name]
+
+
+##################
+imported modules
+##################
+
+	#Modules remain imported because they are referenced by sys.modules
+
+
+################
+random numbers
+################
+
+
+>>> import random
+>>> import numpy as np
+
+	# Numpy 'np.random.randn()' generates random variates fr Gaussian ~ N(0,1)
+>>> np.random.randn() 
+1.4305781476905377
+
+>>> np.random.randn(1) 
+array([ 0.10324553])
+
+>>> np.random.randn(2) 
+array([ 1.07305674, -0.09329864])
+
+>>> np.random.randn(2, 1)
+array([[ 0.30002936],
+       [ 0.838704  ]])
+
+>>> np.random.randn(2, 2)
+array([[-0.20249448,  0.98346904],
+       [-0.04863857,  0.42960603]])
+
+
+########
+loops
+##########
+2 ways to iterate files
+(1) 'for' loop
+Code:
+for line in open("file"):
+  print line
+
+
+(2) 'while' loop
+Code:
+f=open("file")
+while 1:
+  line=f.readline()
+  if not line: break
+  print line  
+f.close()
+
+
+
+############
+lists
+###########
+	
+	# Python counts elements in lists as 0,1,2,3,....
+>>> a=[10, 11, 12, 13, 14, 15]
+>>> [a[i] for i in (1,2,5)]
+[11, 12, 15]
+
+>>> a[0:3]
+[10, 11, 12]
+
+>>> a[:3]
+[10, 11, 12]
+
+
+
+
+>>> x = [1, 2, 3]
+>>> y = [4, 5, 6]
+>>> zip(x, y)
+[(1, 4), (2, 5), (3, 6)]
+
+
+##########
+sigmoid fxn
+###########
+
+>>> def sigmoid(z):
+      return 1.0/(1.0+np.exp(-z))
+
+
+	#sigmoid() is available as scipy.special.expit
+	#sigmoid() == expit(x)
+	#much faster!!!!
+
+>>> from scipy.special import expit
+
+##############
+print vs return
+##############
+
+    print: gives the value to the user as an output string. print(3) would give a string '3' to the screen for the user to view. The program would lose the value.
+
+    return: gives the value to the program. Callers of the function then have the actual data and data type (bool, int, etc...) return 3 would have the value 3 put in place of where the function was called.
+
+
+
+###########
+code trials
+###########
+
+>>> np.random.randn(5, 1)
+array([[ 0.73211414],
+       [-2.35209815],
+       [-0.04271072],
+       [ 0.08639613],
+       [-1.67177323]])
+
+>>> size=[5,1]
+>>> x=size[0]
+>>> y=size[1]
+>>> np.random.randn(x, y)
+array([[-0.08576447],
+       [ 0.89736621],
+       [-2.33909807],
+       [-1.12978655],
+       [ 1.01135437]])
+
+
+----------------------------------------
+>>> class Network(object):
+    def __init__(self, sizes):
+        self.num_layers = len(sizes)
+        self.sizes = sizes
+        self.biases = [np.random.randn(y, 1) for y in sizes[1:]]
+	print self.biases
+
+>>> Network([2,3,1])
+[array([[ 0.27921273],
+       [ 1.39785331],
+       [ 2.81219956]]), array([[-0.9613497]])]
+<__main__.Network object at 0xb636f84c>
+-----------------------------------------------
+
+
+
+------------------------------------------------
+>>> class Network(object):
+    def __init__(self, sizes):
+        self.num_layers = len(sizes)
+        self.sizes = sizes
+	self.y=sizes[1]
+        self.biases = [np.random.randn(self.y, 1)]
+	print self.biases
+
+>>> Network([2,3,1])
+[array([[-0.82841509],
+       [-1.78561777],
+       [ 0.77508955]])]
+<__main__.Network object at 0xb636f8cc>
+-------------------------------------------------
+
+
+
+-------------------------------------------------
+>>> class Network(object):
+    def __init__(self, sizes):
+        self.num_layers = len(sizes)
+        self.sizes = sizes
+        self.biases = [np.random.randn(self.sizes[0], 1)]
+	print self.biases
+
+>>> Network([10,1])
+[array([[-0.32571857],
+       [ 0.48350938],
+       [-2.33494794],
+       [ 0.59350007],
+       [ 0.89404482],
+       [ 0.37345692],
+       [ 1.12700282],
+       [ 0.75933987],
+       [ 0.13131549],
+       [ 0.46031733]])]
+<__main__.Network object at 0xb636f84c>
+-----------------------------------------------------
+
+
+
+------------------------------------------------------
+>>> class Network(object):
+   def __init__(self, sizes):
+        self.num_layers = len(sizes)
+        self.sizes = sizes
+        self.weights = [np.random.randn(y, x) for x, y in zip(sizes[:-1], sizes[1:])]
+	print self.weights
+
+>>> Network([3,5,1])
+[array([[ 2.33254932,  0.11238184,  1.07687119],
+       [-0.98769286, -0.21999548, -0.17992976],
+       [-0.29915467, -0.28695274, -0.06267289],
+       [-1.35289471, -0.02322206, -2.04520425],
+       [-0.77714455, -1.4946833 , -1.83302802]]), array([[ 0.82934908,  0.86901495,  0.20817612, -1.22742341,  1.17478138]])]
+<__main__.Network object at 0xb636fd0c>
+
+
+>>> size=[3,5,1]
+>>> size[:-1]
+[3, 5]
+>>> size[1:]
+[5, 1]
+>>> zip(size[:-1], size[1:])
+[(3, 5), (5, 1)]
+-----------------------------------------------------------------------
+
+
+
+-------------------------------------------------------------------------
+>>> class Network(object):
+   def __init__(self, sizes):
+        self.num_layers = len(sizes)
+        self.sizes = sizes
+        self.weights = [np.random.randn(y, x) for x, y in zip(sizes[:-1], sizes[1:])]
+	print self.weights
+
+>>> net=Network([3,5,1])
+[array([[-0.41505847,  1.70140038,  0.91385148],
+       [-1.01628116, -1.38484795,  0.51662871],
+       [-1.18005634, -1.727613  ,  0.62209686],
+       [ 2.08948776,  1.4766514 , -0.35686759],
+       [-1.08801132, -0.22240576, -0.58330091]]), array([[ 2.43880715, -2.26688149, -1.07132758, -0.99055838, -0.76534705]])]
+
+
+>>> net.weights[0]
+array([[-0.41505847,  1.70140038,  0.91385148],
+       [-1.01628116, -1.38484795,  0.51662871],
+       [-1.18005634, -1.727613  ,  0.62209686],
+       [ 2.08948776,  1.4766514 , -0.35686759],
+       [-1.08801132, -0.22240576, -0.58330091]])
+
+
+>>> net.weights[1]
+array([[ 2.43880715, -2.26688149, -1.07132758, -0.99055838, -0.76534705]])
+
+
+
+---------------------------------------------------------
+
+
+----------------------------------------------------------
+
+>>> class Network(object):
+    def __init__(self, sizes):
+        self.num_layers = len(sizes)
+        self.sizes = sizes
+        self.weights = [np.random.randn(self.sizes[0], 1)]
+    def feedforward(self, a):
+        a1 = np.vdot(self.weights, a)
+        return a1
+	print a1
+
+
+	# training set data
+B,4,2,5,4,4,8,7,6,6,7,6,6,2,8,7,10	==>1,4,2,5,4,4,8,7,6,6,7,6,6,2,8,7,10
+A,1,1,3,2,1,8,2,2,2,8,2,8,1,6,2,7	==> 1,1,1,3,2,1,8,2,2,2,8,2,8,1,6,2,7
+
+
+>>> np.random.seed(47)
+>>> net=Network([17,1])
+>>> net.feedforward([1,4,2,5,4,4,8,7,6,6,7,6,6,2,8,7,10])
+10.380052842446508
+
+
+
+
+
+

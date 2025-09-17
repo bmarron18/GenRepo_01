@@ -1,0 +1,61 @@
+Title:			Basic git and GHB setup
+Project Descriptor:	LANDISII Upgrades Corrections Project 
+Project ID:		2016SoE021_LANDIS_Upgrades	
+Author:			bmarron
+Origin Date:		21 Sept 2015
+Revision Date:		16 Sep 2016
+
+
+###################
+git install
+##################
+sudo apt update &&
+sudo apt install git-all &&
+sudo apt install gitk
+
+
+####################
+help
+##################
+git help <verb>
+git <verb> --help
+man git-<verb>
+
+
+###########################
+General git set-up
+###########################
+
+gedit /home/bmarron/.gitconfig		#'--global' stores in /home/bmarron/.gitconfig (hidden) file
+
+git config --list			#if on a new compu, this returns nothing
+
+git config --global user.name "bmarron18" &&
+git config --global user.email bmarron@pdx.edu &&
+
+git config --global core.editor "notepad" &&
+OR
+git config --global core.editor "gedit" &&
+
+git config --global merge.tool kdiff3 &&
+git config --global http.sslVerify false &&
+git config --global alias.last 'log -1 HEAD' &&
+git config --global alias.visual '!gitk'
+
+
+##################################
+General GitHub set-up
+#################################
+
+https://help.github.com/articles/basic-writing-and-formatting-syntax/
+
+
+https://github.com/		#login and create repo and edit README.md
+
+
+
+
+
+
+
+

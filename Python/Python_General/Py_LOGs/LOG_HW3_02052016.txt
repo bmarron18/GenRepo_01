@@ -1,0 +1,92 @@
+Title:			LOG1
+Project Descriptor:	HW3
+Project ID:		CS 545 (2016SoE009)
+Record:		
+Author:			bmarron
+Origin Date:		02 Feb 2016
+
+
+#############################################################
+http://scikit-learn.org/dev/datasets/index.html#datasets-in-svmlight-libsvm-format
+################################################################
+
+5.5. Datasets in svmlight / libsvm format
+
+scikit-learn includes utility functions for loading datasets in the svmlight / libsvm format. In this format, each line takes the form <label> <feature-id>:<feature-value> <feature-id>:<feature-value> .... This format is especially suitable for sparse datasets. In this module, scipy sparse CSR matrices are used for X and numpy arrays are used for y.
+
+You may load a dataset like as follows:
+>>>
+
+>>> from sklearn.datasets import load_svmlight_file
+>>> X_train, y_train = load_svmlight_file("/path/to/train_dataset.txt")
+...                                                         
+
+You may also load two (or more) datasets at once:
+>>>
+
+>>> X_train, y_train, X_test, y_test = load_svmlight_files(
+...     ("/path/to/train_dataset.txt", "/path/to/test_dataset.txt"))
+...                                                         
+
+In this case, X_train and X_test are guaranteed to have the same number of features. Another way to achieve the same result is to fix the number of features:
+>>>
+
+>>> X_test, y_test = load_svmlight_file(
+...     "/path/to/test_dataset.txt", n_features=X_train.shape[1])
+...                                                         
+
+Related links:
+
+Public datasets in svmlight / libsvm format: http://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/
+
+
+
+###########################
+http://scikit-learn.org/stable/install.html
+############################
+
+Anaconda offers scikit-learn as part of its free distribution.
+
+
+http://scikit-learn.org/stable/modules/classes.html#module-sklearn.svm
+http://scikit-learn.org/dev/datasets/index.html#datasets-in-svmlight-libsvm-format
+http://scikit-learn.org/stable/user_guide.html#user-guide
+
+
+http://scikit-learn.org/stable/auto_examples/classification/plot_digits_classification.html#example-classification-plot-digits-classification-py
+http://scikit-learn.org/stable/auto_examples/model_selection/plot_roc.html
+
+########################
+http://scikit-learn.org/stable/modules/generated/sklearn.datasets.fetch_mldata.html#sklearn.datasets.fetch_mldata
+########################
+
+data_home: optional, default: None :
+
+    Specify another download and cache folder for the data sets. By default all scikit learn data is stored in ‘~/scikit_learn_data’ subfolders.
+
+
+--------------------------------------------------------------------
+--------------------------------------------------------------------
+
+from sklearn.datasets import load_digits
+digits = load_digits()
+print(digits.data.shape)
+
+
+data : Bunch
+
+Dictionary-like object, the interesting attributes are: 
+	‘data’, the data to learn, 
+	‘images’, the images corresponding to each sample, 
+	‘target’, the classification labels for each sample, 
+	‘target_names’, the meaning of the labels, and 
+	‘DESCR’, the full description of the dataset.
+
+
+-------------------------------------------------------------------
+--------------------------------------------------------------------
+http://stats.stackexchange.com/questions/39243/how-does-one-interpret-svm-feature-weights
+
+Recall that in linear SVM, the result is a hyperplane that separates the classes as best as possible. The weights represent this hyperplane, by giving you the coordinates of a vector which is orthogonal to the hyperplane - these are the coefficients given by svm.coef
+
+

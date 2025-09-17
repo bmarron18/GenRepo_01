@@ -1,0 +1,13 @@
+
+	=== common apacite commands ===========
+
+commands. I find myself using the following ones most often:
+
+    cite: This inserts the author names and years in brackets. This is the standard methods. E.g., "(Anglim, 2002)".
+    citeA: Inserts the author names in the text and years in brackets. I use this to insert the authors names in the text e.g., "Anglim (2002)".
+    citeyear: inserts just the years in brackets. This is useful when I want to include the author's names in the text in a non-standard way. E.g., I've already written "Anglim's" then citeyear will insert "(2002)".
+
+Each command takes a BibTeX reference as an argument and can have pre- and post- text. For example:
+cite<e.g.,>{Ackerman1990JoEPLMaC} displays as "(e.g., Ackerman, 1990)"
+
+To produce the document with references included, the document typically needs to be built three times in order for all updates to occur. 

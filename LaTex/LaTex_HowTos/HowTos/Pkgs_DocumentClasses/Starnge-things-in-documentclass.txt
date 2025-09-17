@@ -1,0 +1,16 @@
+	==== Using \documentclass{} ============
+
+	# latex will read a .cls file in the same folder as the .tex file! No need to put the .cls file elsewhere
+	# processing a .tex file using DVI means all figs seen as .eps files. Run with pdflatex only!
+	
+	# Cambridge University poster .cls requires .eps files -- cannot use .pdfs!
+	# if try to use a .pdf with DVI latex does not recognize the pdf (thinks it's a .eps file; see log output)
+error message: Cannot determine size of graphic in psulogo_horiz_msword.pdf (no BoundingBox)
+
+	# cannot overide this even if provide bounding box data:
+		%\includegraphics[bb=0 0 20 30]{figs/Image19.pdf}}
+		%\includegraphics[bb=0 0 50 75]{figs/Image19.pdf}
+
+
+
+

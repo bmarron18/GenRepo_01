@@ -1,0 +1,45 @@
+-
+
+######################
+installation LinuxMint 20
+alongside Windows 10
+##########################
+
+Download Linux Mint 20
+	% Linux Mint 20 ISO images – https://www.linuxmint.com/download.php
+
+
+https://www.tecmint.com/install-linux-mint-alongside-windows-dual-boot-uefi-mode/
+https://superuser.com/questions/650460/install-linux-mint-directly-to-hard-drive-without-creating-live-cd-or-bootable-u
+https://www.zdnet.com/article/how-to-install-linux-mint-on-your-windows-pc/
+https://itsfoss.com/install-linux-mint/
+
+GET THIS!
+https://sourceforge.net/p/boot-repair-cd/home/Home/
+https://sourceforge.net/projects/boot-repair-cd/
+
+https://www.pendrivelinux.com/yumi-multiboot-usb-creator/
+https://www.pendrivelinux.com/universal-usb-installer-easy-as-1-2-3/
+
+USE THIS!
+*https://itsfoss.com/guide-install-linux-mint-16-dual-boot-windows/
+
+If you don't have an ISO burner program, download one. I recommend freeware programs 
+ these are .exe files
+	%Yumi for Windows for USB sticks. 
+	%LinuxLive USB Creator
+
+
+
+DID THIS
+
+1. used LinuxLive USB Creator for LinuxMint ISO
+2. used YUMI for /boot-repair-cd
+3. shrink Windows to about 60 GB; about 180 GB for Linux
+3. fn+f10 for HP BIOS 		<== a bit tricky
+	% move USB boot to top then move EFI back to top after instal Linux MInt
+4. Install LinuxMint 20.04 
+	% install alongside Windows
+	% this installs in just a single new partition
+
+

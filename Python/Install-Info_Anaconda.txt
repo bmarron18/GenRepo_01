@@ -1,0 +1,336 @@
+
+################
+Anaconda vs MiniConda
+######################
+Anaconda and Miniconda are both distributions that utilize the conda package and environment manager, but they differ significantly in their scope and size.
+
+Anaconda
+Includes Python, the conda package manager, and a vast collection of pre-installed packages (over 300) commonly used in these fields, such as NumPy, SciPy, pandas, Jupyter Notebook, and Spyder.
+large size (several gigabytes) can be a drawback
+
+Miniconda
+Includes only conda, Python, and their essential dependencies.
+
+
+--- Key Differences Summarized ---------
+Size & Pre-installed Packages: Anaconda is large with hundreds of pre-installed packages; Miniconda is small with only core components.
+
+Convenience vs. Customization:Anaconda offers immediate convenience with many tools ready; Miniconda prioritizes customization and a minimal setup.
+    
+Target Audience:Anaconda is often recommended for beginners in data science; Miniconda is preferred by users who want more control and efficiency.
+
+Disk Space: Anaconda requires significantly more disk space than Miniconda.
+
+
+##############
+Uninstall Python
+(various distros) for 
+Anaconda install?
+##################
+
+NOOO!!!
+Warning: Removing Python willbreak Ubuntu 18.04 and 18.10. 
+Do not, at any time, leave your system without a working python installation
+
+
+
+#############
+Use Anaconda w/ other Python distros?
+####################################
+Installing Anaconda when you have existing Python installations is a common scenario. Anaconda is designed to manage its own Python environments and packages independently of your system's Python or other Python installations.  Anaconda's strength lies in its environment management. You can create separate, isolated environments for different projects, each with its own Python version and packages, without affecting your existing Python installations.
+
+*	Create a new environment with a specific Python version: 
+		$ conda create --name myenv python=3.9
+		$ conda create -n py38 python=3.8
+
+*	Activate an environment:
+    	$ conda activate myenv
+		$ conda activate py38
+		$ conda install package1 package2 ...
+	
+*	Deactivate an environment:
+		$ conda deactivate myenv
+		$ conda deactivate py38
+
+
+##########
+Anaconda
+##########
+
+Windows Subsystem for Linux (WSL) is a feature of Windows that allows you to run a Linux environment on your Windows machine
+
+
+
+Natural Language Processing
+    NLTK
+    Gensim
+    Transformers
+    spaCy
+
+
+AI and Machine Learning
+    scikit-learn
+    TensorFlow
+    Keras
+    PyTorch
+    XGBoost
+
+
+
+
+#################
+Install Anaconda
+#################
+https://www.anaconda.com/download
+	Sign in with Google
+		marron.bruce.mx@gmail.com
+ 
+Download
+	
+Anaconda installed
+	Linux
+	Python 3.13
+	Anaconda3-2025.06-0-Linux-x86_64 (~1.1 Gb)
+
+
+Downloading and Extracting Packages:
+Preparing transaction: done
+Executing transaction: done
+installation finished.
+Do you wish to update your shell profile to automatically initialize conda?
+This will activate conda on startup and change the command prompt when activated.
+If you'd prefer that conda's base environment NOT BE activated on startup,
+   run the following command when conda is activated:
+	conda config --set auto_activate_base false
+
+You can undo this by running 
+	`conda init --reverse $SHELL`? [yes|no]		<== say yes!!
+
+[yes]
+
+
+Thank you for installing Anaconda3!
+
+choose [yes]!!!
+[no]
+You have chosen to not have conda modify your shell scripts at all.
+To activate conda's base environment in your current shell session:
+	eval "$(/home/bmarron/anaconda3/bin/conda shell.YOUR_SHELL_NAME hook)" 
+To install conda's shell functions for easier access, first activate, then:
+	$ conda init
+Thank you for installing Anaconda3!
+
+https://stackoverflow.com/questions/28612500/why-anaconda-does-not-recognize-conda-command
+You need to add conda to PATH.
+
+	$ export PATH="$HOME/.local/bin:$PATH"
+	$ export PATH="$HOME/anaconda3/bin:$PATH"
+
+Same thing, you need to figure out the path to the anaconda3 folder (Usually, the path is stored in $HOME)
+If you don't want to do this every time you start a session, you can also add conda to PATH in your .bashrc file:
+
+	$ echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+	$ echo 'export PATH="$HOME/anaconda3/bin:$PATH"'  >> ~/.bashrc
+
+----	check installations----
+    $ conda -V or conda --version 		#to get the conda version.
+    $ python -V or python --version 	#to get the python version.
+    $ conda list 						#to get the Name, Version, Build & Channel details of all the packages 
+										installed (in the current environment).
+    $ conda info 						#to get all the current environment details.
+    $ conda info --envs 				#To see a list of all your environments
+
+
+###################
+Uninstall Anaconda
+###################
+https://docs.anaconda.com/anaconda/uninstall/
+https://stackoverflow.com/questions/22585235/python-anaconda-how-to-safely-uninstall
+
+
+--- Uninstall environments outside anaconda3 directory ---------------
+conda info --envs				# list of all your environments
+conda activate your_conda_env  	# activate your conda environment
+conda install anaconda-clean   	# install the package anaconda clean
+anaconda-clean --yes           	# clean all anaconda related files and directories 
+
+
+--- Uninstall anaconda3 directory ---------------
+$ locate anaconda
+
+$ rm -rf ~/anaconda3             # removes the entire anaconda directory
+
+$ rm -rf ~/.anaconda_backup       # anaconda clean creates a back_up of files/dirs, remove it 
+                                # (conda list; cmd shouldn't respond after the clean up)
+
+
+
+#################
+Install Miniconda
+##################
+
+check installations----
+    $ conda -V or conda --version 		#to get the conda version.
+    $ python -V or python --version 	#to get the python version.
+    $ conda list 						#to get the Name, Version, Build & Channel details of all the packages 
+										installed (in the current environment).
+    $ conda info 						#to get all the current environment details.
+    $ conda info --envs 				#To see a list of all your environments
+
+
+Python version and conda base----------------
+(base) bmarron@bmarron-HP-Laptop-15t-dy100:~$ python -V
+Python 3.12.9
+(base) bmarron@bmarron-HP-Laptop-15t-dy100:~$ conda info --envs
+
+# conda environments:
+#
+base                 * /home/bmarron/miniconda3
+
+
+
+
+Installing miniconda ----------------
+https://docs.anaconda.com/miniconda/install/
+
+$ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+$ bash ~/Miniconda3-latest-Linux-x86_64.sh
+
+*Press Return to review Anaconda’s Terms of Service (TOS). Then press and hold Return to scroll.
+*Enter yes to agree to the TOS.
+*Press Return to accept the default install location (PREFIX=/Users/<USER>/miniconda3), or enter another file path to specify an alternate installation directory. The installation might take a few minutes to complete.
+*Choose an initialization options:
+ ==> choose yes!  
+ Yes - conda modifies your shell configuration to initialize conda whenever you open a new shell and to recognize conda commands automatically.
+    No - conda will not modify your shell scripts. After installation, if you want to initialize, you must do so manually. For more information, see Manual shell initialization.
+
+The installer finishes and displays, “Thank you for installing Miniconda3!”
+Close and re-open your terminal window for the installation to fully take effect
+
+
+Installing---------
+Miniconda3 will now be installed into this location:
+/home/bmarron/miniconda3
+
+Yes - conda modifies your shell configuration to initialize conda whenever you open a new shell and to recognize conda commands automatically You can undo this by running `conda init --reverse $SHELL`?
+
+no change     /home/bmarron/miniconda3/condabin/conda
+no change     /home/bmarron/miniconda3/bin/conda
+no change     /home/bmarron/miniconda3/bin/conda-env
+no change     /home/bmarron/miniconda3/bin/activate
+no change     /home/bmarron/miniconda3/bin/deactivate
+no change     /home/bmarron/miniconda3/etc/profile.d/conda.sh
+no change     /home/bmarron/miniconda3/etc/fish/conf.d/conda.fish
+no change     /home/bmarron/miniconda3/shell/condabin/Conda.psm1
+no change     /home/bmarron/miniconda3/shell/condabin/conda-hook.ps1
+no change     /home/bmarron/miniconda3/lib/python3.12/site-packages/xontrib/conda.xsh
+no change     /home/bmarron/miniconda3/etc/profile.d/conda.csh
+modified      /home/bmarron/.bashrc
+
+$ conda list
+# packages in environment at /home/bmarron/miniconda3:
+#
+# Name                    Version                   Build  Channel
+_libgcc_mutex             0.1                        main  
+_openmp_mutex             5.1                       1_gnu  
+anaconda-anon-usage       0.5.0           py312hfc0e8ea_100  
+annotated-types           0.6.0           py312h06a4308_0  
+archspec                  0.2.3              pyhd3eb1b0_0  
+boltons                   24.1.0          py312h06a4308_0  
+brotli-python             1.0.9           py312h6a678d5_9  
+bzip2                     1.0.8                h5eee18b_6  
+c-ares                    1.19.1               h5eee18b_0  
+ca-certificates           2024.12.31           h06a4308_0  
+certifi                   2025.1.31       py312h06a4308_0  
+cffi                      1.17.1          py312h1fdaa30_1  
+charset-normalizer        3.3.2              pyhd3eb1b0_0  
+conda                     25.1.1          py312h06a4308_0  
+conda-anaconda-telemetry  0.1.2           py312h06a4308_0  
+conda-anaconda-tos        0.1.2           py312h06a4308_0  
+conda-content-trust       0.2.0           py312h06a4308_1  
+conda-libmamba-solver     25.1.1             pyhd3eb1b0_0  
+conda-package-handling    2.4.0           py312h06a4308_0  
+conda-package-streaming   0.11.0          py312h06a4308_0  
+cpp-expected              1.1.0                hdb19cb5_0  
+cryptography              43.0.3          py312h7825ff9_1  
+distro                    1.9.0           py312h06a4308_0  
+expat                     2.6.4                h6a678d5_0  
+fmt                       9.1.0                hdb19cb5_1  
+frozendict                2.4.2           py312h06a4308_0  
+icu                       73.1                 h6a678d5_0  
+idna                      3.7             py312h06a4308_0  
+jsonpatch                 1.33            py312h06a4308_1  
+jsonpointer               2.1                pyhd3eb1b0_0  
+krb5                      1.20.1               h143b758_1  
+ld_impl_linux-64          2.40                 h12ee557_0  
+libarchive                3.7.7                hfab0078_0  
+libcurl                   8.11.1               hc9e6f67_0  
+libedit                   3.1.20230828         h5eee18b_0  
+libev                     4.33                 h7f8727e_1  
+libffi                    3.4.4                h6a678d5_1  
+libgcc-ng                 11.2.0               h1234567_1  
+libgomp                   11.2.0               h1234567_1  
+libmamba                  2.0.5                haf1ee3a_1  
+libmambapy                2.0.5           py312hdb19cb5_1  
+libnghttp2                1.57.0               h2d74bed_0  
+libsolv                   0.7.30               he621ea3_1  
+libssh2                   1.11.1               h251f7ec_0  
+libstdcxx-ng              11.2.0               h1234567_1  
+libuuid                   1.41.5               h5eee18b_0  
+libxml2                   2.13.5               hfdd30dd_0  
+lz4-c                     1.9.4                h6a678d5_1  
+markdown-it-py            2.2.0           py312h06a4308_1  
+mdurl                     0.1.0           py312h06a4308_0  
+menuinst                  2.2.0           py312h06a4308_1  
+ncurses                   6.4                  h6a678d5_0  
+nlohmann_json             3.11.2               h6a678d5_0  
+openssl                   3.0.15               h5eee18b_0  
+packaging                 24.2            py312h06a4308_0  
+pcre2                     10.42                hebb0a14_1  
+pip                       25.0            py312h06a4308_0  
+platformdirs              3.10.0          py312h06a4308_0  
+pluggy                    1.5.0           py312h06a4308_0  
+pybind11-abi              5                    hd3eb1b0_0  
+pycosat                   0.6.6           py312h5eee18b_2  
+pycparser                 2.21               pyhd3eb1b0_0  
+pydantic                  2.10.3          py312h06a4308_0  
+pydantic-core             2.27.1          py312h4aa5aa6_0  
+pygments                  2.15.1          py312h06a4308_1  
+pysocks                   1.7.1           py312h06a4308_0  
+python                    3.12.9               h5148396_0  
+readline                  8.2                  h5eee18b_0  
+reproc                    14.2.4               h6a678d5_2  
+reproc-cpp                14.2.4               h6a678d5_2  
+requests                  2.32.3          py312h06a4308_1  
+rich                      13.9.4          py312h06a4308_0  
+ruamel.yaml               0.18.6          py312h5eee18b_0  
+ruamel.yaml.clib          0.2.8           py312h5eee18b_0  
+setuptools                75.8.0          py312h06a4308_0  
+simdjson                  3.10.1               hdb19cb5_0  
+spdlog                    1.11.0               hdb19cb5_0  
+sqlite                    3.45.3               h5eee18b_0  
+tk                        8.6.14               h39e8969_0  
+tqdm                      4.67.1          py312he106c6f_0  
+truststore                0.10.0          py312h06a4308_0  
+typing-extensions         4.12.2          py312h06a4308_0  
+typing_extensions         4.12.2          py312h06a4308_0  
+tzdata                    2025a                h04d1e81_0  
+urllib3                   2.3.0           py312h06a4308_0  
+wheel                     0.45.1          py312h06a4308_0  
+xz                        5.4.6                h5eee18b_1  
+yaml-cpp                  0.8.0                h6a678d5_1  
+zlib                      1.2.13               h5eee18b_1  
+zstandard                 0.23.0          py312h2c38b39_1  
+zstd                      1.5.6                hc292b87_0  
+
+
+###########
+Uninstall Miniconda
+###################
+
+Deactivate your base environment by running the following command:
+
+$ conda deactivate
+
+$ ~/miniconda3/uninstall.sh
+

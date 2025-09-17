@@ -1,0 +1,52 @@
+Title:			git SyncRepo
+Project Descriptor:	LANDISII Upgrades Corrections Project 
+Project ID:		2016SoE021	
+Author:			bmarron
+Origin Date:		17 Sept 2015
+Revision Date:		28 Apr 2017
+
+
+############################################
+keep FORKED repo current with ORIGINAL_REPO
+#############################################
+
+After a Pull request has been accepted from a forked repo, GitHub will report,
+"This branch is 1 commit behind LANDIS-II-Foundation:master"
+
+Requires sync.
+ 
+
+
+	a. create a Desktop folder, <name of repo>; clone a fresh LOCAL repo from the FORKED repo and specify a LOCAL remote named, 
+	   'upstream' that links to the ORIGINAL_OWNER/ORIGINAL_REPO
+	a1. should have two LOCAL repo connectionss, 'origin' and 'upstream' with fetch and push capabilities
+	a2. Extension-Base-Harvest used as example
+
+	b.  fetch changes from ORIGINAL_REPO to LOCAL repo ==> merge changes from ORIGINAL repo to LOCAL repo ==> push changes to FORKED repo
+	b1. The push to the forked repo is what keeps the forked repo in sync
+
+
+
+git clone https://github.com/bmarron18/Extension-Base-Harvest.git
+git remote add upstream https://github.com/LANDIS-II-Foundation/Extension-Base-Harvest.git
+git remote -v
+
+
+git fetch upstream && 
+git merge upstream/master && 
+git push origin master
+
+-----------------------------------------
+------------------------------------------
+
+For repo you own:
+
+git fetch origin && 
+git merge origin/master 
+
+
+
+
+
+
+

@@ -1,0 +1,95 @@
+	==== Problems with BibTex in LaTex ============
+
+https://tex.stackexchange.com/questions/25701/bibtex-vs-biber-and-biblatex-vs-natbib
+
+
+##########################################
+a misplaced symbols will shut it down!!!
+##########################################
+
+	a. anywhere in doc if there are symbols that require a math environment (ie, $ ... $)
+	latex wont process to a pdf
+
+	b. especially true in BibTex citations when 
+		==> there are foreign words/symbols
+		==> there are url listings (w/ crazy symbols inside like %&*%%^#@# etc)
+
+	c. \bibentry{} will process most all citations (very robust to symbols)
+
+	d. \shortcite{} (w/ apacite) WILL NOT process many citations (very sensitive to symbols)
+
+
+
+####################
+reference undefined!
+##################
+	#note where .bst file is located
+	#note where .bib file is located
+	# example
+
+\usepackage{apacite}
+\usepackage[english]{babel}
+.
+.
+.
+\bibliographystyle{/usr/local/share/texmf/tex/latex/apacite/apacite}  	<== apacite.bst file here
+\bibliography{/home/bmarron//Desktop/BibTex/MyLibrary20151007}		<== .bib file here
+\end{document}
+
+
+
+#########################
+can't get LaTex to process
+citations or make a .pdf?
+###############################
+
+	a.
+	#open terminal
+	#cd to where .tex file is
+	#delete all files EXCEPT for the .tex file
+
+$ latex <file>.tex
+$ bibtex <file>.aux
+$ latex <file>.tex
+$ latex <file>.tex
+$ pdflatex <file>.tex
+
+
+	b.
+http://tex.stackexchange.com/questions/166831/cant-open-reference-aux/166900
+
+To compile your document do this steps:
+    compile 'name.tex' using latex ==> this step will generate main.aux file
+    compile 'name.aux' (NOT 'ref.bib') using bibtex
+    compile twice 'name.tex' using latex
+    compile 'name.tex' using pdflatex
+
+
+-------- example (w/o extensions) --------------------------------------------------------------
+$ cd ~/Desktop/PSU/PhD_EES/SoE/2015SoE101_LitReview/_PWFs_works/LitReview1/
+$ latex LitReview1 
+Output written on LitReview1.dvi (1 page, 2708 bytes).
+Transcript written on LitReview1.log.
+
+$ bibtex LitReview1
+This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
+The top-level auxiliary file: LitReview1.aux
+The style file: /usr/local/share/texmf/tex/latex/apacite/apacite.bst
+Database file #1: /home/bmarron//Desktop/BibTex/MyLibrary20151007.bib
+apacite.bst [2013/07/21 v6.03 APA bibliography style]
+
+$ latex LitReview1
+Output written on LitReview1.dvi (1 page, 4008 bytes).
+Transcript written on LitReview1.log.
+
+$ latex LitReview1
+Output written on LitReview1.dvi (1 page, 4128 bytes).
+Transcript written on LitReview1.log.
+
+							#.pdf in  ~/Desktop/PSU/PhD_EES/SoE/2015SoE101_LitReview/_PWFs_works/LitReview1/
+$ pdflatex LitReview1
+Output written on LitReview1.pdf (1 page, 55213 bytes).
+Transcript written on LitReview1.log.
+
+
+

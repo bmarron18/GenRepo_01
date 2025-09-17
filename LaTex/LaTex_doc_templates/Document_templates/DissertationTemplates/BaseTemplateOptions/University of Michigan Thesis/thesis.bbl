@@ -1,0 +1,119 @@
+\begin{thebibliography}{21}
+\providecommand{\natexlab}[1]{#1}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
+  \providecommand{\doi}{doi:\discretionary{}{}{}\begingroup
+  \urlstyle{rm}\Url}\fi
+
+\bibitem[{\textit{{Crank} and {Nicolson}}(1947)}]{crank47}
+{Crank}, J., and P.~{Nicolson} (1947), {A practical method for numerical
+  evaluation of solutions of partial differential equations of the
+  heat-conduction type}, \textit{P. Camb. Philos. Soc.}, \textit{43}, 50--64.
+
+\bibitem[{\textit{{Feldman} et~al.}(2005)\textit{{Feldman}, {Landi}, and
+  {Schwadron}}}]{feldman05}
+{Feldman}, U., E.~{Landi}, and N.~A. {Schwadron} (2005), {On the sources of
+  fast and slow solar wind}, \textit{\jgrs}, \textit{110}(A9), 7109--+,
+  \doi{10.1029/2004JA010918}.
+
+\bibitem[{\textit{{Fisk}}(2003)}]{fisk03}
+{Fisk}, L.~A. (2003), {Acceleration of the solar wind as a result of the
+  reconnection of open magnetic flux with coronal loops}, \textit{\jgrs},
+  \textit{108}, 1157--+, \doi{10.1029/2002JA009284}.
+
+\bibitem[{\textit{{Fisk} and {Schwadron}}(2001)}]{fisk01a}
+{Fisk}, L.~A., and N.~A. {Schwadron} (2001), {Origin of the Solar Wind:
+  Theory}, \textit{\ssr}, \textit{97}, 21--33.
+
+\bibitem[{\textit{{Fisk} et~al.}(1998)\textit{{Fisk}, {Schwadron}, and
+  {Zurbuchen}}}]{fisk98}
+{Fisk}, L.~A., N.~A. {Schwadron}, and T.~H. {Zurbuchen} (1998), {On the Slow
+  Solar Wind}, \textit{\ssr}, \textit{86}, 51--60,
+  \doi{10.1023/A:1005015527146}.
+
+\bibitem[{\textit{{Fisk} et~al.}(1999)\textit{{Fisk}, {Zurbuchen}, and
+  {Schwadron}}}]{fisk99a}
+{Fisk}, L.~A., T.~H. {Zurbuchen}, and N.~A. {Schwadron} (1999), {Coronal Hole
+  Boundaries and their Interactions with Adjacent Regions}, \textit{\ssr},
+  \textit{87}, 43--54, \doi{10.1023/A:1005153730158}.
+
+\bibitem[{\textit{{Geiss} et~al.}(1995)\textit{{Geiss}, {Gloeckler}, and {von
+  Steiger}}}]{geiss95b}
+{Geiss}, J., G.~{Gloeckler}, and R.~{von Steiger} (1995), {Origin of the Solar
+  Wind From Composition Data}, \textit{\ssr}, \textit{72}, 49--60,
+  \doi{10.1007/BF00768753}.
+
+\bibitem[{\textit{{Gloeckler} and {Geiss}}(1998)}]{gloeckler98a}
+{Gloeckler}, G., and J.~{Geiss} (1998), {Interstellar and Inner Source Pickup
+  Ions Observed with SWICS on ULYSSES}, \textit{\ssr}, \textit{86}, 127--159,
+  \doi{10.1023/A:1005019628054}.
+
+\bibitem[{\textit{{Gloeckler} and {Geiss}}(2001)}]{gloeckler01b}
+{Gloeckler}, G., and J.~{Geiss} (2001), {Composition of the Local Interstellar
+  Cloud from Observations of Interstellar Pickup Ions}, in \textit{Joint
+  SOHO/ACE workshop ''Solar and Galactic Composition''}, \textit{American
+  Institute of Physics Conference Series}, vol. 598, edited by R.~F.
+  {Wimmer-Schweingruber}, pp. 281--289.
+
+\bibitem[{\textit{{Gloeckler} et~al.}(2003)\textit{{Gloeckler}, {Zurbuchen},
+  and {Geiss}}}]{gloeckler03a}
+{Gloeckler}, G., T.~H. {Zurbuchen}, and J.~{Geiss} (2003), {Implications of the
+  observed anticorrelation between solar wind speed and coronal electron
+  temperature}, \textit{\jgrs}, \textit{108}, 1158--+,
+  \doi{10.1029/2002JA009286}.
+
+\bibitem[{\textit{{Gombosi}}(1998)}]{gombosi98}
+{Gombosi}, T.~I. (1998), \textit{{Physics of the Space Environment}}, 339 pp.,
+  Cambridge University Press, Cambridge, UK.
+
+\bibitem[{\textit{{Gosling} et~al.}(1995)\textit{{Gosling}, {Birn}, and
+  {Hesse}}}]{gosling95}
+{Gosling}, J.~T., J.~{Birn}, and M.~{Hesse} (1995), {Three-dimensional magnetic
+  reconnection and the magnetic topology of coronal mass ejection events},
+  \textit{\grl}, \textit{22}, 869--872.
+
+\bibitem[{\textit{{Hundhausen} et~al.}(1968)\textit{{Hundhausen}, {Gilbert},
+  and {Bame}}}]{hundhausen68}
+{Hundhausen}, A.~J., H.~E. {Gilbert}, and S.~J. {Bame} (1968), {Ionization
+  State of the Interplanetary Plasma}, \textit{\jgr}, \textit{73}, 5485--5493.
+
+\bibitem[{\textit{{Ipavich} et~al.}(1998)}]{ipavich98}
+{Ipavich}, F.~M., et~al. (1998), {Solar wind measurements with SOHO: The
+  CELIAS/MTOF proton monitor}, \textit{\jgr}, \textit{103}, 17,205--17,214,
+  \doi{10.1029/97JA02770}.
+
+\bibitem[{\textit{{Jackson}}(1999)}]{jackson99}
+{Jackson}, J.~D. (1999), \textit{{Classical Electrodynamics}}, 3rd ed., 808
+  pp., John Wiley \& Sons, United States of America.
+
+\bibitem[{\textit{{McComas} et~al.}(2000)}]{mccomas00}
+{McComas}, D.~J., et~al. (2000), {Solar wind observations over Ulysses' first
+  full polar orbit}, \textit{\jgr}, \textit{105}, 10,419--10,434,
+  \doi{10.1029/1999JA000383}.
+
+\bibitem[{\textit{{Parker}}(1959)}]{parker59}
+{Parker}, E. (1959), {Extension of the Solar Corona into Interplanetary Space},
+  \textit{\jgr}, \textit{64}, 1675--1681.
+
+\bibitem[{\textit{{Parker}}(1958)}]{parker58}
+{Parker}, E.~N. (1958), {Dynamics of the Interplanetary Gas and Magnetic
+  Fields.}, \textit{\apj}, \textit{128}, 664--676.
+
+\bibitem[{\textit{{von Steiger} and {Geiss}}(1993)}]{vonsteiger93}
+{von Steiger}, R., and J.~{Geiss} (1993), {Solar wind composition and
+  expectations for high solar latitudes}, \textit{Advances in Space Research},
+  \textit{13}, 63--74, \doi{10.1016/0273-1177(93)90392-O}.
+
+\bibitem[{\textit{{von Steiger} et~al.}(1995)\textit{{von Steiger}, {Geiss},
+  {Gloeckler}, and {Galvin}}}]{vonsteiger95}
+{von Steiger}, R., J.~{Geiss}, G.~{Gloeckler}, and A.~B. {Galvin} (1995),
+  {Kinetic Properties of Heavy Ions in the Solar Wind From SWICS/Ulysses},
+  \textit{\ssr}, \textit{72}, 71--76, \doi{10.1007/BF00768756}.
+
+\bibitem[{\textit{{Wimmer-Schweingruber}}(2003)}]{wimmer03b}
+{Wimmer-Schweingruber}, R.~F. (2003), {Solar Wind Composition}, in
+  \textit{Solar Wind Ten}, \textit{American Institute of Physics Conference
+  Series}, vol. 679, edited by M.~{Velli}, R.~{Bruno}, F.~{Malara}, and
+  B.~{Bucci}, pp. 577--582.
+
+\end{thebibliography}

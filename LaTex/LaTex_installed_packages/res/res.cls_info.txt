@@ -1,0 +1,13 @@
+Title:			Word List
+Project Descriptor:	
+Project ID:		
+Record:		
+Author:			bmarron
+Origin Date:		07 July 2016
+
+
+https://tex.stackexchange.com/questions/64814/no-indent-in-res-cls
+
+https://tex.stackexchange.com/questions/2778/edit-margins-in-res-cls-how-to-pass-through-correct-value-for-margin
+
+https://tex.stackexchange.com/questions/138741/how-to-set-bottom-margin-using-the-resume-class-with-margin-line

@@ -1,0 +1,3868 @@
+--------------- Installations and Removals and Updates --------------------------
+	# Linux, Python, R, etc
+
+apt-cache policy inkscape		<< is it installed? available?
+whereis <package name> 			<< where are the program files stored?
+apt-cache rdepends runit		<<reverse dependencies
+
+	--where downloaded pgks are stored
+/var/cache/apt/archives/casper_1.470.2_amd64.deb
+
+				
+
+			<< general cleaning sequence
+sudo apt autoclean &&
+sudo apt clean &&
+sudo apt autoremove
+
+
+	<< options for removal (increasingly severe)
+sudo apt remove <gdal-bin>			
+sudo apt remove --auto-remove <gdal-bin>
+sudo apt purge <gdal-bin>
+sudo apt purge --auto-remove <gdal-bin>
+
+
+	<< options for removal partially installed packages and reinstall pkg
+sudo rm /var/lib/dpkg/info/[package_name].*
+sudo dpkg --configure -a
+sudo apt-get update
+sudo aptitude install [package_name]
+
+Accept this solution? [Y/n/q/?] Y
+The following packages will be DOWNGRADED:
+  libreoffice-base libreoffice-base-core libreoffice-base-drivers 
+  libreoffice-common libreoffice-core libreoffice-math 
+  libreoffice-sdbc-mysql libreoffice-writer libuno-cppuhelpergcc3-3 
+  python3-uno uno-libs-private ure ure-java 
+
+
+
+--- install from .tar.gz ------
+tar xvzf file.tar.gz
+cd dos2unix-7.4.0
+./configure				# if file is present
+make
+sudo make install
+
+
+--- install from .tar.bz2 ------
+wget http://download.osgeo.org/geos/geos-3.6.1.tar.bz2
+tar xjf geos-3.6.1.tar.bz2
+cd geos-3.6.1
+./configure				# if file is present
+make
+sudo make install
+cd ..
+
+
+--- install .tar.xz
+Decompress:
+tar xf [filename]		<== This will expand the contents of the file to a folder. 
+
+Then the commands are, from the newly-created folder:
+./configure &&
+make &&
+sudo make install
+
+cmake ./ &&
+make &&
+sudo make install
+
+
+--- install from .deb ------
+wget https://download1.rstudio.org/rstudio-1.0.136-i386.deb --no-check-certificate &&
+sudo gdebi -n rstudio-1.0.136-i386.deb &&
+rm rstudio-1.0.136-i386.deb
+
+--- open .tar ------------------
+ tar -xvf yourfile.tar
+ 
+ 
+------ AppImage DOES NOT install but only runs a program-----------------
+    Open a terminal.
+    Change to the directory containing the AppImage, e.g., using cd <my directory>
+    Make the AppImage executable: chmod +x my.AppImage.
+    Run the AppImage: ./my.AppImage.
+
+To run an AppImage, simply:
+Make it executable
+$ chmod a+x <name>.AppImage
+
+and run!
+$ ./<nmae>.AppImage
+
+
+example--
+$ chmod a+x streamcapture2-x86_64.AppImage
+$ ./streamcapture2-x86_64.AppImag
+
+
+------ open .zip ---------------
+
+unzip file.zip
+
+
+sudo update-alternatives --config java
+
+
+--- install R pkg from commandline ----
+
+sudo R CMD INSTALL fortunes_1.4-1.tar.gz
+
+
+---- install from PPA ---------
+
+	# add PPA to /etc/apt/sources.list
+deb http://ppa.launchpad.net/ubuntuhandbook1/audacity/ubuntu bionic main 
+deb-src http://ppa.launchpad.net/ubuntuhandbook1/audacity/ubuntu bionic main
+
+
+	# use ppa:
+sudo add-apt-repository ppa:ubuntuhandbook1/audacity
+sudo apt-get update
+
+
+---- install from **.sh file
+chmod +x yourscript.sh
+
+./yourscript.sh
+
+
+============== Updates ====================================================================-
+	#can run Software Updater but if problems (ie only a partial upgrade allowed)
+	 run from command line
+	#update problems from 
+		1) bad sources.list
+		2) bad ppa keys
+
+sudo aptitude update
+apt list --upgradable
+sudo aptitude upgrade
+
+
+--- ["Waiting for unattended-upgr to exit"] ---
+sudo dpkg-reconfigure -plow unattended-upgrades				<== Select "NO" and reboot
+sudo dpkg --configure -a
+sudo apt update && sudo apt -f install && sudo apt full-upgrade
+sudo dpkg-reconfigure -plow unattended-upgrades				<== Select "YES" and reboot
+
+
+
+---- fix broken packages ------------
+sudo apt autoclean &&
+sudo apt clean &&
+sudo apt autoremove
+
+sudo apt update --fix-missing
+sudo apt install -f
+
+
+checks:
+sudo mousepad /etc/apt/sources.list
+
+	# When the main y-ppa-manager window appears, click on "Advanced."
+	#From the list of advanced tasks, select "Try to import all missing GPG keys" and click OK.
+y-ppa-manager
+
+
+
+sudo add-apt-repository "deb http://qgis.org/ubuntugis-ltr xenial main"
+sudo add-apt-repository "deb-src http://qgis.org/ubuntugis-ltr xenial main"
+sudo add-apt-repository "deb http://ppa.launchpad.net/ubuntugis/ubuntugis-unstable/ubuntu xenial main"
+sudo apt-get update
+sudo apt-get install qgis python-qgis qgis-plugin-grass
+========================== end ===================================================================
+
+
+##############
+ddccontrol
+gddccontrol
+#############
+screen brightness
+
+/dev/i2c-12     <== VESA standard monitor
+
+
+
+###############
+xrandr
+################
+$ xrandr
+Screen 0: minimum 320 x 200, current 1366 x 768, maximum 16384 x 16384
+eDP-1 connected primary 1366x768+0+0 (normal left inverted right x axis y axis) 
+
+$ xrandr --output eDP-1 --brightness 1.5
+
+
+##################
+gcloud CLI
+#################
+https://cloud.google.com/sdk/docs/install#deb
+https://stackoverflow.com/questions/71086225/how-to-install-or-uninstall-gcloud
+
+If you prefer automatic updates, you can install the Google Cloud CLI using a snap package on Ubuntu systems. This package contains the gcloud CLI, gcloud alpha, gcloud beta, gsutil, docker-credential-gcloud, and bq commands only. 
+
+download
+google-cloud-cli-linux-x86_64.tar.gz
+
+$ ./google-cloud-sdk/bin/gcloud init
+
+
+
+Initialize the gcloud CLI:
+$ gcloud init
+ OR
+$ gcloud auth application-default login
+OR
+$ gcloud auth activate-service-account
+
+
+
+#############
+Anaconda
+############
+
+
+################
+Spyder
+#############
+
+Spyder will now be installed into this location:
+/home/bmarron/.local/spyder-6
+
+
+https://docs.spyder-ide.org/current/index.html
+
+
+#############
+Linux Mint 21.3 
+Virginia LTS
+##############
+--- updated 24 Feb 2024
+https://www.linuxmint.com/rel_virginia.php
+
+
+
+################
+pavucontrol
+################
+
+sudo aptitude install pavucontrol
+
+-- no sound with HMDI
+open PulseAudio olume Control
+	==> Configuration
+		==> Digital Stereo (HDMI) Output + Analog Stereo Output
+
+
+
+###############
+texlive-xetex
+latexila
+biber
+############
+
+	-- install
+texlive-xetex THEN latexila THEN biber
+
+
+sudo aptitude install texlive-xetex &&
+sudo aptitude install texlive-latex-extra
+
+sudo aptitude install latexila
+
+sudo aptitude install biber
+
+
+biber --help
+NAME
+    "biber" - A bibtex replacement for users of biblatex
+
+
+##################
+OBS Studio
+########################
+
+sudo add-apt-repository ppa:obsproject/obs-studio
+sudo apt update
+sudo aptitude install ffmpeg obs-studio
+
+
+
+Use Audio Capture Device (ALSA) AND mute Mic/Aux
+Settings to change to .mp4 and output to Desktop
+
+
+##################
+SimpleScreenRecorder
+#######################
+
+
+    sudo aptitude install simplescreenrecorder
+
+
+
+####################
+ScreenRec
+(NOT INSTALLED)
+####################
+https://www.linuxuprising.com/2021/01/apt-key-is-deprecated-how-to-add.html
+
+sudo wget -q -O - https://screenrec.com/download/pub.asc | sudo apt-key add - $$
+
+sudo add-apt-repository 'deb https://screenrec.com/download/ubuntu stable main' $$
+
+sudo apt update &&
+
+sudo aptitude install screenrec
+
+
+
+###############
+upgrade to
+¨Victoria¨
+#####################
+
+System:
+  Host: bmarron-HP-Laptop-15t-dy100 Kernel: 5.15.0-78-generic x86_64 bits: 64
+    compiler: gcc v: 11.3.0 Desktop: Cinnamon 5.8.4
+    Distro: Linux Mint 21.2 Victoria base: Ubuntu 22.04 jammy
+
+
+#################
+upgrade to Linux Mint 21
+"Vanessa"
+#########################
+https://linuxmint-user-guide.readthedocs.io/en/latest/upgrade-to-mint-21.html
+
+Refresh your cache and install the Upgrade Tool by typing the following commands in a terminal:
+	apt update
+	apt install mintupgrade
+
+Type the following command to launch the Upgrade Tool and follow the instructions on the screen:
+	sudo mintupgrade
+.
+
+When the tool is done and the upgrade is successful uninstall it and reboot your computer.
+	apt remove mintupgrade
+	sudo reboot
+
+This is a major upgrade. It can take several hours.
+
+
+Timeshift 
+
+
+
+
+
+
+
+#############
+Yubico
+##############
+
+sudo add-apt-repository ppa:yubico/stable &&
+sudo apt-get update &&
+sudo apt-get install libpam-yubico
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%% play DVDs %%%%%%%%%%%%%%%%%%%%%%%%%
+
+sudo aptitude install libdvd-pkg
+sudo dpkg-reconfigure libdvd-pkg
+
+
+sudo apt-get install ubuntu-restricted-extras
+sudo /usr/share/doc/libdvdread4/install-css.sh
+
+
+sudo aptitude install vlc
+
+
+%%%%%%%%%%%%%%%%%% Linux MOK %%%%%%%%%%%%%%%%%%%
+he system will assist you in configuring UEFI Secure Boot. To permit the use of third-party drivers, 
+a new Machine-Owner Key (MOK) has been generated. This key now needs to be enrolled in your system's 
+firmware.
+
+To ensure that this change is being made by you as an authorized user, and not by an attacker, you must 
+choose a password now and then confirm the change after reboot using the same password, in both the 
+"Enroll MOK" and "Change Secure Boot state" menus that will be presented to you when this system reboots.
+
+
+If you proceed but do not confirm the password upon reboot, Ubuntu will still be able to boot on your 
+system but any hardware that requires third-party drivers to work correctly may not be usable.
+
+Password:
+			62c69F*Antas
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+https://www.videohelp.com/software/sections/linux-video-tools
+
+
+###########################
+Open Broadcaster Software®️
+###############################
+https://obsproject.com/
+
+
+https://obsproject.com/wiki/install-instructions#linux
+
+sudo apt install ffmpeg
+sudo apt install v4l2loopback-dkms
+sudo add-apt-repository ppa:obsproject/obs-studio
+
+sudo apt update &&
+sudo apt install obs-studio
+
+
+#########
+GIMP 2.10.x
+#########
+
+
+sudo aptitude update &&
+sudo aptitude install gimp
+
+
+NO WORKY
+sudo snap install gimp
+
+NO WORKY
+sudo add-apt-repository ppa:otto-kesselgulasch/gimp &&
+sudo aptitude update &&
+sudo aptitude install gimp
+
+
+
+
+#############
+XSane
+############
+
+$ apt-cache policy xsane
+
+sudo aptitude install xsane
+
+#############
+TexStudio
+###############
+
+$ apt-cache policy texstudio
+texstudio:
+  Installed: (none)
+  Candidate: 2.12.22+debian-1build1
+  Version table:
+     2.12.22+debian-1build1 500
+        500 http://archive.ubuntu.com/ubuntu focal/universe amd64 Packages
+
+
+$ sudo aptitude install texstudio
+
+
+
+
+
+############
+notepadqq
+###########
+
+notepad++ - like text editor
+
+sudo aptitude install notepadqq
+
+
+########
+snapd
+###########
+
+https://snapcraft.io/
+
+Snaps are cross-distribution, dependency-free, and easy to install applications packaged with all their dependencies to run on all major Linux distributions. From a single build, a snap (application) will run on all supported Linux distributions on desktop, in the cloud, and IoT. Supported distributions include Ubuntu, Debian, Fedora, Arch Linux, Manjaro, and CentOS/RHEL
+
+
+NOT AVAILABLE
+sudo aptitude update &&
+sudo aptitude install snapd
+
+
+
+
+#######
+ZOOM
+######
+
+https://linuxhint.com/install_zoom_linuxmint/
+
+USE THIS!
+$ wget https://zoom.us/client/latest/zoom_amd64.deb &&
+sudo gdebi -n zoom_amd64.deb &&
+rm zoom_amd64.deb
+
+
+OTHER INFO
+https://zoom.us/download?os=linux
+Zoom's rpm packages are signed with a GPG key. Please run 
+$ rpm --import package-signing-key.pub
+
+to import the key in case package management utility asks for a missing public key.
+
+Download Public Key
+Key fingerprint: 3960 60CA DD8A 7522 0BFC B369 B903 BF18 61A7 C71D
+
+deb (for Ubuntu 16.04+)
+zoom_amd64.deb ==> Version 5.3.472687.1012 
+
+
+
+OPTION:
+$ sudo apt install ./zoom_amd64.deb
+
+If you have issues installing, make sure you have the following dependencies installed.
+libglib2.0-0
+libgstreamer-plugins-base0.10-0 
+libxcb-shape0
+libxcb-shm0
+libxcb-xfixes0
+libxcb-randr0
+libxcb-image0
+libfontconfig1
+libgl1-mesa-glx
+libxi6
+libsm6
+libxrender1
+libpulse0
+libxcomposite1
+libxslt1.1
+libsqlite3-0
+libxcb-keysyms1
+libxcb-xtest0
+
+
+
+
+
+##########
+rclone
+#########
+
+https://www.howtogeek.com/451262/how-to-use-rclone-to-back-up-to-google-drive-on-linux/
+
+
+$ curl https://rclone.org/install.sh | sudo bash
+	rclone v1.66.0 has successfully installed
+	Now run "rclone config" for setup. Check https://rclone.org/docs/ for more details.
+
+
+$ rclone config
+	Just followed defaults for installation even though they want you to create your own Google Drive client ID for rclone 
+	(DID NOT DO IT)
+
+
+No remotes found, make a new one?
+n) New remote
+s) Set configuration password
+q) Quit config
+n/s/q> n
+
+
+Enter name for new remote.
+name> GoogleDrive_MASTER
+
+Type of storage to configure.
+Choose a number from below, or type in your own value.
+17 / Google Drive
+   \ (drive)
+
+Storage> 17
+
+Option client_id.
+Google Application Client Id
+Setting your own is recommended.
+See https://rclone.org/drive/#making-your-own-client-id for how to create your own.
+If you leave this blank, it will use an internal key which is low performance.
+Enter a value. Press Enter to leave empty.
+client_id> 
+
+Option client_secret.
+OAuth Client Secret.
+Leave blank normally.
+Enter a value. Press Enter to leave empty.
+client_secret> 
+
+Option scope.
+Comma separated list of scopes that rclone should use when requesting access from drive.
+Choose a number from below, or type in your own value.
+Press Enter to leave empty.
+ 1 / Full access all files, excluding Application Data Folder.
+   \ (drive)
+ 2 / Read-only access to file metadata and file contents.
+   \ (drive.readonly)
+   / Access to files created by rclone only.
+ 3 | These are visible in the drive website.
+   | File authorization is revoked when the user deauthorizes the app.
+   \ (drive.file)
+   / Allows read and write access to the Application Data folder.
+ 4 | This is not visible in the drive website.
+   \ (drive.appfolder)
+   / Allows read-only access to file metadata but
+ 5 | does not allow any access to read or download file content.
+   \ (drive.metadata.readonly)
+scope> 1
+
+Option service_account_file.
+Service Account Credentials JSON file path.
+Leave blank normally.
+Needed only if you want use SA instead of interactive login.
+Leading `~` will be expanded in the file name as will environment variables such as `${RCLONE_CONFIG_DIR}`.
+Enter a value. Press Enter to leave empty.
+service_account_file> 
+
+Edit advanced config?
+y) Yes
+n) No (default)
+y/n> n
+
+Use web browser to automatically authenticate rclone with remote?
+ * Say Y if the machine running rclone has a web browser you can use
+ * Say N if running rclone on a (remote) machine without web browser access
+If not sure try Y. If Y failed, try N.
+
+y) Yes (default)
+n) No
+y/n> Y
+
+
+ RCLONE wants to access your Google Account			<== soil.foodwebs@gmail.com
+ Success!
+All done. Please go back to rclone.
+
+Configure this as a Shared Drive (Team Drive)?
+
+y) Yes
+n) No (default)
+y/n> n
+
+Keep this "GoogleDrive_MASTER" remote?
+y) Yes this is OK (default)
+e) Edit this remote
+d) Delete this remote
+y/e/d> y
+
+e) Edit existing remote
+n) New remote
+d) Delete remote
+r) Rename remote
+c) Copy remote
+s) Set configuration password
+q) Quit config
+e/n/d/r/c/s/q> q
+
+$ rclone ls GoogleDrive_MASTER:/MASTER/Desktop | less
+	peek into the folder on Google Drive, right from the terminal window:
+	"q" to quit
+	 /pattern			<== serch forward for "pattern"
+
+$ rclone ls GoogleDrive_MASTER:/MASTER/Desktop/Avalon | less
+
+
+
+--- https://rclone.org/docs/
+https://rclone.org/commands/rclone_sync/
+Sync the source to the destination, changing the destination only. Doesn't transfer unchanged files, 
+testing by size and modification time or MD5SUM. 
+Destination is updated to match source, including deleting files if necessary.
+Important: Since this can cause data loss, test first with the --dry-run or the --interactive/-i flag.
+
+$ rclone sync -i SOURCE remote:DESTINATION
+$ rclone sync -i /local/path remote:path 		# syncs /local/path to the remote
+
+
+
+Sync:
+$ rclone sync -i /media/bruce/MASTER/Desktop google_drive:/MASTER/Desktop
+$ rclone sync -i /media/bruce/MASTER google_drive:/MASTER
+
+
+
+Here is how to create your own Google Drive client ID for rclone:
+
+    Log into the Google API Console with your Google account. It doesn't matter what Google account you use. (It need not be the same account as the Google Drive you want to access)
+
+    Select a project or create a new project.
+
+    Under "ENABLE APIS AND SERVICES" search for "Drive", and enable the "Google Drive API".
+
+    Click "Credentials" in the left-side panel (not "Create credentials", which opens the wizard), then "Create credentials"
+
+    If you already configured an "Oauth Consent Screen", then skip to the next step; if not, click on "CONFIGURE CONSENT SCREEN" button (near the top right corner of the right panel), then select "External" and click on "CREATE"; on the next screen, enter an "Application name" ("rclone" is OK) then click on "Save" (all other data is optional). Click again on "Credentials" on the left panel to go back to the "Credentials" screen.
+
+(PS: if you are a GSuite user, you could also select "Internal" instead of "External" above, but this has not been tested/documented so far).
+
+    Click on the "+ CREATE CREDENTIALS" button at the top of the screen, then select "OAuth client ID".
+
+    Choose an application type of "Desktop app" if you using a Google account or "Other" if you using a GSuite account and click "Create". (the default name is fine)
+
+    It will show you a client ID and client secret. Use these values in rclone config to add a new remote or edit an existing remote.
+
+Be aware that, due to the "enhanced security" recently introduced by Google, you are theoretically expected to "submit your app for verification" and then wait a few weeks(!) for their response; in practice, you can go right ahead and use the client ID and client secret with rclone, the only issue will be a very scary confirmation screen shown when you connect via your browser for rclone to be able to get its token-id (but as this only happens during the remote configuration, it's not such a big deal).
+
+(Thanks to @balazer on github for these instructions.)
+
+Sometimes, creation of an OAuth consent in Google API Console fails due to an error message “The request failed because changes to one of the field of the resource is not supported”. As a convenient workaround, the necessary Google Drive API key can be created on the Python Quickstart page. Just push the Enable the Drive API button to receive the Client ID and Secret. Note that it will automatically create a new project in the API Console.
+
+
+
+
+
+
+
+
+
+##########
+curl
+##########
+
+sudo apt install curl
+
+
+
+
+###########
+Audacity
+###########
+https://www.audacityteam.org/download/linux/
+https://launchpad.net/~ubuntuhandbook1/+archive/ubuntu/audacity
+
+
+sudo add-apt-repository ppa:ubuntuhandbook1/audacity &&
+sudo apt-get update &&
+sudo apt install audacity
+
+
+
+
+
+
+
+https://forum.audacityteam.org/viewtopic.php?t=70920
+Install PulseAudio Volume Control (pavucontrol).
+
+Set the recording input in Audacity to "Pulse".
+Press the record button and then the pause button.
+
+Assuming there are no errors at this point, open PulseAudio Volume Control and go to the recording tab.
+Select the IO4 USB as the input device.
+
+
+alsamixer
+
+This will open up the ALSA mixer.
+
+Press F6 to open the "Select sound card" options.
+Is the iO4 listed in the options?
+If it is, scroll down with the cursor keys and press Enter to select it,
+then press the F4 key to display the recording (capture) settings. You may need to scroll left or right (cursor keys) to see all of the options.
+Is recording enabled for the iO4 in alsamixer?
+
+
+Try setting Audacity to use the "Pulse" options that corresponds to you computer microphone (for example "Pulse: front mic: 0")
+Click on the Recording meter in Audacity and you should see it move in sync with sounds that the microphone is picking up.
+While the recording meter is active, open Pulse Audio Volume Control and you should see Audacity listed on the Recording tab.
+If Audacity is listed, can you now (in the Pulse Audio Volume Control) change the listed recording device to "Monitor of..." (there should be at least one option here)
+
+To reset Audacity, close Audacity then open your home folder and enable "Show hidden Files" (probably Ctrl+H).
+Find the folder ".audacity-data" and open it (the dot indicates that it is a hidden folder).
+Delete the file "audacity.cfg".
+That's it - Audacity is now back to day 1.
+
+
+https://wiki.audacityteam.org/wiki/Stereo_mix_with_Ubuntu_10
+
+https://wiki.audacityteam.org/wiki/USB_mic_on_Linux
+
+https://www.online-tech-tips.com/computer-tips/transfer-audio-cassette-to-computer/
+
+#############
+VLC 
+Video Player
+###############
+
+sudo snap install vlc
+
+
+#######################################################
+MUSESCORE 2 
+RELEASES FOR UBUNTU 12.04 AND LATER
+#########################################################
+
+  sudo add-apt-repository ppa:mscore-ubuntu/mscore-stable
+  sudo apt-get update
+  sudo apt-get install musescore
+
+#########
+Spotify
+############
+snap://spotify
+https://www.spotify.com/us/download/linux/
+
+ver.		1.1.0.237.g378f6f25-11 
+
+source:		Snap Store
+
+
+###########
+GRASS 7.4
+############
+
+1.a) Users of LTS Ubuntu release: Add Ubuntu Unstable PPA: 
+sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable
+
+# 1.b) Users of non-LTS release (like Ubuntu 17.10): Add GRASS Stable PPA
+sudo add-apt-repository ppa:grass/grass-stable
+
+# 2. Then update cache and install GRASS GIS
+sudo apt-get update
+sudo apt-get install grass
+
+
+
+
+#############
+MySQL
+############
+
+
+
+sudo apt-get remove --purge mysql* &&
+sudo apt-get purge mysql* &&
+sudo apt-get autoremove &&
+sudo apt-get autoclean && 
+sudo apt-get remove dbconfig-mysql
+   
+
+
+
+
+
+	#COMPLETELY purge MySQL!!!!!
+	
+sudo -i			<== login as root
+
+service mysql stop &&
+killall -KILL mysql mysqld_safe mysqld &&
+apt-get --yes purge mysql-server mysql-client &&
+apt-get --yes autoremove --purge &&
+apt-get autoclean &&
+deluser --remove-home mysql &&
+delgroup mysql &&
+rm -rf /etc/apparmor.d/abstractions/mysql /etc/apparmor.d/cache/usr.sbin.mysqld /etc/mysql /var/lib/mysql /var/log/mysql* /var/log/upstart/mysql.log* /var/run/mysqld
+updatedb
+exit
+
+
+
+
+	#RE-INSTALL MySQL
+https://www.tecmint.com/install-mysql-8-in-ubuntu/
+https://linuxconfig.org/install-mysql-on-ubuntu-18-04-bionic-beaver-linux
+
+
+
+wget -c https://dev.mysql.com/get/mysql-apt-config_0.8.10-1_all.deb 
+sudo dpkg -i mysql-apt-config_0.8.10-1_all.deb 
+<Select 'OK'>
+sudo apt update
+sudo apt install mysql-server mysql-client
+
+
+
+
+
+
+ Please provide a strong password that will be set for the root account 
+  │ of your MySQL database. Leave it blank to enable password less login     
+  │ using UNIX socket based authentication.  		<< NO!! DO NOT leave blank; enter password
+
+9cfbJJ#8656
+9cfbJJ#8656
+
+
+
+MySQL 8 uses a new authentication based on improved SHA256-based            
+ │ password methods. It is recommended that all new MySQL Server               
+ │ installations use this method going forward. This new authentication        
+ │ plugin requires new versions of connectors and clients, with support for    
+ │ this new authentication method (caching_sha2_password). Currently MySQL     
+ │ 8 Connectors and community drivers built with libmysqlclient21 support      
+ │ this new method. Clients built with older versions of libmysqlclient may    
+ │ not be able to connect to the new server.                                   
+ │                                                                             
+ │ To retain compatibility with older client software, the default             
+ │ authentication plugin can be set to the legacy value                        
+ │ (mysql_native_password) This should only be done if required third-party    
+ │ software has not been updated to work with the new authentication           
+ │ method. The change will be written to the file 
+
+
+Select default authentication plugin                                       
+ │                                                                            
+ │     Use Strong Password Encryption (RECOMMENDED)        
+
+
+
+
+Configuration file '/etc/mysql/conf.d/mysql.cnf'
+ ==> Deleted (by you or by a script) since installation.
+ ==> Package distributor has shipped an updated version.
+   What would you like to do about it ?  Your options are:
+    Y or I  : install the package maintainer's version
+    N or O  : keep your currently-installed version
+      D     : show the differences between the versions
+      Z     : start a shell to examine the situation
+ The default action is to keep your current version.
+*** mysql.cnf (Y/I/N/O/D/Z) [default=N] ? Y
+Installing new version of config file /etc/mysql/conf.d/mysql.cnf ...
+
+Configuration file '/etc/mysql/my.cnf.fallback'
+ ==> Deleted (by you or by a script) since installation.
+ ==> Package distributor has shipped an updated version.
+   What would you like to do about it ?  Your options are:
+    Y or I  : install the package maintainer's version
+    N or O  : keep your currently-installed version
+      D     : show the differences between the versions
+      Z     : start a shell to examine the situation
+ The default action is to keep your current version.
+*** my.cnf.fallback (Y/I/N/O/D/Z) [default=N] ? Y
+Installing new version of config file /etc/mysql/my.cnf.fallback ...
+
+Configuration file '/etc/mysql/mysql.cnf'
+ ==> Deleted (by you or by a script) since installation.
+ ==> Package distributor has shipped an updated version.
+   What would you like to do about it ?  Your options are:
+    Y or I  : install the package maintainer's version
+    N or O  : keep your currently-installed version
+      D     : show the differences between the versions
+      Z     : start a shell to examine the situation
+ The default action is to keep your current version.
+*** mysql.cnf (Y/I/N/O/D/Z) [default=N] ? Y
+Installing new version of config file /etc/mysql/mysql.cnf ...
+
+Configuration file '/etc/mysql/mysql.conf.d/mysqld.cnf'
+ ==> Deleted (by you or by a script) since installation.
+ ==> Package distributor has shipped an updated version.
+   What would you like to do about it ?  Your options are:
+    Y or I  : install the package maintainer's version
+    N or O  : keep your currently-installed version
+      D     : show the differences between the versions
+      Z     : start a shell to examine the situation
+ The default action is to keep your current version.
+*** mysqld.cnf (Y/I/N/O/D/Z) [default=N] ? Y
+Installing new version of config file /etc/mysql/mysql.conf.d/mysqld.cnf ...
+
+
+              
+
+
+
+	#login to MySQL
+$ sudo systemctl status mysql
+$ mysql -u root -p		<< -u == user; -p == password required
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 11
+Server version: 8.0.13 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
+
+mysql> \q
+mysql> exit
+
+
+
+
+	#TEST 1
+$ mysql -u root -p
+USE mysql;
+SELECT User, Host, plugin FROM mysql.user;
++------------------+-----------+-----------------------+
+| User             | Host      | plugin                |
++------------------+-----------+-----------------------+
+| mysql.infoschema | localhost | caching_sha2_password |
+| mysql.session    | localhost | caching_sha2_password |
+| mysql.sys        | localhost | caching_sha2_password |
+| root             | localhost | caching_sha2_password |	<< Note this!! GOOD
++------------------+-----------+-----------------------+
+
+compare:
++------------------+-----------+-----------------------+
+| User             | Host      | plugin                |
++------------------+-----------+-----------------------+
+| bruce            | 0.0.0.0   | caching_sha2_password |
+| root             | 0.0.0.0   | caching_sha2_password |
+| mysql.infoschema | localhost | caching_sha2_password |
+| mysql.session    | localhost | caching_sha2_password |
+| mysql.sys        | localhost | caching_sha2_password |
+| root             | localhost | auth_socket           |	<< BAD!! b/c didn't set password on installation
+
+
+
+
+
+	# INSTALL WORKBENCH
+https://dev.mysql.com/downloads/workbench/
+
+download, Open w/ Gdebi and install:
+mysql-workbench-community_8.0.13-1ubuntu18.04_amd64.deb
+
+
+	# create directory for workbench (o/w cannot connect to server)
+mysql-workbench %f
+Found /usr/lib/x86_64-linux-gnu/libproj.so.12
+Exception in logger: Could not create directory /home/bmarron/.mysql/workbench/log: Permission denied 
+
+
+	# workbench requires non-sudo acces to ~/.mysql folder!!!
+	# DO NOT LOGIN AS sudo with workbench
+	# make a new directory
+mkdir /home/bmarron/.mysql/
+
+
+
+	# Open MySQL session in workbench and select server connection
+	# should be prompted for password even for local server,
+
+$ mysql-workbench
+$ mysql-workbench		<< select local server by clicking, enter password (9cfbJJ#8656) and YES!!
+
+Localinstance 3306
+root
+localhost:3306
+
+
+
+
+
+
+
+
+
+	# if no connection
+$ sudo mousepad /etc/mysql/mysql.conf.d/mysqld.cnf	<< add "bind-address  = 0.0.0.0" to bottom of file
+$ sudo service mysql restart
+$ ss -ltn			
+
+
+State    Recv-Q    Send-Q        Local Address:Port        Peer Address:Port    
+LISTEN   0         128           127.0.0.53%lo:53               0.0.0.0:*       
+LISTEN   0         5                 127.0.0.1:631              0.0.0.0:*       
+LISTEN   0         128                 0.0.0.0:3306             0.0.0.0:*       << look for this!!
+LISTEN   0         5                     [::1]:631                 [::]:*       
+LISTEN   0         70                        *:33060                  *:*  
+
+
+	 # Option: create new a new, normal user for workbench
+https://askubuntu.com/questions/773446/unable-to-connect-via-mysql-workbench-to-localhost-in-ubuntu-16-04-passwordless
+
+mysql -u root -p
+CREATE USER 'admin'@'localhost' IDENTIFIED BY '9cfbJJ#8656';
+Query OK, 0 rows affected (0.10 sec)
+
+GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost' WITH GRANT OPTION;
+Query OK, 0 rows affected (0.12 sec)
+
+
+
+
+
+
+
+################
+mdbtools
+###################
+
+sudo apt install mdbtools
+
+
+Name	Description
+mdb-tables	list tables in the specified file
+mdb-schema	generate schema DDL for the specified file
+mdb-export	generate CSV style output for a table
+mdb-ver		version of the specified file
+mdb-header	support for using MDB data in C
+mdb-parsecsv	support for using MDB data in C
+mdb-sql	        command line SQL query tool
+
+
+mdb-tables ALL_NEI_CAP.mdb
+ALL_NEI_CAP_ANNUAL
+
+
+mdb-schema ALL_NEI_CAP.mdb
+CREATE TABLE [ALL_NEI_CAP_ANNUAL]
+ (
+	[TRIBAL_CODE]			Text (6), 
+	[STATE_ABBREV]			Text (4), 
+	[STATE_AND_COUNTY_FIPS_CODE]			Text (10), 
+	[FACILITY_REGISTRY_IDENTIFIER]			Text (24), 
+	[STATE_FACILITY_IDENTIFIER]			Text (30), 
+	[NTI_SITE_ID]			Text (40), 
+	[ORIS_FACILITY_CODE]			Text (12), 
+	[FACILITY_NAME]			Text (160), 
+	[LOCATION_ADDRESS]			Text (100), 
+	[CITY]			Text (120), 
+	[STATE]			Text (4), 
+	[ZIPCODE]			Text (28), 
+	[SIC_PRIMARY]			Text (8), 
+	[NAICS_PRIMARY]			Text (12), 
+	[NAICS_FLAG]			Text (6), 
+	[EMISSION_UNIT_ID]			Text (12), 
+	[ORIS_BOILER_ID]			Text (12), 
+	[PROCESS_ID]			Text (12), 
+	[SCC]			Text (20), 
+	[EMISSION_RELEASE_POINT_ID]			Text (12), 
+	[EMISSION_RELEASE_POINT_TYPE]			Text (4), 
+	[STACK_HEIGHT]			Numeric (6), 
+	[EXIT_GAS_TEMPERATURE]			Numeric (6), 
+	[STACK_DIAMETER]			Numeric (6), 
+	[EXIT_GAS_VELOCITY]			Numeric (7), 
+	[EXIT_GAS_FLOW_RATE]			Numeric (7), 
+	[STACK_DEFAULT_FLAG]			Text (20), 
+	[X_COORDINATE]			Numeric (6), 
+	[Y_COORDINATE]			Numeric (6), 
+	[LOCATION_DEFAULT_FLAG]			Text (20), 
+	[POLLUTANT_CODE]			Text (18), 
+	[ANNUAL_EMISSIONS]			Double, 
+	[PROCESS_MACT_CODE]			Text (12), 
+	[PROCESS_MACT_COMPLIANCE_STATUS]			Text (12), 
+	[MACT_FLAG]			Text (30), 
+	[FACILITY_CATEGORY]			Text (4), 
+	[HAP_EMISSIONS_PERFORMANCE_LEVL]			Text (4), 
+	[START_DATE]			Text (16), 
+	[END_DATE]			Text (16), 
+	[PERIOD_DAYS_PER_WEEK]			Numeric (2), 
+	[EMISSION_TYPE]			Text (4), 
+	[CONTROL_STATUS]			Text (24), 
+	[DESCRIPTION]			Text (510)
+);
+
+
+
+mdb-export -Q ALL_*.mdb ALL_NEI_CAP_ANNUAL >> test.txt
+
+
+
+
+
+###############
+Maven
+#################
+
+sudo apt install maven
+
+
+#############
+blueman
+###########
+
+sudo apt install blueman
+
+check:
+sudo rfkill list
+sudo service bluetooth start
+
+
+Open "Bluetooth manager" from Xcfe icon 
+
+
+###########
+QGIS
+(Bionic LTS 18.04)
+###############
+
+sudo mousepad /etc/apt/sources.list
+	deb https://qgis.org/debian bionic main
+
+wget -O - https://qgis.org/downloads/qgis-2017.gpg.key | gpg --import
+gpg --fingerprint CAEB3DC3BDF7FB45
+gpg --export --armor CAEB3DC3BDF7FB45 | sudo apt-key add -
+sudo apt update
+
+sudo apt install qgis python-qgis qgis-plugin-grass
+
+
+
+
+
+
+#############
+Google Earth
+##############
+
+wget https://dl.google.com/dl/earth/client/current/google-earth-pro-stable_current_amd64.deb
+
+$ ls google-earth-pro-stable_current_amd64.deb 
+$ sudo gdebi google-earth-pro-stable_current_amd64.deb 
+$ sudo rm google-earth-pro-stable_current_amd64.deb
+
+$ google-earth-pro
+
+
+
+##################
+install Anaconda
+###################
+
+https://www.digitalocean.com/community/tutorials/how-to-install-anaconda-on-ubuntu-18-04-quickstart
+http://docs.anaconda.com/anaconda/install/linux/
+https://www.anaconda.com/download/#download		<<use Python 2.7
+
+
+	#do a checksum
+sha256sum Anaconda2-5.3.0-Linux-x86_64.sh
+
+[Output
+50eeaab24bfa2472bc6485fe8f0e612ed67e561eda1ff9fbf07b62c96443c1be  Anaconda2-5.3.0-Linux-x86_64.sh
+]
+
+
+bash Anaconda2-5.3.0-Linux-x86_64.sh
+
+
+
+[Do you wish the installer to initialize Anaconda2
+in your /home/bmarron/.bashrc ? [yes|no]
+yes
+]
+
+[Anaconda is partnered with Microsoft! Microsoft VSCode is a streamlined
+code editor with support for development operations like debugging, task
+running and version control.
+
+To install Visual Studio Code, you will need:
+  - Administrator Privileges
+  - Internet connectivity
+Visual Studio Code License: https://code.visualstudio.com/license
+
+Do you wish to proceed with the installation of Microsoft VSCode? [yes|no]
+no
+]
+
+
+	# restart to find anaconda commands
+
+anaconda-navigator
+spyder
+jupyter notebook		<== open terminal in notebook folder
+
+
+
+###############
+update Anaconda
+################
+
+---- update Anaconda ------------
+
+conda update conda
+conda update --all
+
+	# more specific 
+conda update -n root conda
+conda update anaconda
+
+
+
+
+
+#############
+LibreOffice Impress
+LibreOffice Draw
+####################
+
+https://ubuntu.pkgs.org/18.04/ubuntu-updates-main-amd64/libreoffice-impress_6.0.6-0ubuntu0.18.04.1_amd64.deb.html
+
+
+	a. download and use gdebi installer
+libreoffice-impress_6.0.6-0ubuntu0.18.04.1_amd64.deb
+
+
+
+
+
+
+###########
+pdfgrep
+###########
+
+The following packages will be DOWNGRADED:
+  libpoppler-glib8 libpoppler73 poppler-utils 
+The following NEW packages will be installed:
+  libpoppler-cpp0v5{a} pdfgrep 
+
+
+
+###########################
+Unity Plugin's config manager
+CCSM
+########################
+https://www.howtogeek.com/101006/how-to-tweak-unity-on-ubuntu-with-the-compizconfig-settings-manager/
+
+sudo aptitude install compizconfig-settings-manager
+
+
+unity –reset
+
+##############
+dos2unix
+#############
+
+https://sourceforge.net/projects/dos2unix/postdownload
+
+
+
+
+
+
+
+########
+Git
+########
+
+sudo add-apt-repository ppa:git-core/ppa
+
+
+
+############
+OpenProject
+############
+
+https://www.openproject.org/download-and-installation/
+
+wget -qO- https://dl.packager.io/srv/opf/openproject-ce/key | sudo apt-key add -
+sudo aptitude install apt-transport-https
+sudo wget -O /etc/apt/sources.list.d/openproject-ce.list \
+https://dl.packager.io/srv/opf/openproject-ce/stable/7/installer/ubuntu/16.04.repo
+sudo apt update
+sudo apt upgrade
+sudo aptitude install openproject
+
+sudo openproject reconfigure
+
+https://community.openproject.com/
+http://localhost/
+
+port 80 is the default port. 
+You should be able to access your OpenProject installation via http://localhost 
+(provided you installed it on your local machine - otherwise replace localhost with the IP address where you installed it).
+Your OpenProject installation should be accessible on port 80 (http). 
+A default admin-account is created for you having the following credentials:
+
+Username: admin 
+Password: 9cfbJJ#8656
+
+
+
+############
+youtube-dl
+#############
+https://itsfoss.com/download-youtube-linux/
+
+sudo apt install youtube-dl
+sudo chmod a+rx /usr/local/bin/youtube-dl
+
+YouTube videos have different resolutions, you first need to check available video formats of a given YouTube video. 
+For that run youtube-dl with “-F” option. It will show you a list of available formats.
+
+youtube-dl -F <video_url>
+
+
+Now among the available video formats, choose one that you like.
+ For example, if you want to download it in MP4 version and 1080 pixel, you should use:
+
+youtube-dl -f 37<video_url>
+
+
+#########
+XnViewMP
+#########
+
+Graphic viewer, browser, converter.
+opens .emz graphicsfiles
+
+https://fileinfo.com/software/xnsoft/xnviewmp
+https://www.xnview.com/en/xnviewmp/#downloads
+
+
+
+
+
+#######
+R pkg "gsl"
+###########
+https://support.rstudio.com/hc/en-us/community/posts/200633978-Problem-loading-package-gsl
+
+"configure: error: gsl-config not found, is GSL installed?"
+
+
+needs this lib:
+sudo aptitude install libgsl-dev
+
+
+
+###########
+R
+##########
+
+sudo apt install r-base r-base-dev
+sudo aptitude install r-base r-base-dev
+
+
+
+
+
+
+############
+Atom
+(text editor/IDE from GitHub)
+#############
+
+https://atom.io/
+http://flight-manual.atom.io/getting-started/sections/installing-atom/
+
+
+wget -qO - https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add -
+apt-key list
+sudo sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list'
+sudo apt-get update
+sudo apt-get install atom
+
+
+	#alternate from downloaded .deb 
+sudo dpkg -i atom-amd64.deb
+	# Install Atom's dependencies if they are missing
+sudo apt-get -f install
+
+
+
+##########
+Candela
+(for RStudio)
+#################
+
+https://candela.readthedocs.io/en/latest/
+
+install.packages('devtools')
+devtools::install_github('Kitware/candela', subdir='R/candela')
+
+
+
+#################
+plotly
+(for Rstudio)
+#################
+
+install.packages("plotly")
+
+
+###############
+Armory
+(bit coin hard wallet)
+########################
+
+https://www.bitcoinarmory.com/download/
+
+Advanced Bitcoin Wallet Management Software
+Armory is advanced program for managing multiple Bitcoin wallets with the highest level of security available.
+Use top-of-the-line wallet encryption, print permanent paper backups of your wallets, and store your Bitcoins on 
+an offline computer for maximum security from online threats.
+Armory is open-source software, partially licensed under the AGPLv3 license and partially under the MIT license. 
+
+the default location for the Armory wallets and settings:
+**Windows:** C:\Users\<username>\AppData\Roaming\Armory 
+**Linux:** /home/<username>/.armory 
+**OS X:** /Users/<username>/Library/Application Support/Armory
+
+By default, Armory is installed to the following locations:
+**Windows:** C:\Program Files (x86)\Armory 
+**Linux:** /usr/lib/armory 
+**OS X:** /Applications/Armory.app
+
+For reference, Bitcoin-Core uses the exact same paths as above, if you replace all instances of “Armory” with “Bitcoin”. 
+In fact, Armory did this to provide consistency to the users.
+
+
+!!! Armory installed successfully !!!
+
+  Armory can be removed at any time, either through your package 
+  manager, or through the following command:
+
+sudo dpkg -r armory
+
+
+
+
+##############
+Zotero (stand alone)
+###################
+
+https://forums.zotero.org/discussion/63880/linux-installation-instructions-for-standalone
+
+So, here are MY instructions for the benefit of others.
+
+***After you download Zotero Standalone for Linux:***
+
+1. Extract the contents of the .tar.bz2 into a folder at some permanent location of your choosing.
+2. Open a terminal and navigate to that folder ("cd" command). Then launch zotero using the command "./zotero" (without the quotes)
+3. You don't need to do step 2 every time you want to run zotero. Just the first time. When it runs the first time, it should create a shortcut, 
+so that from then on, you can launch zotero in the same way as any of your other programs (e.g. via the "dash" in Ubuntu).
+
+
+	#Maybe not for v.5?? DO NOT USE
+https://askubuntu.com/questions/332109/how-to-install-zotero-in-ubuntu
+
+sudo apt-add-repository ppa:smathot/cogscinl 
+sudo apt-get update
+sudo apt-get install zotero-standalone
+
+#######
+php
+#######
+
+sudo aptitude install php
+
+
+
+###########################
+fonts
+TrueTypeFonts == .ttf files
+OpenTypeFonts ==> .otf files
+###############################
+
+fonts 3.28.0	gnome-font-viewer package 
+		View fonts on your system
+
+
+
+
+
+Fonts installed: 	/usr/share/fonts 	(package manager install)
+			/usr/local/share/fonts 	(manual install option)
+			~/.local/share/fonts	(fonts 3.28.0 installs here; 
+						  manual install option;
+						  found by LibreOffice)
+
+bruce@bruce-HP-Notebook:/usr/share/fonts$ ls
+cmap  cMap  opentype  truetype  type1  X11
+
+Install new fonts:
+Double-click on .otf or .ttf file (opens fonts 3.28.0 package)
+Click install
+
+Gotham-Black_0.otf
+./home/bruce/.local/share/fonts/Gotham-Black_0.otf
+
+Install new fonts:
+cp *.otf /usr/share/fonts/opentype
+sudo fc-cache -f -v
+
+
+fc-cache	>> build font information cache files
+
+
+
+
+
+
+
+#######
+themes
+########
+
+sudo add-apt-repository ppa:noobslab/themes &&
+sudo apt update &&
+sudo apt install vertex-theme
+
+
+#############
+Unity Tweak Tool
+##################
+
+Unity Tweak Tool is a settings manager for the Unity desktop. It provides users with a fast, simple 
+and easy-to-use interface with which to access many useful and little known features and settings of 
+the desktop environment that one may want to configure.
+Ubuntu Software Center
+
+
+sudo apt install unity-tweak-tool
+
+Synaptic ==> search for notify-osd .Install it . 
+
+
+
+
+################
+biber
+################
+https://tex.stackexchange.com/questions/25701/bibtex-vs-biber-and-biblatex-vs-natbib
+
+sudo apt install biber
+
+
+
+
+############
+ntp
+ntpdate
+###########
+
+sudo apt install ntpdate
+sudo apt-get install ntp
+sudo mousepad /etc/ntp.conf		<<server pool.ntp.org
+/etc/init.d/ntpd start
+ntpdate pool.ntp.org
+sudo ntpdate time.nist.gov
+
+sudo service ntp stop
+sudo ntpdate time.nist.gov
+sudo service ntp start
+
+
+##########
+rhino
+(to run java script .js)
+###########################
+
+sudo aptitude install rhino
+
+$ rhino *.js
+
+#############
+Skype
+16.04 xenial
+##############
+https://linuxconfig.org/how-to-install-skype-on-ubuntu-16-04-xenial-xerus-linux-64-bit
+https://www.skype.com/en/download-skype/skype-for-computer/
+
+ 
+All Skype for Linux clients version 4.3 and older will be retired on July 1, 2017. 
+To keep chatting, please install the latest version of Skype for Linux.
+
+
+sudo apt install software-properties-gtk
+software-properties-gtk
+sudo add-apt-repository "deb http://archive.canonical.com/ $(lsb_release -sc) partner"
+sudo dpkg --add-architecture i386
+sudo apt-get update
+sudo apt-get install skype
+
+
+
+
+
+
+#################
+XeLatex
+beamerthemetropolis errors
+#################
+
+sudo aptitude install texlive-xetex
+
+
+
+In LaTexilla,
+Build ==> Manage Build Tools		<< select the ones you want!
+									USE THESE:
+									LaTex --> PDF (Latexmk)
+									XeTex --> PDF (Latexmk)
+									"pdflatex" commmad
+
+################
+texlive-latex-extra
+pandoc error
+####################
+
+when running pandoc
+LaTeX Error: Command \textquotesingle unavailable in encoding T1
+
+
+Texlive that does not include 'upquote' among possible other packages. 
+I think upquote was the missing package but there may have been more. 
+I did not want to install texlive-full because of the large size. 
+Searching in the Debian Texlive packages yielded texlive-latex-extra.
+
+
+sudo apt-get install texlive-latex-extra
+
+
+
+
+#############
+imagemagick
+.png to .jpeg
+################
+http://ubuntuhandbook.org/index.php/2013/07/how-to-convert-png-to-jpg-on-ubuntu-via-command/
+https://graphicdesign.stackexchange.com/questions/5446/making-the-background-of-an-image-transparent-in-gimp/5454
+
+The "checkerboard" pattern you see indicates a transparent area setting.
+It is merely a "placeholder" to indicate to the designer that the area so marked is transparent. 
+If you save your image in a format that supports transparency (such as GIF or PNG) then it will retain the transparency; 
+if you save it as a JPEG, it will be converted to the background color (black)
+
+	a. open .png in GIMP and remove transparency layer; save
+Layer → Tranparency → Remove Alpha Channel
+
+	b. convert .png to .jpg w/ imagemagick
+
+
+
+
+sudo aptitude install imagemagick
+
+convert ubuntuhandbook.png ubuntuhandbook.jpg
+convert ubuntuhandbook.png -quality 90 ubuntuhandbook.jpg
+
+
+################
+R and rgdal
+##############
+
+apt-cache showpkg r-base
+Package: r-base
+Versions: 
+3.4.1-2xenial0 (/var/lib/apt/lists/cran.stat.ucla.edu_bin_linux_ubuntu_xenial_Packages) (/var/lib/dpkg/status)
+....
+
+sudo apt-get install -f r-base=3.4.1-2xenial0		<<already the most recent
+
+
+dpkg --status r-base
+Package: r-base
+Status: install ok installed
+Priority: optional
+Section: gnu-r
+Installed-Size: 59
+Maintainer: Dirk Eddelbuettel <edd@debian.org>
+Architecture: all
+Version: 3.4.1-2xenial0
+Depends: r-base-core (>= 3.4.1-2xenial0), r-recommended (= 3.4.1-2xenial0)
+Recommends: r-base-html, r-doc-html
+Suggests: ess, r-doc-info | r-doc-pdf
+Description: GNU R statistical computation and graphics system
+ R is a system for statistical computation and graphics.  It consists
+ of a language plus a run-time environment with graphics, a debugger,
+ access to certain system functions, and the ability to run programs
+ stored in script files.
+ ....
+
+
+which R	
+/home/bruce/anaconda2/bin/R			<< b/c Anaconda2 4.3.1 installer added, export PATH="/home/bruce/anaconda2/bin:$PATH"
+						   to ~/.bashrc
+						<< comment this out in ~/.bashrc
+						<< add to ~/.bashrc,
+							export PATH="/usr/lib/bin:$PATH"
+							export PATH="$PATH:/home/bruce/anaconda2/bin"
+
+
+echo "$PATH"
+/usr/lib/bin:/home/bruce/bin:/home/bruce/.local/bin:/usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/bruce/anaconda2/bin
+
+
+$ which R
+/usr/bin/R					<< this is a shell script; points to, R_HOME_DIR=/usr/lib/R
+
+
+
+
+export RSTUDIO_WHICH_R=/usr/lib/bin/R		<< option (NOT RUN): add to ~/.profile ???
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##############
+Startup Disc Creator
+####################
+https://help.ubuntu.com/community/Installation/FromUSBStick
+
+Ubuntu Software Center
+
+
+#####################
+Hub
+(see GitHub folder)
+######################
+
+/home/bruce/Downloads/hub-linux-amd64-2.3.0-pre10/
+
+
+
+############
+Certifcates
+############
+Adding trusted root certificates
+
+http://manuals.gfi.com/en/kerio/connect/content/server-configuration/ssl-certificates/adding-trusted-root-certificates-to-the-server-1605.html
+http://www.digi-sign.com/support/client%20certificates/import%20firefox
+
+In cryptography, PKCS #12 defines an archive file format for storing many cryptography objects as 
+a single file. It is commonly used to bundle a private key with its X.509 certificate or to bundle 
+all the members of a chain of trust. 
+The filename extension for PKCS #12 files is " .p12 " or " .pfx ".
+
+
+To import a certificate along with the associated private key from a PKCS#12 file (.pfx/.p12) 
+into your Mozilla Firefox web browser:
+
+Preferences ==> Advanced ==> Certificates ==> View Certificates ==> Your Certificates
+    Click the Import button
+    Locate the '.pfx/.p12' file you transported/exported, select it and click Open
+    Enter the password you created when exporting the certificate
+    Click OK to complete the certificate import
+    Your certificate is now installed and it should be visible on the list of your certificates
+
+
+
+
+
+########
+Java
+#########
+
+https://www.atlantic.net/community/howto/install-java-jre-jdk-on-ubuntu-16-04/
+
+sudo aptitude install default-jdk
+sudo update-alternatives --config java
+sudo mousepad /etc/profile
+	export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java"
+	export PATH=$JAVA_HOME/bin:$PATH
+source /etc/profile
+
+
+
+###########
+Cisco VPN
+###########
+
+https://oit.ncsu.edu/my-it/wireless/#elsewhere
+https://oit.ncsu.edu/campus-it/campus-data-network/network-security/vpn/
+https://oit.ncsu.edu/campus-it/campus-data-network/network-security/vpn/vpn-installation-instructions-for-ubuntu-and-red-hat-linux/
+ 
+eduroam (education roaming) is now available at NC State 
+For more information about this service visit eduroam.org.
+
+Download installer:
+https://dc1-vpn-1.ncstate.net/CACHE/stc/4/index.html
+
+
+sudo sh ./vpnsetup.sh 
+Failed to start vpnagentd.service: Unit vpnagentd.service failed to load: No such file or directory.
+
+sudo apt-get update &&
+sudo apt-get install lib32z1 lib32ncurses5
+
+
+sudo sh ./vpnsetup.sh 
+Warning: vpnagentd.service changed on disk. Run 'systemctl daemon-reload' to reload units.
+
+
+
+#########
+unix2dos
+dos2unix
+#########
+
+sudo apt install dos2unix
+
+
+
+
+
+############
+Chrome
+############
+
+used Software Installer option for .deb pkg
+
+
+
+
+
+########
+runit
+#########
+http://smarden.org/runit/install.html
+
+	#causes the system error on startup
+	#included as requirement from git-all
+
+use Synaptic
+
+
+###########
+g++
+##########
+
+sudo aptitude install g++-multilib
+
+
+
+
+############
+WiFi Radar
+##############
+
+WiFi Radar enables you to scan for available wireless networks and create
+profiles containing the network configuration options for your preferred
+networks.
+
+install w/ Synaptic
+
+##########
+Synaptic
+##########
+apt-get install synaptic
+
+
+
+##########
+gtk++
+#######
+
+sudo apt-get install libgtk-3-dev
+
+
+##########
+X Window system libraries and header files are required 
+###########
+
+	??
+sudo aptitude install xorg-dev
+
+
+
+############
+intltool
+##########
+
+sudo apt install intltool
+
+
+#############
+xfce4-indicator-plugin
+###############
+http://goodies.xfce.org/projects/panel-plugins/xfce4-indicator-plugin
+
+
+
+
+##############
+gdebi
+#########
+
+gdebi-gtk
+
+
+
+###############
+ffmpeg
+(video player)
+###############
+
+sudo add-apt-repository ppa:jonathonf/ffmpeg-3
+sudo apt update && sudo aptitude install ffmpeg libav-tools x264 x265
+
+#########
+Firefox
+##########
+
+https://addons.mozilla.org/en-us/firefox/addon/markdown-viewer/
+
+
+############
+jupyter notebooks
+(running live)
+(running R)
+(hiding/showing output in slides)
+################
+
+http://stackoverflow.com/questions/35173417/interactive-jupyter-ipython-notebooks-in-slideshow-mode
+As you know... we love Jupyter/IPython and we like Reveal.js too.
+https://github.com/damianavila/RISE
+https://www.dataquest.io/blog/jupyter-notebook-tips-tricks-shortcuts/
+https://github.com/kirbs-/hide_code
+
+
+conda install -c damianavila82 rise
+conda install -c r r-essentials
+pip install rpy2
+
+
+pip install hide_code
+jupyter nbextension install --py hide_code --sys-prefix
+jupyter nbextension enable --py hide_code --sys-prefix
+jupyter serverextension enable --py hide_code
+
+pip install pydataset
+
+
+
+#####################
+MonoDevelop (32-bit)
+######################
+http://www.mono-project.com/docs/getting-started/install/linux/#debian-ubuntu-and-derivatives
+
+
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
+echo "deb http://download.mono-project.com/repo/debian xenial main" | sudo tee /etc/apt/sources.list.d/mono-xamarin.list
+echo "deb http://download.mono-project.com/repo/debian wheezy main" | sudo tee /etc/apt/sources.list.d/mono-xamarin.list
+sudo apt update
+
+
+
+###########
+aptitude
+############
+the package manager aptitude
+not installed as default on Ubuntu systems can work wonders for faulty package dependencies.
+
+sudo apt-get install aptitude 
+
+
+
+##############
+GRASS 7.2.0
+##############
+http://gis.stackexchange.com/questions/139727/how-to-fix-the-grass7-package-available-from-the-ubuntugis-unstable-ppa
+
+	a.
+sudo apt purge grass grass-core grass-doc grass-gui
+
+	b.
+sudo aptitude install grass grass-core grass-doc grass-gui grass-dev
+
+Open from Whisker Menu 
+
+
+
+################
+rgdal in RStudio
+(problems after GRASS install)
+################
+http://stackoverflow.com/questions/15569720/install-rgdal-library-in-rstudio-gdalallregister-not-found-in-libgdal
+http://stackoverflow.com/questions/31342575/rgdal-wont-install
+https://stat.ethz.ch/pipermail/r-sig-geo/2016-August/024779.html
+http://installion.co.uk/ubuntu/vivid/universe/g/gdal-bin/uninstall/index.html
+http://robinlovelace.net/r/2013/11/26/installing-rgdal-on-ubuntu.html
+https://www.mail-archive.com/r-sig-geo@r-project.org/msg14543.html
+http://stackoverflow.com/questions/16710047/usr-bin-ld-cannot-find-lnameofthelibrary
+https://github.com/BVLC/caffe/issues/4953
+http://www.stat.ucdavis.edu/~duncan/R/dynload/
+https://cran.r-project.org/web/packages/rgdal/index.html
+
+
+---------------------------------------
+Dell (64-bit)
+---------------------------------------
+
+	a. 
+sudo apt install aptitude			<== offers options if don't select the first solution
+conda update anaconda
+conda install -c salford_systems gcc-5=5.4.0
+conda install -c anaconda libgcc=5.2.0
+conda install -c anaconda libgdal=2.1.0
+conda install -c ioos libspatialite=4.3.0a
+
+sudo aptitude install build-essential
+sudo aptitude install libgdal-dev libproj-dev libgdal1-dev
+sudo aptitude install libgeos++-dev libgeos-3.5.1
+
+
+	b. test installation outside of R
+cd /tmp/Rtmp6IxXdq/downloaded_packages
+mkdir ~/Desktop/test_rgdal
+cp rgdal_1.2-6.tar.gz ~/Desktop/test_rgdal
+cd /home/bmarron/Desktop/test_rgdal/rgdal/
+./configure > ~/Desktop/rgdaltest.txt
+
+	# links
+sudo ln -sf /home/bmarron/anaconda2/lib/libgdal.so.20.1.0 /usr/lib/libgdal.so.20
+sudo ln -sf /home/bmarron/anaconda2/lib/libgeos-3.5.0.so /usr/lib/libgeos-3.5.0.so &&
+sudo ln -sf /home/bmarron/anaconda2/lib/libmfhdf.so.0.0.0 /usr/lib/libmfhdf.so.0 &&
+sudo ln -sf /home/bmarron/anaconda2/lib/libdf.so.0.0.0 /usr/lib/libdf.so.0 &&
+sudo ln -sf /home/bmarron/anaconda2/pkgs/kealib-1.4.6-0/lib/libkea.so.1.4.6 /usr/lib/libkea.so.1.4.6 &&
+sudo ln -sf /home/bmarron/anaconda2/pkgs/hdf5-1.8.17-1/lib/libhdf5_hl.so.10.1.0 /usr/lib/libhdf5_hl.so.10 &&
+sudo ln -sf /home/bmarron/anaconda2/lib/libhdf5_cpp.so.12.0.0 /usr/lib/libhdf5_cpp.so.12 &&
+sudo ln -sf /home/bmarron/anaconda2/pkgs/hdf5-1.8.17-1/lib/libhdf5.so.10.2.0 /usr/lib/libhdf5.so.10
+
+R CMD INSTALL --library=/home/bmarron/R/i686-pc-linux-gnu-library/3.3 rgdal_1.2-6.tar.gz
+
+
+/anaconda2/lib/libgeos-3.5.0.so
+
+
+----------------------------------------
+compaq (¡¡NO GO!!)
+--------------------------------------
+	a.
+sudo rm /usr/lib/libgeos-3.5.0 &&
+sudo rm /usr/lib/libmfhdf.so.0 &&
+sudo rm /usr/lib/libdf.so.0 &&
+sudo rm /usr/lib/libkea.so.1.4.6 &&
+sudo rm /usr/lib/libhdf5_hl.so.10 &&
+sudo rm /usr/lib/libhdf5_cpp.so.12 &&
+sudo rm /usr/lib/libhdf5.so.10
+
+	b.
+sudo rm -rf ~/anaconda2
+mousepad ~/.bashrc
+	export LD_LIBRARY_PATH="/lib:$LD_LIBRARY_PATH"
+	export PATH="/usr/lib:$PATH"
+reboot
+bash Anaconda2-4.3.1-Linux-x86.sh
+
+	c.
+sudo apt install aptitude
+sudo aptitude update
+sudo aptitude dist-upgrade
+
+	d.
+sudo aptitude install build-essential &&
+sudo aptitude install g++ &&
+sudo aptitude install gcc &&
+sudo aptitude install libgdal-dev libproj-dev libgdal1-dev &&
+sudo aptitude install libgeos++-dev libgeos-3.5.0
+
+	e.
+sudo aptitude purge 
+sudo aptitude update
+sudo aptitude install r-base r-base-dev
+
+	f.
+sudo ln -sf /usr/lib/i386-linux-gnu/libspatialite.so.7.1.0 /usr/lib/libspatialite.so.7
+R CMD INSTALL --library=/home/bmarron/R/i686-pc-linux-gnu-library/3.3 rgdal_1.2-6.tar.gz
+R CMD ldd /home/bmarron/R/i686-pc-linux-gnu-library/3.3/rgdal/libs/rgdal.so >> ~/Desktop/rgdal_dependencies.txt
+
+
+--in Rstudio----
+	.libPaths() 
+
+
+------------------------------------------------------------------------------------
+first try
+------------------------------------------------------------------------------------
+	a.
+sudo apt install aptitude 
+sudo apt remove libgdal-dev
+sudo apt remove libproj-dev
+
+	b.
+sudo aptitude install libgdal1i-dev 
+The following NEW packages will be installed:
+  libgdal-dev libogdi3.2-dev{a} libproj-dev{a} 
+The following packages will be REMOVED:
+  libdapserver7v5{u} libfreetype6-dev{u} libwebpdemux1{u} uuid-dev{u} 
+
+The following packages have unmet dependencies:
+ libwebp-dev : Depends: libwebpdemux1 (= 0.4.4-1) but it is not going to be installed.
+ libdap-dev : Depends: libdapserver7v5 (= 3.15.1-7) but it is not going to be installed.
+              Depends: uuid-dev but it is not going to be installed.
+The following actions will resolve these dependencies:
+
+     Remove the following packages:                       
+1)     libdap-dev                                         
+2)     libwebp-dev                                   
+ Keep the following packages at their current version:
+3)     libgdal-dev [Not Installed]                        
+
+
+	c. 
+sudo aptitude install libgdal-dev 
+The following NEW packages will be installed:
+  libdap-dev{a} libdapserver7v5{a} libgdal-dev libgeos-dev{a} libgif-dev{a} 
+  libogdi3.2-dev{a} libpoppler-private-dev{a} libproj-dev{a} 
+  libspatialite-dev{a} libwebp-dev{a} libwebpdemux1{a} libxerces-c-dev{a} 
+  libxml2-dev{a} uuid-dev{a} 
+
+
+
+	d.
+$ sudo aptitude install libproj-dev
+libproj-dev is already installed at the requested version (4.9.2-2)
+
+
+	e.
+sudo apt-get remove gdal-bin
+sudo add-apt-repository -y ppa:ubuntugis/ubuntugis-unstable
+sudo apt update 
+sudo apt upgrade 
+sudo apt install gdal-bin python-gdal
+sudo apt install -f
+sudo aptitude install build-essential
+
+
+
+	f.
+sudo aptitude install libgeos++-dev
+
+
+	g.
+--- R output -----------------
+> install.packages("rgdal",dependencies=TRUE)
+.....
+checking gdal: linking with --libs only... no
+checking gdal: linking with --libs and --dep-libs... no
+/usr/bin/ld: warning: libmfhdf.so.0, needed by /home/bmarron/anaconda2/lib/libgdal.so, not found (try using -rpath or -rpath-link)
+/usr/bin/ld: warning: libdf.so.0, needed by /home/bmarron/anaconda2/lib/libgdal.so, not found (try using -rpath or -rpath-link)
+/usr/bin/ld: warning: libkea.so.1.4.6, needed by /home/bmarron/anaconda2/lib/libgdal.so, not found (try using -rpath or -rpath-link)
+/usr/bin/ld: warning: libhdf5_hl.so.10, needed by /home/bmarron/anaconda2/lib/libgdal.so, not found (try using -rpath or -rpath-link)
+/usr/bin/ld: warning: libhdf5_cpp.so.12, needed by /home/bmarron/anaconda2/lib/libgdal.so, not found (try using -rpath or -rpath-link)
+/usr/bin/ld: warning: libhdf5.so.10, needed by /home/bmarron/anaconda2/lib/libgdal.so, not found (try using -rpath or -rpath-link)
+
+
+
+	h.
+ld -libexpat.so --verbose
+ld -libmfhdf --verbose
+
+
+
+	i. 
+locate <library>
+sudo ln -s /home/bmarron/anaconda2/lib/libexpat.so.1.6.0 /usr/lib/libexpat.so &&
+sudo ln -sf /home/bmarron/anaconda2/lib/libmfhdf.so.0.0.0 /usr/lib/libmfhdf.so.0 &&
+sudo ln -sf /home/bmarron/anaconda2/lib/libdf.so.0.0.0 /usr/lib/libdf.so &&
+sudo ln -sf /home/bmarron/anaconda2/lib/libkea.so.1.4.6 /usr/lib/libkea.so.1.4.6 &&
+sudo ln -sf /home/bmarron/anaconda2/lib/libhdf5_hl.so.10.1.0 /usr/lib/libhdf5_hl.so.10 &&
+sudo ln -sf /home/bmarron/anaconda2/lib/libhdf5_cpp.so.12.0.0 /usr/lib/libhdf5_cpp.so.12 &&
+sudo ln -sf /home/bmarron/anaconda2/lib/libhdf5.so.10.2.0 /usr/lib/libhdf5.so.10 &&
+sudo ln -sf /home/bmarron/anaconda2/lib/libgeos_c.so.1.9.0 /usr/lib/libgeos_c.so.1 &&
+sudo ln -sf /home/bmarron/anaconda2/lib/libspatialite.so.7.1.0 /usr/lib/libspatialite.so.7 &&
+sudo ln -sf /home/bmarron/anaconda2/lib/libgdal.so.20.1.0 /home/bmarron/anaconda2/lib/libgdal.so.20 &&
+sudo ln -sf /home/bmarron/anaconda2/lib/libgdal.so.20.1.0 /usr/lib/libgdal.so.20
+
+
+sudo ln -sf /home/bmarron/anaconda2/lib/gcc /usr/bin/gcc
+
+
+
+
+	j.
+conda install -c anaconda gcc=4.8.5
+conda install -c asmeurer libgcc=4.8.5
+
+
+!! PARTIAL SUCCESS !!
+
+
+	k.  successfully discovered link dependencies (=> <some-library>)
+R CMD ldd /home/bmarron/R/i686-pc-linux-gnu-library/3.3/rgdal/libs/rgdal.so
+
+
+	l.
+---- uninstall/install R --------
+sudo apt-get purge --auto-remove r-base-core r-base-dev 
+sudo aptitude update
+sudo aptitude install r-base r-base-dev
+in Rstudio
+	.libPaths() 
+
+
+---- remove rgdal from R package library ---------------
+library(utils)
+remove.packages(rgdal, lib="~/R/i686-pc-linux-gnu-library/3.3")
+getLoadedDLLs()
+
+
+---- uninstall free-range gdal -------------------
+sudo apt-get purge --auto-remove gdal-bin
+
+gdalinfo --version
+GDAL 2.1.0, released 2016/04/25
+
+which gdalinfo
+/home/bmarron/anaconda2/bin/gdalinfo
+
+
+---- uninstall/install RStudio --------
+
+wget https://download1.rstudio.org/rstudio-1.0.136-i386.deb --no-check-certificate &&
+sudo gdebi -n rstudio-1.0.136-i386.deb &&
+rm rstudio-1.0.136-i386.deb
+
+sudo apt-get purge --auto-remove rstudio
+wget https://download1.rstudio.org/rstudio-0.99.903-i386.deb --no-check-certificate
+sudo gdebi -n rstudio-0.99.903-i386.deb
+rm rstudio-0.99.903-i386.deb
+
+
+
+---- update Anaconda ------------
+conda update conda
+conda update anaconda
+conda install libgcc
+conda install -c anaconda gdal=2.1.0
+conda install -c asmeurer libgcc=4.8.5
+
+
+sudo aptitude install libproj-dev
+sudo aptitude install libgdal-dev
+sudo aptitude install libc6-dev
+
+
+	m.
+http://kbroman.org/pkg_primer/pages/build.html
+R CMD INSTALL --library=/home/bmarron/R/i686-pc-linux-gnu-library/3.3 rgdal_1.2-6.tar.gz
+
+1==>	download rgdal_1.2-6.tar.gz
+2==>	extract 
+3==>	cd rgdal
+4==>	./configure
+
+conda info --envs
+conda remove --name root gcc
+conda install -c salford_systems gcc-5=5.4.0
+
+
+
+	n.
+1 ==>	copy /rgdal (w/ rgdal.so) from Dell library
+2 ==>	paste into R library
+3==> 	make links based on error outputs from trying to load rgdal in RStudio
+
+sudo ln -s /usr/lib/i386-linux-gnu/libproj.so.9.1.0 /usr/lib/libproj.so.0
+sudo aptitude install libgeos++-dev
+sudo ln -s /usr/lib/i386-linux-gnu/libgeos-3.5.1.so /usr/lib/libgeos-3.1.0.so
+sudo ln -s /usr/lib/i386-linux-gnu/libgif.so.7.0.0 /usr/lib/libgif.so.4
+sudo ln -s /usr/lib/i386-linux-gnu/libtiff.so.5.2.4 /usr/lib/libtiff.so.3
+sudo ln -s /usr/lib/i386-linux-gnu/libnetcdf.so.11.0.0 /usr/lib/libnetcdf.so.4
+sudo ln -s /usr/lib/i386-linux-gnu/libpq.so.5.8 /usr/lib/libpq.so.4
+sudo ln -s /usr/lib/i386-linux-gnu/libssl3.so.1d /usr/lib/libssl.so.6
+sudo ln -s /usr/lib/i386-linux-gnu/libcrypto.so /usr/lib/libcrypto.so.6
+sudo ln -s /usr/lib/libgdal.so.20.1.3 /usr/lib/libgdal.so.1
+*sudo ln -s /usr/lib/i386-linux-gnu/libspatialite.so.7.1.0 /usr/lib/libspatialite.so.7
+*no go; all others moved rgdal forward
+
+https://www.mail-archive.com/archesproject@googlegroups.com/msg01953.html
+https://docs.djangoproject.com/en/1.10/ref/contrib/gis/install/geolibs/#geos
+
+file /home/bmarron/anaconda2/lib/libspatialite.so.7.1.0
+ELF 32-bit LSB shared object, Intel 80386, version 1 (SYSV), dynamically linked, BuildID[sha1]=fca88a338ae29266ac998390543238291a104c02, stripped
+file /usr/lib/i386-linux-gnu/libspatialite.so.7.1.0
+ELF 32-bit LSB shared object, Intel 80386, version 1 (SYSV), dynamically linked, BuildID[sha1]=fca88a338ae29266ac998390543238291a104c02, stripped
+
+
+
+
+--in R----
+dyn.load("/home/bmarron/R/i686-pc-linux-gnu-library/3.3/rgdal/libs/rgdal.so", local = FALSE)
+
+
+
+!! SUCCESSS !!
+
+
+
+########
+xelatex
+########
+
+sudo apt get install xelatex
+
+
+
+
+###################
+static wkhtmltopdf
+####################
+http://stackoverflow.com/questions/3713004/help-installing-static-binary-for-wkhtmltopdf
+
+
+$ sudo apt remove --purge wkhtmltopdf
+
+$ sudo apt update &&
+sudo apt autoclean &&
+sudo apt clean &&
+sudo apt autoremove
+
+	a. use this
+$sudo apt get install wkhtmltopdf
+
+	b. did this but didn't work
+sudo apt install openssl build-essential xorg libssl-dev
+wget https://downloads.wkhtmltopdf.org/0.12/0.12.4/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
+tar xvfJ wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
+sudo chown root:root wkhtmltox
+sudo mv wkhtmltox /usr/local/bin/wkhtmltopdf
+
+
+
+########################################################
+Writer2latex, Writer2xhtml, Writer2BibTeX, Calc2xhtml
+(converts documents in OpenDocument format 
+into other formats; a collection of four converters)
+##########################################################
+
+
+$ sudo apt install writer2latex
+This is Writer2LaTeX, Version 1.0.2 (2010-05-31)
+
+
+
+
+	THIS DID NOT WORK!!
+http://writer2latex.sourceforge.net/index10.html#download
+
+	a. add writer2latex folder to home directory (/home/bmarron/writer2latex)
+
+	b. 3. Add execute permissions to w2l as follows:
+$ cd /home/bmarron/writer2latex
+$ chmod +x w2l
+
+	c. Add writer2latex directory to PATH environment variable
+$ mousepad /home/bmarron/.bashrc
+
+Lines 128-129
+# added by me 
+export PATH="/home/bmarron/writer2latex/w2l:$PATH"
+
+
+############
+g++-multilib
+(libc6-dev-i386)
+#############
+http://askubuntu.com/questions/470796/fatal-error-sys-cdefs-h-no-such-file-or-directory
+fatal error: sys/cdefs.h: No such file or directory
+
+
+libc6-dev-i386 is one of the additional packages will be installed
+
+sudo apt-get install g++-multilib
+
+############
+automake
+##############
+http://askubuntu.com/questions/484237/how-do-i-get-the-latest-automake
+
+sudo apt-get autoremove automake
+sudo apt-get install automake
+
+
+#################
+runit problem
+(git re-install)
+#####################
+http://askubuntu.com/questions/765565/how-to-fix-processing-with-runit-and-git-daemon-run
+
+sudo apt-get purge runit
+
+sudo apt-get purge git-all &&
+sudo apt-get purge git
+
+sudo apt-get autoremove &&
+sudo apt update
+
+sudo apt install git 
+
+
+#################
+OpenBUGS
+###################
+http://www.openbugs.net/w/Downloads
+
+download tar.gz
+
+
+$ tar -zxvf OpenBUGS-3.2.3.tar.gz &&
+cd OpenBUGS-3.2.3
+$ ./configure
+$ make
+$ sudo make install
+
+Making install in src
+make[1]: Entering directory '/home/bmarron/Downloads/OpenBUGS-3.2.3/src'
+mkdir -p /usr/local/bin /usr/local/lib /usr/local/share/doc/openbugs-`echo "modelQuit()" | ./OpenBUGSCli | sed -ne "s/OpenBUGS version \(.*\) rev \(.*\)/\1/p"` /usr/local/share/man/man1
+rm -f /usr/local/bin/OpenBUGSCli
+cp -f OpenBUGSCli /usr/local/bin 
+rm -f /usr/local/bin/OpenBUGS
+cp -f ../bin/OpenBUGS /usr/local/bin
+chmod 755 /usr/local/bin/OpenBUGS /usr/local/bin/OpenBUGSCli
+cp ../lib/libOpenBUGS.so /usr/local/lib 
+cp -r ../doc/* /usr/local/share/doc/openbugs-`echo "modelQuit()" | ./OpenBUGSCli | sed -ne "s/OpenBUGS version \(.*\) rev \(.*\)/\1/p"`
+cp ../doc/OpenBUGS.1 /usr/local/share/man/man1
+
+
+
+==== GnuCash =================================
+
+$ apt-cache policy gnucash
+gnucash:
+  Installed: (none)
+  Candidate: 1:2.6.1-2
+  Version table:
+     1:2.6.1-2 0
+        500 http://us.archive.ubuntu.com/ubuntu/ trusty/universe i386 Packages
+
+$ sudo aptitude install gnucash
+
+
+
+
+
+###########
+LibreOffice
+############
+
+
+
+		-- problems with libreoffice-common installation
+Setting up libreoffice-common (4:7.6.2~rc1-0ubuntu0.22.04.1~lo1) ...
+rmdir: removing directory, '/usr/lib/libreoffice/share/registry'
+rmdir: failed to remove '/usr/lib/libreoffice/share/registry': Directory not empty
+dpkg: error processing package libreoffice-common (--configure):
+ installed libreoffice-common package post-installation script subprocess returned error exit status 1
+
+		-- purge partially configured packages
+sudo rm /var/lib/dpkg/info/libreoffice*
+sudo dpkg --configure -a
+sudo apt-get update
+
+		-- reinstall and DOWNGRADE
+sudo aptitude install libreoffice
+
+[DONT accept any other solution]
+
+Accept this solution? [Y/n/q/?] Y
+The following packages will be DOWNGRADED:
+  libreoffice-base libreoffice-base-core libreoffice-base-drivers 
+  libreoffice-common libreoffice-core libreoffice-math 
+  libreoffice-sdbc-mysql libreoffice-writer libuno-cppuhelpergcc3-3 
+  python3-uno uno-libs-private ure ure-java 
+
+
+
+
+
+		-- OLD
+
+sudo add-apt-repository ppa:libreoffice/libreoffice-5-2
+sudo apt-get update
+sudo apt-get dist-upgrade
+
+
+LibreOffice 5.2.x series stable backports ppa (and SRU-testing for yakkety)
+http://sweetshark.livejournal.com/10977.html
+
+This ppa will:
+- not contain alpha and beta releases like 5.2.0~beta2
+- not contain updates to the next major (5.3.x)
+- contain minor release updates and their release candidates -- these can be
+  considered stable
+
+Note that for minor release updates (5.2.1, 5.2.2, 5.2.3 ...) an rc2 is almost always exactly the same as the final version.
+
+See: https://wiki.documentfoundation.org/ReleasePlan for details,
+and: http://www.libreoffice.org/discover/new-features/ and https://wiki.documentfoundation.org/ReleaseNotes/5.2 for new features and fixes.
+ More info: https://launchpad.net/~libreoffice/+archive/ubuntu/libreoffice-5-2
+
+
+Calculating upgrade... Done
+The following packages were automatically installed and are no longer required:
+  libcrypto++9v5 libgeos-3.5.0 liblwgeom-2.2-5
+Use 'sudo apt autoremove' to remove them.
+The following NEW packages will be installed:
+  libreoffice-gtk2
+The following packages will be upgraded:
+  base-files console-setup console-setup-linux fonts-opensymbol im-config
+  indicator-application keyboard-configuration libegl1-mesa libgbm1
+  libgl1-mesa-dev libgl1-mesa-dri libgl1-mesa-dri:i386 libgl1-mesa-glx
+  libgl1-mesa-glx:i386 libglapi-mesa libglapi-mesa:i386 libgles1-mesa
+  libgles2-mesa libreoffice-base-core libreoffice-calc libreoffice-common
+  libreoffice-core libreoffice-gtk libreoffice-help-en-us libreoffice-help-es
+  libreoffice-l10n-es libreoffice-math libreoffice-style-elementary
+  libreoffice-style-galaxy libreoffice-writer libwayland-egl1-mesa
+  libxatracker2 mesa-common-dev mesa-vdpau-drivers os-prober python3-uno sudo
+  uno-libs3 ure
+39 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.
+2 not fully installed or removed.
+Need to get 97.1 MB of archives.
+After this operation, 18.8 MB of additional disk space will be used.
+Do you want to continue? [Y/n]
+
+
+
+
+
+
+
+If you can't wait, and feel brave and adventurous, 
+remove the 4.2 version, get the debs from http://www.libreoffice.org/download/libreoffice-fresh/, and install them "directly".
+
+Here is an example of how it's done:
+
+    removing - $ sudo apt-get purge libreoffice*
+
+    downloading - LibreOffice_4.3.0_Linux_x86_deb.tar.gz
+
+    right-click, select Extract here to extract
+
+    installing - $ cd LibreOffice_4.3.0_Linux_x86_deb/DEBS
+		 $ sudo dpkg -i *.deb
+
+
+
+
+###############
+saxon9.jar
+###############
+http://www.java2s.com/Code/Jar/s/Downloadsaxon9jar.html
+
+
+	# open .jar archive
+$ java -jar saxon9.jar
+
+	# open .jar archive and do something
+$ java -jar saxon9.jar ~/Desktop/math.xml pmml2tex/pmml2tex.xsl
+
+
+
+==== adobe flash from tar.gz =========
+
+Shockwave flash 11.2 is the most up-to-date
+	a.
+	#download ==> install_flash_player_11_linux.i386.tar.gz
+	#unpack (Extract here..)
+
+	b.
+	#Copy libflashplayer.so to the appropriate browser plugins directory.
+
+$ sudo cp ~/Downloads/install_flash_player_11_linux.i386/libflashplayer.so /usr/lib/firefox-addons/plugins/
+
+	c.
+	#Copy the Flash Player Local Settings configurations files to the /usr directory.
+	#note /usr folder contains three folders
+		--/usr/bin
+		--/usr/lib
+		--/usr/share
+
+$ sudo cp -r ~/Downloads/install_flash_player_11_linux.i386/usr/* /usr
+
+
+
+###########
+seahorse
+############
+
+password and encryption keys
+
+
+$ sudo apt-get install seahorse
+
+
+
+
+====== Dropbox ===============
+
+	* dropbox_2015.10.28_i386.deb
+	* opened and installed in Ubuntu Software Center
+
+" In order to use Dropbox must download proprietary daemon"
+" python-gpgme not installed"
+
+	a. 
+	*The Dropbox daemon works fine on all 32-bit and 64-bit Linux servers. 
+	*To install, run the following command in your Linux terminal.
+
+$ cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86" | tar xzf -
+
+--2015-11-17 16:20:35--  https://www.dropbox.com/download?plat=lnx.x86
+Resolving www.dropbox.com (www.dropbox.com)... 108.160.172.206, 108.160.172.238
+Connecting to www.dropbox.com (www.dropbox.com)|108.160.172.206|:443... connected.
+HTTP request sent, awaiting response... 302 FOUND
+Location: https://dl-web.dropbox.com/u/17/dropbox-lnx.x86-3.10.11.tar.gz [following]
+--2015-11-17 16:20:36--  https://dl-web.dropbox.com/u/17/dropbox-lnx.x86-3.10.11.tar.gz
+Resolving dl-web.dropbox.com (dl-web.dropbox.com)... 108.160.173.166, 108.160.173.134
+Connecting to dl-web.dropbox.com (dl-web.dropbox.com)|108.160.173.166|:443... connected.
+HTTP request sent, awaiting response... 302 FOUND
+Location: https://dl.dropboxusercontent.com/u/17/dropbox-lnx.x86-3.10.11.tar.gz [following]
+--2015-11-17 16:20:36--  https://dl.dropboxusercontent.com/u/17/dropbox-lnx.x86-3.10.11.tar.gz
+Resolving dl.dropboxusercontent.com (dl.dropboxusercontent.com)... 199.47.217.69, 199.47.217.101
+Connecting to dl.dropboxusercontent.com (dl.dropboxusercontent.com)|199.47.217.69|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 62006625 (59M) [application/octet-stream]
+Saving to: ‘STDOUT’
+
+100%[======================================>] 62,006,625  1.76MB/s   in 34s    
+
+2015-11-17 16:21:11 (1.72 MB/s) - written to stdout [62006625/62006625]
+
+
+	b.
+	* Next, run the Dropbox daemon from the newly created .dropbox-dist folder
+	* (the deamon is colored in green if look at list of files in ~/.dropbox-dist)
+	* dropboxd is a .sh file
+
+$ ~/.dropbox-dist/dropboxd
+
+	c.
+If you're running Dropbox on your server for the first time, you'll be asked to copy and paste a link in a working browser to create a new account 
+or add your server to an existing account. Once you do, your Dropbox folder will be created in your home directory. Download this Python script to 
+control Dropbox from the command line. For easy access, put a symlink to the script anywhere in your PATH.
+
+
+	d.
+Your Dropbox folder has been moved or deleted from its original location. Dropbox will not work properly until you move it back. 
+It used to be located at: /home/bmarron/Dropbox
+
+To move it back, click "Exit" below, move the Dropbox folder back to its original location, and launch Dropbox again.
+
+
+	e.
+Command-line option might also work:
+
+$ dropbox autostart n
+
+
+
+	f. To remove/uninstall
+
+dropbox stop
+dropbox status  # Should report "not running"
+
+rm -rf ~/.dropbox-dist
+rm -rf /var/lib/dropbox
+rm -rf ~/.dropbox*
+sudo apt-get remove nautilus-dropbox
+sudo apt-get remove dropbox
+rm /etc/apt/sources.list.d/dropbox
+
+And if you want to delete the files that were synced, you can run this command:
+
+rm -rv ~/Dropbox
+
+
+
+
+
+
+===== matplotlib (Python) ================
+
+$ sudo apt-get install python-matplotlib
+
+
+
+
+
+
+
+==== start-stop-daemon ==============================
+
+$ start-stop-daemon --version
+start-stop-daemon 1.17.5 for Debian
+Written by Marek Michalkiewicz, public domain.
+
+
+
+
+======== virtualbox-5.0 ==========================
+Oracle VM VirtualBox
+
+VirtualBox is a powerful PC virtualization solution allowing you to run a wide range of PC operating systems on your Linux system. 
+This includes Windows, Linux, FreeBSD, DOS, OpenBSD and others. VirtualBox comes with a broad feature set and excellent performance, 
+making it the premier virtualization software solution on the market.
+
+https://www.virtualbox.org/wiki/Linux_Downloads
+virtualbox-5.0 5.0.10-104061~Ubuntu~trusty		#i386
+
+installed with Ubuntu Software Center
+
+		#to open
+$ VirtualBox
+
+
+
+==== soundcloud app for firefox ===============
+
+https://marketplace.firefox.com/app/soundcloud?src=branded-editorial-element
+
+
+####################
+banshee
+vlc
+media players
+##################
+
+
+$ sudo aptitude install vlc
+$ sudo aptitude install banshee
+
+
+
+
+#################
+installing binaries
+###################
+
+=== 'make install' ===================================================
+
+sudo make install 	<< installs executable /usr/local/bin; files under /usr/local/include  
+
+
+
+
+
+#############
+foremost
+scapel
+#############
+
+$ sudo apt-get install foremost
+
+$ sudo apt-get install scapel
+
+#############
+Adobe Flash Player
+(64-bit)
+#################
+
+Installation instructions Adobe Flash Player
+bm_15 Jan 2017
+
+flash_player_npapi_linux.x86_64.tar.gz
+
+Give it executable attribute:
+$ chmod +x libflashplayer.so
+$ sudo cp -r usr/* /usr
+
+$ sudo cp /usr/lib64/kde4/kcm_*.so /usr/lib/firefox-addons/plugins/
+$ sudo cp libflash*.so /usr/lib/firefox-addons/plugins/
+
+
+
+
+-------------------------
+
+Installing using the plugin tar.gz:
+	o Unpack the plugin tar.gz and copy the files to the appropriate location.  
+	o Save the plugin tar.gz locally and note the location the file was saved to.
+	o Launch terminal and change directories to the location the file was saved to.
+	o Unpack the tar.gz file.  Once unpacked you will see the following:
+		+ libflashplayer.so
+		+ /usr
+	o Identify the location of the browser plugins directory, based on your Linux distribution and Firefox version
+==>  /usr/lib/firefox-addons/plugins/
+
+	o Copy libflashplayer.so to the appropriate browser plugins directory.  At the prompt type:
+		+ sudo cp libflashlayer.so /usr/lib/firefox/
+
+
+	o Copy the Flash Player Local Settings configurations files to the /usr directory.  At the prompt type:
+		+ sudo cp -r usr/* /usr
+
+
+
+Uninstallation instructions
+---------------------------
+
+Manual uninstallation (for users who installed the plugin via Install script):
+   o Delete libflashplayer.so binary and flashplayer.xpt file in 
+   directory /home/<user>/.mozilla/plugins/
+
+RPM uninstallation:
+   o As root, enter in terminal:
+          + # rpm -e flash-plugin
+          + Click Enter key and follow prompts
+
+
+####################
+Python pkg ctypes ?
+#####################
+
+$ anaconda search -t conda ctypes
+Using Anaconda API: https://api.anaconda.org
+Run 'anaconda show <USER/PACKAGE>' to get more details:
+Packages:
+     Name                      |  Version | Package Types   | Platforms      
+     ------------------------- |   ------ | --------------- | ---------------
+     auto/ctypes_configure     |      0.1 | conda           | linux-64, linux-32
+                                          : http://codespeak.net/~fijal/configure.html
+     auto/ctypes_configure2    |    0.4.2 | conda           | linux-64, linux-32
+                                          : http://codespeak.net/~fijal/configure.html
+     auto/ctypesgsl            |      0.4 | conda           | linux-64, linux-32
+                                          : http://sourceforge.net/projects/ctypesgsl/
+     auto/pyssh-ctypes         |      0.3 | conda           | linux-64       
+                                          : https://github.com/niwibe/py-libssh
+     auto/pywin32-ctypes       |    0.0.1 | conda           | linux-64       
+                                          : UNKNOWN
+     conda-forge/npctypes      |    0.0.2 | conda           | linux-64, win-32, win-64, osx-64
+     dougal/vlfeat-ctypes      |    0.1.4 | conda           | linux-64, osx-64
+                                          : https://github.com/dougalsutherland/vlfeat-ctypes
+     enversion/ctypesgen       |    0.125 | conda           | linux-64, osx-64
+                                          : Python wrapper generator for ctypes
+     jrkerns/pywin32-ctypes    |    0.0.1 | conda           | win-32         
+     travis/ctypes_configure   |      0.1 | conda           | linux-64       
+                                          : http://codespeak.net/~fijal/configure.html
+     travis/ctypes_configure2  |    0.4.2 | conda           | linux-64       
+                                          : http://codespeak.net/~fijal/configure.html
+     travis/ctypesgen          |   0.r125 | conda           | linux-64       
+                                          : http://code.google.com/p/ctypesgen/
+Found 12 packages
+
+
+#################
+Python pefile pkg
+##################
+$ cd anaconda2
+$ pip install pefile
+Collecting pefile
+  Downloading pefile-2016.3.28.tar.gz (58kB)
+    100% |████████████████████████████████| 61kB 998kB/s 
+Collecting future (from pefile)
+  Downloading future-0.16.0.tar.gz (824kB)
+    100% |████████████████████████████████| 829kB 1.5MB/s 
+Building wheels for collected packages: pefile, future
+  Running setup.py bdist_wheel for pefile ... done
+  Stored in directory: /home/bmarron/.cache/pip/wheels/1f/50/4f/f888b12fef6b58381b58446d7fa39a7677123960152181cf19
+  Running setup.py bdist_wheel for future ... done
+  Stored in directory: /home/bmarron/.cache/pip/wheels/c2/50/7c/0d83b4baac4f63ff7a765bd16390d2ab43c93587fac9d6017a
+Successfully built pefile future
+Installing collected packages: future, pefile
+Successfully installed future-0.16.0 pefile-2016.3.28
+
+############
+upgrade pip
+############
+
+$ pip install --upgrade pip
+Collecting pip
+  Downloading pip-9.0.1-py2.py3-none-any.whl (1.3MB)
+    100% |████████████████████████████████| 1.3MB 505kB/s 
+Installing collected packages: pip
+  Found existing installation: pip 8.1.2
+    Uninstalling pip-8.1.2:
+      Successfully uninstalled pip-8.1.2
+Successfully installed pip-9.0.1
+
+
+
+###################
+Python appdirs pkg
+####################
+
+$ pip install appdirs
+Collecting appdirs
+  Downloading appdirs-1.4.0-py2.py3-none-any.whl
+Installing collected packages: appdirs
+Successfully installed appdirs-1.4.0
+
+
+
+
+==== LibreOffice install =============================
+$ sudo apt-get install libreoffice libreoffice-gtk -y
+
+
+
+############
+ToupLite-1.0-x86
+(OMAX)
+############
+
+	a. extract ToupLite-1.0-x86.tgz
+
+	b. cd ==> /home/bmarron/ToupLite-1.0-x86/
+
+$ ./ToupLite-1.0-x86.run
+[sudo] password for bmarron: 
+Install success!
+
+
+	c. to open
+$ ToupLite
+
+
+#############
+PyInstaller
+(Linux 64-bit only)
+#####################
+https://anaconda.org/acellera/pyinstaller
+
+	a. NO GO!!
+$ conda install -c acellera pyinstaller=3.2.3 
+UnsatisfiableError: The following specifications were found to be in conflict:
+  - pyinstaller 3.2.3*
+  - python 2.7*
+Use "conda info <package>" to see the dependencies for each package.
+
+
+	b. YES!!
+https://anaconda.org/auto/pyinstaller
+$ conda install -c auto pyinstaller=2.1
+
+Package plan for installation in environment /home/bmarron/anaconda2:
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    conda-env-2.6.0            |                0          502 B
+    distribute-0.7.3           |           py27_0           2 KB  auto
+    conda-4.2.13               |           py27_0         391 KB
+    pyinstaller-2.1            |           py27_0         3.3 MB  auto
+    ------------------------------------------------------------
+                                           Total:         3.7 MB
+
+The following NEW packages will be INSTALLED:
+
+    distribute:  0.7.3-py27_0  auto       
+    pyinstaller: 2.1-py27_0    auto       
+
+The following packages will be SUPERCEDED by a higher-priority channel:
+
+    conda:       4.2.13-py27_0 conda-forge --> 4.2.13-py27_0
+    conda-env:   2.6.0-0       conda-forge --> 2.6.0-0  
+
+
+
+
+###################
+regex 
+(Linux 64-bit only)
+####################
+https://anaconda.org/conda-forge/regex
+
+$ conda install -c conda-forge regex=2016.11.18 
+
+
+Package plan for installation in environment /home/bmarron/anaconda2:
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    conda-env-2.6.0            |                0         1017 B  conda-forge
+    regex-2016.11.18           |           py27_0         638 KB  conda-forge
+    conda-4.2.13               |           py27_0         374 KB  conda-forge
+    ------------------------------------------------------------
+                                           Total:        1013 KB
+
+The following NEW packages will be INSTALLED:
+
+    regex:     2016.11.18-py27_0 conda-forge
+
+The following packages will be SUPERCEDED by a higher-priority channel:
+
+    conda:     4.2.13-py27_0     anaconda    --> 4.2.13-py27_0 conda-forge
+    conda-env: 2.6.0-0           anaconda    --> 2.6.0-0       conda-forge
+
+
+
+
+
+##############
+gdal 2.1.0
+(Linux 32- and 64-bit)
+###############
+https://anaconda.org/anaconda/gdal
+
+$ conda install -c anaconda gdal=2.1.0
+
+
+Package plan for installation in environment /home/bmarron/anaconda2:
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    geos-3.5.0                 |                0        16.9 MB  anaconda
+    proj4-4.9.2                |                0         567 KB  anaconda
+    xerces-c-3.1.4             |                0         8.0 MB  anaconda
+    hdf4-4.2.12                |                0         677 KB  anaconda
+    geotiff-1.4.1              |                0         1.2 MB  anaconda
+    kealib-1.4.6               |                0         204 KB  anaconda
+    libnetcdf-4.4.1            |                0         850 KB  anaconda
+    libgdal-2.1.0              |                0        22.7 MB  anaconda
+    gdal-2.1.0                 |           py27_0         1.6 MB  anaconda
+    ------------------------------------------------------------
+                                           Total:        52.6 MB
+
+The following NEW packages will be INSTALLED:
+
+    gdal:      2.1.0-py27_0 anaconda
+    geos:      3.5.0-0      anaconda
+    geotiff:   1.4.1-0      anaconda
+    hdf4:      4.2.12-0     anaconda
+    kealib:    1.4.6-0      anaconda
+    libgdal:   2.1.0-0      anaconda
+    libnetcdf: 4.4.1-0      anaconda
+    proj4:     4.9.2-0      anaconda
+    xerces-c:  3.1.4-0      anaconda
+
+
+
+#########################
+Spyder 3.0.2
+(Linux 32- and 64-bit)
+############################
+https://anaconda.org/anaconda/spyder
+
+$ conda install -c anaconda spyder=3.0.2
+
+Package plan for installation in environment /home/bmarron/anaconda2:
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    conda-env-2.6.0            |                0          502 B  anaconda
+    anaconda-custom            |           py27_0           3 KB  anaconda
+    conda-4.2.13               |           py27_0         391 KB  anaconda
+    spyder-3.0.2               |           py27_0         3.0 MB  anaconda
+    ------------------------------------------------------------
+                                           Total:         3.4 MB
+
+The following packages will be UPDATED:
+
+    anaconda:  4.2.0-np111py27_0 --> custom-py27_0 anaconda
+    conda:     4.2.9-py27_0      --> 4.2.13-py27_0 anaconda
+    spyder:    3.0.0-py27_0      --> 3.0.2-py27_0  anaconda
+
+The following packages will be SUPERCEDED by a higher-priority channel:
+
+    conda-env: 2.6.0-0           --> 2.6.0-0       anaconda
+
+
+
+
+
+
+##########
+pipe viewer
+############
+https://linux.die.net/man/1/pv
+http://igorpopov.io/2013/12/25/pipe-viewer-the-linux-flow-meter/
+
+
+sudo apt install pv
+
+
+
+
+
+#######
+shotwell
+(pics, photos and .jpegs)
+########
+
+$ sudo add-apt-repository ppa:yg-jensge/shotwell
+$ sudo apt update
+$ sudo apt install shotwell
+
+	a. to open
+$ shotwell
+
+
+
+
+
+############
+skype
+(64-bit)
+#############
+http://askubuntu.com/questions/775087/how-to-install-skype-in-ubuntu-16-04
+
+To enable the partner repositories you have to launch Software & Updates (software-properties-gtk), 
+navigate to the Other software tab and activate Canonical Partners there.
+
+	#before changing Canonical Partners
+$ apt-cache policy skype
+N: Unable to locate package skype
+
+
+	#after changing Canonical Partners
+$ apt-cache policy skype
+skype:
+  Installed: (none)
+  Candidate: 4.3.0.37-0ubuntu0.12.04.1
+  Version table:
+     4.3.0.37-0ubuntu0.12.04.1 500
+        500 http://archive.canonical.com/ubuntu xenial/partner amd64 Packages
+
+
+$ sudo apt update
+$ sudo apt install skype
+$ sudo apt install cheese
+
+
+
+$ apt-cache policy pulseaudio
+pulseaudio:
+  Installed: 1:8.0-0ubuntu3
+  Candidate: 1:8.0-0ubuntu3
+  Version table:
+ *** 1:8.0-0ubuntu3 500
+        500 http://us.archive.ubuntu.com/ubuntu xenial/main amd64 Packages
+        100 /var/lib/dpkg/status
+
+
+##################
+AnyConnect Cisco VPN
+(for WebPrint at PSU)
+###################
+https://www.auckland.ac.nz/en/for/current-students/cs-current-pg/cs-current-pg-support/vpn/cs-cisco-vpn-client-for-linux.html
+http://www.cisco.com/
+https://search.cisco.com/search?query=AnyConnect%20VPN%20Linux&locale=enUS&tab=Downloads
+
+	#no go
+Download Software for Cisco AnyConnect Secure Mobility Client v4.x : anyconnect-predeploy-linux-64-4.3.02039-k9.tar.gz
+
+
+	#use Univ of Aukland
+anyconnect-predeploy-linux-64-3.1.04072-k9.tar
+
+$ mkdir ciscovpn
+cut/paste .tar file into ciscovpn
+Extract
+
+$cd ~/ciscovpn/anyconnect-3.1.04072/vpn
+$ ./vpn_install.sh
+
+Do you accept the terms in the license agreement? [y/n] y
+You have accepted the license agreement.
+Please wait while Cisco AnyConnect Secure Mobility Client is being installed...
+Starting Cisco AnyConnect Secure Mobility Client Agent...
+Failed to start vpnagentd.service: Unit vpnagentd.service not found.
+
+
+
+http://www.socsci.uci.edu/~jstern/uci_vpn_ubuntu/
+
+$ sudo apt-get update && sudo apt-get install lib32z1 lib32ncurses5
+$cd ~/ciscovpn/anyconnect-3.1.04072/vpn
+$ ./vpn_install.sh
+
+Do you accept the terms in the license agreement? [y/n] y
+You have accepted the license agreement.
+Please wait while Cisco AnyConnect Secure Mobility Client is being installed...
+Removing previous installation...
+mv: cannot stat '/opt/cisco/vpn/*.log': No such file or directory
+Starting Cisco AnyConnect Secure Mobility Client Agent...
+Warning: vpnagentd.service changed on disk. Run 'systemctl daemon-reload' to reload units.
+Done!
+
+
+http://www.pdx.edu/oit/virtual-private-network-vpn
+Run the AnyConnect application.
+In the address box, enter “vpn.pdx.edu”
+
+
+
+	#final sequence to print from the Dell
+1. Open Cisco Connect Secure Mobile Client app from Whisker menu
+
+2. In the address box, enter “vpn.pdx.edu”
+	Group: 3-Student
+	Username:
+	Password:
+
+3. Hit "Connect"
+
+4. Leave this running!
+
+5. Open Firefox
+
+6. go to
+print.pdx.edu
+
+7. login
+
+
+#########################
+MonoDevelop and FlatPack
+##########################
+
+http://answers.unity3d.com/questions/350327/cant-open-c-files-in-monodevelop-after-moving-proj.html
+http://blog.zerosharp.com/a-c-number-developers-adventures-in-ios-integrating-git-and-monodevelop/
+http://stackoverflow.com/questions/24641573/how-to-install-ssl-certificate-in-linux-servers
+https://linux.die.net/man/1/mozroots
+
+FlatPak is a new packaging format for Linux, which allows the same applications to run in a sandboxed environment, 
+across any modern distribution.MonoDevelop as a FlatPak bundle, which does not require Mono to be installed.
+http://www.monodevelop.com/download/linux/
+
+$ sudo add-apt-repository ppa:alexlarsson/flatpak &&
+sudo apt update &&
+sudo apt install flatpak
+
+
+wget https://sdk.gnome.org/keys/gnome-sdk.gpg
+flatpak remote-add --gpg-import=gnome-sdk.gpg gnome https://sdk.gnome.org/repo/
+flatpak install gnome org.freedesktop.Platform 1.4
+
+You can now install our FlatPak bundle, using 
+$ flatpak install --user --bundle monodevelop-6.1.1.15-1.flatpak
+
+You can run newly installed MonoDevelop from shell using 
+$ flatpak run com.xamarin.MonoDevelop
+
+	#after all installations
+$ flatpak run com.xamarin.MonoDevelop
+
+
+After the initial Mono installation you'll have no trusted roots certificates pre-installed. 
+Neither will you have some root test certificates installed (your own or the ones provided by using setreg ). 
+In this case the simplest thing to do, if you want to trust all those certificates, is to import and synchronize.
+Mono handles certificates via mozroots so best thing in your case would probably be to run this:
+
+sudo mozroots --import --sync
+
+
+
+
+
+
+##########
+Terminator
+#########
+http://gnometerminator.blogspot.com/p/introduction.html
+
+$ sudo add-apt-repository ppa:gnome-terminator && 
+sudo apt-get update  &&
+sudo apt-get install terminator
+
+	#to get colors in Terminal
+open .bashrc
+uncomment Line 46 -- #force_color_prompt=yes
+
+
+##########
+install git
+###########
+https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
+
+$ sudo apt-get install git-all
+
+Setting up runit (2.1.2-3ubuntu1) ...
+start: Unable to connect to Upstart: Failed to connect to socket /com/ubuntu/upstart: Connection refused
+dpkg: error processing package runit (--configure):
+ subprocess installed post-installation script returned error exit status 1
+dpkg: dependency problems prevent configuration of git-daemon-run:
+ git-daemon-run depends on runit; however:
+  Package runit is not configured yet.
+
+dpkg: error processing package git-daemon-run (--configure):
+ dependency problems - leaving unconfigured
+Setting up libcommon-sense-perl (3.74-1build1) ...
+No apport report written because the error message indicates its a followup error from a previous failure.
+
+
+###################
+install taskjuggler
+##################
+http://www.taskjuggler.org/tj3/manual/Installation.html
+
+
+$ sudo gem install taskjuggler
+
+
+
+
+
+
+
+######################
+installation Xubuntu 16.04
+alongside Windows 10
+##########################
+http://www.tecmint.com/install-ubuntu-16-04-alongside-with-windows-10-or-8-in-dual-boot/
+http://linuxbsdos.com/2016/06/05/dual-boot-ubuntu-16-04-and-windows-10-on-a-pc-with-uefi-firmware/
+
+
+
+
+######################################
+upgrade Xubuntu 14.04 LTS to 16.04 LTS to 18.04
+#######################################
+http://askubuntu.com/questions/765403/how-to-update-xubuntu-14-04-lts-to-xubuntu-16-04-lts
+http://askubuntu.com/questions/717827/can-i-smoothly-upgrade-from-one-lts-to-next-lts-release
+
+https://linuxconfig.org/how-to-upgrade-to-ubuntu-18-04-lts-bionic-beaver
+https://linuxconfig.org/things-to-do-after-installing-ubuntu-18-04-bionic-beaver-linux
+
+https://linuxconfig.org/how-to-enable-disable-firewall-on-ubuntu-18-04-bionic-beaver-linux
+
+
+--------	a. check for Prompt=lts	---------------------
+sudo mousepad /etc/update-manager/release-upgrades
+
+# Default behavior for the release upgrader.
+
+[DEFAULT]
+# Default prompting behavior, valid options:
+#
+#  never  - Never check for a new release.
+#  normal - Check to see if a new release is available.  If more than one new
+#           release is found, the release upgrader will attempt to upgrade to
+#           the release that immediately succeeds the currently-running
+#           release.
+#  lts    - Check to see if a new LTS release is available.  The upgrader
+#           will attempt to upgrade to the first LTS release available after
+#           the currently-running one.  Note that this option should not be
+#           used if the currently-running release is not itself an LTS
+#           release, since in that case the upgrader won't be able to
+#           determine if a newer release is available.
+Prompt=lts
+
+
+--------	b. make changes as small as possible	-----------------
+
+sudo apt update &&
+sudo apt upgrade &&
+sudo apt dist-upgrade &&
+sudo apt autoremove
+
+--------	c. install the update manager utility (if needed) -----------------------
+
+sudo apt install update-manager-core
+
+
+
+--------	d. do the upgrade	----------------------------------
+
+sudo do-release-upgrade
+
+
+Updating repository information
+Third party sources disabled 
+Some third party entries in your sources.list were disabled. You can 
+re-enable them after the upgrade with the 'software-properties' tool 
+or your package manager. 
+
+Checking package manager
+Reading package lists... Done    
+Building dependency tree          
+Reading state information... Done
+Building data structures... Done 
+
+Calculating the changes
+
+Calculating the changes
+
+Do you want to start the upgrade? 
+16 installed packages are no longer supported by Canonical. You can 
+still get support from the community. 
+
+140 packages are going to be removed. 563 new packages are going to 
+be installed. 1974 packages are going to be upgraded. 
+
+You have to download a total of 1,876 M. This download will take 
+about 34 minutes with your connection. 
+
+Installing the upgrade can take several hours. Once the download has 
+finished, the process cannot be canceled. 
+
+Continue [yN]  Details [d]
+
+
+
+--------	e. After check sources.list, some will be commented out ==> For example, R	----
+
+	e1. make backup
+sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
+sudo sed -i 's/xenial/bionic/g' /etc/apt/sources.list		#OPTIONAL replace all xenial
+
+	e2. by hand 
+sudo mousepad /etc/apt/sources.list
+mousepad /etc/apt/sources.list.d/
+
+
+	# CRAN mirror
+# deb https://cloud.r-project.org/bin/linux/ubuntu xenial-cran35/ # disabled on upgrade to bionic
+deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/
+
+
+	# R base
+# deb http://cran.rstudio.com/bin/linux/ubuntu xenial/ # disabled on upgrade to bionic
+deb http://cran.rstudio.com/bin/linux/ubuntu bionic-cran35/ 
+
+
+
+
+	e3. update
+
+sudo apt update &&
+sudo apt upgrade &&
+sudo apt dist-upgrade &&
+sudo apt autoremove
+
+
+
+
+--------	f. activate/install misc	-------------------------
+
+	f1. activate firewall
+
+sudo ufw status verbose
+sudo ufw enable
+
+
+	f2. install gnome weather
+sudo apt install gnome-weather
+
+
+	f3. Install Third-party Codecs & Extras
+sudo apt install ubuntu-restricted-extras
+
+
+	f4. install stacer (system monitoring)
+wget -O ~/stacer.deb https://jaist.dl.sourceforge.net/project/stacer/v1.0.9/stacer_1.0.9_amd64.deb
+sudo gdebi ~/stacer.deb
+
+
+	f5. re-activate indicator plugin in top panel (Panel 0)
+
+
+
+
+####################
+anaconda navigator
+####################
+https://docs.continuum.io/anaconda/navigator
+
+$ anaconda-navigator
+$ conda install anaconda-navigator
+
+
+
+
+
+
+
+##############
+geopy
+############
+
+http://stackoverflow.com/questions/26276769/python-geopy-install
+
+conda search geopandas
+pip install geopy
+
+
+
+
+#############
+geopandas
+############
+http://www.productiveegg.com/scipy-2014/geopandas-placeholder.html
+http://geopandas.org/install.html
+
+GeoPandas is an open source project to make working with geospatial data in python easier. 
+GeoPandas extends the datatypes used by pandas to allow spatial operations on geometric types. 
+Geometric operations are performed by shapely. Geopandas further depends on fiona for file access 
+and descartes and matplotlib for plotting.
+
+
+conda search geopandas
+pip install geopandas
+
+$ nosetests -v
+
+
+
+############
+requests
+##############
+
+$ conda install requests
+
+
+#######
+astropy 
+#######
+
+http://docs.astropy.org/en/stable/io/ascii/#module-astropy.io.ascii
+
+$ conda install astropy
+
+
+########
+xray
+########
+
+http://xray.readthedocs.org/en/v0.7.1/installing.html
+
+$ conda install xarray dask netCDF4 bottleneck
+
+
+Required dependencies
+    Python 2.6, 2.7, 3.3, 3.4 or 3.5.
+    numpy (1.7 or later)
+    pandas (0.15.0 or later)
+
+Optional dependencies
+For netCDF and IO
+    netCDF4: recommended if you want to use xarray for reading or writing netCDF files
+    scipy: used as a fallback for reading/writing netCDF3
+    pydap: used as a fallback for accessing OPeNDAP
+    h5netcdf: an alternative library for reading and writing netCDF4 files that does not use the netCDF-C libraries
+
+
+For accelerating xarray
+    bottleneck: speeds up NaN-skipping aggregations by a large factor
+    cyordereddict: speeds up most internal operations with xarray data structures
+
+For parallel computing
+    dask.array: required for Out of core computation with dask.
+
+For plotting
+    matplotlib: required for Plotting.
+
+
+
+xarray itself is a pure Python package, but its dependencies are not. 
+The easiest way to get them installed is to use conda. You can then install xarray 
+with its recommended dependencies with the conda command line tool:
+
+
+
+
+#########
+seaborn
+#########
+$ conda install seaborn
+  
+
+
+################
+PyNIO
+#################
+			# NOT INSTALLED 64-bit only!!!
+http://www.pyngl.ucar.edu/Nio.shtml
+
+PyNIO is a Python package that allows read and/or write access to a variety of data formats using an 
+interface modeled on netCDF. PyNIO is composed of a C library called libnio along with a Python module
+based on and with an interface similar to the Scientific.IO.NetCDF module written by Konrad Hinsen. 
+The C library contains the same data I/O code used in NCL, a scripting language developed for analysis 
+and visualization of geo-scientific data. Currently supported formats include:
+
+    netCDF3 and netCDF 4 classic format (read/write)
+    netCDF 4 non-classic format (read/write, 1.5.0-beta version only)
+    GRIB 1 and GRIB 2 (read-only)
+    HDF 4 (read/write for Scientific DataSets only)
+    HDF 5 (read/write, 1.5.0-beta version only)
+    HDF-EOS2 and HDF-EOS5 (read-only for Grid and Swath data only)
+    CCM history files (read-only)
+    OGR - Open Geospatial Consortium's Simple Feature formats (ESRI Shapefile, MapInfo, GMT, Tiger) (read-only) 
+
+
+ You can download PyNIO using "conda":
+$ conda install -c ncar pynio
+
+
+
+
+
+###########
+QGIS (Linux 64-bit)
+(Essen-LTR)
+###########
+http://www.qgis.org/en/site/forusers/alldownloads.html#debian-ubuntu
+
+---- STEP1 -----------------
+wget -O - http://qgis.org/downloads/qgis-2016.gpg.key | gpg --import
+gpg --fingerprint 073D307A618E5811
+gpg --export --armor 073D307A618E5811 | sudo apt-key add -
+
+
+
+---- STEP2 --------------------------------------------------
+$ sudo add-apt-repository "deb http://qgis.org/ubuntugis-ltr xenial main"
+$ sudo add-apt-repository "deb-src http://qgis.org/ubuntugis-ltr xenial main"
+$ sudo add-apt-repository "deb http://ppa.launchpad.net/ubuntugis/ubuntugis-unstable/ubuntu xenial main"
+
+check:
+$ sudo mousepad /etc/apt/sources.list
+
+----STEP3a --------------------------------------------------------------
+sudo apt-get update
+sudo apt-get install qgis python-qgis qgis-plugin-grass
+
+----STEP3b --------------------------------------------------------------
+$ sudo apt update
+$ apt list --upgradable
+$ sudo apt upgrade
+
+
+--- STEP 4 --------------------------------------------------------------------------
+	#install y-ppa-manager, if not yet installed
+$ sudo add-apt-repository ppa:webupd8team/y-ppa-manager
+$ sudo apt-get update
+$ sudo apt-get install y-ppa-manager
+
+	# When the main y-ppa-manager window appears, click on "Advanced."
+	#From the list of advanced tasks, select "Try to import all missing GPG keys" and click OK.
+$ y-ppa-manager
+
+
+--- STEP 5 ------------------------------------------------------------------
+$ sudo apt install qgis python-qgis qgis-plugin-grass
+
+
+
+
+
+
+##################
+PPA repositories
+##################
+
+---- Method 1 -----------------------
+	#adding the PPA's location to your system's Software Sources
+$ sudo add-apt-repository ppa:<development team>/<pkg name>
+
+$ sudo apt-get update
+$ sudo apt-get install <pkg name>
+
+
+	#example
+$ sudo add-apt-repository ppa:inkscape.dev/stable
+The Inkscape Stable PPA is intended to provide the current supported release of Inkscape.
+ More info: https://launchpad.net/~inkscape.dev/+archive/ubuntu/stable
+Press [ENTER] to continue or ctrl-c to cancel adding it
+gpg: keyring `/tmp/tmp2z5acsaj/secring.gpg' created
+gpg: keyring `/tmp/tmp2z5acsaj/pubring.gpg' created
+gpg: requesting key B9A06DE3 from hkp server keyserver.ubuntu.com
+gpg: /tmp/tmp2z5acsaj/trustdb.gpg: trustdb created
+gpg: key B9A06DE3: public key "Launchpad PPA for Inkscape Developers" imported
+gpg: Total number processed: 1
+gpg:               imported: 1  (RSA: 1)
+OK
+
+
+$ sudo apt-get update
+$ sudo apt-get install inkscape
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following packages were automatically installed and are no longer required:
+  libmotif-common libmrm4 libqgis-analysis2.0.1 libqgis-analysis2.8.8
+  libqgis-core2.0.1 libqgis-core2.8.8 libqgis-gui2.0.1 libqgis-gui2.8.8
+  libqgis-networkanalysis2.0.1 libqgis-networkanalysis2.8.8
+  libqgis-server2.8.8 libqgisgrass2.0.1 libqgisgrass2.8.8 libqgispython2.0.1
+  libqgispython2.8.8 libqgissqlanyconnection2.0.1 libqwt6 libtcl8.5 libtk8.5
+  libuil4 libxm4 tcl8.5 tk8.5
+Use 'apt-get autoremove' to remove them.
+The following extra packages will be installed:
+  libgtkmm-2.4-1c2a libmagick++5 libwmf-bin perlmagick python-uniconvertor
+Suggested packages:
+  dia dia-gnome libgnomevfs2-extra libsvg-perl libxml-xql-perl transfig
+  pstoedit imagemagick-doc python-uniconvertor-dbg
+The following NEW packages will be installed:
+  inkscape libgtkmm-2.4-1c2a libmagick++5 libwmf-bin perlmagick
+  python-uniconvertor
+0 upgraded, 6 newly installed, 0 to remove and 16 not upgraded.
+Need to get 16.2 MB of archives.
+After this operation, 105 MB of additional disk space will be used.
+Do you want to continue? [Y/n]
+
+	
+	
+
+
+
+######################
+install playitslowly
+#######################
+
+$ sudo apt-get install playitslowly
+$ playitslowly
+
+
+
+
+##########################
+install mono runtime 
+(64)
+############################
+$ sudo aptitude install mono-complete
+
+	#all pkgs with 'mono'?
+$ dpkg-query --list 'mono*'
+
+
+
+###########
+virtualenv
+############
+
+~$ sudo pip install virtualenv
+
+Downloading/unpacking virtualenv
+  Downloading virtualenv-15.0.1-py2.py3-none-any.whl (1.8MB): 1.8MB downloaded
+Installing collected packages: virtualenv
+Successfully installed virtualenv
+Cleaning up...
+
+
+
+###############
+mdbtools-gmdb
+###############
+
+	#read .mdb files (JET database)
+installed with (Synaptic) Package Manager
+
+$ apt-cache policy mdbtools-gmdb
+mdbtools-gmdb:
+  Installed: 0.7.1-1ubuntu1
+  Candidate: 0.7.1-1ubuntu1
+  Version table:
+ *** 0.7.1-1ubuntu1 0
+
+	# MDB Viewer in Whisker menu
+
+
+
+
+##############
+netpbm
+##############
+
+$ apt-cache policy netpbm
+netpbm:
+  Installed: 2:10.0-15ubuntu2
+  Candidate: 2:10.0-15ubuntu2
+  Version table:
+
+
+
+
+###############
+saxon9.jar
+http://www.java2s.com/Code/Jar/s/Downloadsaxon9jar.html
+###############
+
+
+	# open .jar archive
+$ java -jar saxon9.jar
+
+	# open .jar archive and do something
+$ java -jar saxon9.jar ~/Desktop/math.xml pmml2tex/pmml2tex.xsl
+
+
+

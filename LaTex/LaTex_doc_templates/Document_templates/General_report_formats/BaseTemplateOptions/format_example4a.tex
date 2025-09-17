@@ -1,0 +1,98 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Structured General Purpose Assignment
+% LaTeX Template
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[12pt]{article}
+
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{extramarks} % Required for headers and footers
+\usepackage{graphicx} % Required to insert images
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{apacite}
+\usepackage[english]{babel}
+\usepackage{comment}
+\usepackage{multirow}
+\usepackage[all]{nowidow}
+\usepackage{longtable}
+\usepackage{etoolbox}
+\setlength{\LTcapwidth}{=6.95in} %longtable caption width goes the full textwidth 
+
+
+\usepackage{tikz}
+\usetikzlibrary{shapes, arrows, positioning}
+\tikzset{
+    events/.style={ellipse, draw, align=right},
+}
+
+% paragraph indent, if needed
+\newenvironment{myindentpar}[1]%
+   {\begin{list}{}%
+       {\setlength{\leftmargin}{#1}}%
+           \item[]%
+   }
+     {\end{list}}
+
+% Margins
+\topmargin= -0.25in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.95in
+\textheight=9.0in
+\headsep=0.15in %distance between header and text
+
+\linespread{1.2} % Line spacing
+
+% Set up the header and footer
+\pagestyle{fancy}
+\lhead{\hmwkTitle} % Top left header
+\chead{\hmwkClass} % Top center header
+\rhead{bmarron} % Top right header
+\lfoot{\lastxmark} % Bottom left footer
+\cfoot{} % Bottom center footer
+\rfoot{Page\ \thepage\ of\ \pageref{LastPage}} % Bottom right footer
+%\renewcommand\headrulewidth{0.4pt} % Size of the header rule
+\renewcommand\footrulewidth{0.4pt} % Size of the footer rule
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs
+\setcounter{secnumdepth}{0} % Removes default section numbers
+
+   
+%----------------------------------------------------------------------------------------
+%	NAME AND CLASS SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\hmwkTitle}{Reflection\ \#6} % Assignment title
+%\newcommand{\hmwkDueDate}{Thursday\ October\ 2,\ 2012} % Due date
+\newcommand{\hmwkClass}{ESR-692 \ Fall 2015} % Course/class
+%\newcommand{\hmwkClassTime}{} % Class/lecture time
+\newcommand{\hmwkClassInstructor}{Dujon and Granek)} % Teacher/lecturer
+\newcommand{\hmwkAuthorName}{Marron} % Your name
+
+%----------------------------------------
+%	BEGIN DOC
+%----------------------------------------
+\begin{document}
+\begin{center}
+\textbf{\normalsize Options, thresholds, and agreements}
+\end{center}
+There may well be very strong causal relations between available options and behavioral thresholds in individual and collective human behaviors. No doubt option quality is as important as quantity, but in fact, it appears that the fundamental relationship is such that options act as inverse constraints; the fewer the options, the higher the likelihood that (usually negative) behavioral thresholds will be crossed. This phenomenon is well illustrated when  options are tied to the allocation agreements for essential natural resources: water, food, energy.\\
+
+As an example with quite mild behavioral thresholds, \citeA{dent_civic_2008} describes the distinctive individual and collective outcomes from reduced options for water usage because of federal enforcement actions under the Endangered Species Act (ESA) in two agricultural communities in the Pacific Northwest. Surely the cited distinctions in civic competency (the community skill set) and civic enterprise (the community history) between the two communities are valuable constructs to help explain response differences, yet below the academic analysis there seems to be a deeper, more fundamental type of decision-making that has to do with the potential accessibility to perceived options. Thus civic capacity would be more about the community's level of mental flexibility and creativity than about its skills and history, per se. \citeA{senge_fifth_2006} explores this idea under the rubric of mental models and their impacts on the creation of a successful learning organization. And \citeA{jaynes_probability_2003} show that it is possible to quantify the impact of new information on an individual given even a rough mapping of the individual's internal value system (i.e., the assignment of truth-value probabilities to a collection of belief objects).\\
+
+All of the above bears on the ability of various special interests to form workable, allocation agreements with respect to the essential ecosystem service of clean, fresh water -- for which, by the way, there is no substitute. Because of the additional jurisdictional and legal complications surrounding water, it would seem wise to uncover and explicate the internal states of the stakeholders before negotiations begin in earnest. Otherwise, a perceived lack of options is most likely to engender bad behavior in many, if not all, of the folks at the table. \\
+
+\renewcommand{\refname}{\normalfont\selectfont\small \textbf{References}} 
+\bibliographystyle{/usr/local/share/texmf/tex/latex/apacite/apacite}
+\bibliography{/home/bmarron//Desktop/BibTex/MyLibrary20151104}
+
+\end{document}

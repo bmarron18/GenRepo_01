@@ -1,0 +1,80 @@
+	---- items to be added to Zotero -------------
+
+	1. list new items in bibTex format (in designated area below)
+	2. copy the new items to clipboard
+	3. in Zotero,
+		--select the proper folder
+		--File ==> Import from clipboard
+	4. done!
+
+
+####################################
+specialty examples of BibTex format
+(already added)
+####################################
+
+@manual{holmes_MARSS,
+	title		= {Analysis of multivariate time-series using the MARSS package},
+	author		= {Holmes,Ward, and Scheuerell},
+	organization	= {Northwest Fisheries Science Center, NOAA},
+	address		= {Seattle, WA},
+	edition		= {version 3.10.1},
+	year		= {2014}
+}
+
+@report{wbcsd_2011,
+	title		= {Guide to Corporate Ecosystem Valuation},
+	author		= {WBCSD},
+	organization	= {World Business Council for Sustainable Development},
+	address		= {Geneva, Switzerland},
+	year		= {2011}
+}
+
+
+@incollection{eli_holmes1,
+	title = {Using Multivariate State-Space Models to Study Spatial Structure and Dynamics},
+	author = {Hinrichsen, R. and Holmes, E.E.},
+	booktitle = {Spatial Ecology},
+	publisher = {CRC Press}, 
+	year = {2010},
+	editor = {Cantell, Cosner, and Ruan}
+}
+
+
+@book{shumway_and_stoffer_timeseries,					
+        author = {R. Shumway and D. Stoffer},
+        title = {Time Series Analysis and its Applications},
+        publisher = {Springer},
+        address = {Heidelberg},
+        year = {2011}
+}
+
+
+@article{pfeffermann_tiller_2005,
+	author = {Pfeffermann, D. and Tiller, R.},
+	title = {Bootstrap Approximation to Prediction MSE for State–Space Models with Estimated Parameters},
+	journal = {Journal of Time Series Analysis},
+	year = {2005},
+	volume = {26},
+	number = {6},
+	pages = {893--916}
+}
+
+
+
+#################
+to be added
+#################
+
+
+
+
+
+
+
+
+
+
+
+
+

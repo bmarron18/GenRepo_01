@@ -1,0 +1,18 @@
+%%
+%% suffix is part of the bigfoot bundle for critical typesetting
+%% Copyright 2002--2006  David Kastrup <dak@gnu.org>
+%%
+%% The license notice and corresponding source code for this file are
+%% contained in suffix.dtx.
+%%
+\documentclass{ltxdoc}
+\usepackage{hyperref}
+\usepackage{suffix}
+\begin{document}
+\OnlyDescription
+ \AlsoImplementation
+\DocInput{suffix.dtx}
+\end{document}
+\endinput
+%%
+%% End of file `suffix.drv'.

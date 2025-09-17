@@ -1,0 +1,634 @@
+
+############
+Operations
+##############
+
+COPY of entire directory w/ all files!!
+	cd ~/Desktop/LaTex/LaTex_installed_packages
+	sudo cp -r fontawesome5 /usr/local/share/texmf/tex/latex/
+	cd /usr/local/share/texmf/tex/latex/fontawesome5/
+	sudo mktexlsr
+	
+	cd ~/Desktop/LaTex/LaTex_installed_packages
+	sudo cp -r moderncv-old /usr/local/share/texmf/tex/latex/
+	cd /usr/local/share/texmf/tex/latex
+	sudo mv moderncv-old moderncv
+	cd /usr/local/share/texmf/tex/latex/moderncv/
+	sudo mktexlsr
+	
+COPY just (all) files and hidden folders
+	cp -a /source/. /dest/ 	<== -a option is an improved recursive option
+							<== The . at end of the source path is a specific cp syntax that copies 							all files and folders, including hidden ones.
+	
+MOVE entire directory w/ all files!!
+	cd /usr/share/texlive/texmf-dist/tex/latex
+	sudo mv ccicons /usr/share/texlive/texmf-dist/fonts/opentype/public
+	cd /usr/share/texlive/texmf-dist/fonts/opentype/public/ccicons
+	sudo mktexlsr
+	sudo texhash
+	
+	
+	cd /usr/share/texlive/texmf-dist/fonts/opentype/public/
+	sudo mv ccicons /usr/share/texlive/texmf-dist/fonts/type1/public
+	cd /usr/share/texlive/texmf-dist/fonts/type1/public/
+	ls
+	sudo mktexlsr
+	sudo texhash
+	
+
+DELETE all files/dir.s in a dir
+	sudo rm -r *
+
+RENAME directory or file
+	sudo mv moderncv-old moderncv
+
+NEW directory
+	sudo mkdir -p /usr/local/share/texmf/tex/latex/ClearSans/ &&
+	sudo cp -r /home/bmarron/Downloads/clearsans/ /usr/local/share/texmf/tex/latex/ClearSans/ &&
+	cd /usr/local/share/texmf/tex/latex/ClearSans/ &&
+	sudo mktexlsr &&
+	sudo updmap-sys --enable Map=ClearSans.map
+	
+
+FIND
+cd /usr/share/
+find ./ -name "*.otf" -type f
+
+cd /usr/share/
+find ./ -name "ocr*" -type d
+ 
+
+###############
+Orientation
+#################
+
+There is 
+	TexLive
+	TexLive-LaTex
+	TexLive-Xetex
+	TexLive-LuaTex
+
+LaTeX, XeTex, and LuaTex are the recipes. The set of instructions and markup that defines the structure and ingredients of your final document. TeX Live is the kitchen, stocked with all the necessary tools and supplies—the oven, pans, utensils, and ingredients—that you need to follow the recipe and produce the finished dish. You need both a recipe (LaTeX, XeTex, LuaTex) and a kitchen (TeX Live) to create a beautifully typeset document. 
+
+
+There is 
+	BibLaTex
+	Biber
+
+Biber is the backend program that processes citation data for the
+BibLaTeX package, while BibLaTeX is the LaTeX package that provides a flexible and powerful interface for managing and formatting bibliographies and citations. In essence, BibLaTeX is the user-facing LaTeX tool, and Biber is the separate program it calls upon to handle the actual sorting, formatting, and data processing of bibliography information, offering more advanced features like full Unicode support and customizability than the older BibTeX
+
+
+#############
+updates to TexLive
+##################
+Search "texlive" in Synaptic
+
+you should have a specific reason to do an upgrade instead of a new install, and you should be familiar with Unix and TeX Live. If you have any doubts whatsoever, please do a new installation. 
+
+
+TeX Live: LaTeX fundamental, additional, and recommended packages
+	texlive-fonts-recommended
+	texlive-latex-base
+	texlive-latex-extra
+	texlive-latex-recommended
+TeX Live: XeTeX fundamental packages
+
+as of 29 Aug 2025---
+texlive-fonts-recommended is already installed at the requested version (2021.20220204-1)
+texlive-latex-base is already installed at the requested version (2021.20220204-1)
+texlive-latex-extra is already installed at the requested version (2021.20220204-1)
+texlive-latex-recommended is already installed at the requested version (2021.20220204-1)
+texlive-xetex is already installed at the requested version (2021.20220204-1)
+
+
+
+---- Installing new \usepackage and \documentclass files ----------------
+You can keep your current TeXLive, and just install the new versions of the packages you need in your local texmf tree ==>  /usr/local/share/texmf
+
+download the packages from CTAN, and install them in there. 
+You will need to run texhash as root to refresh TeX's file database, otherwise TeX will not find the new packages.
+
+
+##################################
+Texlive: LaTex distro-installed pkgs
+/usr/share/texlive/texmf-dist/tex/latex/
+#################################
+
+
+/usr/share/texlive/texmf-dist/tex/latex/$ ls		<< hundreds of packages here
+a0poster                       flacards                 pgf-blur
+a4wide                         flagderiv                pgf-cmykshadings
+a5comb                         flashcards               pgfgantt
+abraces                        flashmovie               pgf-interference
+abstract                       flipbook                 pgfkeyx
+accessibility                  flippdf                  pgfmath-xfp
+accsupp                        float                    pgfmorepages
+achemso                        floatflt                 pgfopts
+acro                           floatrow                 pgfornament
+...
+
+/usr/share/texlive/texmf-dist/tex/latex/base/		<< many .cls and .sty files here
+	[eg, book.cls from dreadful The Legrand Orange Book LaTeX Template (Overleaf)]
+
+dpkg -l | grep tex > ~/Desktop/tester
+
+find /usr/share/texlive/texmf-dist/tex/latex/** -name "*.sty" > ~/Desktop/tester
+find /usr/local/share/texmf/tex/latex/** -name "*.sty" > ~/Desktop/test
+
+
+##################################
+Texlive: latex user-installed pkgs
+/usr/local/share/texmf/tex/latex/
+###################################
+
+NB. 	Only put unique pkgs here
+		Latex will pull from here first
+		(May be old pkg)
+		
+NB. after first install texlive this directory
+	DOES NOT exist; need to create it
+
+
+	-- mkdir
+sudo mkdir -p /usr/local/share/texmf/tex/latex/
+
+	-- transfer .cls and .sty files from previous compu
+sudo cp -r /media/bmarron18/Lexar/latex /usr/local/share/texmf/tex/
+
+	-- check contents
+/usr/local/share/texmf/tex/latex$ ls		
+bibentry        LessonPlan    moderncv   rac2             texput.log
+biblatex        lix_textbook  nicefrac   Regenerarletter  university_letter
+chemgreek       logreq        preview    res              xstring
+cuposter        manyfoot      psuposter  siunitx
+dapper-invoice  mhchem        rac1       texMemo
+
+These are fonts----
+sudo mv ClearSans /home/bmarron/Downloads &&
+sudo mv fontawesome /home/bmarron/Downloads &&
+sudo mv fontawesome5 /home/bmarron/Downloads
+
+
+
+	-- add biblatex package
+https://www.ctan.org/pkg/biblatex	<== download .zip file
+
+sudo mkdir -p /usr/local/share/texmf/tex/latex/biblatex/ 
+OR
+sudo rm -r /usr/local/share/texmf/tex/latex/biblatex/	<== to install an updated ver  of biblatex
+
+sudo cp -r ~/Desktop/LaTex/LaTex_installed_packages/biblatex/ /usr/local/share/texmf/tex/latex/ &&
+cd /usr/local/share/texmf/tex/latex/biblatex/ &&
+sudo mktexlsr
+
+	-- check contents
+bmarron18@bmarron18-HP-Notebook:/usr/local/share/texmf/tex/latex$ ls
+	[should be same as above]
+
+
+##################################
+Texlive: other installed pkgs (like .sty and .fd files for fonts and R)
+/usr/share/texmf/tex/latex/
+###################################
+
+ccicons    fontawesome   inconsolata  ocrb     R         tipa
+ClearSans  fontawesome5  lm           preview  tex-gyre
+
+
+
+##############
+modify .cls files
+###################
+
+find /usr/local/share/texmf -name "texMemo.cls"
+	/usr/local/share/texmf/tex/latex/texMemo/texMemo.cls
+
+sudo latexila /usr/local/share/texmf/tex/latex/texMemo/texMemo.cls
+
+
+
+####################################
+general info for installing new .sty and .cls files
+(see examples below)
+######################################
+
+	a.
+	#Google search in CTAN for package
+
+CTAN {<name>}
+
+	b.
+	#useful sites
+https://www.ctan.org/pkg/
+www.latextemplates.com/
+tug.ctan.org/
+https://www.overleaf.com/gallery/tagged/formal-letter#.Vv_s7T-RLUK
+
+www.ctan.org/		#use advanced search w/ checked box 'Package Descriptions'
+
+	c.
+	*a documentclass often includes additional files
+	
+	*DO NOT use standard distro paths 
+		==> /usr/share/texlive/texmf-dist/tex/latex/
+		==> they will be clobbered by distro upgrades
+		
+	*install into what 'kpsewhich' sees as local			<== Karl's Path SEarch Library WHICH
+		==> /usr/local/share/texmf/tex/latex/
+
+$ kpsewhich -var-value TEXMFLOCAL
+	/usr/local/share/texmf/tex/latex/			<== install .sty and .cls files here!!!!
+
+
+	*install into home directory to test a document class
+	*if installed LaTeX package under a path ending in two slashes ==> done! 
+
+	*if installed in a path prepended by two exclamation marks, must generate or regenerate the ls-R file
+		-- go to the directory in question and execute the command "mktexlsr ."	
+		-- automatically writes to the file ls-R in the right format
+
+
+#########
+example--
+just .sty and .cls files
+#############################
+
+sudo mkdir -p /usr/local/share/texmf/tex/latex/moderncv/
+sudo cp /home/bruce/Downloads/Moderncv/*.sty /usr/local/share/texmf/tex/latex/moderncv/
+sudo cp /home/bruce/Downloads/Moderncv/*.cls /usr/local/share/texmf/tex/latex/moderncv/
+cd /usr/local/share/texmf/tex/latex/moderncv/ &&
+sudo mktexlsr
+
+sudo mkdir -p /usr/local/share/texmf/tex/latex/LessonPlan/ 
+sudo cp /home/bmarron/Downloads/LessonPlan/*.cls /usr/local/share/texmf/tex/latex/LessonPlan/ &&
+cd /usr/local/share/texmf/tex/latex/LessonPlan/ &&
+sudo mktexlsr
+
+
+
+#########
+example--
+fonts
+#############
+
+
+sudo mkdir -p /usr/local/share/texmf/tex/latex/ClearSans/ &&
+sudo cp -r /home/bmarron/Downloads/clearsans/ /usr/local/share/texmf/tex/latex/ClearSans/ &&
+cd /usr/local/share/texmf/tex/latex/ClearSans/
+sudo mktexlsr
+sudo texhash
+sudo updmap-sys --enable Map=ClearSans.map
+
+
+
+################
+example--
+beamer package
+beamer/metropolis package
+#################
+
+Beamer downloaded from CTAN and beamer folder placed in ~/Desktop/LaTex/LaTex_installed_packages
+
+cd ~/Desktop/LaTex/LaTex_installed_packages/
+sudo mkdir -p /usr/local/share/texmf/tex/latex/beamer/
+sudo cp -r beamer/ /usr/local/share/texmf/tex/latex/beamer/
+cd /usr/local/share/texmf/tex/latex/beamer/
+sudo mktexlsr
+
+cd ~/Desktop/LaTex/LaTex_installed_packages/
+sudo mkdir -p /usr/local/share/texmf/tex/lix_textbook/
+sudo cp -r lix_textbook/ /usr/local/share/texmf/tex/latex/lix_textbook/
+cd /usr/local/share/texmf/tex/latex/lix_textbook/
+ls
+sudo mktexlsr
+
+
+
+cd ~/Downloads/metropolis/source
+tex *.ins
+sudo cp ~/Downloads/metropolis/source/beamerthememetropolis.sty  /usr/local/share/texmf/tex/latex/beamer/base/themes/theme/
+sudo cp ~/Downloads/metropolis/source/beamercolorthememetropoli*.sty  /usr/local/share/texmf/tex/latex/beamer/base/themes/color
+sudo cp ~/Downloads/metropolis/source/beamerfontthememetropolis.sty  /usr/local/share/texmf/tex/latex/beamer/base/themes/font
+sudo cp ~/Downloads/metropolis/source/beamerinnerthememetropolis.sty  /usr/local/share/texmf/tex/latex/beamer/base/themes/inner
+sudo cp ~/Downloads/metropolis/source/beamerouterthememetropolis.sty  /usr/local/share/texmf/tex/latex/beamer/base/themes/outer
+
+cd /usr/local/share/texmf/tex/latex/beamer/
+sudo mktexlsr
+
+
+
+##########
+copy pkg to 
+/usr/share/texlive/texmf-dist/tex/latex
+##############################
+
+cd /usr/local/share/texmf/tex/latex
+sudo mkdir -p /usr/local/share/texmf/tex/latex/ccicons/
+sudo cp -r ccicons/ /usr/share/texlive/texmf-dist/tex/latex/ccicons/
+
+
+##################
+example --
+biblatex package
+(already has .sty file)
+####################
+
+sudo mkdir -p /usr/local/share/texmf/tex/latex/biblatex/
+sudo mv -v ~/Downloads/biblatex/latex/* /usr/local/share/texmf/tex/latex/biblatex/
+cd /usr/local/share/texmf/tex/latex/biblatex/
+sudo mktexlsr
+
+
+OR (if need to install new packages)
+
+sudo mkdir -p /usr/local/share/texmf/tex/latex/biblatex/ &&
+sudo cp -r ~/Desktop/LaTex/LaTex_installed_packages/biblatex/latex /usr/local/share/texmf/tex/latex/biblatex/ &&
+cd /usr/local/share/texmf/tex/latex/biblatex/ &&
+sudo mktexlsr
+
+
+sudo mkdir -p /usr/local/share/texmf/tex/latex/fancyhdr/ &&
+sudo cp ~/Desktop/LaTex/LaTex_installed_packages/fancyhdr/*.sty /usr/local/share/texmf/tex/latex/fancyhdr/ &&
+cd /usr/local/share/texmf/tex/latex/fancyhdr/ &&
+sudo mktexlsr
+
+
+sudo mkdir -p /usr/local/share/texmf/tex/latex/subfiles/ &&
+sudo cp ~/Desktop/LaTex/LaTex_installed_packages/subfiles/*.sty /usr/local/share/texmf/tex/latex/subfiles/ &&
+sudo cp ~/Desktop/LaTex/LaTex_installed_packages/subfiles/*.cls /usr/local/share/texmf/tex/latex/subfiles/ &&
+cd /usr/local/share/texmf/tex/latex/subfiles/ &&
+sudo mktexlsr
+
+
+sudo mkdir -p /usr/local/share/texmf/tex/latex/logreq/ &&
+sudo cp ~/Desktop/LaTex/LaTex_installed_packages/logreq/*.sty /usr/local/share/texmf/tex/latex/logreq/ &&
+sudo cp ~/Desktop/LaTex/LaTex_installed_packages/logreq/*.def /usr/local/share/texmf/tex/latex/logreq/ &&
+cd /usr/local/share/texmf/tex/latex/logreq/ &&
+sudo mktexlsr
+
+
+
+
+
+
+
+###########################################################
+example -- \usepackage{lipsum}
+(.ins/.dtx preinstall IS required to create .sty file)
+############################################################
+
+Access to 150 paragraphs of ``Lorem ipsum'' dummy text.
+Patrick Happel (patrick.happel@rub.de)
+
+============================================================
+
+
+
+1. Contents of the package
+--------------------------
+
+   lipsum.dtx		<== needed to make .sty file
+   lipsum.ins 		<== needed to make .sty file
+   lipsum.pdf
+   README.1st
+
+
+
+2. Installation
+--------------------------
+
+	a.
+ 	# make new directories for the new package files in place where LaTex finds them! (but will not be overwritten by new LaTex distro)
+	# -p (= --parents) make intervening parent directoreis as needed
+
+$ sudo mkdir -p /usr/local/share/texmf/tex/latex/lipsum/
+
+
+	b.
+ 	# Move .ins and .dxt files to ~/Desktop
+ 	# Run lipsum.ins thru 'tex' (generates .sty file at ~/Desktop)
+	# note: if get '?' and stopping while running tex, just hit 'Enter' to continue
+	# **Compile the style files** by running `make sty` inside the downloaded directory. 
+	(Or run LaTeX directly on `source/metropolistheme.ins`.)
+
+$ cd Desktop
+$ tex lipsum.ins
+--OR--
+$ tex lipsum.dtx
+
+	c.
+	# Copy (move) the resulting *.sty file (and all others: *.drv, *.def, *.cfg, etc) to the new directory:
+
+$ sudo cp lipsum.sty /usr/local/share/texmf/tex/latex/lipsum/
+
+	d.
+ 	# Update filename database (/usr/local/share/texmf/ls-R file)
+
+$ cd /usr/local/share/texmf/tex/latex/lipsum/
+$ sudo mktexlsr
+
+	e.
+	#move .dxt, .ins. .pdf. README to file folder 'Style_packages_installed' in LaTex folder on Desktop
+
+
+
+
+
+#####################################
+example -- \usepackage{titlesec}
+(.ins/.dtx preinstall NOT required b/c .sty file available)
+######################################
+
+A pack­age pro­vid­ing an in­ter­face to sec­tion­ing com­mands for se­lec­tion from var­i­ous ti­tle styles. 
+E.g., marginal ti­tles and to change the font of all head­ings with a sin­gle com­mand, also pro­vid­ing sim­ple one-step page styles. 
+Also in­cludes a pack­age to change the page styles when there are floats in a page. 
+You may as­sign head­ers/foot­ers to in­di­vid­ual floats, too.
+
+============================================================
+
+
+
+1. Contents of the package in:
+
+~/Desktop/LaTex/Style_packages/titlesec/
+--------------------------
+
+block.tss  leftmargin.tss   titleps.sty   titlesec.tex  ttlps.def
+drop.tss   margin.tss       titleps.tex   titletoc.sty  wrap.tss
+frame.tss  rightmargin.tss  titlesec.sty  ttlkeys.def
+
+CHANGES    README.txt  titleps.pdf  titlesec.pdf	#move these (temporarily) out of folder 
+
+
+2. Installation
+--------------------------
+
+	a.
+ 	# make new directories for the new package files in place where latex finds them!
+	# -p (= --parents) make intervening parent directoreis as needed
+
+$ sudo mkdir -p /usr/local/share/texmf/tex/latex/titlesec/
+
+	b.
+	# Note: all files already in folder, 'titlesec'
+	# Move all !INFO files ( .sty,  .tss, .tex, .bst files only) to the new directory
+	#note that .bst files are for BibTex 
+
+$ sudo cp -r ~/Desktop/LaTex/Style_packages/titlesec/* /usr/local/share/texmf/tex/latex/titlesec/
+
+
+	c.
+ 	# Update filename database (the ls-R file)
+
+$ cd /usr/local/share/texmf/tex/latex/titlesec/
+$ sudo mktexlsr
+
+
+
+######################
+\documentclass{cuposter}
+install cuposter.cls
+######################
+
+	a.
+	# Cambridge University poster uses: \documentclass[noback]{cuposter}
+	# the set up for this documentclass included in this .cls file
+	# put a copy on the Desktop
+	# move the copy to where LaTex can find it
+
+$ sudo mkdir /usr/local/share/texmf/tex/latex/cuposter/
+
+$ cd Desktop
+$ sudo mv cuposter.cls /usr/local/share/texmf/tex/latex/cuposter
+cd /usr/local/share/texmf/tex/latex/cuposter
+sudo mktexlsr
+
+
+
+
+
+
+#################
+LaTex Background
+#################
+
+	*Latexilla runs TexLive
+	*\documentclass[options]{name}		#eg ==> \documentclass[letter,11pt]{article}
+	*\usepackage[options]{name}		#eg ==> \usepackage[utf8]{inputenc}
+
+	* .cls ==> documentclass files
+	* .sty ==> usepackage files
+	* .dtx ==> source files (to create .cls and .sty files)
+	* .ins ==> package installation files
+	
+	* LaTex directories include
+		--	/home/bmarron/.texmf-config/
+			/home/bmarron/.texmf-var/
+			/home/bmarron/texmf/tex/
+				==> the Latex user's personal directories for document classes and style packages
+
+		--	/usr/local/share/texmf/
+				==> the LaTex local directory for document classes and style packages
+
+			$ kpsewhich -var-value TEXMFLOCAL
+			/usr/local/share/texmf
+
+		--	/usr/share/texmf/
+			/usr/share/texlive/texmf-dist
+				==> the the LaTex standard directory for document classes and style packages
+
+			/usr/share/texlive/texmf-dist/tex/latex/base/ 		#distro-installed .cls and .sty files
+
+
+	*look at article.cls file: /usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+%%--------------------------------------------------------------
+%% This is file `article.cls',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% classes.dtx  (with options: `article')
+%% 
+%% This is a generated file.
+%% 
+%% Copyright 1993 1994 1995 1996 1997 1998 1999 2000 2001 2002 2003 2004 2005 2006 2007 2008 2009
+%% The LaTeX3 Project and any individual authors listed elsewhere
+%% in this file.
+%% 
+%% This file was generated from file(s) of the LaTeX base system.
+%% --------------------------------------------------------------
+
+
+
+	*look at article.sty file: /usr/share/texlive/texmf-dist/tex/latex/base/article.sty
+%%------------------------------------------------------------
+%% This is file `article.sty',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% latex209.dtx  (with options: `article')
+%% 
+%% This is a generated file.
+%% 
+%% Copyright 1993 1994 1995 1996 1997 1998 1999 2000 2001 2002 2003 2004 2005 2006 2007 2008 2009
+%% The LaTeX3 Project and any individual authors listed elsewhere
+%% in this file.
+%% 
+%% This file was generated from file(s) of the LaTeX base system.
+%% --------------------------------------------------------------
+
+
+	*TeX uses the kpathsea library for finding files
+		-- the utility for listing kpathsea search paths is kpsepath
+		-- kpsepath calls kpsewhich via the script kpsetool. 
+		-- kpsewhich searches paths for 
+			==> .tex files
+			==> .cls files
+			==> .sty files
+
+	*kpsewhich identifies three different types of paths
+		-- Paths ending with a double slash are to be searched recursively. 
+		-- The file system will not be searched if paths are prepended by two exclamation marks. 
+		-- Paths without either double slashes or exclamation marks are searched without recursion.
+
+$ kpsepath tex | tr : '\n'
+.
+
+/home/bmarron/.texmf-config/tex///
+/home/bmarron/.texmf-var/tex///
+/home/bmarron/texmf/tex///
+/etc/texmf/tex///
+
+/home/bmarron/.texmf-config/tex/kpsewhich//
+/home/bmarron/.texmf-var/tex/kpsewhich//
+/home/bmarron/texmf/tex/kpsewhich//
+/home/bmarron/.texmf-config/tex/generic//
+/home/bmarron/.texmf-var/tex/generic//
+/home/bmarron/texmf/tex/generic//
+/etc/texmf/tex/kpsewhich//
+/etc/texmf/tex/generic//
+
+
+!!/var/lib/texmf/tex///
+!!/usr/local/share/texmf/tex///				#installs are here (see Lipsum package)
+!!/usr/share/texmf/tex///
+!!/usr/share/texlive/texmf-dist/tex///
+
+!!/var/lib/texmf/tex/kpsewhich//
+!!/usr/local/share/texmf/tex/kpsewhich//
+!!/usr/share/texmf/tex/kpsewhich//
+!!/usr/share/texlive/texmf-dist/tex/kpsewhich//
+!!/var/lib/texmf/tex/generic//
+!!/usr/local/share/texmf/tex/generic//
+!!/usr/share/texmf/tex/generic//
+!!/usr/share/texlive/texmf-dist/tex/generic//
+
+
+
+
+
+
+
+

@@ -1,0 +1,162 @@
+Title:			Hmwk1 LOG2:
+Project:		2016SoE009 (CS545_MachineLearning)
+Record:		
+Author:			bmarron
+Origin Date:		22 Jan 2016
+
+
+
+
+
+#########################
+class Network(object):
+#########################
+				#code must have no intermediate blank lines (ok in spyder) 
+>>> class Network(object):
+    def __init__(self, sizes):
+        self.num_layers = len(sizes)
+        self.sizes = sizes
+        self.biases = [np.random.randn(y, 1) for y in sizes[1:]]
+	print self.biases
+
+>>> Network([2,3,1])
+[array([[ 0.27921273],
+       [ 1.39785331],
+       [ 2.81219956]]), array([[-0.9613497]])]
+<__main__.Network object at 0xb636f84c>
+-----------------------------------------------
+------------------------------------------------
+
+
+>>> class Network(object):
+    def __init__(self, sizes):
+        self.num_layers = len(sizes)
+        self.sizes = sizes
+	self.y=sizes[1]
+        self.biases = [np.random.randn(self.y, 1)]
+	print self.biases
+
+>>> Network([2,3,1])
+[array([[-0.82841509],
+       [-1.78561777],
+       [ 0.77508955]])]
+<__main__.Network object at 0xb636f8cc>
+-------------------------------------------------
+-------------------------------------------------
+
+
+>>> class Network(object):
+    def __init__(self, sizes):
+        self.num_layers = len(sizes)
+        self.sizes = sizes
+        self.biases = [np.random.randn(self.sizes[0], 1)]
+	print self.biases
+
+>>> Network([10,1])
+[array([[-0.32571857],
+       [ 0.48350938],
+       [-2.33494794],
+       [ 0.59350007],
+       [ 0.89404482],
+       [ 0.37345692],
+       [ 1.12700282],
+       [ 0.75933987],
+       [ 0.13131549],
+       [ 0.46031733]])]
+<__main__.Network object at 0xb636f84c>
+-----------------------------------------------------
+------------------------------------------------------
+
+
+>>> class Network(object):
+   def __init__(self, sizes):
+        self.num_layers = len(sizes)
+        self.sizes = sizes
+        self.weights = [np.random.randn(y, x) for x, y in zip(sizes[:-1], sizes[1:])]
+	print self.weights
+
+>>> Network([3,5,1])
+[array([[ 2.33254932,  0.11238184,  1.07687119],
+       [-0.98769286, -0.21999548, -0.17992976],
+       [-0.29915467, -0.28695274, -0.06267289],
+       [-1.35289471, -0.02322206, -2.04520425],
+       [-0.77714455, -1.4946833 , -1.83302802]]), array([[ 0.82934908,  0.86901495,  0.20817612, -1.22742341,  1.17478138]])]
+<__main__.Network object at 0xb636fd0c>
+
+
+>>> size=[3,5,1]
+
+			#all minus the last one
+>>> size[:-1]
+[3, 5]
+
+			#all minus the first one (at size[0]
+>>> size[1:]
+[5, 1]
+
+			# couple 'em
+
+>>> zip(size[:-1], size[1:])
+[(3, 5), (5, 1)]
+-----------------------------------------------------------------------
+-------------------------------------------------------------------------
+
+
+>>> class Network(object):
+   def __init__(self, sizes):
+        self.num_layers = len(sizes)
+        self.sizes = sizes
+        self.weights = [np.random.randn(y, x) for x, y in zip(sizes[:-1], sizes[1:])]
+	print self.weights
+
+>>> size=[3,5,1]
+>>> zip(size[:-1], size[1:])
+[(3, 5), (5, 1)]
+
+
+>>> net=Network([3,5,1])
+[array([[-0.41505847,  1.70140038,  0.91385148],
+       [-1.01628116, -1.38484795,  0.51662871],
+       [-1.18005634, -1.727613  ,  0.62209686],
+       [ 2.08948776,  1.4766514 , -0.35686759],
+       [-1.08801132, -0.22240576, -0.58330091]]), array([[ 2.43880715, -2.26688149, -1.07132758, -0.99055838, -0.76534705]])]
+
+
+>>> net.weights[0]
+array([[-0.41505847,  1.70140038,  0.91385148],
+       [-1.01628116, -1.38484795,  0.51662871],
+       [-1.18005634, -1.727613  ,  0.62209686],
+       [ 2.08948776,  1.4766514 , -0.35686759],
+       [-1.08801132, -0.22240576, -0.58330091]])
+
+
+>>> net.weights[1]
+array([[ 2.43880715, -2.26688149, -1.07132758, -0.99055838, -0.76534705]])
+
+---------------------------------------------------------
+----------------------------------------------------------
+
+
+>>> class Network(object):
+    def __init__(self, sizes):
+        self.num_layers = len(sizes)
+        self.sizes = sizes
+        self.weights = [np.random.randn(self.sizes[0], 1)]
+    def feedforward(self, a):
+        a1 = np.vdot(self.weights, a)
+        return a1
+	print a1
+
+
+	# training set data
+B,4,2,5,4,4,8,7,6,6,7,6,6,2,8,7,10	==>1,4,2,5,4,4,8,7,6,6,7,6,6,2,8,7,10
+A,1,1,3,2,1,8,2,2,2,8,2,8,1,6,2,7	==> 1,1,1,3,2,1,8,2,2,2,8,2,8,1,6,2,7
+
+
+>>> np.random.seed(47)
+>>> net=Network([17,1])
+>>> net.feedforward([1,4,2,5,4,4,8,7,6,6,7,6,6,2,8,7,10])
+10.380052842446508
+
+---------------------------------------------------------------------------
+----------------------------------------------------------------------------

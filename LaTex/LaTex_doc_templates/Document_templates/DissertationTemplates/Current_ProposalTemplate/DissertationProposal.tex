@@ -1,0 +1,234 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Dissertation Proposal
+% 2017SoE027
+% 
+% Author: bmarron
+% Origin: 27 Feb 2017
+% Final:
+%
+% For a stand-alone doc:
+% Insert contents into "Stand-Alone_template.tex"
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+\documentclass[reqno,12pt,oneside]{report}  % right-side equation numbering, 12-pt, print one-sided 
+
+\usepackage{rac2}                          % Use "rac1" for thesis; "rac2" for thesis proposal (fr. Univ. of Michigan thesis template)
+\usepackage{amsfonts}
+\usepackage{amsxtra}                       % Use various AMS packages
+\usepackage{graphicx}                      % Add some packages for figures. Read epslatex.pdf on ctan.tug.org
+\usepackage{rotating}
+\usepackage{color}
+\usepackage{epsfig}
+\usepackage{acronym}                       % For the List of Abbreviations. Read acronym.pdf on ctan.tug.org
+\usepackage{setspace}                      % Allows you to specify the line spacing
+\usepackage{outlines}                      % outlines
+\usepackage{lipsum}                        % Package to generate dummy text throughout this template
+\usepackage{csquotes}
+\usepackage[natbibapa]{apacite}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pdfpages}
+\usepackage{verbatim}
+\usepackage{bigfoot}
+\usepackage{multirow}
+\usepackage{booktabs}                                 % Horizontal rules in tables
+\usepackage{float}                                    % place Tables/Figs in specific locations with the [H] (e.g. \begin{table}[H])
+\usepackage{paralist}                                 % makes bullet points with less space between them
+\usepackage[sc]{mathpazo}                             % Use the Palatino font and the Pazo fonts for math
+\usepackage{microtype}                                % Slightly tweak font spacing for aesthetics
+\usepackage[hmarginratio=1:1,top=32mm]{geometry}      % Document margins
+\usepackage[hang, small,labelfont=bf,up,textfont=it,up]{caption} % Custom captions 
+
+\usepackage{xspace}
+\let\OldS\S
+\renewcommand{\S}{\OldS\xspace}
+
+\usepackage{draftwatermark}
+\SetWatermarkLightness{0.95}
+\SetWatermarkScale{1}
+
+
+\renewcommand\labelitemi{{\boldmath$\cdot$}}          %medium bullets
+%\renewcommand\labelitemi{$\cdot$}                    %small bullets
+
+
+\usepackage[T1]{fontenc}                              % Use 8-bit encoding that has 256 glyphs
+\linespread{1.05}                                     % Line spacing - Palatino needs more space between lines
+\onehalfspacing                                       % \onehalfspacing for 1.5 spacing, \doublespacing for 2.0 spacing.
+
+
+
+\usepackage{abstract}                                       % Allows abstract customization
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}      % Set the "Abstract" text to bold
+\renewcommand{\abstracttextfont}{\normalfont\small\itshape} % Set the abstract itself to small italic text
+
+
+%-------------------------------------------------------------
+% NEW COMMANDS
+%---------------------------------------------------------------------
+%This command creates a box marked ``To Do'' around text.
+%To use type \todo{  insert text here  }.
+\newcommand{\todo}[1]{\vspace{5 mm}\par \noindent
+\marginpar{\textsc{To Do}}
+\framebox{\begin{minipage}[c]{0.95 \textwidth}
+\tt\begin{center} #1 \end{center}\end{minipage}}\vspace{5 mm}\par}
+
+
+\newcommand{\sun}{\ensuremath{\odot}} % sun symbol is \sun
+
+
+% To use paragraph indents
+%\begin{myindentpar}{2em}
+% blah blah blah
+%\end {myindentpar}
+\newenvironment{myindentpar}[1]%
+   {\begin{list}{}%
+       {\setlength{\leftmargin}{#1}}%
+           \item[]%
+   }
+     {\end{list}}
+
+
+%-----------------------------------------------------------------
+% START DOCUMENT
+%-----------------------------------------------------------------
+\begin{document}
+
+\titlepage{The Ecological Assessment of Agroecological Landscapes for Sustainable Cropping Systems}{Bruce D. Marron}{Doctor of Philosophy}{Earth, Environment, and Society}{2017}
+{$\checkmark $ Dr. Robert Scheller, Prof. of Environmental Science \\
+ Dr. Michelle , Asst. Prof. of Agroecology\\
+ Dr. J. Arturo Maldonado, Assoc. Professor of Agroecology\\
+ }
+
+
+%-----------------------------
+% FRONT SECTIONS
+%------------------------------
+
+\initializefrontsections
+
+% Optional: Frontispiece graphic/text
+\frontispiece{\includegraphics[width=6in]{FrontSections/fig1c} Paris, 2050}
+
+% Optional: Copyright page
+%\copyrightpage{Bruce D. Marron}
+
+% Optional: Dedication page
+%\dedicationpage{To all of the two-foots, four-foots, and no-foots\\
+% \todo{ More to add here!!}}
+
+% Optional: Acknowledgements page
+%\startacknowledgementspage
+%\input{FrontSections/Acknowledgements/Acknowledgements}
+%\label{Acknowledgements}
+
+% Optional: Preface page
+%\startprefacepage
+%\input{Preface}
+%\label{Preface}
+
+
+%----------------------------------------------------
+% TABLE OF CONTENTS
+%----------------------------------------------------
+
+
+\tableofcontents                        % Required
+\listoffigures                          % Required if there is more than one figure
+\listoftables                           % Required if there is more than one table
+\listofmaps                             % Required if there is more than one map
+%\listofappendices                      % Required if there is more than one appendix
+\listofabbreviations                    % Optional. Abbreviations should be stored in a file named abbr.tex
+
+
+%----------------------------------------------------------
+% (In-Dissertation) ABSTRACT
+%----------------------------------------------------------
+
+%\startabstractpage
+%{The Title of Your Dissertation}{Your Name}{Chair: Albert Einstein}
+%\input{Abstract/Abstract}
+%\label{Abstract}
+
+
+%--------------------------
+% CHAPTERS
+%---------------------------
+
+\startthechapters 
+% The individual files for each of the chapters are put here.
+% Save each chapter to a separate tex file and then use the 
+%"\input{}" command to include this file. 
+ 
+  
+\chapter{A Complex Problem}
+ \input{Ch1_ProblemStatement/PrblmStmnt_current}
+  \label{chap:Intro}
+
+  
+\chapter{Assumptions and Logic}
+ \input{Ch2_Assumptions-and-Logic/AssumpsLogic_current}
+  \label{chap:Intro}  
+
+
+\chapter{Fundamental Dynamics for Agroecological Mutualism}
+ \input{Ch3_Dynamics/Dynamics_current}
+  \label{chap:Dynamics}
+
+
+\chapter{The AgroEV Extension for LANDIS-II}
+ \input{Ch4_AgroEV/AgroEV_current}
+ \label{chap:AgroEV}
+ 
+ 
+\chapter{Applications of the AgroEV Extension}
+ \input{Ch5_Applications/Apps_current}
+ \label{chap:Apps}
+
+ 
+ 
+%----------------------------
+% APPENDICES
+%--------------------------------
+\startappendices
+ \appendix{A Few Definitions of Sustainable Agriculture}
+  \input{Appendices/SustAg_Defs}
+  \label{app:defs}
+ 
+ 
+  
+%----------------------------------
+% BIBLIOGRAPHY
+%-----------------------------------  
+ \startbibliography
+ \begin{singlespace} % Bibliography must be single spaced
+  \bibliographystyle{/usr/local/share/texmf/tex/latex/apacite/apacite}
+  \bibliography{/home/bruce/Desktop/BibTex/My_Library_20170125}
+ \end{singlespace}
+
+
+
+
+%-----------------------------------------------------
+% (Separate-submission) ABSTRACT
+% -------------------------------------------------------
+% An external Abstract that can be printed at the end of the document, 
+% for separate submission, if needed.
+
+%\startextabstractpage
+%{The Title of Your Dissertation}{Your Name}{Chair: Albert Einstein}
+%\input{Abstract/Abstract}
+%\label{ExtAbstract}
+
+
+
+
+%------------------------
+% END DOCUMENT
+%--------------------------
+\end{document}

@@ -1,0 +1,38 @@
+	--- \etc\fstab ----
+
+to edit:
+$ sudo nano -Bw /etc/fstab
+
+==== fstab from 14.04 LTS, 21 Jun 2015 =====
+# /etc/fstab: static file system information.
+#
+# Use 'sudo blkid' for a full listing of UUID assignments
+# Use 'sudo blkid -o value -s UUID' to print just the universally unique
+# identifier for a device; this may be used with UUID= as a more robust way to
+# name devices that works even if disks are added and removed. See fstab(5).
+#
+# <file system> 				<mount point>		<type>  	<options>       	<dump>  <pass>
+
+# / was on /dev/sda1 during installation
+UUID=9b341b5e-356f-43c9-bb4f-e58c69ea8a46 	/               	ext4    	errors=remount-ro 	0       1
+
+# swap was on /dev/sda5 during installation
+UUID=734a4ea5-1cd1-4d89-92ec-2dde47281579 	none            	swap    	sw              	0       0
+
+
+
+
+
+==== fstab from old compu (12.04 LTS) ===============================================
+# /etc/fstab: static file system information.
+#
+# Use 'sudo blkid' for a full listing of UUID assignments
+# Use 'sudo blkid -o value -s UUID' to print just the universally unique
+# identifier for a device; this may be used with UUID= as a more robust way to
+# name devices that works even if disks are added and removed. See fstab(5).
+#
+# <file system> <mount point>   <type>  <options>       <dump>  <pass>
+proc            /proc           proc    nodev,noexec,nosuid 0       0
+/dev/sda1       /               ext4    errors=remount-ro   0       1
+/dev/sda5       none            swap    sw                  0       0
+LABEL="hd_250"    /mnt          ext3    defaults            0       2

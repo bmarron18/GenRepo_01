@@ -1,0 +1,38 @@
+Note: The APT repositories point towards the destination.
+
+Running check 'Phase 1: Preparation'
+=================
+APT Repositories:
+=================
+Repos:
+  No active apt repos in: /etc/apt/sources.list 
+  Active apt repos in: /etc/apt/sources.list.d/google-chrome.list 
+  1: deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
+  Active apt repos in: /etc/apt/sources.list.d/obsproject-obs-studio-focal.list 
+  1: deb http://ppa.launchpad.net/obsproject/obs-studio/ubuntu jammy main
+  Active apt repos in: /etc/apt/sources.list.d/official-package-repositories.list 
+  1: deb https://mirrors.ocf.berkeley.edu/linuxmint-packages vanessa main upstream import backport
+  2: deb http://mirrors.ocf.berkeley.edu/ubuntu jammy main restricted universe multiverse
+  3: deb http://mirrors.ocf.berkeley.edu/ubuntu jammy-updates main restricted universe multiverse
+  4: deb http://mirrors.ocf.berkeley.edu/ubuntu jammy-backports main restricted universe multiverse
+  5: deb http://security.ubuntu.com/ubuntu/ jammy-security main restricted universe multiverse
+  No active apt repos in: /etc/apt/sources.list.d/otto-kesselgulasch-gimp-focal.list 
+  No active apt repos in: /etc/apt/sources.list.d/webupd8team-y-ppa-manager-focal.list 
+  Active apt repos in: /etc/apt/sources.list.d/yubico-stable-focal.list 
+  1: deb http://ppa.launchpad.net/yubico/stable/ubuntu jammy main
+=================
+
+Running check 'Linux Mint version'
+Check succeeded:  Linux Mint version
+
+Running check 'Power source'
+Check succeeded:  Power source
+
+Running check 'System snapshots'
+Check succeeded:  System snapshots
+
+Running check 'Held packages'
+Check succeeded:  Held packages
+
+Running check 'Package repositories'
+mintupgrade-inhibit-power: no process found

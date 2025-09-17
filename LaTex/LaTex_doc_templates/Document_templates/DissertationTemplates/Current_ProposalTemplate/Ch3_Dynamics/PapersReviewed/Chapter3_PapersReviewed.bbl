@@ -1,0 +1,189 @@
+\begin{thebibliography}{}
+
+\bibitem [\protect \citeauthoryear {%
+Bascompte%
+}{%
+Bascompte%
+}{%
+{\protect \APACyear {2009}}%
+}]{%
+bascompte_disentangling_2009}
+\APACinsertmetastar {%
+bascompte_disentangling_2009}%
+\begin{APACrefauthors}%
+Bascompte, J.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2009}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Disentangling the web of life} {Disentangling the web of
+  life}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Science}{325}{5939}{416--419}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Bever%
+, Westover%
+\BCBL {}\ \BBA {} Antonovics%
+}{%
+Bever%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {1997}}%
+}]{%
+bever_incorporating_1997}
+\APACinsertmetastar {%
+bever_incorporating_1997}%
+\begin{APACrefauthors}%
+Bever, J\BPBI D.%
+, Westover, K\BPBI M.%
+\BCBL {}\ \BBA {} Antonovics, J.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1997}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Incorporating the soil community into plant population
+  dynamics: the utility of the feedback approach} {Incorporating the soil
+  community into plant population dynamics: the utility of the feedback
+  approach}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Journal of Ecology}{}{}{561--573}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Bollen%
+, Van~de Sompel%
+, Hagberg%
+\BCBL {}\ \BBA {} Chute%
+}{%
+Bollen%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2009}}%
+}]{%
+bollen_principal_2009}
+\APACinsertmetastar {%
+bollen_principal_2009}%
+\begin{APACrefauthors}%
+Bollen, J.%
+, Van~de Sompel, H.%
+, Hagberg, A.%
+\BCBL {}\ \BBA {} Chute, R.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2009}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {A principal component analysis of 39 scientific impact
+  measures} {A principal component analysis of 39 scientific impact
+  measures}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{PloS one}{4}{6}{e6022}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Clark%
+}{%
+Clark%
+}{%
+{\protect \APACyear {2005}}%
+}]{%
+clark_why_2005}
+\APACinsertmetastar {%
+clark_why_2005}%
+\begin{APACrefauthors}%
+Clark, J\BPBI S.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2005}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Why environmental scientists are becoming {Bayesians}}
+  {Why environmental scientists are becoming {Bayesians}}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Ecology letters}{8}{1}{2--14}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Fath%
+, Scharler%
+, Ulanowicz%
+\BCBL {}\ \BBA {} Hannon%
+}{%
+Fath%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2007}}%
+}]{%
+fath_ecological_2007}
+\APACinsertmetastar {%
+fath_ecological_2007}%
+\begin{APACrefauthors}%
+Fath, B\BPBI D.%
+, Scharler, U\BPBI M.%
+, Ulanowicz, R\BPBI E.%
+\BCBL {}\ \BBA {} Hannon, B.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2007}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Ecological network analysis: network construction}
+  {Ecological network analysis: network construction}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{ecological modelling}{208}{1}{49--55}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Scheller%
+\ \BBA {} Mladenoff%
+}{%
+Scheller%
+\ \BBA {} Mladenoff%
+}{%
+{\protect \APACyear {2004}}%
+}]{%
+scheller_forest_2004}
+\APACinsertmetastar {%
+scheller_forest_2004}%
+\begin{APACrefauthors}%
+Scheller, R\BPBI M.%
+\BCBT {}\ \BBA {} Mladenoff, D\BPBI J.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2004}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {A forest growth and biomass module for a landscape
+  simulation model, {LANDIS}: design, validation, and application} {A forest
+  growth and biomass module for a landscape simulation model, {LANDIS}: design,
+  validation, and application}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Ecological Modelling}{180}{1}{211--229}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Williams%
+}{%
+Williams%
+}{%
+{\protect \APACyear {2010}}%
+}]{%
+williams_simple_2010}
+\APACinsertmetastar {%
+williams_simple_2010}%
+\begin{APACrefauthors}%
+Williams, R\BPBI J.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2010}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Simple {MaxEnt} models explain food web degree
+  distributions} {Simple {MaxEnt} models explain food web degree
+  distributions}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Theoretical Ecology}{3}{1}{45--52}.
+\PrintBackRefs{\CurrentBib}
+
+\end{thebibliography}

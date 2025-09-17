@@ -1,0 +1,61 @@
+This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: DissertationProposal_PapersReviewed.aux
+The style file: /usr/local/share/texmf/tex/latex/apacite/apacite.bst
+Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
+Reallocated global_strs (elt_size=20001) to 20 items from 10.
+Reallocated glb_str_end (elt_size=4) to 20 items from 10.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: /home/bmarron//Desktop/BibTex/My_Library_20170125.bib
+Repeated entry---line 4429 of file /home/bmarron//Desktop/BibTex/My_Library_20170125.bib
+ : @article{godfray_food_2010
+ :                           ,
+I'm skipping whatever remains of this entry
+apacite.bst [2013/07/21 v6.03 APA bibliography style]
+You've used 29 entries,
+            6951 wiz_defined-function locations,
+            1466 strings with 16350 characters,
+and the built_in function-call counts, 58017 in all, are:
+= -- 7063
+> -- 487
+< -- 2873
++ -- 3096
+- -- 62
+* -- 3861
+:= -- 10825
+add.period$ -- 112
+call.type$ -- 29
+change.case$ -- 495
+chr.to.int$ -- 0
+cite$ -- 58
+duplicate$ -- 1643
+empty$ -- 2212
+format.name$ -- 864
+if$ -- 10790
+int.to.chr$ -- 0
+int.to.str$ -- 87
+missing$ -- 0
+newline$ -- 733
+num.names$ -- 233
+pop$ -- 828
+preamble$ -- 1
+purify$ -- 118
+quote$ -- 0
+skip$ -- 3632
+stack$ -- 0
+substring$ -- 3362
+swap$ -- 963
+text.length$ -- 62
+text.prefix$ -- 0
+top$ -- 1
+type$ -- 2320
+warning$ -- 0
+while$ -- 288
+width$ -- 0
+write$ -- 919
+(There was 1 error message)

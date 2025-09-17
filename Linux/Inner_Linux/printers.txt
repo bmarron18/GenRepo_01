@@ -1,0 +1,56 @@
+
+		##General printing still set for USB
+$ sudo hp-setup -i
+
+HP Linux Imaging and Printing System (ver. 3.14.3)
+Printer/Fax Setup Utility ver. 9.0
+
+Copyright (c) 2001-13 Hewlett-Packard Development Company, LP
+This software comes with ABSOLUTELY NO WARRANTY.
+This is free software, and you are welcome to distribute it
+under certain conditions. See COPYING file for more details.
+
+(Note: Defaults for each question are maked with a '*'. Press <enter> to accept the default.)
+
+
+--------------------------------
+| SELECT CONNECTION (I/O) TYPE |
+--------------------------------
+
+  Num       Connection  Description                                               
+            Type                                                                  
+  --------  ----------  ----------------------------------------------------------
+  0*        usb         Universal Serial Bus (USB)                                
+  1         net         Network/Ethernet/Wireless (direct connection or JetDirect)
+  2         par         Parallel Port (LPT:)                                      
+
+Enter number 0...2 for connection type (q=quit, enter=usb*) ? 
+
+
+
+
+		##installed HP Toolbox from Software Center
+
+$ hp-toolbox (won't open either from Settings or from command line)
+
+		##checked file
+		##file locked
+/home/bmarron/.hplip
+
+		##change ownership of file
+sudo chown -R bmarron: /home/bmarron/.hplip
+
+		## gui opens!
+$ hp-toolbox
+
+		##follow setup wizard
+		##exit and setup printer  
+$ hp-setup 192.168.0.48
+Printer name: 	Deskjet_3050_J610
+PPD File: 	drv:///hpcups.drv/hp-deskjet_3050_j610_series.ppd
+
+all good!
+
+
+
+

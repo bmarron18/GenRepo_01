@@ -1,0 +1,139 @@
+Note: The APT repositories point towards the destination.
+
+Running check 'Phase 1: Preparation'
+=================
+APT Repositories:
+=================
+Repos:
+  No active apt repos in: /etc/apt/sources.list 
+  Active apt repos in: /etc/apt/sources.list.d/google-chrome.list 
+  1: deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
+  Active apt repos in: /etc/apt/sources.list.d/obsproject-obs-studio-focal.list 
+  1: deb http://ppa.launchpad.net/obsproject/obs-studio/ubuntu jammy main
+  Active apt repos in: /etc/apt/sources.list.d/official-package-repositories.list 
+  1: deb https://mirrors.ocf.berkeley.edu/linuxmint-packages vanessa main upstream import backport
+  2: deb http://mirrors.ocf.berkeley.edu/ubuntu jammy main restricted universe multiverse
+  3: deb http://mirrors.ocf.berkeley.edu/ubuntu jammy-updates main restricted universe multiverse
+  4: deb http://mirrors.ocf.berkeley.edu/ubuntu jammy-backports main restricted universe multiverse
+  5: deb http://security.ubuntu.com/ubuntu/ jammy-security main restricted universe multiverse
+  No active apt repos in: /etc/apt/sources.list.d/otto-kesselgulasch-gimp-focal.list 
+  No active apt repos in: /etc/apt/sources.list.d/webupd8team-y-ppa-manager-focal.list 
+  Active apt repos in: /etc/apt/sources.list.d/yubico-stable-focal.list 
+  1: deb http://ppa.launchpad.net/yubico/stable/ubuntu jammy main
+=================
+
+Running check 'Linux Mint version'
+Check succeeded:  Linux Mint version
+
+Running check 'Power source'
+
+Running check 'Power source'
+Check succeeded:  Power source
+
+Running check 'System snapshots'
+Check succeeded:  System snapshots
+
+Running check 'Held packages'
+Check succeeded:  Held packages
+
+Running check 'Package repositories'
+Mint repository last modified on 2023-03-16 08:52:29
+Check succeeded:  Package repositories
+
+Running check 'Phase 2: Simulation and download'
+=================
+APT Repositories:
+=================
+Repos:
+  No active apt repos in: /etc/apt/sources.list 
+  Active apt repos in: /etc/apt/sources.list.d/google-chrome.list 
+  1: deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
+  Active apt repos in: /etc/apt/sources.list.d/obsproject-obs-studio-focal.list 
+  1: deb http://ppa.launchpad.net/obsproject/obs-studio/ubuntu jammy main
+  Active apt repos in: /etc/apt/sources.list.d/official-package-repositories.list 
+  1: deb https://mirrors.ocf.berkeley.edu/linuxmint-packages vanessa main upstream import backport
+  2: deb http://mirrors.ocf.berkeley.edu/ubuntu jammy main restricted universe multiverse
+  3: deb http://mirrors.ocf.berkeley.edu/ubuntu jammy-updates main restricted universe multiverse
+  4: deb http://mirrors.ocf.berkeley.edu/ubuntu jammy-backports main restricted universe multiverse
+  5: deb http://security.ubuntu.com/ubuntu/ jammy-security main restricted universe multiverse
+  No active apt repos in: /etc/apt/sources.list.d/otto-kesselgulasch-gimp-focal.list 
+  No active apt repos in: /etc/apt/sources.list.d/webupd8team-y-ppa-manager-focal.list 
+  Active apt repos in: /etc/apt/sources.list.d/yubico-stable-focal.list 
+  1: deb http://ppa.launchpad.net/yubico/stable/ubuntu jammy main
+=================
+
+Running check 'Package repositories'
+http://ppa.launchpad.net/obsproject/obs-studio/ubuntu already points to jammy
+http://ppa.launchpad.net/yubico/stable/ubuntu already points to jammy
+https://mirrors.ocf.berkeley.edu/linuxmint-packages already points to vanessa
+http://mirrors.ocf.berkeley.edu/ubuntu already points to jammy
+http://mirrors.ocf.berkeley.edu/ubuntu already points to jammy-updates
+http://mirrors.ocf.berkeley.edu/ubuntu already points to jammy-backports
+http://security.ubuntu.com/ubuntu/ already points to jammy-security
+Check succeeded:  Package repositories
+
+Running check 'APT cache'
+rm -rf /var/lib/apt/lists/*
+DEBIAN_PRIORITY=critical apt-get update
+Get:1 http://security.ubuntu.com/ubuntu jammy-security InRelease [110 kB]
+Get:2 http://ppa.launchpad.net/obsproject/obs-studio/ubuntu jammy InRelease [18.1 kB]
+Get:3 http://mirrors.ocf.berkeley.edu/ubuntu jammy InRelease [270 kB]
+Get:4 http://dl.google.com/linux/chrome/deb stable InRelease [1811 B]
+Get:5 http://dl.google.com/linux/chrome/deb stable/main amd64 Packages [1080 B]
+Ign:6 https://mirrors.ocf.berkeley.edu/linuxmint-packages vanessa InRelease
+Get:7 https://mirrors.ocf.berkeley.edu/linuxmint-packages vanessa Release [24.1 kB]
+Get:8 https://mirrors.ocf.berkeley.edu/linuxmint-packages vanessa Release.gpg [833 B]
+Get:9 http://ppa.launchpad.net/yubico/stable/ubuntu jammy InRelease [17.5 kB]
+Get:10 http://mirrors.ocf.berkeley.edu/ubuntu jammy-updates InRelease [119 kB]
+Get:11 http://security.ubuntu.com/ubuntu jammy-security/main amd64 Packages [692 kB]
+Get:12 https://mirrors.ocf.berkeley.edu/linuxmint-packages vanessa/main i386 Packages [16.9 kB]
+Get:13 http://mirrors.ocf.berkeley.edu/ubuntu jammy-backports InRelease [107 kB]
+Get:14 https://mirrors.ocf.berkeley.edu/linuxmint-packages vanessa/main amd64 Packages [17.5 kB]
+Get:15 https://mirrors.ocf.berkeley.edu/linuxmint-packages vanessa/upstream i386 Packages [12.0 kB]
+Get:16 http://mirrors.ocf.berkeley.edu/ubuntu jammy/main i386 Packages [1040 kB]
+Get:17 https://mirrors.ocf.berkeley.edu/linuxmint-packages vanessa/upstream amd64 Packages [44.3 kB]
+Get:18 http://ppa.launchpad.net/obsproject/obs-studio/ubuntu jammy/main amd64 Packages [1100 B]
+Get:19 https://mirrors.ocf.berkeley.edu/linuxmint-packages vanessa/import i386 Packages [2989 B]
+Get:20 https://mirrors.ocf.berkeley.edu/linuxmint-packages vanessa/import amd64 Packages [6275 B]
+Get:21 https://mirrors.ocf.berkeley.edu/linuxmint-packages vanessa/backport i386 Packages [5984 B]
+Get:22 https://mirrors.ocf.berkeley.edu/linuxmint-packages vanessa/backport amd64 Packages [31.7 kB]
+Get:23 http://security.ubuntu.com/ubuntu jammy-security/main i386 Packages [272 kB]
+Get:24 http://ppa.launchpad.net/obsproject/obs-studio/ubuntu jammy/main Translation-en [160 B]
+Get:25 http://security.ubuntu.com/ubuntu jammy-security/main Translation-en [142 kB]
+Get:26 http://security.ubuntu.com/ubuntu jammy-security/main amd64 DEP-11 Metadata [41.6 kB]
+Get:27 http://mirrors.ocf.berkeley.edu/ubuntu jammy/main amd64 Packages [1395 kB]
+Get:28 http://security.ubuntu.com/ubuntu jammy-security/main amd64 c-n-f Metadata [9016 B]
+Get:29 http://security.ubuntu.com/ubuntu jammy-security/restricted amd64 Packages [642 kB]
+Get:30 http://security.ubuntu.com/ubuntu jammy-security/restricted i386 Packages [25.6 kB]
+Get:31 http://security.ubuntu.com/ubuntu jammy-security/restricted Translation-en [100 kB]
+Get:32 http://security.ubuntu.com/ubuntu jammy-security/restricted amd64 c-n-f Metadata [556 B]
+Get:33 http://security.ubuntu.com/ubuntu jammy-security/universe amd64 Packages [713 kB]
+Get:34 http://ppa.launchpad.net/yubico/stable/ubuntu jammy/main amd64 Packages [2516 B]
+Get:35 http://ppa.launchpad.net/yubico/stable/ubuntu jammy/main i386 Packages [1316 B]
+Get:36 http://security.ubuntu.com/ubuntu jammy-security/universe i386 Packages [518 kB]
+Get:37 http://mirrors.ocf.berkeley.edu/ubuntu jammy/main Translation-en [510 kB]
+Get:38 http://ppa.launchpad.net/yubico/stable/ubuntu jammy/main Translation-en [1504 B]
+Get:39 http://mirrors.ocf.berkeley.edu/ubuntu jammy/main amd64 DEP-11 Metadata [423 kB]
+Get:40 http://mirrors.ocf.berkeley.edu/ubuntu jammy/main amd64 c-n-f Metadata [30.3 kB]
+Get:41 http://mirrors.ocf.berkeley.edu/ubuntu jammy/restricted amd64 Packages [129 kB]
+Get:42 http://mirrors.ocf.berkeley.edu/ubuntu jammy/restricted i386 Packages [30.4 kB]
+Get:43 http://mirrors.ocf.berkeley.edu/ubuntu jammy/restricted Translation-en [18.6 kB]
+Get:44 http://mirrors.ocf.berkeley.edu/ubuntu jammy/restricted amd64 c-n-f Metadata [488 B]
+Get:45 http://mirrors.ocf.berkeley.edu/ubuntu jammy/universe amd64 Packages [14.1 MB]
+Get:46 http://security.ubuntu.com/ubuntu jammy-security/universe Translation-en [118 kB]
+Get:47 http://security.ubuntu.com/ubuntu jammy-security/universe amd64 DEP-11 Metadata [18.5 kB]
+Get:48 http://security.ubuntu.com/ubuntu jammy-security/universe amd64 c-n-f Metadata [14.1 kB]
+Get:49 http://security.ubuntu.com/ubuntu jammy-security/multiverse i386 Packages [1028 B]
+Get:50 http://security.ubuntu.com/ubuntu jammy-security/multiverse amd64 Packages [19.4 kB]
+Get:51 http://security.ubuntu.com/ubuntu jammy-security/multiverse Translation-en [4068 B]
+Get:52 http://security.ubuntu.com/ubuntu jammy-security/multiverse amd64 c-n-f Metadata [240 B]
+Get:53 http://mirrors.ocf.berkeley.edu/ubuntu jammy/universe i386 Packages [7474 kB]
+Get:54 http://mirrors.ocf.berkeley.edu/ubuntu jammy/universe Translation-en [5652 kB]
+Get:55 http://mirrors.ocf.berkeley.edu/ubuntu jammy/universe amd64 DEP-11 Metadata [3559 kB]
+Get:56 http://mirrors.ocf.berkeley.edu/ubuntu jammy/universe amd64 c-n-f Metadata [286 kB]
+Get:57 http://mirrors.ocf.berkeley.edu/ubuntu jammy/multiverse i386 Packages [112 kB]
+Get:58 http://mirrors.ocf.berkeley.edu/ubuntu jammy/multiverse amd64 Packages [217 kB]
+Get:58 http://mirrors.ocf.berkeley.edu/ubuntu jammy/multiverse amd64 Packages [217 kB]
+Get:58 http://mirrors.ocf.berkeley.edu/ubuntu jammy/multiverse amd64 Packages [217 kB]
+Get:58 http://mirrors.ocf.berkeley.edu/ubuntu jammy/multiverse amd64 Packages [217 kB]
+mintupgrade-inhibit-power: no process found

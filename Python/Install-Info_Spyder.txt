@@ -1,0 +1,43 @@
+
+	
+############
+Spyder Install
+(Spyder has its own python)
+Spyder is only available by default in your base environment; NOT thru Anaconda
+#############
+https://www.spyder-ide.org/
+https://www.spyder-ide.org/download/?os=linux&arch=x64
+
+-- download
+	Spyder-Linux-x86_64.sh
+
+$ chmod +x yourscript.sh		<== install from **.sh file
+$ ./yourscript.sh
+
+
+--- NB. Spyder with Miniconda DOESNT WORK!!! ----
+May be able to set conda Python in Spyder ==> Tools
+Try conda install spyder to install the Spyder package, as it does not come with Miniconda automatically. 
+	$ conda install spyder
+	$ conda install spyder-base
+
+Spyder-IDE won't launch after installing via Miniconda #21589
+https://github.com/spyder-ide/spyder/issues/21589
+https://github.com/conda-forge/spyder-feedstock
+	$ conda install -c conda-forge pyqt=5.15.9
+
+
+############
+Spyder
+Uninstall
+#############
+https://stackoverflow.com/questions/65671238/does-spyder-download-its-own-python-with-it
+https://askubuntu.com/questions/1064682/uninstalling-spyder
+
+have to delete Spyder by hand ----
+$ locate spyder >> ~/Desktop/Spyder.txt
+$ sudo rm -rf <fill in addresses from above text file>
+	==> most spyder files are here	
+				/home/bmarron/.local/spyder-6
+
+

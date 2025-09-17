@@ -1,0 +1,458 @@
+========= rsync is tricky -- watch the functionality =============================
+
+	# changes in rsync since 3.0.0
+	# note syntax!!
+
+$ rsync -av --delete /Directory1/ /Directory2/
+
+The code above will synchronize the contents of Directory1 to Directory2, and leave no differences between the two. 
+If rsync finds that Directory2 has a file that Directory1 does not, it will delete it. 
+If rsync finds a file that has been changed, created, or deleted in Directory1, it will reflect those same changes to Directory2.
+
+those new to rsync should note the slash at the end of /home/chris/. 
+To quote the rsync man page, "You can think of a trailing / on a source as meaning 'copy the contents of this directory' 
+as opposed to 'copy the directory by name'." 
+
+	#format new, backup thumbdrives with Linux partitions!! (not W95 FAT32 (LBA) for Dell!!!)
+	#o/w there are issues like this:
+*** Skipping any contents from this failed directory ***
+	#also will not have rsync go to completion 
+	(ie it will keep running the entire review of all folders each time!!!)
+
+
+
+########################
+DESKTOP ONLY BACKUP
+########################
+
+	% Desktop backup HP (new) to USB
+sudo rsync -av --delete /home/bmarron/Desktop/ /media/bmarron/MASTER1/Desktop/
+
+
+MASTER11 ???? check mount point with "disks" before running
+
+
+% Desktop backup HP (old) to USB
+sudo rsync -av --delete /home/bmarron18/Desktop/ /media/bmarron18/MASTER11/Desktop/
+sudo rsync -av --delete /home/bmarron18/Desktop/ /media/bmarron18/MASTER1/Desktop/
+
+
+
+
+DATA TRANSFERS (USB)
+----------------sync HP(new) ==> HP (old)
+sudo rsync -av --delete /media/bmarron18/MASTER/Desktop /home/bmarron18/
+
+
+
+----------------sync HP(old) ==> HP (new)
+sudo rsync -av --delete /media/bmarron/MASTER/Desktop /home/bmarron/
+
+
+
+
+
+
+DUP BACKUP
+----------------sync MASTER and MASTER_DUP
+sudo rsync -av --delete /media/bruce/MASTER/ /media/bruce/BackupDup/
+
+
+##################################
+Google Drive
+(rclone to Google drive acct)
+###################################
+
+[see "rclone" in installations-removals-updates.txt]
+
+
+rclone will process as follows
+	* transfer new files (copy operations)
+	* update modification time operations
+	* delete old files
+	* delete old directories
+	
+Must set "!"(do all ops w/o asking) every time for each process
+Can set this at any time
+
+
+------Desktop only (from thumbdrive OR /home/) --------------
+$ rclone sync -i /media/bmarron/MASTER/Desktop GoogleDrive_MASTER:/MASTER/Desktop			<= new HP 
+
+$ rclone sync -i /media/bmarron18/MASTER11/Desktop GoogleDrive_MASTER:/MASTER/Desktop		<= old HP
+$ rclone sync -i /home/bmarron18/Desktop GoogleDrive_MASTER:/MASTER/Desktop
+
+NB: may need to refresh/connect rclone with Google...use this
+	rclone config reconnect GoogleDrive_MASTER:
+
+2024/03/29 12:46:45 NOTICE: 
+Transferred:   	    7.318 GiB / 7.318 GiB, 100%, 20 B/s, ETA 0s
+Checks:             22637 / 22637, 100%
+Deleted:             1706 (files), 187 (dirs)
+Transferred:         1079 / 1079, 100%
+Elapsed time:   2h28m51.0s
+
+
+2022/11/20 17:19:10 NOTICE: 
+Transferred:   	   12.656G / 12.656 GBytes, 100%, 641.078 kBytes/s, ETA 0s
+Checks:             17442 / 17442, 100%
+Deleted:             2932 (files), 272 (dirs)
+Transferred:         6063 / 6063, 100%
+Elapsed time:    5h51m8.1s
+
+
+2021/05/31 17:38:19 NOTICE: 
+Transferred:   	  650.357M / 650.357 MBytes, 100%, 504.910 kBytes/s, ETA 0s
+Checks:             17531 / 17531, 100%
+Deleted:              329 (files), 41 (dirs)
+Transferred:          338 / 338, 100%
+Elapsed time:      24m3.5s
+
+
+
+	
+---------- full backup ---------------------------------------------
+$ rclone sync -i /media/bruce/MASTER google_drive:/MASTER
+
+
+
+
+peek into the folder on Google Drive, right from the terminal window:
+
+$ rclone ls GoogleDrive_MASTER:/MASTER/Desktop/Mexico
+$ rclone ls GoogleDrive_MASTER:/MASTER/
+
+
+
+
+
+====================================
+==== THE MAJOR hp BACKUP ==============
+====================================
+
+	# check/compare changes (-n  + -r flags)
+sudo rsync -nrav /home/bmarron/Desktop/ /media/bmarron/PNY_32GB/bmarron/Desktop/
+
+############
+Main Compu
+HP
+############
+----------FULL BACKUP---------------------------
+sudo rsync -av --delete \
+--exclude=".*" \
+--exclude="/Downloads" \
+--exclude="/Desktop/crashplan.desktop" \
+/home/bruce/ /media/bruce/PNY_32GB/bmarron/
+
+
+
+
+
+
+
+
+
+
+--------   !! CAUTION !!--------------------------------------------------------------
+	#update Dell from HP
+sudo rsync -av --delete /media/bmarron/PNY_32GB/bmarron/Desktop/ /home/bmarron/Desktop/
+sudo rsync -av --delete /media/bmarron/C6E2-F159/bmarron/Desktop/ /home/bmarron/Desktop/
+
+	#update HP from Dell
+sudo rsync -av --delete /media/bruce/PNY_32GB/bmarron/Desktop/ /home/bruce/Desktop/
+sudo rsync -av --delete /media/bruce/C6E2-F159/bmarron/Desktop/ /home/bruce/Desktop/
+
+
+
+#########################
+texmf
+(.sty files for LaTex)
+#########################
+
+kpsewhich -var-value TEXMFLOCAL
+/usr/local/share/texmf
+
+	#TO BACKUP
+sudo rsync -av --delete /usr/local/share/texmf/ /media/bruce/KINGSTON/texmf/
+sudo rsync -av --delete /usr/local/share/texmf/ /media/bruce/PNY_32GB/texmf/
+
+
+	#FROM BACKUP
+sudo rsync -av --delete /media/bruce/PNY_32GB/texmf/ /usr/local/share/texmf/ 
+
+
+############
+log files
+###########
+
+	#TO BACKUP
+sudo rsync -av --delete \
+/home/bruce/Desktop/NCSU/2016SoE021_LANDIS_Upgrades_Project/Works_InProgress/ProjectWorkLogs/ \
+/media/bruce/OUP/ProjectWorkLogs/
+
+
+	#FROM BACKUP
+sudo rsync -av --delete \
+/media/bruce/C6E2-F159/ProjectWorkLogs/ \
+/home/bruce/Desktop/NCSU/2016SoE021_LANDIS_Upgrades_Project/Works_InProgress/ProjectWorkLogs/
+
+
+
+#############
+GitHub files
+##############
+
+	#TO BACKUP
+sudo rsync -av --delete \
+/home/bruce/Desktop/GitHub/ \
+/media/bruce/OUP/GitHub/
+
+
+	#FROM BACKUP
+sudo rsync -av --delete \
+/media/bruce/C6E2-F159/GitHub/ \
+/home/bruce/Desktop/GitHub/
+
+
+
+
+
+==== Individual Component backups/reinstalls ======================================
+
+###########################
+Desktop and Work Changes
+##########################
+
+http://askubuntu.com/questions/545655/backup-your-home-directory-with-rsync-and-skip-useless-folders
+http://askubuntu.com/questions/320458/how-to-exclude-multiple-directories-with-rsync
+
+
+%%%%%%%%%%
+HP-to-Dell
+%%%%%%%%%%%
+sudo rsync -av --delete \
+--exclude=".*" \
+--exclude="/grassdata" \
+/media/bmarron/PNY_32GB/bmarron/ /home/bmarron/ 
+
+
+
+
+$ sudo rsync -av --delete \
+--exclude=".*" \
+--exclude="/Downloads" \
+--exclude="/anaconda2" \
+--exclude="/basemap-1.0.7" \
+--exclude="/R" \
+--exclude="/ggplot_anaconda2" \
+--exclude="/LANDIS32_GitHub" \
+--exclude="saxon9.jar" \
+--exclude="ciscovpn" \
+--exclude="/Desktop/ToupLite" \
+--exclude="/NetLogo" \
+/media/bmarron/PNY64/bmarron/ /home/bmarron/
+
+
+
+$ sudo rsync -av --delete \
+--exclude=".*" \
+--exclude="/Downloads" \
+--exclude="/anaconda2" \
+--exclude="/basemap-1.0.7" \
+--exclude="/R" \
+--exclude="/ggplot_anaconda2" \
+--exclude="/LANDIS32_GitHub" \
+--exclude="saxon9.jar" \
+--exclude="ciscovpn" \
+--exclude="/Desktop/ToupLite" \
+--exclude="/NetLogo" \
+/media/bmarron/Lexar_BackUp/bmarron/ /home/bmarron/
+
+
+---- Update a single folder -------------------
+
+sudo rsync -av --delete /home/bruce/Desktop/Marron/ /media/bruce/KINGSTON/Marron/
+
+sudo rsync -av --delete /home/bmarron/Desktop/Linux/ /media/bmarron/PNY64/bmarron/Desktop/Linux/ 
+sudo rsync -av --delete /media/bmarron/PNY64/bmarron/Desktop/Linux/ /home/bmarron/Desktop/Linux/
+
+
+sudo rsync -av --delete /media/bmarron/HP_Backup/Desktop/PSU/PhD_EES/SoE/2016SoE010_GEOG694_Models/ /home/bmarron/Desktop/PSU/PhD_EES/SoE/2016SoE010_GEOG694_Models/
+
+
+
+------- Linux-to-Windows -------------------
+	a. FROM Linux to USB
+$ sudo rsync -av --delete /home/bmarron/Desktop/PSU/PhD_EES/2016SoE021_LANDIS_Upgrades_Project/ /media/bmarron/QGIS/2016SoE021_LANDIS_Upgrades_Project/
+
+
+	b. FROM USB to Linux
+$ sudo rsync -av --delete /media/bmarron/PNY64/bmarron/Desktop/PSU/PhD_EES/2016SoE021_LANDIS_Upgrades_Project/ \
+ /home/bmarron/Desktop/PSU/PhD_EES/2016SoE021_LANDIS_Upgrades_Project/
+
+
+	c. FROM Linux to USB
+$ sudo rsync -av --delete /home/bmarron/Desktop/PSU/PhD_EES/2016SoE021_LANDIS_Upgrades_Project/ \
+/media/bmarron/QGIS/2016SoE021_LANDIS_Upgrades_Project/Works_InProgress/
+
+
+
+
+==== ¡¡¡¡CAUTIONS !!! ============================================================
+
+		# will reinstall from thumbdrive deleting all files currently on the Desktop	
+$ sudo rsync -av --delete /media/bmarron/Lexar_BackUp/bmarron/Desktop/ /home/bmarron/Desktop/ 
+
+
+		# will reinstall [w/o deletion]
+$ sudo rsync -av /media/bmarron/Lexar_BackUp/bmarron/Desktop/ /home/bmarron/Desktop/ 
+
+
+------------- ¡¡¡OJO!!! --------------------------------------------------------------------------
+		#this erased everything on desktop and left only the contents of the Linux folder
+		#note ending "/" on each line 
+$ sudo rsync -av --delete /media/bmarron/DELL_Backup/Desktop/Linux/ /home/bmarron/Desktop/
+
+=============================================================================================
+
+
+
+--perms — to keep the permissions intact
+
+
+
+###########
+R
+###########
+
+====library backup ==========
+$ sudo rsync -av --delete ~/R/ /media/bmarron/Lexar_BackUp/R/
+
+==== library re-install =============
+$ sudo rsync -av --delete /media/bmarron/Lexar_BackUp/R/ /home/bmarron/R/
+
+
+
+##############
+LaTex
+#############
+
+	#backup the LaTex local directory for document classes and style packages
+
+
+
+==== library backup ======================================================
+$ sudo rsync -av --delete /usr/local/share/texmf/ /media/bmarron/Lexar_BackUp/texmf
+
+==== library re-install =============
+$ sudo rsync -av --delete /media/bmarron/Lexar_BackUp/texmf/ /usr/local/share/texmf/
+
+
+###########
+basemap
+###########
+
+====library backup ==========
+$ sudo rsync -av --delete ~/basemap-1.0.7/ /media/bmarron/Lexar_BackUp/basemap-1.0.7/
+
+==== library re-install =============
+$ sudo rsync -av --delete /media/bmarron/Lexar_BackUp/basemap-1.0.7/ /home/bmarron/basemap-1.0.7/
+
+
+###########
+Calibre
+###########
+
+====library backup ==========
+$ sudo rsync -av --delete ~/Calibre_Library/ /media/bmarron/Lexar_BackUp/Calibre_Library/
+
+==== library re-install =============
+$ sudo rsync -av --delete /media/bmarron/Lexar_BackUp/Calibre_Library/ /home/bmarron/Calibre_Library/
+
+
+################
+anaconda2
+################
+
+====library backup ==========
+$ sudo rsync -av --delete ~/anaconda2/ /media/bmarron/Lexar_BackUp/anaconda2/
+
+==== library re-install =============
+$ sudo rsync -av --delete /media/bmarron/Lexar_Backup/anaconda2/ /home/bmarron/anaconda2/
+
+
+
+################
+ggplot_anaconda2
+################
+
+====library backup ==========
+$ sudo rsync -av --delete ~/ggplot_anaconda2/ /media/bmarron/Lexar_BackUp/ggplot_anaconda2/
+
+==== library re-install =============
+$ sudo rsync -av --delete /media/bmarron/Lexar_Backup/ggplot_anaconda2/ /home/bmarron/ggplot_anaconda2/
+
+
+###########
+UCANAccess
+###########
+
+====library backup ==========
+$ sudo rsync -av --delete ~/UCanAccess-3.0.4-bin/ /media/bmarron/Lexar_BackUp/UCanAccess-3.0.4-bin/
+
+==== library re-install =============
+$ sudo rsync -av --delete /media/bmarron/Lexar_BackUp/UCanAccess-3.0.4-bin/ /home/bmarron/UCanAccess-3.0.4-bin/
+
+
+###########
+saxon9
+###########
+
+====library backup ==========
+$ sudo cp ~/saxon9.jar /media/bmarron/Lexar_BackUp/
+
+
+
+##############
+Zotero
+############
+
+===== library backup1 =======================================
+	#open Zotero in browser
+	#export entire library as .rdf file (include Notes!)
+	#re-name and move to 'Zotero_linux-i686' folder
+
+===== library backup2 =======================================
+	# auto-sync w/ online server
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+
+
+=
+
+
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+#########################
+full system backup -- tar
+############################
+https://help.ubuntu.com/community/BackupYourSystem/TAR
+
+
+	a. forget Mondo, Clonezilla, etc. !!!
+	a1. use 'tar' for complete system backup
+
+$ cd /
+$ tar -cvpzf /media/bmarron/PNY64/backup.tar.gz --exclude=/backup.tar.gz --one-file-system / 
+
+

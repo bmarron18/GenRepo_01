@@ -1,0 +1,85 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Thin Formal Letter
+% LaTeX Template
+% Version 2.0 (7/2/17)
+%
+% requires
+% XeTex ==> pdf
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[11pt]{letter} % 
+
+\usepackage{geometry} % Required for adjusting page dimensions
+
+%\longindentation=0pt % Un-commenting this line will push the closing "Sincerely," to the left of the page
+
+\geometry{
+	paper=letterpaper, % Change to letterpaper for US letter
+	top=1in, % Top margin
+	bottom=0.5in, % Bottom margin
+	left=0.75in, % Left margin
+	right=0.75in, % Right margin
+	%showframe, % Uncomment to show how the type block is set on the page
+}
+
+\usepackage[T1]{fontenc} % Output font encoding for international characters
+\usepackage[utf8]{inputenc} % Required for inputting international characters
+\usepackage{graphicx}
+\usepackage{microtype} % Improve justification
+
+%\usepackage{stix} % Use the Stix font by default
+
+
+
+%----------------------------------------------------------------------------------------
+%	YOUR NAME & ADDRESS SECTION
+%----------------------------------------------------------------------------------------
+
+%\signature{Bruce D. Marron, M.S.} %
+
+\address{900 Gorman B \\ Raleigh, NC ~~27606} % Your address and phone number
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	ADDRESSEE SECTION
+%----------------------------------------------------------------------------------------
+
+\begin{letter}{The Graduate School \\
+ Campus Box 7102\\
+ North Carolina State University \\
+ Raleigh, NC ~~27695-7102} % Name/title of the addressee
+
+%----------------------------------------------------------------------------------------
+%	LETTER CONTENT SECTION
+%----------------------------------------------------------------------------------------
+
+\opening{\textbf{Dear Graduate School,}}
+
+I have experienced a severe family tragedy: the end of a 20 year relationship with my beloved Molly. I simply cannot continue with graduate studies at this time. I am formally requesting a Leave of Absence from my program effective Spring 2018.
+
+Thank you. 
+
+\vspace{2\parskip} % Extra whitespace for aesthetics
+\closing{Sincerely,\\
+\includegraphics[scale=.7]{graphics/signature.jpeg}\\
+Bruce D. Marron, M.S.\\
+NCSU ID \# 200225767
+}
+%\vspace{2\parskip} % Extra whitespace for aesthetics
+
+%\ps{P.S. You can find additional information attached to this letter.} 
+
+%\encl{Copyright permission form} % 
+
+%----------------------------------------------------------------------------------------
+
+\end{letter}
+ 
+\end{document}

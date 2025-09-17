@@ -1,0 +1,60 @@
+
+
+############
+Linux Operations
+##############
+
+COPY of entire directory w/ all files!!
+	cd ~/Desktop/LaTex/LaTex_installed_packages
+	sudo cp -r fontawesome5 /usr/local/share/texmf/tex/latex/
+	cd /usr/local/share/texmf/tex/latex/fontawesome5/
+	sudo mktexlsr
+	
+	cd ~/Desktop/LaTex/LaTex_installed_packages
+	sudo cp -r moderncv-old /usr/local/share/texmf/tex/latex/
+	cd /usr/local/share/texmf/tex/latex
+	sudo mv moderncv-old moderncv
+	cd /usr/local/share/texmf/tex/latex/moderncv/
+	sudo mktexlsr
+	
+COPY just (all) files and hidden folders
+	cp -a /source/. /dest/ 	<== -a option is an improved recursive option
+							<== The . at end of the source path is a specific cp syntax that copies 							all files and folders, including hidden ones.
+	
+MOVE entire directory w/ all files!!
+	cd /usr/share/texlive/texmf-dist/tex/latex
+	sudo mv ccicons /usr/share/texlive/texmf-dist/fonts/opentype/public
+	cd /usr/share/texlive/texmf-dist/fonts/opentype/public/ccicons
+	sudo mktexlsr
+	sudo texhash
+	
+	
+	cd /usr/share/texlive/texmf-dist/fonts/opentype/public/
+	sudo mv ccicons /usr/share/texlive/texmf-dist/fonts/type1/public
+	cd /usr/share/texlive/texmf-dist/fonts/type1/public/
+	ls
+	sudo mktexlsr
+	sudo texhash
+	
+
+DELETE all files/dir.s in a dir
+	sudo rm -r *
+
+RENAME directory
+	sudo mv moderncv-old moderncv
+
+NEW directory
+	sudo mkdir -p /usr/local/share/texmf/tex/latex/ClearSans/ &&
+	sudo cp -r /home/bmarron/Downloads/clearsans/ /usr/local/share/texmf/tex/latex/ClearSans/ &&
+	cd /usr/local/share/texmf/tex/latex/ClearSans/ &&
+	sudo mktexlsr &&
+	sudo updmap-sys --enable Map=ClearSans.map
+	
+
+FIND
+cd /usr/share/
+sudo find ./ -name "*.otf" -type f
+
+cd /usr/share/
+sudo find ./ -name "ocr*" -type d
+

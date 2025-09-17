@@ -1,0 +1,5132 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=latex 2017.8.26)  14 FEB 2018 19:49
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**siunitx.dtx
+(./siunitx.dtx
+LaTeX2e <2016/02/01>
+Babel <3.9q> and hyphenation patterns for 3 language(s) loaded.
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3docstrip.tex
+(/usr/share/texlive/texmf-dist/tex/latex/base/docstrip.tex
+\blockLevel=\count79
+\emptyLines=\count80
+\processedLines=\count81
+\commentsRemoved=\count82
+\commentsPassed=\count83
+\codeLinesPassed=\count84
+\TotalprocessedLines=\count85
+\TotalcommentsRemoved=\count86
+\TotalcommentsPassed=\count87
+\TotalcodeLinesPassed=\count88
+\NumberOfFiles=\count89
+\inFile=\read1
+\inputcheck=\read2
+\off@0=\count90
+\off@1=\count91
+\off@2=\count92
+\off@3=\count93
+\off@4=\count94
+\off@5=\count95
+\off@6=\count96
+\off@7=\count97
+\off@8=\count98
+\off@9=\count99
+\off@10=\count100
+\off@11=\count101
+\off@12=\count102
+\off@13=\count103
+\off@14=\count104
+\off@15=\count105
+\@maxfiles=\count106
+\@maxoutfiles=\count107
+
+Utility: `docstrip' 2.5e <2014/09/29>
+English documentation    <2014/09/29>
+
+**********************************************************
+* This program converts documented macro-files into fast *
+* loadable files by stripping off (nearly) all comments! *
+**********************************************************
+
+********************************************************
+* No Configuration file found, using default settings. *
+********************************************************
+
+))
+
+Generating file(s) ./siunitx.sty ./siunitx-abbreviations.cfg ./siunitx-binary.c
+fg ./siunitx-version-1.cfg 
+\openout0 = `./siunitx.sty'.
+
+\openout1 = `./siunitx-abbreviations.cfg'.
+
+\openout2 = `./siunitx-binary.cfg'.
+
+\openout3 = `./siunitx-version-1.cfg'.
+
+
+Processing file siunitx.dtx (package) -> siunitx.sty
+                            (config,abbreviations) -> siunitx-abbreviations.cfg
+
+                            (config,binary) -> siunitx-binary.cfg
+                            (config,version-1) -> siunitx-version-1.cfg
+Lines  processed: 18022
+Comments removed: 9325
+Comments  passed: 0
+Codelines passed: 0
+
+
+Generating file(s) ./siunitx.ins 
+\openout0 = `./siunitx.ins'.
+
+
+Processing file siunitx.dtx (install) -> siunitx.ins
+Lines  processed: 18022
+Comments removed: 9325
+Comments  passed: 0
+Codelines passed: 0
+
+
+Generating file(s) ./README.md 
+\openout0 = `./README.md'.
+
+
+Processing file siunitx.dtx (readme) -> README.md
+Lines  processed: 18022
+Comments removed: 9325
+Comments  passed: 0
+Codelines passed: 0
+
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
+Package: expl3 2016/01/19 v6377 L3 programming layer (loader) 
+
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3-code.tex
+Package: expl3 2016/01/19 v6377 L3 programming layer (code)
+L3 Module: l3bootstrap 2016/01/01 v6339 L3 Bootstrap code
+L3 Module: l3names 2015/12/21 v6328 L3 Namespace for primitives
+L3 Module: l3basics 2015/11/22 v6315 L3 Basic definitions
+L3 Module: l3expan 2015/09/10 v5983 L3 Argument expansion
+L3 Module: l3tl 2015/09/29 v6121 L3 Token lists
+L3 Module: l3str 2016/01/03 v6357 L3 Strings
+L3 Module: l3seq 2015/08/05 v5777 L3 Sequences and stacks
+L3 Module: l3int 2016/01/05 v6366 L3 Integers
+\c_max_int=\count108
+\l_tmpa_int=\count109
+\l_tmpb_int=\count110
+\g_tmpa_int=\count111
+\g_tmpb_int=\count112
+L3 Module: l3quark 2015/08/17 v5855 L3 Quarks
+L3 Module: l3prg 2015/11/01 v6216 L3 Control structures
+\g__prg_map_int=\count113
+L3 Module: l3clist 2015/09/02 v5901 L3 Comma separated lists
+L3 Module: l3token 2015/11/11 v6249 L3 Experimental token manipulation
+L3 Module: l3prop 2016/01/05 v6366 L3 Property lists
+L3 Module: l3msg 2015/09/28 v6113 L3 Messages
+L3 Module: l3file 2015/12/03 v6317 L3 File and I/O operations
+\l_iow_line_count_int=\count114
+\l__iow_target_count_int=\count115
+\l__iow_current_line_int=\count116
+\l__iow_current_word_int=\count117
+\l__iow_current_indentation_int=\count118
+L3 Module: l3skip 2016/01/05 v6366 L3 Dimensions and skips
+\c_zero_dim=\dimen102
+\c_max_dim=\dimen103
+\l_tmpa_dim=\dimen104
+\l_tmpb_dim=\dimen105
+\g_tmpa_dim=\dimen106
+\g_tmpb_dim=\dimen107
+\c_zero_skip=\skip41
+\c_max_skip=\skip42
+\l_tmpa_skip=\skip43
+\l_tmpb_skip=\skip44
+\g_tmpa_skip=\skip45
+\g_tmpb_skip=\skip46
+\c_zero_muskip=\muskip10
+\c_max_muskip=\muskip11
+\l_tmpa_muskip=\muskip12
+\l_tmpb_muskip=\muskip13
+\g_tmpa_muskip=\muskip14
+\g_tmpb_muskip=\muskip15
+L3 Module: l3keys 2015/11/17 v6284 L3 Key-value interfaces
+\g__keyval_level_int=\count119
+\l_keys_choice_int=\count120
+L3 Module: l3fp 2015/08/25 v5890 L3 Floating points
+\c__fp_leading_shift_int=\count121
+\c__fp_middle_shift_int=\count122
+\c__fp_trailing_shift_int=\count123
+\c__fp_big_leading_shift_int=\count124
+\c__fp_big_middle_shift_int=\count125
+\c__fp_big_trailing_shift_int=\count126
+\c__fp_Bigg_leading_shift_int=\count127
+\c__fp_Bigg_middle_shift_int=\count128
+\c__fp_Bigg_trailing_shift_int=\count129
+L3 Module: l3box 2015/08/09 v5822 L3 Experimental boxes
+\c_empty_box=\box26
+\l_tmpa_box=\box27
+\l_tmpb_box=\box28
+\g_tmpa_box=\box29
+\g_tmpb_box=\box30
+L3 Module: l3coffins 2015/08/06 v5789 L3 Coffin code layer
+\l__coffin_internal_box=\box31
+\l__coffin_internal_dim=\dimen108
+\l__coffin_offset_x_dim=\dimen109
+\l__coffin_offset_y_dim=\dimen110
+\l__coffin_x_dim=\dimen111
+\l__coffin_y_dim=\dimen112
+\l__coffin_x_prime_dim=\dimen113
+\l__coffin_y_prime_dim=\dimen114
+\c_empty_coffin=\box32
+\l__coffin_aligned_coffin=\box33
+\l__coffin_aligned_internal_coffin=\box34
+\l_tmpa_coffin=\box35
+\l_tmpb_coffin=\box36
+\l__coffin_display_coffin=\box37
+\l__coffin_display_coord_coffin=\box38
+\l__coffin_display_pole_coffin=\box39
+\l__coffin_display_offset_dim=\dimen115
+\l__coffin_display_x_dim=\dimen116
+\l__coffin_display_y_dim=\dimen117
+L3 Module: l3color 2014/08/23 v5354 L3 Experimental color support
+L3 Module: l3sys 2015/09/25 v6087 L3 Experimental system/runtime functions
+L3 Module: l3candidates 2016/01/14 v6376 L3 Experimental additions to l3kernel
+\l__box_top_dim=\dimen118
+\l__box_bottom_dim=\dimen119
+\l__box_left_dim=\dimen120
+\l__box_right_dim=\dimen121
+\l__box_top_new_dim=\dimen122
+\l__box_bottom_new_dim=\dimen123
+\l__box_left_new_dim=\dimen124
+\l__box_right_new_dim=\dimen125
+\l__box_internal_box=\box40
+\l__coffin_bounding_shift_dim=\dimen126
+\l__coffin_left_corner_dim=\dimen127
+\l__coffin_right_corner_dim=\dimen128
+\l__coffin_bottom_corner_dim=\dimen129
+\l__coffin_top_corner_dim=\dimen130
+\l__coffin_scaled_total_height_dim=\dimen131
+\l__coffin_scaled_width_dim=\dimen132
+L3 Module: l3luatex 2015/11/11 v6250 L3 Experimental LuaTeX-specific functions
+)
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3dvips.def
+File: l3dvips.def 2015/11/11 v6250 L3 Experimental driver: dvips
+))
+(/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+Package: xparse 2016/01/19 v6377 L3 Experimental document command parser
+\l__xparse_current_arg_int=\count130
+\l__xparse_m_args_int=\count131
+\l__xparse_mandatory_args_int=\count132
+\l__xparse_processor_int=\count133
+\l__xparse_v_nesting_int=\count134
+)
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3doc.cls
+(/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count135
+\calc@Bcount=\count136
+\calc@Adimen=\dimen133
+\calc@Bdimen=\dimen134
+\calc@Askip=\skip47
+\calc@Bskip=\skip48
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count137
+\calc@Cskip=\skip49
+)
+Document Class: l3doc 2015/09/23 v6037 L3 Experimental documentation class
+\l__codedoc_output_coffin=\box41
+\l__codedoc_names_coffin=\box42
+\l__codedoc_descr_coffin=\box43
+\l__codedoc_syntax_coffin=\box44
+\g__codedoc_syntax_box=\box45
+\l__codedoc_trial_width_dim=\dimen135
+\l__codedoc_nested_macro_int=\count138
+\l__codedoc_tmpa_int=\count139
+\l__codedoc_macro_index_box=\box46
+\l__codedoc_macro_box=\box47
+\l__codedoc_macro_int=\count140
+\g__file_internal_ior=\read3
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count141
+\c@section=\count142
+\c@subsection=\count143
+\c@subsubsection=\count144
+\c@paragraph=\count145
+\c@subparagraph=\count146
+\c@figure=\count147
+\c@table=\count148
+\abovecaptionskip=\skip50
+\belowcaptionskip=\skip51
+\bibindent=\dimen136
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/doc.sty
+Package: doc 2014/09/29 v2.1e Standard LaTeX documentation package (FMi)
+\c@StandardModuleDepth=\count149
+\guard@level=\count150
+\MacrocodeTopsep=\skip52
+\MacroIndent=\dimen137
+\macro@cnt=\count151
+\MacroTopsep=\skip53
+\index@excludelist=\toks14
+
+(/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty
+Package: multicol 2015/08/19 v1.8n multicolumn formatting (FMi)
+\c@tracingmulticols=\count152
+\mult@box=\box48
+\multicol@leftmargin=\dimen138
+\c@unbalance=\count153
+\c@collectmore=\count154
+\doublecol@number=\count155
+\multicoltolerance=\count156
+\multicolpretolerance=\count157
+\full@width=\dimen139
+\page@free=\dimen140
+\premulticols=\dimen141
+\postmulticols=\dimen142
+\multicolsep=\skip54
+\multicolbaselineskip=\skip55
+\partial@page=\box49
+\last@line=\box50
+\maxbalancingoverflow=\dimen143
+\mult@rightbox=\box51
+\mult@grightbox=\box52
+\mult@gfirstbox=\box53
+\mult@firstbox=\box54
+\@tempa=\box55
+\@tempa=\box56
+\@tempa=\box57
+\@tempa=\box58
+\@tempa=\box59
+\@tempa=\box60
+\@tempa=\box61
+\@tempa=\box62
+\@tempa=\box63
+\@tempa=\box64
+\@tempa=\box65
+\@tempa=\box66
+\@tempa=\box67
+\@tempa=\box68
+\@tempa=\box69
+\@tempa=\box70
+\@tempa=\box71
+\c@columnbadness=\count158
+\c@finalcolumnbadness=\count159
+\last@try=\dimen144
+\multicolovershoot=\dimen145
+\multicolundershoot=\dimen146
+\mult@nat@firstbox=\box72
+\colbreak@box=\box73
+\mc@col@check@num=\count160
+)
+\IndexMin=\dimen147
+\c@IndexColumns=\count161
+\GlossaryMin=\dimen148
+\c@GlossaryColumns=\count162
+\check@sum=\count163
+\bslash@cnt=\count164
+\wrong@table=\toks15
+\c@CodelineNo=\count165
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty
+Package: array 2014/10/28 v2.4c Tabular extension package (FMi)
+\col@sep=\dimen149
+\extrarowheight=\dimen150
+\NC@list=\toks16
+\extratabsurround=\skip56
+\backup@length=\skip57
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/alphalph.sty
+Package: alphalph 2011/05/13 v2.4 Convert numbers to letters (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/intcalc.sty
+Package: intcalc 2007/09/27 v1.1 Expandable calculations with integers (HO)
+))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2016/03/03 v2.15a AMS math features
+\@mathmargin=\skip58
+
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01 AMS text
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks17
+\ex@=\dimen151
+))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen152
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count166
+LaTeX Info: Redefining \frac on input line 199.
+\uproot@=\count167
+\leftroot@=\count168
+LaTeX Info: Redefining \overline on input line 297.
+\classnum@=\count169
+\DOTSCASE@=\count170
+LaTeX Info: Redefining \ldots on input line 394.
+LaTeX Info: Redefining \dots on input line 397.
+LaTeX Info: Redefining \cdots on input line 518.
+\Mathstrutbox@=\box74
+\strutbox@=\box75
+\big@size=\dimen153
+LaTeX Font Info:    Redeclaring font encoding OML on input line 630.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 631.
+\macc@depth=\count171
+\c@MaxMatrixCols=\count172
+\dotsspace@=\muskip16
+\c@parentequation=\count173
+\dspbrk@lvl=\count174
+\tag@help=\toks18
+\row@=\count175
+\column@=\count176
+\maxfields@=\count177
+\andhelp@=\toks19
+\eqnshift@=\dimen154
+\alignsep@=\dimen155
+\tagshift@=\dimen156
+\tagwidth@=\dimen157
+\totwidth@=\dimen158
+\lineht@=\dimen159
+\@envbody=\toks20
+\multlinegap=\skip59
+\multlinetaggap=\skip60
+\mathdisplay@stack=\toks21
+LaTeX Info: Redefining \[ on input line 2735.
+LaTeX Info: Redefining \] on input line 2736.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+(/usr/local/share/texmf/tex/latex/booktabs/booktabs.sty
+Package: booktabs 2016/04/27 v1.618033 publication quality tables
+\heavyrulewidth=\dimen160
+\lightrulewidth=\dimen161
+\cmidrulewidth=\dimen162
+\belowrulesep=\dimen163
+\belowbottomsep=\dimen164
+\aboverulesep=\dimen165
+\abovetopsep=\dimen166
+\cmidrulesep=\dimen167
+\cmidrulekern=\dimen168
+\defaultaddspace=\dimen169
+\@cmidla=\count178
+\@cmidlb=\count179
+\@aboverulesep=\dimen170
+\@belowrulesep=\dimen171
+\@thisruleclass=\count180
+\@lastruleclass=\count181
+\@thisrulewidth=\dimen172
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
+Package: color 2016/01/03 v1.1b Standard LaTeX Color (DPC)
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package color Info: Driver file: dvips.def on input line 143.
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/dvips.def
+File: dvips.def 2015/12/30 v3.0k Driver-dependent file (DPC,SPQR)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/dvipsnam.def
+File: dvipsnam.def 2015/12/30 v3.0k Driver-dependent file (DPC,SPQR)
+))
+(/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty
+Package: colortbl 2012/02/13 v1.0a Color table columns (DPC)
+\everycr=\toks22
+\minrowclearance=\skip61
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hologo.sty
+Package: hologo 2012/04/26 v1.10 A logo collection with bookmark support (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+))
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is not detected.
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode is ignored in DVI mode.
+)
+(/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifvtex.sty
+Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks23
+))
+Package hologo Info: Using driver `dvips'.
+)
+(/usr/local/share/texmf/tex/latex/enumitem/enumitem.sty
+Package: enumitem 2011/09/28 v3.5.2 Customized lists
+\labelindent=\skip62
+\enit@outerparindent=\dimen173
+\enit@toks=\toks24
+\enit@inbox=\box76
+\enitdp@description=\count182
+)
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/pifont.sty
+Package: pifont 2005/04/12 PSNFSS-v9.2a Pi font support (SPQR) 
+LaTeX Font Info:    Try loading font information for U+pzd on input line 63.
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/upzd.fd
+File: upzd.fd 2001/06/04 font definitions for U/pzd.
+)
+LaTeX Font Info:    Try loading font information for U+psy on input line 64.
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/upsy.fd
+File: upsy.fd 2001/06/04 font definitions for U/psy.
+))
+(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty
+Package: textcomp 2005/09/27 v1.99g Standard LaTeX package
+Package textcomp Info: Sub-encoding information:
+(textcomp)               5 = only ISO-Adobe without \textcurrency
+(textcomp)               4 = 5 + \texteuro
+(textcomp)               3 = 4 + \textohm
+(textcomp)               2 = 3 + \textestimated + \textcurrency
+(textcomp)               1 = TS1 - \textcircled - \t
+(textcomp)               0 = TS1 (full)
+(textcomp)             Font families with sub-encoding setting implement
+(textcomp)             only a restricted character set as indicated.
+(textcomp)             Family '?' is the default used for unknown fonts.
+(textcomp)             See the documentation for details.
+Package textcomp Info: Setting ? sub-encoding to TS1/1 on input line 79.
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/ts1enc.def
+File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
+)
+LaTeX Info: Redefining \oldstylenums on input line 334.
+Package textcomp Info: Setting cmr sub-encoding to TS1/0 on input line 349.
+Package textcomp Info: Setting cmss sub-encoding to TS1/0 on input line 350.
+Package textcomp Info: Setting cmtt sub-encoding to TS1/0 on input line 351.
+Package textcomp Info: Setting cmvtt sub-encoding to TS1/0 on input line 352.
+Package textcomp Info: Setting cmbr sub-encoding to TS1/0 on input line 353.
+Package textcomp Info: Setting cmtl sub-encoding to TS1/0 on input line 354.
+Package textcomp Info: Setting ccr sub-encoding to TS1/0 on input line 355.
+Package textcomp Info: Setting ptm sub-encoding to TS1/4 on input line 356.
+Package textcomp Info: Setting pcr sub-encoding to TS1/4 on input line 357.
+Package textcomp Info: Setting phv sub-encoding to TS1/4 on input line 358.
+Package textcomp Info: Setting ppl sub-encoding to TS1/3 on input line 359.
+Package textcomp Info: Setting pag sub-encoding to TS1/4 on input line 360.
+Package textcomp Info: Setting pbk sub-encoding to TS1/4 on input line 361.
+Package textcomp Info: Setting pnc sub-encoding to TS1/4 on input line 362.
+Package textcomp Info: Setting pzc sub-encoding to TS1/4 on input line 363.
+Package textcomp Info: Setting bch sub-encoding to TS1/4 on input line 364.
+Package textcomp Info: Setting put sub-encoding to TS1/5 on input line 365.
+Package textcomp Info: Setting uag sub-encoding to TS1/5 on input line 366.
+Package textcomp Info: Setting ugq sub-encoding to TS1/5 on input line 367.
+Package textcomp Info: Setting ul8 sub-encoding to TS1/4 on input line 368.
+Package textcomp Info: Setting ul9 sub-encoding to TS1/4 on input line 369.
+Package textcomp Info: Setting augie sub-encoding to TS1/5 on input line 370.
+Package textcomp Info: Setting dayrom sub-encoding to TS1/3 on input line 371.
+Package textcomp Info: Setting dayroms sub-encoding to TS1/3 on input line 372.
+
+Package textcomp Info: Setting pxr sub-encoding to TS1/0 on input line 373.
+Package textcomp Info: Setting pxss sub-encoding to TS1/0 on input line 374.
+Package textcomp Info: Setting pxtt sub-encoding to TS1/0 on input line 375.
+Package textcomp Info: Setting txr sub-encoding to TS1/0 on input line 376.
+Package textcomp Info: Setting txss sub-encoding to TS1/0 on input line 377.
+Package textcomp Info: Setting txtt sub-encoding to TS1/0 on input line 378.
+Package textcomp Info: Setting lmr sub-encoding to TS1/0 on input line 379.
+Package textcomp Info: Setting lmdh sub-encoding to TS1/0 on input line 380.
+Package textcomp Info: Setting lmss sub-encoding to TS1/0 on input line 381.
+Package textcomp Info: Setting lmssq sub-encoding to TS1/0 on input line 382.
+Package textcomp Info: Setting lmvtt sub-encoding to TS1/0 on input line 383.
+Package textcomp Info: Setting lmtt sub-encoding to TS1/0 on input line 384.
+Package textcomp Info: Setting qhv sub-encoding to TS1/0 on input line 385.
+Package textcomp Info: Setting qag sub-encoding to TS1/0 on input line 386.
+Package textcomp Info: Setting qbk sub-encoding to TS1/0 on input line 387.
+Package textcomp Info: Setting qcr sub-encoding to TS1/0 on input line 388.
+Package textcomp Info: Setting qcs sub-encoding to TS1/0 on input line 389.
+Package textcomp Info: Setting qpl sub-encoding to TS1/0 on input line 390.
+Package textcomp Info: Setting qtm sub-encoding to TS1/0 on input line 391.
+Package textcomp Info: Setting qzc sub-encoding to TS1/0 on input line 392.
+Package textcomp Info: Setting qhvc sub-encoding to TS1/0 on input line 393.
+Package textcomp Info: Setting futs sub-encoding to TS1/4 on input line 394.
+Package textcomp Info: Setting futx sub-encoding to TS1/4 on input line 395.
+Package textcomp Info: Setting futj sub-encoding to TS1/4 on input line 396.
+Package textcomp Info: Setting hlh sub-encoding to TS1/3 on input line 397.
+Package textcomp Info: Setting hls sub-encoding to TS1/3 on input line 398.
+Package textcomp Info: Setting hlst sub-encoding to TS1/3 on input line 399.
+Package textcomp Info: Setting hlct sub-encoding to TS1/5 on input line 400.
+Package textcomp Info: Setting hlx sub-encoding to TS1/5 on input line 401.
+Package textcomp Info: Setting hlce sub-encoding to TS1/5 on input line 402.
+Package textcomp Info: Setting hlcn sub-encoding to TS1/5 on input line 403.
+Package textcomp Info: Setting hlcw sub-encoding to TS1/5 on input line 404.
+Package textcomp Info: Setting hlcf sub-encoding to TS1/5 on input line 405.
+Package textcomp Info: Setting pplx sub-encoding to TS1/3 on input line 406.
+Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 407.
+Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 408.
+Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 409.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/trace.sty
+Package: trace 2014/10/28 v1.1d trace LaTeX code
+)
+(/usr/share/texlive/texmf-dist/tex/latex/underscore/underscore.sty
+Package: underscore 2006/09/13
+LaTeX Info: Redefining \_ on input line 42.
+)
+(/usr/local/share/texmf/tex/latex/csquotes/csquotes.sty
+Package: csquotes 2016/01/31 v5.1g context-sensitive quotations (JAW)
+
+(/usr/local/share/texmf/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2015/08/02 v2.2a e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count183
+)
+\csq@reset=\count184
+\csq@gtype=\count185
+\csq@glevel=\count186
+\csq@qlevel=\count187
+\csq@maxlvl=\count188
+\csq@tshold=\count189
+\csq@ltx@everypar=\toks25
+
+(/usr/local/share/texmf/tex/latex/csquotes/csquotes.def
+File: csquotes.def 2016/01/31 v5.1g csquotes generic definitions (JAW)
+)
+Package csquotes Info: Trying to load configuration file 'csquotes.cfg'...
+Package csquotes Info: ... configuration file loaded successfully.
+
+(/usr/local/share/texmf/tex/latex/csquotes/csquotes.cfg
+File: csquotes.cfg 
+))
+(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+Package: fancyvrb 2008/02/07
+
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
+<2008/02/07> (tvz)
+\FV@CodeLineNo=\count190
+\FV@InFile=\read4
+\FV@TabBox=\box77
+\c@FancyVerbLine=\count191
+\FV@StepNumber=\count192
+\FV@OutFile=\write3
+) (/usr/share/texlive/texmf-dist/tex/latex/tools/verbatim.sty
+Package: verbatim 2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks26
+\verbatim@line=\toks27
+\verbatim@in@stream=\read5
+) (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.def
+File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
+))
+(/usr/share/texmf/tex/latex/lm/lmodern.sty
+Package: lmodern 2009/10/30 v1.6 Latin Modern Fonts
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/cmr/m/n --> OT1/lmr/m/n on input line 22.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `normal'
+(Font)                  OML/cmm/m/it --> OML/lmm/m/it on input line 23.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
+(Font)                  OMS/cmsy/m/n --> OMS/lmsy/m/n on input line 24.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
+(Font)                  OMX/cmex/m/n --> OMX/lmex/m/n on input line 25.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 26.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
+(Font)                  OML/cmm/b/it --> OML/lmm/b/it on input line 27.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
+(Font)                  OMS/cmsy/b/n --> OMS/lmsy/b/n on input line 28.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/cmex/m/n --> OMX/lmex/m/n on input line 29.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 31.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
+(Font)                  OT1/cmss/m/n --> OT1/lmss/m/n on input line 32.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/cmr/m/it --> OT1/lmr/m/it on input line 33.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
+(Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 34.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 35.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/cmss/bx/n --> OT1/lmss/bx/n on input line 36.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/cmr/bx/it --> OT1/lmr/bx/it on input line 37.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 38.
+)
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 255.
+
+
+(/usr/share/texmf/tex/latex/lm/t1lmtt.fd
+File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/hypdoc.sty
+Package: hypdoc 2011/08/19 v1.11 Hyper extensions for doc.sty (HO)
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/atveryend.sty
+Package: atveryend 2011/06/30 v1.8 Hooks at the very end of document (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2012/11/06 v6.83m Hypertext links for LaTeX
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+Package: hobsub-hyperref 2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
+
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
+Package: hobsub-generic 2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
+Package: hobsub 2012/05/28 v1.13 Construct package bundles (HO)
+Package hobsub Info: Skipping package `infwarerr' (already loaded).
+Package hobsub Info: Skipping package `ltxcmds' (already loaded).
+Package hobsub Info: Skipping package `ifluatex' (already loaded).
+Package hobsub Info: Skipping package `ifvtex' (already loaded).
+Package hobsub Info: Skipping package `intcalc' (already loaded).
+Package hobsub Info: Skipping package `ifpdf' (already loaded).
+Package hobsub Info: Skipping package `etexcmds' (already loaded).
+Package hobsub Info: Skipping package `kvsetkeys' (already loaded).
+Package hobsub Info: Skipping package `kvdefinekeys' (already loaded).
+Package hobsub Info: Skipping package `pdftexcmds' (already loaded).
+Package: pdfescape 2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
+Package: bigintcalc 2012/04/08 v1.3 Expandable calculations on big integers (HO
+)
+Package: bitset 2011/01/30 v1.1 Handle bit-vector datatype (HO)
+Package: uniquecounter 2011/01/30 v1.2 Provide unlimited unique counter (HO)
+)
+Package hobsub Info: Skipping package `hobsub' (already loaded).
+Package: letltxmacro 2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
+Package: hopatch 2012/05/28 v1.2 Wrapper for package hooks (HO)
+Package: xcolor-patch 2011/01/30 xcolor patch
+Package hobsub Info: Skipping package `atveryend' (already loaded).
+Package: atbegshi 2011/10/05 v1.16 At begin shipout hook (HO)
+Package: refcount 2011/10/16 v3.4 Data extraction from label references (HO)
+Package: hycolor 2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/auxhook.sty
+Package: auxhook 2011/03/04 v1.3 Hooks for auxiliary files (HO)
+)
+\@linkdim=\dimen174
+\Hy@linkcounter=\count193
+\Hy@pagecounter=\count194
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
+)
+\Hy@SavedSpaceFactor=\count195
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/hyperref.cfg
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+Package hyperref Info: Option `hyperindex' set `false' on input line 4319.
+Package hyperref Info: Option `pdfusetitle' set `true' on input line 4319.
+Package hyperref Info: Option `colorlinks' set `true' on input line 4319.
+Package hyperref Info: Option `pdfpagelabels' set `true' on input line 4319.
+Package hyperref Info: Hyper figures OFF on input line 4443.
+Package hyperref Info: Link nesting OFF on input line 4448.
+Package hyperref Info: Hyper index OFF on input line 4453.
+Package hyperref Info: Plain pages OFF on input line 4458.
+Package hyperref Info: Backreferencing OFF on input line 4463.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4688.
+\c@Hy@tempcnt=\count196
+
+(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip17
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 5041.
+\XeTeXLinkMargin=\dimen175
+\Fld@menulength=\count197
+\Field@Width=\dimen176
+\Fld@charsize=\dimen177
+Package hyperref Info: Hyper figures OFF on input line 6295.
+Package hyperref Info: Link nesting OFF on input line 6300.
+Package hyperref Info: Hyper index OFF on input line 6305.
+Package hyperref Info: backreferencing OFF on input line 6310.
+Package hyperref Info: Link coloring ON on input line 6313.
+Package hyperref Info: Link coloring with OCG OFF on input line 6320.
+Package hyperref Info: PDF/A mode OFF on input line 6325.
+LaTeX Info: Redefining \ref on input line 6365.
+LaTeX Info: Redefining \pageref on input line 6369.
+\Hy@abspage=\count198
+\c@Item=\count199
+\c@Hfootnote=\count266
+)
+
+Package hyperref Message: Driver (default): hdvips.
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hdvips.def
+File: hdvips.def 2012/11/06 v6.83m Hyperref driver for dvips
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pdfmark.def
+File: pdfmark.def 2012/11/06 v6.83m Hyperref definitions for pdfmark specials
+\pdf@docset=\toks28
+\pdf@box=\box78
+\pdf@toks=\toks29
+\pdf@defaulttoks=\toks30
+\HyField@AnnotCount=\count267
+\Fld@listcount=\count268
+\c@bookmark@seq@number=\count269
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
+Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+82.
+)
+\Hy@SectionHShift=\skip63
+))
+Package hyperref Info: Option `plainpages' set `false' on input line 60.
+Package hyperref Info: Option `bookmarksopen' set `true' on input line 60.
+Package hyperref Info: Option `bookmarksnumbered' set `true' on input line 60.
+
+(/usr/share/texlive/texmf-dist/tex/generic/thumbpdf/thumbpdf.sty
+Package: thumbpdf 2014/07/15 v3.16 Inclusion of thumbnails (HO)
+
+
+Package thumbpdf Warning: Missing driver name.
+
+)
+\c@HD@unique=\count270
+\c@HD@hypercount=\count271
+\HD@helplength=\skip64
+)
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \cmd with sig. 'O{}m' on line 322.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \cs with sig. 'O{}m' on line 324.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \tn with sig. 'O{}m' on line 330.
+.................................................
+.................................................
+. LaTeX info: "xparse/redefine-command"
+. 
+. Redefining command \meta with sig. 'm' on line 332.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \EnableDocumentation with sig. '' on line 343.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \EnableImplementation with sig. '' on line 345.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \DisableDocumentation with sig. '' on line 347.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \DisableImplementation with sig. '' on line 349.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-environment"
+. 
+. Defining environment 'documentation' with sig. '' on line 356.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-environment"
+. 
+. Defining environment 'implementation' with sig. '' on line 363.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-environment"
+. 
+. Defining environment 'variable' with sig. 'O{}+v' on line 374.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-environment"
+. 
+. Defining environment 'function' with sig. 'O{}+v' on line 377.
+.................................................
+.................................................
+. LaTeX info: "xparse/redefine-environment"
+. 
+. Redefining environment 'macro' with sig. 'O{}+v' on line 380.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-environment"
+. 
+. Defining environment 'syntax' with sig. '' on line 386.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-environment"
+. 
+. Defining environment 'texnote' with sig. '' on line 395.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-environment"
+. 
+. Defining environment 'arguments' with sig. '' on line 406.
+.................................................
+\l__codedoc_syntax_dim=\dimen178
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \TestFiles with sig. 'm' on line 1031.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \UnitTested with sig. '' on line 1032.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \TestMissing with sig. 'm' on line 1034.
+.................................................
+.................................................
+. LaTeX info: "xparse/redefine-command"
+. 
+. Redefining command \OnlyDescription with sig. '' on line 1279.
+.................................................
+.................................................
+. LaTeX info: "xparse/redefine-command"
+. 
+. Redefining command \AlsoImplementation with sig. '' on line 1281.
+.................................................
+.................................................
+. LaTeX info: "xparse/redefine-command"
+. 
+. Redefining command \StopEventually with sig. 'm' on line 1292.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \Finale with sig. '' on line 1294.
+.................................................
+.................................................
+. LaTeX info: "xparse/redefine-command"
+. 
+. Redefining command \DocInput with sig. 'm' on line 1310.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \DocInputAgain with sig. '' on line 1312.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \DocInclude with sig. 'm' on line 1323.
+.................................................
+\@glossaryfile=\write4
+\openout4 = `siunitx.glo'.
+
+
+Writing glossary file siunitx.glo 
+\@indexfile=\write5
+\openout5 = `siunitx.idx'.
+
+Writing index file siunitx.idx
+) (/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package xcolor Info: Driver file: dvips.def on input line 225.
+LaTeX Info: Redefining \color on input line 702.
+\rownum=\count272
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1337.
+Package xcolor Info: Model `RGB' extended on input line 1353.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1355.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1356.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1357.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
+)
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2016/02/24 3.9q The Babel package
+
+
+! Package babel Error: Unknown option `french'. Either you misspelled it
+(babel)                or the language definition file french.ldf was not found
+.
+
+See the babel package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.310 \ProcessOptions*
+                      
+? 
+(/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf
+Language: english 2012/08/20 v3.3p English support from the babel system
+
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
+File: babel.def 2016/02/24 3.9q Babel common definitions
+\babel@savecnt=\count273
+\U@D=\dimen179
+)
+\l@british = a dialect from \language\l@english 
+\l@UKenglish = a dialect from \language\l@english 
+\l@canadian = a dialect from \language\l@american 
+\l@australian = a dialect from \language\l@british 
+\l@newzealand = a dialect from \language\l@british 
+)
+(/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf
+Language: english 2012/08/20 v3.3p English support from the babel system
+))
+
+Package Babel Warning: The package option `english' should not be used
+(Babel)                with a more specific one (like `UKenglish') on input lin
+e 135.
+
+(/usr/share/texlive/texmf-dist/tex/latex/cancel/cancel.sty
+Package: cancel 2013/04/12 v2.2 Cancel math terms
+)
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2016/02/04 v1.7-139 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 67.
+\captionmargin=\dimen180
+\captionmargin@=\dimen181
+\captionwidth=\dimen182
+\caption@tempdima=\dimen183
+\caption@indent=\dimen184
+\caption@parindent=\dimen185
+\caption@hangindent=\dimen186
+)
+\c@ContinuedFloat=\count274
+Package caption Info: hyperref package is loaded.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/datatool/datatool.sty
+Package: datatool 2016/01/18 v2.25 (NLCT)
+
+(/usr/share/texlive/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
+
+(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+\XKV@toks=\toks31
+\XKV@tempa@toks=\toks32
+)
+\XKV@depth=\count275
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+))
+(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/xfor/xfor.sty
+Package: xfor 2009/02/05 v1.05 (NLCT)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/substr/substr.sty
+Package: substr 2009/10/20 v1.2 Handle substrings
+\c@su@anzahl=\count276
+)
+(/usr/share/texlive/texmf-dist/tex/latex/datatool/datatool-base.sty
+Package: datatool-base 2016/01/18 v2.25 (NLCT)
+
+(/usr/share/texlive/texmf-dist/tex/latex/datatool/datatool-fp.sty
+Package: datatool-fp 2016/01/18 v2.25 (NLCT)
+
+(/usr/share/texlive/texmf-dist/tex/latex/fp/fp.sty
+Package: fp 1995/04/02
+
+`Fixed Point Package', Version 0.8, April 2, 1995 (C) Michael Mehlich
+(/usr/share/texlive/texmf-dist/tex/latex/fp/defpattern.sty
+Package: defpattern 1994/10/12
+\actioncount=\count277
+)
+(/usr/share/texlive/texmf-dist/tex/latex/fp/fp-basic.sty
+Package: fp-basic 1996/05/13
+\FP@xs=\count278
+\FP@xia=\count279
+\FP@xib=\count280
+\FP@xfa=\count281
+\FP@xfb=\count282
+\FP@rega=\count283
+\FP@regb=\count284
+\FP@regs=\count285
+\FP@times=\count286
+)
+(/usr/share/texlive/texmf-dist/tex/latex/fp/fp-addons.sty
+Package: fp-addons 1995/03/15
+)
+(/usr/share/texlive/texmf-dist/tex/latex/fp/fp-snap.sty
+Package: fp-snap 1995/04/05
+)
+(/usr/share/texlive/texmf-dist/tex/latex/fp/fp-exp.sty
+Package: fp-exp 1995/04/03
+)
+(/usr/share/texlive/texmf-dist/tex/latex/fp/fp-trigo.sty
+Package: fp-trigo 1995/04/14
+)
+(/usr/share/texlive/texmf-dist/tex/latex/fp/fp-pas.sty
+Package: fp-pas 1994/08/29
+)
+(/usr/share/texlive/texmf-dist/tex/latex/fp/fp-random.sty
+Package: fp-random 1995/02/23
+\FPseed=\count287
+)
+(/usr/share/texlive/texmf-dist/tex/latex/fp/fp-eqn.sty
+Package: fp-eqn 1995/04/03
+)
+(/usr/share/texlive/texmf-dist/tex/latex/fp/fp-upn.sty
+Package: fp-upn 1996/10/21
+)
+(/usr/share/texlive/texmf-dist/tex/latex/fp/fp-eval.sty
+Package: fp-eval 1995/04/03
+)))
+\@dtl@toks=\toks33
+\@dtl@tmpcount=\count288
+\dtl@tmplength=\skip65
+\dtl@sortresult=\count289
+\@dtl@numgrpsepcount=\count290
+\@dtl@datatype=\count291
+\dtl@codeA=\count292
+\dtl@codeB=\count293
+\@dtl@foreach@level=\count294
+)
+\dtlcolumnnum=\count295
+\dtlrownum=\count296
+\@dtl@before=\toks34
+\@dtl@after=\toks35
+\@dtl@colhead=\toks36
+\dtlcurrentrow=\toks37
+\dtlbeforerow=\toks38
+\dtlafterrow=\toks39
+\dtlforeachlevel=\count297
+\c@DTLrowi=\count298
+\c@DTLrowii=\count299
+\c@DTLrowiii=\count300
+\c@DTLrow=\count301
+\dtl@rowi=\count302
+\dtl@rowii=\count303
+\dtl@rowiii=\count304
+\@dtl@curi=\toks40
+\@dtl@previ=\toks41
+\@dtl@nexti=\toks42
+\@dtl@curii=\toks43
+\@dtl@previi=\toks44
+\@dtl@nextii=\toks45
+\@dtl@curiii=\toks46
+\@dtl@previii=\toks47
+\@dtl@nextiii=\toks48
+\@dtl@elements=\count305
+\@dtl@list=\toks49
+\@dtl@rowa=\toks50
+\@dtl@rowb=\toks51
+\@dtl@toksA=\toks52
+\@dtl@toksB=\toks53
+\@dtl@write=\write6
+\@dtl@read=\read6
+\dtl@entrycr=\count306
+\dtl@omitlines=\count307
+)
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/helvet.sty
+Package: helvet 2005/04/12 PSNFSS-v9.2a (WaS) 
+)
+(/usr/local/share/texmf/tex/latex/multirow/multirow.sty
+\bigstrutjot=\dimen187
+)
+(/usr/share/texlive/texmf-dist/tex/latex/pgfplots/pgfplots.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.revision.tex)
+Package: pgfplots 2016/01/06 v1.13 Data Visualization (1.13)
+
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+\pgfutil@everybye=\toks54
+\pgfutil@tempdima=\dimen188
+\pgfutil@tempdimb=\dimen189
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.t
+ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+\pgfutil@abb=\box79
+(/usr/share/texlive/texmf-dist/tex/latex/ms/everyshi.sty
+Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
+))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
+Package: pgfrcs 2015/08/07 v3.0.1a (rcs-revision 1.31)
+))
+Package: pgf 2015/08/07 v3.0.1a (rcs-revision 1.15)
+
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2016/01/03 v1.0q Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: dvips.def on input line 95.
+)
+\Gin@req@height=\dimen190
+\Gin@req@width=\dimen191
+)
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+Package: pgfsys 2014/07/09 v3.0.1a (rcs-revision 1.48)
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks55
+\pgfkeys@temptoks=\toks56
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.t
+ex
+\pgfkeys@tmptoks=\toks57
+))
+\pgf@x=\dimen192
+\pgf@y=\dimen193
+\pgf@xa=\dimen194
+\pgf@ya=\dimen195
+\pgf@xb=\dimen196
+\pgf@yb=\dimen197
+\pgf@xc=\dimen198
+\pgf@yc=\dimen199
+\w@pgf@writea=\write7
+\r@pgf@reada=\read7
+\c@pgf@counta=\count308
+\c@pgf@countb=\count309
+\c@pgf@countc=\count310
+\c@pgf@countd=\count311
+\t@pgf@toka=\toks58
+\t@pgf@tokb=\toks59
+\t@pgf@tokc=\toks60
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
+File: pgf.cfg 2008/05/14  (rcs-revision 1.7)
+)
+Driver file for pgf: pgfsys-dvips.def
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-dvips.def
+File: pgfsys-dvips.def 2014/07/09  (rcs-revision 1.25)
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-postsc
+ript.def
+File: pgfsys-common-postscript.def 2008/10/01  (rcs-revision 1.22)
+\pgf@objectcount=\count312
+)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.
+tex
+File: pgfsyssoftpath.code.tex 2013/09/09  (rcs-revision 1.9)
+\pgfsyssoftpath@smallbuffer@items=\count313
+\pgfsyssoftpath@bigbuffer@items=\count314
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.
+tex
+File: pgfsysprotocol.code.tex 2006/10/16  (rcs-revision 1.4)
+))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+Package: pgfcore 2010/04/11 v3.0.1a (rcs-revision 1.7)
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
+\pgfmath@dimen=\dimen256
+\pgfmath@count=\count315
+\pgfmath@box=\box80
+\pgfmath@toks=\toks61
+\pgfmath@stack@operand=\toks62
+\pgfmath@stack@operation=\toks63
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonomet
+ric.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.cod
+e.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerari
+thmetics.code.tex)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count316
+))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.te
+x
+File: pgfcorepoints.code.tex 2013/10/07  (rcs-revision 1.27)
+\pgf@picminx=\dimen257
+\pgf@picmaxx=\dimen258
+\pgf@picminy=\dimen259
+\pgf@picmaxy=\dimen260
+\pgf@pathminx=\dimen261
+\pgf@pathmaxx=\dimen262
+\pgf@pathminy=\dimen263
+\pgf@pathmaxy=\dimen264
+\pgf@xx=\dimen265
+\pgf@xy=\dimen266
+\pgf@yx=\dimen267
+\pgf@yy=\dimen268
+\pgf@zx=\dimen269
+\pgf@zy=\dimen270
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.
+code.tex
+File: pgfcorepathconstruct.code.tex 2013/10/07  (rcs-revision 1.29)
+\pgf@path@lastx=\dimen271
+\pgf@path@lasty=\dimen272
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code
+.tex
+File: pgfcorepathusage.code.tex 2014/11/02  (rcs-revision 1.24)
+\pgf@shorten@end@additional=\dimen273
+\pgf@shorten@start@additional=\dimen274
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.te
+x
+File: pgfcorescopes.code.tex 2015/05/08  (rcs-revision 1.46)
+\pgfpic=\box81
+\pgf@hbox=\box82
+\pgf@layerbox@main=\box83
+\pgf@picture@serial@count=\count317
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.c
+ode.tex
+File: pgfcoregraphicstate.code.tex 2014/11/02  (rcs-revision 1.12)
+\pgflinewidth=\dimen275
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformation
+s.code.tex
+File: pgfcoretransformations.code.tex 2015/08/07  (rcs-revision 1.20)
+\pgf@pt@x=\dimen276
+\pgf@pt@y=\dimen277
+\pgf@pt@temp=\dimen278
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
+File: pgfcorequick.code.tex 2008/10/09  (rcs-revision 1.3)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.t
+ex
+File: pgfcoreobjects.code.tex 2006/10/11  (rcs-revision 1.2)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing
+.code.tex
+File: pgfcorepathprocessing.code.tex 2013/09/09  (rcs-revision 1.9)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.te
+x
+File: pgfcorearrows.code.tex 2015/05/14  (rcs-revision 1.43)
+\pgfarrowsep=\dimen279
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+File: pgfcoreshade.code.tex 2013/07/15  (rcs-revision 1.15)
+\pgf@max=\dimen280
+\pgf@sys@shading@range@num=\count318
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
+File: pgfcoreimage.code.tex 2013/07/15  (rcs-revision 1.18)
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.
+tex
+File: pgfcoreexternal.code.tex 2014/07/09  (rcs-revision 1.21)
+\pgfexternal@startupbox=\box84
+))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.te
+x
+File: pgfcorelayers.code.tex 2013/07/18  (rcs-revision 1.7)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.c
+ode.tex
+File: pgfcoretransparency.code.tex 2013/09/30  (rcs-revision 1.5)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.
+tex
+File: pgfcorepatterns.code.tex 2013/11/07  (rcs-revision 1.5)
+)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+File: pgfmoduleshapes.code.tex 2014/03/21  (rcs-revision 1.35)
+\pgfnodeparttextbox=\box85
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+File: pgfmoduleplot.code.tex 2015/08/03  (rcs-revision 1.13)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65
+.sty
+Package: pgfcomp-version-0-65 2007/07/03 v3.0.1a (rcs-revision 1.7)
+\pgf@nodesepstart=\dimen281
+\pgf@nodesepend=\dimen282
+)
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18
+.sty
+Package: pgfcomp-version-1-18 2007/07/23 v3.0.1a (rcs-revision 1.1)
+)) (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex))
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/math/pgfmath.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+Package: pgffor 2013/12/13 v3.0.1a (rcs-revision 1.25)
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)
+\pgffor@iter=\dimen283
+\pgffor@skip=\dimen284
+\pgffor@stack=\toks64
+\pgffor@toks=\toks65
+))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+Package: tikz 2015/08/07 v3.0.1a (rcs-revision 1.151)
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers
+.code.tex
+File: pgflibraryplothandlers.code.tex 2013/08/31 v3.0.1a (rcs-revision 1.20)
+\pgf@plot@mark@count=\count319
+\pgfplotmarksize=\dimen285
+)
+\tikz@lastx=\dimen286
+\tikz@lasty=\dimen287
+\tikz@lastxsaved=\dimen288
+\tikz@lastysaved=\dimen289
+\tikzleveldistance=\dimen290
+\tikzsiblingdistance=\dimen291
+\tikz@figbox=\box86
+\tikz@figbox@bg=\box87
+\tikz@tempbox=\box88
+\tikz@tempbox@bg=\box89
+\tikztreelevel=\count320
+\tikznumberofchildren=\count321
+\tikznumberofcurrentchild=\count322
+\tikz@fig@count=\count323
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+File: pgfmodulematrix.code.tex 2013/09/17  (rcs-revision 1.8)
+\pgfmatrixcurrentrow=\count324
+\pgfmatrixcurrentcolumn=\count325
+\pgf@matrix@numberofcolumns=\count326
+)
+\tikz@expandcount=\count327
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarytopaths.code.tex
+File: tikzlibrarytopaths.code.tex 2008/06/17 v3.0.1a (rcs-revision 1.2)
+)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotscore.code.tex
+\t@pgfplots@toka=\toks66
+\t@pgfplots@tokb=\toks67
+\t@pgfplots@tokc=\toks68
+\pgfplots@tmpa=\dimen292
+\c@pgfplots@coordindex=\count328
+\c@pgfplots@scanlineindex=\count329
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/sys/pgfplotssysgeneric.code
+.tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/libs/pgfplotslibrary.code.t
+ex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldp
+gfsupp_loader.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryfpu.code.tex
+)
+Package pgfplots: loading complementary arithmetics for your pgf version...
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldp
+gfsupp_pgflibraryfpu.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldp
+gfsupp_pgfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count330
+))
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/util/pgfplotsutil.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotslists
+tructure.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotslists
+tructureext.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsarray
+.code.tex
+\c@pgfplotsarray@tmp=\count331
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsmatri
+x.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/numtable/pgfplotstableshare
+d.code.tex
+\c@pgfplotstable@counta=\count332
+\t@pgfplotstable@a=\toks69
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsdeque
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/util/pgfplotsbinary.code.te
+x
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/util/pgfplotsbinary.data.co
+de.tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/util/pgfplotsutil.verb.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/libs/pgflibrarypgfplots.sur
+fshading.code.tex
+\c@pgfplotslibrarysurf@no=\count333
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/sys/pgflibrarypgfplots.surf
+shading.pgfsys-dvips.def)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/util/pgfplotscolormap.code.
+tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/util/pgfplotscolor.code.tex
+))
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotsstackedplots.code.t
+ex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotsplothandlers.code.t
+ex
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotsmeshplothandler.cod
+e.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotsmeshplotimage.code.
+tex)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.scaling.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotscoordprocessing.cod
+e.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.errorbars.code.tex
+) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.markers.code.tex
+) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotsticks.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.paths.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarydecorations.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduledecorations.cod
+e.tex
+\pgfdecoratedcompleteddistance=\dimen293
+\pgfdecoratedremainingdistance=\dimen294
+\pgfdecoratedinputsegmentcompleteddistance=\dimen295
+\pgfdecoratedinputsegmentremainingdistance=\dimen296
+\pgf@decorate@distancetomove=\dimen297
+\pgf@decorate@repeatstate=\count334
+\pgfdecorationsegmentamplitude=\dimen298
+\pgfdecorationsegmentlength=\dimen299
+)
+\tikz@lib@dec@box=\box90
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarydecorations.pathmorphing.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrary
+decorations.pathmorphing.code.tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarydecorations.pathreplacing.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrary
+decorations.pathreplacing.code.tex))
+\pgfplots@numplots=\count335
+\pgfplots@xmin@reg=\dimen300
+\pgfplots@xmax@reg=\dimen301
+\pgfplots@ymin@reg=\dimen302
+\pgfplots@ymax@reg=\dimen303
+\pgfplots@zmin@reg=\dimen304
+\pgfplots@zmax@reg=\dimen305
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibraryplotmarks.code.tex
+File: tikzlibraryplotmarks.code.tex 2008/01/09 v3.0.1a (rcs-revision 1.1)
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplotmarks.co
+de.tex
+File: pgflibraryplotmarks.code.tex 2015/08/03 v3.0.1a (rcs-revision 1.14)
+))) (./siunitx.sty
+Package: siunitx 2017/11/26 v2.7k A comprehensive (SI) units package
+
+(/usr/share/texlive/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty
+Package: l3keys2e 2016/01/19 v6377 LaTeX2e option processing using LaTeX3 keys
+)
+\l__siunitx_tmp_box=\box91
+\l__siunitx_tmp_dim=\dimen306
+\l__siunitx_tmp_int=\count336
+\l__siunitx_number_mantissa_length_int=\count337
+\l__siunitx_number_uncert_length_int=\count338
+\l__siunitx_round_int=\count339
+\l__siunitx_process_decimal_int=\count340
+\l__siunitx_process_uncertainty_int=\count341
+\l__siunitx_process_fixed_int=\count342
+\l__siunitx_process_integer_min_int=\count343
+\l__siunitx_process_precision_int=\count344
+\l__siunitx_group_min_int=\count345
+\l__siunitx_angle_marker_box=\box92
+\l__siunitx_angle_unit_box=\box93
+\l__siunitx_angle_marker_dim=\dimen307
+\l__siunitx_angle_unit_dim=\dimen308
+\l__siunitx_unit_int=\count346
+\l__siunitx_unit_denominator_int=\count347
+\l__siunitx_unit_numerator_int=\count348
+\l__siunitx_unit_prefix_int=\count349
+\l__siunitx_unit_prefix_base_int=\count350
+\l__siunitx_unit_prefix_gram_int=\count351
+\l__siunitx_number_product_int=\count352
+\c__siunitx_one_fill_skip=\skip66
+\l__siunitx_table_unit_align_skip=\skip67
+\l__siunitx_table_exponent_dim=\dimen309
+\l__siunitx_table_integer_dim=\dimen310
+\l__siunitx_table_mantissa_dim=\dimen311
+\l__siunitx_table_marker_dim=\dimen312
+\l__siunitx_table_result_dim=\dimen313
+\l__siunitx_table_uncert_dim=\dimen314
+\l__siunitx_table_fill_pre_dim=\dimen315
+\l__siunitx_table_fill_post_dim=\dimen316
+\l__siunitx_table_fill_mid_dim=\dimen317
+\l__siunitx_table_pre_box=\box94
+\l__siunitx_table_post_box=\box95
+\l__siunitx_table_mantissa_box=\box96
+\l__siunitx_table_result_box=\box97
+\l__siunitx_table_number_align_skip=\skip68
+\l__siunitx_table_text_align_skip=\skip69
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \DeclareBinaryPrefix with sig. 'mmm' on line 7250.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \DeclareSIPostPower with sig. 'mm' on line 7253.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \DeclareSIPrefix with sig. 'mmm' on line 7256.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \DeclareSIPrePower with sig. 'mm' on line 7259.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \DeclareSIQualifier with sig. 'mm' on line 7262.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \DeclareSIUnit with sig. 'O{}mm' on line 7265.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \DeclareSIUnitWithOptions with sig. 'mmm' on line 7268.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \ang with sig. 'o>{\SplitArgument {2}{;}}m' on line 7283.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \num with sig. 'om' on line 7292.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \numlist with sig. 'o>{\SplitList {;}}m' on line 7301.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \numrange with sig. 'omm' on line 7310.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \SIlist with sig. 'o>{\SplitList {;}}mm' on line 7322.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \SIrange with sig. 'ommm' on line 7334.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \SI with sig. 'omom' on line 7346.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \sisetup with sig. 'm' on line 7349.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \tablenum with sig. 'om' on line 7364.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \si with sig. 'om' on line 7376.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \numInBookmark with sig. 'om' on line 7423.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \numrangeInBookmark with sig. 'omm' on line 7425.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \SIInBookmark with sig. 'omom' on line 7427.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \SIlistInBookmark with sig. 'omm' on line 7429.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \SIrangeInBookmark with sig. 'ommm' on line 7431.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \siInBookmark with sig. 'om' on line 7432.
+.................................................
+
+(/usr/local/share/texmf/tex/latex/beamer/base/translator/translator.sty
+Package: translator 2010/06/12 ver 1.10
+
+(/usr/local/share/texmf/tex/latex/beamer/base/translator/translator-language-ma
+ppings.tex)))
+(/usr/share/texlive/texmf-dist/tex/latex/l3packages/xfrac/xfrac.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3packages/xtemplate/xtemplate.sty
+Package: xtemplate 2016/01/19 v6377 L3 Experimental prototype document function
+s
+\l__xtemplate_tmp_dim=\dimen318
+\l__xtemplate_tmp_int=\count353
+\l__xtemplate_tmp_muskip=\muskip18
+\l__xtemplate_tmp_skip=\skip70
+)
+Package: xfrac 2016/01/19 v6377 L3 Experimental split-level fractions
+\l__xfrac_slash_box=\box98
+\l__xfrac_tmp_box=\box99
+\l__xfrac_denominator_bot_sep_dim=\dimen319
+\l__xfrac_numerator_bot_sep_dim=\dimen320
+\l__xfrac_numerator_top_sep_dim=\dimen321
+\l__xfrac_slash_left_sep_dim=\dimen322
+\l__xfrac_slash_right_sep_dim=\dimen323
+\l__xfrac_slash_left_muskip=\muskip19
+\l__xfrac_slash_right_muskip=\muskip20
+.................................................
+. xtemplate info: "declare-object-type"
+. 
+. Declaring object type 'xfrac' taking 3 argument(s) on line 111.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \sfrac with sig. 'omom' on line 451.
+.................................................
+)
+(/usr/share/texlive/texmf-dist/tex/latex/xtab/xtab.sty
+Package: xtab 2011/07/31 v2.3f Extended supertabular package
+\c@tracingst=\count354
+\PWSTcapht=\dimen324
+\ST@wd=\dimen325
+\ST@rightskip=\skip71
+\ST@leftskip=\skip72
+\ST@parfillskip=\skip73
+\c@PWSTtable=\count355
+\PWSTlastpage=\count356
+\PWSTpenultimate=\count357
+\PWSTcurpage=\count358
+\PWSTtempc=\count359
+\PWSTlines=\count360
+\PWST@lastht=\dimen326
+\PWST@generalht=\dimen327
+\PWST@ht=\dimen328
+\ST@pageleft=\dimen329
+\ST@headht=\dimen330
+\ST@tailht=\dimen331
+\ST@pagesofar=\dimen332
+\ST@pboxht=\dimen333
+\ST@lineht=\dimen334
+\ST@stretchht=\dimen335
+\ST@prevht=\dimen336
+\ST@toadd=\dimen337
+\ST@dimen=\dimen338
+\ST@pbox=\box100
+)
+(/usr/share/texlive/texmf-dist/tex/latex/cleveref/cleveref.sty
+Package: cleveref 2013/12/28 v0.19 Intelligent cross-referencing
+Package cleveref Info: `hyperref' support loaded on input line 2230.
+LaTeX Info: Redefining \cref on input line 2230.
+LaTeX Info: Redefining \Cref on input line 2230.
+LaTeX Info: Redefining \crefrange on input line 2230.
+LaTeX Info: Redefining \Crefrange on input line 2230.
+LaTeX Info: Redefining \cpageref on input line 2230.
+LaTeX Info: Redefining \Cpageref on input line 2230.
+LaTeX Info: Redefining \cpagerefrange on input line 2230.
+LaTeX Info: Redefining \Cpagerefrange on input line 2230.
+LaTeX Info: Redefining \labelcref on input line 2230.
+LaTeX Info: Redefining \labelcpageref on input line 2230.
+Package cleveref Info: always capitalise cross-reference names on input line 74
+65.
+Package cleveref Info: always capitalise cross-reference names on input line 74
+93.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count361
+\lst@gtempboxa=\box101
+\lst@token=\toks70
+\lst@length=\count362
+\lst@currlwidth=\dimen339
+\lst@column=\count363
+\lst@pos=\count364
+\lst@lostspace=\dimen340
+\lst@width=\dimen341
+\lst@newlines=\count365
+\lst@lineno=\count366
+\lst@maxwidth=\dimen342
+
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
+\c@lstnumber=\count367
+\lst@skipnumbers=\count368
+\lst@framebox=\box102
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2015/06/04 1.6 listings configuration
+))
+Package: listings 2015/06/04 1.6 (Carsten Heinz)
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/mathpazo.sty
+Package: mathpazo 2005/04/12 PSNFSS-v9.2a Palatino w/ Pazo Math (D.Puga, WaS) 
+\symupright=\mathgroup6
+)
+\mylength=\skip74
+Package csquotes Info: Checking for multilingual support...
+Package csquotes Info: ... found 'babel' package.
+Package csquotes Info: Adjusting default style.
+Package csquotes Info: Redefining alias 'default' -> 'UKenglish'.
+
+No file siunitx.aux.
+\openout1 = `siunitx.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 164.
+LaTeX Font Info:    ... okay on input line 164.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 164.
+LaTeX Font Info:    ... okay on input line 164.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 164.
+LaTeX Font Info:    ... okay on input line 164.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 164.
+LaTeX Font Info:    ... okay on input line 164.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 164.
+LaTeX Font Info:    ... okay on input line 164.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 164.
+LaTeX Font Info:    ... okay on input line 164.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 164.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 164.
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
+File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    ... okay on input line 164.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 164.
+LaTeX Font Info:    ... okay on input line 164.
+LaTeX Font Info:    Try loading font information for T1+pplj on input line 164.
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pplj.fd
+File: t1pplj.fd 2004/09/06 font definitions for T1/pplj.
+)
+\AtBeginShipoutBox=\box103
+Package hyperref Info: Link coloring ON on input line 164.
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
+Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
+)
+\c@section@level=\count369
+)
+LaTeX Info: Redefining \ref on input line 164.
+LaTeX Info: Redefining \pageref on input line 164.
+LaTeX Info: Redefining \nameref on input line 164.
+\@outlinefile=\write8
+\openout8 = `siunitx.out'.
+
+
+
+Package hyperref Warning: Rerun to get /PageLabels entry.
+
+\HD@savedest@out=\write9
+\openout9 = `siunitx.hd'.
+
+Package doc Info: Made " a short reference for \verb on input line 164.
+Package doc Info: Made | a short reference for \verb on input line 164.
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: listings package is loaded.
+Package caption Info: xtab package is loaded.
+Package caption Info: End \AtBeginDocument code.
+ABD: EveryShipout initializing macros
+Package pgfplots notification 'compat/show suggested version=true': document ha
+s been generated with the most recent feature set (\pgfplotsset{compat=1.13}).
+
+
+(/usr/local/share/texmf/tex/latex/beamer/base/translator/dicts/translator-basic
+-dictionary/translator-basic-dictionary-English.dict
+Dictionary: translator-basic-dictionary, Language: English 
+)
+(/usr/local/share/texmf/tex/latex/beamer/base/translator/dicts/translator-basic
+-dictionary/translator-basic-dictionary-German.dict
+Dictionary: translator-basic-dictionary, Language: German 
+)
+(/usr/local/share/texmf/tex/latex/beamer/base/translator/dicts/translator-basic
+-dictionary/translator-basic-dictionary-French.dict
+Dictionary: translator-basic-dictionary, Language: French 
+)
+(/usr/local/share/texmf/tex/latex/beamer/base/translator/dicts/translator-basic
+-dictionary/translator-basic-dictionary-Spanish.dict
+Dictionary: translator-basic-dictionary, Language: Spanish 
+)
+(./siunitx-abbreviations.cfg
+File: siunitx-abbreviations.cfg 2017/11/26 v2.7k siunitx: Abbreviated units
+)
+\c@lstlisting=\count370
+
+
+! Package babel Error: I cannot switch `<' on or off--not a shorthand.
+
+See the babel package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.164 \begin{document}
+                      
+? 
+
+! Package babel Error: I cannot switch `>' on or off--not a shorthand.
+
+See the babel package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.164 \begin{document}
+                      
+? 
+(./siunitx-binary.cfg
+File: siunitx-binary.cfg 2017/11/26 v2.7k siunitx: Binary units
+)
+\c__siunitx_mathsf_int=\count371
+LaTeX Font Info:    Try loading font information for OT1+ppl on input line 164.
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ppl.fd
+File: ot1ppl.fd 2001/06/04 font definitions for OT1/ppl.
+)
+LaTeX Font Info:    Try loading font information for OML+zplm on input line 164
+.
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/omlzplm.fd
+File: omlzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OML/zplm.
+)
+LaTeX Font Info:    Try loading font information for OMS+zplm on input line 164
+.
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/omszplm.fd
+File: omszplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMS/zplm.
+)
+LaTeX Font Info:    Try loading font information for OMX+zplm on input line 164
+.
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/omxzplm.fd
+File: omxzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMX/zplm.
+)
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 10.42007pt on input line 164.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 7.91925pt on input line 164.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 6.25204pt on input line 164.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 10.42007pt on input line 164.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 7.91925pt on input line 164.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 6.25204pt on input line 164.
+LaTeX Font Info:    Try loading font information for OT1+zplm on input line 164
+.
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1zplm.fd
+File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
+)
+LaTeX Font Info:    Try loading font information for OT1+lmss on input line 164
+.
+
+(/usr/share/texmf/tex/latex/lm/ot1lmss.fd
+File: ot1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+\c__siunitx_mathtt_int=\count372
+LaTeX Font Info:    Try loading font information for OT1+lmtt on input line 164
+.
+
+(/usr/share/texmf/tex/latex/lm/ot1lmtt.fd
+File: ot1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+) (./siunitx.dtx
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \DescribePrefix with sig. 'm' on line 176.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \DescribeUnit with sig. 'm' on line 182.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \DescribeNamedUnit with sig. 'mm' on line 188.
+.................................................
+
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
+\lst@WFtoken=\toks71
+\lst@WF=\write10
+)
+\LaTeXdemo@box=\box104
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \opt with sig. 'm' on line 376.
+.................................................
+LaTeX Font Info:    Try loading font information for T1+phv on input line 397.
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd
+File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
+)
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 18.00587pt on input line 397.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 12.50409pt on input line 397.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 18.00587pt on input line 397.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 12.50409pt on input line 397.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 9.37807pt on input line 397.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 7.29405pt on input line 397.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 9.37807pt on input line 397.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 7.29405pt on input line 397.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 8.33606pt on input line 397.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 5.21004pt on input line 397.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 8.33606pt on input line 397.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 5.21004pt on input line 397.
+LaTeX Font Info:    Font shape `T1/pplj/bx/n' in size <9> not available
+(Font)              Font shape `T1/pplj/b/n' tried instead on input line 673.
+LaTeX Font Info:    Font shape `T1/pplj/bx/n' in size <14.4> not available
+(Font)              Font shape `T1/pplj/b/n' tried instead on input line 691.
+\tf@toc=\write11
+\openout11 = `siunitx.toc'.
+
+ [1
+
+]
+LaTeX Font Info:    Try loading font information for TS1+pplj on input line 738
+.
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1pplj.fd
+File: ts1pplj.fd 2004/09/06 font definitions for TS1/pplj.
+)
+LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <14.4> not available
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 753.
+ [2]
+\openout10 = `siunitx.tmp'.
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2015/06/04 1.6 listings language file
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang2.sty
+File: lstlang2.sty 2015/06/04 1.6 listings language file
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang3.sty
+File: lstlang3.sty 2015/06/04 1.6 listings language file
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2015/06/04 1.6 listings language file
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang2.sty
+File: lstlang2.sty 2015/06/04 1.6 listings language file
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang3.sty
+File: lstlang3.sty 2015/06/04 1.6 listings language file
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2015/06/04 1.6 listings language file
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang2.sty
+File: lstlang2.sty 2015/06/04 1.6 listings language file
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang3.sty
+File: lstlang3.sty 2015/06/04 1.6 listings language file
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
+) (./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+
+(./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+ (./siunitx.tmp)
+LaTeX Font Info:    Font shape `T1/pplj/bx/n' in size <12> not available
+(Font)              Font shape `T1/pplj/b/n' tried instead on input line 810.
+ [3]
+\openout10 = `siunitx.tmp'.
+
+ (./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+ (./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+
+(./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+ [4] (./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+ (./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+ (./siunitx.tmp)
+LaTeX Font Info:    Font shape `T1/pplj/bx/n' in size <10> not available
+(Font)              Font shape `T1/pplj/b/n' tried instead on input line 952.
+
+
+LaTeX Warning: Citation `SI:5.3.3' on page 5 undefined on input line 952.
+
+\openout10 = `siunitx.tmp'.
+
+[5] (./siunitx.tmp)
+
+LaTeX Warning: Reference `sec:units:creating' on page 1 undefined on input line
+ 970.
+
+\openout10 = `siunitx.tmp'.
+
+(./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+ (./siunitx.tmp)
+
+LaTeX Warning: Citation `BIPM' on page 6 undefined on input line 1002.
+
+
+LaTeX Warning: Reference `tab:unit:base' on page 1 undefined on input line 1006
+.
+
+
+LaTeX Warning: Citation `SI:2.1' on page 6 undefined on input line 1009.
+
+
+LaTeX Warning: Citation `SI:2.2.2' on page 6 undefined on input line 1031.
+
+
+LaTeX Warning: Reference `tab:unit:derived' on page 1 undefined on input line 1
+032.
+
+
+Overfull \hbox (6.2195pt too wide) in paragraph at lines 1039--1067
+ [][] 
+ []
+
+
+LaTeX Warning: Reference `tab:unit:accepted' on page 1 undefined on input line 
+1071.
+
+
+LaTeX Warning: Citation `SI:4.1.T6' on page 6 undefined on input line 1072.
+
+
+LaTeX Warning: Reference `tab:unit:physical' on page 1 undefined on input line 
+1074.
+
+
+LaTeX Warning: Citation `SI:4.1.T7' on page 6 undefined on input line 1074.
+
+
+LaTeX Warning: Reference `tab:unit:other' on page 1 undefined on input line 107
+6.
+
+
+LaTeX Warning: Citation `SI:4.1.T8' on page 6 undefined on input line 1077.
+
+[6] [7]
+
+LaTeX Warning: Reference `tab:unit:prefix' on page 1 undefined on input line 11
+52.
+
+
+LaTeX Warning: Citation `SI:3.1' on page 8 undefined on input line 1152.
+
+\openout10 = `siunitx.tmp'.
+
+(./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+ [8] [9] (./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+ (./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+ (./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+
+(./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+ (./siunitx.tmp) [10]
+\openout10 = `siunitx.tmp'.
+
+ (./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+ (./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+
+(./siunitx.tmp) [11]
+\openout10 = `siunitx.tmp'.
+
+ (./siunitx.tmp)
+
+LaTeX Warning: Reference `tab:S:standard' on page 1 undefined on input line 136
+4.
+
+\openout10 = `siunitx.tmp'.
+
+(./siunitx.tmp)
+
+LaTeX Warning: Reference `tab:S:extras' on page 1 undefined on input line 1390.
+
+
+\openout10 = `siunitx.tmp'.
+
+[12] (./siunitx.tmp)
+
+LaTeX Warning: Reference `tab:tablenum' on page 1 undefined on input line 1425.
+
+
+\openout10 = `siunitx.tmp'.
+
+[13] (./siunitx.tmp)
+
+LaTeX Warning: Reference `tab:s:demo' on page 1 undefined on input line 1460.
+
+\openout10 = `siunitx.tmp'.
+
+(./siunitx.tmp)
+
+LaTeX Warning: Reference `tab:s:processing' on page 1 undefined on input line 1
+482.
+
+\openout10 = `siunitx.tmp'.
+
+[14] (./siunitx.tmp)
+LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 1513.
+ [15]
+
+LaTeX Warning: Reference `tab:opt:font:det' on page 1 undefined on input line 1
+545.
+
+[16]
+\openout10 = `siunitx.tmp'.
+
+ (./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+ (./siunitx.tmp) [17]
+
+LaTeX Warning: Reference `tab:opt:font:set' on page 1 undefined on input line 1
+656.
+
+\openout10 = `siunitx.tmp'.
+
+(./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+ [18] (./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+ (./siunitx.tmp)
+
+LaTeX Warning: Reference `tab:opt:num:in' on page 1 undefined on input line 174
+8.
+
+[19]
+\openout10 = `siunitx.tmp'.
+
+ (./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+ (./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+ (./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+ [20] (./siunitx.tmp)
+
+LaTeX Warning: Reference `tab:opt:num:post' on page 1 undefined on input line 1
+875.
+
+\openout10 = `siunitx.tmp'.
+
+(./siunitx.tmp) [21]
+\openout10 = `siunitx.tmp'.
+
+ (./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+ (./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+ (./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+ [22]
+(./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+ (./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+ (./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+ (./siunitx.tmp) [23]
+\openout10 = `siunitx.tmp'.
+
+
+Overfull \hbox (22.94617pt too wide) in paragraph at lines 2042--2052
+\T1/pplj/m/n/10 tion. The re-ten-tion of a man-tissa of one is like-wise con-tr
+olled by the \T1/lmtt/m/n/10 retain-unity-mantissa
+ []
+
+(./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+ (./siunitx.tmp) [24]
+\openout10 = `siunitx.tmp'.
+
+ (./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+
+Overfull \hbox (17.25467pt too wide) in paragraph at lines 2098--2105
+[][][][][] \T1/pplj/m/n/10 The print-ing of an un-cer-tainty can be sup-pressed
+ en-tirely us-ing the \T1/lmtt/m/n/10 omit-uncertainty
+ []
+
+(./siunitx.tmp)
+
+LaTeX Warning: Reference `tab:opt:num:out' on page 1 undefined on input line 21
+13.
+
+\openout10 = `siunitx.tmp'.
+
+(./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+ [25] [26] (./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+
+Overfull \hbox (18.46953pt too wide) in paragraph at lines 2177--2190
+[][][][] \T1/pplj/m/n/10 Group-ing is not al-ways ap-plied to smaller num-bers,
+ and the op-tion \T1/lmtt/m/n/10 group-minimum-digits
+ []
+
+(./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+ (./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+ (./siunitx.tmp) [27]
+\openout10 = `siunitx.tmp'.
+
+
+Overfull \hbox (7.6945pt too wide) in paragraph at lines 2227--2237
+[][][][][][][]\T1/pplj/m/n/10 When ex-po-nents are present in the in-put, the \
+T1/lmtt/m/n/10 exponent-base \T1/pplj/m/n/10 and \T1/lmtt/m/n/10 exponent-produ
+ct
+ []
+
+(./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+ (./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+ (./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+ (./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+ [28]
+(./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+ (./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+
+Overfull \hbox (26.75618pt too wide) in paragraph at lines 2311--2321
+\T1/pplj/m/n/10 them in brack-ets. This can be car-ried out au-to-mat-i-cally u
+s-ing the \T1/lmtt/m/n/10 bracket-negative-numbers
+ []
+
+(./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+ (./siunitx.tmp)
+
+LaTeX Warning: Reference `tab:opt:num:multi' on page 1 undefined on input line 
+2339.
+
+\openout10 = `siunitx.tmp'.
+
+[29] (./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+ (./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+ (./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+ [30] (./siunitx.tmp
+LaTeX Font Info:    Calculating math sizes for size <6.57085> on input line 4.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 6.84686pt on input line 4.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 5.20357pt on input line 4.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 4.10814pt on input line 4.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 6.84686pt on input line 4.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 5.20357pt on input line 4.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 4.10814pt on input line 4.
+)
+
+LaTeX Warning: Reference `tab:opt:num:list' on page 1 undefined on input line 2
+411.
+
+\openout10 = `siunitx.tmp'.
+
+(./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+ (./siunitx.tmp) [31]
+\openout10 = `siunitx.tmp'.
+
+ (./siunitx.tmp)
+
+LaTeX Warning: Reference `tab:opt:ang' on page 1 undefined on input line 2485.
+
+\openout10 = `siunitx.tmp'.
+
+(./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+ (./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+ (./siunitx.tmp) [32]
+\openout10 = `siunitx.tmp'.
+
+ (./siunitx.tmp)
+
+LaTeX Warning: Reference `tab:opt:units:def' on page 1 undefined on input line 
+2570.
+
+[33]
+
+LaTeX Warning: Reference `tab:unit:abbr' on page 1 undefined on input line 2640
+.
+
+[34] [35] [36]
+
+LaTeX Warning: Reference `tab:unit:binary' on page 1 undefined on input line 28
+15.
+
+\openout10 = `siunitx.tmp'.
+
+(./siunitx.tmp)
+Overfull \hbox (32.48923pt too wide) in paragraph at lines 2842--2848
+\T1/pplj/m/n/10 de-fined by ver-sion 1 of \T1/phv/m/n/10 siu-nitx\T1/pplj/m/n/1
+0 : this can be ac-cessed with the op-tion \T1/lmtt/m/n/10 version-1-compatibil
+ity\T1/pplj/m/n/10 .
+ []
+
+[37]
+
+LaTeX Warning: Reference `sec:config:local' on page 1 undefined on input line 2
+895.
+
+
+LaTeX Warning: Reference `tab:opt:units:out' on page 1 undefined on input line 
+2903.
+
+[38]
+\openout10 = `siunitx.tmp'.
+
+ (./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+ (./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+ [39] (./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+ (./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+
+(./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+ (./siunitx.tmp) [40]
+\openout10 = `siunitx.tmp'.
+
+ (./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+ (./siunitx.tmp)
+Overfull \hbox (6.29974pt too wide) in paragraph at lines 3041--3041
+ []|\T1/lmtt/m/n/9 literal-superscript-as-power
+ []
+
+\openout10 = `siunitx.tmp'.
+
+(./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+
+Overfull \hbox (2.28474pt too wide) in paragraph at lines 3057--3079
+[][][][][] [][][][][] \T1/pplj/m/n/10 Unit qual-i-fiers can be printed in three
+ dif-fer-ent for-mats, set by the \T1/lmtt/m/n/10 qualifier-mode
+ []
+
+[41] (./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+ (./siunitx.tmp)
+Underfull \hbox (badness 10000) in paragraph at lines 3087--3087
+
+ []
+
+\openout10 = `siunitx.tmp'.
+
+
+Overfull \hbox (3.98619pt too wide) in paragraph at lines 3089--3100
+\T1/pplj/m/n/10 can con-vert these into nu-mer-i-cal pow-ers. This is con-troll
+ed by the \T1/lmtt/m/n/10 prefixes-as-symbols
+ []
+
+(./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+ (./siunitx.tmp)
+
+LaTeX Warning: Reference `tab:opt:units:numbers' on page 1 undefined on input l
+ine 3116.
+
+[42]
+\openout10 = `siunitx.tmp'.
+
+ (./siunitx.tmp
+Underfull \hbox (badness 5331) in paragraph at lines 3--6
+[]\T1/pplj/m/n/9 Some filler text
+ []
+
+)
+\openout10 = `siunitx.tmp'.
+
+
+Overfull \hbox (24.24461pt too wide) in paragraph at lines 3154--3161
+[][][][]\T1/pplj/m/n/10 The prod-uct sym-bol be-tween the num-ber and unit is s
+et us-ing the \T1/lmtt/m/n/10 number-unit-product
+ []
+
+(./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+ (./siunitx.tmp) [43]
+\openout10 = `siunitx.tmp'.
+
+ (./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+ (./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+ [44]
+(./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+ (./siunitx.tmp)
+
+LaTeX Warning: Reference `tab:opt:tables' on page 1 undefined on input line 325
+5.
+
+
+LaTeX Warning: Reference `tab:S:parse' on page 1 undefined on input line 3300.
+
+\openout10 = `siunitx.tmp'.
+
+[45] [46] (./siunitx.tmp)
+
+LaTeX Warning: Reference `tab:S:align' on page 1 undefined on input line 3336.
+
+\openout10 = `siunitx.tmp'.
+
+[47] (./siunitx.tmp)
+
+LaTeX Warning: Reference `tab:S:space' on page 1 undefined on input line 3389.
+
+\openout10 = `siunitx.tmp'.
+
+[48] (./siunitx.tmp)
+
+LaTeX Warning: Reference `tab:S:comparators' on page 1 undefined on input line 
+3431.
+
+\openout10 = `siunitx.tmp'.
+
+[49] (./siunitx.tmp
+Overfull \hbox (2.32011pt too wide) detected at line 22
+[]
+ []
+
+) [50]
+
+LaTeX Warning: Reference `tab:S:format' on page 1 undefined on input line 3505.
+
+
+\openout10 = `siunitx.tmp'.
+
+(./siunitx.tmp)
+
+LaTeX Warning: Reference `tab:S:ends' on page 1 undefined on input line 3540.
+
+\openout10 = `siunitx.tmp'.
+
+[51] (./siunitx.tmp)
+
+LaTeX Warning: Reference `tab:align:exp' on page 1 undefined on input line 3578
+.
+
+
+LaTeX Warning: Reference `tab:align:uncert' on page 1 undefined on input line 3
+581.
+
+
+LaTeX Warning: Reference `tab:align:comp' on page 1 undefined on input line 358
+3.
+
+\openout10 = `siunitx.tmp'.
+
+[52] (./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+ (./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+ [53] (./siunitx.tmp)
+
+LaTeX Warning: Reference `tab:exp:omit' on page 1 undefined on input line 3643.
+
+
+\openout10 = `siunitx.tmp'.
+
+(./siunitx.tmp)
+
+LaTeX Warning: Reference `tab:S:notes' on page 1 undefined on input line 3676.
+
+\openout10 = `siunitx.tmp'.
+
+[54] [55] (./siunitx.tmp)
+
+LaTeX Warning: Reference `tab:S:auto' on page 1 undefined on input line 3728.
+
+\openout10 = `siunitx.tmp'.
+
+(./siunitx.tmp
+Overfull \hbox (5.0pt too wide) detected at line 20
+ 
+ []
+
+)
+
+LaTeX Warning: Reference `tab:S:nonparsed' on page 1 undefined on input line 37
+62.
+
+\openout10 = `siunitx.tmp'.
+
+[56] (./siunitx.tmp
+Overfull \hbox (3.9299pt too wide) detected at line 26
+$ []$ 
+ []
+
+
+Overfull \hbox (3.9299pt too wide) detected at line 26
+$ []$ 
+ []
+
+
+Overfull \hbox (3.9299pt too wide) detected at line 27
+$ []$ 
+ []
+
+)
+
+LaTeX Warning: Reference `tab:S:text' on page 1 undefined on input line 3800.
+
+\openout10 = `siunitx.tmp'.
+
+[57] (./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+ [58] (./siunitx.tmp)
+Overfull \hbox (13.57439pt too wide) in paragraph at lines 3858--3864
+[][][][]\T1/pplj/m/n/10 The three ta-ble align-ment op-tions (\T1/lmtt/m/n/10 t
+able-number-alignment\T1/pplj/m/n/10 , \T1/lmtt/m/n/10 table-text-alignment
+ []
+
+
+LaTeX Warning: Reference `tab:width:fixed' on page 1 undefined on input line 38
+75.
+
+\openout10 = `siunitx.tmp'.
+
+[59] (./siunitx.tmp)
+
+LaTeX Warning: Reference `tab:width:special' on page 1 undefined on input line 
+3904.
+
+\openout10 = `siunitx.tmp'.
+
+(./siunitx.tmp
+Overfull \hbox (4.16663pt too wide) detected at line 17
+ 
+ []
+
+) [60]
+
+LaTeX Warning: Reference `tab:opt:symbols' on page 1 undefined on input line 39
+48.
+
+[61]
+\openout10 = `siunitx.tmp'.
+
+ (./siunitx.tmp) [62]
+\openout10 = `siunitx.tmp'.
+
+ (./siunitx.tmp
+
+! Package babel Error: You haven't defined the language french yet.
+
+See the babel package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.4 \selectlanguage{french}
+                           %
+? 
+
+! Package babel Error: You haven't defined the language german yet.
+
+See the babel package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.7 \selectlanguage{german}
+                           %
+? 
+
+! Package babel Error: You haven't defined the language spanish yet.
+
+See the babel package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.10 \selectlanguage{spanish}
+                             %
+? 
+)
+
+! Package babel Error: You haven't defined the language german yet.
+
+See the babel package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.4097 %\end{LaTeXdemo}
+                       
+? 
+
+! Package babel Error: You haven't defined the language french yet.
+
+See the babel package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.4097 %\end{LaTeXdemo}
+                       
+? 
+
+LaTeX Warning: Reference `tab:xmpl:macro' on page 1 undefined on input line 412
+2.
+
+\openout10 = `siunitx.tmp'.
+
+[63] (./siunitx.tmp)
+
+LaTeX Warning: Reference `tab:xmpl:calc' on page 1 undefined on input line 4161
+.
+
+\openout10 = `siunitx.tmp'.
+
+[64] (./siunitx.tmp
+\dtldb@data=\toks72
+\dtlkeys@data=\toks73
+\dtlrows@data=\count373
+\dtlcols@data=\count374
+
+Overfull \hbox (28.33325pt too wide) detected at line 26
+ 
+ []
+
+
+Overfull \hbox (28.33325pt too wide) detected at line 26
+ 
+ []
+
+
+Overfull \hbox (28.33325pt too wide) detected at line 26
+ 
+ []
+
+)
+LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <12> not available
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 4198.
+
+
+LaTeX Warning: Reference `tab:xmpl:calc' on page 1 undefined on input line 4200
+.
+
+
+LaTeX Warning: Reference `tab:xmpl:datatool' on page 1 undefined on input line 
+4204.
+
+\openout10 = `siunitx.tmp'.
+
+[65] (./siunitx.tmp
+\dtldb@moredata=\toks74
+\dtlkeys@moredata=\toks75
+\dtlrows@moredata=\count375
+\dtlcols@moredata=\count376
+
+Overfull \hbox (14.81pt too wide) detected at line 16
+$ [] [] []$ 
+ []
+
+)
+
+LaTeX Warning: Reference `tbl:xmpl:unrel' on page 66 undefined on input line 42
+51.
+
+\openout10 = `siunitx.tmp'.
+
+[66] (./siunitx.tmp) [67]
+LaTeX Font Info:    Try loading font information for TS1+lmtt on input line 430
+3.
+ (/usr/share/texmf/tex/latex/lm/ts1lmtt.fd
+File: ts1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+\openout10 = `siunitx.tmp'.
+
+
+(./siunitx.tmp) [68]
+\openout10 = `siunitx.tmp'.
+
+ (./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+ (./siunitx.tmp) [69]
+\openout10 = `siunitx.tmp'.
+
+ (./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+
+(./siunitx.tmp)
+
+LaTeX Warning: Reference `tab:cr' on page 1 undefined on input line 4437.
+
+\openout10 = `siunitx.tmp'.
+
+(./siunitx.tmp)
+
+LaTeX Warning: Reference `tab:xmpl:mixed' on page 1 undefined on input line 447
+3.
+
+\openout10 = `siunitx.tmp'.
+
+[70] [71] (./siunitx.tmp)
+
+LaTeX Warning: Reference `sec:expanding' on page 1 undefined on input line 4523
+.
+
+
+LaTeX Warning: Reference `tab:xmpl:headers' on page 1 undefined on input line 4
+524.
+
+\openout10 = `siunitx.tmp'.
+
+(./siunitx.tmp) [72]
+
+LaTeX Warning: Reference `tab:opt:map' on page 1 undefined on input line 4581.
+
+[73] [74] [75] [76] [77]
+Overfull \hbox (14.23459pt too wide) in paragraph at lines 4812--4820
+[][][][][][][]\T1/pplj/m/n/10 The digit group-ing op-tions have been re-vised, 
+and the op-tions \T1/lmtt/m/n/10 group-decimal-digits
+ []
+
+
+Overfull \hbox (23.79927pt too wide) in paragraph at lines 4812--4820
+\T1/pplj/m/n/10 the \T1/lmtt/m/n/10 group-four-digits \T1/pplj/m/n/10 op-tion h
+as been ex-tended to the new op-tion \T1/lmtt/m/n/10 group-minimum-digits\T1/pp
+lj/m/n/10 . 
+ []
+
+
+Overfull \hbox (6.29974pt too wide) in paragraph at lines 4821--4821
+ []|\T1/lmtt/m/n/9 literal-superscript-as-power
+ []
+
+[78]
+
+LaTeX Warning: Citation `NIST' on page 79 undefined on input line 4868.
+
+
+LaTeX Warning: Citation `BIPM' on page 79 undefined on input line 4874.
+
+
+LaTeX Warning: Reference `tab:unit:base' on page 1 undefined on input line 4884
+.
+
+
+LaTeX Warning: Reference `tab:unit:accepted' on page 1 undefined on input line 
+4898.
+
+
+LaTeX Warning: Reference `tab:unit:derived' on page 1 undefined on input line 4
+898.
+
+
+LaTeX Warning: Reference `tab:unit:physical' on page 1 undefined on input line 
+4902.
+
+[79]
+
+LaTeX Warning: Reference `tab:unit:prefix' on page 1 undefined on input line 49
+07.
+
+
+LaTeX Warning: Reference `tab:unit:binary' on page 1 undefined on input line 49
+27.
+
+
+LaTeX Warning: Reference `tab:unit:prefix' on page 1 undefined on input line 49
+29.
+
+
+LaTeX Warning: Citation `BIPM' on page 80 undefined on input line 4954.
+
+\openout10 = `siunitx.tmp'.
+
+(./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+ [80] (./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+ (./siunitx.tmp)
+
+LaTeX Warning: Citation `BIPM' on page 81 undefined on input line 4996.
+
+\openout10 = `siunitx.tmp'.
+
+(./siunitx.tmp) [81]
+\openout10 = `siunitx.tmp'.
+
+ (./siunitx.tmp)
+
+LaTeX Warning: Reference `tab:xmpl:unitless' on page 1 undefined on input line 
+5047.
+
+
+LaTeX Warning: Reference `fig:xmpl:unitless' on page 1 undefined on input line 
+5048.
+
+\openout10 = `siunitx.tmp'.
+
+(./siunitx.tmp)
+\openout10 = `siunitx.tmp'.
+
+ [82] (./siunitx.tmp)
+
+LaTeX Warning: Reference `tab:good' on page 1 undefined on input line 5101.
+
+\openout10 = `siunitx.tmp'.
+
+[83] (./siunitx.tmp) [84]
+Overfull \hbox (2.40945pt too wide) in paragraph at lines 5162--5171
+\T1/pplj/m/n/10 mailing di-rectly will also def-i-nitely get at-ten-tion: [][][
+][][][]. 
+ []
+
+[85] [86]
+LaTeX Font Info:    Font shape `T1/pplj/bx/n' in size <8> not available
+(Font)              Font shape `T1/pplj/b/n' tried instead on input line 5264.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/load/check:' on page 87 undef
+ined on input line 5264.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/tmp:w' on page 87 undefined o
+n input line 5276.
+
+
+LaTeX Warning: Reference `doc/function//l//siunitx/tmp/bool' on page 87 undefin
+ed on input line 5302.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/error:nxx' on page 87 undefin
+ed on input line 5325.
+
+[87]
+
+LaTeX Warning: Reference `doc/function//c//siunitx/minus/tl' on page 88 undefin
+ed on input line 5365.
+
+
+LaTeX Warning: Reference `doc/function//c//siunitx/mu/tl' on page 88 undefined 
+on input line 5385.
+
+
+LaTeX Warning: Reference `doc/function//c//siunitx/omega/tl' on page 88 undefin
+ed on input line 5398.
+
+[88]
+
+LaTeX Warning: Reference `doc/function////siunitx/tl/put/left/math:Nn' on page 
+89 undefined on input line 5411.
+
+[89] [90] [91]
+
+LaTeX Warning: Reference `doc/function//c//siunitx/old/options/seq' on page 92 
+undefined on input line 5563.
+
+[92]
+
+LaTeX Warning: Reference `doc/function//l//siunitx/key/tl' on page 93 undefined
+ on input line 5610.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/option/deactivate:n' on page 
+93 undefined on input line 5635.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/option/unchanged:Nnn' on page
+ 93 undefined on input line 5648.
+
+[93]
+
+LaTeX Warning: Reference `doc/function////siunitx/cs/if/tl:NTF' on page 94 unde
+fined on input line 5676.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/number/if/zero:nTF' on page 9
+4 undefined on input line 5697.
+
+[94]
+
+LaTeX Warning: Reference `doc/function////siunitx/ensure/ltr:n' on page 95 unde
+fined on input line 5732.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/textsuperscript:n' on page 95
+ undefined on input line 5749.
+
+
+LaTeX Warning: Reference `doc/function//l//siunitx/display/math/bool' on page 9
+5 undefined on input line 5762.
+
+
+LaTeX Warning: Reference `doc/function//prop/get:NVNTF' on page 95 undefined on
+ input line 5771.
+
+[95]
+
+LaTeX Warning: Reference `doc/function////siunitx/set/math/fam:n' on page 96 un
+defined on input line 5816.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/font/set/text/fam:n' on page 
+96 undefined on input line 5838.
+
+
+LaTeX Warning: Reference `doc/function//l//siunitx/detect/inline/weight/tl' on 
+page 96 undefined on input line 5845.
+
+
+LaTeX Warning: Reference `doc/function//l//siunitx/detect/inline/family/tl' on 
+page 96 undefined on input line 5852.
+
+[96] [97]
+
+LaTeX Warning: Reference `doc/function//l//siunitx/detect/display/math/bool' on
+ page 98 undefined on input line 5927.
+
+
+LaTeX Warning: Reference `doc/function//l//siunitx/font/set/bool' on page 98 un
+defined on input line 5939.
+
+
+LaTeX Warning: Reference `doc/function//l//siunitx/font/family/tl' on page 98 u
+ndefined on input line 5946.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/font/shape:' on page 98 undef
+ined on input line 5957.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/detect/font:' on page 98 unde
+fined on input line 5979.
+
+[98]
+
+LaTeX Warning: Reference `doc/function////siunitx/detect/font/init:' on page 99
+ undefined on input line 5996.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/detect/font/weight:' on page 
+99 undefined on input line 6024.
+
+[99]
+
+LaTeX Warning: Reference `doc/function////siunitx/detect/font/weight/math:' on 
+page 100 undefined on input line 6058.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/detect/font/family:' on page 
+100 undefined on input line 6085.
+
+[100]
+
+LaTeX Warning: Reference `doc/function////siunitx/detect/font/family/math:' on 
+page 101 undefined on input line 6110.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/detect/font/shape:' on page 1
+01 undefined on input line 6123.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/detect/font/mode:' on page 10
+1 undefined on input line 6138.
+
+
+LaTeX Warning: Reference `doc/function//l//siunitx/number/math/mode/bool' on pa
+ge 101 undefined on input line 6157.
+
+[101]
+
+LaTeX Warning: Reference `doc/function////siunitx/number/mathrm:n' on page 102 
+undefined on input line 6176.
+
+
+LaTeX Warning: Reference `doc/function//l//siunitx/number/color/tl' on page 102
+ undefined on input line 6203.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/unit/mathrm:n' on page 102 un
+defined on input line 6222.
+
+[102]
+
+LaTeX Warning: Reference `doc/function//l//siunitx/unit/color/tl' on page 103 u
+ndefined on input line 6248.
+
+[103] [104]
+
+LaTeX Warning: Reference `doc/function//l//siunitx/print/arg/tl' on page 105 un
+defined on input line 6378.
+
+
+LaTeX Warning: Reference `doc/function//l//siunitx/print/type/tl' on page 105 u
+ndefined on input line 6386.
+
+[105]
+
+LaTeX Warning: Reference `doc/function////siunitx/print:nn' on page 106 undefin
+ed on input line 6442.
+
+[106]
+
+LaTeX Warning: Reference `doc/function////siunitx/print/color:' on page 107 und
+efined on input line 6481.
+
+[107]
+
+LaTeX Warning: Reference `doc/function////siunitx/print/math:' on page 108 unde
+fined on input line 6555.
+
+[108]
+
+LaTeX Warning: Reference `doc/function////siunitx/print/text/sub:n' on page 109
+ undefined on input line 6616.
+
+
+LaTeX Warning: Reference `doc/function//PrintSubscript' on page 109 undefined o
+n input line 6626.
+
+[109]
+
+LaTeX Warning: Reference `doc/function//l//siunitx/input/product/tl' on page 11
+0 undefined on input line 6649.
+
+
+LaTeX Warning: Reference `doc/function//l//siunitx/number/arg/tl' on page 110 u
+ndefined on input line 6662.
+
+
+LaTeX Warning: Reference `doc/function//l//siunitx/number/multi/tl' on page 110
+ undefined on input line 6669.
+
+
+LaTeX Warning: Reference `doc/function//l//siunitx/number/denominator/tl' on pa
+ge 110 undefined on input line 6680.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/number/preprocess:n' on page 
+110 undefined on input line 6698.
+
+[110]
+
+LaTeX Warning: Reference `doc/function////siunitx/number/preprocess/init:' on p
+age 111 undefined on input line 6708.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/number/preprocess/product:' o
+n page 111 undefined on input line 6738.
+
+[111]
+
+LaTeX Warning: Reference `doc/function////siunitx/number/preprocess/quotient:' 
+on page 112 undefined on input line 6770.
+
+
+LaTeX Warning: Reference `doc/function//c//siunitx/number/part/complex/tl' on p
+age 112 undefined on input line 6788.
+
+
+LaTeX Warning: Reference `doc/function//l//siunitx/number/in/complex/bool' on p
+age 112 undefined on input line 6810.
+
+
+LaTeX Warning: Reference `doc/function//l//siunitx/number/in/prop' on page 112 
+undefined on input line 6818.
+
+
+LaTeX Warning: Reference `doc/function//l//siunitx/number/parsed/tl' on page 11
+2 undefined on input line 6825.
+
+[112]
+
+LaTeX Warning: Reference `doc/function//l//siunitx/number/part/tl' on page 113 
+undefined on input line 6846.
+
+
+LaTeX Warning: Reference `doc/function//l//siunitx/number/mantissa/length/int  
+l//siunitx/number/uncert/tl  l//siunitx/number/uncert/length/int' on page 113 u
+ndefined on input line 6860.
+
+
+LaTeX Warning: Reference `doc/function//l//siunitx/input/uncert/sign/tl' on pag
+e 113 undefined on input line 6867.
+
+[113]
+
+LaTeX Warning: Reference `doc/function//l//siunitx/input/uncert/close/tl' on pa
+ge 114 undefined on input line 6923.
+
+[114]
+
+LaTeX Warning: Reference `doc/function////siunitx/number/in/parse:n' on page 11
+5 undefined on input line 6993.
+
+[115]
+
+LaTeX Warning: Reference `doc/function////siunitx/number/in/init:' on page 116 
+undefined on input line 7032.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/number/in/protect:' on page 1
+16 undefined on input line 7049.
+
+[116]
+
+LaTeX Warning: Reference `doc/function////siunitx/number/in/parse/error:nn' on 
+page 117 undefined on input line 7101.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/number/in/parse/loop:N' on pa
+ge 117 undefined on input line 7114.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/number/in/parse/relation:N' o
+n page 117 undefined on input line 7135.
+
+[117]
+
+LaTeX Warning: Reference `doc/function////siunitx/number/in/parse/restricted:N'
+ on page 118 undefined on input line 7174.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/number/in/parse/complex:N' on
+ page 118 undefined on input line 7198.
+
+[118]
+
+LaTeX Warning: Reference `doc/function////siunitx/number/in/parse/exponent:N' o
+n page 119 undefined on input line 7239.
+
+[119]
+
+LaTeX Warning: Reference `doc/function////siunitx/number/in/parse/mantissa:N' o
+n page 120 undefined on input line 7298.
+
+[120]
+
+LaTeX Warning: Reference `doc/function////siunitx/number/in/parse/uncert:N' on 
+page 121 undefined on input line 7346.
+
+[121]
+
+LaTeX Warning: Reference `doc/function////siunitx/number/in/parse/uncert/after:
+N' on page 122 undefined on input line 7384.
+
+[122]
+
+LaTeX Warning: Reference `doc/function////siunitx/number/in/complex:N' on page 
+123 undefined on input line 7462.
+
+[123]
+
+LaTeX Warning: Reference `doc/function////siunitx/number/in/decimal:N' on page 
+124 undefined on input line 7493.
+
+[124]
+
+LaTeX Warning: Reference `doc/function////siunitx/number/in/digit:n' on page 12
+5 undefined on input line 7527.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/number/in/exponent:N' on page
+ 125 undefined on input line 7551.
+
+[125]
+
+LaTeX Warning: Reference `doc/function////siunitx/number/in/sign:N' on page 126
+ undefined on input line 7593.
+
+[126]
+
+LaTeX Warning: Reference `doc/function////siunitx/number/in/uncert/open:N' on p
+age 127 undefined on input line 7639.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/number/in/store:' on page 127
+ undefined on input line 7660.
+
+[127]
+
+LaTeX Warning: Reference `doc/function////siunitx/number/in/check:n' on page 12
+8 undefined on input line 7734.
+
+
+Overfull \hbox (10.59344pt too wide) in paragraph at lines 7734--7734
+\T1/pplj/m/n/8 (\T1/pplj/m/it/8 End def-i-ni-tion for \T1/lmtt/m/it/8 \_-_-siun
+itx_-number_-in_-check:n\T1/pplj/m/it/8 , \T1/lmtt/m/it/8 \_-_-siunitx_-number_
+-in_-check_-short:n\T1/pplj/m/it/8 , and \T1/lmtt/m/it/8 \_-_-siunitx_-
+ []
+
+[128] [129] [130]
+
+LaTeX Warning: Reference `doc/function////siunitx/number/in/complex/to/uncert:n
+' on page 131 undefined on input line 7880.
+
+
+LaTeX Warning: Reference `doc/function//l//siunitx/round/int' on page 131 undef
+ined on input line 7916.
+
+[131]
+
+LaTeX Warning: Reference `doc/function//l//siunitx/process/decimal/int' on page
+ 132 undefined on input line 7932.
+
+
+LaTeX Warning: Reference `doc/function//l//siunitx/process/fixed/bool' on page 
+132 undefined on input line 7945.
+
+
+LaTeX Warning: Reference `doc/function//l//siunitx/process/drop/exponent/bool' 
+on page 132 undefined on input line 7952.
+
+[132]
+
+LaTeX Warning: Reference `doc/function//l//siunitx/process/decimal/zero/bool' o
+n page 133 undefined on input line 8043.
+
+[133]
+Overfull \hbox (17.84096pt too wide) in paragraph at lines 8086--8086
+ [][]                \T1/lmtt/m/n/9 \prop_remove:Nn[][] \l__siunitx_number_in_p
+rop[][] { mantissa-uncertainty } 
+ []
+
+
+LaTeX Warning: Reference `doc/function////siunitx/number/process:' on page 134 
+undefined on input line 8087.
+
+[134]
+Overfull \hbox (3.66599pt too wide) in paragraph at lines 8127--8127
+ [][]                  \T1/lmtt/m/n/9 \prop_put:Nnn[][] \l__siunitx_number_in_p
+rop[][] { mantissa } { true } 
+ []
+
+
+Overfull \hbox (27.29094pt too wide) in paragraph at lines 8127--8127
+ [][]                  \T1/lmtt/m/n/9 \prop_put:Nnn[][] \l__siunitx_number_in_p
+rop[][] { mantissa-integer } { 1 } 
+ []
+
+
+LaTeX Warning: Reference `doc/function////siunitx/number/process/exponent:' on 
+page 135 undefined on input line 8129.
+
+[135]
+
+LaTeX Warning: Reference `doc/function////siunitx/number/process/figures:n' on 
+page 136 undefined on input line 8194.
+
+[136]
+
+LaTeX Warning: Reference `doc/function////siunitx/number/process/figures/count:
+n' on page 137 undefined on input line 8232.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/number/process/figures/round:
+' on page 137 undefined on input line 8258.
+
+[137]
+
+LaTeX Warning: Reference `doc/function////siunitx/number/process/figures/intege
+r:' on page 138 undefined on input line 8294.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/number/process/figures/pad:n'
+ on page 138 undefined on input line 8309.
+
+[138] [139] [140]
+
+LaTeX Warning: Reference `doc/function////siunitx/number/process/fixed:' on pag
+e 141 undefined on input line 8493.
+
+[141]
+
+LaTeX Warning: Reference `doc/function////siunitx/number/process/integer/digits
+:' on page 142 undefined on input line 8524.
+
+[142]
+
+LaTeX Warning: Reference `doc/function////siunitx/number/process/mantissa:' on 
+page 143 undefined on input line 8558.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/number/process/pad:n' on page
+ 143 undefined on input line 8578.
+
+[143]
+Overfull \hbox (8.39098pt too wide) in paragraph at lines 8691--8691
+ [][]    \T1/lmtt/m/n/9 \prop_get:NnNT[][] \l__siunitx_number_in_prop[][] { #1 
+-decimal } \l__siunitx_tmpa_tl[][] 
+ []
+
+[144] [145]
+
+LaTeX Warning: Reference `doc/function////siunitx/number/process/places:n' on p
+age 146 undefined on input line 8774.
+
+[146]
+
+LaTeX Warning: Reference `doc/function////siunitx/number/process/round:' on pag
+e 147 undefined on input line 8803.
+
+[147]
+Overfull \hbox (27.29094pt too wide) in paragraph at lines 8856--8856
+ [][]                  \T1/lmtt/m/n/9 { \l__siunitx_round_discard_tl[][] \int_u
+se:N[][] \l__siunitx_tmp_int[][] } = 5 
+ []
+
+
+LaTeX Warning: Reference `doc/function////siunitx/number/process/round/decimal:
+' on page 148 undefined on input line 8858.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/number/process/round/up:' on 
+page 148 undefined on input line 8878.
+
+[148]
+
+LaTeX Warning: Reference `doc/function////siunitx/number/process/round/tidy:n' 
+on page 149 undefined on input line 8926.
+
+[149] [150] [151] [152] [153]
+
+LaTeX Warning: Reference `doc/function////siunitx/number/process/scientific:' o
+n page 154 undefined on input line 9171.
+
+[154]
+
+LaTeX Warning: Reference `doc/function////siunitx/number/process/sign:' on page
+ 155 undefined on input line 9246.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/number/process/uncertainty:' 
+on page 155 undefined on input line 9268.
+
+[155]
+
+LaTeX Warning: Reference `doc/function////siunitx/number/process/uncertainty/de
+cimal:n' on page 156 undefined on input line 9308.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/number/process/uncertainty/pa
+d:' on page 156 undefined on input line 9324.
+
+[156]
+
+LaTeX Warning: Reference `doc/function////siunitx/number/process/uncertainty/se
+parate:' on page 157 undefined on input line 9345.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/number/process/uncertainty/in
+teger:n' on page 157 undefined on input line 9358.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/number/process/zero/fill:' on
+ page 157 undefined on input line 9390.
+
+[157]
+Overfull \hbox (8.39098pt too wide) in paragraph at lines 9424--9424
+ [][]    \T1/lmtt/m/n/9 \prop_get:NnNT[][] \l__siunitx_number_in_prop[][] { #1 
+-decimal } \l__siunitx_tmpa_tl[][] 
+ []
+
+
+LaTeX Warning: Reference `doc/function////siunitx/number/process/zero/to/intege
+r:' on page 158 undefined on input line 9426.
+
+[158]
+Overfull \hbox (17.84096pt too wide) in paragraph at lines 9484--9484
+ [][]            \T1/lmtt/m/n/9 \prop_get:NnN[][] \l__siunitx_unit_prop[][] { t
+otal-units } \l__siunitx_tmpa_tl[][] 
+ []
+
+
+LaTeX Warning: Reference `doc/function////siunitx/number/exp/to/prefix:' on pag
+e 159 undefined on input line 9485.
+
+
+LaTeX Warning: Reference `doc/function//l//siunitx/number/out/prop' on page 159
+ undefined on input line 9501.
+
+[159]
+
+LaTeX Warning: Reference `doc/function//l//siunitx/group/sep/tl' on page 160 un
+defined on input line 9513.
+
+
+LaTeX Warning: Reference `doc/function//l//siunitx/complex/after/bool' on page 
+160 undefined on input line 9520.
+
+
+LaTeX Warning: Reference `doc/function//l//siunitx/group/decimal/bool' on page 
+160 undefined on input line 9529.
+
+[160] [161]
+
+LaTeX Warning: Reference `doc/function//l//siunitx/negative/bracket/bool' on pa
+ge 162 undefined on input line 9640.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/number/format:' on page 162 u
+ndefined on input line 9660.
+
+[162]
+
+LaTeX Warning: Reference `doc/function////siunitx/number/format/brackets:n' on 
+page 163 undefined on input line 9695.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/number/format/color:' on page
+ 163 undefined on input line 9720.
+
+[163]
+
+LaTeX Warning: Reference `doc/function////siunitx/number/format/complex:' on pa
+ge 164 undefined on input line 9767.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/number/format/copy:n' on page
+ 164 undefined on input line 9784.
+
+[164]
+
+LaTeX Warning: Reference `doc/function////siunitx/number/format/final:' on page
+ 165 undefined on input line 9835.
+
+[165]
+
+LaTeX Warning: Reference `doc/function////siunitx/number/format/final/combined:
+' on page 166 undefined on input line 9868.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/number/format/final/exponent:
+' on page 166 undefined on input line 9895.
+
+[166]
+
+LaTeX Warning: Reference `doc/function////siunitx/number/format/final/exponent/
+only:' on page 167 undefined on input line 9915.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/number/format/group:n' on pag
+e 167 undefined on input line 9957.
+
+[167]
+Overfull \hbox (8.39098pt too wide) in paragraph at lines 9974--9974
+ [][]        \T1/lmtt/m/n/9 \prop_put:NnV[][] \l__siunitx_number_out_prop[][] {
+ #1 - #2 } \l__siunitx_tmpb_tl[][] 
+ []
+
+
+LaTeX Warning: Reference `doc/function////siunitx/number/format/group:nn' on pa
+ge 168 undefined on input line 9975.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/number/format/group/decimal:'
+ on page 168 undefined on input line 10008.
+
+[168]
+
+LaTeX Warning: Reference `doc/function////siunitx/number/format/group/integer:'
+ on page 169 undefined on input line 10065.
+
+[169]
+
+LaTeX Warning: Reference `doc/function////siunitx/number/format/join/complex:' 
+on page 170 undefined on input line 10091.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/number/format/join/uncert:' o
+n page 170 undefined on input line 10130.
+
+
+Overfull \hbox (10.3614pt too wide) in paragraph at lines 10130--10130
+\T1/pplj/m/n/8 (\T1/pplj/m/it/8 End def-i-ni-tion for \T1/lmtt/m/it/8 \_-_-siun
+itx_-number_-format_-join_-uncert: \T1/pplj/m/it/8 and \T1/lmtt/m/it/8 \_-_-siu
+nitx_-number_-format_-join_-uncert:n\T1/pplj/m/it/8 .
+ []
+
+[170]
+
+LaTeX Warning: Reference `doc/function////siunitx/number/format/reassemble:' on
+ page 171 undefined on input line 10154.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/number/format/relation:' on p
+age 171 undefined on input line 10174.
+
+[171] [172]
+
+LaTeX Warning: Reference `doc/function////siunitx/number/format/sign:n' on page
+ 173 undefined on input line 10271.
+
+[173]
+
+LaTeX Warning: Reference `doc/function////siunitx/number/format/uncertainty:n' 
+on page 174 undefined on input line 10320.
+
+
+LaTeX Warning: Reference `doc/function//l//siunitx/number/out/tl' on page 174 u
+ndefined on input line 10335.
+
+
+LaTeX Warning: Reference `doc/function//l//siunitx/number/fraction/tl' on page 
+174 undefined on input line 10343.
+
+
+LaTeX Warning: Reference `doc/function//l//siunitx/number/compound/bool' on pag
+e 174 undefined on input line 10350.
+
+
+LaTeX Warning: Reference `doc/function//l//siunitx/quotient/mode/tl' on page 17
+4 undefined on input line 10357.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/fraction:nn' on page 174 unde
+fined on input line 10364.
+
+[174]
+
+LaTeX Warning: Reference `doc/function//l//siunitx/output/quotient/tl' on page 
+175 undefined on input line 10392.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/number/output:n' on page 175 
+undefined on input line 10408.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/number/output/bracket:' on pa
+ge 175 undefined on input line 10421.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/number/output/color:' on page
+ 175 undefined on input line 10435.
+
+[175]
+
+LaTeX Warning: Reference `doc/function////siunitx/number/output/parse:n' on pag
+e 176 undefined on input line 10484.
+
+[176]
+
+LaTeX Warning: Reference `doc/function////siunitx/number/output/parts:' on page
+ 177 undefined on input line 10552.
+
+[177]
+
+LaTeX Warning: Reference `doc/function////siunitx/number/output/product:' on pa
+ge 178 undefined on input line 10586.
+
+[178]
+
+LaTeX Warning: Reference `doc/function////siunitx/number/output/quotient:' on p
+age 179 undefined on input line 10643.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/number/output/quotient/fracti
+on:' on page 179 undefined on input line 10665.
+
+[179]
+
+LaTeX Warning: Reference `doc/function////siunitx/number/output/quotient/symbol
+:' on page 180 undefined on input line 10681.
+
+
+Overfull \hbox (8.3614pt too wide) in paragraph at lines 10720--10720
+\T1/pplj/m/n/8 (\T1/pplj/m/it/8 End def-i-ni-tion for \T1/lmtt/m/it/8 \_-_-siun
+itx_-number_-output_-quotient_-aux_-i: \T1/pplj/m/it/8 and \T1/lmtt/m/it/8 \_-_
+-siunitx_-number_-output_-quotient_-
+ []
+
+[180]
+
+LaTeX Warning: Reference `doc/function////siunitx/number/output/single:' on pag
+e 181 undefined on input line 10753.
+
+
+LaTeX Warning: Reference `doc/function//l//siunitx/angle/degree/space/bool' on 
+page 181 undefined on input line 10773.
+
+
+LaTeX Warning: Reference `doc/function//l//siunitx/angle/marker/box' on page 18
+1 undefined on input line 10789.
+
+[181]
+
+LaTeX Warning: Reference `doc/function//l//siunitx/angle/degree/prop' on page 1
+82 undefined on input line 10804.
+
+
+LaTeX Warning: Reference `doc/function//l//siunitx/angle/degree/zero/bool' on p
+age 182 undefined on input line 10833.
+
+[182]
+
+LaTeX Warning: Reference `doc/function////siunitx/angle/output:nnn' on page 183
+ undefined on input line 10867.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/angle/init:' on page 183 unde
+fined on input line 10885.
+
+[183]
+
+LaTeX Warning: Reference `doc/function////siunitx/angle/direct:nnn' on page 184
+ undefined on input line 10940.
+
+[184] [185]
+
+LaTeX Warning: Reference `doc/function////siunitx/angle/parse:nnn' on page 186 
+undefined on input line 11076.
+
+[186]
+
+LaTeX Warning: Reference `doc/function////siunitx/angle/print:' on page 187 und
+efined on input line 11115.
+
+[187] [188]
+
+LaTeX Warning: Reference `doc/function////siunitx/angle/print/astronomy:' on pa
+ge 189 undefined on input line 11205.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/angle/print/direct:nnn' on pa
+ge 189 undefined on input line 11237.
+
+
+LaTeX Warning: Hyper reference `doc/function//l/siunitx/unit/symbolic/seq' on p
+age 189 undefined on input line 11246.
+
+
+LaTeX Warning: Reference `doc/function//l/siunitx/unit/symbolic/seq' on page 18
+9 undefined on input line 11256.
+
+[189]
+
+LaTeX Warning: Reference `doc/function////siunitx/declare/power/after:Nn' on pa
+ge 190 undefined on input line 11279.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/declare/prefix:Nnnn' on page 
+190 undefined on input line 11305.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/declare/qualifier:Nn' on page
+ 190 undefined on input line 11318.
+
+[190]
+
+LaTeX Warning: Reference `doc/function////siunitx/declare/unit:Nnn' on page 191
+ undefined on input line 11348.
+
+
+LaTeX Warning: Reference `doc/function//per' on page 191 undefined on input lin
+e 11359.
+
+
+LaTeX Warning: Reference `doc/function//raiseto' on page 191 undefined on input
+ line 11383.
+
+[191]
+
+LaTeX Warning: Reference `doc/function//of' on page 192 undefined on input line
+ 11395.
+
+
+LaTeX Warning: Reference `doc/function//cancel' on page 192 undefined on input 
+line 11418.
+
+
+LaTeX Warning: Reference `doc/function//highlight' on page 192 undefined on inp
+ut line 11430.
+
+[192]
+
+LaTeX Warning: Reference `doc/function//l//siunitx/create/free/bool' on page 19
+3 undefined on input line 11463.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/unit/create/empty/functions:'
+ on page 193 undefined on input line 11484.
+
+[193]
+
+LaTeX Warning: Reference `doc/function////siunitx/unit/create/functions:' on pa
+ge 194 undefined on input line 11531.
+
+[194]
+
+LaTeX Warning: Reference `doc/function////siunitx/unit/create:N' on page 195 un
+defined on input line 11601.
+
+[195]
+
+LaTeX Warning: Reference `doc/function////siunitx/protect/symbols:N' on page 19
+6 undefined on input line 11630.
+
+
+LaTeX Warning: Reference `doc/function//l//siunitx/unit/forbid/literal/bool' on
+ page 196 undefined on input line 11654.
+
+[196]
+
+LaTeX Warning: Reference `doc/function////siunitx/unit/in:nn' on page 197 undef
+ined on input line 11699.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/unit/if/literal:nTF' on page 
+197 undefined on input line 11726.
+
+
+LaTeX Warning: Reference `doc/function//l//siunitx/unit/int' on page 197 undefi
+ned on input line 11748.
+
+[197]
+
+LaTeX Warning: Reference `doc/function//l//siunitx/per/bool' on page 198 undefi
+ned on input line 11755.
+
+
+LaTeX Warning: Reference `doc/function//l//siunitx/exp/to/prefix/bool' on page 
+198 undefined on input line 11774.
+
+
+Overfull \hbox (10.59344pt too wide) in paragraph at lines 11774--11774
+\T1/pplj/m/n/8 (\T1/pplj/m/it/8 End def-i-ni-tion for \T1/lmtt/m/it/8 \l_-_-siu
+nitx_-exp_-to_-prefix_-bool\T1/pplj/m/it/8 , \T1/lmtt/m/it/8 \l_-_-siunitx_-pre
+fix_-symbols_-bool\T1/pplj/m/it/8 , and \T1/lmtt/m/it/8 \l_-_-siunitx_-
+ []
+
+
+LaTeX Warning: Reference `doc/function////siunitx/unit/parse:nn' on page 198 un
+defined on input line 11787.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/unit/parse/init:' on page 198
+ undefined on input line 11803.
+
+[198]
+
+LaTeX Warning: Reference `doc/function////siunitx/unit/parse/options:n' on page
+ 199 undefined on input line 11823.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/unit/parse/power/before:n' on
+ page 199 undefined on input line 11843.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/unit/parse/prefix:Nn' on page
+ 199 undefined on input line 11870.
+
+[199]
+
+LaTeX Warning: Reference `doc/function////siunitx/unit/parse/per:' on page 200 
+undefined on input line 11887.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/unit/parse/qualifier:n' on pa
+ge 200 undefined on input line 11902.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/unit/parse/special:n' on page
+ 200 undefined on input line 11915.
+
+[200]
+
+LaTeX Warning: Reference `doc/function////siunitx/unit/parse/unit:Nn' on page 2
+01 undefined on input line 11957.
+
+
+LaTeX Warning: Reference `doc/function//l//siunitx/preunit/tl' on page 201 unde
+fined on input line 11978.
+
+
+LaTeX Warning: Reference `doc/function//l//siunitx/unit/denominator/int' on pag
+e 201 undefined on input line 11989.
+
+
+LaTeX Warning: Reference `doc/function//l//siunitx/unit/prefix/int' on page 201
+ undefined on input line 12002.
+
+
+Overfull \hbox (2.19345pt too wide) in paragraph at lines 12002--12002
+\T1/pplj/m/n/8 (\T1/pplj/m/it/8 End def-i-ni-tion for \T1/lmtt/m/it/8 \l_-_-siu
+nitx_-unit_-prefix_-int\T1/pplj/m/it/8 , \T1/lmtt/m/it/8 \l_-_-siunitx_-unit_-p
+refix_-base_-int\T1/pplj/m/it/8 , and \T1/lmtt/m/it/8 \l_-_-siunitx_-
+ []
+
+[201]
+
+LaTeX Warning: Reference `doc/function//l//siunitx/unit/prefix/gram/int' on pag
+e 202 undefined on input line 12010.
+
+
+LaTeX Warning: Reference `doc/function//l//siunitx/omit/unit/space/bool' on pag
+e 202 undefined on input line 12018.
+
+
+LaTeX Warning: Reference `doc/function//l//siunitx/per/auto/bool' on page 202 u
+ndefined on input line 12037.
+
+[202] [203]
+
+LaTeX Warning: Reference `doc/function//l//siunitx/unit/denominator/bracket/boo
+l' on page 204 undefined on input line 12131.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/unit/format:' on page 204 und
+efined on input line 12161.
+
+[204]
+
+LaTeX Warning: Reference `doc/function////siunitx/unit/format/add:' on page 205
+ undefined on input line 12223.
+
+[205] [206]
+Overfull \hbox (27.29094pt too wide) in paragraph at lines 12337--12337
+ [][]          \T1/lmtt/m/n/9 \tl_put_left:NV[][] \l__siunitx_unit_denominator_
+tl[][] \l__siunitx_bracket_open_tl[][] 
+ []
+
+
+Overfull \hbox (36.74092pt too wide) in paragraph at lines 12337--12337
+ [][]          \T1/lmtt/m/n/9 \tl_put_right:NV[][] \l__siunitx_unit_denominator
+_tl[][] \l__siunitx_bracket_close_tl[][] 
+ []
+
+
+LaTeX Warning: Reference `doc/function////siunitx/unit/format/fraction:' on pag
+e 207 undefined on input line 12339.
+
+[207]
+
+LaTeX Warning: Reference `doc/function////siunitx/unit/format/init:' on page 20
+8 undefined on input line 12359.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/unit/format/literal:n' on pag
+e 208 undefined on input line 12398.
+
+[208]
+
+LaTeX Warning: Reference `doc/function////siunitx/unit/format/literal/extras:' 
+on page 209 undefined on input line 12442.
+
+[209] [210]
+
+LaTeX Warning: Reference `doc/function////siunitx/unit/format/power:' on page 2
+11 undefined on input line 12557.
+
+[211] [212]
+
+LaTeX Warning: Reference `doc/function////siunitx/unit/format/prefix:' on page 
+213 undefined on input line 12648.
+
+
+Overfull \hbox (3.66599pt too wide) in paragraph at lines 12704--12704
+ [][]    \T1/lmtt/m/n/9 \tl_put_right:NV[][] \l__siunitx_unit_current_tl[][] \l
+__siunitx_qualifier_phrase_tl[][] 
+ []
+
+[213]
+
+LaTeX Warning: Reference `doc/function////siunitx/unit/format/qualifier:' on pa
+ge 214 undefined on input line 12706.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/unit/format/sorted:' on page 
+214 undefined on input line 12728.
+
+[214]
+
+LaTeX Warning: Reference `doc/function////siunitx/unit/format/symbol:' on page 
+215 undefined on input line 12766.
+
+
+LaTeX Warning: Reference `doc/function//l//siunitx/multi/brackets/bool' on page
+ 215 undefined on input line 12780.
+
+
+LaTeX Warning: Reference `doc/function//l//siunitx/product/brackets/bool' on pa
+ge 215 undefined on input line 12794.
+
+[215]
+
+LaTeX Warning: Reference `doc/function//l//siunitx/number/unit/breaks/bool' on 
+page 216 undefined on input line 12870.
+
+[216]
+
+LaTeX Warning: Reference `doc/function////siunitx/unit/output:nn' on page 217 u
+ndefined on input line 12909.
+
+[217]
+
+LaTeX Warning: Reference `doc/function////siunitx/unit/output/number/sep:' on p
+age 218 undefined on input line 12941.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/unit/output/pre/print:' on pa
+ge 218 undefined on input line 12982.
+
+[218]
+
+LaTeX Warning: Reference `doc/function//l//siunitx/preunit/tl' on page 219 unde
+fined on input line 12996.
+
+
+LaTeX Warning: Reference `doc/function//l//siunitx/pre/unit/tl' on page 219 und
+efined on input line 13003.
+
+
+LaTeX Warning: Reference `doc/function//l//siunitx/number/product/int' on page 
+219 undefined on input line 13010.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/combined:nnnn' on page 219 un
+defined on input line 13033.
+
+[219]
+
+LaTeX Warning: Reference `doc/function////siunitx/combined/output:n' on page 22
+0 undefined on input line 13053.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/combined/unit:nnn' on page 22
+0 undefined on input line 13080.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/combined/product/count:n' on 
+page 220 undefined on input line 13103.
+
+[220]
+
+LaTeX Warning: Reference `doc/function//l//siunitx/list/brackets/bool' on page 
+221 undefined on input line 13115.
+
+
+LaTeX Warning: Reference `doc/function//l//siunitx/list/current/tl' on page 221
+ undefined on input line 13125.
+
+
+LaTeX Warning: Reference `doc/function//l//siunitx/list/separator/pair/tl' on p
+age 221 undefined on input line 13168.
+
+[221]
+Overfull \hbox (3.66599pt too wide) in paragraph at lines 13218--13218
+ [][]    \T1/lmtt/m/n/9 \tl_set:Nn[][] \l__siunitx_list_current_tl[][] { \__siu
+nitx_combined_output:n[][] {#1} } 
+ []
+
+
+LaTeX Warning: Reference `doc/function////siunitx/list/numbers:n' on page 222 u
+ndefined on input line 13221.
+
+[222]
+
+LaTeX Warning: Reference `doc/function////siunitx/list/units:nnn' on page 223 u
+ndefined on input line 13251.
+
+
+LaTeX Warning: Reference `doc/function//l//siunitx/range/brackets/bool' on page
+ 223 undefined on input line 13263.
+
+[223]
+
+LaTeX Warning: Reference `doc/function//l//siunitx/range/phrase/tl' on page 224
+ undefined on input line 13295.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/range/numbers:nn' on page 224
+ undefined on input line 13329.
+
+[224]
+
+LaTeX Warning: Reference `doc/function////siunitx/range/unit:nnnn' on page 225 
+undefined on input line 13357.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/range/exponent:' on page 225 
+undefined on input line 13384.
+
+[225] [226]
+
+LaTeX Warning: Reference `doc/function////siunitx/table/rewrite/create:N' on pa
+ge 227 undefined on input line 13473.
+
+
+LaTeX Warning: Reference `doc/function//l//siunitx/table/collect/tl' on page 22
+7 undefined on input line 13492.
+
+
+LaTeX Warning: Reference `doc/function//l//siunitx/number/valid/tl' on page 227
+ undefined on input line 13501.
+
+
+LaTeX Warning: Reference `doc/function//l//siunitx/table/math/bool' on page 227
+ undefined on input line 13510.
+
+
+LaTeX Warning: Reference `doc/function//l//siunitx/table/collect/pre/bool' on p
+age 227 undefined on input line 13520.
+
+[227]
+
+LaTeX Warning: Reference `doc/function////siunitx/table/collect/begin:Nn' on pa
+ge 228 undefined on input line 13554.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/table/collect/braced:n' on pa
+ge 228 undefined on input line 13562.
+
+
+LaTeX Warning: Reference `tab:xmpl:calc' on page 1 undefined on input line 1357
+0.
+
+[228]
+
+LaTeX Warning: Reference `doc/function////siunitx/table/collect/expand:N' on pa
+ge 229 undefined on input line 13631.
+
+[229]
+
+LaTeX Warning: Reference `doc/function////siunitx/table/collect/get:' on page 2
+30 undefined on input line 13657.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/table/collect/init:' on page 
+230 undefined on input line 13670.
+
+[230]
+
+LaTeX Warning: Reference `doc/function////siunitx/table/collect/init/s:' on pag
+e 231 undefined on input line 13715.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/table/collect/next:' on page 
+231 undefined on input line 13722.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/table/collect/newline:' on pa
+ge 231 undefined on input line 13737.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/table/collect/end:' on page 2
+31 undefined on input line 13748.
+
+[231] [232]
+
+LaTeX Warning: Reference `doc/function////siunitx/table/collect/not/braced:N' o
+n page 233 undefined on input line 13819.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/table/collect/token:N' on pag
+e 233 undefined on input line 13832.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/table/collect/token/S:N' on p
+age 233 undefined on input line 13852.
+
+[233]
+
+LaTeX Warning: Reference `doc/function//c//siunitx/one/fill/skip' on page 234 u
+ndefined on input line 13882.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/table/colortbl/correction:' o
+n page 234 undefined on input line 13901.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/table/align/left:n' on page 2
+34 undefined on input line 13924.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/table/column/begin:' on page 
+234 undefined on input line 13933.
+
+[234]
+LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <12> not available
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 13972.
+
+
+
+LaTeX Warning: Reference `doc/function//l//siunitx/table/unit/align/skip' on pa
+ge 235 undefined on input line 13984.
+
+[235]
+
+LaTeX Warning: Reference `doc/function////siunitx/table/print/s:' on page 236 u
+ndefined on input line 14022.
+
+
+LaTeX Warning: Reference `doc/function//l//siunitx/table/model/prop' on page 23
+6 undefined on input line 14035.
+
+[236]
+
+LaTeX Warning: Reference `doc/function//l//siunitx/table/exponent/dim' on page 
+237 undefined on input line 14055.
+
+
+LaTeX Warning: Reference `doc/function//l//siunitx/table/fill/pre/dim' on page 
+237 undefined on input line 14066.
+
+
+LaTeX Warning: Reference `doc/function//l//siunitx/table/fill/mid/dim' on page 
+237 undefined on input line 14074.
+
+
+LaTeX Warning: Reference `doc/function//l//siunitx/table/pre/box' on page 237 u
+ndefined on input line 14082.
+
+
+LaTeX Warning: Reference `doc/function//l//siunitx/table/mantissa/box' on page 
+237 undefined on input line 14090.
+
+
+LaTeX Warning: Reference `doc/function//l//siunitx/table/result/box' on page 23
+7 undefined on input line 14097.
+
+
+LaTeX Warning: Reference `doc/function//l//siunitx/table/number/align/skip' on 
+page 237 undefined on input line 14106.
+
+
+Overfull \hbox (0.96275pt too wide) in paragraph at lines 14106--14106
+\T1/pplj/m/n/8 (\T1/pplj/m/it/8 End def-i-ni-tion for \T1/lmtt/m/it/8 \l_-_-siu
+nitx_-table_-number_-align_-skip \T1/pplj/m/it/8 and \T1/lmtt/m/it/8 \l_-_-siun
+itx_-table_-text_-align_-skip\T1/pplj/m/it/8 . These
+ []
+
+
+LaTeX Warning: Reference `doc/function////siunitx/table/print/S/direct/main:' o
+n page 237 undefined on input line 14122.
+
+[237]
+Overfull \hbox (3.66599pt too wide) in paragraph at lines 14305--14305
+ [][]    \T1/lmtt/m/n/9 table-align-uncertainty  .bool_set:N  = \l__siunitx_tab
+le_align_uncert_bool[][], 
+ []
+
+[238]
+Overfull \hbox (8.39098pt too wide) in paragraph at lines 14305--14305
+ [][]            \T1/lmtt/m/n/9 \prop_remove:Nn[][] \l__siunitx_table_model_pro
+p[][] { mantissa-decimal-raw } 
+ []
+
+[239]
+Overfull \hbox (17.84096pt too wide) in paragraph at lines 14305--14305
+ [][]          \T1/lmtt/m/n/9 { \prop_remove:Nn[][] \l__siunitx_table_model_pro
+p[][] { mantissa-uncertainty } } 
+ []
+
+[240]
+
+LaTeX Warning: Reference `doc/function//l//siunitx/table/align/exponent/bool' o
+n page 241 undefined on input line 14306.
+
+
+Overfull \hbox (46.1909pt too wide) in paragraph at lines 14382--14382
+ [][]        \T1/lmtt/m/n/9 \bool_set_eq:NN[][] \l__siunitx_process_plus_saved_
+bool[][] \l__siunitx_process_plus_bool[][] 
+ []
+
+[241]
+Overfull \hbox (46.1909pt too wide) in paragraph at lines 14382--14382
+ [][]        \T1/lmtt/m/n/9 \bool_set_eq:NN[][] \l__siunitx_process_plus_bool[]
+[] \l__siunitx_process_plus_saved_bool[][] 
+ []
+
+[242]
+
+LaTeX Warning: Reference `doc/function////siunitx/table/print/S:' on page 243 u
+ndefined on input line 14414.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/table/print/S/no/alignment:' 
+on page 243 undefined on input line 14427.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/table/print/S/alignment:' on 
+page 243 undefined on input line 14436.
+
+[243]
+
+LaTeX Warning: Reference `doc/function////siunitx/table/print/S/parse:' on page
+ 244 undefined on input line 14460.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/table/print/S/measure:NN' on 
+page 244 undefined on input line 14480.
+
+[244]
+
+LaTeX Warning: Reference `doc/function////siunitx/table/print/S/pre/aligned:' o
+n page 245 undefined on input line 14514.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/table/print/S/centered:' on p
+age 245 undefined on input line 14546.
+
+[245]
+
+LaTeX Warning: Reference `doc/function////siunitx/table/print/S/centered/ends:'
+ on page 246 undefined on input line 14605.
+
+[246]
+Overfull \hbox (8.39098pt too wide) in paragraph at lines 14642--14642
+ [][]    \T1/lmtt/m/n/9 \prop_get:NnNF[][] \l__siunitx_number_out_prop[][] { co
+mparator } \l__siunitx_tmpa_tl[][] 
+ []
+
+
+LaTeX Warning: Reference `doc/function////siunitx/table/print/S/centered/measur
+e:' on page 247 undefined on input line 14656.
+
+[247]
+
+LaTeX Warning: Reference `doc/function////siunitx/table/print/S/centered/intege
+r:' on page 248 undefined on input line 14681.
+
+
+Overfull \hbox (16.7614pt too wide) in paragraph at lines 14681--14681
+\T1/pplj/m/n/8 (\T1/pplj/m/it/8 End def-i-ni-tion for \T1/lmtt/m/it/8 \_-_-siun
+itx_-table_-print_-S_-centered_-integer: \T1/pplj/m/it/8 and \T1/lmtt/m/it/8 \_
+-_-siunitx_-table_-print_-S_-centered_-
+ []
+
+
+LaTeX Warning: Reference `doc/function////siunitx/table/print/S/reserved:' on p
+age 248 undefined on input line 14706.
+
+[248]
+
+LaTeX Warning: Reference `doc/function////siunitx/table/print/S/reserved/init:'
+ on page 249 undefined on input line 14733.
+
+[249]
+
+LaTeX Warning: Reference `doc/function////siunitx/table/print/S/reserved/ends:'
+ on page 250 undefined on input line 14786.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/table/print/S/reserved/round/
+auto:' on page 250 undefined on input line 14802.
+
+[250]
+
+LaTeX Warning: Reference `doc/function////siunitx/table/print/S/reserved/compar
+ator:' on page 251 undefined on input line 14844.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/table/print/S/reserved/store/
+fill/pre:n' on page 251 undefined on input line 14859.
+
+
+Overfull \hbox (3.3574pt too wide) in paragraph at lines 14859--14859
+\T1/pplj/m/n/8 (\T1/pplj/m/it/8 End def-i-ni-tion for \T1/lmtt/m/it/8 \_-_-siun
+itx_-table_-print_-S_-reserved_-store_-fill_-pre:n \T1/pplj/m/it/8 and \T1/lmtt
+/m/it/8 \_-_-siunitx_-table_-print_-
+ []
+
+[251] [252]
+Overfull \hbox (3.66599pt too wide) in paragraph at lines 14998--14998
+ [][]              \T1/lmtt/m/n/9 { \__siunitx_table_print_S_reserved_mantissa_
+uncert_not_aligned:[][] } 
+ []
+
+[253]
+
+LaTeX Warning: Reference `doc/function////siunitx/table/print/S/reserved/mantis
+sa:' on page 254 undefined on input line 15032.
+
+
+Overfull \hbox (22.56595pt too wide) in paragraph at lines 15088--15088
+ [][]                  \T1/lmtt/m/n/9 { \__siunitx_table_print_S_reserved_expon
+ent_product_correction:[][] } 
+ []
+
+[254]
+Overfull \hbox (3.66599pt too wide) in paragraph at lines 15088--15088
+ [][]              \T1/lmtt/m/n/9 { \l__siunitx_table_fill_mid_dim[][] + \box_w
+d:N[][] \l__siunitx_tmp_box[][] } 
+ []
+
+
+Overfull \hbox (8.39098pt too wide) in paragraph at lines 15124--15124
+ [][]      \T1/lmtt/m/n/9 \__siunitx_table_print_S_measure:NN[][] \l__siunitx_t
+mpa_tl[][] \l__siunitx_tmp_dim[][] 
+ []
+
+[255]
+
+LaTeX Warning: Reference `doc/function////siunitx/table/print/S/reserved/expone
+nt:' on page 256 undefined on input line 15162.
+
+[256]
+
+LaTeX Warning: Reference `doc/function////siunitx/table/print/S/direct:N' on pa
+ge 257 undefined on input line 15201.
+
+[257]
+
+LaTeX Warning: Reference `doc/function////siunitx/table/print/S/direct/centered
+:' on page 258 undefined on input line 15270.
+
+[258]
+Overfull \hbox (41.46591pt too wide) in paragraph at lines 15348--15348
+ [][]    \T1/lmtt/m/n/9 \tex_setbox:D[][] \l__siunitx_table_pre_box[][] \tex_hb
+ox:D[][] to \l__siunitx_table_integer_dim[][] 
+ []
+
+
+Overfull \hbox (46.1909pt too wide) in paragraph at lines 15348--15348
+ [][]    \T1/lmtt/m/n/9 \tex_setbox:D[][] \l__siunitx_table_post_box[][] \tex_h
+box:D[][] to \box_wd:N[][] \l__siunitx_tmp_box[][] 
+ []
+
+[259]
+
+LaTeX Warning: Reference `doc/function////siunitx/table/print/S/direct/reserved
+:' on page 260 undefined on input line 15350.
+
+
+LaTeX Warning: Reference `doc/function//l//siunitx/redefine/symbols/bool' on pa
+ge 260 undefined on input line 15386.
+
+[260] [261]
+Overfull \hbox (41.46591pt too wide) in paragraph at lines 15471--15471
+ [][]  \T1/lmtt/m/n/9 math-celsius   = { } ^ { \circ[][] } \kern[][] - \scripts
+pace[][] \__siunitx_unit_mathrm:n[][] { C } , 
+ []
+
+
+LaTeX Warning: Reference `doc/function//l//siunitx/angstrom/math/tl' on page 26
+2 undefined on input line 15478.
+
+
+LaTeX Warning: Reference `doc/function//l//siunitx/angstrom/text/tl' on page 26
+2 undefined on input line 15514.
+
+[262]
+
+LaTeX Warning: Reference `doc/function////siunitx/symbol/new:n' on page 263 und
+efined on input line 15534.
+
+
+LaTeX Warning: Reference `doc/function//SIUnitSymbolAngstrom' on page 263 undef
+ined on input line 15559.
+
+[263] [264]
+
+LaTeX Warning: Reference `doc/function//c//siunitx/degree/int' on page 265 unde
+fined on input line 15658.
+
+
+Overfull \hbox (3.66599pt too wide) in paragraph at lines 15721--15721
+ [][]       \T1/lmtt/m/n/9 min~exponent~for~1000~sep = \int_eval:n[][] { \l__si
+unitx_group_min_int[][] - 1 } 
+ []
+
+[265]
+
+LaTeX Warning: Reference `doc/function//l//siunitx/pgf/link/clist' on page 266 
+undefined on input line 15723.
+
+[266] [267] [268]
+
+LaTeX Warning: Reference `doc/function//DeclareBinaryPrefix' on page 269 undefi
+ned on input line 15921.
+
+[269]
+
+LaTeX Warning: Reference `doc/function//SendSettingsToPgf' on page 270 undefine
+d on input line 15939.
+
+
+LaTeX Warning: Reference `doc/function//ang' on page 270 undefined on input lin
+e 15957.
+
+
+LaTeX Warning: Reference `doc/function//num' on page 270 undefined on input lin
+e 15973.
+
+
+LaTeX Warning: Reference `doc/function//numlist' on page 270 undefined on input
+ line 15988.
+
+[270]
+
+LaTeX Warning: Reference `doc/function//numrange' on page 271 undefined on inpu
+t line 16004.
+
+
+LaTeX Warning: Reference `doc/function//SIlist' on page 271 undefined on input 
+line 16040.
+
+[271]
+
+LaTeX Warning: Reference `doc/function//SI' on page 272 undefined on input line
+ 16059.
+
+
+LaTeX Warning: Reference `doc/function//sisetup' on page 272 undefined on input
+ line 16069.
+
+
+LaTeX Warning: Reference `doc/function//tablenum' on page 272 undefined on inpu
+t line 16093.
+
+[272]
+
+LaTeX Warning: Reference `doc/function//si' on page 273 undefined on input line
+ 16113.
+
+
+LaTeX Warning: Reference `doc/function////siunitx/contents/add:N' on page 273 u
+ndefined on input line 16153.
+
+[273]
+
+LaTeX Warning: Reference `doc/function////siunitx/contents/bookmarks:' on page 
+274 undefined on input line 16187.
+
+
+LaTeX Warning: Reference `doc/function//numInBookmark' on page 274 undefined on
+ input line 16213.
+
+[274]
+
+LaTeX Warning: Reference `doc/function////siunitx/bookmark/SIlist/map:nn' on pa
+ge 275 undefined on input line 16237.
+
+
+LaTeX Warning: Reference `doc/function//kilogram' on page 275 undefined on inpu
+t line 16277.
+
+
+LaTeX Warning: Reference `doc/function//gram' on page 275 undefined on input li
+ne 16284.
+
+
+LaTeX Warning: Reference `doc/function//yocto' on page 275 undefined on input l
+ine 16319.
+
+[275]
+
+LaTeX Warning: Reference `doc/function//deca' on page 276 undefined on input li
+ne 16355.
+
+
+LaTeX Warning: Reference `doc/function//becquerel' on page 276 undefined on inp
+ut line 16395.
+
+
+LaTeX Warning: Reference `doc/function//newton' on page 276 undefined on input 
+line 16431.
+
+[276]
+
+LaTeX Warning: Reference `doc/function//arcminute' on page 277 undefined on inp
+ut line 16471.
+
+
+LaTeX Warning: Reference `doc/function//astronomicalunit' on page 277 undefined
+ on input line 16487.
+
+
+LaTeX Warning: Reference `doc/function//clight' on page 277 undefined on input 
+line 16507.
+
+
+LaTeX Warning: Reference `doc/function//elementarycharge' on page 277 undefined
+ on input line 16527.
+
+[277]
+
+LaTeX Warning: Reference `doc/function//angstrom' on page 278 undefined on inpu
+t line 16559.
+
+
+LaTeX Warning: Reference `doc/function//square' on page 278 undefined on input 
+line 16575.
+
+[278]
+
+LaTeX Warning: Reference `doc/function////siunitx/strict/option:n' on page 279 
+undefined on input line 16633.
+
+[279]
+
+LaTeX Warning: Reference `doc/function//c//siunitx/configuration/ext/tl' on pag
+e 280 undefined on input line 16710.
+
+[280]
+Overfull \hbox (3.66599pt too wide) in paragraph at lines 16747--16747
+ [][]      \T1/lmtt/m/n/9 true        .code:n    = { \AtBeginDocument[][] { \__
+siunitx_load_binary:[][] } }, 
+ []
+
+
+LaTeX Warning: Reference `doc/function////siunitx/load/abbreviations:' on page 
+281 undefined on input line 16749.
+
+[281] [282]
+Overfull \hbox (22.56595pt too wide) in paragraph at lines 17429--17429
+ [][]    \T1/lmtt/m/n/9 comma        .meta:n    = { arc-separator           = \
+ensuremath[][] { { {,} } } }, 
+ []
+
+
+Overfull \hbox (32.01593pt too wide) in paragraph at lines 17429--17429
+ [][]    \T1/lmtt/m/n/9 fullstop     .meta:n    = { arc-separator           = \
+ensuremath[][] { { { . } } } }, 
+ []
+
+
+Overfull \hbox (32.01593pt too wide) in paragraph at lines 17429--17429
+ [][]    \T1/lmtt/m/n/9 period       .meta:n    = { arc-separator           = \
+ensuremath[][] { { { . } } } }, 
+ []
+
+
+Overfull \hbox (32.01593pt too wide) in paragraph at lines 17429--17429
+ [][]    \T1/lmtt/m/n/9 stop         .meta:n    = { arc-separator           = \
+ensuremath[][] { { { . } } } }, 
+ []
+
+
+Overfull \hbox (3.66599pt too wide) in paragraph at lines 17429--17429
+ [][]    \T1/lmtt/m/n/9 thin         .meta:n    = { arc-separator           = \
+ensuremath[][] { \[][], }  }, 
+ []
+
+
+Overfull \hbox (17.84096pt too wide) in paragraph at lines 17429--17429
+ [][]    \T1/lmtt/m/n/9 times        .meta:n    = { arc-separator           = \
+ensuremath[][] { \times[][] } }, 
+ []
+
+[283]
+Overfull \hbox (32.01593pt too wide) in paragraph at lines 17429--17429
+ [][]    \T1/lmtt/m/n/9 comma        .meta:n    = { output-decimal-marker   = {
+ \ensuremath[][] { { , } } } }, 
+ []
+
+
+Overfull \hbox (32.01593pt too wide) in paragraph at lines 17429--17429
+ [][]    \T1/lmtt/m/n/9 fullstop     .meta:n    = { output-decimal-marker   = {
+ \ensuremath[][] { { . } } } }, 
+ []
+
+
+Overfull \hbox (32.01593pt too wide) in paragraph at lines 17429--17429
+ [][]    \T1/lmtt/m/n/9 period       .meta:n    = { output-decimal-marker   = {
+ \ensuremath[][] { { . } } } }, 
+ []
+
+
+Overfull \hbox (32.01593pt too wide) in paragraph at lines 17429--17429
+ [][]    \T1/lmtt/m/n/9 stop         .meta:n    = { output-decimal-marker   = {
+ \ensuremath[][] { { . } } } }, 
+ []
+
+
+Overfull \hbox (13.11597pt too wide) in paragraph at lines 17429--17429
+ [][]    \T1/lmtt/m/n/9 comma        .meta:n    = { group-separator         = \
+ensuremath[][] { { , } } }, 
+ []
+
+[284]
+Overfull \hbox (3.66599pt too wide) in paragraph at lines 17429--17429
+ [][]    \T1/lmtt/m/n/9 thin         .meta:n    = { group-separator         = \
+ensuremath[][] { \[][], }  }, 
+ []
+
+
+Overfull \hbox (17.84096pt too wide) in paragraph at lines 17429--17429
+ [][]    \T1/lmtt/m/n/9 times        .meta:n    = { group-separator         = \
+ensuremath[][] { \times[][] } }, 
+ []
+
+[285]
+Overfull \hbox (17.84096pt too wide) in paragraph at lines 17429--17429
+ [][]    \T1/lmtt/m/n/9 times        .meta:n    = { exponent-product        = \
+ensuremath[][] { \times[][] } }, 
+ []
+
+[286] [287] [288] [289] [290] [291] [292]
+Overfull \hbox (17.84096pt too wide) in paragraph at lines 17429--17429
+ [][]    \T1/lmtt/m/n/9 times        .meta:n   = { inter-unit-product       = \
+ensuremath[][] { \times[][] } }, 
+ []
+
+
+Overfull \hbox (8.39098pt too wide) in paragraph at lines 17429--17429
+ [][]    \T1/lmtt/m/n/9 { \use:x[][] { \keys_set:nn[][] { siunitx } { number-ma
+th-rm = \exp_not:c[][] {#1} } } }, 
+ []
+
+
+Overfull \hbox (8.39098pt too wide) in paragraph at lines 17429--17429
+ [][]    \T1/lmtt/m/n/9 { \use:x[][] { \keys_set:nn[][] { siunitx } { number-ma
+th-sf = \exp_not:c[][] {#1} } } }, 
+ []
+
+
+Overfull \hbox (8.39098pt too wide) in paragraph at lines 17429--17429
+ [][]    \T1/lmtt/m/n/9 { \use:x[][] { \keys_set:nn[][] { siunitx } { number-ma
+th-rm = \exp_not:c[][] {#1} } } }, 
+ []
+
+
+Overfull \hbox (8.39098pt too wide) in paragraph at lines 17429--17429
+ [][]    \T1/lmtt/m/n/9 { \use:x[][] { \keys_set:nn[][] { siunitx } { number-ma
+th-sf = \exp_not:c[][] {#1} } } }, 
+ []
+
+
+Overfull \hbox (8.39098pt too wide) in paragraph at lines 17429--17429
+ [][]    \T1/lmtt/m/n/9 { \use:x[][] { \keys_set:nn[][] { siunitx } { number-ma
+th-tt = \exp_not:c[][] {#1} } } }, 
+ []
+
+[293]
+Overfull \hbox (8.39098pt too wide) in paragraph at lines 17429--17429
+ [][]    \T1/lmtt/m/n/9 { \use:x[][] { \keys_set:nn[][] { siunitx } { number-ma
+th-tt = \exp_not:c[][] {#1} } } }, 
+ []
+
+
+Overfull \hbox (22.56595pt too wide) in paragraph at lines 17429--17429
+ [][]    \T1/lmtt/m/n/9 times        .meta:n    = { number-unit-product      = 
+\ensuremath[][] { \times[][] } }, 
+ []
+
+[294]
+
+LaTeX Warning: Reference `doc/function//newunit' on page 295 undefined on input
+ line 17460.
+
+
+LaTeX Warning: Reference `doc/function//newpower' on page 295 undefined on inpu
+t line 17487.
+
+
+LaTeX Warning: Reference `doc/function//newprefix' on page 295 undefined on inp
+ut line 17514.
+
+[295]
+
+LaTeX Warning: Reference `doc/function//newqualifier' on page 296 undefined on 
+input line 17529.
+
+
+LaTeX Warning: Reference `doc/function//Square' on page 296 undefined on input 
+line 17541.
+
+
+LaTeX Warning: Reference `doc/function//BAR' on page 296 undefined on input lin
+e 17560.
+
+
+LaTeX Warning: Reference `doc/function//atomicmass' on page 296 undefined on in
+put line 17573.
+
+
+LaTeX Warning: Reference `doc/function//are' on page 296 undefined on input lin
+e 17595.
+
+[296]
+
+LaTeX Warning: Reference `doc/function//micA' on page 297 undefined on input li
+ne 17628.
+
+
+LaTeX Warning: Reference `doc/function//centimetrecubed' on page 297 undefined 
+on input line 17649.
+
+
+LaTeX Warning: Reference `doc/function//parsec' on page 297 undefined on input 
+line 17660.
+
+
+LaTeX Warning: Reference `doc/function//gmol' on page 297 undefined on input li
+ne 17673.
+
+
+LaTeX Warning: Reference `doc/function//molar' on page 297 undefined on input l
+ine 17688.
+
+
+LaTeX Warning: Reference `doc/function//gon' on page 297 undefined on input lin
+e 17695.
+
+
+LaTeX Warning: Reference `doc/function//clight' on page 297 undefined on input 
+line 17702.
+
+[297]
+
+LaTeX Warning: Reference `doc/function//micron' on page 298 undefined on input 
+line 17740.
+
+
+LaTeX Warning: Reference `doc/function//requiresiconfigs' on page 298 undefined
+ on input line 17749.
+
+
+LaTeX Warning: Reference `doc/function//A' on page 298 undefined on input line 
+17781.
+
+[298]
+
+LaTeX Warning: Reference `doc/function//Hz' on page 299 undefined on input line
+ 17792.
+
+
+LaTeX Warning: Reference `doc/function//mol' on page 299 undefined on input lin
+e 17804.
+
+
+LaTeX Warning: Reference `doc/function//V' on page 299 undefined on input line 
+17815.
+
+
+LaTeX Warning: Reference `doc/function//hl' on page 299 undefined on input line
+ 17828.
+
+
+LaTeX Warning: Reference `doc/function//fg' on page 299 undefined on input line
+ 17841.
+
+[299]
+
+LaTeX Warning: Reference `doc/function//W' on page 300 undefined on input line 
+17862.
+
+
+LaTeX Warning: Reference `doc/function//m' on page 300 undefined on input line 
+17875.
+
+
+LaTeX Warning: Reference `doc/function//K' on page 300 undefined on input line 
+17881.
+
+
+LaTeX Warning: Reference `doc/function//dB' on page 300 undefined on input line
+ 17886.
+
+
+LaTeX Warning: Reference `doc/function//F' on page 300 undefined on input line 
+17893.
+
+[300]
+
+LaTeX Warning: Reference `doc/function//N' on page 301 undefined on input line 
+17902.
+
+
+LaTeX Warning: Reference `doc/function//Pa' on page 301 undefined on input line
+ 17911.
+
+
+LaTeX Warning: Reference `doc/function//mohm' on page 301 undefined on input li
+ne 17919.
+
+
+LaTeX Warning: Reference `doc/function//s' on page 301 undefined on input line 
+17931.
+
+
+LaTeX Warning: Reference `doc/function//kibi' on page 301 undefined on input li
+ne 17960.
+
+[301]
+
+LaTeX Warning: Reference `doc/function//bit' on page 302 undefined on input lin
+e 17967.
+
+
+Overfull \hbox (9.05939pt too wide) in paragraph at lines 17978--17980
+[]\T1/pplj/m/it/10 The In-ter-na-tional Sys-tem of Units (SI)\T1/pplj/m/n/10 , 
+[][][][][][]. 
+ []
+
+
+Overfull \hbox (35.24933pt too wide) in paragraph at lines 17982--17984
+[]\T1/pplj/m/it/10 International Sys-tem of Units from NIST\T1/pplj/m/n/10 , []
+[][][][][]. 
+ []
+
+
+Overfull \hbox (21.83838pt too wide) in paragraph at lines 17986--17988
+[]\T1/pplj/m/it/10 SI base units\T1/pplj/m/n/10 , [][][][][][]. 
+ []
+
+
+Overfull \hbox (2.52841pt too wide) in paragraph at lines 17995--17997
+[]\T1/pplj/m/it/10 SI Pre-fixes\T1/pplj/m/n/10 , [][][][][][]. 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 18000--18002
+[]\T1/pplj/m/it/10 Non-SI units ac-cepted for use with the In-ter-na-tional Sys
+-tem of Units\T1/pplj/m/n/10 ,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 18005--18007
+[]\T1/pplj/m/it/10 Non-SI units whose val-ues in SI units must be ob-tained ex-
+per-i-men-tally\T1/pplj/m/n/10 ,
+ []
+
+
+Overfull \hbox (26.26845pt too wide) in paragraph at lines 18009--18011
+[]\T1/pplj/m/it/10 Other non-SI units\T1/pplj/m/n/10 , [][][][][][]. 
+ []
+
+
+Overfull \hbox (118.59901pt too wide) in paragraph at lines 18013--18015
+[]\T1/pplj/m/it/10 Formatting the value of a quan-tity\T1/pplj/m/n/10 , [][][][
+][][]. 
+ []
+
+No file siunitx.gls.
+[302]
+No file siunitx.ind.
+)
+Package doc Info: Deleted " as a short reference for \verb(*) on input line 166
+.
+Package doc Info: Deleted | as a short reference for \verb(*) on input line 166
+.
+.................................................
+. l3doc info: "print-changes-howto"
+. 
+. Generate the change list by executing
+.     makeindex -s gglo.ist -o siunitx.gls siunitx.glo
+.................................................
+.................................................
+. l3doc info: "print-index-howto"
+. 
+. Generate the index by executing
+.     makeindex -s gind.ist -o siunitx.ind siunitx.idx
+.................................................
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 166.
+Package atveryend Info: Executing hook `AfterLastShipout' on input line 166.
+ (./siunitx.aux)
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 166.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 166.
+
+
+Package rerunfilecheck Warning: File `siunitx.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `siunitx.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  8C7D11639278AB2091345B2E3C499007;8297.
+
+Package rerunfilecheck Warning: File `siunitx.hd' has changed. Rerun.
+
+Package rerunfilecheck Info: Checksums for `siunitx.hd':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  D41D8CD98F00B204E9800998ECF8427E;0.
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 68714 strings out of 494954
+ 1214403 string characters out of 6181003
+ 1415639 words of memory out of 5000000
+ 70952 multiletter control sequences out of 15000+600000
+ 229678 words of font info for 346 fonts, out of 8000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 66i,26n,127p,10357b,2741s stack positions out of 5000i,500n,10000p,200000b,80000s
+
+Output written on siunitx.dvi (302 pages, 1739472 bytes).

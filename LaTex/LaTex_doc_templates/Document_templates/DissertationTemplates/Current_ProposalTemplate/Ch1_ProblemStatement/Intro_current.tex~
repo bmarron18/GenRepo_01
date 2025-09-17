@@ -1,0 +1,141 @@
+A variety of feedback mechanisms operating in coupled human and natural systems at both global and national scales are expected to place severe constraints on the national and regional production of ecosystem goods and services as early as 2050 \citep{zhao_drought-induced_2010, hoegh-guldberg_impact_2010, eigenbrod_impact_2011}. Ultimately, the outcomes of climate change (including ocean acidification, sea level rise, drought, shifts in storm regimes) the demands of economic growth (including increased natural resource extraction, pollution, appropriation of natural land area), and the surge of a human population to 9 billion are the drivers fueling these detrimental feedback mechanisms. Of perhaps greatest concern among those ecosystem service outputs threatened with decline are the two fundamental to human existence; namely, freshwater and food \citep{dodds_human_2013, rogers_facing_2008, lobell_climate_2011, wada_global_2010, zhao_drought-induced_2010, schmidhuber_global_2007, tilman_forecasting_2001, tilman_agricultural_2002}. 
+
+Over the coming decades, agricultural production systems, which are already facing relentless competition for land, water, and energy, will be expected to deliver increasing amounts of diverse, highly-nutritious foods (especially animal-derived products) to an increasingly affluent global population while simultaneously 1) reducing the environmental externalities of production, 2) reducing impacts to natural biodiversity, 3) boosting crop biodiversity, 4) improving the social justice of food access, 5) adapting to shifting climates, intense weather events, and higher carbon dioxide levels, and 6) remaining economically viable in a globalized economy. Optimizing under this suite of constraints will require more than simply maximizing short-term yields. It will require a tremendous shift in agricultural practices to agroecology-based agronomic design principles with the long-term goals of sustainable yield, increased soil fertility, increased soil organic carbon, increased aboveground and belowground biodiversity, and increased transpiration efficiency.
+
+The proposed research program defined below develops scenario-based modeling tools using fundamental, soil and soil biota-based agroecological metrics coupled with ecological processes and natural disturbance regimes in order to evaluate the ecological robustness, resiliency, stability, and adaptability of various cropping system design patterns at the regional (landscape) scale over time. The aim of the proposed research program is to hasten the successful transition to sustainable food production systems by providing decision makers, from agriculturists to land use planners to agricultural policy makers, with an accessible, science-based methodology for the ecological assessment of sustainable agriculture patterns and practices at the landscape scale.  
+
+
+
+\section{A Compound Problem Statement}
+Agriculture, as a primary source of anthropogenic inputs into natural biogeochemical cycles at the global scale, directly affects ecological functionalities.  links  and that global scale biogeochemical cycles are aggregates of the processes occurring at regional scales. This implies that the renewable, long-term extraction of food from the global biosphere for human consumption requires ecologically functional and climate change resilient agroecosystems at the regional scale \citep{barnosky_approaching_2012}.  Here, the term \enquote{agroecosystem} is taken as a food production system that is biologically diverse, adaptive, and robust as well as functionally (ecologically) integrated into the natural landscape.
+ 
+ A transition to agroecologically-based food production systems, especially at the regional scale, is expected to provide improved food security as well as improved water quality \citep{godfray_food_2010, schmidhuber_global_2007} 
+The research program outlined in this proposal derives from a three-part, compound problem statement. Each element of the problem statement is discussed separately below.\\ 
+
+\begin{sloppypar}
+\texttt{Element 1. The current model of industrial agriculture jeopardizes sustainability and the long-term delivery of ecosystem goods and services.}\\
+\end{sloppypar}
+
+
+Economic sustainability, whether 'strong' or 'weak', relies on natural capital as the source for both primary and manufactured goods. Any substantial reduction in natural capital therefore reduces economic opportunity and potentially points to a decline in future human welfare \citep{pearce_blueprint_2000}. If the endowment of natural capital required for ecosystem goods and services is taken as the aggregate of functional terrestrial and aquatic ecosystems across the globe, then industrial agricultural reduces natural capital through loss of topsoil, creation of oceanic hypoxic zones, damage to hydrological systems, disruption of soil foodwebs, destruction of natural habitats across multiple scales, production of greenhouse gases, and loss of genetic diversity \citep{gliessman_agroecology:_2015}. Collectively these are externalized costs that result from (a) failure to properly value ecosystem goods and services, (b) failure to account for the true costs of environmental degradation and natural capital depletion, and (c) failure of markets and policies to provide incentives for sustainable stewardship of natural capital \citep{pearce_blueprint_2000}. \\
+
+Industrial agriculture likewise threatens environmental sustainability. Humans rely on a functional biosphere for life support and industrial agriculture's externalized costs are environmentally devastating at the global scale \citep{tilman_agricultural_2002, wolfe_crop_2000, ceballos_accelerated_2015}. To take but two of many quantitative examples, the anthropogenic sources of reactive nitrogen that are directly linked to agriculture (i.e., fertilizer production by N-fixation from the Haber-Bosch process and fertilizer production by N-fixation from cultivation) now contribute reactive nitrogen to the biosphere at nearly double the rate of terrestrial nitrogen fixation (i.e., at about $13 \ x \ 10^{12} \ mol \ yr^{-1}$) \citep{canfield_evolution_2010}. And the agricultural sector is the third largest contributor of greenhouse gases behind transportation and power generation \citep{gliessman_agroecology:_2015}. \\
+
+Finally, industrial agriculture can disrupt social sustainability. Confronted with industrial agricultural practices, rural agricultural communities may experience a loss of local control over agricultural production with a resulting loss in place-based knowledge, human capital, and civic engagement \citep{beus_conventional_1990, oecd_well-being_2001}. Recently concerns have been raised over the social costs of inequities in the final distribution of benefits and burdens associated with the production of ecosystem goods and services \citep{berbes-blazquez_towards_2016}.\\
+
+\begin{sloppypar}
+\texttt{Element 2. The externalized costs of industrial agriculture coupled with a human population swelling to over 9 billion by 2050 coupled with climate change driven decline in overall global biospheric health together demand agricultural-ecological mutualism.} \\
+\end{sloppypar}
+
+Agricultural-ecological mutualism is defined as the set of complex linkages and relationships that provide for mutually beneficial transfers of matter, energy, and information between the agriculturally- (anthropogenically-) organized and the naturally-organized components of a multi-functional landscape. Ideally, agricultural-ecological mutualism would (a) maintain high, annual net primary productivity (ANPP) in both components, (b) enhance the robustness and resilience of both components, and perhaps most importantly (c) maintain the necessary biodiversity and adaptive capacity which serves as grist for the global evolutionary mill.  High ANPP implies closed nutrient and energy loops that trap greater amounts energetic and material flows across a landscape thereby creating eco-functional redundancies and building variety in system-level regulators via trophic level expansion \citep{ashby_introduction_1955}. Enhanced robustness and resilience implies diverse assemblages of aboveground flora and belowground soil biota that can drive the ecological processes and dynamics required for maximal energy capture. And necessary biodiversity implies that evolution (an information processing learning algorithm) can rapidly explore the enormous state space of possible patterns of biological form and function in order to provide adaptations (i.e., biologically "fit" organisms) in our epoch of dramatic global climate change and mass extinction \citep{ceballos_accelerated_2015}.\\
+
+\begin{sloppypar}
+\texttt{Element 3. The mechanisms and processes that define the necessary and sufficient conditions for agricultural-ecological mutualism are unknown.}\\
+\end{sloppypar}
+
+The realization of agricultural-ecological mutualism is implicit in the bucket lists of \enquote*{sustainable agriculture} (see Appendix A) and in the concepts and methodologies of agroecology \citep{gliessman_agroecology:_2015}. It remains unclear, however, how to best spatially and temporally integrate agriculture into the natural world at the landscape scale so that the benefits of such mutualism are realized. There are many reasons why this is so. For example, landscapes are spatially and temporally dynamic over multiple scales of both. The resultant heterogeneity consists of a panoply of scale-dependent and perception-dependent mosaics that result from the complex interactions of biological, physical, and social forces and fluxes \citep{turner_landscape_1989}. Unraveling the mechanisms responsible for the relationships between landscape patterns and ecological processes is difficult not only because of the complexities of interaction, but because experimentation and hypothesis testing at broad spatial scales must be done with models when extrapolation from small-scale experimentation is invalid. \\
+
+Having agricultural components on a landscape add additional complexities because of their inputs of matter, energy, and genetic information to the whole landscape system. \\
+
+The dynamic, managed mosaic created by the traditional agricultural practices of the Lowland Mayan in the Yucat\'{a}n Peninsula during their Classical Period may be an example of an as-yet, unexplained natural experiment in agricultural-ecological mutualism. The Lowland Mayan people maintained an average population density of 100-200 $persons \ km^{-2}$ throughout the entire Yucat\'{a}n peninsula of Mexico for at least 600 years during their Classic Period (300-900 AD). At their peak, the Maya were feeding several million people \citep{gomez-pompa_lowland_2003} and densities in ancient cities such as Chunchucmil (about 2500  $persons \ km^{-2}$ ) and Tikal (about 3800 $persons \ km^{-2}$) were even greater than densities in comparable cities in the region today \citep{dahlin_reconstructing_2005, faust_maya_2001}.  After much debate and revision, the Lowland Mayan population data are now accepted in the literature. This raises many questions: What were the practices that enabled the Classic Period Maya to successfully feed themselves for centuries in a tropical region that is poorly suited to agriculture?  How were high levels of biodiversity sustained under such intensive agricultural production?  Why was there no severe ecosystem damage resulting from high population densities? What are the mechanisms, dynamics, processes, and state variables responsible for this phenomenon and critically, are these mechanisms generalizable and portable to non-tropical regions of agricultural production? \\
+
+The proposed research below investigates the possibility that Mayan agricultural practices produced a natural experiment in agricultural-ecological mutualism that was, in fact, a direct result of an agriculturally-based, landscape disturbance regime. Put another way, the research program of this proposal postulates that the explicit effects of the Mayan agricultural practices at the landscape scale were responsible for spatio-temporal patterns that, in turn, generated virtuous ecological processes that were of benefit to both people and regional ecosystems.\\ 
+
+\section{Research Program Assumptions and Logic}
+The research hypotheses, questions, and objectives detailed in the next section constitute the proposed research program. The proposed research program is built on assumptions logically alloyed from the conceptualizations and theoretical considerations of many astute thinkers across a variety of disciplines in addition to a broad swath of peer-reviewed literature. This section provides a brief narrative of those assumptions and logical connections.\\
+
+\textit{\underline{If} agriculture is a landscape disturbance phenomenon \underline{and} landscape disturbance regimes are critical to ecosystem health, \underline{then} landscape disturbance regimes affect the long-term delivery of ecosystem goods and services \underline{and} appropriately-realized agricultural practices (i.e., disturbance regimes) at the landscape scale may increase ecosystem robustness, resilience, and adaptive capacity.} -- Variants of this type of reasoning have fermented for quite some time and currently have coalesced to foreshadow a real science of agricultural-ecological mutualism \citep{swift_biodiversity_2004, gliessman_agroecology:_2015}. \citet{swift_biodiversity_2004} provide deep insights into the possible structural and functional relationships between agriculture, ecosystem functioning, and ecosystems services at the landscape scale including simulation-testable hypotheses such as,
+\begin{myindentpar}{2em}
+We hypothesise that the relationship between species richness and specific ecosystem services at the landscape scale may follow a relationship analogous with that of the Vitousek-Hooper model -- together of course with all the attendant qualifications. That is to say that ecosystem services at the landscape scale are optimised by a diversity of land uses, but the number [of land-use types] that are required for optimisation is relatively small \citep{swift_biodiversity_2004}.
+\end{myindentpar}
+\citet{gliessman_agroecology:_2015} clearly explains the ecological characteristics of agroecosystems in relation to disturbance regimes and successional development.  Both \citet{swift_biodiversity_2004} and \citet{gliessman_agroecology:_2015} point to the ecological, economic, and social benefits of the successional mosaics created by traditional practices of tropical agriculture. An interesting side note that could provide a useful evolutionary theoretical underpinning for agricultural-ecological mutualism is Kauffman's idea that co-evolution is the coupling of the fitness landscapes of multiple species \citep{kauffman_origins_1993}. \citet{kauffman_origins_1993} points out that such landscape structures may be able to be \enquote{tuned} for the adaptive success of all species and if so, would provide the \textit{raison d'\^{e}tre} for the existence of ecosystems.\\
+
+\textit{\underline{If} it is the energetic and biochemical transformations brokered by rhizospheric fungal/bacterial/protozoa assemblages that are primarily responsible for nutrient cycling \underline{and} rhizospheric fungal/bacterial/protozoa assemblages are soil food webs fueled by the root exudates of living plants, \underline{then} different natural successional stages have unique soil food webs \underline{and} outcomes of interactions in the rhizosphere ultimately affect plant and soil community dynamics at the ecosystem scale \underline{and} maximizing the nutrient retention and trophic energy capture capabilities of any given landscape requires a set of necessary and sufficient, successionally derived, soil food webs.}\\
+
+Although Lorenz Hiltner recognized over 100 years ago that the density and activity of microorganisms increases in the vicinity of plant roots, only recently has evidence accumulated to suggest that, in fact, plant-microbe interactions may actually direct nutrient cycling processes as well as provide critical autotrophic support \citep{ingham_interactions_1985, bais_role_2006}. The idea that complex soil food webs and not decomposition networks are responsible for the bulk of plant growth promoting processes, nutrient cycling, and novel microbial ecological functions is causing a revolution in microbial ecology with exciting possibilities for both agricultural and ecological management at the landscape scale \citep{prosser_role_2007, smith_plant_2009, pedraza_plant_2009, de_vries_soil_2013, hedlund_trophic_2004, holtkamp_soil_2008, minoshima_soil_2007, rygiewicz_soil_2010, wardle_how_1999}. Complex soil food webs are fueled by rhizodeposition of plant root exudates whereas decomposition networks are fueled by detritus (litter). \\
+
+\textit{\underline{If} the primary productivity, delivery of ecosystem goods and services, and ecosystem resiliency of a landscape are dependent on soil food web biodynamics \underline{and} there are as-yet unknown thresholds required for functional soil food webs \underline{and} soil food webs are a function of the co-evolved communities produced by landscape-scale spatial and temporal patterns, \underline{then} scenario-based simulation modeling could be used to explore basic functional-biodiversity rules such as the above-ground biodiversity necessary to generate robust and resilient soil food webs.}\\
+
+Monica Turner, a founding member of the American school of landscape ecology, points out that, \enquote{Elucidating the relationship between landscape pattern and ecological processes is a primary goal of ecological research on landscapes} \citep{turner_landscape_1989}. Recent work strongly suggests that there are as-yet unknown quantitative links between soil food web microbial diversity, spatio-temporal patterns, and ecosystem processes \citep{rygiewicz_soil_2010, compant_stephane_plant_2010, prosser_role_2007}. These links most certainly have been overlooked in ecological nutrient cycle models like CENTURY and DAISY which only consider the soil organic matter biochemical transformations that result from detritus-generated C and N litter pools \citep{smith_evaluation_1997, de_vries_soil_2013, kirschbaum_modelling_2002, roose_mathematical_2008}. Interestingly, there appears to be a kind of activation threshold to the initiation of functional soil food webs that may be keyed to succession and hence, to disturbance regimes.  
+
+
+\section{Research Hypotheses, Questions, and Objectives}
+
+as defined below in terms of soil-based, agroecological mutualisms,
+
+Objective--to develop a process-based, spatially explicit, dynamic model linking belowground soil food webs to aboveground productivity, and 2) 
+
+be able to evaluate landscape-scale agroecological patterns can generate virtuous ecological processes for the sustainable production of food. 
+
+
+there are ecological functionalities which link agricultural components of landscapes to natural components of landscapes to create multi-functional landscape wholes. Ecosystem goods and services can thus be conceptualized as emergent properties of multi-functional landscape systems. This suggests that, not only must specific component subsystems must be present, but that the activation of many subsystem processes are likely to be threshold controlled by one or more Heaviside-like step functions (i.e., thresholds exist that turn processes on and off). 
+
+
+
+\begin{description}
+	\item{\textit{\textbf{Hypothesis 1} -- The agricultural practices of the Lowland Maya during their Classical Period imposed a disturbance regime on the Yucat\'{a}n Peninsula that created a robust, resilient, and adaptive successionally developed agroecosystem; a verifiable example of agricultural-ecological mutualism.}}
+	
+	\underline{Important hypothesis driven questions}
+	\begin{description}
+		\item{\textit{Question 1.1} -- What was the frequency, intensity, and extent of the Mayan Classical Period agricultural disturbance regime?}
+		\item{\textit{Question 1.2} -- What were the estimated caloric needs of the human population met by annual agricultural production during the Classical Period?}
+		\item{\textit{Question 1.3} -- What was the estimated ANPP of the Mayan successionally developed agroecosystem during the Classical Period?}
+		\item{\textit{Question 1.4} -- What were the major successional stages of the Mayan successionally developed agroecosystem?}
+		\item{\textit{Question 1.5} -- What are the key spatial, temporal, ecological, and biological state variables that define the major successional stages of the Mayan successionally developed agroecosystem?}
+		\item{\textit{Question 1.6} --  What are the density distributions of the agricultural-ecological mutualism state variables for the Mayan successionally developed agroecosystem?}
+		\item{\textit{Question 1.7} -- What is the relationship between soil food webs and the major successional stages of the Mayan successionally developed agroecosystem?}
+	\end{description}
+	
+	\underline{Important hypothesis directed objectives}
+	\begin{description}
+	\item{\textit{Objective 1.1} -- Develop a detailed definition of, and rationale for, agricultural-ecological mutualism.}
+	\item{\textit{Objective 1.2} -- Define the necessary and sufficient spatial, temporal, ecological, and biological state variables for agricultural-ecological mutualism using historical and modern data from the Mayan successionally developed agroecosystem.}
+	\item{\textit{Objective 1.3} -- Compile distribution data for each of the state variables identified in Objective 1.2 using the Mayan successionally developed agroecosystem as a model.}
+	\item{\textit{Objective 1.4} -- Evaluate the level of agricultural-ecological mutualism for a variety of non-Mayan agricultural practices where long-term ecological and agricultural datasets are available.}	
+	\end{description}
+	
+	
+	\item{\textit{\textbf{Hypothesis 2} -- Maximizing the benefits of agricultural-ecological mutualism for any given landscape requires tuning the frequencies of spatio-temporal patterns of an agricultural successional mosaic.}}
+	
+	\underline{Important hypothesis driven questions}
+	\begin{description}
+		\item{\textit{Question 2.1} -- What is the relationship between agricultural-ecological mutualism and agricultural disturbance regimes based on the Mayan successionally developed agroecosystem model?}		
+		\item{\textit{Question 2.2} -- Is it possible to develop a simple taxonomy of soil food webs classified based on morphological, semi-quantitative assessments of soil biota done \textit{in situ}?}
+		\item{\textit{Question 2.3} -- Is it possible to correlate ANPP, nutrient cycling, and the rate of long-term soil carbon deposition (humic and fulvic acids) with taxonomic classes of soil food webs?}
+		\item{\textit{Question 2.4} -- For ecological-agricultural mutualism to be applied to a given landscape, how do the historic disturbance regimes and successional patterns affect the appropriate state variables of the landscape?}
+		\item{\textit{Question 2.5} -- For ecological-agricultural mutualism to be applied to a given landscape, what values of the agricultural-ecological mutualism state variables would provide maximal agricultural and ecological productivity?}
+	\end{description}
+	
+	\underline{Important hypothesis directed objectives}
+	\begin{description}
+	\item{\textit{Objective 2.1} -- Define the floral species density distributions per major successional stage of the Mayan successionally developed agroecosystem.}
+	\item{\textit{Objective 2.2} -- Qualitatively assess soil biota (bacteria, fungi, protozoa, nematodes) for the major successional stages of the Mayan successionally developed agroecosystem.}
+	\item{\textit{Objective 2.3} -- Correlate soil food web classes to successional stages using literature-derived data and field sample data.}
+	\item{\textit{Objective 2.4} -- Build a LANDIS-II model (Biomass extension) of the Mayan successionally developed agroecosystem.}
+	\end{description}
+	
+	
+	\item{\textit{\textbf{Hypothesis 3} -- The assemblages of soil biota with the greatest benefit for agricultural-ecological mutualism are evolved through the cycles of disturbance-succession created by a successionally developed agroecosystem.}}
+	
+	\underline{Important hypothesis driven questions}
+	\begin{description}
+		\item{\textit{Question 3.1} -- To what extent are landscape successional patterns the result of disturbance-triggered dynamic changes in the assemblages of soil biota?}
+		\item{\textit{Question 3.2} -- Which landscape patterns generate the functional soil food webs that are necessary and sufficient for agricultural-ecological mutualism?}
+		\item{\textit{Question 3.3} -- Is it possible to use the outputs from LANDIS-II simulations to predict soil organic carbon dynamics based on rhizodeposition and soil food web classes rather than solely on decomposition-based (anaerobic) carbon pools?}
+		\item{\textit{Question 3.4} -- Is it possible to use the outputs from LANDIS-II simulations to predict successful patterns of agricultural-ecological mutualism?}
+	\end{description}
+	
+	\underline{Important hypothesis directed objectives}
+	\begin{description}
+	\item{\textit{Objective 3.1} -- Build a series of agricultural management scenario-based LANDIS-II models that explore the relationships between landscape spatio-temporal patterns, agricultural disturbance regimes, soil food web classes, soil organic carbon dynamics, and succession.}
+	\item{\textit{Objective 3.2} -- Design a set of LANDIS-II simulation experiments to test the effects of different agricultural disturbance regime patterns on agricultural-ecological mutualism processes.}	
+	\end{description}
+
+\end{description}
+
+\section{Expected Research Methods}
+Standard methods of experimental design \citep{montgomery_design_2013} and statistical analyses \citep{R_computing} will be used along with supplementary methods of inference that may include Bayesian and probability-based approaches \citep{hoff_first_2009, lunn_bugs_2013, jaynes_probability_2003}, bootstrap and rerandomization methods \citep {lunneborg_data_2000}, multivariate methods \citep{johnson_applied_2007}, time series methods \citep{shumway_time_2011}, and machine learning methods \citep{alpaydin_introduction_2014}.\\
+
+A process-based successional simulation model, LANDIS-II, will be used \citep{scheller_design_2007} and various dynamical systems sub-models \citep{haefner_modeling_2005} or Markov sub-models \citep{fink_markov_2014} may be developed.\\
+
+Soil samples from agriculturally-derived successional stages in the Yucat\'{a}n Peninsula will be collected. These field samples will be qualitatively assessed for soil food web classes with measurements likely to include soil pH, redox potential, total bacterial biomass, total fungal biomass, hyphal diameter, protozoan counts, and nematode counts.

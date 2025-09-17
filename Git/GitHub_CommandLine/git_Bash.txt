@@ -1,0 +1,30 @@
+Title:			git Basg Commands
+Project Descriptor:	LANDISII Upgrades Corrections Project 
+Project ID:		2016SoE021_LANDIS_Upgrades	
+Author:			bmarron
+Origin Date:		19 Sept 2017
+Revision Date:		
+
+
+NB. Can run Linux commands directly from git Bash command line
+
+
+
+#############
+change files to DOS 
+readable
+################
+http://dos2unix.sourceforge.net/
+
+Windows is UTF-16LE
+Linux uses UTF-8
+
+
+$ unix2dos *.txt
+
+
+
+
+
+
+

@@ -1,0 +1,32 @@
+\begin{document}
+\begin{tikzpicture}[node distance=2cm, >=stealth']
+\node [events] (cloudy) {Cloudy};
+\node [events, below left = of cloudy] (sprinkler) {Sprinkler};
+\node [events, below right = of cloudy] (rain) {Rain};
+\node [events, below right = of sprinkler] (wetgrass) {WetGrass};
+
+\draw [->] (cloudy) -- (sprinkler);
+\draw [->] (cloudy) -- (rain);
+\draw [->] (rain) -- (wetgrass);
+\draw [->] (sprinkler) -- (wetgrass);
+
+\node [above = of cloudy] {
+    \begin{tabular}{CC}
+    \mathrm{P(C=F)} & \mathrm{P(C=T)}\\
+    \hline
+    0.5 & 0.5\\
+    \end{tabular}
+    };
+
+\node [right = of rain, anchor=west] {
+    \begin{tabular}{c|CC}
+    C & \mathrm{P(C=F)} & \mathrm{P(C=T)}\\
+    \hline
+    F & 0.8 & 0.2\\
+    T & 0.2 & 0.8\\
+    \end{tabular}
+    };  
+
+\end{tikzpicture}
+\end{document}
+

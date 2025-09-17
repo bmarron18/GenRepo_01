@@ -1,0 +1,160 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{listings}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{longtable}
+\usepackage{outline}
+\usepackage{enumitem}
+
+
+\title{STAT 505: Project 1}
+\author{Bruce D. Marron}
+
+\begin{document}
+\maketitle
+
+\textbf{Some Initial Observations}\\
+
+Law\footnote{Law, Averill M. 2006. Simulation Modeling and Analysis. 4th ed. McGraw-Hill Series in Industrial Engineering and Management Science. Boston: McGraw-Hill.} clearly recognizes the nature of simulation work as a scientific exercise with this definition: "a simulation is a computer-based statistical sampling experiment" (p.485). He goes on, "if the results of a simulation study are to have any meaning, appropriate statistical techniques must be used to design and analyze the simulation experiments." Acknowledgement of the validity of these statements launched my study of statistics given my interest in simulation modeling. \\
+
+The general nature of simulation work thus clarified, Law notes various reasons why computer-based simulations have not been subject to the statistical rigor of design and analysis afforded other scientific experiments.  He also alerts the would-be model builder to potential statistical pitfalls and establishes the axioms and assumptions that are necessary for the application of statistical techniques that, in turn, can lead to valid scientific inference from simulation experiments. Law does not, however, explicitly discuss the relationship between simulation modeling and time series analysis. \\
+
+I have come to recognize that simulation modeling and time series analysis are the flip sides of the same coin.  Simulation modeling is a bottom-up approach that seeks to understand a process generatively, by creating a stochastic model that mimics the observational output of the process. Time series analysis is a top-down approach that seeks to understand a process empirically by using statistical methods to characterize the observed stochasticity in the observational output. Epistemology is best served when the approaches are harnessed in tandem and the project discussed below is a first attempt at that coupling.(cf. Law, Shumway and Stoffer\footnote{Shumway, R. and Stoffer, D. 2011.  Time Series Analysis and Its Applications. Springer}, and Luenberger\footnote{Luenberger, D. 1979.  Introduction to Dynamic Systems: Theory, Models, and Applications.  John Wiley and Sons}). \\  
+
+\newpage
+\textbf{Law's Methods, Axioms and Assumptions}\\
+
+Law offers suites of methods for estimating measures of performance, $ \theta $, which are taken as point estimates and their associated confidence intervals for means, probabilities, and quantiles. Law only briefly makes mention of a jackknife method for ratio estimators (p 542). Methodologies are keyed to the stochastic output of the two major classes of simulation models; namely, models with a 'natural' terminating event (terminating simulations) and models without such an event (non-terminating simulations). Law acknowledges that transient, steady-state  and cyclic behavior can (and does) occur within each of the major classes of models.  Statistical methodologies and recommendations for their use are grouped under the general categories of \textit{fixed-sample-size procedures} and \textit{sequential procedures} for both terminating and non-terminating simulations.  Law's recommendations are based on the literature and on the results of his own experiments.  For terminating simulations there is basically just one, fixed-sample-size method and one, sequential method (pp 503 - 507).  For non-terminating simulations there are six, fixed-sample-size methods (pp 520 - 529) and over eight sequential methods (pp 529 - 534).  Note that many of the non-terminating procedures which are presented have direct analogs in time series analysis. \\
+
+As the basis for all of the methods presented, Law states two axioms and maintains two assumptions. The first axiom of simulation modeling underscores the role of stochastic processes; namely, that stochastic processes are the fundamental drivers in both simulation models and in the real-world systems that such models seek to represent. An important corollary is that outside of some simple physical systems most real-world systems (especially complex adaptive systems) do not have stationary outputs.  That is, the probability distribution of most stochastic processes $ \{ X_{i}\} $ are not invariant under a shift in time. The second axiom is that virtually all simulations are autocorrelated.  Thus classical statistics (i.e., point estimators for means, totals, proportions, and variances) are not directly applicable because (a) the covariances are nonstationary, and (b) the observations or samples that are derived from simulation outputs are not independent and identically distributed (IID).\\
+
+Law makes two fundamental assumptions that allow the subsequent application of his various methods for statistical inference. For the first assumption, let $\{ y_{11}, y_{12}, ..., y_{1m}\} $ be a realization of the random variables$\{ Y_{1}, Y_{2}, ..., Y_{m}\} $ that result from generating a single run of a simulation of length $ m $ using the set of random numbers $ \{ u_{11}, u_{12}, ..., u_{1m}\} $. If a different set of random numbers is used for a second run (still of length $ m $), then the realization of the same random variables $\{ Y_{1}, Y_{2}, ..., Y_{m}\} $ would be $\{ y_{21}, y_{22}, ..., y_{2m}\} $. Law assumes that while samples \textit{within} any single run are not IID, samples \textit{between} independent replications (runs) are, in fact, IID. The second assumption is that the stochastic processes embedded in simulation models will be sufficiently covariance-stationary such that the models will, in general and ultimately, exhibit steady-state behavior. Even with these assumptions, Law states that the methods presented for estimating measures of performance or parameters $ \theta $, are still likely to have problems. Specifically, $ \hat{\theta }$ will not be an unbiased estimator of $ \theta $, and $ \hat{var}(\theta) $ will not be an unbiased estimator of $ var(\theta )$. Regrettably, the second assumption has substantially constrained my use of Law's methods and approaches because the models of greatest interest to me are decidely nonstationary and are unlikely to exhibit steady-state behavior.\\
+
+\textbf{General Project Description}\\
+
+The project begins with a question: What results obtain if a simulation is constructed from a known, dynamic linear model and the simulation output is subjected to time series analysis? This question seems an obvious inquiry into the synthesis of the realms of stochastic model building, simulation, state-space (or dynamic linear) models, and statistical analysis.  As a first-step in exploring this question I have adapted a problem from Shumway and Stoffer (Problem 2.3, p. 78).  I constructed a simple, 'random walk with drift' model called, "RandWalk1" using the R statisitcal computing package (version 3.1.1 (2014-04-10)) freely available from The R Foundation for Statistical Computing. The annotated code for RandWalk1 is presented in Figure 1. This model, which could be considered as a fundamental archetype of the models used in time series analysis for analyzing trends (Shumway and Stoffer, 2011), is absolutely equivalent to
+\begin{itemize}
+  \item a univariate, state-space (or dynamic linear) model in its most basic form, $ \textbf{Y}= \textbf{A}\textbf{x} + \varepsilon $
+  \item a linear, first-order difference equation: $ y(k+1) = ay(k) + b + e $ (where a = 1, \ \ \ \ \ b = forcing term, e = random shock)
+  \item an AR(1) model
+\end{itemize}
+
+\begin{figure}
+\caption{A 'random walk with trend' simulation model.}
+    \includegraphics[width=1.0\textwidth, height=6 in, page=1]{/home/bmarron//Desktop/Spring_2014/STAT_505_Fountain/HW1/RandWalk1_Model.pdf}
+\end{figure}
+
+The RandWalk1 model has the form,
+\begin{center}
+
+$ \left( \begin{array}{c}
+y_{t+1} \\
+\delta 
+\end{array} \right) = \left( \begin{array}{cc}
+1 & 1\\
+0 & 1
+\end{array} \right) \left( \begin{array}{c}
+y \\
+\delta 
+\end{array} \right) + \left( \begin{array}{c}
+1 \\
+0
+\end{array} \right) (AF)(\varepsilon \sim N(0, 1)) $
+
+\end{center}
+and maps the one-dimensional, stochastic displacement of a single point to $\textbf{R}^{1}$ through time. The dynamics of RandWalk1 are generated recursively with the 2 x 2 transition matrix. Note that the trend or forcing term $ (\delta )$ is added as a constant value through the transition matrix.  This does not change the fact that the model is univariate. Stochasticity in the model is generated by Gaussian white noise via random variates which are pulled at every recursive iteration from the normal distribution with $ \mu =0 $ and $ \sigma ^{2}=1 $. The model is designed so that the random variates can be multiplied by an augmention factor (AF), if desired.\\
+
+\underline{Experimental}\\
+
+An experiment was designed to evaluate classical, univariate least squares regression in the time series context where the time series data are generated by a simulation.  The experiment consisted of a set of five (5) trials where each trial generated data from a different number of independent replications (n = 1, 5, 25, 100, 500) of the RandWalk1 model. All replications (or runs), regardless of trial, used identical initial conditions ($ y_{t=0} = 0; \delta \ = \ .02$ and AF =1 ) and an identical termination point (500 model tiks; t=500).  Each individual run of the simulation created a univariate, time-series data set \{ $ y_{1}, y_{2}, ... y_{500}$\} or equivalently, 500 observations per run.  For the trials where n>1, the multiple time-series data sets that were produced could be considered as repeated measures, analogous to replicated observations from a chemical analysis.  Independence of the replications was assumed to follow from the use of different sets of random variates for each run. The experiment, and all subsequent evaluations, were performed using R. \\
+
+The following procedure was used to derive a single, ordinary least-squares (OLS) linear regression model for each experimental trial.  First, the sets of $ y_{t}$ from each replication, n, of the simulation were fitted to a simple linear regression model in R using the lm() function. The OLS regression model as determined for each individual run is given as, 
+\begin{center}
+$ y_{t} \ = \ \beta _{1}z_{t1} + \beta _{2}z_{t2}$
+\end{center}
+where $ z_{t1} = 1$ and $ z_{t2} = t$. Note that under this procedure a unique regression model would be generated for each replication. Owing to the fact that n = 1 for Trial 1, this first step was sufficient to generate the single, OLS regression model for Trial 1.\\
+
+Next, where the number of replicatons was greater than one (i.e., Trial 2 (n = 5), Trial 3 (n = 25), Trial 4 (n = 100)), and Trial 5 (n = 500)), the sample means $ \beta _{1} $ and $  \beta _{2}$ were determined as,
+\begin{center}
+$ \hat{\mu }_{\beta_{ia}}\ = \dfrac{\sum\limits_{1}^{n}\beta _{ia}}{n} \hspace{.5 in}for \ i = 1,2 \ and \ a = 1,2 ... 5 $
+\end{center}
+where \textit{a} indexes the trials and \textit{n} indexes the number of replications per trial.   The values $ \hat{\mu}_{\beta _{1a}}$ and $\hat{\mu}_{\beta _{2a}} $ as derived above were subsequently taken as the coefficients for each of the single, OLS regression models. In order define each of the single, OLS regression models (one per trial) and to generate predicted values from these models, the appropriate coefficients $ \hat{\mu}_{\beta _{1a}}$ and $\hat{\mu}_{\beta _{2a}} $ were inserted into an lm() object file.\\
+
+As a last step, a \textit{500} x \textit{n} matrix of residuals was generated per trial as the difference between the $ y_{t}$ values originally outputted by the simulation (per trial) and the predicted values from the single, regression model (per trial). An example of the R code used to realize each trial of the experiment is shown in Figures 2 and 3.  Plots of the simulation outputs (per trial) as well as plots of residuals (per trial) are presented in the Appendix.\\
+
+\begin{figure}
+\caption{Trial 2 of the simulation experiment.}
+    \includegraphics[width=1.0\textwidth, height=6 in, page=1]{/home/bmarron//Desktop/Spring_2014/STAT_505_Fountain/HW1/Sim1Exp1/Sim1Exp1Trial2.pdf}
+\end{figure}
+
+\begin{figure}
+\caption{Trial 2 of the simulation experiment (con't).}
+    \includegraphics[width=1.0\textwidth, height=6 in, page=2]{/home/bmarron//Desktop/Spring_2014/STAT_505_Fountain/HW1/Sim1Exp1/Sim1Exp1Trial2.pdf}
+\end{figure}
+
+\newpage
+\underline{Results and Discussion}\\
+
+Simulations of the type done in this experiment create repeated measures of time series data.  Extracting statistical inferences from these situations is not trivial. I first considered using Law's recommendations for deriving a point estimator and its confidence interval for the displacement (the single random variable in the experiment) but realized that none of Law's statistics would be valid because the 'random walk with drift' model is not a covariance-stationary stochastic process. Next I considered a time-series analysis approach (i.e., classical regression in the time-series context) but discovered that the 'random walk with drift' model does not even meet Shumway and Stoffer's definition for a weakly stationary time series (p. 23). In fact, the autocovariance function of the 'random walk with drift' model is not dependent on the time lag between any two time points (for example,  $ t_{i}$ and $ t_{i + 2}$), but rather is dependent on the values of the time points themselves. In addition there is the compounding problem of repeated measures.  I hoped to overcome the repeated measures problem with the internet-published function make.rm() which manipulates a data matrix to allow the function lm() to operate on repeated measures data. (This still may be an option but needs more work.) In the end, I opted to simply validate the published mean function of a 'random walk with drift' model and perform a very simple visual test for homoscedasticity on the simulation outputs.\\     
+
+Shumway and Stoffer (p.18) state that the mean function of a random walk with drift model is given as,
+\begin{center}
+$ E(y_{t}) \ = \ \delta t + \sum\limits_{j=1}^{t} E(w_{j}) \ = \ \delta t \hspace{.5 in}where \  w_{j} \ = \ Gaussian \ white \ noise$
+\end{center}
+A working hypothesis for validating this statement (based on the Central Limit Theorem) is that as the number of replications $ n \longrightarrow \infty $, $ \beta _{1} \longrightarrow 0$ and $ \beta _{2} \longrightarrow \delta $.  Certainly a visual review of the plots in the Appendix would seem to confirm this hypothesis: the regression model for Trial 5 differs only slightly from the expected value. A t-test or an F-test should be done to objectively assess the hypothesis but I was uncertain as to how to proceed with the determination of these test statistics given the nature of the data (i.e., repeated measures of time series).\\
+
+Generating a statistically solid diagnostic of the regressions also proved challenging. For example, would it be possible to manipulate the data sets so as to perform a cross-validation (preferred)? If not, could Durbin-Watson's test (autocorrelation of the residuals) be done? If Durbin-Watson's test is not possible, could the residuals be plotted against the fitted values, and if so, which residuals should be used? Standardized residuals? Studentized residuals? Is it possible to generate either standardized residuals or studentized residuals for a stochastic process with known heteroscedasticity? 
+\newpage
+The diagnostic residual plots in the Appendix use only 'raw' residuals knowing full well that studentized residuals are preferred. Yet again I was uncertain as how to proceed. Knowing that calculation of studentized residuals requires the determination of the "leverages" (the values of $ h_{ij}$ in the so-called "hat" matrix, \textbf{H}), I was uncertain how to obtain these values given my OLS procedure and the nature of the simulation data. \\
+
+\underline{Conclusions}\\
+
+Based on this experiment, I suspect that at least 100 replications are needed for valid inference from any simulation that models a non-stationary, stochastic process. In the case of heteroscedasticity, obtaining model diagnostics and valid inferences is not a trivial task, even with the more-than-sufficient-amount of data from a simulation. Because my research interests lie in the realm of generative models such as the 'random walk with drift' model, I need to find valid statistical methodologies or algorithms that can provide valid inferences. Meanwhile, it is refreshing to validate (albeit qualitatively) that the published expected mean function and heteroscedasticity of the 'random walk with drift' model both deliver as promised.
+
+\newpage
+
+\begin{center}
+\textbf{Appendix}
+\end{center}
+
+\newpage
+\begin{figure}
+    \includegraphics[width=1.0\textwidth, height=3 in]{/home/bmarron//Desktop/Spring_2014/STAT_505_Fountain/HW1/jpegs/sim1exp1tr1_d.jpeg}
+     \includegraphics[width=1.0\textwidth, height=3 in]{/home/bmarron//Desktop/Spring_2014/STAT_505_Fountain/HW1/jpegs/sim1exp1tr2_d.jpeg}
+\end{figure}
+
+\newpage
+\begin{figure}
+    \includegraphics[width=1.0\textwidth, height=3 in]{/home/bmarron//Desktop/Spring_2014/STAT_505_Fountain/HW1/jpegs/sim1exp1tr3_d.jpeg}
+     \includegraphics[width=1.0\textwidth, height=3 in]{/home/bmarron//Desktop/Spring_2014/STAT_505_Fountain/HW1/jpegs/sim1exp1tr4_d.jpeg}
+\end{figure}
+
+\newpage
+\begin{figure}
+    \includegraphics[width=1.0\textwidth, height=3 in]{/home/bmarron//Desktop/Spring_2014/STAT_505_Fountain/HW1/jpegs/sim1exp1tr5_d.jpeg}
+     \includegraphics[width=1.0\textwidth, height=3 in]{/home/bmarron//Desktop/Spring_2014/STAT_505_Fountain/HW1/jpegs/sim1exp1tr1_mr.jpeg}
+\end{figure}
+
+\newpage
+\begin{figure}
+    \includegraphics[width=1.0\textwidth, height=3 in]{/home/bmarron//Desktop/Spring_2014/STAT_505_Fountain/HW1/jpegs/sim1exp1tr2_mr.jpeg}
+     \includegraphics[width=1.0\textwidth, height=3 in]{/home/bmarron//Desktop/Spring_2014/STAT_505_Fountain/HW1/jpegs/sim1exp1tr3_mr.jpeg}
+\end{figure}
+
+\newpage
+\begin{figure}
+    \includegraphics[width=1.0\textwidth, height=3 in]{/home/bmarron//Desktop/Spring_2014/STAT_505_Fountain/HW1/jpegs/sim1exp1tr4_mr.jpeg}
+     \includegraphics[width=1.0\textwidth, height=3 in]{/home/bmarron//Desktop/Spring_2014/STAT_505_Fountain/HW1/jpegs/sim1exp1tr5_mr.jpeg}
+\end{figure}
+
+
+\end{document}

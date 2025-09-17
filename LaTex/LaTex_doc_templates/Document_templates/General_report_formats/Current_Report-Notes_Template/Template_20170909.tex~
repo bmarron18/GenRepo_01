@@ -1,0 +1,213 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Author: bmarron
+% Origin: 15 July 2017
+% Final:
+%
+% 12-point; 1in margins
+% One inch vertical space is 72.27pt
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% When you first open the template, compile it from the command line with the 
+% commands below to make sure your LaTeX distribution is configured correctly:
+% Re-run to get TOC
+% 1) pdflatex Retaining_Volunteers_20171103
+% 2) biber Retaining_Volunteers_20171103
+% 3) pdflatex Retaining_Volunteers_20171103 x 2
+
+% run LaTex -> PDF (Latexmk) in LaTexilla to get .idx file
+% then
+% 1) pdflatex Retaining_Volunteers_20171103
+% 2) makeindex Retaining_Volunteers_20171103.idx -s StyleInd.ist
+% 3) biber Retaining_Volunteers_20171103
+% 4) pdflatex Retaining_Volunteers_20171103 x 2
+
+
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[12pt, letterpaper]{article}
+
+\usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry}       % Document margins
+
+\usepackage{afterpage}
+%\usepackage{datetime2}               % specialty date formats
+\usepackage{lipsum}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}              % Use 8-bit encoding that has 256 glyphs
+\usepackage{lineno}
+\usepackage{csquotes}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pdfpages}
+\usepackage{ragged2e}                   % use '\justifying'
+\usepackage{verbatim}
+\usepackage{outlines}
+\usepackage{threeparttable}
+\usepackage{pgfgantt}                 % simple gantt charts
+\usepackage{bigfoot}
+\usepackage{multirow}
+\usepackage{microtype}                % Slightly tweak font spacing for aesthetics
+\usepackage{booktabs}                 % Horizontal rules in tables
+\usepackage{float}                    % specific locations with the [H] (e.g. \begin{table}[H])
+\usepackage{paralist}                 % bullet points with less space between them
+\usepackage[hang, 
+            small,
+            labelfont=bf,
+            up,
+            textfont=it,up]{caption}    % Custom captions under/above floats in tables or figures
+
+\usepackage[sc]{mathpazo}             % Use the Palatino font and the Pazo fonts for math
+\linespread{1.05}                     % Line spacing - Palatino needs more space between lines
+\usepackage{setspace}
+%\doublespacing                       % global setting
+
+\usepackage{abstract}                                               % Allows abstract customization
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}              % Set the "Abstract" text to bold
+\renewcommand{\abstracttextfont}{\normalfont\small\itshape}         % Set the abstract itself to small italic text
+
+\usepackage{titlesec}                                               % Allows customization of titles
+\renewcommand\thesection{\Roman{section}}                           % Roman numerals for the sections
+\renewcommand\thesubsection{\arabic{subsection}}                    % Arabic numerals for subsections
+\titleformat{\section}[block]{\large\scshape\centering}{\thesection.}{1em}{}        % Change the look of the section titles
+\titleformat{\subsection}[block]{\large}{\thesubsection.}{1em}{}                    % Change the look of the subsection titles
+\titlespacing*{\subsubsection}{0pt}{0.75\baselineskip}{0.25\baselineskip}            % Change spacing after section
+
+
+\usepackage{fancyhdr}                                              % Headers and footers
+%\pagestyle{fancy}                                                 % All pages have headers and footers
+\pagestyle{plain}                                                  % globally set to "plain"
+%\fancyhead{}                                                      % Blank out the default header
+%\fancyfoot{}                                                      % Blank out the default footer
+%\fancyhead[L]{AFRI}                                                                                    
+%\fancyhead[R]{\today}
+%\fancyhead[C]{Running title $\bullet$ November 2012}               % Custom header text
+\fancyfoot[C]{\thepage}    
+%\fancyfoot[RO,LE]{\thepage}                                        % Custom footer text
+
+
+
+\usepackage{everypage}                             % Required for watermarks
+\usepackage{draftwatermark}                        % Watermarks or not
+\SetWatermarkLightness{0.95}
+\SetWatermarkScale{0.75}                            % Set to 1.0 for default
+%\SetWatermarkText{FINAL DRAFT}                      % comment out for default (DRAFT)   
+
+%\usepackage{multicol}                                      % Used for the two-column layout of the document
+%\usepackage{hyperref}                                      % Interferes with cite.sty 
+
+
+% BIBLIOGRAPHY (use Biblatex!!)
+\usepackage[american]{babel} 
+\usepackage[style=apa,
+            sorting=nyt,
+            sortcites=true,
+            autopunct=true,
+            hyperref=true,
+            maxcitenames=2,
+            mincitenames=1,
+            maxbibnames=10,
+            backref=true,
+            doi=false,
+            url=false,
+            backend=biber]{biblatex}
+\addbibresource{/home/bruce/Desktop/BibLatex/My_Library_20170125.bib} % BibTeX bibliography file
+%\defbibheading{bibempty}{}
+\DeclareLanguageMapping{american}{american-apa}    % avoid yearmonthday problems
+
+
+%-------------------------------------------------------------
+% NEW COMMANDS
+%---------------------------------------------------------------------
+%This command creates a box marked ``To Do'' around text.
+%To use: 
+% type \todo{  insert text here  }.
+\newcommand{\todo}[1]{\vspace{5 mm}\par \noindent
+\marginpar{\textsc{To Do}}
+\framebox{\begin{minipage}[c]{0.95 \textwidth}
+\tt\begin{center} #1 \end{center}\end{minipage}}\vspace{5 mm}\par}
+
+% This command makes a sun symbol
+% To use:
+% Type \sun
+\newcommand{\sun}{\ensuremath{\odot}}                                   
+\newcommand\ddfrac[2]{\frac{\displaystyle #1}{\displaystyle #2}}
+
+% This command creates a custom indent
+% To use:
+%\begin{myindentpar}{2em}
+% blah blah blah
+%\end {myindentpar}
+\newenvironment{myindentpar}[1]%
+   {\begin{list}{}%
+       {\setlength{\leftmargin}{#1}}%
+           \item[]%
+   }
+     {\end{list}}
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\title{\vspace{-15mm}\fontsize{14pt}{10pt}
+                    \selectfont \textbf{Geospatial Evaluation of Hypercycle Dynamics}   % Article title
+      } 
+
+\author{
+     \normalsize Bruce D. Marron \\                     % Name in “small caps” ==> \textsc
+     \normalsize GIS 610-002 \\
+     \vspace{-5mm}
+      \normalsize North Carolina State University      % Institution or Class ID
+     \vspace{7mm}
+}
+\date{\normalsize \today}
+
+
+%---------------------------------------------------------------------------------------
+% HELPFUL
+%----------------------------------------------------------------------------------------
+
+%\enquote*{text}                                 % single quotes
+% \autocite{ABC01}      %for et al.
+% \parencite{}
+% Yucat\'{a}n                                    % accents
+%\includegraphics[width=6.0in, height=5in, page=2]{graphics/Problems1.pdf}              % pdf
+%\includegraphics[width=0.35\textwidth, height=0.6\textheight]{graphics/fig1}           % pdf
+%\thispagestyle{plain}                          % headers/footers included page or not (default =TRUE except for 1st)
+
+%\begin{outline}[enumerate]
+%\end{outline}
+
+%---------------------------------------------------------------------------------------
+% DOCUMENT
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+ 
+%\begin{singlespacing}
+\maketitle                                      % insert title or not
+%\end{singlespacing}
+%\thispagestyle{fancy}                          %  headers/footers included or not (default=FALSE for first pg)
+%\linenumbers                                    % line numbers for document or not
+
+\section{title}
+\subsection* {title}
+\subsubsection*{title}                          
+
+\autocite{karl_give_2008}
+% ----------------------------------------------------------------------------------------
+% 	BIBLIOGRAPHY
+% ----------------------------------------------------------------------------------------
+          
+
+\printbibliography
+
+
+
+
+
+\end{document}

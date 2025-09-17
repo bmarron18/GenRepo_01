@@ -1,0 +1,27 @@
+%%
+%% bigfoot is part of the bigfoot bundle for critical typesetting
+%% Copyright 2004--2015  David Kastrup <dak@gnu.org>
+%%
+%% The license notice and corresponding source code for this file are
+%% contained in bigfoot.dtx.
+%%
+\documentclass{ltxdoc}
+\usepackage{bigfoot}
+\usepackage{tabularx}
+\usepackage{hyperref}
+\DeclareNewFootnote[para]{default}
+\DeclareNewFootnote[para]{B}[alph]
+\MakeSortedPerPage{footnoteB}
+\newcounter{footalt}
+\def\thefootalt{\fnsymbol{footalt}}
+\MakeSortedPerPage[2]{footalt}
+\WithSuffix\def\footnotedefault'{\refstepcounter{footalt}%
+  \Footnotedefault{\thefootalt}}
+\begin{document}
+\OnlyDescription
+ \AlsoImplementation
+\DocInput{bigfoot.dtx}
+\end{document}
+\endinput
+%%
+%% End of file `bigfoot.drv'.

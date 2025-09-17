@@ -1,0 +1,838 @@
+
+############
+Operations
+##############
+
+COPY of entire directory w/ all files!!
+	cd ~/Desktop/LaTex/LaTex_installed_packages
+	sudo cp -r fontawesome5 /usr/local/share/texmf/tex/latex/
+	cd /usr/local/share/texmf/tex/latex/fontawesome5/
+	sudo mktexlsr
+	
+	cd ~/Desktop/LaTex/LaTex_installed_packages
+	sudo cp -r moderncv-old /usr/local/share/texmf/tex/latex/
+	cd /usr/local/share/texmf/tex/latex
+	sudo mv moderncv-old moderncv
+	cd /usr/local/share/texmf/tex/latex/moderncv/
+	sudo mktexlsr
+	
+COPY just (all) files and hidden folders
+	cp -a /source/. /dest/ 	<== -a option is an improved recursive option
+							<== The . at end of the source path is a specific cp syntax that copies 							all files and folders, including hidden ones.
+	
+MOVE entire directory w/ all files!!
+	cd /usr/share/texlive/texmf-dist/tex/latex
+	sudo mv ccicons /usr/share/texlive/texmf-dist/fonts/opentype/public
+	cd /usr/share/texlive/texmf-dist/fonts/opentype/public/ccicons
+	sudo mktexlsr
+	sudo texhash
+	
+	
+	cd /usr/share/texlive/texmf-dist/fonts/opentype/public/
+	sudo mv ccicons /usr/share/texlive/texmf-dist/fonts/type1/public
+	cd /usr/share/texlive/texmf-dist/fonts/type1/public/
+	ls
+	sudo mktexlsr
+	sudo texhash
+	
+
+DELETE all files/dir.s in a dir
+	sudo rm -r *
+
+RENAME directory
+	sudo mv moderncv-old moderncv
+
+NEW directory
+	sudo mkdir -p /usr/local/share/texmf/tex/latex/ClearSans/ &&
+	sudo cp -r /home/bmarron/Downloads/clearsans/ /usr/local/share/texmf/tex/latex/ClearSans/ &&
+	cd /usr/local/share/texmf/tex/latex/ClearSans/ &&
+	sudo mktexlsr &&
+	sudo updmap-sys --enable Map=ClearSans.map
+	
+
+FIND
+cd /usr/share/
+sudo find ./ -name "*.otf" -type f
+
+cd /usr/share/
+sudo find ./ -name "ocr*" -type d
+
+
+##################
+File Structure of Fonts
+in Texlive: latex distro-installed pkgs
+/usr/share/texlive/texmf-dist
+#######################
+
+----	Font searching ==> font directories	------------------------------------------
+cd /usr/share/texlive
+find ./ -name "font*" -type d
+
+./texmf-dist/tex4ht/ht-fonts/unicode/fontawesome
+./texmf-dist/tex/plain/font-change
+./texmf-dist/tex/plain/fontch
+./texmf-dist/tex/xelatex/fontbook
+./texmf-dist/tex/xelatex/fontwrap
+./texmf-dist/tex/xetex/font-change-xetex
+./texmf-dist/tex/latex/fontsize
+./texmf-dist/tex/latex/fontspec
+./texmf-dist/tex/latex/fonttable
+./texmf-dist/tex/latex/fontaxes
+./texmf-dist/tex/latex/fontsetup
+./texmf-dist/fonts
+./texmf-dist/fonts/misc/xetex/fontmapping
+./texmf-dist/fonts/map/fontname
+
+
+./texmf-dist/fonts
+afm  cmap  enc  map  misc  opentype  pk  source  tfm  type1  vf
+
+./texmf-dist/fonts/type1
+adobe  bitstrea  hoekwater  public  urw
+
+./texmf-dist/fonts/type1/adobe
+courier  utopia
+
+./texmf-dist/fonts/type1/bitstrea
+charter
+
+....
+
+./texmf-dist/fonts/type1/public
+amsfonts  esint-type1  knitting  pdftex   scanpages   xypic
+cbcoptic  eurosym      marvosym  pxfonts  txfonts
+epiolmec  fpl          mathpazo  rsfs     wasy-type1
+
+
+---- 	Font searching ==> TrueType (.ttf) files	----------------------------------------
+cd /usr/share/texlive
+find ./ -name "*.ttf" -type f
+
+[None!!]
+
+
+----	Font searching ==> OpenType (.otf) files	-----------------------------------------
+cd /usr/share/texlive
+find ./ -name "*.otf" -type f
+
+./texmf-dist/fonts/opentype/public/philokalia/Philokalia-Regular.otf
+./texmf-dist/fonts/opentype/public/ccicons/ccicons.otf
+
+
+
+----	Font searching ==> PostScript Type 1 (.pfb) files	--------------------------------
+cd /usr/share/texlive
+find ./ -name "*.pfb" -type f
+
+./texmf-dist/fonts/type1/hoekwater/mflogo-font/logobf10.pfb
+./texmf-dist/fonts/type1/hoekwater/mflogo-font/logo10.pfb
+./texmf-dist/fonts/type1/hoekwater/mflogo-font/logosl8.pfb
+./texmf-dist/fonts/type1/hoekwater/mflogo-font/logo9.pfb
+./texmf-dist/fonts/type1/hoekwater/mflogo-font/logod10.pfb
+./texmf-dist/fonts/type1/hoekwater/mflogo-font/logo8.pfb
+./texmf-dist/fonts/type1/hoekwater/mflogo-font/logosl9.pfb
+./texmf-dist/fonts/type1/hoekwater/mflogo-font/logosl10.pfb
+./texmf-dist/fonts/type1/hoekwater/manfnt-font/manfnt.pfb
+./texmf-dist/fonts/type1/adobe/utopia/putri8a.pfb
+./texmf-dist/fonts/type1/adobe/utopia/putr8a.pfb
+./texmf-dist/fonts/type1/adobe/utopia/putbi8a.pfb
+./texmf-dist/fonts/type1/adobe/utopia/putb8a.pfb
+./texmf-dist/fonts/type1/adobe/courier/pcrbi8a.pfb
+./texmf-dist/fonts/type1/adobe/courier/pcrro8a.pfb
+./texmf-dist/fonts/type1/adobe/courier/pcri8a.pfb
+./texmf-dist/fonts/type1/adobe/courier/pcrr8a.pfb
+./texmf-dist/fonts/type1/adobe/courier/pcrb8a.pfb
+./texmf-dist/fonts/type1/adobe/courier/pcrbo8a.pfb
+./texmf-dist/fonts/type1/urw/ncntrsbk/uncb8a.pfb
+./texmf-dist/fonts/type1/urw/ncntrsbk/uncr8a.pfb
+./texmf-dist/fonts/type1/urw/ncntrsbk/uncbi8a.pfb
+./texmf-dist/fonts/type1/urw/ncntrsbk/uncri8a.pfb
+./texmf-dist/fonts/type1/urw/times/utmr8a.pfb
+./texmf-dist/fonts/type1/urw/times/utmb8a.pfb
+./texmf-dist/fonts/type1/urw/times/utmri8a.pfb
+./texmf-dist/fonts/type1/urw/times/utmbi8a.pfb
+./texmf-dist/fonts/type1/urw/zapfding/uzdr.pfb
+./texmf-dist/fonts/type1/urw/symbol/usyr.pfb
+./texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb
+./texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb
+./texmf-dist/fonts/type1/urw/palatino/uplbi8a.pfb
+./texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb
+./texmf-dist/fonts/type1/urw/courier/ucrb8a.pfb
+./texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb
+./texmf-dist/fonts/type1/urw/courier/ucrro8a.pfb
+./texmf-dist/fonts/type1/urw/courier/ucrbo8a.pfb
+./texmf-dist/fonts/type1/urw/zapfchan/uzcmi8a.pfb
+./texmf-dist/fonts/type1/urw/avantgar/uagd8a.pfb
+./texmf-dist/fonts/type1/urw/avantgar/uagk8a.pfb
+./texmf-dist/fonts/type1/urw/avantgar/uagko8a.pfb
+./texmf-dist/fonts/type1/urw/avantgar/uagdo8a.pfb
+./texmf-dist/fonts/type1/urw/helvetic/uhvro8ac.pfb
+./texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb
+./texmf-dist/fonts/type1/urw/helvetic/uhvb8ac.pfb
+./texmf-dist/fonts/type1/urw/helvetic/uhvbo8ac.pfb
+./texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb
+./texmf-dist/fonts/type1/urw/helvetic/uhvro8a-105.pfb
+./texmf-dist/fonts/type1/urw/helvetic/uhvr8ac.pfb
+./texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb
+./texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb
+./texmf-dist/fonts/type1/urw/helvetic/uhvr8a-105.pfb
+./texmf-dist/fonts/type1/urw/bookman/ubkdi8a.pfb
+./texmf-dist/fonts/type1/urw/bookman/ubkli8a.pfb
+./texmf-dist/fonts/type1/urw/bookman/ubkl8a.pfb
+./texmf-dist/fonts/type1/urw/bookman/ubkd8a.pfb
+./texmf-dist/fonts/type1/public/txfonts/txbttsc.pfb
+./texmf-dist/fonts/type1/public/txfonts/txmia.pfb
+./texmf-dist/fonts/type1/public/txfonts/rtcxb.pfb
+./texmf-dist/fonts/type1/public/txfonts/txbsya.pfb
+./texmf-dist/fonts/type1/public/txfonts/txbexa.pfb
+./texmf-dist/fonts/type1/public/txfonts/txsyc.pfb
+./texmf-dist/fonts/type1/public/txfonts/rtxbmi.pfb
+./texmf-dist/fonts/type1/public/txfonts/rtxmi.pfb
+./texmf-dist/fonts/type1/public/txfonts/txbmia.pfb
+./texmf-dist/fonts/type1/public/txfonts/rtxb.pfb
+./texmf-dist/fonts/type1/public/txfonts/rtxss.pfb
+./texmf-dist/fonts/type1/public/txfonts/rtxbi.pfb
+./texmf-dist/fonts/type1/public/txfonts/txexa.pfb
+./texmf-dist/fonts/type1/public/txfonts/t1xbttsc.pfb
+./texmf-dist/fonts/type1/public/txfonts/rtxr.pfb
+./texmf-dist/fonts/type1/public/txfonts/rtcxbss.pfb
+./texmf-dist/fonts/type1/public/txfonts/txbsyb.pfb
+./texmf-dist/fonts/type1/public/txfonts/txex.pfb
+./texmf-dist/fonts/type1/public/txfonts/rtcxi.pfb
+./texmf-dist/fonts/type1/public/txfonts/rtcxss.pfb
+./texmf-dist/fonts/type1/public/txfonts/t1xbtt.pfb
+./texmf-dist/fonts/type1/public/txfonts/txtt.pfb
+./texmf-dist/fonts/type1/public/txfonts/t1xttsc.pfb
+./texmf-dist/fonts/type1/public/txfonts/txsyb.pfb
+./texmf-dist/fonts/type1/public/txfonts/txbtt.pfb
+./texmf-dist/fonts/type1/public/txfonts/rtxbsc.pfb
+./texmf-dist/fonts/type1/public/txfonts/tcxtt.pfb
+./texmf-dist/fonts/type1/public/txfonts/rtxbsssc.pfb
+./texmf-dist/fonts/type1/public/txfonts/rtxsssc.pfb
+./texmf-dist/fonts/type1/public/txfonts/txbsyc.pfb
+./texmf-dist/fonts/type1/public/txfonts/txsya.pfb
+./texmf-dist/fonts/type1/public/txfonts/txbex.pfb
+./texmf-dist/fonts/type1/public/txfonts/rtxbss.pfb
+./texmf-dist/fonts/type1/public/txfonts/txbsy.pfb
+./texmf-dist/fonts/type1/public/txfonts/tcxbtt.pfb
+./texmf-dist/fonts/type1/public/txfonts/rtxi.pfb
+./texmf-dist/fonts/type1/public/txfonts/rtcxr.pfb
+./texmf-dist/fonts/type1/public/txfonts/txsy.pfb
+./texmf-dist/fonts/type1/public/txfonts/txttsc.pfb
+./texmf-dist/fonts/type1/public/txfonts/rtxsc.pfb
+./texmf-dist/fonts/type1/public/txfonts/t1xtt.pfb
+./texmf-dist/fonts/type1/public/txfonts/rtcxbi.pfb
+./texmf-dist/fonts/type1/public/scanpages/scanwipe.pfb
+./texmf-dist/fonts/type1/public/epiolmec/Epi-Olmec.pfb
+./texmf-dist/fonts/type1/public/knitting/knitgp.pfb
+./texmf-dist/fonts/type1/public/knitting/knitmp.pfb
+./texmf-dist/fonts/type1/public/knitting/knitwn.pfb
+./texmf-dist/fonts/type1/public/knitting/knitg_sc_in.pfb
+./texmf-dist/fonts/type1/public/knitting/knitnp.pfb
+./texmf-dist/fonts/type1/public/knitting/knitgg.pfb
+./texmf-dist/fonts/type1/public/knitting/knitmg.pfb
+./texmf-dist/fonts/type1/public/knitting/knitgn.pfb
+./texmf-dist/fonts/type1/public/knitting/knitn_sc_in.pfb
+./texmf-dist/fonts/type1/public/knitting/knitnn.pfbtcxbtt.pfb
+./texmf-dist/fonts/type1/public/knitting/knitwg.pfb
+./texmf-dist/fonts/type1/public/knitting/knitnl.pfb
+./texmf-dist/fonts/type1/public/knitting/knitn_sc_out.pfb
+./texmf-dist/fonts/type1/public/knitting/knitwp.pfb
+./texmf-dist/fonts/type1/public/knitting/knitmr.pfb
+./texmf-dist/fonts/type1/public/knitting/knitmn.pfb
+./texmf-dist/fonts/type1/public/knitting/knitg_sc_out.pfb
+./texmf-dist/fonts/type1/public/knitting/knitml.pfb
+./texmf-dist/fonts/type1/public/knitting/knitnr.pfb
+./texmf-dist/fonts/type1/public/rsfs/rsfs5.pfb
+./texmf-dist/fonts/type1/public/rsfs/rsfs7.pfb
+./texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb
+./texmf-dist/fonts/type1/public/fpl/fplrij8a.pfb
+./texmf-dist/fonts/type1/public/fpl/fplrc8a.pfb
+./texmf-dist/fonts/type1/public/fpl/fplbj8a.pfb
+./texmf-dist/fonts/type1/public/fpl/fplbij8a.pfb
+./texmf-dist/fonts/type1/public/esint-type1/esint10.pfb
+./texmf-dist/fonts/type1/public/mathpazo/fplmb.pfb
+./texmf-dist/fonts/type1/public/mathpazo/fplmbb.pfb
+./texmf-dist/fonts/type1/public/mathpazo/fplmri.pfb
+./texmf-dist/fonts/type1/public/mathpazo/fplmr.pfb
+./texmf-dist/fonts/type1/public/mathpazo/fplmbi.pfb
+./texmf-dist/fonts/type1/public/xypic/xybsql10.pfb
+./texmf-dist/fonts/type1/public/xypic/xyluat10.pfb
+./texmf-dist/fonts/type1/public/xypic/xycmat11.pfb
+./texmf-dist/fonts/type1/public/xypic/xyluat12.pfb
+./texmf-dist/fonts/type1/public/xypic/xyeuat12.pfb
+./texmf-dist/fonts/type1/public/xypic/xyeubt12.pfb
+./texmf-dist/fonts/type1/public/xypic/xyeubt10.pfb
+./texmf-dist/fonts/type1/public/xypic/xycmbt11.pfb
+./texmf-dist/fonts/type1/public/xypic/xycmbt10.pfb
+./texmf-dist/fonts/type1/public/xypic/xyatip10.pfb
+./texmf-dist/fonts/type1/public/xypic/xycmbt12.pfb
+./texmf-dist/fonts/type1/public/xypic/xylubt12.pfb
+./texmf-dist/fonts/type1/public/xypic/xycirc10.pfb
+./texmf-dist/fonts/type1/public/xypic/xycmat10.pfb
+./texmf-dist/fonts/type1/public/xypic/xydash10.pfb
+./texmf-dist/fonts/type1/public/xypic/xyeuat10.pfb
+./texmf-dist/fonts/type1/public/xypic/xylubt10.pfb
+./texmf-dist/fonts/type1/public/xypic/xyluat11.pfb
+./texmf-dist/fonts/type1/public/xypic/xybtip10.pfb
+./texmf-dist/fonts/type1/public/xypic/xyeubt11.pfb
+./texmf-dist/fonts/type1/public/xypic/xycmat12.pfb
+./texmf-dist/fonts/type1/public/xypic/xylubt11.pfb
+./texmf-dist/fonts/type1/public/xypic/xyeuat11.pfb
+./texmf-dist/fonts/type1/public/eurosym/feymo10.pfb
+./texmf-dist/fonts/type1/public/eurosym/geybr10.pfb
+./texmf-dist/fonts/type1/public/eurosym/feymr10.pfb
+./texmf-dist/fonts/type1/public/eurosym/geybl10.pfb
+./texmf-dist/fonts/type1/public/eurosym/feybo10.pfb
+./texmf-dist/fonts/type1/public/eurosym/feybl10.pfb
+./texmf-dist/fonts/type1/public/eurosym/geybo10.pfb
+./texmf-dist/fonts/type1/public/eurosym/geymr10.pfb
+./texmf-dist/fonts/type1/public/eurosym/feybr10.pfb
+./texmf-dist/fonts/type1/public/eurosym/geymo10.pfb
+./texmf-dist/fonts/type1/public/eurosym/geyml10.pfb
+./texmf-dist/fonts/type1/public/eurosym/feyml10.pfb
+./texmf-dist/fonts/type1/public/pxfonts/rpxbi.pfb
+./texmf-dist/fonts/type1/public/pxfonts/rpxsc.pfb
+./texmf-dist/fonts/type1/public/pxfonts/rpxb.pfb
+./texmf-dist/fonts/type1/public/pxfonts/rpxbmi.pfb
+./texmf-dist/fonts/type1/public/pxfonts/rpcxbi.pfb
+./texmf-dist/fonts/type1/public/pxfonts/pxbexa.pfb
+./texmf-dist/fonts/type1/public/pxfonts/pxsyc.pfb
+./texmf-dist/fonts/type1/public/pxfonts/rpcxi.pfb
+./texmf-dist/fonts/type1/public/pxfonts/pxbex.pfb
+./texmf-dist/fonts/type1/public/pxfonts/rpxi.pfb
+./texmf-dist/fonts/type1/public/pxfonts/pxexa.pfb
+./texmf-dist/fonts/type1/public/pxfonts/rpcxb.pfb
+./texmf-dist/fonts/type1/public/pxfonts/rpxmi.pfb
+./texmf-dist/fonts/type1/public/pxfonts/rpxbsc.pfb
+./texmf-dist/fonts/type1/public/pxfonts/pxbsy.pfb
+./texmf-dist/fonts/type1/public/pxfonts/pxbsyb.pfb
+./texmf-dist/fonts/type1/public/pxfonts/pxsy.pfb
+./texmf-dist/fonts/type1/public/pxfonts/pxmia.pfb
+./texmf-dist/fonts/type1/public/pxfonts/pxsyb.pfb
+./texmf-dist/fonts/type1/public/pxfonts/rpxr.pfb
+./texmf-dist/fonts/type1/public/pxfonts/pxex.pfb
+./texmf-dist/fonts/type1/public/pxfonts/pxsya.pfb
+./texmf-dist/fonts/type1/public/pxfonts/rpcxr.pfb
+./texmf-dist/fonts/type1/public/pxfonts/pxbsya.pfb
+./texmf-dist/fonts/type1/public/pxfonts/pxbmia.pfb
+./texmf-dist/fonts/type1/public/pxfonts/pxbsyc.pfb
+./texmf-dist/fonts/type1/public/pdftex/dummy-space.pfb
+./texmf-dist/fonts/type1/public/wasy-type1/wasy5.pfb
+./texmf-dist/fonts/type1/public/wasy-type1/wasysl10.pfb
+./texmf-dist/fonts/type1/public/wasy-type1/wasy6.pfb
+./texmf-dist/fonts/type1/public/wasy-type1/wasy9.pfb
+./texmf-dist/fonts/type1/public/wasy-type1/wasy7.pfb
+./texmf-dist/fonts/type1/public/wasy-type1/wasy8.pfb
+./texmf-dist/fonts/type1/public/wasy-type1/wasy10.pfb
+./texmf-dist/fonts/type1/public/wasy-type1/wasyb10.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cyrillic/wncyr10.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cyrillic/wncyb10.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cyrillic/wncyi10.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cyrillic/wncyss10.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cyrillic/wncysc10.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib5.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cmextra/cmbsy9.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cmextra/cmcsc8.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib7.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cmextra/cmbsy5.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib6.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cmextra/cmcsc9.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cmextra/cmbsy6.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cmextra/cmbsy8.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib9.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cmextra/cmbsy7.pfb
+./texmf-dist/fonts/type1/public/amsfonts/latxfont/lcmss8.pfb
+./texmf-dist/fonts/type1/public/amsfonts/latxfont/lcirclew.pfb
+./texmf-dist/fonts/type1/public/amsfonts/latxfont/lcircle1.pfb
+./texmf-dist/fonts/type1/public/amsfonts/latxfont/lasy5.pfb
+./texmf-dist/fonts/type1/public/amsfonts/latxfont/lasyb10.pfb
+./texmf-dist/fonts/type1/public/amsfonts/latxfont/lasy8.pfb
+./texmf-dist/fonts/type1/public/amsfonts/latxfont/lcmssi8.pfb
+./texmf-dist/fonts/type1/public/amsfonts/latxfont/lasy6.pfb
+./texmf-dist/fonts/type1/public/amsfonts/latxfont/lasy7.pfb
+./texmf-dist/fonts/type1/public/amsfonts/latxfont/lasy9.pfb
+./texmf-dist/fonts/type1/public/amsfonts/latxfont/lcmssb8.pfb
+./texmf-dist/fonts/type1/public/amsfonts/latxfont/lasy10.pfb
+./texmf-dist/fonts/type1/public/amsfonts/latxfont/line10.pfb
+./texmf-dist/fonts/type1/public/amsfonts/latxfont/linew10.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmfi10.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmff10.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmtex8.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmbx5.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmitt10.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmsl12.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmdunh10.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmbx6.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmss17.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmsl8.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmsl9.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cminch.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmvtt10.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmtex10.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmtex9.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmssqi8.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmu10.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmssq8.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmssi12.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmssi9.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmfib8.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmsltt10.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmssi17.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmtcsc10.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmti7.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmb10.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmbxsl10.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmssdc10.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb
+./texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb
+./texmf-dist/fonts/type1/public/amsfonts/euler/eusm10.pfb
+./texmf-dist/fonts/type1/public/amsfonts/euler/eurm7.pfb
+./texmf-dist/fonts/type1/public/amsfonts/euler/euex8.pfb
+./texmf-dist/fonts/type1/public/amsfonts/euler/eufb10.pfb
+./texmf-dist/fonts/type1/public/amsfonts/euler/euex10.pfb
+./texmf-dist/fonts/type1/public/amsfonts/euler/eurm5.pfb
+./texmf-dist/fonts/type1/public/amsfonts/euler/eurm10.pfb
+./texmf-dist/fonts/type1/public/amsfonts/euler/eusb10.pfb
+./texmf-dist/fonts/type1/public/amsfonts/euler/eurb7.pfb
+./texmf-dist/fonts/type1/public/amsfonts/euler/eufm5.pfb
+./texmf-dist/fonts/type1/public/amsfonts/euler/euex7.pfb
+./texmf-dist/fonts/type1/public/amsfonts/euler/eusm7.pfb
+./texmf-dist/fonts/type1/public/amsfonts/euler/eurb5.pfb
+./texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb
+./texmf-dist/fonts/type1/public/amsfonts/euler/eurb10.pfb
+./texmf-dist/fonts/type1/public/amsfonts/euler/eusb5.pfb
+./texmf-dist/fonts/type1/public/amsfonts/euler/euex9.pfb
+./texmf-dist/fonts/type1/public/amsfonts/euler/eufm7.pfb
+./texmf-dist/fonts/type1/public/amsfonts/euler/eufb5.pfb
+./texmf-dist/fonts/type1/public/amsfonts/euler/eusb7.pfb
+./texmf-dist/fonts/type1/public/amsfonts/euler/eusm5.pfb
+./texmf-dist/fonts/type1/public/amsfonts/euler/eufb7.pfb
+./texmf-dist/fonts/type1/public/amsfonts/symbols/msbm5.pfb
+./texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb
+./texmf-dist/fonts/type1/public/amsfonts/symbols/msam6.pfb
+./texmf-dist/fonts/type1/public/amsfonts/symbols/msbm9.pfb
+./texmf-dist/fonts/type1/public/amsfonts/symbols/msam5.pfb
+./texmf-dist/fonts/type1/public/amsfonts/symbols/msam9.pfb
+./texmf-dist/fonts/type1/public/amsfonts/symbols/msam7.pfb
+./texmf-dist/fonts/type1/public/amsfonts/symbols/msam8.pfb
+./texmf-dist/fonts/type1/public/amsfonts/symbols/msbm8.pfb
+./texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb
+./texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb
+./texmf-dist/fonts/type1/public/amsfonts/symbols/msbm6.pfb
+./texmf-dist/fonts/type1/public/marvosym/marvosym.pfb
+./texmf-dist/fonts/type1/public/cbcoptic/copti.pfb
+./texmf-dist/fonts/type1/public/cbcoptic/copto.pfb
+./texmf-dist/fonts/type1/bitstrea/charter/bchr8a.pfb
+./texmf-dist/fonts/type1/bitstrea/charter/bchbi8a.pfb
+./texmf-dist/fonts/type1/bitstrea/charter/bchb8a.pfb
+./texmf-dist/fonts/type1/bitstrea/charter/bchri8a.pfb
+
+
+
+##################
+File Structure of Fonts
+in Texlive: latex user-installed fonts
+/usr/share/texmf/fonts
+(RECOMMENDED)
+#######################
+
+----	Font searching ==> font directories	------------------------------------------
+cd /usr/share/texmf
+find ./ -name "font*" -type d
+	./doc/fonts
+	./source/fonts
+	./fonts
+
+cd fonts
+ls
+	afm  enc  map  opentype  source  tfm  type1
+
+cd doc/fonts
+ls
+	lm  lm-math  tex-gyre  tex-gyre-math
+
+cd source/fonts
+ls
+	tex-gyre-math
+	
+	
+	/usr/share/texmf/fonts
+---- 	Font searching ==> TrueType (.ttf) files	----------------------------------------
+cd /usr/share/texmf
+find ./ -name "*.ttf" -type f
+
+[None!!]
+
+
+----	Font searching ==> OpenType (.otf) files	-----------------------------------------
+cd /usr/share/texmf
+find ./ -name "*.otf" -type f
+
+./fonts/opentype/public/lm/lmmonoprop10-oblique.otf
+./fonts/opentype/public/lm/lmmonolt10-boldoblique.otf
+./fonts/opentype/public/lm/lmromanslant9-regular.otf
+./fonts/opentype/public/lm/lmromanunsl10-regular.otf
+./fonts/opentype/public/lm/lmsans17-regular.otf
+./fonts/opentype/public/lm/lmmonolt10-bold.otf
+./fonts/opentype/public/lm/lmromancaps10-oblique.otf
+./fonts/opentype/public/lm/lmroman10-regular.otf
+./fonts/opentype/public/lm/lmromanslant10-regular.otf
+./fonts/opentype/public/lm/lmsans10-regular.otf
+./fonts/opentype/public/lm/lmmono9-regular.otf
+./fonts/opentype/public/lm/lmromandemi10-regular.otf
+./fonts/opentype/public/lm/lmmonoltcond10-oblique.otf
+./fonts/opentype/public/lm/lmsans8-regular.otf
+./fonts/opentype/public/lm/lmsans8-oblique.otf
+./fonts/opentype/public/lm/lmmono10-regular.otf
+./fonts/opentype/public/lm/lmmonoprop10-regular.otf
+./fonts/opentype/public/lm/lmmonoltcond10-regular.otf
+./fonts/opentype/public/lm/lmroman9-italic.otf
+./fonts/opentype/public/lm/lmroman7-regular.otf
+./fonts/opentype/public/lm/lmmonoproplt10-boldoblique.otf
+./fonts/opentype/public/lm/lmroman7-italic.otf
+./fonts/opentype/public/lm/lmroman5-bold.otf
+./fonts/opentype/public/lm/lmroman5-regular.otf
+./fonts/opentype/public/lm/lmsansquot8-boldoblique.otf
+./fonts/opentype/public/lm/lmroman17-regular.otf
+./fonts/opentype/public/lm/lmsans10-oblique.otf
+./fonts/opentype/public/lm/lmroman10-bolditalic.otf
+./fonts/opentype/public/lm/lmmono10-italic.otf
+./fonts/opentype/public/lm/lmmonoproplt10-oblique.otf
+./fonts/opentype/public/lm/lmroman12-regular.otf
+./fonts/opentype/public/lm/lmsansdemicond10-regular.otf
+./fonts/opentype/public/lm/lmromandemi10-oblique.otf
+./fonts/opentype/public/lm/lmmonoproplt10-bold.otf
+./fonts/opentype/public/lm/lmromancaps10-regular.otf
+./fonts/opentype/public/lm/lmsansdemicond10-oblique.otf
+./fonts/opentype/public/lm/lmroman6-bold.otf
+./fonts/opentype/public/lm/lmmonocaps10-regular.otf
+./fonts/opentype/public/lm/lmromanslant10-bold.otf
+./fonts/opentype/public/lm/lmsans17-oblique.otf
+./fonts/opentype/public/lm/lmsans9-oblique.otf
+./fonts/opentype/public/lm/lmsansquot8-oblique.otf
+./fonts/opentype/public/lm/lmromanslant12-regular.otf
+./fonts/opentype/public/lm/lmroman10-italic.otf
+./fonts/opentype/public/lm/lmmono8-regular.otf
+./fonts/opentype/public/lm/lmroman10-bold.otf
+./fonts/opentype/public/lm/lmsans10-boldoblique.otf
+./fonts/opentype/public/lm/lmromandunh10-regular.otf
+./fonts/opentype/public/lm/lmroman9-regular.otf
+./fonts/opentype/public/lm/lmromandunh10-oblique.otf
+./fonts/opentype/public/lm/lmsans9-regular.otf
+./fonts/opentype/public/lm/lmmonoproplt10-regular.otf
+./fonts/opentype/public/lm/lmsansquot8-regular.otf
+./fonts/opentype/public/lm/lmsans10-bold.otf
+./fonts/opentype/public/lm/lmmonocaps10-oblique.otf
+./fonts/opentype/public/lm/lmsans12-oblique.otf
+./fonts/opentype/public/lm/lmmonolt10-oblique.otf
+./fonts/opentype/public/lm/lmromanslant8-regular.otf
+./fonts/opentype/public/lm/lmmonoslant10-regular.otf
+./fonts/opentype/public/lm/lmroman12-bold.otf
+./fonts/opentype/public/lm/lmroman12-italic.otf
+./fonts/opentype/public/lm/lmsans12-regular.otf
+./fonts/opentype/public/lm/lmroman8-regular.otf
+./fonts/opentype/public/lm/lmsansquot8-bold.otf
+./fonts/opentype/public/lm/lmroman7-bold.otf
+./fonts/opentype/public/lm/lmromanslant17-regular.otf
+./fonts/opentype/public/lm/lmmonolt10-regular.otf
+./fonts/opentype/public/lm/lmroman8-italic.otf
+./fonts/opentype/public/lm/lmroman6-regular.otf
+./fonts/opentype/public/lm/lmroman9-bold.otf
+./fonts/opentype/public/lm/lmmono12-regular.otf
+./fonts/opentype/public/lm/lmroman8-bold.otf
+./fonts/opentype/public/lm-math/latinmodern-math.otf
+./fonts/opentype/public/tex-gyre/texgyreheroscn-italic.otf
+./fonts/opentype/public/tex-gyre/texgyreadventor-bolditalic.otf
+./fonts/opentype/public/tex-gyre/texgyreschola-bolditalic.otf
+./fonts/opentype/public/tex-gyre/texgyreschola-italic.otf
+./fonts/opentype/public/tex-gyre/texgyreheros-regular.otf
+./fonts/opentype/public/tex-gyre/texgyretermes-italic.otf
+./fonts/opentype/public/tex-gyre/texgyrecursor-bold.otf
+./fonts/opentype/public/tex-gyre/texgyretermes-regular.otf
+./fonts/opentype/public/tex-gyre/texgyreheroscn-regular.otf
+./fonts/opentype/public/tex-gyre/texgyreheroscn-bold.otf
+./fonts/opentype/public/tex-gyre/texgyrepagella-italic.otf
+./fonts/opentype/public/tex-gyre/texgyrepagella-bold.otf
+./fonts/opentype/public/tex-gyre/texgyrecursor-italic.otf
+./fonts/opentype/public/tex-gyre/texgyreheroscn-bolditalic.otf
+./fonts/opentype/public/tex-gyre/texgyrepagella-regular.otf
+./fonts/opentype/public/tex-gyre/texgyretermes-bold.otf
+./fonts/opentype/public/tex-gyre/texgyrebonum-italic.otf
+./fonts/opentype/public/tex-gyre/texgyrecursor-bolditalic.otf
+./fonts/opentype/public/tex-gyre/texgyrecursor-regular.otf
+./fonts/opentype/public/tex-gyre/texgyreadventor-italic.otf
+./fonts/opentype/public/tex-gyre/texgyrebonum-bolditalic.otf
+./fonts/opentype/public/tex-gyre/texgyreadventor-regular.otf
+./fonts/opentype/public/tex-gyre/texgyrebonum-bold.otf
+./fonts/opentype/public/tex-gyre/texgyrechorus-mediumitalic.otf
+./fonts/opentype/public/tex-gyre/texgyretermes-bolditalic.otf
+./fonts/opentype/public/tex-gyre/texgyrepagella-bolditalic.otf
+./fonts/opentype/public/tex-gyre/texgyreschola-bold.otf
+./fonts/opentype/public/tex-gyre/texgyreheros-italic.otf
+./fonts/opentype/public/tex-gyre/texgyreschola-regular.otf
+./fonts/opentype/public/tex-gyre/texgyreadventor-bold.otf
+./fonts/opentype/public/tex-gyre/texgyreheros-bold.otf
+./fonts/opentype/public/tex-gyre/texgyreheros-bolditalic.otf
+./fonts/opentype/public/tex-gyre/texgyrebonum-regular.otf
+./fonts/opentype/public/tex-gyre-math/texgyrepagella-math.otf
+./fonts/opentype/public/tex-gyre-math/texgyredejavu-math.otf
+./fonts/opentype/public/tex-gyre-math/texgyretermes-math.otf
+./fonts/opentype/public/tex-gyre-math/texgyreschola-math.otf
+./fonts/opentype/public/tex-gyre-math/texgyrebonum-math.otf
+
+
+
+----	Font searching ==> PostScript Type 1 (.pfb) files	--------------------------------
+cd/usr/share/texmf
+find ./ -name "*.pfb" -type f
+
+./fonts/type1/fkr/tipa/xipxbs10.pfb
+./fonts/type1/fkr/tipa/xipabs10.pfb
+./fonts/type1/fkr/tipa/tipab10.pfb
+./fonts/type1/fkr/tipa/tipxb10.pfb
+./fonts/type1/fkr/tipa/xipxsb10.pfb
+./fonts/type1/fkr/tipa/tipxbx10.pfb
+./fonts/type1/fkr/tipa/tipxss10.pfb
+./fonts/type1/fkr/tipa/tipasl12.pfb
+./fonts/type1/fkr/tipa/tipasi10.pfb
+./fonts/type1/fkr/tipa/tipxsi10.pfb
+./fonts/type1/fkr/tipa/tipasl9.pfb
+./fonts/type1/fkr/tipa/xipxss10.pfb
+./fonts/type1/fkr/tipa/tipa17.pfb
+./fonts/type1/fkr/tipa/tipabx12.pfb
+./fonts/type1/fkr/tipa/tipass10.pfb
+./fonts/type1/fkr/tipa/tipabx10.pfb
+./fonts/type1/fkr/tipa/tipass9.pfb
+./fonts/type1/fkr/tipa/tipa12.pfb
+./fonts/type1/fkr/tipa/xipass10.pfb
+./fonts/type1/fkr/tipa/xipxb10.pfb
+./fonts/type1/fkr/tipa/tipxss17.pfb
+./fonts/type1/fkr/tipa/tipass17.pfb
+./fonts/type1/fkr/tipa/tipx12.pfb
+./fonts/type1/fkr/tipa/tipasl10.pfb
+./fonts/type1/fkr/tipa/tipxtt10.pfb
+./fonts/type1/fkr/tipa/tipasb10.pfb
+./fonts/type1/fkr/tipa/tipxss8.pfb
+./fonts/type1/fkr/tipa/tipxtt9.pfb
+./fonts/type1/fkr/tipa/tipatt8.pfb
+./fonts/type1/fkr/tipa/tipxsl8.pfb
+./fonts/type1/fkr/tipa/tipxbx9.pfb
+./fonts/type1/fkr/tipa/xipasi10.pfb
+./fonts/type1/fkr/tipa/xipasl10.pfb
+./fonts/type1/fkr/tipa/xipx10.pfb
+./fonts/type1/fkr/tipa/xipxsl10.pfb
+./fonts/type1/fkr/tipa/tipxsl12.pfb
+./fonts/type1/fkr/tipa/tipxss9.pfb
+./fonts/type1/fkr/tipa/xipa10.pfb
+./fonts/type1/fkr/tipa/tipx17.pfb
+./fonts/type1/fkr/tipa/tipxsl10.pfb
+./fonts/type1/fkr/tipa/tipabx9.pfb
+./fonts/type1/fkr/tipa/tipatt12.pfb
+./fonts/type1/fkr/tipa/tipatt9.pfb
+./fonts/type1/fkr/tipa/tipabs10.pfb
+./fonts/type1/fkr/tipa/tipass8.pfb
+./fonts/type1/fkr/tipa/tipxbs10.pfb
+./fonts/type1/fkr/tipa/tipxbx12.pfb
+./fonts/type1/fkr/tipa/tipatt10.pfb
+./fonts/type1/fkr/tipa/tipa10.pfb
+./fonts/type1/fkr/tipa/xipab10.pfb
+./fonts/type1/fkr/tipa/tipxsb10.pfb
+./fonts/type1/fkr/tipa/tipasl8.pfb
+./fonts/type1/fkr/tipa/tipxts10.pfb
+./fonts/type1/fkr/tipa/tipabx8.pfb
+./fonts/type1/fkr/tipa/tipxsl9.pfb
+./fonts/type1/fkr/tipa/tipass12.pfb
+./fonts/type1/fkr/tipa/tipa9.pfb
+./fonts/type1/fkr/tipa/xipxsi10.pfb
+./fonts/type1/fkr/tipa/tipats10.pfb
+./fonts/type1/fkr/tipa/tipxbx8.pfb
+./fonts/type1/fkr/tipa/tipx10.pfb
+./fonts/type1/fkr/tipa/tipxtt12.pfb
+./fonts/type1/fkr/tipa/tipxss12.pfb
+./fonts/type1/fkr/tipa/xipasb10.pfb
+./fonts/type1/fkr/tipa/tipx9.pfb
+./fonts/type1/fkr/tipa/tipx8.pfb
+./fonts/type1/fkr/tipa/tipa8.pfb
+./fonts/type1/fkr/tipa/tipxtt8.pfb
+./fonts/type1/public/lm/lmss10.pfb
+./fonts/type1/public/lm/lmsy9.pfb
+./fonts/type1/public/lm/lmtt10.pfb
+./fonts/type1/public/lm/lmmib10.pfb
+./fonts/type1/public/lm/lmvtto10.pfb
+./fonts/type1/public/lm/lmbx7.pfb
+./fonts/type1/public/lm/lmr12.pfb
+./fonts/type1/public/lm/lmu10.pfb
+./fonts/type1/public/lm/lmbx9.pfb
+./fonts/type1/public/lm/lmtti10.pfb
+./fonts/type1/public/lm/lmmi7.pfb
+./fonts/type1/public/lm/lmcsco10.pfb
+./fonts/type1/public/lm/lmr5.pfb
+./fonts/type1/public/lm/lmdunh10.pfb
+./fonts/type1/public/lm/lmvtko10.pfb
+./fonts/type1/public/lm/lmr10.pfb
+./fonts/type1/public/lm/lmri12.pfb
+./fonts/type1/public/lm/lmss8.pfb
+./fonts/type1/public/lm/lmss17.pfb
+./fonts/type1/public/lm/lmssq8.pfb
+./fonts/type1/public/lm/lmvtt10.pfb
+./fonts/type1/public/lm/lmbsy10.pfb
+./fonts/type1/public/lm/lmtk10.pfb
+./fonts/type1/public/lm/lmr6.pfb
+./fonts/type1/public/lm/lmtt9.pfb
+./fonts/type1/public/lm/lmbx8.pfb
+./fonts/type1/public/lm/lmmi9.pfb
+./fonts/type1/public/lm/lmri7.pfb
+./fonts/type1/public/lm/lmbx5.pfb
+./fonts/type1/public/lm/lmro8.pfb
+./fonts/type1/public/lm/lmssbo10.pfb
+./fonts/type1/public/lm/lmcsc10.pfb
+./fonts/type1/public/lm/lmbo10.pfb
+./fonts/type1/public/lm/lmsso17.pfb
+./fonts/type1/public/lm/lmtt12.pfb
+./fonts/type1/public/lm/lmbxi10.pfb
+./fonts/type1/public/lm/lmvtk10.pfb
+./fonts/type1/public/lm/lmmi5.pfb
+./fonts/type1/public/lm/lmvtl10.pfb
+./fonts/type1/public/lm/lmbx6.pfb
+./fonts/type1/public/lm/lmsso8.pfb
+./fonts/type1/public/lm/lmssdc10.pfb
+./fonts/type1/public/lm/lmtto10.pfb
+./fonts/type1/public/lm/lmr17.pfb
+./fonts/type1/public/lm/lmsy6.pfb
+./fonts/type1/public/lm/lmtlc10.pfb
+./fonts/type1/public/lm/lmr9.pfb
+./fonts/type1/public/lm/lmro12.pfb
+./fonts/type1/public/lm/lmssqbo8.pfb
+./fonts/type1/public/lm/lmro10.pfb
+./fonts/type1/public/lm/lmtl10.pfb
+./fonts/type1/public/lm/lmssdo10.pfb
+./fonts/type1/public/lm/lmmi12.pfb
+./fonts/type1/public/lm/lmtcso10.pfb
+./fonts/type1/public/lm/lmduno10.pfb
+./fonts/type1/public/lm/lmro9.pfb
+./fonts/type1/public/lm/lmssbx10.pfb
+./fonts/type1/public/lm/lmb10.pfb
+./fonts/type1/public/lm/lmvtlo10.pfb
+./fonts/type1/public/lm/lmbsy5.pfb
+./fonts/type1/public/lm/lmbx10.pfb
+./fonts/type1/public/lm/lmmib7.pfb
+./fonts/type1/public/lm/lmtko10.pfb
+./fonts/type1/public/lm/lmri9.pfb
+./fonts/type1/public/lm/lmro17.pfb
+./fonts/type1/public/lm/lmssqo8.pfb
+./fonts/type1/public/lm/lmr7.pfb
+./fonts/type1/public/lm/lmsy10.pfb
+./fonts/type1/public/lm/lmmi6.pfb
+./fonts/type1/public/lm/lmsy5.pfb
+./fonts/type1/public/lm/lmssqbx8.pfb
+./fonts/type1/public/lm/lmtt8.pfb
+./fonts/type1/public/lm/lmmi8.pfb
+./fonts/type1/public/lm/lmtcsc10.pfb
+./fonts/type1/public/lm/lmmi10.pfb
+./fonts/type1/public/lm/lmbxo10.pfb
+./fonts/type1/public/lm/lmri8.pfb
+./fonts/type1/public/lm/lmsso9.pfb
+./fonts/type1/public/lm/lmbx12.pfb
+./fonts/type1/public/lm/lmbsy7.pfb
+./fonts/type1/public/lm/lmtlco10.pfb
+./fonts/type1/public/lm/lmsso10.pfb
+./fonts/type1/public/lm/lmsso12.pfb
+./fonts/type1/public/lm/lmss9.pfb
+./fonts/type1/public/lm/lmsy7.pfb
+./fonts/type1/public/lm/lmss12.pfb
+./fonts/type1/public/lm/lmtlo10.pfb
+./fonts/type1/public/lm/lmsy8.pfb
+./fonts/type1/public/lm/lmex10.pfb
+./fonts/type1/public/lm/lmr8.pfb
+./fonts/type1/public/lm/lmmib5.pfb
+./fonts/type1/public/lm/lmri10.pfb
+./fonts/type1/public/tex-gyre/qtmb.pfb
+./fonts/type1/public/tex-gyre/qcsb.pfb
+./fonts/type1/public/tex-gyre/qcrr.pfb
+./fonts/type1/public/tex-gyre/qplr.pfb
+./fonts/type1/public/tex-gyre/qcrb.pfb
+./fonts/type1/public/tex-gyre/qhvr.pfb
+./fonts/type1/public/tex-gyre/qhvbi.pfb
+./fonts/type1/public/tex-gyre/qhvri.pfb
+./fonts/type1/public/tex-gyre/qcrri.pfb
+./fonts/type1/public/tex-gyre/qbkr.pfb
+./fonts/type1/public/tex-gyre/qhvcbi.pfb
+./fonts/type1/public/tex-gyre/qcsri.pfb
+./fonts/type1/public/tex-gyre/qcsr.pfb
+./fonts/type1/public/tex-gyre/qbkri.pfb
+./fonts/type1/public/tex-gyre/qplri.pfb
+./fonts/type1/public/tex-gyre/qagb.pfb
+./fonts/type1/public/tex-gyre/qbkb.pfb
+./fonts/type1/public/tex-gyre/qhvcb.pfb
+./fonts/type1/public/tex-gyre/qplbi.pfb
+./fonts/type1/public/tex-gyre/qcrbi.pfb
+./fonts/type1/public/tex-gyre/qplb.pfb
+./fonts/type1/public/tex-gyre/qbkbi.pfb
+./fonts/type1/public/tex-gyre/qtmbi.pfb
+./fonts/type1/public/tex-gyre/qzcmi.pfb
+./fonts/type1/public/tex-gyre/qhvcr.pfb
+./fonts/type1/public/tex-gyre/qhvb.pfb
+./fonts/type1/public/tex-gyre/qagr.pfb
+./fonts/type1/public/tex-gyre/qhvcri.pfb
+./fonts/type1/public/tex-gyre/qtmri.pfb
+./fonts/type1/public/tex-gyre/qtmr.pfb
+./fonts/type1/public/tex-gyre/qagri.pfb
+./fonts/type1/public/tex-gyre/qcsbi.pfb
+./fonts/type1/public/tex-gyre/qagbi.pfb
+
+
+
+
+
+
+

@@ -1,0 +1,270 @@
+%The following LaTeX file is an example of an acceptable paper for the 
+%Communications in Statistics.
+
+%cisform.tex
+%
+\documentclass[12pt]{article}
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\topmargin}{-.5in}
+\setlength{\headsep}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.5in}
+\def\refhg{\hangindent=20pt\hangafter=1}
+\def\refmark{\par\vskip 2mm\noindent\refhg}
+\def\refhg{\hangindent=20pt\hangafter=1}
+\def\refmark{\par\vskip 2mm\noindent\refhg}
+\def\refhg{\hangindent=20pt\hangafter=1}    %20pt
+\def\refhgb{\hangindent=10pt\hangafter=1}
+\def\refmark{\par\vskip 2mm\noindent\refhg}
+\renewcommand{\baselinestretch}{1.5}
+\begin{document}
+%
+%
+\centerline{EXAMPLE}
+\vskip 3mm
+
+
+\noindent OPTIMUM SCORES UNDER ORDER CONSTRAINTS
+IN CONTINGENCY TABLES
+\vskip 3mm
+
+
+\vskip 5mm
+\noindent A. Rahulji Parsa and William B. Smith
+
+\noindent Department of Statistics
+
+\noindent Texas A\&M University
+
+\noindent College Station, Texas \ 77843-3143
+
+\noindent smith@stat.tamu.edu
+
+\vskip 3mm
+\noindent Key Words: contingency tables; structural categories; optimal scoring.
+\vskip 3mm
+
+
+\noindent ABSTRACT
+
+
+%
+Methods are developed for analyzing contingency tables which have
+ordered categories, {\it a priori}.  An exact representation is obtained
+when differences in the scores of the categories are known  (called, strong
+structure).  When   only category ordering is known (weak structure) several techniques are reduced to solutions constrained optimization problems.  Numerical comparisons with other techniques are given in each case.
+%
+\vskip 4mm
+
+
+\noindent 1.   INTRODUCTION AND NOTATION
+
+
+
+The problem of assigning scores to the rows and columns of a
+contingency table is an old one.  Using canonical analysis is one
+method of solution, while correspondence analysis provides another
+method.  Interest in correspondence analysis has been increasing in
+recent years, mainly due to the works of Ben\'ezecri and Lebart and the
+books by Greenacre (1984), Bradley et al. (1962), Goodman (1979) and Haberman (1974) 
+have demonstrated the close relationship between canonical analysis, 
+correspondence analysis and principal 
+
+In this paper we propose a method based on correspondence analysis to
+find optimum scores for rows and columns of an $I\times J$
+contingency table when there is either a ``strong'' or a ``weak''
+structure on the categories.  In a ``strong'' structure, the differences in the scores of the categories are specified, while in a ``weak'' structure only a relative order of the categories is specified.
+
+Let $N_{ij}$ be the frequencies ($i=1,\ldots, I; j=1,\ldots, J$) in
+an $I\times J$ table.
+Following Greenacre (1) we define the following quantities.
+%
+$$
+P=\left[ p_{ij}\right] \hbox{ of order } I\times J, \hbox{ where }
+p_{ij} = n_{ij}/n \eqno(1.1)
+$$
+%
+and
+$$
+n=\sum_i\sum_jn_{ij}; \quad n_{i.} = \sum_jn_{ij}; \quad n_{.j} =
+\sum_i n_{ij}. \eqno(1.2)
+$$
+%
+Let 
+$$
+r=Pe, \quad c = P'e\eqno(1.3)
+$$
+%
+where $e$ denotes a column vector of unit elements of an appropriate
+order.  Let $D_r$, $D_c$ denote diagonal matrix with 
+elements given by those of $r$ and $c$, respectively.  Then
+%
+$$
+E=rc'=\left[\frac{n_{i.}n_{.j}}{n}\right]. \eqno(1.4)
+$$
+%
+%
+where $A$ is of order $I\times k$, $\Lambda$ is a diagonal matrix of
+order $k\times k$ with diagonal elements $\lambda_1\geq \lambda_2\geq
+\ldots\geq \lambda_k$, $B$ is of order $J\times k$, $k$ is the smaller
+of $(I-1)$ and $(J-1)$, and $\lambda^2_{\alpha}(\alpha =
+1,2,\ldots,k)$ are the eigenvalues of $(P-E)(P-E)'$.  It is a
+``generalized'' SVD because   $A$ and $B$ are normalized  with
+respect to metrics $D^{-1}_r$ and $D_c^{-1}$, that is, 
+\vskip 3mm
+
+
+\noindent 2. STRONG ORDER CONSTRAINTS
+
+
+Order constraints are of at least two types; one where the
+differences in scores of the categories is exactly specified and the
+other where the  categories is exactly specified and the other where the  categories are ordered. Since order constraints are in terms of differences
+of scores, they can be expressed in terms of contrast matrices of the
+type (illustrated for $I=5$, say)
+%
+$$
+\begin{array}{l}
+\hbox{(a)} \left[\matrix {1 & -1 & 0 & 0 & 0 \cr
+                          1 & 0 & -1 & 0 & 0 \cr 
+                          1 & 0 & 0 & -1 & 0 \cr
+                          1 & 0 & 0 & 0 & -1\cr}\right]\cr \\
+%
+\hbox{(b)}\left[\matrix  {1 & -1 & 0 & 0 & 0 \cr
+                          0 & 1 & -1 & 0 & 0 \cr
+                          0 & 1 & 1 & -1 & 0 \cr
+                          0 & 1 & 0 & 0 & -1 \cr}\right]\cr \\
+%
+\hbox{(c)}\left[\matrix  {1 & -1 & 0 & 0 & 0 \cr
+                          0 & 1 & -1 & 0 & 0 \cr
+                          0 & 0 & 1 & -1 & 0 \cr 
+                          0 & 0 & 1 & 0 & -1 \cr}\right]\cr \\
+%
+\hbox{(d)}\left[\matrix  {1 & -1 & 0 & 0 & 0 \cr 
+                          0 & 1 & -1 & 0 & 0 \cr
+                          0 & 0 & 1 & -1 & 0 \cr
+                          0 & 0 & 0 & 1 & -1 \cr}\right]
+\cr \\
+\end{array}
+$$
+%
+
+We will assume that the complete order of all categories is known and
+without loss of generality use the matrix $0_1$ of the form (d) above
+%
+
+%eject
+\vskip 3mm
+
+
+\noindent 3.  ILLUSTRATION
+
+
+As an illustration, consider the data from Goodman (3).
+
+%
+\begin{center}
+Table I: Cross-classification of 135 Women According to their
+Periodontal Condition and Calcium Intake Level.
+\end{center}
+
+\begin{center} 
+\begin{tabular}{ccccccc}
+   & & \multicolumn{5}{c}{Level} \\ \hline
+          &   & 1 & 2 & 3 & 4 & Total \\ \hline
+          & A & \ 5 & \ 3 & 10 & 11 & 29 \\
+Condition & B & \ 4 & \ 5 & \ 8 & \ 6 & 23 \\
+          & C & 26 & 11 & \ 3 & \ 6 & 46 \\
+          & D & 23 & 11 & \ 1 & \ 2 & 37 \\ \hline
+   & Total & 58 & 30 & 22 & 25 & 135
+\end{tabular}
+\end{center}
+
+The order constraint is $0_1F_1=\Delta_1$ where 
+%
+$$
+0_1=\left[\matrix {1 & -1 & 0 & 0 \cr
+                  0 & 1 & -1 & 0 \cr 
+                  0 & 0 & 1 & -1 \cr}\right]; 
+\Delta_1=\left[\matrix {.92\cr
+                       .92\cr
+                       .92\cr
+                       .92\cr}\right]\eqno(3.1)
+$$
+%
+From the SVD of $R-e\, c'$, without considering the constraints
+(3.1), the optimal $F_1$ comes out as
+%
+\begin{center}
+Table II: Treatment by Categories Matrix of Response Frequencies.
+\end{center}
+
+\begin{center} 
+\begin{tabular}{ccccccc}
+%
+          & A & B & C & D & E & Total \\ \hline
+A   & \ 9 & \ 5 & \ 9 & 13 & \ 4 & 40 \\
+B   & \ 7 & \ 3 & 10 & 20 & \ 4 & 44 \\
+C   & 14 & 13 & 6 & \ 7 & \ 0 & 40 \\
+D   & 11 & 15 & 3 & \ 5 & \ 8 & 42 \\
+E   & \ 0 & \ 2 & 10 & 30 & \ 2 & 44 \\ \hline
+Total & 41 & 38 & 38 & 75 & 18 & 210 \\
+\end{tabular}
+
+\vspace{.3in}
+A = excellent, B = good, C = Fair, D = Poor, E = Terrible.
+\end{center}
+
+
+\noindent 4. SUMMARY
+
+
+Procedures were presented for developing scores which incorporate the
+natural order in the objects (or categories) that characterize the
+contingency table.  We considered the following two possible order
+structures:  (i)  {\it Strong Structure} or the case in which the
+%
+\vskip 3mm
+
+
+\noindent BIBLIOGRAPHY
+\vskip 3mm
+
+\noindent Bradley, R. A., Katti, S. K.,  and Coons, I. J. (1962). Optimal
+scaling for ordered categories. {\it Psychometrika}, {\bf 27}, 355--374.
+
+\vskip 3mm
+
+\noindent  Goodman, L. A. (1979). Simple models for the analysis of
+associations in cross classified data having ordered categories.
+{\it J. Amer. Statist. Assoc.},  {\bf 74}, 537--552.
+
+\vskip 3mm
+
+\noindent Greenacre, M. J. (1984). {\it Correspondence Analysis}.  New York: Academic Press.
+\vskip 3mm
+
+
+
+\noindent  Haberman, S. J. (1974). Log-linear models for frequency tables
+with ordered classification. {\it Biometrics},  {\bf 30}, 589--600.
+\vskip 1in
+
+
+
+
+**References should be cited in the text by author and date.  Please list the references in alphabetical order.
+\vskip 4mm
+
+
+**Equations and tables may be centered.
+\vskip 4mm
+
+
+**When sending {\TeX} or {\LaTeX} files, please be sure to include all the
+input and style files. It is recommended to put the article on a disk
+and run it from a different computer and check for error messages before
+sending to {\it CIS}.
+
+\end{document}
