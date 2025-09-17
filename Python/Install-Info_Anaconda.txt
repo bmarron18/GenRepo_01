@@ -61,14 +61,15 @@ https://www.anaconda.com/download
 	Sign in with Google
 		marron.bruce.mx@gmail.com
  
-Download
+Download ---
 	Python 3.13
 	Anaconda3-2025.06-0-Linux-x86_64.sh (~1.1 Gb)
-	
+
+Insall ---	
 $ chmod +x Anaconda3-2025.06-0-Linux-x86_64.sh
 $ ./Anaconda3-2025.06-0-Linux-x86_64.sh
 
-
+Installation ---
 Welcome to Anaconda3 2025.06-0
 In order to continue the installation process, please review the license
 agreement.
