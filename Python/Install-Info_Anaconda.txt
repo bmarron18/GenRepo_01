@@ -1,4 +1,23 @@
 
+##########
+Anaconda
+##########
+Windows Subsystem for Linux (WSL) is a feature of Windows that allows you to run a Linux environment on your Windows machine
+
+Natural Language Processing
+    NLTK
+    Gensim
+    Transformers
+    spaCy
+
+AI and Machine Learning
+    scikit-learn
+    TensorFlow
+    Keras
+    PyTorch
+    XGBoost
+
+
 ################
 Anaconda vs MiniConda
 ######################
@@ -34,49 +53,6 @@ Do not, at any time, leave your system without a working python installation
 
 
 
-#############
-Use Anaconda w/ other Python distros?
-####################################
-Installing Anaconda when you have existing Python installations is a common scenario. Anaconda is designed to manage its own Python environments and packages independently of your system's Python or other Python installations.  Anaconda's strength lies in its environment management. You can create separate, isolated environments for different projects, each with its own Python version and packages, without affecting your existing Python installations.
-
-*	Create a new environment with a specific Python version: 
-		$ conda create --name myenv python=3.9
-		$ conda create -n py38 python=3.8
-
-*	Activate an environment:
-    	$ conda activate myenv
-		$ conda activate py38
-		$ conda install package1 package2 ...
-	
-*	Deactivate an environment:
-		$ conda deactivate myenv
-		$ conda deactivate py38
-
-
-##########
-Anaconda
-##########
-
-Windows Subsystem for Linux (WSL) is a feature of Windows that allows you to run a Linux environment on your Windows machine
-
-
-
-Natural Language Processing
-    NLTK
-    Gensim
-    Transformers
-    spaCy
-
-
-AI and Machine Learning
-    scikit-learn
-    TensorFlow
-    Keras
-    PyTorch
-    XGBoost
-
-
-
 
 #################
 Install Anaconda
@@ -86,33 +62,42 @@ https://www.anaconda.com/download
 		marron.bruce.mx@gmail.com
  
 Download
-	
-Anaconda installed
-	Linux
 	Python 3.13
-	Anaconda3-2025.06-0-Linux-x86_64 (~1.1 Gb)
+	Anaconda3-2025.06-0-Linux-x86_64.sh (~1.1 Gb)
+	
+$ chmod +x Anaconda3-2025.06-0-Linux-x86_64.sh
+$ ./Anaconda3-2025.06-0-Linux-x86_64.sh
 
 
+Welcome to Anaconda3 2025.06-0
+In order to continue the installation process, please review the license
+agreement.
+Please, press ENTER to continue
+>>> 
+By continuing installation, you hereby consent to the Anaconda Terms of Service 
+available at https://anaconda.com/legal.
+Do you accept the license terms? [yes|no]
+>>> yes
+
+Anaconda3 will now be installed into this location:
+/home/bmarron/anaconda3
 Downloading and Extracting Packages:
 Preparing transaction: done
 Executing transaction: done
 installation finished.
-Do you wish to update your shell profile to automatically initialize conda?
+
+Do you wish to update your shell profile to automatically initialize conda?		<== say yes!!
 This will activate conda on startup and change the command prompt when activated.
-If you'd prefer that conda's base environment NOT BE activated on startup,
-   run the following command when conda is activated:
-	conda config --set auto_activate_base false
-
+	(base) bmarron@bmarron-HP-Laptop-15t-dy100:~$ 	<== changes to conda base env
+If you'd prefer that ***conda's base environment NOT BE activated*** on startup,
+run the following command when conda is activated:
+	$ conda config --set auto_activate_base false
+	$ conda config --set auto_activate_base true
 You can undo this by running 
-	`conda init --reverse $SHELL`? [yes|no]		<== say yes!!
+	`conda init --reverse $SHELL`? [yes|no]		
+modified      /home/bmarron/.bashrc
 
-[yes]
-
-
-Thank you for installing Anaconda3!
-
-choose [yes]!!!
-[no]
+---- IFF [no] ------------------------------------------------------
 You have chosen to not have conda modify your shell scripts at all.
 To activate conda's base environment in your current shell session:
 	eval "$(/home/bmarron/anaconda3/bin/conda shell.YOUR_SHELL_NAME hook)" 
@@ -131,14 +116,140 @@ If you don't want to do this every time you start a session, you can also add co
 
 	$ echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
 	$ echo 'export PATH="$HOME/anaconda3/bin:$PATH"'  >> ~/.bashrc
+------------------------------------------------------------------------------------
 
-----	check installations----
+
+Thank you for installing Anaconda3!
+
+
+
+---- check installations with conda
     $ conda -V or conda --version 		#to get the conda version.
-    $ python -V or python --version 	#to get the python version.
-    $ conda list 						#to get the Name, Version, Build & Channel details of all the packages 
+		(base) bmarron@bmarron-HP-Laptop-15t-dy100:~$ conda 25.5.1		<== if opted to activate conda on 
+																		startup and change the command 																			prompt
+
+    $ python3 -V or python --version 	#to get the python version running **on compu**!!!
+		Python 3.10.12
+
+
+    $ conda list 						#to get the Name, Version, Build & Channel details of ALL the 											packages 
+	
+	$ conda list python				# packages in environment at /home/bmarron/anaconda3
+brotli-python              1.0.9            py313h6a678d5_9
+gitpython                  3.1.43           py313h06a4308_0
+ipython                    8.30.0           py313h06a4308_0
+msgpack-python             1.0.3            py313hdb19cb5_0
+python                     3.13.5           h4612cfd_100_cp313
+python-dateutil            2.9.0post0       py313h06a4308_2
+python-dotenv              1.1.0            py313h06a4308_0
+python-fastjsonschema      2.20.0           py313h06a4308_0
+python-json-logger         3.2.1            py313h06a4308_0
+python-libarchive-c        5.1              pyhd3eb1b0_0
+python-lmdb                1.6.2            py313h6a678d5_0
+python-lsp-black           2.0.0            py313h06a4308_1
+python-lsp-jsonrpc         1.1.2            pyhd3eb1b0_0
+python-lsp-server          1.12.2           py313h7040dfc_0
+python-slugify             5.0.2            pyhd3eb1b0_0
+python-tzdata              2025.2           pyhd3eb1b0_0
+python_abi                 3.13             0_cp313
+
+	
+	$ conda search python				#finds all sources of Python available to conda fr various sources
+		python		3.13.5 h4612cfd_100_cp313  pkgs/main 
+		python		3.13.7 h7e8bc2b_100_cp313  pkgs/main
+	
 										installed (in the current environment).
-    $ conda info 						#to get all the current environment details.
-    $ conda info --envs 				#To see a list of all your environments
+    $ conda info 						#to get all the current conda details.
+ active environment : None
+            shell level : 0
+       user config file : /home/bmarron/.condarc
+ populated config files : /home/bmarron/anaconda3/.condarc
+                          /home/bmarron/.condarc
+          conda version : 25.5.1
+    conda-build version : 25.5.0
+         python version : 3.13.5.final.0
+                 solver : libmamba (default)
+       virtual packages : __archspec=1=x86_64_v4
+                          __conda=25.5.1=0
+                          __glibc=2.35=0
+                          __linux=5.15.0=0
+                          __unix=0=0
+       base environment : /home/bmarron/anaconda3  (writable)
+      conda av data dir : /home/bmarron/anaconda3/etc/conda
+  conda av metadata url : None
+           channel URLs : https://conda.anaconda.org/conda-forge/linux-64
+                          https://conda.anaconda.org/conda-forge/noarch
+                          https://repo.anaconda.com/pkgs/main/linux-64
+                          https://repo.anaconda.com/pkgs/main/noarch
+                          https://repo.anaconda.com/pkgs/r/linux-64
+                          https://repo.anaconda.com/pkgs/r/noarch
+          package cache : /home/bmarron/anaconda3/pkgs
+                          /home/bmarron/.conda/pkgs
+       envs directories : /home/bmarron/anaconda3/envs
+                          /home/bmarron/.conda/envs
+               platform : linux-64
+             user-agent : conda/25.5.1 requests/2.32.3 CPython/3.13.5 Linux/5.15.0-153-generic linuxmint/21.3 glibc/2.35 solver/libmamba conda-libmamba-solver/25.4.0 libmambapy/2.0.5 aau/0.7.1 c/. s/. e/.
+                UID:GID : 1000:1000
+             netrc file : None
+           offline mode : False
+	
+	
+    $ conda info --envs 				#To see a list of all your conda environments
+base                   /home/bmarron/anaconda3
+
+
+	$ conda activate base
+		(base) bmarron@bmarron-HP-Laptop-15t-dy100:~$
+		(base) bmarron@bmarron-HP-Laptop-15t-dy100:~/anaconda3$ 
+	
+	$ conda deactivate
+		
+		 bmarron@bmarron-HP-Laptop-15t-dy100:~/anaconda3$ 
+
+--- Different Python versions running !!!
+bmarron@bmarron-HP-Laptop-15t-dy100:~$ python3 -V
+Python 3.10.12
+
+(base) bmarron@bmarron-HP-Laptop-15t-dy100:~$ python -V
+Python 3.13.5
+
+Spyder (internal)
+Python 3.11.13
+IPython 8.37.0 -- An enhanced Interactive
+
+
+Change Python in Spyder
+	$ conda activate base
+(base) bmarron@bmarron-HP-Laptop-15t-dy100:~$ conda install spyder-kernels
+
+
+
+	In Spyder under "wrench" change Python interpreter
+		==> home/bmarron/anaconda3/pkgs/python-3.13.5-h4612cfd_100_cp313/bin/python
+		
+		
+#############
+Activate environments
+Use Anaconda w/ other Python distros?
+####################################
+Installing Anaconda when you have existing Python installations is a common scenario. Anaconda is designed to manage its own Python environments and packages independently of your system's Python or other Python installations.  Anaconda's strength lies in its environment management. You can create separate, isolated environments for different projects, each with its own Python version and packages, without affecting your existing Python installations.
+
+*	Create a new environment with a specific Python version: 
+		$ conda create --name myenv python=3.9
+		$ conda create -n py38 python=3.8
+
+*	Activate an environment:
+    	$ conda activate myenv
+		$ conda activate py38
+		$ conda install package1 package2 ...
+	
+*	Deactivate an environment:
+		$ conda deactivate
+
+	
+	
+
+
 
 
 ###################
