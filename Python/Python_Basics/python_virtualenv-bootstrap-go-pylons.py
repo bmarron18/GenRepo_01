@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 ## WARNING: This file is generated
 #!/usr/bin/env python
-"""Create a "virtual" Python installation
+"""
+	Create a "virtual" Python installation
+	Create a Bootstrap fxn
 """
 
 virtualenv_version = "1.4.9"
