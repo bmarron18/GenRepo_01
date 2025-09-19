@@ -40,21 +40,42 @@ rel_path = "2091/data.txt"
 abs_file_path = os.path.join(script_dir, rel_path)
 
 
+  # file paths
+https://stackoverflow.com/questions/7165749/open-file-in-a-relative-location-in-python
 
 
 ###########
 Terms and Symbols
 ###########
 
-(1) create a Service Account, (2) create and save a Key for the Service Account; (3) export GOOGLE_APPLICATION_CREDENTIALS set to the path to the Key; (4) run code using Google libraries that use the value of GOOGLE_APPLICATION_CREDENTIALS to auth.
+    # symbols
+https://docs.python.org/3/genindex-Symbols.html
 
 
-
+---- args and kwargs
+https://realpython.com/python-kwargs-and-args/
 
 
 ##############
 basic objects
 ################
+
+    # os            <== a module
+    # os.environ    <== an object
+    # os,chdir()    <== a method
+https://www.geeksforgeeks.org/python-os-environ-object/
+   
+    # the print() vs pprint() fxns
+https://docs.python.org/3/library/pprint.html
+https://www.geeksforgeeks.org/pprint-data-pretty-printer-python/
+
+
+    # fxns
+https://stackoverflow.com/questions/5336320/how-to-know-function-return-type-and-argument-types
+
+
+
+
 
 https://www.toptal.com/python/python-class-attributes-an-overly-thorough-guide
 
@@ -247,6 +268,14 @@ print vs return
     return: gives the value to the program. Callers of the function then have the actual data and data type (bool, int, etc...) return 3 would have the value 3 put in place of where the function was called.
 
 
+    # The fxn "print_supported_languages" requires the argument "display_language_code: str"
+    # which must be a string (ie : str)
+
+https://stackoverflow.com/questions/54962869/function-parameter-with-colon
+
+
+ # f-string
+https://realpython.com/python-f-strings/
 
 ###########
 code trials

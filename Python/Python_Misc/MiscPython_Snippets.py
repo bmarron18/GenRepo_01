@@ -5,31 +5,98 @@ Created on Mon Dec 30 21:54:30 2024
 @author: bmarron
 """
 
+# %%
 
+#!/Python34/python
+
+num_list = []
+
+with open('temperature.text', 'r') as fh:
+    for line in fh:
+        num_list.append(int(line))
 
 # %%
 
-List of methods/fxn in Google API
+import pandas as pd
+from contextlib import chdir
 
-https://stackoverflow.com/questions/69964961/how-can-i-get-a-list-of-google-cloud-functions-using-google-python-client-for-cl
+with chdir('/home/bmarron/Desktop'):
+    
+     #read the words into a list.
+     #keep duplicate words and sort
+     words = open("clean_test.txt", "r").read().split()
+     ordered = sorted(words)
 
-from google.cloud.functions_v1.services.cloud_functions_service import CloudFunctionsServiceClient
-from google.cloud.functions_v1.types import ListFunctionsRequest
-list_functions_request = ListFunctionsRequest(parent=f"projects/{project}/locations/{region}")
-await CloudFunctionsServiceClient().list_functions(list_functions_request)
+     #remove duplicate words and sort
+     #uniq = sorted(set(words)) 
+
+
+with open("output.txt", "a") as f:
+    print(pd.Series(ordered).value_counts().sort_values(ascending=True), file=f)
+
+
+
+
+    # freq of words in a text
+
+words = file("test.txt", "r").read().split() #read the words into a list.
+uniqWords = sorted(set(words)) #remove duplicate words and sort
+for word in uniqWords:
+    print words.count(word), word
+    
+    # freq of words in a text Pandas
+import pandas as pd
+original_list = ["the", "car", "is", "red", "red", "red", "yes", "it", "is", "is", "is"]
+pd.Series(original_list).value_counts()
+
+pd.Series(original_list).value_counts().sort_values(ascending=True)
+    
 
 # %%
 
-Note that it lists all types of names: variables, modules, functions, etc.
+def print_supported_languages(display_language_code: str):
+    client = translate.TranslationServiceClient()
 
-dir() does not list the names of built-in functions and variables. 
-If you want a list of those, they are defined in the standard module 
-builtins:
+    response = client.get_supported_languages(
+        parent=PARENT,
+        display_language_code=display_language_code,
+    )
 
-import builtins
+    languages = response.languages
+    print(f" Languages: {len(languages)} ".center(60, "-"))
+    for language in languages:
+        language_code = language.language_code
+        display_name = language.display_name
+        print(f"{language_code:10}{display_name}")
 
-dir(builtins)
 
+print_supported_languages("en")
+
+# %%
+
+def translate_text(text: str, target_language_code: str) -> translate.Translation:
+    client = translate.TranslationServiceClient()
+
+    response = client.translate_text(
+        parent=PARENT,
+        contents=[text],
+        target_language_code=target_language_code,
+    )
+
+    return response.translations[0]
+
+
+
+text = "Hello World!"
+target_languages = ["tr", "de", "es", "it", "el", "zh", "ja", "ko"]
+print(f" {text} ".center(50, "-"))
+
+
+for target_language in target_languages:
+      translation = translate_text(text, target_language)
+      source_language = translation.detected_language_code
+      translated_text = translation.translated_text
+      print(f"{source_language} → {target_language} : {translated_text}")
 
 
 # %%
@@ -115,16 +182,6 @@ get_even([1, 2, 3, 4, 5, 6])
 
 # %% 
 
-https://realpython.com/python-kwargs-and-args/
-
-  '''
-  *args ==>  allows you to pass a varying number of positional arguments.
-  Extended sequence assignments use * (p. 74, 82 in Pocket Reference)
-  
-  The unpacking operator (*) creates a tuple not a list: A tuple is similar to a list in 
-  that they both support slicing and iteration. However, tuples are very different in at least 
-  one aspect: lists are mutable, while tuples are not. 
-  '''
   # Sample fxn
   # the following two fxns are equal
 
@@ -230,9 +287,7 @@ Find the list ofenvironmental variables used by Python
     
 # %%
   # in Google Cloud Console (w/o IPython)
-  # f-string
- https://realpython.com/python-f-strings/
-
+ 
 
 
 $ export PROJECT_ID=$(gcloud config get-value core/project)
@@ -240,20 +295,16 @@ $ echo "PROJECT_ID: $PROJECT_ID"
     
    # in Google Cloud Console (w/ IPython)   
    
->>> from os import environ
->>> from google.cloud import translate
+from os import environ
+from google.cloud import translate
 
->>> PROJECT_ID = environ.get("PROJECT_ID", "")
->>> assert PROJECT_ID
->>> PARENT = f"projects/{PROJECT_ID}"
+PROJECT_ID = environ.get("PROJECT_ID", "")
+assert PROJECT_ID
+PARENT = f"projects/{PROJECT_ID}"
 
 # %%
-
-'''
-TUTORIAL 9
-'''
-
-  # in Google Cloud Console (w/ IPython)
+ 
+ # in Google Cloud Console (w/ IPython)
   
   '''
   Argument formats in calls (eg display_language_code=display_language_code)
@@ -264,7 +315,7 @@ TUTORIAL 9
   '''
 https://stackoverflow.com/questions/54962869/function-parameter-with-colon
 
->>>
+
 def print_supported_languages(display_language_code: str):
     client = translate.TranslationServiceClient()
 
@@ -281,22 +332,6 @@ def print_supported_languages(display_language_code: str):
         display_name = language.display_name
         print(f"{language_code:10}{display_name}")
 
-
-print_supported_languages("en")
----------------------- Languages: 194 ----------------------
-ab        Abkhaz
-ace       Acehnese
-ach       Acholi
-af        Afrikaans
-sq        Albanian
-alz       Alur
-am        Amharic
-ar        Arabic
-hy        Armenian
-as        Assamese
-...
-yua       Yucatec Maya
-zu        Zulu
 
 
 # %%
@@ -326,11 +361,6 @@ Out[5]: [{'gcs_source': {'input_uri': 'https://cloud.google.com/translate/docs/s
 
 # %%
 
-'''
-TUTORIAL 10
-
-'''
-
 
 def translate_text(text: str, target_language_code: str) -> translate.Translation:
     client = translate.TranslationServiceClient()
@@ -357,16 +387,6 @@ for target_language in target_languages:
     translated_text = translation.translated_text
     print(f"{source_language} → {target_language} : {translated_text}")
 
------------------- Hello World! ------------------
-en → tr : Selam Dünya!
-en → de : Hallo Welt!
-en → es : ¡Hola Mundo!
-en → it : Ciao mondo!
-en → el : Γεια σου Κόσμο!
-en → zh : 你好世界！
-en → ja : 「こんにちは世界」
-en → ko : 안녕하세요!
-
 
 text = "What the fuck!"
 
@@ -391,11 +411,6 @@ en → ko : 이게 뭐야!
 
   
 # %%
-
- # translaring text
-https://cloud.google.com/translate/docs/basic/translating-text#translating_text
-https://cloud.google.com/translate/docs/basic/translating-text#translate_translate_text-python
-
 
 
 
@@ -423,30 +438,11 @@ def translate_text(target: str, text: str) -> dict:
     return result
 
 
-
 # %%
 
-'''
-TUTORIAL 11
-    
-'''
-
-
-
-
-# %%
-
-'''
-TUTORIAL 12
-     Clean up
-    
-'''
-
+       # exit Cloud Shell IPython session to go back to the Cloud Shell
 In [12]: exit
-    # exit Cloud Shell IPython session to go back to the Cloud Shell
-
-
-
+ 
 
 To delete your Google Cloud project, from Cloud Shell:
     Retrieve your current project ID: PROJECT_ID=$(gcloud config get-value core/project)

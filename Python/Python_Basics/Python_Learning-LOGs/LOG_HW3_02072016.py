@@ -206,7 +206,7 @@ pip install scikit-learn
 pip uninstall numpy
 pip uninstall pandas
 pip install pandas==0.13.1
-Note that installing pandas also installs it's dependencies such as numpy.
+#Note that installing pandas also installs it's dependencies such as numpy.
 
 
 scipy:0.16.0-np110py27_1 defaults --> 0.16.0-np19py27_1 defaults
@@ -259,11 +259,12 @@ wgts = sorted(wgtscsv, reverse=True)
 
 
 #%%
-
+'''
 It is not possible to sort a dict, only to get a representation of a 
 dict that is sorted. Dicts are inherently orderless, but other types, 
 such as lists and tuples, are not. So you need a sorted representation, 
 which will be a list—probably a list of tuples.
+'''
 
 For instance,
 

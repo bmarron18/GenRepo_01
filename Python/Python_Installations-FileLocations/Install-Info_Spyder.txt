@@ -1,4 +1,8 @@
 
+
+    # change TABs Spyder
+https://stackoverflow.com/questions/36187784/changing-indentation-settings-in-the-spyder-editor-for-python
+
 	
 ############
 Spyder Install
@@ -7,6 +11,10 @@ Spyder is only available by default in your base environment; NOT thru Anaconda
 #############
 https://www.spyder-ide.org/
 https://www.spyder-ide.org/download/?os=linux&arch=x64
+
+  #Spyder IDE
+https://docs.spyder-ide.org/5/faq.html#using-packages-installer
+
 
 -- download
 	Spyder-Linux-x86_64.sh
@@ -39,5 +47,4 @@ $ locate spyder >> ~/Desktop/Spyder.txt
 $ sudo rm -rf <fill in addresses from above text file>
 	==> most spyder files are here	
 				/home/bmarron/.local/spyder-6
-
 
