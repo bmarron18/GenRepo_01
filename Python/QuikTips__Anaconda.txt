@@ -175,7 +175,7 @@ python_abi                 3.13             0_cp313
     	$ conda activate spyder_env
 
 
-*	Install pkgs:
+*	Install pkgs in spyder_env (spyder-kernels, :
 		(spyder_env) $ conda install spyder-kernels			<== will install LOTS of pkgs
 			## Package Plan ##
 			environment location: /home/bmarron/anaconda3/envs/spyder_env
