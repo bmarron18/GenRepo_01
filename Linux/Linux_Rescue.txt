@@ -1,0 +1,40 @@
+#############
+Start from USB
+##################
+
+* Connect the USB with systemrescue
+* Access the boot menu, you have to repeatedly press SHIFT- F12
+	Select UEFI and then Shift-F9
+* Choose the systemrescue boot USB. 
+* Choose the language.
+
+###########
+System Rescue
+Bootable USB
+###############
+https://www.system-rescue.org/
+https://sourceforge.net/projects/systemrescuecd/
+Last Update: 2025-08-23 
+
+
+1. Download the latest live image
+Download systemrescue_12.02-amd64.iso
+
+2. Write the image to a USB
+You'll need to write the image to a USB drive using a program such as balenaEtcher which works on Windows, Mac and Linux. This step will completely erase any data on your USB stick.
+
+3. Reboot your computer from USB
+restart your computer with the USB inserted  
+
+
+############
+balenaEtcher
+#############
+https://etcher.balena.io/#download-etcher
+Flash OS images to SD cards & USB drives, safely and easily
+
+
+balena-etcher	230 MB Program		<== double-clic to Open (run)
+
+Flash Device
+	rescuezilla-2.6.1-64bit.oracular.iso	==> 	Vendor..(Rescuezilla)

@@ -1,0 +1,3912 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			GENERAL LINUX TOOLBOX
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#######
+HMDI problems
+#################
+
+Issue	==> Workspace 1 to laptop screen and Workspace 2 on HDMI connected projector
+Need to check Mirror Displays
+
+https://askubuntu.com/questions/310217/workspace-1-to-laptop-screen-and-workspace-2-on-hdmi-connected-tv
+Of course, as long as you have unselected Mirror displays in System Settyngs > Hardware > Displays (as in next image), you can view some programs on one display and other programs on another display. Also you can drag and drop windows from one display to another ( <== this the problem; dont want to drag and drop to other workspaces)
+
+No HMDI recognition (it was the cable after all!)
+https://linuxcommunity.io/t/my-ubuntu-system-isnt-recognising-my-hdmi-connected-monitor-help/3416/7
+check xrandr --listmonitors - that you have another display there
+check which display manager you use
+	sudo systemctl status display-manager			<== lightdm
+try different display managers (gdm3 or lightdm)
+	sudo dpkg-reconfigure gdm3
+	sudo dpkg-reconfigure lightdm
+
+
+What worked for me (Lenovo thinkpad x1 Carbon, Ubuntu 18.04 LTS), is either switching the display manager back and forth between gdm3 and lightdm
+	sudo dpkg-reconfigure gdm3
+and/or reinstalling lightdm and reconfiguring it again instead of using gdm3
+	sudo aptitude install --reinstall lightdm ubuntu-desktop
+
+sudo aptitude install gdm3			<== GNOME Display Manager
+
+
+
+#############
+microphone muted
+#################
+
+open Pulse Audio Volume Control
+ Under Configuration
+ 		==> Analog Stereo Duplex			<== other settings mute internal mike
+
+
+###########
+new user
+###########
+
+Maria Eugenia
+Maria
+hipnosis111
+
+
+###################
+no sound with HMDI
+###################
+
+sudo aptitude install pavucontrol
+
+Under the Configuration tab, change the built in audio profile to HDMI:
+	Digital Stereo (HDMI) output
+
+
+########################
+cant login
+login problem
+#################
+
+Try to login and get dumped to intrafms shell with error message,
+"The root filesystem on /dev/nvme0n1p5 requires a manual fsck"
+
+--- solved
+https://askubuntu.com/questions/885062/root-file-system-requires-manual-fsck
+
+you should be able to drop to some maintenance shell (if not already opened), 
+where you may run fsck -yf /dev/[name of harddisk].
+
+If there are any errors rerun fsck -yf /dev/[name of harddisk]
+
+To login as usual simply run exit and proceed normally.
+
+
+---- useful
+https://forums.linuxmint.com/viewtopic.php?t=282317
+
+scrool down for screenshot of "grub' 
+screenshots are from another article, but show the boot menu and "fsck".
+Bootup menu for Linux - Screen1 - Showing Advanced Boot Menu option
+
+
+
+
+#####################
+convert .RAW image files to .jpeg
+#####################################
+
+make sure imagemagick is installed
+
+raw-camera-image-to-jpeg 
+find . -type f \( -iname "*.raw" -o -iname "*.cr2" \) -exec sh -c 'darktable-cli {} ${0%.*}.jpeg' {} \; -delete
+
+in Mexico
+find . -type f -iname "*.awr" -exec sh -c 'darktable-cli {} ${0%.*}.jpeg' {} \; -delete
+
+
+
+##############
+find/delete empty directories
+#########################
+
+$ find . -type d -empty -print
+$ find . -type d -empty -delete
+
+
+
+
+
+https://askubuntu.com/questions/13447/how-do-i-change-the-default-text-editor
+
+If you would like to replace gedit with any other text editor for all file types, the easiest is to edit 
+the defaults.list file located here:
+
+/usr/share/applications/defaults.list
+
+Just find and replace all gedit.desktop references with your own editor (in this case emacs.desktop). 
+You need root permissions to edit the file.
+
+###########
+keyrings
+############
+Ubuntu Linux uses keyrings (similar to the Keychain on MacOS) to store saved passwords and other sensitive information. This keyring is 
+typically protected by your login password. In rare cases, it is possible for the keyring password to become out of sync with your login 
+password. When this happens, your keyring can't be opened at login time, and you are prompted for the old password.
+
+Remove Keyring
+
+If you are not able to unlock your Keychain with your previous password, you will need to delete your keyring 
+(and lose any information stored in it) with the following command:
+
+joeuser@athena:~$ rm ~/.gnome2/keyrings/*
+
+
+USE THIS!!!
+
+Repeatedly hit "Cancel"
+
+
+
+
+#########
+rename thumdrive
+#############
+
+
+
+ 1.  Open "Disks" application
+ 2. Select the flash drive in the panel on the left
+ 3. Press the Unmount button (should look like a "stop button")
+ 4. Click on the gears icon ("More actions") and choose "Edit filesystem"
+
+
+
+
+
+
+
+########
+check os Linux
+Ubuntu
+version
+xfce desktop
+###############
+
+cat /etc/os-release &&
+lsb_release -a &&
+hostnamectl &&
+uname -r
+
+xfce4-about
+
+
+####################
+can't login
+Stuck in login loop
+backdoor login
+######################
+https://askubuntu.com/questions/223501/ubuntu-gets-stuck-in-a-login-loop
+https://www.linuxslaves.com/2016/05/3-ways-fix-ubuntu-gets-stuck-login-loop.html
+
+ctrl-alt-F3		<<login backdoor!!
+user: 			bruce (or bmarron)
+password:		<curent passwrd>
+
+sudo chown bruce:bruce .Xauthority
+sudo chown bruce:bruce .ICEauthority
+
+ls -ld /tmp			<< Check for the first 10 letters in the left: they should read exactly: drwxrwxrwt. 
+
+sudo apt purge lightdm
+sudo apt install lightdm
+sudo dpkg-reconfigure lightdm
+
+
+
+######
+count lines
+############
+https://stackoverflow.com/questions/3137094/how-to-count-lines-in-a-document
+
+$ wc -l file
+$ grep -w "pattern" -c file  
+$ grep -w "pattern" -c -v file 
+
+
+###########
+root access
+#############
+
+sudo -i
+
+
+
+############
+Linux Mint
+#############
+
+	# check system
+	# system status
+	# OS
+	# operating system
+
+$ inxi -Fxz
+
+20210418
+System:
+  Kernel: 5.4.0-72-generic x86_64 bits: 64 compiler: gcc v: 9.3.0 
+  Desktop: Cinnamon 4.8.6 Distro: Linux Mint 20.1 Ulyssa 
+  base: Ubuntu 20.04 focal 
+Machine:
+  Type: Laptop System: HP product: HP Laptop 15t-dy100 v: N/A 
+  serial: <filter> 
+  Mobo: HP model: 86C9 v: 56.32 serial: <filter> UEFI: AMI v: F.13 
+  date: 07/15/2020 
+Battery:
+  ID-1: BAT0 charge: 34.1 Wh condition: 40.9/40.9 Wh (100%) 
+  model: HP Primary status: Charging 
+CPU:
+  Topology: Quad Core model: Intel Core i5-1035G1 bits: 64 type: MT MCP 
+  arch: Ice Lake rev: 5 L2 cache: 6144 KiB 
+  flags: avx avx2 lm nx pae sse sse2 sse3 sse4_1 sse4_2 ssse3 vmx 
+  bogomips: 19046 
+  Speed: 1201 MHz min/max: 400/3600 MHz Core speeds (MHz): 1: 1200 2: 1201 
+  3: 1201 4: 1201 5: 1200 6: 1203 7: 1200 8: 1201 
+Graphics:
+  Device-1: Intel vendor: Hewlett-Packard driver: i915 v: kernel 
+  bus ID: 00:02.0 
+  Display: x11 server: X.Org 1.20.9 driver: modesetting unloaded: fbdev,vesa 
+  resolution: 1366x768~60Hz 
+  OpenGL: renderer: Mesa Intel UHD Graphics (ICL GT1) v: 4.6 Mesa 20.2.6 
+  direct render: Yes 
+Audio:
+  Device-1: Intel Smart Sound Audio vendor: Hewlett-Packard 
+  driver: snd_hda_intel v: kernel bus ID: 00:1f.3 
+  Sound Server: ALSA v: k5.4.0-72-generic 
+Network:
+  Device-1: Realtek RTL8822CE 802.11ac PCIe Wireless Network Adapter 
+  vendor: Hewlett-Packard driver: rtw_pci v: N/A port: 3000 bus ID: 01:00.0 
+  IF: wlo1 state: up mac: <filter> 
+  Device-2: Realtek 802.11ac WLAN Adapter type: USB driver: btusb 
+  bus ID: 1-10:4 
+Drives:
+  Local Storage: total: 238.47 GiB used: 38.18 GiB (16.0%) 
+  ID-1: /dev/nvme0n1 vendor: SK Hynix model: BC511 HFM256GDJTNI-82A0A 
+  size: 238.47 GiB 
+RAID:
+  Hardware-1: Intel 82801 Mobile SATA Controller [RAID mode] driver: ahci 
+  v: 3.0 bus ID: 00:17.0 
+Partition:
+  ID-1: / size: 175.97 GiB used: 38.12 GiB (21.7%) fs: ext4 
+  dev: /dev/nvme0n1p5 
+Sensors:
+  System Temperatures: cpu: 47.0 C mobo: N/A 
+  Fan Speeds (RPM): N/A 
+Info:
+  Processes: 251 Uptime: N/A Memory: 11.40 GiB used: 994.7 MiB (8.5%) 
+  Init: systemd runlevel: 5 Compilers: gcc: 9.3.0 Shell: bash v: 5.0.17 
+  inxi: 3.0.38 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	# mint update tool
+mintupdate-tool --help
+mintupdate-tool list
+mintupdate-tool upgrade
+
+
+20210418
+https://www.linuxmint.com/rel_ulyssa_cinnamon.php
+https://www.linuxmint.com/rel_ulyssa_cinnamon_whatsnew.php
+
+	Upgrade Linux Mint 20.1 "Ulyssa" Cinnamon Edition
+	Linux Mint 20 is based on Ubuntu 20.04  ==> Ubuntu 20.04 LTS (Focal Fossa) 
+	Snap Store
+		The Snap Store is disabled in Linux Mint 20. For more information on this or to re-enable it read https://linuxmint-user-guide.readthedocs.io/en/latest/snap.html. 
+	DVD Playback with VLC
+
+	If VLC does not find your DVD player, click on Media->Open Disc, and specify '/dev/sr0' as the disc device.
+
+
+
+############
+open permission denied directory
+#################################
+
+cd /var/lib/mysql-files/
+bash: cd: mysql-files: Permission denied
+sudo su						<< as root
+root@bruce-HP-Notebook:# cd /var/lib/mysql-files/
+root@bruce-HP-Notebook:# rm *.csv
+exit
+bruce@bruce-HP-Notebook:$
+
+
+################
+database converters
+open .mdb .accdb files
+#####################
+
+https://www.rebasedata.com/
+https://www.rebasedata.com/ubuntu-read-mdb
+
+##############
+Java JDK JRE
+#############
+https://stackoverflow.com/questions/24641536/how-to-set-java-home-in-linux-for-all-users
+
+
+I would recommend placing the following line in /etc/profile
+
+export JAVA_HOME=$(readlink -f /usr/bin/javac | sed "s:/bin/javac::")
+
+
+###############
+open .gz files
+#############
+
+gunzip -k file.gz
+
+
+
+################
+LibreOffice
+convert pdf to doc
+convert pdf to docx
+convert pdf to odt
+###################
+https://stackoverflow.com/questions/44342224/pdf-to-doc-docx-converter
+
+soffice --infilter="writer_pdf_import" --convert-to doc EA_ErosionControlMeasuresWriteable_20150429.pdf
+soffice --infilter="writer_pdf_import" --convert-to odt EA_ErosionControlMeasuresWriteable_20150429.pdf
+soffice --infilter="writer_pdf_import" --convert-to docx EA_ErosionControlMeasuresWriteable_20150429.pdf
+
+
+
+
+
+
+###############
+/share
+shared files
+shared directories
+shared applications
+######################
+
+shared directories: 	/usr/share/		(package manager install)
+			/usr/local/share/ 	(manual install option)
+			~/.local/share/		(manual install option)
+
+
+bruce@bruce-HP-Notebook:/usr/local/share$ ls
+applications  armory  ca-certificates  doc  emacs  fonts  man  sgml  texmf  xml
+
+
+bruce@bruce-HP-Notebook:~/.local/share$ ls
+applications         gvfs-metadata  nautilus                   webkitgtk
+desktop-directories  icons          orage                      WebpageIcons.db
+evolution            jupyter        recently-used.xbel         xcfe
+fonts                keyrings       ristretto                  xfpanel-switch
+gegl-0.3             latexila       session_migration-xubuntu  zeitgeist
+gnome-software       LocalStorage   shotwell
+gstreamer-1.0        mime           Trash
+
+
+bruce@bruce-HP-Notebook:/usr/share$ ls
+accounts                     liblangtag
+accountsservice              liblouis
+aclocal                      liblouisutdml
+aclocal-1.15                 libmate-desktop
+acpi-support                 libofx7
+activity-log-manager         libparse-debianchangelog-perl
+adduser                      librarian
+alsa                         libreoffice
+alsa-base                    librevenge
+apache2                      libsensors4
+appdata                      libthai
+app-info                     libtimezonemap
+app-install                  libtool
+application-registry         libwacom
+applications                 lightdm
+apport                       lightdm-gtk-greeter-settings
+apps                         lintian
+aptitude                     linux-sound-base
+apt-xapian-index             locale
+aqbanking                    locale-langpack
+aspell                       locales
+atom                         luajit-2.1.0-beta3
+atril                        m2300w
+autoconf                     man
+automake-1.15                man-db
+avahi                        mate-about
+awk                          mate-calc
+backgrounds                  matplotlib
+base-files                   maven-repo
+base-passwd                  media-player-info
+bash-completion              menu
+binfmts                      menulibre
+brasero                      metacity
+brltty                       metainfo
+bug                          midi
+build-essential              mime
+ca-certificates              mime-info
+ca-certificates-java         mimelnk
+caja                         misc
+calendar                     mobile-broadband-provider-info
+calibre                      mousetweaks
+catfish                      mozilla
+ccsm                         mugshot
+cdbs                         mysql
+cdrdao                       mysql-common
+cmake                        mythes
+cogl                         nano
+color                        nautilus-dropbox
+colord                       netpbm
+columbus1                    netplan
+command-not-found            notify-osd
+common-licenses              ntp
+compiz                       numpy
+compizconfig                 nux
+consolefonts                 omf
+console-setup                onboard
+consoletrans                 openal
+cream                        openproject
+cups                         orage
+dbus-1                       org.gnome.Weather
+debconf                      os-prober
+debhelper                    p11-kit
+debianutils                  package-data-downloads
+defaults                     PackageKit
+desktop-base                 pam
+desktop-directories          pam-configs
+dh-autoreconf                pandoc
+dh-python                    parole
+dict                         pastebin.d
+dictionaries-common          pavucontrol
+distro-info                  perl
+djvu                         perl5
+dns                          perl-openssl-defaults
+dnsmasq-base                 php7.2-common
+doc                          php7.2-json
+doc-base                     php7.2-opcache
+dpkg                         php7.2-readline
+dvdauthor                    pixmaps
+emacs                        pkgconfig
+enchant                      pkg-config-crosswrapper
+engrampa                     pkg-config-dpkghook
+evince                       plymouth
+evolution-data-server        pnm2ppa
+farstream                    po-debconf
+ffmpeg                       polkit-1
+file                         poppler
+file-roller                  popularity-contest
+fish                         ppd
+fontconfig                   ppp
+fonts                        proj
+fonts-droid-fallback         publicsuffix
+fonts-sil-padauk             pulseaudio
+foo2qpdl                     pygtk
+foo2zjs                      pyshared
+fwupd                        python
+gcc-8                        python3
+gconf                        python-apt
+GConf                        python-wheels
+gdal                         qt4
+gdb                          qt5
+gdebi                        qtchooser
+gdm                          R
+gedit                        readline
+geoclue-providers            resolvconf
+GeoIP                        rhythmbox
+gettext                      rsyslog
+gettext-0.19.8               rubygems-integration
+ghostscript                  sane
+gimp                         secureboot
+gir-1.0                      sensible-utils
+git-core                     session-migration
+gitk                         sgml
+gitweb                       sgml-base
+glib-2.0                     sgml-data
+glvnd                        sgt-puzzles
+gmusicbrowser                simple-scan
+gnome                        skypeforlinux
+gnome-background-properties  snmp
+gnome-bluetooth              software-center
+gnome-control-center         software-properties
+gnome-session                sounds
+gnome-settings-daemon        speech-dispatcher
+gnome-shell                  ssl-cert
+gnome-software               stacer
+gnome-system-monitor         synaptic
+gnome-system-tools           system-config-printer
+gnome-video-effects          systemd
+gnucash                      systemtap
+gnupg                        system-tools-backends-2.0
+goa-1.0                      tabset
+goffice                      tcltk
+grass74                      terminfo
+groff                        tex-common
+grub                         texlive
+gst-plugins-bad              texmf
+gst-plugins-base             themes
+gstreamer-1.0                thumbnailers
+gtk-3.0                      Thunar
+gtk-doc                      transmission
+gtk-engines                  ubuntu-advantage-tools
+gtksourceview-2.0            ubuntu-drivers-common
+gtksourceview-3.0            ubuntu-release-upgrader
+guile                        ufw
+gutenprint                   unattended-upgrades
+gvfs                         unity
+gwenhywfar                   unity-control-center
+hal                          unity-greeter
+help                         unity-scopes
+help-langpack                unity-settings-daemon
+hplip                        unity-tweak-tool
+hunspell                     update-manager
+hwdata                       update-notifier
+hyphen                       upstart
+i18n                         usb-creator
+ibus                         usb_modeswitch
+icons                        vim
+icu                          vte
+ImageMagick-6                wallpapers
+images                       wayland
+im-config                    wayland-protocols
+indicator-application        webkitgtk-1.0
+indicator-power              webkitgtk-3.0
+indicators                   wifi-radar
+info                         wx-3.0-gtk
+initramfs-tools              X11
+intltool                     xfburn
+intltool-debian              xfce4
+iptables                     xfce4-notes-plugin
+iso-codes                    xfpanel-switch
+java                         xfwm4
+javascript                   xgreeters
+kde4                         xml
+keyrings                     xml-core
+language-selector            xsane
+language-support             xserver-xorg
+language-tools               xsessions
+latex2rtf                    xubuntu
+latexila                     xubuntu-docs
+libapache2-mod-perl2         yelp
+libaudio2                    yelp-xsl
+libc-bin                     y-ppa-manager
+libdrm                       zeitgeist
+libexttextcat                zenity
+libgnomekbd                  zoneinfo
+libgphoto2                   zsh
+libgweather
+
+
+
+
+
+
+###########
+firewall
+############
+
+https://linuxconfig.org/how-to-enable-disable-firewall-on-ubuntu-18-04-bionic-beaver-linux
+
+
+sudo ufw status verbose
+sudo ufw enable
+
+
+
+
+
+######################
+disk usage
+######################
+look through all the user's directories and add up the space they were using and make a listing of the results.
+
+du -- Show disk usage summary for a file(s).
+sort -- Sort lines of text files.
+
+du -s * | sort -nr > $HOME/user_space_report.txt
+
+
+
+
+
+###############
+shell variables
+environmental variables
+local variables
+shell functions
+###################
+
+env
+printenv
+
+
+set | less			<< see all
+
+
+
+#######
+apt ppa key list
+##############
+
+apt-key list >> ~/Desktop/PPAKeyList.txt 
+
+
+
+##########
+audio control
+############
+
+installed ==> pulseaudio
+
+amixer --help
+
+alsamixer		<select item use L-R arrows (eg Master) and use up-down arrows 
+
+
+
+
+
+
+
+#############
+printer setup
+#############
+
+
+
+Using HPLIP
+
+	a. Return printer to default settings (turns off wifi)
+
+	b. Open HPLIP ==> Device Manager...==> Setup Device...
+
+	c. Select "Wireless/802.11..." ;  plug in the printer (USB connection)
+
+	d. Follow the steps as given
+	   NB. Connection to the network is slow but ultimately should ask for the wireless password
+
+	e. The last step 
+		==> Disconnect the USB
+		==> Open Linux command line and type "hp-setup 192.168.0.9"	< the printer IP address
+
+	f. A NEW set of HPLIP windows opens (looks like you've already done this but no!)
+
+	g. Follow the steps here
+
+	h. terminal should output 
+...
+Done.
+
+	i. If all good, clicking on the HPLIP icon shows
+		==> <printer name> (<IP address>) 
+
+
+
+
+
+
+
+
+
+
+#####################
+timezones
+update date and time
+#####################
+
+https://help.ubuntu.com/community/UbuntuTime
+
+	a. check internal clock
+sudo dpkg-reconfigure --frontend noninteractive tzdata
+
+	b. reconfigure to new timezone
+ sudo dpkg-reconfigure tzdata
+
+
+
+
+
+####### #SOME of this is applicable; not sure which ####################
+
+
+	a, open Panel Preferences
+	b.double-click on clock 		<< note name (internal name: clock-8)
+	c. set Timezone: America/Los_Angeles
+
+
+Using ntp:
+sudo aptitude install ntpdate
+sudo aptitude install ntp
+
+	a. create file
+sudo mousepad /etc/cron.daily/ntpdate
+
+----------ntpdate-----------------------
+#!/bin/sh
+ ntpdate ntp.ubuntu.com pool.ntp.org
+----------------------------------------
+
+	b. make executable 
+sudo chmod 755 /etc/cron.daily/ntpdate
+
+	c. make Linux use local time
+timedatectl set-local-rtc 1
+
+	d. ntp running?
+sudo /etc/init.d/ntp status
+
+	e. re-start
+sudo /etc/init.d/ntp restart
+
+	f. check config file
+sudo mousepad /etc/ntp.conf
+
+	g. ntp startup file
+mousepad /etc/init.d/ntp
+
+
+
+
+
+
+sudo mousepad /etc/ntp.conf		<<server pool.ntp.org
+/etc/init.d/ntpd start
+ntpdate pool.ntp.org
+sudo ntpdate time.nist.gov
+
+
+sudo service ntp stop &&
+sudo ntpdate time.nist.gov &&
+sudo service ntp start
+
+sudo service ntp stop &&
+sudo ntpdate pool.ntp.org &&
+sudo service ntp start
+
+
+
+cat /etc/timezone
+	America/New_York		<< set to EST
+cd /usr/share/zoneinfo/America		<< all timezones
+
+
+sudo mousepad /etc/timezone 		<< change to PST
+	America/Los_Angeles
+
+export TZ=America/Los_Angeles
+
+Orage
+Whisker menu ==> Orage Global Time ==> Globaltime preferences ==> Localtime zone: America/Los_Angeles
+
+
+
+
+
+
+###############
+launchers
+###############
+https://help.ubuntu.com/community/UnityLaunchersAndDesktopFiles
+
+launchers are .desktop files ==> desktop configuration files
+
+ comparisons of the .desktop files from /usr/share/applications
+
+$ sudo cp zotero.desktop /usr/share/applications/
+
+
+############
+open .gz files
+###############
+
+gzip -d *.gz
+
+
+
+
+
+
+############
+file encoding
+utf-8
+ascii
+#################
+
+
+
+You can determine the file encoding with the following command:
+
+file -bi filename
+
+
+
+
+
+
+
+#############
+~/.bashrc			<< temporary
+~/.bash_aliases
+~/.profile			<<permanent
+############
+
+----- from Lines 124 - 131 ~/.bashrc file ------------------------------------------
+....
+#Linux determines the executable search path with the $PATH environment variable
+# added by bmarron 20170517; search her first
+export PATH="/usr/lib/bin:$PATH"
+
+# look after all other paths; at the end
+export PATH="$PATH:/home/bruce/anaconda2/bin"
+# added by Anaconda2 4.3.1 installer; sends R to /home/bruce/anaconda2/bin/R w/o alias above
+#export PATH="/home/bruce/anaconda2/bin:$PATH"
+-------------------------------------------------------------------------------------------
+
+
+bruce@bruce-HP-Notebook:~$ which R
+/usr/bin/R
+bruce@bruce-HP-Notebook:~$ echo "$PATH"
+/usr/lib/bin:/home/bruce/bin:/home/bruce/.local/bin:/usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/bruce/anaconda2/bin
+
+
+
+
+
+/usr/bin				<< these ../bin are where the executables are; they point to ../lib directories
+/usr/local/bin
+
+
+---- example ---------------------------------------
+
+alias R="/usr/bin/R"			<< add to ~/.bashrc;
+					   points to the script in /usr/bin/R
+
+#!/bin/bash				<< the first few lines of the script, R
+# Shell wrapper for R executable.
+
+R_HOME_DIR=/usr/lib/R
+.........
+---------------------------------------------------------------
+
+echo "$PATH"
+
+
+	#Linux determines the executable search path with the $PATH environment variable
+	#add temporary, search-here-first PATH to .bashrc if desired
+export PATH="/home/bmarron/anaconda2/pkgs/pyreport:$PATH"
+
+
+
+
+
+
+
+
+#########################
+change ppa
+updates to repositories
+ppa
+##########################
+
+$ mousepad /etc/apt/sources.list
+
+
+
+
+##############
+Bit Torrent
+Transmission
+##############
+
+Transmission runs torrents
+(Under Xubuntu Whisker menu)
+
+
+
+#####################
+configuration files
+####################
+
+99% config files are located inside /etc/
+
+
+
+#########################
+environmental variables
+#########################
+https://superuser.com/questions/420295/how-do-i-see-a-list-of-all-currently-defined-environment-variables-in-a-linux-ba
+
+The env command with no arguments will print a list of the "exported" environment variables and their values. 
+These variables are made visible to subprocesses - many other environment variables are not shown with this
+
+
+
+printenv | sort
+
+
+
+
+The following command will show all of the defined environment variables by using a subshell 
+without affecting POSIX compliance in your current shell.
+
+(set -o posix ; set) >> $HOME/Desktop/test.txt
+
+
+
+
+
+
+System Variable 		Meaning 							To View Variable Value Type
+----------------		---------							----------------------------
+BASH_VERSION 			Holds the version of this instance of bash. 			echo $BASH_VERSION
+HOSTNAME 			The name of the your computer. 					echo $HOSTNAME
+CDPATH 				The search path for the cd command. 				echo $CDPATH
+HISTFILE 			The name of the file in which command history is saved. 	echo $HISTFILE
+HISTFILESIZE 			The max number of lines contained in the history file. 		echo $HISTFILESIZE
+HISTSIZE 			The number of commands to remember in the command history. 
+				The default value is 500. 					echo $HISTSIZE
+HOME 				The home directory of the current user. 			echo $HOME
+IFS 			The Internal Field Separator that is used for word splitting 
+			after expansion and to split lines into words with
+			the read builtin command. The default value is <space><tab><newline>. 	echo $IFS
+LANG 			Used to determine the locale category for any category not 
+			specifically selected with a variable starting with LC_. 		echo $LANG
+PATH 			The search path for commands. It is a colon-separated list 
+			of directories in which the shell looks for commands. 			echo $PATH
+PS1 			Your prompt settings. 							echo $PS1
+TMOUT 			The default timeout for the read builtin command. 
+			Also in an interactive shell, the value is interpreted as
+			the number of seconds to wait for input after issuing the command. 
+			If not input provided it will logout user. 				echo $TMOUT
+TERM 			Your login terminal type. 						echo $TERM
+
+SHELL 			Set path to login shell. 						echo $SHELL
+DISPLAY 		Set X display name 							echo $DISPLAY
+EDITOR 			Set name of default text editor. 					echo $EDITOR
+			(export EDITOR=/usr/bin/vim)
+
+
+
+
+
+
+
+
+#############################
+path definition of variables
+##############################
+
+
+kpsewhich - standalone path lookup and and expansion for kpathsea
+
+
+kpsewhich -var-value TEXMFLOCAL
+/usr/local/share/texmf
+
+
+kpsewhich -var-value HOME
+/home/bruce
+
+kpsewhich -var-value PATH
+/home/bruce/anaconda2/bin:/home/bruce/bin:/home/bruce/.local/bin:/usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+
+
+
+##############################
+select from various versions
+###############################
+
+sudo update-alternatives --config java
+
+###########################
+edit/reload a system file
+############################
+
+sudo nano /etc/profile
+source /etc/profile
+
+
+
+
+#########
+file info
+unix2dos
+dos2unix
+#########
+
+https://stackoverflow.com/questions/11018967/how-can-i-be-sure-of-the-file-encoding
+Well, first of all, note that **ASCII is a subset of UTF-8**, so if your file contains only ASCII characters, 
+it's correct to say that it's encoded in ASCII and it's correct to say that it's encoded in UTF-8.
+
+That being said, file typically only examines a short segment at the beginning of the file to determine its type, 
+so it might be declaring it us-ascii if there are non-ASCII characters but they are beyond the initial segment 
+of the file. On the other hand, gedit might say that the file is UTF-8 even if it's ASCII because UTF-8 is gedit's 
+preferred character encoding and it intends to save the file with UTF-8 if you were to add any non-ASCII characters 
+during your edit session. Again, if that's what gedit is saying, it wouldn't be wrong.
+
+
+This package contains utilities dos2unix, unix2dos, mac2unix,
+unix2mac to convert the line endings of text files between UNIX (LF),
+DOS (CRLF) and Mac (CR) formats.
+
+Text files under Windows and DOS typically have two ASCII characters
+at the end of each line: CR (carriage return) followed by LF (line
+feed). Older Macs used just CR, while UNIX uses just LF. While most
+modern editors can read all these formats, there may still be a need
+to convert files between them.
+
+
+file -bi <file name>
+file --mime <file name>
+
+unix2dos --info[=FLAGS] FILE ...
+           Display file information. No conversion is done.
+
+           The following information is printed, in this order: number of DOS
+           line breaks, number of Unix line breaks, number of Mac line breaks,
+           byte order mark, text or binary, file name.
+
+
+
+
+https://stackoverflow.com/questions/18084456/how-to-check-end-of-line-of-a-text-file-to-see-if-it-is-unix-or-dos-format
+
+$ unix2dos git_Windows_20170616DOS.txt
+unix2dos: converting file git_Windows_20170616DOS.txt to DOS format ...
+
+
+
+
+
+###############
+symbolic links
+###############
+https://stackoverflow.com/questions/1951742/how-to-symlink-a-file-in-linux
+
+
+ln -s /path/to/EXISTING_FILE /path/to/SYMLINK_FILE
+
+To create or update a symlink:
+ln -sf /path/to/file /path/to/symlink
+
+
+sudo ln -s /usr/lib/x86_64-linux-gnu/libxml2.so.2.9.3 /opt/Adobe/Reader9/Reader/intellinux/lib/libxml2.so.2
+
+
+
+###############
+Terminal colors
+################
+https://simplyian.com/2014/03/29/how-to-change-the-theme-of-the-xfce-terminal/
+http://chriskempson.github.io/base16/
+https://github.com/afg984/base16-xfce4-terminal
+
+	# download base16-xfce4-terminal themes
+	# place base16-xfce4-terminal themes here; select from Preferences in Terminal
+
+
+
+sudo cp *.theme /usr/share/xfce4/terminal/colorschemes/
+
+/usr/share/xfce4/terminal/colorschemes/tango.theme
+
+
+
+############
+Color Themes
+##############
+
+/usr/share/themes
+
+bruce@bruce-HP-Notebook:$ ls
+Adwaita       Daloa          Esco                    HighContrast  Raleigh
+AgingGorilla  Default        Greybird                Kokodi        Simple
+Atlanta       Default-hdpi   Greybird-accessibility  Metabox       Smoke
+Bright        Default-xhdpi  Greybird-bright         Moheli        ZOMG-PONIES!
+Crux          Emacs          Greybird-compact        Numix
+
+
+sudo add-apt-repository ppa:noobslab/themes
+sudo apt-get update
+sudo apt-get install vertex-theme			<<didn't load
+
+#######################
+no wireless on new HP !!
+#########################
+
+	#THIS WORKED!!! 
+
+==========PART 1 ============================================
+
+	#script for checking wireless
+wget -N -t 5 -T 10 https://github.com/UbuntuForums/wireless-info/raw/master/wireless-info && \
+chmod +x wireless-info && \
+./wireless-info
+
+
+
+====== PART 2 ===================================
+
+https://askubuntu.com/questions/770368/realtek-ethernet-driver-error-ubuntu-16-04
+	a. downloaded from http://www.realtek.com.tw/downloads/downloadsView.aspx?Langid=1&PNid=7&PFid=7&Level=5&Conn=4&DownTypeID=3&GetDown=false#2
+0007-r8101-1.031.02.tar.bz2
+
+	b. run "autorun.sh"  script
+sudo ./autorun.sh
+Check old driver and unload it.
+rmmod r8169
+Build the module and install
+At main.c:222:
+- SSL error:02001002:system library:fopen:No such file or directory: bss_file.c:175
+- SSL error:2006D080:BIO routines:BIO_new_file:no such file: bss_file.c:178
+sign-file: certs/signing_key.pem: No such file or directory
+Backup r8169.ko
+rename r8169.ko to r8169.bak
+DEPMOD 4.4.0-78-generic
+load module r8101
+Updating initramfs. Please wait.
+update-initramfs: Generating /boot/initrd.img-4.4.0-78-generic
+Completed.
+
+
+========= PART 3 ======================================
+
+https://askubuntu.com/questions/828779/failed-to-add-run-systemd-ask-password-to-directory-watch-no-space-left-on-dev
+the Crashplan back-up service uses many inotify watches and eventually, eats them all up
+
+"Failed to add /run/systemd/ask-password to directory watch: No space left on device"
+
+sudo mousepad /etc/sysctl.conf
+	#add line
+fs.inotify.max_user_watches=1048576
+
+
+======= PART 4 =======================================
+
+https://askubuntu.com/questions/827795/how-do-i-get-an-intel-wireless-3168-802-11ac-wireless-card-to-work
+You have an issue with firmware for the device with the 4.7 kernel
+
+wget http://mirrors.kernel.org/ubuntu/pool/main/l/linux-firmware/linux-firmware_1.161_all.deb &&
+sudo dpkg -i linux-firmware_1.161_all.deb
+
+sudo apt install linux-generic-hwe-16.04  	<<this finally did it!
+
+
+
+
+
+
+
+
+
+
+==== MISC tries/commands ===================================
+https://bugs.launchpad.net/ubuntu/+source/linux/+bug/1627114
+https://superuser.com/questions/592296/using-iw-to-add-a-virtual-wireless-interface-getting-the-error-no-such-device
+sudo ip link set dev enp1s0 address 00:04:FE:11:22:38
+
+
+https://askubuntu.com/questions/770368/realtek-ethernet-driver-error-ubuntu-16-04
+A network interface controller (NIC)
+For product: RTL8101/2/6E PCI Express Fast/Gigabit Ethernet controller the above solution didn't work. 
+I had to download driver from here and install with ./autorun.sh.
+After that I still couldn't connect to the internet. But the r8101 kernel module was loaded and 
+in Network Manager the connection came up. I noticed there was no mac address. With the following command I forced 
+a random chosen mac address.
+
+sudo ifconfig enp3s0 hw ether 00:04:FE:11:22:38
+
+where enp3s0 was my ethernet nic. with this I got my internet connection but is wasn't persistent. 
+I had to add at the end of /etc/network/interfaces file
+
+sudo nano /etc/network/interfaces  
+pre-up ifconfig enp3s0 hw ether 00:04:FE:11:22:38
+
+
+
+Bluetooth:
+sudo mousepad /etc/modprobe.d/blacklist.conf
+	At the bottom of the file, added the line:
+#blacklist bluetooth
+
+	to disable it permanently:
+sudo mv /etc/init/bluetooth.conf /etc/init/bluetooth.conf.disabled
+	To re-enable:
+sudo mv /etc/init/bluetooth.conf.disabled /etc/init/bluetooth.conf
+
+
+
+
+---- commands -----------
+sudo service network-manager restart
+sudo iw enp1s0 scan
+
+
+rfkill list
+
+modprobe -r iwlwifi ; modprobe iwlwifi
+sudo lspci -vnn
+sudo lspci -k
+ip link
+
+
+
+
+
+
+
+
+
+
+
+###############
+Launcher icons
+###################
+
+ Locate the applications .desktop file which will be in either:
+
+    /usr/share/applications/APPNAME.desktop
+    ~/.local/share/applications/APPNAME.desktop
+
+locate .desktop|grep APPAME
+
+
+
+
+##################################################
+Bash script for changing scenario designators 
+in file names ONLY; here,
+	==> from *s1e1* 
+	==> to *s1e2*
+(use a Git Bash shell command line)
+###################################################
+
+	a. open Git Bash shell
+
+	b.
+find -type f -name '*s1e1*' | while read FILE ;
+  do newfile="$(echo ${FILE} |sed -e 's/s1e1/s1e2/')" ;
+    mv "${FILE}" "${newfile}" ;
+done 
+
+
+
+#####################################
+Bash script for changing scenario
+designators WITHIN .txt files; here,
+	==> from 's1e1' 
+	==> to 's1e2'
+
+PLUS
+
+Command to change .txt encodings back 
+to Windows
+(use a Git Bash shell command line)
+#######################################
+
+dos2unix windows.txt
+unix2dos linux.txt
+
+If a text file created under Linux is opened in Notepad under Windows, 
+the lines typically go on endlessly, because Windows does not detect any newline characters. 
+On the other hand, Linux applications are much smarter at recognizing and handling different 
+newline encodings, so you are often unaware of what newline encoding you are currently working 
+with under Linux
+
+
+	a.
+for i in *.txt; 
+    do sed -i 's/s1e1/s1e2/g' $i;
+done
+
+	b.
+unix2dos *.txt
+
+
+
+
+
+
+###########################
+remove non UTF-8 characters
+#############################
+http://stackoverflow.com/questions/12999651/how-to-remove-non-utf-8-characters-from-text-file
+
+
+iconv -f utf-8 -t utf-8 -c file.txt
+
+
+#############
+extract .tgz file
+###############
+
+To extract a .tgz file with tar you need to use,
+where,
+
+    x for extract
+    v for verbose
+    z for gnuzip
+    f for file, should come at last just before file name.
+
+$ tar -xvzf /path/to/yourfile.tgz
+
+
+
+########################
+recover deleted file!!
+"foremost"
+"scapel"
+########################
+
+foremost (foremost doesnt do .ods files!)
+http://grabtricks.com/2015/06/recover-unsaved-document-in-libreoffice.html
+https://mikemacd.wordpress.com/2012/02/13/recover-lost-or-corrupt-libreoffice-doc-files-or-any-deleted-media-files/
+https://www.howtoforge.com/recover-deleted-files-with-foremost
+
+
+
+https://community.linuxmint.com/tutorial/view/1332
+https://ubuntuforums.org/showthread.php?t=1378119
+
+
+
+	a. scapel WORKED!!!
+$ sudo apt install scalpel
+
+	b. modify to search for LibreOffice files
+$ sudo mousepad  /etc/scalpel/scalpel.conf
+
+# Added to end of /etc/scalpel/scalpel.conf
+# NB. search for .ods files < 10000000 (bytes) = 10MB
+#     could set this for much smaller search size
+#---------------------------------------------------------------------
+# OPENOFFICE FILES
+#---------------------------------------------------------------------
+    odt y   20000000    PK????????????????????????????mimetypeapplication/vnd.oasis.opendocument.textPK META-INF/manifest.xmlPK????????????????????
+    ods y   10000000    PK????????????????????????????mimetypeapplication/vnd.oasis.opendocument.spreadsheetPK  META-INF/manifest.xmlPK????????????????????
+    odp y   10000000    PK????????????????????????????mimetypeapplication/vnd.oasis.opendocument.presentationPK META-INF/manifest.xmlPK????????????????????
+#    odg y   10000000    PK????????????????????????????mimetypeapplication/vnd.oasis.opendocument.graphicsPK META-INF/manifest.xmlPK????????????????????
+#    odc y   10000000    PK????????????????????????????mimetypeapplication/vnd.oasis.opendocument.chartPK    META-INF/manifest.xmlPK????????????????????
+#    odf y   10000000    PK????????????????????????????mimetypeapplication/vnd.oasis.opendocument.formulaPK  META-INF/manifest.xmlPK????????????????????
+#    odi y   10000000    PK????????????????????????????mimetypeapplication/vnd.oasis.opendocument.imagePK    META-INF/manifest.xmlPK????????????????????
+#    odm y   10000000    PK????????????????????????????mimetypeapplication/vnd.oasis.opendocument.text-masterPK  META-INF/manifest.xmlPK????????????????????
+#    sxw y   10000000    PK????????????????????????????mimetypeapplication/vnd.sun.xml.writerPK  META-INF/manifest.xmlPK????????????????????
+#---------------------------------------------------------------------
+
+
+	c. check device on which file was built
+(laptop)
+$ df
+Filesystem     1K-blocks     Used Available Use% Mounted on
+udev             1974540        0   1974540   0% /dev
+tmpfs             398960     6464    392496   2% /run
+/dev/sda5       89345224 28534472  56249192  34% /
+tmpfs            1994792      176   1994616   1% /dev/shm
+tmpfs               5120        4      5116   1% /run/lock
+tmpfs            1994792        0   1994792   0% /sys/fs/cgroup
+/dev/sda2          98304    29062     69242  30% /boot/efi
+tmpfs             398960       44    398916   1% /run/user/1000
+
+(Dell)
+$ df
+Filesystem     1K-blocks     Used Available Use% Mounted on
+udev             1969248        0   1969248   0% /dev
+tmpfs             398240     6472    391768   2% /run
+/dev/sda2      476001336 44067540 407731252  10% /
+tmpfs            1991184        0   1991184   0% /dev/shm
+tmpfs               5120        4      5116   1% /run/lock
+tmpfs            1991184        0   1991184   0% /sys/fs/cgroup
+/dev/loop1         91648    91648         0 100% /snap/core/6818
+/dev/loop0        178176   178176         0 100% /snap/spotify/34
+/dev/loop2        184576   184576         0 100% /snap/spotify/35
+/dev/loop3         93312    93312         0 100% /snap/core/6531
+/dev/loop4         91392    91392         0 100% /snap/core/6673
+/dev/sda1         523248     6232    517016   2% /boot/efi
+tmpfs             398236       36    398200   1% /run/user/1000
+/dev/sdb        30718908 27051644   2083752  93% /media/bmarron/PNY_32GB
+
+
+
+	d. run scapel
+	d1. output MUST be to another device (a flash drive)
+
+$ cd /media/bmarron/PNY_32GB/
+$ mkdir RecoverFiles_1 
+
+$ sudo scalpel /dev/sda2 -b -o /media/bmarron/PNY_32GB/RecoveredFiles_1
+Scalpel version 1.60
+Written by Golden G. Richard III, based on Foremost 0.69.
+
+Opening target "/dev/sda5"
+
+Image file pass 1/2.
+/dev/sda5: 100.0% |*************************************|   86.7 GB    00:00 ETAAllocating work queues...
+Work queues allocation complete. Building carve lists...
+Carve lists built.  Workload:
+ods with header "\x50\x4b\x3f\x3f\x3f\x3f\x3f\x3f\x3f\x3f\x3f\x3f\x3f\x3f\x3f\x3f\x3f\x3f\x3f\x3f\x3f\x3f\x3f\x3f\x3f\x3f\x3f\x3f\x3f\x3f\x6d\x69\x6d\x65\x74\x79\x70\x65\x61\x70\x70\x6c\x69\x63\x61\x74\x69\x6f\x6e\x2f\x76\x6e\x64\x2e\x6f\x61\x73\x69\x73\x2e\x6f\x70\x65\x6e\x64\x6f\x63\x75\x6d\x65\x6e\x74\x2e\x73\x70\x72\x65\x61\x64\x73\x68\x65\x65\x74\x50\x4b" and footer "\x4d\x45\x54\x41\x2d\x49\x4e\x46\x2f\x6d\x61\x6e\x69\x66\x65\x73\x74\x2e\x78\x6d\x6c\x50\x4b\x3f\x3f\x3f\x3f\x3f\x3f\x3f\x3f\x3f\x3f\x3f\x3f\x3f\x3f\x3f\x3f\x3f\x3f\x3f\x3f" --> 240 files
+Carving files from image.
+Image file pass 2/2.
+/dev/sda5: 100.0% |*************************************|   86.7 GB    00:00 ETAProcessing of image file complete. Cleaning up...
+Done.
+Scalpel is done, files carved = 240, elapsed = 1170 seconds.
+
+
+
+	e. check output files carved in audit.txt
+Scalpel version 1.60 audit file
+Started at Tue May 21 21:56:12 2019
+Command line:
+scalpel /dev/sda2 -b -o /media/bmarron/PNY_32GB/Recovered_1 
+
+Output directory: /media/bmarron/PNY_32GB/Recovered_1
+Configuration file: /etc/scalpel/scalpel.conf
+
+Opening target "(null)"
+
+The following files were carved:
+File		  Start			Chop		Length		Extracted From
+00000034.odt  67819163648		NO            21272		sda2
+00000033.odt  67819139072		NO            21138		sda2
+00000032.odt  67818905600		NO            21030		sda2
+00000031.odt  67817959424		NO            19122		sda2
+00000027.odt  67744985088		NO            21030		sda2
+00000026.odt  67744612352		NO            19122		sda2
+00000025.odt  67744583680		NO            14886		sda2
+00000024.odt  67744559104		NO            12079		sda2
+00000023.odt  67744546816		NO            10984		sda2
+00000022.odt  67743526912		NO            21272		sda2
+00000021.odt  67743502336		NO            21138		sda2
+00000020.odt  67743477760		NO            21138		sda2
+00000019.odt  67743137792		NO            21030		sda2
+00000018.odt  67742654464		NO            19122		sda2
+00000017.odt  67742605312		NO            17708		sda2
+00000016.odt  67742584832		NO            17708		sda2
+00000015.odt  67742568448		NO            14886		sda2
+00000014.odt  67742552064		NO            13270		sda2
+00000013.odt  67742539776		NO            12079		sda2
+
+
+
+
+
+	f. files carved in blocks related to development of a particular doc
+	f1. There will be multiple iterations of this file 
+	f3. All files above relate to letter to Becky and Molly
+
+	g. sort through files by size 
+	g1. MOST recent at end of list (ie highest numbered)
+	g2. MOST recent at very beginning of list (lowest numbered)
+	
+
+
+EQUAL!!
+recovered file 	==> 000000022.odt	21.3 kB
+		==> 000000034.odt	21.3 kB
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	g. Use foremost? NO!!
+	g1. would need to modify .config file
+
+$ sudo apt-get install foremost
+
+$ mount
+/dev/sda5 on / type ext4 (rw,relatime,errors=remount-ro,data=ordered)
+
+$ mkdir ~/recovered
+sudo foremost -q -t ods -o /home/bmarron/recovered
+
+f2. use grep?? IMPOSSIBLE! .ods files are archived .xml files
+	    content.xml has the text input
+	f3. "unp" will unpack .ods files IF their extension is changed to .zip
+
+
+
+##################################
+list all files and subdirectories
+##################################
+
+$ ls -AR
+
+
+
+
+#################
+Linux file system
+################
+
+
+$ man hier
+
+HIER(7)                    Linux Programmer's Manual                   HIER(7)
+
+NAME
+       hier - description of the filesystem hierarchy
+
+
+
+
+##################################
+compare contents of two .txt files
+(use vim)
+##################################
+http://stackoverflow.com/questions/14500787/comparing-two-files-in-linux-terminal
+http://askubuntu.com/questions/24406/how-to-close-vim-from-the-command-line
+
+$ vim -d file1 file2
+
+
+
+	a. must :q! 2x b/c opened two files!!
+
+In vim there are 3 different modes:
+
+    Insert - allows typing and editing as normal
+    Visual - used for selecting copy/paste etc.
+    Normal - used for commands
+
+To get back to Normal mode, you can always press esc.
+
+Once you are at Normal mode Press : to begin your command (you'll see it appear in the bottom left). 
+The following commands are related to quiting vim:
+
+    :q - quit if no changes were made
+    :q! - quit and destroy any changes made
+    :wq - write changes (save) and quit
+    :x - similar to :wq, only write the file if changes were made, then quit
+
+
+
+#########################
+delete .tex~ backup files
+#########################
+http://stackoverflow.com/questions/2680389/how-to-remove-all-files-ending-with-made-by-emacs
+
+$ ls -AR
+$ ls -A
+$ rm *\~
+
+$ rm Paper*.tex~
+
+
+
+######################################
+find and print scholarly references
+#######################################
+
+	a. search Zotero
+	b. locate with 'find'
+	c. print with 'evince'
+
+$ find ./ -name "*Aber*" -type f
+./Desktop/PSU/PhD_EES/2015SoE002_ESM518_LandscapeEcology/References/Why-we-dont-believ-models_Abers_1997.pdf
+
+$ evince ./Desktop/PSU/PhD_EES/2015SoE002_ESM518_LandscapeEcology/References/Why-we-dont-believ-models_Abers_1997.pdf
+$ evince ~/Desktop/PSU/PhD_EES/2015SoE002_ESM518_LandscapeEcology/References/Why-we-dont-believ-models_Abers_1997.pdf
+
+
+
+###############################
+print multiple pics (.jpeg) per page
+shotwell
+#################################
+https://dingyichen.wordpress.com/2013/05/13/howto-print-multiple-photos-in-one-page-with-linux/
+
+$ shotwell
+
+Shotwell: Search "Figure"
+
+Shotwell: Select the desired .jpegs (Ctrl + Left-click)
+
+Shotwell: File-> Print -> Image Settings 
+Autosize button then select "4 images per page" or "6 images per page" or .....
+
+
+
+##################
+show hidden files;
+one line per item
+#######################
+
+
+
+$ ls -A1
+
+
+
+################
+remove hidden
+backup files
+################
+
+	a. From the working directory
+
+$ rm *~
+
+
+
+####################
+print at PSU from the Dell
+####################
+1. Open Cisco Connect Secure Mobile Client (from Whisker menu)
+
+2. In the address box, enter “vpn.pdx.edu”;  Hit "Connect"
+	Group: 3-Student
+	Username: bmarron
+	Password:
+
+3. Hit "Connect"
+
+4. Leave this running!
+
+5. Open Firefox
+
+6. go to
+print.pdx.edu
+
+7. login
+
+8. select "Web Print" ; follow instructions
+
+9. Log Out Web Print and close window print.pdx.edu
+
+10. Select "Disconnect" from Cisco Connect Secure Mobile Client
+
+
+
+
+#############
+download pictures
+from phone
+############	
+
+	# open device as Android
+	# go here
+mtp://[usb:002,009]/Internal storage/DCIM/Camera/
+
+######################
+spreadsheet
+convert .xlsx to .csv
+######################
+
+
+	#Data provided in spreadsheet, Items_sold.xlsx
+	#Linux commandline utility, 'ssconvert'
+	#in Linux,
+
+$ ssconvert Items_sold.xlsx Items_sold.csv
+
+
+==============================================================================
+===== find stuff / pattern match ===========================================
+==============================================================================
+
+#############################
+pattern / search /  match / find / locate
+LOCATE specific files
+#############################
+
+$ find ...		case sensitive!!!
+
+
+	a.find all .py files in /Desktop 
+$ find /home/bmarron/Desktop -name "*.py" >> test.txt
+
+psulogo_horiz_msword.jpeg
+
+
+	b. locate a FILE (in the current directory)
+	b1. know the name of the file
+$ find /home/bmarron/Desktop -name "psulogo_horiz_msword.jpeg"
+$ find ~/Desktop -name "*Define_SWAT_31ws_HadGEM2_360Coords.py"
+$ find ~/Desktop -name "Ingham_*_1985.pdf"
+$ find ~/Desktop -name "Doran*_2000.pdf"
+
+
+	b2. use "*<pattern>*" (if can't remember the name)
+$ find ./ -name "*20160929*" -type f
+./PSU/PhD_EES/2015SOE001_GeneralAdmin_DegreeRequiremnts/BckgrndInfo/IGERT_Research_Funds_20160929.txt
+
+
+	b3. find all files w/ a particular extension
+$ find /home/bmarron/Downloads/landis-extensions/ -iname '*.exe' >> ~/Desktop/test.txt
+
+
+
+	c. locate a DIRECTORY (RNet) in another directory 
+$ find /usr -name "RNet*" -type d
+$ find /usr -name "*Net*" -type d
+
+	d. search for a DIRECTORY in the ENTIRE file system where permissions ok; takes time
+$ find / -name "drop*" -type d
+
+	e. search EVERYWHERE on the compu; takes boo-koo time
+$ sudo find / -name "zotero" -type d
+
+
+
+$ locate ole32.dll
+/home/bmarron/.wine/drive_c/windows/system32/ole32.dll
+/usr/lib/i386-linux-gnu/wine/ole32.dll.so
+/usr/lib/i386-linux-gnu/wine/fakedlls/ole32.dll
+
+
+#####################################
+pattern / search /  match / find / locate
+WITHIN  .txt, .py, .nc, etc
+##########################################
+http://stackoverflow.com/questions/865382/how-do-you-grep-through-code-that-lives-in-many-different-directories
+http://www.thegeekstuff.com/2013/12/xargs-examples
+
+	a. flags/switches
+
+-r, -R 		recursive
+-n 		print line number
+-w		match whole word
+-e 		PATTERN	(Use PATTERN as the pattern; protect a pattern with “ <complicated pattern>”)
+
+
+
+	b. using "find" then pipe to grep
+	b1. .py files in DIRECTORY then search for PATTERN in files
+$ find DIRECTORY -name "*.py" | xargs grep PATTERN
+$ find ./ -name "*.py" | xargs grep -e THRED >> ~/Desktop/test.txt
+$ find ~/Desktop -name "*.py" | xargs grep -e THRED >> ~/Desktop/test2.txt
+$ find /home/bmarron/Desktop/ -name "*.py" | xargs grep -e "figure\(" >> test.txt
+
+
+
+	c. only search for the pattern in files which have .c or .h extensions. 
+$ grep -rnw --include=\*.{c,h}  <directory> -e PATTERN
+
+
+
+	d. exclude searching all the files ending with .o extension
+$ grep -rnw --exclude=*.o  <directory> -e PATTERN
+
+
+
+
+	e. equalities (all three equal)
+	e1. return .py files (w/ line and line numbers) that contain "random"
+$ find /home/bmarron/Desktop/PSU/PhD_EES/2016SoE009_CS545_MachineLearning/FinalsDeliverables/ -name "*.py" | xargs grep -n random
+$ grep -rn --include="*.py" /home/bmarron/Desktop/PSU/PhD_EES/2016SoE009_CS545_MachineLearning/FinalsDeliverables/ -e random
+$ grep -rn random --include="*.py" /home/bmarron/Desktop/PSU/PhD_EES/2016SoE009_CS545_MachineLearning/FinalsDeliverables/
+
+
+
+
+
+	f. examples
+
+$ grep -rn ~/Desktop/ --include="*.txt" -e awk >> ~/Desktop/test.txt
+$ grep -rn /home/bmarron/DataBases/Stats_Computations_db/SS_Items/ --include="*.txt" -e regression >> test.txt
+$ grep -rn /home/bmarron/DataBases/Stats_Computations_db/SS_Items/ --include="*.txt" -e data.frame >> test.txt
+$ grep -rn /home/bmarron/DataBases/Stats_Computations_db/SS_Items/ --include="*.txt" -e structure\( >> test.txt
+$ grep -rn /home/bmarron/DataBases/Stats_Computations_db/SS_Items/ --include="*.txt" -e %*% >> test.txt
+$ grep -rn /home/bmarron/DataBases/Stats_Computations_db/SS_Items/ --include="*.txt" -e solve\( >> test.txt
+$ grep -rn /home/bmarron/DataBases/Stats_Computations_db/SS_Items/ --include="*.txt" -e ols >> test.txt
+$ grep -rn /home/bmarron/DataBases/Stats_Computations_db/SS_Items/ --include="*.txt" -e lm >> test.txt
+$ grep -rn /home/bmarron/DataBases/Stats_Computations_db/SS_Items/ --include="*.txt" -e glm >> test.txt
+$ grep -rn /home/bmarron/DataBases/Stats_Computations_db/SS_Items/ --include="*.txt" -e dlm >> test.txt
+$ grep -rn /home/bmarron/DataBases/Stats_Computations_db/SS_Items/ --include="*.txt" -e stack\( >> test.txt
+$ grep -rn /home/bmarron/DataBases/Stats_Computations_db/SS_Items/ --include="*.txt" -e boot >> test.txt
+$ grep -rn /home/bmarron/DataBases/Stats_Computations_db/SS_Items/ --include="*.txt" -e ARIMA >> test.txt
+$ grep -rn /home/bmarron/DataBases/Stats_Computations_db/SS_Items/ --include="*.txt" -e state-space >> test.txt
+$ grep -rn /home/bmarron/DataBases/Stats_Computations_db/SS_Items/ --include="*.txt" -e MARSS >> test.txt
+$ grep -rn /home/bmarron/DataBases/Stats_Computations_db/SS_Items/ --include="*.txt" -e  ts\( >> test.txt
+$ grep -rn /home/bmarron/DataBases/Stats_Computations_db/SS_Items/ --include="*.txt" -e "time series" >> test.txt
+$ grep -rn /home/bmarron/DataBases/Stats_Computations_db/SS_Items/ --include="*.txt" -e ggplot >> test.txt
+$ grep -rn /home/bmarron/DataBases/Stats_Computations_db/SS_Items/ --include="*.txt" -e "for (i in" >> test.txt
+$ grep -rn /home/bmarron/DataBases/Stats_Computations_db/SS_Items/ --include="*.txt" -e Bonferroni >> test.txt
+
+
+
+$ grep -rn /home/bmarron/Desktop/PSU/ --include="*.txt" -e read.table >> test.txt
+$ grep -rn /home/bmarron/Desktop/PSU/ --include="*.txt" -e sep= >> test.txt
+$ grep -rn /home/bmarron/Desktop/PSU/ --include="*.txt" -e ggplot >> test.txt
+$ grep -rn /home/bmarron/Desktop/PSU/ --include="*.txt" -e "time series" >> test.txt
+$ grep -rn /home/bmarron/Desktop/PSU/ --include="*.txt" -e ols >> test.txt
+$ grep -rn /home/bmarron/Desktop/PSU/ --include="*.txt" -e acf >> test.txt
+$ grep -rn /home/bmarron/Desktop/PSU/ --include="*.txt" -e stack\( >> test.txt
+$ grep -rn /home/bmarron/Desktop/PSU/ --include="*.txt" -e anova\( >> test.txt
+$ grep -rn /home/bmarron/Desktop/PSU/ --include="*.txt" -e str_join >> test.txt
+$ grep -rn /home/bmarron/Desktop/PSU/PhD_EES/2016SoE017_STAT564_LinearRegression/ --include="*.txt" -e goodness >> test.txt
+$ grep -rn ~/Desktop/Charles_output/ --include="*.txt" -e "7.29" >> ~/Desktop/test.txt
+$ grep -rn ~/Desktop/Charles_output/Metadata/Century-Succession/ --include="*.xml" -e 9 >> ~/Desktop/test.txt
+
+
+$ grep -rn /home/bmarron/Desktop/PSU/PhD_EES/2016SoE021_LANDIS_Upgrades_Project/Works_InProgress/ProjectWorkLogs/ \
+--include="*.txt" \
+-e logging
+
+$ grep -rn /home/bmarron/Desktop/PSU/PhD_EES/2016SoE021_LANDIS_Upgrades_Project/Works_InProgress/ProjectWorkLogs/ \
+--include="*.txt" \
+-e trace
+
+$ grep -rn /home/bmarron/Desktop/LANDVIZ_20170102/LANDVIZ/PreProcTool/source/ --include="*.py" -e "Setup application configuration"
+$ grep -rn /home/bmarron/Desktop/LANDVIZ_20170102/LANDVIZ/PreProcTool/source/ --include="*.py" -e xmlreader
+$ grep -rn /home/bmarron/Desktop/LANDVIZ_clone_20170102/LANDVIZ/PreProcTool/source/ --include="*.py" -e rasterOutCellArea
+
+
+$ grep -rn /home/bmarron/Desktop/PSU/PhD_EES/2016SoE021_LANDIS_Upgrades_Project/ \
+--include="*.txt" \
+-e Windows \
+>>  ~/Desktop/test.txt
+
+
+$ grep -rn /home/bmarron/Desktop/PSU/PhD_EES/2016SoE021_LANDIS_Upgrades_Project/Works_InProgress/ProjectWorkLogs/ \
+--include="*.txt" \
+-e Inno \
+>>  ~/Desktop/test.txt
+
+$ grep -rn /media/bmarron/QGIS/ProjectWorkLogs/ \
+--include="*.txt" \
+-e Google
+
+
+$ grep -rn /home/bmarron/Desktop/ \
+--include="*.txt" \
+-e shotwell
+
+
+
+#################################
+pattern / search /  match / find / locate
+WITHIN .pdf
+##################################
+https://pdfgrep.org
+http://unix.stackexchange.com/questions/6704/how-can-i-grep-in-pdf-files
+(poppler-utils installed)
+
+	a. Print the first ten lines matching pattern and print their page number
+$ pdfgrep -n --max-count 10 pattern foo.pdf
+
+
+	b. Search all .pdf files whose names begin with foo recursively in the current directory
+$pdfgrep -r --include "foo*.pdf" pattern
+
+
+	c. Search for 'pattern' in all .pdf files that are smaller than 12M recursively in the current directory
+$ find ./ -name "*.pdf" -size -12M -print0 | xargs -0 pdfgrep pattern
+
+
+
+
+	#search through multiple files (gives page numbers)
+	#search thru individual file as .txt (gives line numbers)
+		a. use GUI to highlight folder containing the .pdfs of interest 
+		b. Right-click to open a Terminal at the folder 
+		c. use pdfgrep at the command line
+	
+$ pdfgrep -rn recalcitrant
+./Schmidt_etal_Soil-organic-matter_2011.pdf:3:source of recalcitrant SOM. b,
+./Schmidt_etal_Soil-organic-matter_2011.pdf:5:on adding recalcitrant material to
+./Schmidt_etal_Soil-organic-matter_2011.pdf:5:for recalcitrant tissues or through
+./Schmidt_etal_Soil-organic-matter_2011.pdf:8:from recalcitrant aliphatic
+./Schmidt_etal_Soil-organic-matter_2011.pdf:8:of recalcitrant dissolved organic
+./Schmidt_etal_Soil-organic-matter_2011.pdf:8:M. What is recalcitrant soil
+./Smith_etal_AMFs-help-plants-in-stressful-environments_2009.pdf:3:recalcitrant
+
+
+$ pdfgrep -Rn SOM
+
+
+
+
+	# "convert" pdf on the fly, pipe it to grep, search for 'pattern'
+	# "-" 					pdftotext output to stdout, not to files
+	# --with-filename and --label=  	file name in the output of grep
+	# --color 				colors on the terminal
+	# search for 'recalcitrant' in Schmidt_etal_soil-organic-matter_2011.pdf
+$ pdftotext Schmidt*.pdf - | grep -n --with-filename --label=Scmidt*.pdf --color -e recalcitrant
+Scmidt*.pdf:261:postulated to be an important source of recalcitrant SOM. b, Direct highresolution in situ observations with non-destructive techniques (Observations)
+Scmidt*.pdf:503:to warming? The conventional assumption that older SOM is recalcitrant implies that this large carbon pool is highly temperature sensitive, because Arrhenius kinetics tells us that reactions with higher
+Scmidt*.pdf:522:strategies based on adding recalcitrant material to soils, whether through
+Scmidt*.pdf:523:plant selection for recalcitrant tissues or through biochar amendments,
+Scmidt*.pdf:1064:73. Kleber, M. What is recalcitrant soil organic matter? Environ. Chem. 7, 320–332
+Scmidt*.pdf:1101:carbon pool by increasing contributions from recalcitrant aliphatic
+Scmidt*.pdf:1126:97. Jiao, N. et al. Microbial production of recalcitrant dissolved organic matter:
+
+
+###########################################
+Find files ==> mv/cp to new directory
+############################################ 
+
+	
+
+https://www.cyberciti.biz/tips/howto-linux-unix-find-move-all-mp3-file.html
+$ find /folder1/folder2/ -iname "*.mp3" -exec /bin/mv {} /mnt/mp3 \;
+									<== search recursively starting in folder2
+									<== find all files that have the .mp3 extension
+									<== execute the mv command 
+									<== The string ‘{}’ is replaced by the file name 
+									<== move the files AND the directory structure to a new directory
+NB.  MUST create the directory where the files will be moved FIRST!!
+									<== \; ends /bin/mv command.
+
+
+find / -iname "*.mp3" -type f -exec /bin/mv {} /mnt/mp3 \;
+									<== move the files ONLY (skip the directory structure) to a new directory
+
+
+
+$ find /home/bmarron/Downloads/landis-extensions/ -iname '*.exe' >> ~/Desktop/test2.txt
+$ find /home/bmarron/Downloads/landis-extensions/ -iname '*.exe' -type f -exec /bin/cp {} ~/Desktop/GoogleArchive_executables \;
+
+
+
+
+
+###########################
+pattern / search /  match / find / locate
+CHANGES to files 
+############################
+
+"time" 		==> days
+"min, sec" 	==> min, sec
+
+"a" 		==> accessed
+"m" 		==> directory modified
+"c"		==> file modified; installed
+
+1440 min per 1 day
+4320 min per 3 days
+
+
+
+	#find all FILE MODIFIED (installed) in the last 40 (or so) MINUTES
+	# or last three days
+	#exclude files in the /.mozilla and /.cache directories (temp files)
+	#exclude /.* files (hidden files)
+	$ \( <expression>)\
+	#send the output to a .txt file on the Desktop
+
+$ find /home/bmarron/ -cmin +0 -cmin -40 -type f \( ! -iname ".*" \) ! -path "/home/bmarron/.*/*" >> ~/Desktop/changes.txt
+$ find /home/bmarron/ -ctime +0 -ctime -3 -type f \( ! -iname ".*" \) ! -path "/home/bmarron/.*/*" >> ~/Desktop/changes.txt
+$ find /home/bmarron/ -cmin +0 -cmin -4320 -type f \( ! -iname ".*" \) ! -path "/home/bmarron/.*/*" >> ~/Desktop/changes.txt
+
+
+
+	#all files ACCESSED from now for the last three days
+$ find -atime +0 -atime -3
+
+
+	#find only *.c or *.asm files 
+$ find /home/bmarron/ -type f \( -iname "*.c" -or -iname "*.asm" \)
+
+  
+
+	#all FILE MODIFIED between 20 and 21 DAYS ago:
+$ find -ctime +20  -ctime -21
+
+
+	#all FILE MODIFIED between 2500 and 2800 MINUTES ago
+	#1 day = 1440 min
+$ find -cmin +2500  -cmin -2800
+
+
+
+	#all directories and files in ~/.wine modified from NOW for the last 3 DAYS; output to 'changes.txt' 
+$ find ~/.wine -mtime +0  -mtime -3 > ~/Desktop/changes.txt
+
+$ find $HOME -mtime 0 | less
+$ find ~/Desktop -mtime 0
+
+
+	#all files in ~/.wine changed from NOW for the last 10 MINUTES
+$ find ~/.wine -cmin +0  -cmin -10 >> ~/Desktop/changes.txt
+
+
+	#all "*.tex" files in /home/bmarron ACCESSED in the last 5 days
+$ find ./ -name "*.tex" -type f -atime -5 >> ~/Desktop/test.txt
+
+
+	# files with *.c extension, pipe to the xargs command, execute “rm -rf” command on all the *.c files. 
+$ find ./ -name "*.c" | xargs rm -rf
+
+
+
+#######################################
+pattern / search /  match / find / locate
+LOCATE executables
+##########################################
+
+$ whereis
+
+$ which
+
+
+
+
+===============================================================
+
+
+###########
+updates 
+upgrades
+from the command line
+######################
+
+http://askubuntu.com/questions/196768/how-to-install-updates-via-command-line
+
+
+sudo apt-get update        # Fetches the list of available updates
+sudo apt-get upgrade       # Strictly upgrades the current packages
+sudo apt-get dist-upgrade  # Installs updates (new ones)
+
+
+
+
+##########
+wifi 
+Linux tools
+###########
+https://hewlettpackard.github.io/wireless-tools/DISTRIBUTIONS.txt
+https://hewlettpackard.github.io/wireless-tools/Tools.html
+http://stackoverflow.com/questions/400240/how-can-i-get-a-list-of-available-wireless-networks-on-linux
+http://www.linuxjournal.com/content/wi-fi-command-line
+http://unix.stackexchange.com/questions/92799/connecting-to-wifi-network-through-command-line
+
+
+
+
+---- sequence to wifi ---------------------------------------------------
+
+	a.
+$ sudo service network-manager restart
+
+Select "Enable Wi-fi" from the indicator plugin
+
+
+
+	b.
+$ iw dev
+phy#0
+	Interface wlp16s0
+		ifindex 3
+		wdev 0x1
+		addr 00:1b:77:3b:d9:91
+		type managed
+
+
+
+	c.
+$ ip link show wlp16s0
+3: wlp16s0: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN mode DEFAULT group default qlen 1000
+    link/ether 00:1b:77:3b:d9:91 brd ff:ff:ff:ff:ff:ff
+
+
+
+
+	d. 
+$ rfkill list
+0: phy0: Wireless LAN
+	Soft blocked: yes
+	Hard blocked: yes
+1: hp-wifi: Wireless LAN
+	Soft blocked: yes
+	Hard blocked: yes
+2: hp-bluetooth: Bluetooth
+	Soft blocked: yes
+	Hard blocked: yes
+3: hp-gps: GPS
+	Soft blocked: yes
+	Hard blocked: yes
+
+
+
+	e.
+$ sudo rfkill unblock wifi
+$ sudo rfkill unblock all
+
+
+
+	f.
+$ rfkill list
+0: phy0: Wireless LAN
+	Soft blocked: no
+	Hard blocked: yes
+1: hp-wifi: Wireless LAN
+	Soft blocked: no
+	Hard blocked: yes
+2: hp-bluetooth: Bluetooth
+	Soft blocked: no
+	Hard blocked: yes
+3: hp-gps: GPS
+	Soft blocked: yes
+	Hard blocked: yes
+
+
+	f. 
+Hit (Scar-activated) wifi icon on HP keyboard
+
+
+
+	g.
+$ rfkill list
+0: phy0: Wireless LAN
+	Soft blocked: no
+	Hard blocked: no
+1: hp-wifi: Wireless LAN
+	Soft blocked: no
+	Hard blocked: no
+2: hp-bluetooth: Bluetooth
+	Soft blocked: no
+	Hard blocked: no
+3: hp-gps: GPS
+	Soft blocked: yes
+	Hard blocked: yes
+4: hci0: Bluetooth
+	Soft blocked: no
+	Hard blocked: no
+
+
+	h.
+$ sudo lshw -C network
+ *-network               
+       description: Wireless interface
+       product: PRO/Wireless 3945ABG [Golan] Network Connection
+       vendor: Intel Corporation
+       physical id: 0
+       bus info: pci@0000:10:00.0
+       logical name: wlp16s0
+       version: 02
+       serial: 00:1b:77:3b:d9:91
+       width: 32 bits
+       clock: 33MHz
+
+
+
+	i. 
+Select a network to connect to from indicator plugin
+
+OR
+
+$ sudo iwlist scan
+wlp16s0   Scan completed :
+          Cell 01 - Address: A0:A3:E2:1E:33:C5
+                    Channel:11
+                    Frequency:2.462 GHz (Channel 11)
+                    Quality=70/70  Signal level=-22 dBm  
+                    Encryption key:on
+                    ESSID:"hawthornehouse"
+                    Bit Rates:1 Mb/s; 2 Mb/s; 5.5 Mb/s; 11 Mb/s; 18 Mb/s
+                              24 Mb/s; 36 Mb/s; 54 Mb/s
+                    Bit Rates:6 Mb/s; 9 Mb/s; 12 Mb/s; 48 Mb/s
+		     ........
+$ sudo iwconfig wlp16s0 essid hawthornehouse key s:millieliveshere
+---------------------------------------------------------------------------------
+
+
+
+
+
+
+	c. turn on 
+$ sudo ifconfig wlp16s0 up
+
+
+	d.confirm NOT hardblocked
+$ sudo lshw -C network
+ *-network               
+       description: Wireless interface
+       product: PRO/Wireless 3945ABG [Golan] Network Connection
+       vendor: Intel Corporation
+       physical id: 0
+       bus info: pci@0000:10:00.0
+       logical name: wlp16s0
+       version: 02
+       serial: 00:1b:77:3b:d9:91
+       width: 32 bits
+       clock: 33MHz
+
+
+	e. confirm NOT softblocked either
+ $ rfkill list
+0: phy0: Wireless LAN
+	Soft blocked: no
+	Hard blocked: no
+1: hp-wifi: Wireless LAN
+	Soft blocked: no
+	Hard blocked: no
+2: hp-bluetooth: Bluetooth
+	Soft blocked: yes
+	Hard blocked: no
+3: hp-gps: GPS
+	Soft blocked: yes
+	Hard blocked: yes
+
+
+	f.
+$ sudo iwconfig wlp16s0 essid hawthornehouse key s:millieliveshere
+
+
+
+
+	g. misc code snippets
+$ sudo ifconfig wlp16s0 up
+$ sudo ip link set wlp16s0 up
+
+$ which ifconfig
+/sbin/ifconfig
+
+$ which iwlist
+/sbin/iwlist
+
+$ which dhclient
+/sbin/dhclient
+
+$ which wpa_supplicant
+/sbin/wpa_supplicant
+
+
+
+
+
+
+
+---- CODE BANK1 ---------------------------------------------------------------------
+For each access point, you can find the hardware address, the essid and the channel 
+on which it's operating. Also, you can learn in what mode the access point is operating 
+(whether master or ad hoc). Usually, you will be most interested in the essid 
+and what encryption is being used. 
+Once you know what's available in your immediate environment, configure your wireless card 
+to use one of these access points using the iwconfig utility to set the parameters for your wireless card. 
+First, set the essid, which identifies the network access point you want. Next you can 
+set the frequency, or channel
+
+
+To scan your environment for available networks AND find the ethernet id:
+
+$ sudo iwlist scan
+wlp16s0   Scan completed :
+          Cell 01 - Address: A0:A3:E2:1E:33:C5
+                    Channel:11
+                    Frequency:2.462 GHz (Channel 11)
+                    Quality=70/70  Signal level=-25 dBm  
+                    Encryption key:on
+                    ESSID:"hawthornehouse"
+
+--------------------------------------------
+NB. wlp16s0 is the ethernet interface id for the box
+-------------------------------------------
+
+$ sudo iwlist wlp16s0 scan
+wlp16s0   Interface doesn't support scanning : Network is down
+
+
+$ sudo iwlist scan
+wlp16s0   Interface doesn't support scanning : Network is down
+
+lo        Interface doesn't support scanning.
+
+eth0      Interface doesn't support scanning.
+
+
+
+
+Set the essid, which identifies the network access point you want:
+
+$ sudo iwconfig wlp16s0 essid hawthornehouse
+Error for wireless request "Set ESSID" (8B1A) :
+    SET failed on device wlp16s0 ; Operation already in progress.
+
+
+OR
+
+Set by freq:
+$ sudo iwconfig wlp16s0 freq <value eg, 2.422G>
+
+OR
+
+Set by channel:
+$ sudo iwconfig wlp16s0 channel <channel number>
+
+
+---- CODE BANK2 ----------------------------------------------------------------------------
+
+
+Edit /etc/network/interfaces:
+$ sudo mousepad /etc/network/interfaces
+
+auto wlp16s0
+iface wlp16s0 inet dhcp 
+                wpa-ssid {ssid}
+                wpa-psk  {password}
+
+Replace {ssid} and {password} with your respective WiFi SSID and password.
+After that write and close file and use command:
+
+run:
+$ sudo dhclient wlp16s0
+
+
+
+---- CODE BANK3 ----------------------------------------------------------------------
+
+turn on WiFi card:
+
+$ sudo ifconfig wlp16s0 up
+SIOCSIFFLAGS: Operation not possible due to RF-kill
+
+
+
+turn off WiFi card:
+$ sudo ifconfig wlan0 down
+
+
+
+
+
+DEBIAN 3.0 (and later)
+----------
+		(Contributed by Guus Sliepen <guus@sliepen.eu.org>)
+	Debian also has another way of configuring network devices,
+controlled by /etc/network/interfaces. Users can add a wireless
+interface to /etc/network/interfaces, using the standard options to
+set the address and such, but the wireless-tools package adds new
+option statements that can be used to configure keys, channel,
+etcetera.
+	From the README.Debian script that comes with wireless-tools:
+
+	/etc/network/interfaces
+	-----------------------
+
+You can now add extra statements to the iface sections of the files in
+/etc/network/interfaces that are specific for wireless interfaces. They
+are of the form:
+
+    wireless-<function> <value>
+
+Before the interface is brought up, such a statement will result in the
+execution of the following command:
+
+    iwconfig <interface> <function> <value>
+
+Example:
+
+iface eth0 inet static
+    address 192.168.1.2
+    network 192.168.1.0
+    netmask 255.255.255.0
+    broadcast 192.168.1.255
+    wireless-essid Home
+    wireless-mode ad-hoc
+
+	The current Debian script support all arguments present in
+wireless.opts apart from Nickname. You can check this in the script
+/etc/network/if-pre-up.d/wireless-tool.
+	You will need of course to install the Wireless Tools package
+if it's not already done, which is part of the standard package list
+(use dselect, dpkg, apt or anything you like to get it).
+
+				-----
+
+		(Contributed by Joey Hess <joey@dragon.kitenet.net>)
+/etc/network/interfaces is much more flexible than it appears. It can probably
+do everything pcmcia schemes can do, and more. Here is part of mine:
+--------------------------------
+auto wlp16s0
+mapping wlp16s0
+        script /usr/local/bin/ifscheme-mapping
+
+iface wlp16s0-home inet static
+        address 192.168.1.5
+        gateway 192.168.1.1
+        netmask 255.255.255.0
+        wireless-mode ad-hoc
+        wireless-essid wortroot
+        wireless-nick dragon
+        wireless-channel 1
+
+iface wlp16s0-away inet dhcp
+        wireless-mode managed
+------------------------------------
+
+Now I can type 'ifscheme -s away' when I leave home, rather like
+cardctl scheme.
+
+The ifscheme script is at http://bugs.debian.org/154444. If the request in
+bug #154442 is implemented, it will become very flexible indeed..
+
+
+
+
+
+
+###############
+wifi switched off
+(traveling)
+##############
+
+	#for some reason need to reset this for every new wifi 
+	#may need multiple re-boots and re-set Firefox ??
+		Preferences ==> Advanced ==> Network ==> Settings ==> No Proxy/Auto Proxy
+
+	a. reset
+$ sudo rm /dev/rfkill
+
+	b. select wifi network and enter password
+
+	c. toggle "Enable wifi"
+
+	d. reboot if needed
+$ reboot
+
+
+##############
+wifi switched off
+(hardblocked)
+##############
+https://bbs.archlinux.org/viewtopic.php?pid=1324810#p1324810
+https://bbs.archlinux.org/viewtopic.php?id=173808
+http://askubuntu.com/questions/333424/how-can-i-check-the-information-of-currently-installed-wifi-drivers
+https://ubuntuforums.org/showthread.php?t=1795211
+https://ubuntuforums.org/showthread.php?t=1621768
+http://unix.stackexchange.com/questions/45338/iwlist-interface-doesnt-support-scanning-ubuntu-lts-10-04
+
+$ sudo rfkill unblock wifi
+
+
+$ sudo rfkill list
+0: phy0: Wireless LAN
+	Soft blocked: no
+	Hard blocked: yes
+1: hp-wifi: Wireless LAN
+	Soft blocked: no
+	Hard blocked: yes
+2: hp-bluetooth: Bluetooth
+	Soft blocked: yes
+	Hard blocked: yes
+3: hp-gps: GPS
+	Soft blocked: yes
+	Hard blocked: yes
+
+
+
+$ sudo lshw -C network
+  *-network DISABLED      
+       description: Wireless interface
+       product: PRO/Wireless 3945ABG [Golan] Network Connection
+       vendor: Intel Corporation
+       physical id: 0
+       bus info: pci@0000:10:00.0
+ ==>   logical name: wlp16s0
+       version: 02
+       serial: 00:1b:77:3b:d9:91
+       width: 32 bits
+       clock: 33MHz
+       capabilities: pm msi pciexpress bus_master cap_list ethernet physical wireless
+       configuration: broadcast=yes driver=iwl3945 driverversion=4.4.0-36-generic firmware=N/A latency=0 link=no multicast=yes wireless=IEEE 802.11abg
+       resources: irq:30 memory:e4100000-e4100fff
+
+
+
+$ sudo ifconfig wlp16s0 up
+SIOCSIFFLAGS: Operation not possible due to RF-kill
+
+
+	# no go!!!
+$ sudo modprobe -r hp_wmi
+$ sudo rfkill unblock all
+$ rfkill list
+0: phy0: Wireless LAN
+	Soft blocked: no
+	Hard blocked: yes
+
+
+	#THIS DID IT!!
+	#Ethernet connection must be unplugged!
+$ sudo rm /dev/rfkill
+$ reboot
+
+
+
+$ sudo rfkill list
+[sudo] password for bmarron: 
+0: phy0: Wireless LAN
+	Soft blocked: no
+	Hard blocked: no
+1: hp-wifi: Wireless LAN
+	Soft blocked: no
+	Hard blocked: no
+2: hp-bluetooth: Bluetooth
+	Soft blocked: yes
+	Hard blocked: no
+3: hp-gps: GPS
+	Soft blocked: yes
+	Hard blocked: yes
+
+
+
+
+
+#############
+execute makefile
+run makefile
+###############
+http://stackoverflow.com/questions/7751342/how-to-execute-make-file
+You don't tend to execute the make file itself, rather you execute make, giving it the make file as an argument:
+
+$ make -f pax.mk
+
+If your make file is actually one of the standard names (like makefile or Makefile), 
+you don't even need to specify it. It'll be picked up by default 
+
+$ cd /home/bmarron/Downloads/bigfoot/		#directory contains a Makefile
+$ make
+
+
+
+
+###################
+run shell script
+####################
+http://askubuntu.com/questions/38661/how-do-i-run-sh-files
+
+	a. give execute permission to your script
+$ chmod +x /path/to/yourscript.sh
+
+	b. cd to script; run script
+	b1. Since . refers to the current directory
+
+$ cd /path/to/yourscript.sh
+$ ./yourscript.sh
+
+
+
+
+
+#############
+hidden folders
+################
+http://unix.stackexchange.com/questions/36091/how-can-i-delete-a-hidden-folder
+
+You can remove hidden directories (with . at the beginning of the name) like normal directories:
+$ rm -rf .directory_name
+
+(r for recursive, f for force).
+
+To display hidden directories use -a option for ls:
+$ ls -a
+
+
+
+
+
+##############
+html to pdf
+html to .pdf
+#############
+
+$ wkhtmltopdf file:///home/bmarron/Desktop/PSU/PhD_EES/2016SoE021_LANDIS_Upgrades_Project/ProjectMngmnt/TJ_ProjectManagement/LANDIS_Project_Status.html ~/Desktop/test.pdf
+$ wkhtmltopdf http://qt-project.org/doc/qt-4.8/qstring.html qstring.pdf
+$ wkhtmltopdf http://www.era-mx.org/Estudios_y_proyectos/xxestudioscaso/jimenez.htm test.pdf
+$ http://blog.minitab.com/blog/the-statistics-game/understanding-bootstrapping-and-the-central-limit-theorem
+
+
+Web2PDFConverter ==> available on with Chrome
+
+#################
+apt-key
+ppa key problems
+gpg problems
+add a gpg key to the apt sources keyring?
+################
+https://askubuntu.com/questions/291035/how-to-add-a-gpg-key-to-the-apt-sources-keyring
+
+wget -qO - https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add -
+apt-key list
+sudo sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list'
+mousepad /etc/apt/sources.list
+mousepad  /etc/apt/sources.list.d/atom.list
+sudo apt-get update
+sudo apt-get install atom
+
+
+
+
+http://askubuntu.com/questions/13065/how-do-i-fix-the-gpg-error-no-pubkey
+How do I fix the gpg error “NO_PUBKEY”?
+By far the simplest way to handle this now is with Y-PPA-Manager (which now integrates the launchpad-getkeys script with a graphical interface). 
+To install it, first add the webupd8 repository for this program:
+
+$ sudo add-apt-repository ppa:webupd8team/y-ppa-manager
+
+    Update your software list and install Y-PPA-Manager:
+
+$ sudo apt-get update
+$ sudo apt-get install y-ppa-manager
+
+	#Run y-ppa-manager (i.e. type y-ppa-manager then press enter key).
+$ y-ppa-manager
+
+	# When the main y-ppa-manager window appears, click on "Advanced."
+	#From the list of advanced tasks, select "Try to import all missing GPG keys" and click OK.
+
+------ problem w/ R key --------------------------------------------------
+	#key is old?
+	#run the following
+
+$ apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
+Executing: gpg --ignore-time-conflict --no-options --no-default-keyring --homedir /tmp/tmp.igonW2IrnI --no-auto-check-trustdb --trust-model always --keyring /etc/apt/trusted.gpg --primary-keyring /etc/apt/trusted.gpg --keyring /etc/apt/trusted.gpg.d/gezakovacs-ppa.gpg --keyring /etc/apt/trusted.gpg.d/ubuntu-wine-ppa.gpg --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
+gpg: requesting key E084DAB9 from hkp server keyserver.ubuntu.com
+gpg: error writing keyring `/etc/apt/trusted.gpg': file write error
+gpg: key E084DAB9: "Michael Rutter <marutter@gmail.com>" 2 new signatures
+gpg: error reading `[stream]': file write error
+gpg: Total number processed: 0
+gpg:         new signatures: 2
+
+
+----- remove outdated key ----------
+Software Updater ==> Settings... ==> Authentication ==> Remove
+
+##################
+bounding box sizes
+[bb=llx lly urx ury]
+###################
+
+	#bounding box of .pdf
+$ gs -o /dev/null -sDEVICE=bbox Image19.pdf
+%%BoundingBox: 0 0 369 413
+
+	#extract bounding box .jpeg
+$ ebb -v Image7.jpg
+Writing to ./Image7.bb: Bounding box: 0 0 252 288
+
+
+
+#############
+whiskers menu apps
+potential and installed apps 
+executable .desktop files
+##############
+
+	# still a mystery!!!!!
+
+---- check this -----------------------------------------------------
+$ cd /usr/share/app-install/desktop/
+$ ls > ~/Desktop/test.txt
+
+	# examples
+$ abiword
+The program 'abiword' is currently not installed. You can install it by typing:
+sudo apt-get install abiword
+
+$ cultivation
+The program 'cultivation' is currently not installed. You can install it by typing:
+sudo apt-get install cultivation
+
+
+	# check the info about QGIS
+$ cd /usr/share/app-install/desktop/
+$ nano qgis:qgis.desktop	
+[Desktop Entry]
+X-AppInstall-Package=qgis
+X-AppInstall-Popcon=397
+X-AppInstall-Section=universe
+
+Type=Application
+Name=QGIS Desktop
+Version=1.0
+GenericName=Geographic Information System
+Icon=qgis
+TryExec=/usr/bin/qgis
+Exec=/usr/bin/qgis %F
+Terminal=true
+StartupNotify=false
+Categories=Qt;Education;Science;Geography;
+MimeType=application/x-qgis-project;image/tiff;image/jpeg;image/jp2;application/x-raster-aig;application/x-raster-ecw;application/x-raster-mrsid;application/x-mapinfo-mif;application/x-esri-shape;
+Keywords=map;globe;postgis;wms;wfs;ogc;osgeo
+
+X-Ubuntu-Gettext-Domain=app-install-data
+	
+
+---- check this ----------------------------------------------------------- 
+
+$ cd /usr/share/applications/
+$ ls > ~/Desktop/test2.txt
+
+
+
+
+
+
+##############################
+list installed files for a named pkg
+################################
+
+---- to check installed MySQL files ---------------
+$ dpkg -l | grep mysql | grep ii
+
+
+
+
+#####################
+zip files for Windows
+Windows .zip
+#####################
+
+http://usefulmix.com/creating-a-zip-archive-under-linux-that-is-windows-compatible/
+
+$ zip -9 -y -r -q file.zip folder/
+
+-9 Indicates the slowest compression speed (optimal compression, ignores the suffix list)
+-y Store symbolic links as such in the zip archive, instead of compressing and storing the file referred to by the link
+-r Travel the directory structure recursively
+-q Quiet mode
+folder Refers to the folder to be zipped
+
+zip package needs to firstly be installed:
+$ sudo apt-get install zip
+
+
+
+	a. cd to directory to be zipped
+$ zip -9yrq ~/Desktop/file.zip ./
+
+	b. sends file to Desktop
+	
+	c. re-name file.zip, as needed
+
+
+
+
+-----LANDIS Project --------------
+
+$ cd /home/bmarron/Desktop/PSU/PhD_EES/2016SoE021_LANDIS_Upgrades/FinalsDeliverables/Submitted_Weekly_Reports/
+$ ls
+$ cd <current week>
+
+$ zip -9 -y -r -q ~/Desktop/Week.zip ./
+
+
+
+
+
+
+
+##########################################
+find overlaps and diffs in installed pkgs
+##########################################
+
+		a.
+		#obtain listing of all installed packages on reference compu (compu1; most-updated)
+		#sent to a .txt file, "packages"
+$ dpkg --get-selections | grep -v deinstall > ~/Desktop/packages1.txt
+
+		#open 'packages1.txt' in Mousepad
+		#delete all occurrences of 'install'
+		#save 
+		#scan into R
+compu1 <-readLines("~/Desktop/packages1.txt")
+
+		#delete the '\t'
+library(stringr)
+compu1<- str_trim(compu1)
+
+
+		b.
+		#obtain listing of all installed packages on new compu (compu2; least-updated)
+		#sent to a .txt file, "packages2"
+$ dpkg --get-selections | grep -v deinstall > ~/Desktop/packages2.txt
+
+		#open packages2.txt in Mousepad
+		#delete all occurrences of 'install'
+		#save and email 
+		#import from email into compu1 and scan into R
+compu2 <-readLines("~/Desktop/packages2.txt")
+compu2<- str_trim(compu2)
+
+
+		c.
+		#how string comparisons work
+A = c("Dog", "Cat", "Mouse")
+B = c("Tiger","Lion","Cat")
+
+A %in% B
+[1] FALSE  TRUE FALSE
+
+intersect(A,B)
+[1] "Cat"
+
+setdiff(A,B)
+[1] "Dog"   "Mouse"
+
+setdiff(B,A)
+[1] "Tiger" "Lion" 
+
+
+		d.
+		#find string overlaps (installed files in common)
+overlap <- intersect(compu1, compu2)
+
+		#find string diffs
+		#(watch out how the comparison is made!)
+diff_12 <- setdiff(compu1, compu2)
+diff_21 <- setdiff(compu2, compu1)
+
+
+
+
+
+#########
+url shortner
+###########
+
+https://goo.gl/
+
+
+
+############################
+make binary file executable
+(executables)
+######################
+
+	#example from pyreport
+First 	==> make binary executable 
+$ chmod uog+x pyreport.py
+ 
+Second 	==> if the file is named "pyreport.py", the bash command is "pyreport.py", and not "pyreport"
+Third, 	==> check the $PATH
+	==> change to directory w/ the executable and execute
+
+$ cd /home/bmarron/anaconda2/pkgs/pyreport
+$ ./pyreport.py
+
+	#set a temporary PATH
+	#add temporary to .bashrc if desired
+$ export PATH="/home/bmarron/anaconda2/pkgs/pyreport:$PATH"
+
+	
+
+	#example for the UNetbootin file, "unetbootin-linux"
+To run binaries, download them and run the command 
+$ chmod +x ./unetbootin-linux
+OR
+go to Properties->Permissions and check "Execute", then start the application by running ./unetbootin-linux
+
+
+#############
+install/open  .tar.gz
+#############
+
+
+tar -xzf archive-name.tar.gz
+cd archive-name
+./configure &&
+make &&
+sudo make install
+
+
+
+
+
+###################
+.txt file processing
+####################
+sed == Stream EDitor
+
+	e1. Create new concatenated temp data file ==> "3.txt" (tempmax PLUS tempmin data) 
+$ paste 1.txt 2.txt | pr -t -e24 > 3.txt
+		
+	e2. Create the final precip data file ==> "precip.txt"
+	# shrink multiple whitespaces to one whitespace and then replace w/ a TAB
+	# select only the 4th column
+	# replace contents of 1st line (also adds a blank line)
+	# delete 1st line
+$ tr -s ' ' <4.txt | tr ' ' '\t' >4a.txt &&
+cut -f 4 4a.txt > precip.txt &&
+sed -i '1 a\20860101' precip.txt && 
+sed -i '1d' precip.txt
+		
+	e3. Create the final temperature data file ==> "temp.txt"
+	# shrink multiple whitespaces to one whitespace and then replace w/ a TAB
+	# select only the 4th, 7th columns
+	# insert a TAB in whitespace between two columns
+	# subtract 273.15 from the 1st and 2nd fields (columns) in all rows (awk only recognizes TAB-separated fields)
+	# replace TAB whitespace with comma
+	# replace contents of 1st line (also adds a blank line)
+$ tr -s ' ' <3.txt | tr ' ' '\t' > 3a.txt && 
+cut -f 4,7 3a.txt > 3b.txt &&
+column -t 3b.txt > 3c.txt &&
+awk '{$1-=273.15; $2-=273.15}1' 3c.txt > temp.txt &&
+sed -i 's/\s\+/,/g' temp.txt &&
+sed -i "1s/.*/20860101/" temp.txt
+
+
+
+##################################
+shrinking whitespaces
+converting white spaces to .csv
+###################################
+
+http://stackoverflow.com/questions/1271222/replace-whitespace-with-a-comma-in-a-text-file-in-linux
+
+tr ' ' ',' <input >output
+
+	#all whitespaces now have a comma!
+$ tr ' ' ',' <4a.txt > 4b.txt
+
+	# deletes all whitespaces! all characters conctenated
+$ tr -d ' '  <4a.txt > 4b.txt
+
+
+
+	# -s flag (squeeze repeats)
+	#replace each input sequence of a repeated character that is listed in SET1 (the blank space) with a single occurrence of that character.
+	#then substitute tabs:
+
+tr -s '\t' <input | tr '\t' ',' >output
+
+	#works!
+	#squeeze all whitespace to ONE whitespace 
+	#change the ONE whitespace to a TAB
+$ tr -s ' ' <4a.txt | tr ' ' '\t' >4b.txt
+
+
+
+
+	#untested
+$ sed 's/[:blank:]+/,/g' orig.txt > modified.txt
+
+$ sed 's/[\t ]+/,/g' orig.txt > modified.txt
+
+########################################
+combine columns from different .txt files
+#######################################
+
+http://unix.stackexchange.com/questions/16443/combine-text-files-column-wise
+The "-e24" ==> "expand tab stops to 24 spaces". Luckily, paste puts a tab-character between columns, so pr can expand it. 
+I chose 24 by counting the characters in "Recursively enumerable" and adding 2.
+
+$ paste file1 file2 | pr -t -e24
+
+	#works!!
+	#concatenate 1.txt and 2.txt output to another (new) file 3.txt
+$ paste 1.txt 2.txt | pr -t -e24 > 3.txt
+$ paste 1.txt 3.txt | pr -t -e24 > 4.txt
+
+
+	#untested
+You just need the column command, and tell it to use tabs to separate columns
+$ paste file1 file2 | column -s $'\t' -t
+
+
+
+
+################################
+ select all fields in .txt file
+###############################
+
+http://www.thegeekstuff.com/2013/06/cut-command-examples/
+	# -d, --delimiter=DELIM   use DELIM instead of TAB for field delimiter
+		* -d ','
+		* -d ':'
+		* -d '\n'
+	
+	# -f field
+	# --complement 	complement the set of selected bytes, characters or fields
+
+	#delete 2nd and 5th fields (select fields 1,3,4) in a .csv file
+	#output to new file
+$ cut -d',' -f 1,3,4 31_weather_stations.txt > 31_weather_stations2.txt
+
+
+
+
+###################
+.csv to tab-delimited
+######################
+
+
+$ sed -e 's/,/\t/g' /tmp/file.csv > /tmp/file.tabbed
+$ sed -e 's/,/\t/g' usgs_aggregMonthlyMean_2007_2016_bm.csv >> usgs_aggregMonthlyMean_2007_2016_tab_bm.txt
+
+
+########################
+tab-delimted to .csv
+#######################
+
+$ sed 's/\t/,/g' input_file > output_file
+$ sed 's/\t/,/g' USGS_data.txt >> USGS_data2.txt
+
+
+
+####################
+password for the keyring 
+######################
+
+    Open Applications -> Accessories -> Password and Encryption Keys (Seahorse)
+    Right-click on the "login" keyring
+    Select "Change password"
+    Enter your old password and leave the new password blank
+    Press ok, 
+
+
+#####################
+install .deb packages
+######################
+
+gdebi-gtk
+use gdebi	<<(Right-click -> Open with). It will install your .deb package with all its dependencies.
+
+
+you have a .deb file:
+
+$ sudo dpkg -i /path/to/deb/file
+$ sudo apt-get install -f.
+
+ install it using apt-get install package_name. 
+But first move your deb file to /var/cache/apt/archives/ directory. 
+After executing this command, it will automatically download its dependencies.
+
+Install gdebi and open your .deb file using it 
+
+
+
+##########
+aliases to python versions
+###########
+
+Add to ~/.bashrc
+alias python=/home/bmarron/anaconda2/bin/python2.7
+alias spyder=/home/bmarron/anaconda2/bin/spyder
+
+Re-load .bashrc 
+$ source ~/.bashrc
+
+NOt Recommended CAREFUL!!
+Add to ~/.bashrc
+PYTHONPATH="${PYTHONPATH}:/path/to/some/cool/python/package/:/path/to/another/cool/python/package/"
+export PYTHONPATH
+
+$ source ~/.bashrc
+
+#############
+panel indicator plugins
+#######################
+
+	#modify panel preferences and edit indicator plugins
+	#re-start panel
+$ xfce4-panel -r
+
+
+
+
+
+################
+find installed info
+####################
+
+	#list installed qgis files to .txt file
+$ dpkg -l | grep qgis >>  ~/Desktop/qgis.txt
+
+
+
+
+
+###############
+makefile installs
+#################
+The Makefile is the key to the build process. In its simplest form, a Makefile is a script for compiling or building the "binaries", the executable portions of a package. The Makefile can also provide a means of updating a software package without having to recompile every single source file in it, but that is a different story (or a different article).
+
+Only the simplest software uses a generic Makefile. More complex installations require tailoring the Makefile according to the location of libraries, include files, and resources on your particular machine. This is especially the case when the build needs the X11 libraries to install. Imake and xmkmf accomplish this task. 
+
+At some point, the Makefile launches cc or gcc. This is actually a preprocessor, a C (or C++) compiler, and a linker, invoked in that order. This process converts the source into the binaries, the actual executables. 
+
+
+- unpack the tar either on the commandline or gui
+- navigate to the folder from the terminal (with the cd command)
+- most programs will have a readme or install that tells you what to do but its almost always, from the terminal whilst in the directory you unpacked the tar to:
+
+	#the file called "configure" 
+	#"configure" is a script designed to aid a program to be run on a wide number of different computers
+	#skip ./configure if already have the 'Makefile'
+./configure
+
+	#When configure is done it will generate a file called 'Makefile' with all the info in it
+	#to compile the configure file, run the command, 'make'
+make
+
+	#Make will now follow the instructions in the Makefile to install the compiled package
+sudo make install
+
+
+
+
+
+
+#######################
+icons in Whisker Menu
+#########################
+
+	#check this directory
+/home/bmarron/.config/menus/applications-merged/
+
+
+##############################################################
+make directories where no 'Create Folder ...' option exists
+###############################################################
+
+$ sudo mkdir -p /home/chope/a/b/c
+
+	#Creates the directory /home/chope/a/b/c. If the parent directory /home/chope/a/b does not already exist, 
+	# -- parents (-p) will make parent directories as needed
+
+
+
+#################
+LINUX
+update password
+change password
+change passwrd
+password change
+#################
+
+18AV1dd*67R
+62c69F*Antas
+47Co59*LupM		<== Windows Password on HPs AND password for Security Boot (MOK Management)
+797*Venta13
+797*VENTA13
+c7f4*CLEF19		
+zz4698*BUFF
+1e776355*GB
+36ffaa714T*
+794dd992G*1
+e873MTA*973
+A19d9d57#QT
+4775LEE8i8*
+9cfbJJ#8656	
+
+
+
+
+	#generate random password options
+uuidgen
+
+	#follow instructions to change password
+sudo passwd
+[sudo] password for bruce: 			<< enter current password
+Enter new UNIX password: 
+Retype new UNIX password: 
+
+
+	#update password here, too
+	# Mint will ask for Authentication (use old password)
+		System Settings > Administration > Users and Groups > 
+	# Xubuntu
+		Settings > Users and Groups > User Settings > Password: Asked on login > Change....
+		System Settings > Preferences > Account Details > 
+		
+
+
+	# may need this too ==> password change for the keyring 
+Open Applications -> Accessories -> Password and Encryption Keys (Seahorse)
+Right-click on the "login" keyring
+Select "Change password"
+Enter your old password and leave the new password blank
+Press ok, 
+
+
+
+
+#################
+WINDOWS
+update password
+change password
+#################
+
+
+Local acct password change for HP Windows user:	bmarr
+
+* Open PowerShell (Admin)
+* Type (at command line)
+
+>net user			<== gives list of usrs 
+
+>net user bmarr *
+Type a password for the user:			<== type new password
+Retype the password to confirm:
+
+
+
+##########################################
+locked directory: ownership or read/write access of files
+change permissions
+###########################################
+
+
+~/grassdata$ ls -ld Tester*
+drwxr-xr-x 4 root root 4096 May  3 21:44 Tester_MyLocation
+
+
+	# Change the owner of /u to "root". 
+$ sudo chown -hR root /u
+
+	#Likewise, but also change its group to "staff"
+$ sudo chown -hR root:staff /u
+
+-h, --no-dereference
+    affect each symbolic link instead of any referenced file 
+    (useful only on systems that can change the ownership of a symlink) 
+
+-R, --recursive
+    operate on files and directories recursively 
+
+	#Run the following to fix your home directory permissions
+$ sudo chown -R $USER: $HOME/grassdata
+
+		##change ownership of file, .hplip (recursive)
+$ sudo chown -R bmarron: /home/bmarron/.hplip
+
+
+
+
+		# change to read/write (recursive)
+$ sudo chmod 777 -R ~/Desktop/Chemistry_Marron_GHS/
+
+
+bmarron@bmarron-Precision-T3610:/media/bmarron/DELL_Backup$ sudo chown -hR bmarron Desktop
+bmarron@bmarron-Precision-T3610:/media/bmarron/DELL_Backup$ sudo chmod 777 -R Desktop
+
+
+
+############################
+can't open thumbdrive -- 
+"Permission denied"
+##############################
+
+cd /media/molly/
+sudo chmod -R -v 777 *
+
+
+
+###############
+user/group info
+#################
+
+$ cat /etc/passwd
+
+		# First 1000 is my userID (UID) and the second 1000 is my groupID(GID)
+bmarron:x:1000:1000:bmarron,,,:/home/bmarron:/bin/bash
+
+molly:x:1001:1000: molly,,,,:/home/molly:/bin/bash
+
+
+
+################
+device locations
+###############
+
+$ sudo fdisk -l
+
+
+
+###################################
+see/set file and folder attributes
+#####################################
+
+	# 'e' attribute indicates that the file is using extents for  mapping
+	  the blocks on disk
+
+$ cd ~/.config/xfce4/desktop
+$ lsattr
+-------------e-- ./icons.screen0-1264x759.rc
+
+	#'+i' creates a read-only file
+	#'-i' to remove the read-only attribute
+
+$ sudo chattr +i icons*
+$ lsattr
+----i--------e-- ./icons.screen0-1264x759.rc
+
+
+####################
+is pkg installed?
+pkg version?
+####################
+
+	a.
+$ apt-cache policy <name>
+
+	#example1
+$ apt-cache policy pdfgrep
+pdfgrep:
+  Installed: 1.3.0-1
+  Candidate: 1.3.0-1
+  Version table:
+ *** 1.3.0-1 0
+        500 http://us.archive.ubuntu.com/ubuntu/ trusty/universe i386 Packages
+        100 /var/lib/dpkg/status
+
+	b.
+$ dpkg -s <pkg name>
+
+	#example2
+$ dpkg -s mono-complete
+Package: mono-complete
+Status: install ok installed
+Priority: optional
+Section: cli-mono
+Installed-Size: 70
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Architecture: i386
+Source: mono
+Version: 3.2.8+dfsg-4ubuntu1.1
+Depends: mono-runtime (= 3.2.8+dfsg-4ubuntu1.1), mono-runtime-sgen (= 3.2.8+dfsg-4ubuntu1.1), libmono-2.0-1 (= 3.2.8+dfsg-4ubuntu1.1), libmono-profiler (= 3.2.8+dfsg-4ubuntu1.1), mono-utils (= 3.2.8+dfsg-4ubuntu1.1), mono-jay (= 3.2.8+dfsg-4ubuntu1.1), mono-devel (= 3.2.8+dfsg-4ubuntu1.1), mono-mcs (= 3.2.8+dfsg-4ubuntu1.1), mono-csharp-shell (= 3.2.8+dfsg-4ubuntu1.1), mono-2.0-gac (= 3.2.8+dfsg-4ubuntu1.1), mono-4.0-gac (= 3.2.8+dfsg-4ubuntu1.1), mono-2.0-service (= 3.2.8+dfsg-4ubuntu1.1), mono-4.0-service (= 3.2.8+dfsg-4ubuntu1.1), monodoc-base (= 3.2.8+dfsg-4ubuntu1.1), monodoc-manual (= 3.2.8+dfsg-4ubuntu1.1), libmono-cil-dev (= 3.2.8+dfsg-4ubuntu1.1)
+Description: complete Mono runtime, development tools and all libraries
+ Mono is a platform for running and developing applications based on the
+ ECMA/ISO Standards. Mono is an open source effort led by Xamarin.
+ Mono provides a complete CLR (Common Language Runtime) including compiler and
+ runtime, which can produce and execute CIL (Common Intermediate Language)
+ bytecode (aka assemblies), and a class library.
+ .
+ This is a metapackage and pulls in the Mono runtime, development tools and
+ all libraries.
+ .
+ Install this package if you want to run software for Mono or Microsoft .NET
+ which you are not installing from a Debian package.
+ .
+ For packagers: This package is not to be used as dependency for packages!
+ You should build-depend on cli-common-dev and the needed libraries instead.
+Homepage: http://www.mono-project.com/
+
+
+	c.
+$ dpkg-query --list <name>
+
+	#example 3
+	#all installed pkgs with 'mono'
+$ dpkg-query --list mono*
+
+
+#####################
+is pkg available?
+######################
+
+$ apt-cache policy <name>
+$ apt-cache search <name>
+$ apt-cache show <name>
+$ apt-cache showpkg <name>
+
+	#example1
+$ apt-cache policy pdfgrep
+pdfgrep:
+  Installed: (none)
+  Candidate: 1.3.0-1
+  Version table:
+     1.3.0-1 0
+        500 http://us.archive.ubuntu.com/ubuntu/ trusty/universe i386 Packages
+
+	#example2
+~$ apt-cache search pdfgrep
+pdfgrep - search in pdf files for strings matching a regular expression
+
+
+	#example3
+$ apt-cache show pdfgrep
+Package: pdfgrep
+Priority: optional
+Section: universe/utils
+Installed-Size: 64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Christoph Egger <christoph@debian.org>
+Architecture: i386
+Version: 1.3.0-1
+Depends: libc6 (>= 2.3.4), libgcc1 (>= 1:4.1.1), libpoppler-cpp0 (>= 0.16), libstdc++6 (>= 4.6)
+Filename: pool/universe/p/pdfgrep/pdfgrep_1.3.0-1_i386.deb
+Size: 15270
+MD5sum: e1cc866875d53fd8a65da45d8db94efb
+SHA1: 8a18517cefe1eaf8db6708c631889e1ff45af32f
+SHA256: 037c4a04b6e2aeb953cff530f75d1103abb4b5f62a38fd5b1f1d796e6a1952d7
+Description-en: search in pdf files for strings matching a regular expression
+ Pdfgrep is a tool to search text in PDF files. It works similar to
+ `grep'.
+ .
+ Features:
+  - search for regular expressions.
+  - support for some important grep options, including:
+    + filename output.
+    + page number output.
+    + optional case insensitivity.
+    + count occurrences.
+  - and the most important feature: color output!
+Description-md5: 8c8a5397f782d81d957740280eb8f352
+Homepage: http://pdfgrep.sourceforge.net/
+Bugs: https://bugs.launchpad.net/ubuntu/+filebug
+Origin: Ubuntu
+
+
+	#example4
+$ apt-cache showpkg pdfgrep
+Package: pdfgrep
+Versions: 
+1.3.0-1 (/var/lib/apt/lists/us.archive.ubuntu.com_ubuntu_dists_trusty_universe_binary-i386_Packages)
+ Description Language: 
+                 File: /var/lib/apt/lists/us.archive.ubuntu.com_ubuntu_dists_trusty_universe_binary-i386_Packages
+                  MD5: 8c8a5397f782d81d957740280eb8f352
+ Description Language: en
+                 File: /var/lib/apt/lists/us.archive.ubuntu.com_ubuntu_dists_trusty_universe_i18n_Translation-en
+                  MD5: 8c8a5397f782d81d957740280eb8f352
+
+
+Reverse Depends: 
+Dependencies: 
+1.3.0-1 - libc6 (2 2.3.4) libgcc1 (2 1:4.1.1) libpoppler-cpp0 (2 0.16) libstdc++6 (2 4.6) 
+Provides: 
+1.3.0-1 - 
+Reverse Provides: 
+
+#################################
+print out all installed pkgs
+#################################
+
+		#all installed packages sent to a .txt file, "packages.txt"
+dpkg --get-selections | grep -v deinstall > ~/Desktop/packages.txt
+
+
+###########################
+newly installed pkgs
+########################
+	#list recently installed packages via any method (apt-get, Software Center et al.): 
+$cat /var/log/dpkg.log | grep "\ install\ "
+
+
+
+##################
+os
+info system
+system version
+info distro
+system info
+system configuration
+#################
+
+$ sudo inxi -SMCx
+
+26 March 2024
+System:
+  Host: bmarron18-HP-Notebook Kernel: 5.15.0-101-generic x86_64 bits: 64		<== old HP
+    compiler: gcc v: 11.4.0 Desktop: Cinnamon 6.0.4
+    Distro: Linux Mint 21.3 Virginia base: Ubuntu 22.04 jammy
+Machine:
+  Type: Laptop System: HP product: HP Notebook v: Type1ProductConfigId
+    serial: CND72001NT
+  Mobo: HP model: 81ED v: 62.40 serial: PGBKFH21U777CA UEFI: Insyde v: F.25
+    date: 04/07/2017
+CPU:
+  Info: dual core model: Intel Core i3-7100U bits: 64 type: MT MCP
+    arch: Amber/Kaby Lake note: check rev: 9 cache: L1: 128 KiB L2: 512 KiB
+    L3: 3 MiB
+  Speed (MHz): avg: 1000 min/max: 400/2400 cores: 1: 1000 2: 1000 3: 1000
+    4: 1000 bogomips: 19200
+
+
+
+17 June 2023
+System:
+  Host: bmarron-HP-Laptop-15t-dy100 Kernel: 5.15.0-75-generic x86_64 bits: 64		<== new HP
+    compiler: gcc v: 11.3.0 Desktop: Cinnamon 5.6.8
+    Distro: Linux Mint 21.1 Vera base: Ubuntu 22.04 jammy
+Machine:
+  Type: Laptop System: HP product: HP Laptop 15t-dy100 v: N/A
+    serial: <superuser required>
+  Mobo: HP model: 86C9 v: 56.33 serial: <superuser required> UEFI: AMI
+    v: F.25 date: 03/09/2022
+CPU:
+  Info: quad core model: Intel Core i5-1035G1 bits: 64 type: MT MCP
+    arch: Ice Lake rev: 5 cache: L1: 320 KiB L2: 2 MiB L3: 6 MiB
+  Speed (MHz): avg: 1300 high: 1302 min/max: 400/3600 cores: 1: 1300
+    2: 1300 3: 1301 4: 1301 5: 1300 6: 1301 7: 1301 8: 1302 bogomips: 19046
+  Flags: avx avx2 ht lm nx pae sse sse2 sse3 sse4_1 sse4_2 ssse3 vmx
+
+
+
+
+30 Aug 2016
+System:    Host: bmarron-HP-Compaq-6710b-RM406UT-ABA Kernel: 4.4.0-36-generic i686 (32 bit gcc: 5.4.0)
+           Desktop: Xfce 4.12.3 (Gtk 2.24.28) Distro: Ubuntu 16.04 xenial
+Machine:   System: Hewlett-Packard product: HP Compaq 6710b (RM406UT#ABA) v: F.11
+           Mobo: Hewlett-Packard model: 30C0 v: KBC Version 71.2E
+           Bios: Hewlett-Packard v: 68DDU Ver. F.11 date: 04/10/2008
+CPU:       Dual core Intel Core2 Duo T8100 (-MCP-) cache: 3072 KB
+           flags: (lm nx pae sse sse2 sse3 sse4_1 ssse3 vmx) bmips: 8379
+           clock speeds: max: 2101 MHz 1: 1600 MHz 2: 1600 MHz
+
+
+
+21 Oct 2016
+System:    Host: bmarron-Precision-T3610-Invalid-entry-length-16-Fixed-up-to-11 Kernel: 4.4.0-42-generic x86_64 (64 bit gcc: 5.4.0)
+           Desktop: Xfce 4.12.3 (Gtk 2.24.28) Distro: Ubuntu 16.04 xenial
+Machine:   System: Dell product: Precision T3610 v: 01
+           Mobo: Dell model: 09M8Y8 v: A01 Bios: Dell v: A06 date: 02/28/2014
+CPU:       Quad core Intel Xeon E5-1607 v2 (-HT-MCP-) cache: 10240 KB
+           flags: (lm nx sse sse2 sse3 sse4_1 sse4_2 ssse3 vmx) bmips: 23942
+           clock speeds: max: 3000 MHz 1: 2545 MHz 2: 1366 MHz 3: 2512 MHz 4: 1274 MHz
+
+
+
+
+$ inxi -Fx
+
+System:    Host: bmarron-HP-Compaq-6710b-RM406UT-ABA Kernel: 4.4.0-36-generic i686 (32 bit gcc: 5.4.0)
+           Desktop: Xfce 4.12.3 (Gtk 2.24.28) Distro: Ubuntu 16.04 xenial
+Machine:   System: Hewlett-Packard product: HP Compaq 6710b (RM406UT#ABA) v: F.11
+           Mobo: Hewlett-Packard model: 30C0 v: KBC Version 71.2E
+           Bios: Hewlett-Packard v: 68DDU Ver. F.11 date: 04/10/2008
+CPU:       Dual core Intel Core2 Duo T8100 (-MCP-) cache: 3072 KB
+           flags: (lm nx pae sse sse2 sse3 sse4_1 ssse3 vmx) bmips: 8379
+           clock speeds: max: 2101 MHz 1: 1600 MHz 2: 1200 MHz
+Graphics:  Card: Intel Mobile GM965/GL960 Integrated Graphics Controller (primary)
+           bus-ID: 00:02.0
+           Display Server: X.Org 1.18.3 drivers: intel (unloaded: fbdev,vesa)
+           Resolution: 1280x800@60.00hz
+           GLX Renderer: Mesa DRI Intel 965GM x86/MMX/SSE2
+           GLX Version: 2.1 Mesa 11.2.0 Direct Rendering: Yes
+Audio:     Card Intel 82801H (ICH8 Family) HD Audio Controller
+           driver: snd_hda_intel bus-ID: 00:1b.0
+           Sound: Advanced Linux Sound Architecture v: k4.4.0-36-generic
+Network:   Card-1: Intel PRO/Wireless 3945ABG [Golan] Network Connection
+           driver: iwl3945 v: in-tree:s bus-ID: 10:00.0
+           IF: wlan0 state: up mac: 00:1f:3c:14:a5:e1
+           Card-2: Broadcom NetLink BCM5787M Gigabit Ethernet PCI Express
+           driver: tg3 v: 3.137 bus-ID: 18:00.0
+           IF: eth0 state: down mac: 00:1f:29:87:33:3d
+Drives:    HDD Total Size: 160.0GB (22.2% used)
+           ID-1: /dev/sda model: ST9160310AS size: 160.0GB
+Partition: ID-1: / size: 145G used: 32G (23%) fs: ext4 dev: /dev/sda1
+           ID-2: swap-1 size: 2.14GB used: 0.00GB (0%) fs: swap dev: /dev/sda5
+RAID:      No RAID devices: /proc/mdstat, md_mod kernel module present
+Sensors:   System Temperatures: cpu: 45.0C mobo: 20.7C
+           Fan Speeds (in rpm): cpu: N/A
+Info:      Processes: 214 Uptime: 27 min Memory: 511.9/2005.8MB
+           Init: systemd runlevel: 5 Gcc sys: 5.4.0
+           Client: Shell (bash 4.3.461) inxi: 2.2.35 
+
+
+
+
+
+System:    Host: bmarron-HP-Compaq-6710b-RM406UT-ABA Kernel: 3.16.0-45-generic i686 (32 bit, gcc: 4.8.2) 
+           Desktop: Xfce 4.11.8 (Gtk 2.24.23) Distro: Ubuntu 14.04 trusty
+Machine:   System: Hewlett-Packard product: HP Compaq 6710b (RM406UT#ABA) version: F.11
+           Mobo: Hewlett-Packard model: 30C0 version: KBC Version 71.2E
+           Bios: Hewlett-Packard version: 68DDU Ver. F.11 date: 04/10/2008
+CPU:       Dual core Intel Core2 Duo CPU T8100 (-MCP-) cache: 3072 KB flags: (lm nx pae sse sse2 sse3 sse4_1 ssse3 vmx) bmips: 8378.96 
+           Clock Speeds: 1: 800.00 MHz 2: 1200.00 MHz
+Graphics:  Card: Intel Mobile GM965/GL960 Integrated Graphics Controller (primary) bus-ID: 00:02.0 
+           X.Org: 1.16.0 drivers: intel (unloaded: fbdev,vesa) Resolution: 1280x800@60.0hz 
+           GLX Renderer: Mesa DRI Intel 965GM x86/MMX/SSE2 GLX Version: 2.1 Mesa 10.3.2 Direct Rendering: Yes
+Audio:     Card: Intel 82801H (ICH8 Family) HD Audio Controller driver: snd_hda_intel bus-ID: 00:1b.0 
+           Sound: Advanced Linux Sound Architecture ver: k3.16.0-45-generic
+Network:   Card-1: Broadcom NetLink BCM5787M Gigabit Ethernet PCI Express driver: tg3 ver: 3.137 bus-ID: 18:00.0
+           IF: eth0 state: down mac: 00:1f:29:87:33:3d
+           Card-2: Intel PRO/Wireless 3945ABG [Golan] Network Connection driver: iwl3945 ver: in-tree:s bus-ID: 10:00.0
+           IF: wlan0 state: up mac: 00:1f:3c:14:a5:e1
+Drives:    HDD Total Size: 160.0GB (7.8% used) 1: id: /dev/sda model: ST9160310AS size: 160.0GB 
+Partition: ID: / size: 145G used: 12G (9%) fs: ext4 ID: swap-1 size: 2.14GB used: 0.02GB (1%) fs: swap 
+RAID:      No RAID devices detected - /proc/mdstat and md_mod kernel raid module present
+Sensors:   System Temperatures: cpu: 48.0C mobo: 31.8C 
+           Fan Speeds (in rpm): cpu: N/A 
+Info:      Processes: 181 Uptime: 4:20 Memory: 580.2/2011.3MB Runlevel: 2 Gcc sys: 4.8.4 
+           Client: Shell (bash 4.3.11) inxi: 1.9.17 
+
+
+#######################
+general compu info
+hardware
+######################
+	#virtual files ('catalogs') in the /proc directory contain information about 
+	#hardware and configurations
+
+$ cat /proc/cpuinfo
+$ cat /proc/meminfo
+$ cat /proc/version
+
+	# what kind of a machine you have (under linux)
+	# gives information about the number and types of processors in the machine
+
+$ cat /proc/cpuinfo
+
+	# distinguish machines with with the arch command.
+	# what you see on a 32 bit machine
+$ arch
+i686
+	# what you see on a 64 bit machine
+
+$ arch
+x86_64
+
+
+$ uname -a		#kernel version
+$ lsb_release -a	#release version
+$ lscpu
+$ inxi -Fx
+
+$ sudo lshw --short
+$ hwinfo --short
+$ lspci
+$ lspci -v | grep "VGA" -A 12
+
+$ lsblk
+$ df -H
+$ pydf
+
+	# gives /dev/sda and /dev/sdb info
+	# gives thimbdrive info and hardisk info
+	# run both
+$ sudo fdisk -l
+Disk /dev/sda: 160.0 GB, 160041885696 bytes
+255 heads, 63 sectors/track, 19457 cylinders, total 312581808 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disk identifier: 0x0004ec9e
+
+   Device Boot      Start         End      Blocks   Id  System
+/dev/sda1   *        2048   308404223   154201088   83  Linux
+/dev/sda2       308406270   312580095     2086913    5  Extended
+/dev/sda5       308406272   312580095     2086912   82  Linux swap / Solaris
+
+Disk /dev/sdb: 63.9 GB, 63888687104 bytes
+255 heads, 63 sectors/track, 7767 cylinders, total 124782592 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disk identifier: 0x00000000
+
+   Device Boot      Start         End      Blocks   Id  System
+/dev/sdb1              32   124782591    62391280    c  W95 FAT32 (LBA)
+
+$ lsusb
+Bus 002 Device 004: ID 154b:00c4 PNY 							#/dev/sdb = Device 004
+Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub				#/dev/sda = Device 001
+Bus 007 Device 002: ID 0461:4d81 Primax Electronics, Ltd Dell N889 Optical Mouse
+Bus 007 Device 001: ID 1d6b:0001 Linux Foundation 1.1 root hub
+Bus 006 Device 001: ID 1d6b:0001 Linux Foundation 1.1 root hub
+Bus 005 Device 002: ID 08ff:2580 AuthenTec, Inc. AES2501 Fingerprint Sensor
+Bus 005 Device 001: ID 1d6b:0001 Linux Foundation 1.1 root hub
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 004 Device 001: ID 1d6b:0001 Linux Foundation 1.1 root hub
+Bus 003 Device 001: ID 1d6b:0001 Linux Foundation 1.1 root hub
+
+
+
+$ mount | column -t
+$ mount | column -t | grep ext
+$ sudo hdparm -i /dev/sda
+
+
+
+
+
+
+
+##############################################
+mounted devices and their partitions (blocks)
+###############################################
+
+$ lsblk
+NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+sda      8:0    0 149.1G  0 disk 
+├─sda1   8:1    0 147.1G  0 part /
+├─sda2   8:2    0     1K  0 part 
+└─sda5   8:5    0     2G  0 part [SWAP]
+sdb      8:16   1  14.9G  0 disk 
+└─sdb1   8:17   1  14.9G  0 part 				#not mounted (Lexar)
+sr0     11:0    1  1024M  0 rom  
+
+
+$ lsblk
+NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+sda      8:0    0 149.1G  0 disk 
+├─sda1   8:1    0 147.1G  0 part /
+├─sda2   8:2    0     1K  0 part 
+└─sda5   8:5    0     2G  0 part [SWAP]
+sdb      8:16   1   7.6G  0 disk 
+└─sdb1   8:17   1   7.6G  0 part /media/bmarron/Backup_1	#mounted (Sony)
+sr0     11:0    1  1024M  0 rom  
+
+
+###########################
+decription of USB device 
+##########################
+
+$ dmesg | less
+
+##################
+mount a USB 
+#################
+
+$ sudo mkdir /media/usbstick
+
+$ sudo mount -t vfat /dev/sdb1 /media/usbstick 
+
+
+##################
+reformat USB 
+################
+
+$ sudo mkfs.vfat -F 32 /dev/sdb1
+
+$ sudo mkfs.ext4 /dev/sdb1
+
+
+##############################
+pull a file from the internet
+#################################
+
+GNU Wget is a free utility for non-interactive download of files from
+       the Web.  It supports HTTP, HTTPS, and FTP protocols, as well as
+       retrieval through HTTP proxies.
+
+       Wget is non-interactive, meaning that it can work in the background,
+       while the user is not logged on.  This allows you to start a retrieval
+       and disconnect from the system, letting Wget finish the work.  By
+       contrast, most of the Web browsers require constant user's presence,
+       which can be a great hindrance when transferring a lot of data.
+
+
+	a.
+	#download to /home/bmarron
+
+wget "http://www.rcsb.org/pdb/files/1QLZ.pdb"
+
+
+
+	b.
+	#pull many files, put 'em in a zip on the desktop
+
+wget  -O ~/Desktop/ "http://thecanadiantestbox.x10.mx/CC.zip"
+
+
+
+################################
+desktop icons keep moving/shifting
+################################
+
+	a. details 
+	a1. make the icon config file read-only
+	a2. 'chattr' changes the file attributes on a Linux file system
+	a3. a file with the `i' attribute cannot be modified: it cannot be  deleted or renamed,  no  link  can  be created to this file and no data can be
+       	written to the file
+	a4. the  operator  `+'  causes  the  selected attributes to be added to the existing attributes of the files; `-' causes them to  be  removed
+
+	a5. the icon desktop placement file
+$ cd ~/.config/xfce4/desktop
+$ ls
+icons.screen0-1264x759.rc
+
+
+	b. actions
+	b1. after adding new icons must re-set the icon desktop placement file
+	b2. make file modifiable
+	b3. reconfigure icons on Desktop as desired
+	b4. make file un-modiafiable
+
+$ sudo chattr -i ~/.config/xfce4/desktop/icons.* && xfdesktop --reload
+$ sudo chattr +i ~/.config/xfce4/desktop/icons.* 
+
+
+
+#########################
+$PATH
+########################
+
+	#Ncan't access spyder from the terminal
+	#must run this everytime
+
+$ export PATH=/home/bmarron/anaconda2/bin:$PATH
+
+	#edit the .bashrc
+	#prepend the Anaconda2 install location at time of installation)
+		==> means that when you type anaconda at the command line interface it knows where to look for it.
+
+
+
+
+#################################
+Colors for items in the terminal
+###################################
+
+
+    Deep Blue: 				Directory
+    Green: 				Executable or recognized data file
+    Sky Blue: 				Linked file
+    Yellow (black background): 		Device
+    Pink: 				Graphic image file
+    Red: 				Archive file
+
+$ dircolors -p
+# Configuration file for dircolors, a utility to help you set the
+# LS_COLORS environment variable used by GNU ls with the --color option.
+
+
+
+==== Greek alphabet =================================
+*Find the Unicode sequence(eg, © symbol == U+00A9)
+*Ctrl + Shift + U  (an underlined u appears)
+*Let go of all keys
+*Type the "00a9" (now the screen shows an underlined u00a9)
+*Hit the Space Bar or Enter key and the Unicode symbol © appears.
+
+*use lowercase:
+α 	 	03B1 	SMALL ALPHA
+β 	 	03B2 	SMALL BETA
+γ 	 	03B3 	SMALL GAMMA
+Δ		0394	Large Delta
+δ 	 	03B4 	SMALL DELTA
+ε 	 	03B5 	SMALL EPSILON
+ζ 	 	03B6 	SMALL ZETA
+η 	 	03B7 	SMALL ETA
+θ 	 	03B8 	SMALL THETA
+ι 	 	03B9 	SMALL IOTA
+κ 	 	03BA 	SMALL KAPPA
+λ 	 	03BB 	SMALL LAMBDA
+μ 		03BC 	SMALL MU
+ν 	 	03BD 	SMALL NU
+ξ 	 	03BE 	SMALL XI
+ο 	 	03BF 	SMALL OMICRON
+π 	 	03C0 	SMALL PI
+ρ 	 	03C1 	SMALL RHO
+ς 	 	03C2 	SMALL FINAL SIGMA
+σ 	 	03C3 	SMALL SIGMA
+τ 	 	03C4 	SMALL TAU
+υ 	 	03C5 	SMALL UPSILON
+φ 	 	03C6 	SMALL PHI
+χ 	 	03C7 	SMALL CHI
+ψ 	 	03C8 	SMALL PSI
+ω 	 	03C9 	SMALL OMEGA
+
+
+
+
+
+
+
+
+
+
+
+

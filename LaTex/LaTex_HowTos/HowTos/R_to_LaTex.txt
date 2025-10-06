@@ -1,0 +1,28 @@
+ --- Export R Output to LaTex ---
+
+
+	#export a datafile
+write.csv(DEM1, file="~/Desktop/DEM1.txt")
+
+	#export any data output w/ LaTex code
+library(MVA)
+DM1rholatex<- signif(DM1rho, digits=4)
+table1<-as.table(DM1rholatex)
+toLatex(HSAURtable(table1))	#delete labels etc and use spacing in HW7
+
+	#export any single-page graphic to Latex (w/ pdf(){grDevices})
+pdf(file="~/Desktop/graphic1.pdf", height=6, width=6)   #size and shape of the original graphic
+plot(histogram())		#create graphic1p1
+dev.off()
+
+	#export any multi-page graphic to Latex
+pdf(file="~/Desktop/graphic1.pdf", height=6, width=6)   #size and shape of the original graphic(s)
+plot(histogram())		#create graphic1p1
+plot (bwplot())			#create graphic1p2
+plot (xyplot())			#create graphic1p3, etc
+dev.off()
+
+
+ 	# stargazer package???   
+
+

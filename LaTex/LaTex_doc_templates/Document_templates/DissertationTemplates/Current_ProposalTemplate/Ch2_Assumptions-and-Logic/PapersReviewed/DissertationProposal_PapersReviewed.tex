@@ -1,0 +1,314 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Dissertation Proposal -- Papers Reviewed
+% 2017SoE027
+% 
+% Author: bmarron
+% Origin: 18 Jan 2017
+% Final:
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[twoside]{article}	%use
+
+\usepackage{lipsum} % Package to generate dummy text throughout this template
+\usepackage{csquotes}
+\usepackage{apacite}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pdfpages}
+\usepackage{verbatim}
+\usepackage{bigfoot}
+\usepackage{multirow}
+%\usepackage[shortlabels]{enumitem}
+
+
+\usepackage[sc]{mathpazo} % Use the Palatino font and the Pazo fonts for math
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\linespread{1.05} % Line spacing - Palatino needs more space between lines
+\usepackage{microtype} % Slightly tweak font spacing for aesthetics
+
+\usepackage[hmarginratio=1:1,top=32mm,columnsep=20pt]{geometry} % Document margins
+\usepackage{multicol} % Used for the two-column layout of the document
+\usepackage[hang, small,labelfont=bf,up,textfont=it,up]{caption} % Custom captions under/above floats in tables or figures
+\usepackage{booktabs} % Horizontal rules in tables
+\usepackage{float} % Required for tables and figures in the multi-column environment - they need to be placed in specific locations with the [H] (e.g. \begin{table}[H])
+%\usepackage{hyperref} % Interferes with cite.sty 
+
+%\usepackage{lettrine} % The lettrine is the first enlarged letter at the beginning of the text
+\usepackage{paralist} % Used for the compactitem environment which makes bullet points with less space between them
+
+\usepackage{abstract} % Allows abstract customization
+\renewcommand{\abstractnamefont}{\normalfont\bfseries} % Set the "Abstract" text to bold
+\renewcommand{\abstracttextfont}{\normalfont\small\itshape} % Set the abstract itself to small italic text
+
+\usepackage{titlesec} % Allows customization of titles
+\renewcommand\thesection{\Roman{section}} % Roman numerals for the sections
+\renewcommand\thesubsection{\arabic{subsection}} % Arabic numerals for subsections
+\titleformat{\section}[block]{\large\scshape\centering}{\thesection.}{1em}{} % Change the look of the section titles
+\titleformat{\subsection}[block]{\large}{\thesubsection.}{1em}{} % Change the look of the section titles
+
+\usepackage{fancyhdr} % Headers and footers
+\pagestyle{fancy} % All pages have headers and footers
+\fancyhead{} % Blank out the default header
+\fancyfoot{} % Blank out the default footer
+\fancyhead[R]{\date{\today}}
+\fancyfoot[R]{\thepage} % Custom footer text
+%\fancyhead[C]{Running title $\bullet$ November 2012 $\bullet$ Vol. XXI, No. 1} % Custom header text
+%\fancyfoot[RO,LE]{\thepage} % Custom footer text
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\title{\vspace{-15mm}\fontsize{14pt}{10pt}\selectfont\textbf{Dissertation Proposal -- Papers Reviewed}} % Article title
+
+\author{
+\large
+\textsc{Bruce Marron} \\ %\thanks{A thank you or further information}\\[2mm] % Your name
+\normalsize Portland State University \\ % Your institution
+\vspace{-5mm}
+}
+\date{}
+
+%----------------------------------------------------------------------------------------
+\begin{document}
+\maketitle % Insert title
+\thispagestyle{fancy} % All pages have headers and footers
+
+%----------------------------------------------------------------------------------------
+%	ABSTRACT
+%----------------------------------------------------------------------------------------
+
+\begin{abstract}
+
+\end{abstract}
+
+%----------------------------------------------------------------------------------------
+%	ARTICLE CONTENTS
+%----------------------------------------------------------------------------------------
+%\begin{multicols}{2} % Two-column layout throughout the main article text, if desired
+
+\section{metrics}
+\shortcite{bollen_principal_2009} A principal component analysis of 39 scientific impact measures\\
+\shortcite{lane_lets_2010} Let's make science metrics more scientific\\
+
+%======================================================================
+\section{Google Scholar Search: "soil food web properties" (up thru 18)}
+%========================================================================
+\subsection{Google Scholar: Cited by > 1000}
+\shortcite{maeder_soil_2002} Soil fertility and biodiversity in organic farming\\
+\shortcite{polis_food_1996} Food web complexity and community dynamics\\
+\shortcite{van_der_heijden_unseen_2008} The unseen majority: soil microbes as drivers of plant diversity and productivity in terrestrial ecosystems\\
+
+\subsection{Google Scholar: Cited by 500 < x < 1000}
+\shortcite{lavelle_faunal_1997-1} Faunal activities and soil processes: adaptive strategies that determine ecosystem function\\
+\shortcite{kladivko_tillage_2001} Tillage systems and soil ecology\\
+\shortcite{doran_soil_2000-1} Soil health and sustainability: managing the biotic component of soil quality\\
+\shortcite{bongers_nematode_1999} Nematode community structure as a bioindicator in environmental monitoring
+
+\subsection{Google Scholar: Cited by 100 < x < 500}
+\shortcite{brussaard_soil_1998} Soil fauna, guilds, functional groups and ecosystem processes\\
+\shortcite{coleman_peds_2008} From peds to paradoxes: linkages between soil biota and their influences on ecological processes\\
+
+
+%===============================================
+\section{Aboveground-Belowground Links}
+%===============================================
+\shortcite{sackett_linking_2010} Linking soil food web structure to above-and belowground ecosystem processes: a meta-analysis\\
+\shortcite{kardol_how_2010} How understanding aboveground–belowground linkages can assist restoration ecology\\
+\shortcite{van_der_putten_empirical_2009} Empirical and theoretical challenges in aboveground–belowground ecology\\
+\shortcite{bardgett_belowground_2014} Belowground biodiversity and ecosystem functioning\\
+
+
+
+%========================================
+\section{Models}
+%========================================
+
+\shortcite{scheller_forest_2004}
+\begin{itemize}
+  \item short list of ecosystem processes ==> Ecosystem processes (e.g., net primary productivity, decomposition) (p 211)
+  \item Keep it simple ==> Based on our objectives and the computational limitations of complex landscape simulations, the biomass module was designed to minimize complexity. Biomass is calculated using a low number of parameters that can be estimated across an entire landscape (p. 213)
+  \item chose to keep cohort structure and add state variables ==> We elected to preserve the existing cohort data structure, as it has been well validated and integrated with various disturbance modules, and add new state variables that supplement the existing data and allow aboveground living and dead woody biomass calculations.
+  \item BiomassSuccession misses soil food web carbon and does not estimate belowground root mass ==> Biomass that is incorporated into the soil layer (soil organic carbon, SOC) was not modeled. (p. 214)
+  \item All simulated mortality events (the death of a species-age cohort) either transferred the living biomass for a cohort to the dead biomass pool (in the case of fire or wind) or removed the living biomass from the system (in the case of harvesting). (p. 214)
+  
+  \item 1st major assumption ==> The principle assumption was that an equilibrium condition would develop after many decades, whereas a cohort's mortality would equal growth, and [aboveground living biomass for each cohort = ($B_{ij}$)] biomass would cease to increase. (p. 214) 
+  \item 1st major assumption ==> Linear relationship: $B_{ij_{t+1}} = B_{ij} + ANPP_{ij} - M_{ij} \ \ i = spp ,\ j= age, \ ij=spp-age \ cohort \ (bin) $
+  \item 1st major assumption ==> 
+  \item 2nd major assumption ==> ... at the long time steps (10 years) modeled, disturbance does not significantly decrease maximum potential productivity by reducing available soil nitrogen. (p. 214)
+  \item 2nd major assumption ==> impact on SFWs for logging/windthrow seems ok; fire damages soil fungus but on average might be ok
+  \item 3rd major assumption ==> ... (species-age) cohort biomass data implicitly incorporates density information. Density was not explicitly calculated for either our growth or mortality functions. reductions in density over time are difficult to predict in mixed-species,mixed-age forests. Future research will explore variation in initial biomass as a function of seed rain and initial density.(p. 214)
+  \item $ANPP_{max}$ estimated a variety of ways ==> expert knowledge, Forest Inventory and Analysis (FIA) data, gap models, ecosystem process models (p. 215) ... maximum aboveground biomass (AGB) is now an input parameter....the relationship between above ground net primary productivity (ANPP) and AGB is not linear beyond $\sim 10 Mg \ ha^{-1} yr^{-1}$.... separate input for maximum AGB better accommodates shrubs and grasses that have different relationships between ANPP and AGB (p. 5 Biomass Succession v3.5 User Guide)
+  \item 
+\end{itemize}
+
+
+%===========================================
+\section{Plant-soil models to check out}
+%===========================================
+\shortcite{bever_incorporating_1997}
+
+
+%===============================================
+\section{Ecological networks}
+%============================================
+
+\shortcite{williams_simple_2010} Simple MaxEnt models explain food web degree distributions
+\begin{itemize}
+  \item the MaxEnt models shows that, in many food webs, one does not need to consider detailed ecological processes to be able to predict the consumer, resource, or undirected degree distributions. While many features of food webs are clearly nonrandom and require an ecological explanation, their degree distributions are largely explainable by a simple null model based in statistical rather than ecological theory (p. )
+\end{itemize}
+
+
+\shortcite{fath_ecological_2007} Ecological network analysis: network construction
+\begin{itemize}
+  \item assumption --- it is necessary that the network model be a partition of the environment being studied, i.e., be mutually exclusive and exhaustive
+  \item blasts reductionist approach ---  network models aim to include all ecological compartments and interactions and the analysis determines the overall relationships and significance of each. The difficulty of course lies in obtaining the data necessary to quantify all the ecological compartments and interactions. When sufficient data sets are not available, simple algorithms, called community assembly rules, have been employed to construct realistic food webs to test various food web theories. Once the network is constructed, via data or algorithms, the ENA is quite straightforward and software is available to assist in this (p.  )
+\end{itemize}
+
+
+\shortcite{bascompte_disentangling_2009}
+\begin{itemize}
+  \item These [mutually beneficial] interactions play a major role in the generation and maintenance of biodiversity on Earth and organize communities around a network of mutual dependences. (p. 417)
+  \item mutualistic networks are (i) heterogeneous, in which the bulk of species interact with a few species, and  a few species have a much higher number of interactions than would be expected from chance alone; (ii) nested, in which specialists interact with a subset of the group of species that generalists interact with; and (iii) built on weak and asymmetric links among species (for example, in some cases when a plant interacts strongly with an animal, the animal tends to depend less on the plant) (14). Therefore, mutualistic networks are neither randomly organized nor organized in isolated compartments, but built cohesively around a core of generalist species. (p 417)
+  \item the nested structure of mutualistic networks maximizes the number of coexisting species (p 418)
+  \item Studies such as (A) focus on coevolution at a community scale and set the foundation for predicting how global change will propagate through such networks. Studies such as (B) provide a framework to address the simultaneous influence of all patches on gene flow and quantify the importance of a single patch for the persistence of the entire metapopulation.
+\end{itemize}
+
+
+
+%======================================
+\section{Sustainable Ag/Agroecology}
+%=======================================
+
+\shortcite{altieri_agroecologically_2012}
+
+\shortcite{tilman_agricultural_2002}
+
+\shortcite{tilman_forecasting_2001}
+
+
+\shortcite{wackernagel_tracking_2002}
+\begin{itemize}
+  \item Biodiversity protection is highly dependent on the availability of habitats and life support systems. Hence the significance of the recent "hotspots" analysis by Myers et al. (38), demonstrating that 25 localities, covering a mere 1.4\% of the earth's land surface, contain the last remaining habitats of 44\% of the earth's vascular plant species and 3\% of species in four of five vertebrate groups. Were these hotspots to be preserved, that would reduce the mass extinction underway by at least one-third. But the aggregate expanse under outright protection is not the species. Certain areas can be used for only factor in safeguarding human activities while maintaining species habitats. This requires careful management of human interventions, especially when they entail intensive land use. It is not possible to determine precisely how much bioproductive area needs to be reserved for the -7-14 million species with which people sharethe planet. Some ecologists and biogeographers have recommended at least 10\% of the earth's land surface (39) (and a critical although undetermined amount of the marine realm). Other scientists propose at least 25\% (40). The Brundtland Report, Our Common Future (41), commissioned by the United Nations after the Rio Earth Summit in 1992, proposed protecting 12\% of the biosphere.
+\end{itemize}
+
+\shortcite{godfray_food_2010}
+\begin{itemize}
+  \item To address these negative effects, it is now widely recognized that food production systems and the food chain in general must become fully sustainable (p 814)
+  \item There are many difficulties in making sustainability operational. Over what spatial scale should food production be sustainable? (p 814)
+  \item we do not yet have good enough metrics of sustainability, a major problem when evaluating alternative strategies and negotiating trade-offs. This is the case for relatively circumscribed activities, such as crop production on individual farms, and even harder when the complete food chain is included or for complex products that may contain ingredients sourced from all around the globe. There is also a danger that an overemphasis on what can be measured relatively simply (carbon, for example) may lead to dimensions of sustainability that are harder to quantify (such as biodiversity) being ignored. These are areas at the interface of science, engineering, and economics that urgently need more attention (p 814)
+  \item The introduction of measures to promote sustainability does not necessarily reduce yields or profits. One study of 286 agricultural sustainability projects in developing countries, involving 12.6 million chiefly small-holder farmers on 37 million hectares, found an average yield increase of 79\% across a very wide variety of systems and crop types (27). One-quarter of the projects reported a doubling of yield. (p 814)
+  \item Domestication inevitably means that only a subset of the genes available in the wild-species progenitor gene pool is represented among crop varieties and livestock breeds. Unexploited genetic material from land races, rare breeds, and wild relatives will be important in allowing breeders to respond to new challenges. International collections and gene banks provide valuable repositories for such genetic variation, but it is nevertheless necessary to ensure that locally adapted crop and livestock germplasm is not lost in the process of their displacement by modern, improved varieties and breeds. (p 815)
+  \item Fair returns on investment are essential for the proper functioning of the private sector, but the extension of the protection of intellectual property rights to biotechnology has led to a growing public perception in some countries that biotech research purely benefits commercial interests and offers no long-term public good. Just as seriously, it also led to a virtual monopoly of GM traits in some parts of the world, by a restricted number of companies, which limits innovation and investment in the technology. Finding ways to incentivize wide access and sustainability, while encouraging a competitive and innovative private sector to make best use of developing technology, is a major governance challenge. (p 815)
+  \item Our view is that genetic modification is a potentially valuable technology whose advantages and disadvantages need to be considered rigorously on an evidential, inclusive, case-by-case basis: Genetic modification should neither be privileged nor automatically dismissed. We also accept the need for this technology to gain greater public acceptance and trust before it can be considered as one among a set of technologies that may contribute to improved global food security. (p 815-816)
+  \item The conversion efficiency of plant into animal matter is ~10\%; thus, there is a prima facie case that more people could be supported from the same amount of land if they were vegetarians...However, the argument that all meat consumption is bad is overly simplistic. First, there is substantial variation in the production efficiency and environmental impact of the major classes of meat consumed by people (Table 2). Second, although a substantial fraction of livestock is fed on grain and other plant protein that could feed humans, there remains a very substantial proportion that is grass-fed. Much of the grassland that is used to feed these animals could not be converted to arable land or could only be converted with majorly adverse environmental outcomes. In addition, pigs and poultry are often fed on human food “waste.” Third, through better rearing or improved breeds, it may be possible to increase the efficiency with which meat is produced. Finally, in developing countries, meat represents the most concentrated source of some vitamins and minerals, which is important for individuals such as young children. (p 816)
+\end{itemize}
+
+
+
+
+
+\shortcite{schmidhuber_global_2007}
+\begin{itemize}
+\item Numerous measures are used to quantify the overall status and the regional distribution of global hunger. None of these measures covers all dimensions and facets of food insecurity described above. This also holds for the FAO indicator of undernourishment (1), the measure that was used in essentially all studies reviewed in this article. The FAO measure, however, has a number of advantages. First, it covers two dimensions of food security, availability and access; second, the underlying methodology is straightforward and transparent; and third, the parameters and data needed for the FAO indicator are readily available for past estimates and can be derived without major difficulties for the future. (p 19703)
+  \item The Food and Agriculture Organization (FAO) defines food security as a "situation that exists when all people, at all times, have physical, social, and economic access to sufficient, safe, and nutritious food that meets their dietary needs and food preferences for an active and healthy life" (1). This definition comprises four key dimensions of food supplies: availability, stability, access, and utilization (p 19703)
+  \item 
+  \begin{enumerate}
+    \item The first dimension relates to the availability of sufficient food, i.e., to the overall ability of the agricultural system to meet food demand. Its subdimensions include the agro-climatic fundamentals of crop and pasture production (2) and the entire range of socio-economic and cultural factors that determine where and how farmers perform in response to markets.
+    \item The second dimension, stability, relates to individuals who are at high risk of temporarily or permanently losing their access to the resources needed to consume adequate food, either because these individuals cannot ensure ex ante against income shocks or they lack enough "reserves" to smooth consumption ex post or both. An important cause of unstable access is climate variability, e.g., landless agricultural laborers, who almost wholly depend on agricultural wages in a region of erratic rainfall and have few savings, would be at high risk of losing their access to food. However, there can be individuals with unstable access to food even in agricultural communities where there is no climate variability, e.g., landless agricultural laborers who fall sick and cannot earn their daily wages would lack stable access to food if, for example, they cannot take out insurance against illness.
+    \item The third dimension, access, covers access by individuals to adequate resources (entitlements) to acquire appropriate foods for a nutritious diet. Entitlements are defined as the set of all those commodity bundles over which a person can establish command given the legal, political, economic, and social arrangements of the community of which he or she is a member. Thus a key element is the purchasing power of consumers and the evolution of real incomes and food prices. However, these resources need not be exclusively monetary but may also include traditional rights, e.g., to a share of common resources.
+    \item Finally, utilization encompasses all food safety and quality aspects of nutrition; its subdimensions are therefore related to health, including the sanitary conditions across the entire food chain.
+  \end{enumerate}   
+  \item The main concern about climate change and food security is that changing climatic conditions can initiate a vicious circle where infectious disease causes or compounds hunger, which, in turn, makes the affected populations more susceptible to infectious disease. The result can be a substantial decline in labor productivity and an increase in poverty and even mortality. Essentially all manifestations of climate change, be they drought, higher temperatures, or heavy rainfalls have an impact on the disease pressure, and there is growing evidence that these changes affect food safety and food security (19705)
+  \item Global and regional weather conditions are also expected to become more variable than at present, with increases in the frequency and severity of extreme events such as cyclones, floods, hailstorms, and droughts (3, 8). By bringing greater fluctuations in crop yields and local food supplies and higher risks of landslides and erosion damage, they can adversely affect the stability of food supplies and thus food security....What is new, however, is the fact that the areas subject to high climate variability are likely to expand, whereas the extent of short-term climate variability is likely to increase across all regions. Furthermore, the rates and levels of projected warming may exceed in some regions the historical experience (p 19704)
+  \item Second, the existing global assessments of climate change and food security have only been able to focus on the impacts on food
+availability and access to food, without quantification of the likely important climate change effects on food safety and vulnerability (stability). This means that these assessments neither include potential problems arising from additional impacts due to extreme events such as drought and floods (for a similar critique, also see e.g., ref. 41) nor do they quantify the potential impacts of changes in the prevalence of food-borne diseases (positive as well as negative) or the interaction of nutrition and health effects through changes in the proliferation of vector-borne diseases such as malaria. On the food availability side, they also exclude the impacts of a possible sea-level rise for agricultural production or those that are associated with possible reductions of marine or freshwater fish production. (p 19707)
+  \item Third, it is important to note that even in terms of food availability, all current assessments of world food supply have focused only on the impacts of mean climate change, i.e., they have not considered the possibility of significant shifts in the frequency of extreme events on regional production potential, nor have they considered scenarios of abrupt climate or socio-economic change; any of these scenario variants is likely to increase the already negative projected impacts of climate change on world food supply. Models that take into account the specific biophysical, technological, and market responses necessary to simulate realistic adaptation to such events are not yet available. (p 19707)
+  \item Fourth, this review finds that recent global assessments of climate change and food security rest essentially on a single modeling framework, the IIASA system, which combines the FAO/IIASA AEZ model with various GCM models and the IIASA BLS system, or on close variants of the IIASA system (e.g., refs. 11 and 42). This has important implications for uncertainty, given that the robustness of all these assessments strongly depends on the performance of the underlying models. There is, therefore, a clear need for continued and enhanced validation efforts of both the agro-climatological and food (p 19707)
+  \item Finally, we note that assessments that do not only provide scenarios, but also attach probabilities for particular outcomes to come true could provide an important element for improved or at least better-informed policy decisions. One option would be to produce such estimates with probability-based estimates of the (key) model parameters. Alternatively, the various scenarios could be constructed so that they reflect expert judgements on a particular issue. It would be desirable to attach probabilities to existing scenarios. Information on how likely the suggested outcomes are would contribute greatly to their usefulness for policy makers and help justify (or otherwise) policy measures to adapt to or mitigate the impacts of climate change on food security. (p 19707)
+  \item Climate change will affect all four dimensions of food security, namely food availability (i.e., production and trade), access to food, stability of food supplies, and food utilization... Essentially all quantitative assessments show that climate change will adversely affect food security...a promotion of sustainable agricultural practices, and continued technological progress can play a crucial role in providing steady local and international supplies under climate change (p19708)
+\end{itemize}
+
+
+
+
+
+%=======================
+\section{Books}
+%=======================
+\shortcite{harte_maximum_2011} Maximum Entropy and Ecology
+\begin{itemize}
+  \item the concept of information theory can be applied to arbitrary prob dist. (p 123)
+  \item MaxEnt has been used to infer the distribution of numbers of linkages between nodes in an ecological web. (p. 135)
+\end{itemize}
+
+\shortcite{gianinazzi_impact_1994}
+\begin{itemize}
+  \item Plant health and productivity are rooted in the soil, and the quality of the soil depends on the diversity and viability of its biota (p. 119)
+  \item Tisdall and Oades (1979) first reported that aggregate stability and AMF status are related in ag soils (p. 119)
+  \item ... pioneering work by Tisdall and Oades (1979, 1980) on the relationships between crop rotation, fallowing, and soil stability, showing a connection between the extent of the soil mycelium and macroaggregate formation and stabilization by arbuscular mycorrhizal roots (p. 120)
+  \item ... root and fungus effects are difficult to separate but that the soil mycelium alone is capable to bring about soil effects equivalent to those of roots, while roots and fungi together affect soil aggregation synergistically (p. 120)  
+\end{itemize}
+
+\shortcite{gliessman_agroecology:_2015}
+\begin{itemize}
+  \item The greater the structural and functional similarity of an agroecosystem to the natural ecosystems in its biogeographic region the greater the likelihood that the agroecosystem will be sustainable. (p 288)
+  \item Observable and measurable values for a a range of natural processes, structures, and rates can provide benchmarks/thresholds that delineate the ecological potential for the design and management of agroecosystems in a particular area. It is the task of research to determine how close an agroecosystem needs to be to benchmark/threshold values of natural systems to be sustainable. (p 288)
+  \item plant spp diversity ==> Shannon index > 5 (p 295)
+  \item successional mosaic (p 350)
+  \item silicate clays (aluminum silicate) ==> high CEC; high productivity (p 90)
+  \item hydroxide clays (hydrated Al and Fe hydroxides) ==> low CEC; low productivity (p 90)
+  \item Productivity index = $ \frac{Total \ biomass \ accumulated}{Net \ primary \ productivity}$ (p 291)
+  \item NPP does not vary much between systems (ranging from 0 to 30 tons/ha). What really varies from system to system is standing biomass ( ranging from 0 to 800 tons/ha) (p 291)
+   
+\end{itemize}
+
+
+
+
+%=======================
+\section{Internet}
+%=======================
+
+\subsection{Soil Adsorption Ratio}
+https://en.wikipedia.org/wiki/Sodium\_adsorption\_ratio\\
+http://civil.emu.edu.tr/courses/civl553/Lec12\%20Flocculation\%20[Compatibility\%20Mode].pdf\\
+http://www.fao.org/docrep/003/T0234E/T0234E04.htm\\
+https://www.ars.usda.gov/arsuserfiles/20360500/pdf\_pubs/P2291.pdf\\
+http://ecorestoration.montana.edu/mineland/guide/analytical/chemical/solids/sar.htm
+
+\begin{itemize}
+  \item Soil Adsorption ratio $= {\frac {Na^{+}}{\sqrt {{\tfrac {1}{2}}({Ca^{2+}+Mg^{2+}})}}}$
+  \item High SAR will cause a decrease in the ability of the soil to form stable aggregates and a loss of soil structure and tilth b/c clays do not flocculate; water infiltration/drainage problems
+  \item measure with AA spectoscopy
+\end{itemize}
+
+
+\subsection{Cation exchange capacity}
+https://www.extension.purdue.edu/extmedia/ay/ay-238.html\\
+http://nmsp.cals.cornell.edu/publications/factsheets/factsheet22.pdf\\
+
+
+
+
+
+%\end{multicols}
+
+%----------------------------------------------------------------------------------------
+%	REFERENCE LIST
+%----------------------------------------------------------------------------------------
+\newpage
+\bibliographystyle{/usr/local/share/texmf/tex/latex/apacite/apacite}
+\bibliography{/home/bmarron//Desktop/BibTex/My_Library_20170125}
+
+
+
+
+\end{document}

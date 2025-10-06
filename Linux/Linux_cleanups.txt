@@ -1,0 +1,55 @@
+
+
+	--- Cleanups ---
+
+
+
+####################
+hard disk cleanup
+#####################
+	#do in order!
+	
+	1. remove partial pkgs
+$ sudo apt autoclean
+
+	2. clean the cache
+$ sudo apt clean
+
+	3. remove unused dependencies
+$ sudo apt autoremove
+
+
+$ sudo apt autoclean &&
+sudo apt clean &&
+sudo apt autoremove
+
+
+
+	4. remove orphaned pkgs
+	#use gtkorphan GUI
+			System ==> Remove orphaned packages
+		#careful!! only libs and FOR SURE old pkgs
+		#will mark all top level pkgs that do not have dependecies (like Skype, libgdal, etc)
+		#can however remove old linux versions (headers, extras, etc)
+
+	5. remove unnecessary locale data with pkg localepurge (only needed once)
+$ sudo dpkg --configure -a
+$ sudo dpkg-reconfigure localepurge
+
+
+	6. updates and upgrades
+$ sudo apt update && sudo apt upgrade
+
+---------------------¡¡ OJO !!---------------------------------------------------------------------
+	7. remove duplicate files and broken sym links
+		# careful with this! in general SKIP this step
+-----------------------------------------------------------------------------------------------
+
+$ sudo aptitude install fslint
+
+FSlint is a utility to find and clean various forms of lint on a filesystem.
+I.E. unwanted or problematic cruft in your files or file names.
+For example, one form of lint it finds is duplicate files.
+It has both GUI and command line modes.
+
+

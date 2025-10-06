@@ -1,0 +1,95 @@
+Title:			Text editing w/ Linux, sed, and awk
+Project Descriptor:	
+Project ID:		
+Author:			bmarron
+Origin Date:		20 Aug 2016
+
+
+
+
+=====================================================
+EXAMPLE:
+Clean up new Zotero Library (remove url, doi refs and non ASCII)
+====================================================
+
+#############################################################
+STEP1:
+remove all "url = ...."
+(cause problems b/c they have undefined characteres in LaTex)
+###############################################################
+
+
+NB. Export Zotero library as, "My_Library.bib"
+
+$ cd Desktop/BibTex
+
+$ sed 's/\<url\>.\+//g' My_Library.bib > test.bib			# RegEx: identify the word, 'url' followed by any number of characters
+									# SubEx: replace with nothing
+									# flag: (g)lobal (all occurences in a line)
+									# print to test.bib
+
+
+$ sed -i 's/\<url\>.\+//g' My_Library.bib			# edit in place
+
+
+
+#########################
+STEP2:
+remove all "doi = ...."
+(cause problems b/c they have undefined characteres in LaTex)
+############################
+
+$ sed -i 's/\<doi\>.\+//g' My_Library.bib			# edit in place
+
+
+
+
+##############################################################
+STEP3:
+find and remove non ASCII (umlats, etc)
+(cause problems b/c they have undefined characteres in LaTex)
+################################################################
+
+http://stackoverflow.com/questions/16712870/find-non-ascii-characters-in-a-text-file-and-convert-them-to-their-unicode-equiv
+http://stackoverflow.com/questions/8845349/search-document-for-non-ascii/8845398#8845398
+
+
+
+	# You can use [^\x20-\x7E] to match a non-ASCII character
+
+$ grep -P '[^\x20-\x7E]' My_Library_20170125.bib
+
+https://alvinalexander.com/blog/post/linux-unix/how-remove-non-printable-ascii-characters-file-unix
+tr -cd '\11-\15\40-\176' file-with-binary-chars > clean-file
+
+
+@book{gianinazzi_impact_1994,
+	address = {Basel ; Boston},
+	series = {Advances in life sciences},
+	title = {Impact of arbuscular mycorrhizas on sustainable agriculture and natural ecosystems},
+	isbn = {978-3-7643-5000-0 978-0-8176-5000-1},
+	publisher = {Birkhäuser Verlag},				<== has non ASCII
+	editor = {Gianinazzi, S. and Schüepp, H.},			<== has non ASCII
+	year = {1994},
+	keywords = {Congresses, Ecology Congresses, mycorrhizal fungi, Mycorrhizas in agriculture, Sustainable agriculture, Vesicular-arbuscular mycorrhizas}
+}
+
+
+@article{kardol_how_2010,
+	title = {How understanding aboveground–belowground linkages can assist restoration ecology},		<== has non ASCII
+	volume = {25},
+	
+	number = {11},
+	urldate = {2017-01-10},
+	journal = {Trends in Ecology \& Evolution},
+	author = {Kardol, Paul and Wardle, David A.},
+	year = {2010},
+	keywords = {aboveground/belowground links},
+	pages = {670--679},
+	file = {[PDF] ucv.ve:/home/bmarron/.mozilla/firefox/vmro2bq5.default/zotero/storage/TG2STM6M/Kardol and Wardle - 2010 - How understanding aboveground–belowground linkages.pdf:application/pdf;Snapshot:/home/bmarron/.mozilla/firefox/vmro2bq5.default/zotero/storage/WT8BPQJ4/S0169534710002132.html:text/html}
+}
+
+
+
+
+

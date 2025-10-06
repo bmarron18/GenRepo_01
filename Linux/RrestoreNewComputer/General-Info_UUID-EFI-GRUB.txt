@@ -1,0 +1,392 @@
+
+
+
+------ Info ---------------------------------------------------------------------------------------------
+
+EFI		Extensible Firmware Interface
+UEFI		Unified EFI
+GPT		GUID Partition Table
+BIOS		Basic Input Output Software
+ESP		EFI System Partition
+GUID		Globally Unique Identifier
+UUID		Universally Unique Identifier
+GRUB		Grand Unified Bootloader
+
+
+
+
+startx 
+basically runs an Xserver (the graphic "driver") and a command which run on it, which is tipically a window manager. 
+By default the commands that are run are in ~/.xinitrc file in your home directory, or some generic system file otherwise.
+
+
+%%%%%%% Linux File Structure %%%%%%%%%%%%%%%%%%%%
+One of the fundamental differences between windows and linux.
+
+The Windows file system uses devices as starting points for each section of the file system. So you have:
+c:\  
+d:\
+e:\
+
+Linux/Unix systems use the concept of a unified file system. Everything is under the root folder, and can be arbitrarily mixed together. 
+The user and programs do not know about devices because they have been abstracted away. So, all linux systems will have the same general hierarchy.
+A linux system will look something like this:
+
+/
+|---var
+|---lib
+|---home
+|---mnt
+
+But these folder could be on the same hard drive, or separate hard drives. They can even be network folders! 
+There is a special folder called /dev for if a program actually needs to talk to the physical device. So, anywhere that you want to 
+go on a linux system will never require switching devices like on windows.
+
+However, sometimes a device is not added to the filesytem! It will be plugged in, the OS can see it as a device, but it has not been mounted. 
+Modern linux systems will try and do this for you as necessary. Sometimes it doesn't work, and you have to do it your self. 
+That is what the mount command is for. It is also the original purpose of the /mnt folder, so you can have an obvious place to mount 
+new sections of the file system.
+
+
+
+%%%%%%% Access to partitions %%%%%%%%%%%%%%%%%%%%%%%
+
+Mount volume without running any commands as root, and without having to create or specify a mount point. 
+You can accomplish that with a dynamic mount. 
+The mount point is created on-the-fly and is named the same as the volume name 
+(unless there is no volume name, then usually it's the partition's UUID).
+
+Dynamic mounting in Ubuntu is done with udisks:
+udisksctl - The udisks command line tool
+udisks 2.1.7  March 2013
+
+udisksctl	==> command-line program used to interact with the udisksd daemon.
+udisksd		==> is the UDisks daemon itself
+libudisks2.so	==> contains the UDisks API functions. 
+
+
+
+bruce@bruce-HP-Notebook:~$ udisksctl status
+MODEL                     REVISION  SERIAL               DEVICE
+--------------------------------------------------------------------------
+SanDisk SD8SN8U-128G-1006 X4120006  170224801668         sda     
+
+
+$ udisksctl mount -b /dev/sda1
+$ udisksctl unmount -b /dev/sda1
+
+
+
+%%%%%%%%%%% EFI %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+the GPT has since become part of the UEFI standard
+
+The Extensible Firmware Interface (EFI) or its version 2.x variant, Unified EFI (UEFI) is a firmware type 
+that is widespread on recent computers, especially those more recent than 2010. It is intended to replace 
+the traditional BIOS firmware that is prevalent on earlier machines. This page provides information about 
+installing and booting Ubuntu using UEFI, as well as about switching between UEFI mode and legacy BIOS mode 
+using Ubuntu. Warning /!\ Most modern computers support both UEFI mode and BIOS mode. Which boot mode you 
+should use depends on several factors
+
+
+Identifying if the computer boots the HDD in UEFI mode:
+bruce@bruce-HP-Notebook:~$ [ -d /sys/firmware/efi ] && echo "EFI boot on HDD" || echo "Legacy boot on HDD" 
+EFI boot on HDD
+
+
+EFI System Partition (ESP)	==> This partition holds EFI-mode boot loaders and related files
+				==> ESP is in /dev/sda1 == (hd0,1)
+				==> sda1 == the first HDD [a]; the first partition [1]
+				==> (hd0,1) == the first HDD [0], the first partition [1]
+				==> Device /dev/sda1 is already mounted by Linux at `/boot/efi'.
+grub> ls (hd0,gpt1)/
+/efi /System Volume Information
+
+bruce@bruce-HP-Notebook:~$ sudo fdisk -l
+Disk /dev/sda: 119.2 GiB, 128035676160 bytes, 250069680 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 4096 bytes
+I/O size (minimum/optimal): 4096 bytes / 4096 bytes
+Disklabel type: gpt
+Disk identifier: 3137076F-D76E-4050-856F-9EF7B6D183C8
+
+Device         Start       End   Sectors  Size Type
+/dev/sda1       2048    534527    532480  260M EFI System
+/dev/sda2     534528    567295     32768   16M Microsoft reserved
+/dev/sda3     567296 145651711 145084416 69.2G Microsoft basic data
+/dev/sda4  248051712 250058751   2007040  980M Windows recovery environment
+/dev/sda5  145651712 231446527  85794816 40.9G Linux filesystem
+/dev/sda6  231446528 248051711  16605184  7.9G Linux swap
+
+
+bruce@bruce-HP-Notebook:~$ udisksctl mount -b /dev/sda1
+Error mounting /dev/sda1: GDBus.Error:org.freedesktop.UDisks2.Error.AlreadyMounted: Device /dev/sda1 is already mounted at `/boot/efi'.
+
+
+
+
+/boot/efi/EFI/ubuntu/fwupx64.efi		==> This is a tool to assist in automating the update of firmware on an EFI-based computer
+/boot/efi/EFI/ubuntu/grub.cfg			==> This is a GRUB configuration file that does very little; mainly it loads /boot/grub/grub.cfg. 
+/boot/efi/EFI/ubuntu/grubx64.efi 		==> This is the EFI GRUB 2 binary, which must be replaced if the GRUB package is updated.
+/boot/efi/EFI/ubuntu/shimx64.efi		==> This is the Shim binary, which is required for Secure Boot to function
+				    		      
+
+
+Renamed MokManager.efi to mmx64.efi
+Mokmanger is a key manager. 
+Ubuntu uses the Microsoft key for UEFI boot. Lots of complaints about using a Microsoft key, but is built into system and easy to use. 
+
+
+
+bruce@bruce-HP-Notebook:~$ sudo efibootmgr
+BootCurrent: 0002
+Timeout: 0 seconds
+BootOrder: 0002,3002,0001,2001,3001,2002,2004
+Boot0000* USB CD/DVD ROM Drive (UEFI) (GENERIC CDRCB05)
+Boot0001* Windows Boot Manager
+Boot0002* ubuntu					<< from /boot/grub/grub.cfg
+Boot2001* EFI USB Device
+Boot2002* EFI DVD/CDROM
+Boot3002* Internal Hard Disk or Solid State Disk
+
+
+$ sudo su
+$ cd /boot/efi/EFI/ubuntu
+fw  fwupx64.efi  grub.cfg  grubx64.efi  mmx64.efi  shimx64.efi
+$ exit
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%% GRUB, UUID and Partitions %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+GRUB uses its own naming structure for drives and partitions in the form of (hdn,m)
+	n is the hard drive number
+	m is the partition number. 
+The hard drive number starts from zero [0], but the partition number starts from one [1] for normal partitions and five (5) for extended partitions.
+grub does not use normal linux hard drive identifiers. Instead, the letters correlate to numbers
+
+
+sda1 == (hd0,1) 	<<first HDD, partition 1
+sdb3 == (hd1,3)	<<second HDD, partition 3
+
+
+Change UUID at the partition level
+Linux ext2, ext3, or ext4 filesystems ONLY
+$ sudo tune2fs /dev/sda5 -U f0acce91-a416-474c-8a8c-43f3ed3768f9
+
+
+Globally Unique Identifier (GUID) Partition Table (GPT) format
+Use a GPT disk program to do change PARTUUID level
+E.g.
+$ sgdisk --partition-guid=1:R /dev/sdg		<< will modify /dev/sdg1 with a new random GUID.
+
+-u, --partition-guid=partnum:guid
+              Set the partition unique GUID for an individual partition. The GUID may be a complete GUID or 'R' to set a random GUID.
+-U, --disk-guid=guid
+              Set the GUID for the disk. The GUID may be a complete GUID or 'R' to set a random GUID.
+
+Once UUID is modified, you may need to update grub.cfg and/or fstab so that you can boot successfully next time.
+
+The files for which UUID is most critical:
+/etc/fstab
+/etc/initramfs-tools/conf.d/resume
+
+
+
+
+
+bruce@bruce-HP-Notebook:~$ sudo fdisk -l
+Disk /dev/sda: 119.2 GiB, 128035676160 bytes, 250069680 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 4096 bytes
+I/O size (minimum/optimal): 4096 bytes / 4096 bytes
+Disklabel type: gpt
+Disk identifier: 3137076F-D76E-4050-856F-9EF7B6D183C8
+
+Device         Start       End   Sectors  Size Type
+/dev/sda1       2048    534527    532480  260M EFI System
+/dev/sda2     534528    567295     32768   16M Microsoft reserved
+/dev/sda3     567296 145651711 145084416 69.2G Microsoft basic data
+/dev/sda4  248051712 250058751   2007040  980M Windows recovery environment
+/dev/sda5  145651712 231446527  85794816 40.9G Linux filesystem
+/dev/sda6  231446528 248051711  16605184  7.9G Linux swap
+
+
+grub> ls (hd0,gpt1)
+Filesystem is fat.
+grub> ls (hd0,gpt1)/
+/efi /System Volume Information
+
+grub> ls (hd0,gpt6)
+Filesystem is ext2
+grub> ls (hd0,gpt6)/
+./ ../ lost+found/ boot/ etc/ media/ bin/ dev/ home/ lib /lib64/ mnt/ opt/ root/ run/ 
+sbin/ snap/ srv/ sys/ tmp/ usr/ var/ vmlinuz initrd.img cdrom/ core initrd.img.old vmlinuz.old 
+lib32/ libx32/ original1.vmlinuz original1.initrd.img.old original1.initrd.img original1.vmlinuz.old
+
+
+
+The location of GRUB's configuration file is hard-coded in the grubx64.efi binary.
+Ubuntu works in one of two ways, depending on which package you installed:
+
+    If you install the Secure Boot-capable version of GRUB
+	==> it looks in EFI/ubuntu for grub.cfg. 
+	    /boot/efi/EFI/ubuntu/grub.cfg is customized to point back to /boot/grub/grub.cfg, referring to the partition by UUID number.
+
+    If you install the non-Secure-Boot version of GRUB, 
+	==> the package modifies the grubx64.efi binary at install time so that it refers directly to /boot/grub/grub.cfg.
+
+
+----- excerpt from /boot/grub/grub.cfg for bruce-HP-Notebook -------------------------------------------------------------------------------
+menuentry 'Ubuntu' --class ubuntu --class gnu-linux --class gnu --class os $menuentry_id_option 'gnulinux-simple-8562815c-6a84-4f9e-b383-117398522254' {
+	recordfail
+	load_video
+	gfxmode $linux_gfx_mode
+	insmod gzio
+	if [ x$grub_platform = xxen ]; then insmod xzio; insmod lzopio; fi
+	insmod part_gpt
+	insmod ext2
+	set root='hd0,gpt5'
+	if [ x$feature_platform_search_hint = xy ]; then
+	  search --no-floppy --fs-uuid --set=root --hint-bios=hd0,gpt5 --hint-efi=hd0,gpt5 --hint-baremetal=ahci0,gpt5  8562815c-6a84-4f9e-b383-117398522254
+	else
+	  search --no-floppy --fs-uuid --set=root 8562815c-6a84-4f9e-b383-117398522254
+	fi
+        linux	/boot/vmlinuz-4.10.0-27-generic root=UUID=8562815c-6a84-4f9e-b383-117398522254 ro  quiet splash $vt_handoff
+	initrd	/boot/initrd.img-4.10.0-27-generic
+}
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+	c. If get GRUB command line (grub>)
+	c1. Boot Xubuntu on separate discUSB (Try Xubuntu)
+	c2. locate and change /boot/grub/grub.cfg file with sudo mousepad grub.cfg; save
+	c3. run the new grub.crg file at grub command
+
+grub> configfile (hd0,gpt6)/boot/grub/grub.cfg
+
+
+
+	d. make the changes directly at the grub command line
+
+insmod ext4
+set root='hd0,gpt6'
+search --no-floppy --fs-uuid --set=root dc85ed93-d544-46cc-9fe1-74e48ebf0380
+linux	/boot/vmlinuz-4.10.0-27-generic root=UUID=dc85ed93-d544-46cc-9fe1-74e48ebf0380 ro  quiet splash $vt_handoff
+initrd	/boot/initrd.img-4.10.0-27-generic
+
+
+
+	e. if impossible to merge after a - d above, will get 
+Welcome to emergency mode!
+After logging in type "systemctl reboot" to reboot, "systemctl default" to try again to boot in default mode
+
+bd147eceM#
+
+root@bruce-HP-Notebook:~# Ctrl-D
+
+
+
+	f. GRUB
+grub> grub-mkconfig 			<< write a configuration file automatically. It uses a set of scripts in /etc/grub.d/
+
+grub> ls
+	(hd0) (hd0,gpt6) (hd0,gpt5) (hd0,gpt4) (hd0,gpt3) (hd0,gpt2) (hd0,gpt1)
+
+grub> ls (hd0,gpt6)
+Filesystem is ext2
+grub> ls (hd0,gpt6)/
+./ ../ lost+found/ boot/ etc/ media/ bin/ dev/ home/ lib /lib64/ mnt/ opt/ root/ run/ 
+sbin/ snap/ srv/ sys/ tmp/ usr/ var/ vmlinuz initrd.img cdrom/ core initrd.img.old vmlinuz.old 
+lib32/ libx32/ original1.vmlinuz original1.initrd.img.old original1.initrd.img original1.vmlinuz.old
+
+grub> cat (hd0,gpt6)/etc/fstab
+
+
+
+
+
+
+	f. BIOS
+	f1. on new machine hold down F12 key to access BIOS boot installer
+
+BIOS SetUp
+	Settings>>Boot Sequence>>
+		Boot Sequence: 						<<options when press F12 at startup
+		Boot List Options: UEFI					<<NOT Legacy!!!
+			Add Boot Option
+				Boot Option Name: <whatever>
+				File System List:
+				File Name:				<< search in \EFI directory
+
+---- EXAMPLES ---------------------------------------------------------------------------------------
+
+Boot Option NName:	ubu1						<< make it whatever
+File SYstem List: 	PciRoot(0x0)/Pci(0x1F,0x2)/Sata(0x1,0x0)/HD(1,GPT,701E024F-04B0-4526-BC22-90420056D821]	<< ??
+File Name:		\EFI\ubuntu\original1.grubx64.efi		<<search HDD for this
+
+Boot Option NName:	ubu2						<< make it whatever
+File SYstem List: 	PciRoot(0x0)/Pci(0x1F,0x2)/Sata(0x1,0x0)/HD(1,GPT,701E024F-04B0-4526-BC22-90420056D821]	<< ??
+File Name:		\EFI\ubuntu\grubx64.efi				<<search HDD for this
+
+Boot Option NName:	micro1						<< make it whatever
+File SYstem List: 	PciRoot(0x0)/Pci(0x1F,0x2)/Sata(0x1,0x0)/HD(1,GPT,701E024F-04B0-4526-BC22-90420056D821]	<< ??
+File Name:		\EFI\Microsoft\Boot\bootmgfw.efi		<<search HDD for this
+
+Boot Option NName:	micro2						<< make it whatever
+File SYstem List: 	PciRoot(0x0)/Pci(0x1F,0x2)/Sata(0x1,0x0)/HD(1,GPT,701E024F-04B0-4526-BC22-90420056D821]	<< ??
+File Name:		\EFI\Microsoft\Boot\original1.bootmgfw.efi		<<search HDD for this
+------------------------------------------------------------------------------------------------------------------
+
+
+
+Reinstall BIOS
+http://www.dell.com/support/article/us/en/19/sln171755/updating-the-dell-bios-in-linux-and-ubuntu-environments?lang=en
+http://www.dell.com/support/home/us/en/19/product-support/servicetag/dsxlj02/drivers?os=biosa
+
+Dell Precision Workstation T3610 System BIOS View details
+File Name: T3610A14.exe
+Description: Windows/DOS (8.58 MB)
+Version: A14 ,A14
+Other versions
+Importance: Urgent
+Release Date: 22 May 2017
+Last Updated: 22 May 2017
+This file will automatically self-install after downloading. Restart required
+
+
+
+
+
+BootRepairTool 					<< does not boot!!
+	a. reboot with xubuntu disc
+	b. try Xubuntu
+	c.You need to repair the GRUB. Do the following
+		Boot using a live usb/cd of ubuntu. Use boot-repair to fix the problem.
+		After booting with live usb/cd, run following command in terminal:
+
+sudo add-apt-repository ppa:yannubuntu/boot-repair && 
+sudo apt-get update && 
+sudo apt-get install -y boot-repair && 
+boot-repair
+
+	d. boot from Boot Repair disc; BIOS must be in EFI not Legacy
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

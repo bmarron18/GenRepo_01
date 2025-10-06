@@ -1,0 +1,229 @@
+
+
+###################################
+Xubuntu full systen restore algorithm
+(CrashPlan)
+###################################
+
+
+
+NB. Assume have a new compu W/O Windows 10
+
+
+
+
+	a. install Windows 10 from USB
+	a1. Load BIOS/EFI (ESC | F10 | F12) and boot from the WindowsInstall USB 
+
+bdmarron18@outlook.com
+bd147eceM#
+bmarron18 (Skype)
+
+
+	b. resize C:\ before installing Xubuntu
+http://www.tecmint.com/install-ubuntu-16-04-alongside-with-windows-10-or-8-in-dual-boot/
+
+
+	c.  install Xubuntu
+	c1. Load BIOS/EFI (ESC | F10 | F12) and boot from the XubuntuInstall USB 
+
+Install Xubuntu alongside Windows Boot Manager
+The partition tables of the following devices are changed:
+SCSI1 (0,0,0) (sda)
+
+The following partitions are going to be formatted:
+partition #5 (sda) as ext4
+partition #6 (sda) as swap
+
+
+	d. Once Xubuntu is installed get the UUID, EFI, fstab, and grub.cfg info from the NewComputer
+	d1. copy info to mousepad; save on a thumbdrive *.txt files AND leave files on ~/Desktop
+		==> NewCompu_UUID-GRUB-EFI_Info.txt
+		==> NewCompu_boot-grub-grub.cfg.txt
+		==> NewCompu_etc-fstab.txt
+
+$ lsblk -f
+$ sudo blkid
+$ sudo fdisk -l
+$ sudo efibootmgr
+
+$ mousepad /etc/fstab 
+$ mousepad /boot/grub/grub.cfg
+
+
+
+
+	e. install Crash Plan
+https://www.crashplan.com/en-us/download/
+CrashPlan_4.8.3_Linux.tgz
+~/Downloads/crashplan-install$ sudo ./install.sh
+
+accept all defualts
+CrashPlan will install to:	/usr/local/crashplan
+And put links to binaries:	/usr/local/bin
+And store data:			/usr/local/var/crashplan
+Your init.d dir:		/etc/init.d
+Your current run level dir:	/etc/rc5.d
+
+
+
+
+OPTION 1	Restore ALL files from CrashPlan (OriginalComputer) (overwrites fstab and initramfs-tools/conf.d/resume files)
+		Re-boot from Xubuntu USB (select 'Try xubuntu')
+		Unmount volume containing the restored files
+			Rename the UUID of /dev/sda5 on NewComputer to match OriginalComputer UUID of /dev/sda5 (use tune2fs)
+			Modify /boot/grub/grub.cfg to rematch /dev/sda5 UUID of OriginalComputer
+			Modify the overwritten /etc/fstab (# /boot/efi was on /dev/sda1 during installation) to rematch /dev/sda1 UUID of NewComputer
+			Modify the overwritten /etc/fstab (# /boot/efi was on /dev/sda1 during installation) to rematch /dev/sda6 UUID of NewComputer
+
+
+
+		Check
+			/dev/sda1	==> retains NewComputer UUID and overwritten fstab file modified to match this
+			/dev/sda2	==> retains NewComputer UUID (Microsoft) 
+			/dev/sda3	==> retains NewComputer UUID (Microsoft)
+			/dev/sda4	==> retains NewComputer UUID (Microsoft)
+			/dev/sda5	==> has new UUID to match OriginalComputer and grub.cfg and fstab files set to match this
+			/dev/sda6	==> retains NewComputer UUID and grub.cfg and fstab set to match this
+
+
+	a. Restore ALL folders and files from CrashPlan backup to the original location
+		==> Restore <most recent> <current permissions> <original location> <overwrite>
+
+bin
+boot			<< has grub.cfg
+etc			<< has fstab (File System TABle)
+			<< has initramfs-tools/conf.d/resume
+home
+lib
+lib32
+lib64
+libx32
+media
+mnt
+opt
+root
+run
+sbin
+snap
+srv
+usr
+var
+
+
+
+
+	b. Reboot with Xubuntu USB and select 'Try Xubuntu'
+	b1. Unmount Xubuntu volume
+	b2. rename NewComputer partition /dev/sda5 to match OriginalComputer partition 
+	b3. NB. both machnes should be configured as
+		/dev/sda1		==> EFI
+		/dev/sda2 - /dev/sda4	==> WIndows
+		/dev/sda5 - /dev/sda6	==> Xubuntu
+
+	b4. UUID change ONLY to
+		/dev/sda5
+		
+$ sudo tune2fs /dev/sda5 -U 8562815c-6a84-4f9e-b383-117398522254
+
+
+	c. CrashPlan restore DOES NOT change grub.cfg! 
+	c1. Rename every instance of /dev/sda5 UUID to match OriginalComputer
+	c2. rename every instance of the following to match OriginalComputer
+
+	linux	/boot/vmlinuz-4.10.0-27-generic root=UUID=8562815c-6a84-4f9e-b383-117398522254 ro  quiet splash $vt_handoff
+	initrd	/boot/initrd.img-4.10.0-27-generic
+
+	
+$ sudo mousepad /boot/grub/grub.cfg
+
+
+
+
+
+
+	d. CrashPlan Restore DOES change fstab! 
+	d1. Modify /etc/fstab (# /boot/efi was on /dev/sda1 during installation) to match /dev/sda1 UUID of NewComputer
+	d2. Modify /etc/fstab (# swap was on /dev/sda6 during installation) to rematch /dev/sda6 UUID of NewComputer
+	d3. get UUID from 'NewCompuOriginal_UUID-GRUB-EFI_Info.txt'
+
+$ sudo mousepad /etc/fstab
+
+
+	e. CrashPlan DOES change /etc/initramfs-tools/conf.d/resume
+	e1. Modify /etc/initramfs-tools/conf.d/resume to match /dev/sda6 UUID of NewComputer
+	
+
+$ sudo mousepad /etc/initramfs-tools/conf.d/resume
+
+
+	f. reboot (and pray!)
+
+Stalls here:
+    /dev/sda5: clean, 121539/6234222 files, 1053787/24914550 blocks
+
+login on tty with Ctrl-Alt-F1:
+bruce-HP-Notebook login:	root
+Password: 			bd147eceM#
+root@bruce-HP-Notebook:~# chown root:root /usr/bin/sudo && chmod 4755 /usr/bin/sudo
+root@bruce-HP-Notebook:~# startx
+restart
+
+
+login on tty with Ctrl-Alt-F1:
+bruce-HP-Notebook login:	bruce
+Password: 			bd147eceM#
+bruce@bruce-HP-Notebook:~$ startx
+
+Terminal:
+pkexec chown root /usr/lib/sudo/sudoers.so
+
+
+
+
+
+
+
+OPTION 2 	Restore ALL files from CrashPlan
+		Re-boot from Xubuntu USB (Try xubuntu)
+		Rename Xubuntu UUID partitions on NewComputer to be same as CrashPlan computer (post-download)
+		Modify newly-installed grub.cfg and fstab to match NewComputer /dev/sda1 UUID (pos-download)
+
+
+Tricky!!
+
+ext is its own file system
+swap is its own file system
+ntfs is its own file system
+
+
+
+tune2fs only works on ext filesystems
+
+	
+
+Globally Unique Identifier (GUID) Partition Table (GPT) format
+Use a GPT disk program to do change PARTUUID level
+E.g.
+$ sgdisk --partition-guid=1:R /dev/sdg		<< will modify /dev/sdg1 with a new random GUID.
+
+-u, --partition-guid=partnum:guid
+              Set the partition unique GUID for an individual partition. The GUID may be a complete GUID or 'R' to set a random GUID.
+-U, --disk-guid=guid
+              Set the GUID for the disk. The GUID may be a complete GUID or 'R' to set a random GUID.
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+

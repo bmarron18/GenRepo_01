@@ -1,0 +1,232 @@
+-
+
+######################
+installation LinuxMint 20
+alongside Windows 10
+##########################
+
+Download Linux Mint 20
+	% Linux Mint 20 ISO images – https://www.linuxmint.com/download.php
+
+
+https://www.tecmint.com/install-linux-mint-alongside-windows-dual-boot-uefi-mode/
+https://superuser.com/questions/650460/install-linux-mint-directly-to-hard-drive-without-creating-live-cd-or-bootable-u
+https://www.zdnet.com/article/how-to-install-linux-mint-on-your-windows-pc/
+https://itsfoss.com/install-linux-mint/
+
+GET THIS!
+https://sourceforge.net/p/boot-repair-cd/home/Home/
+https://sourceforge.net/projects/boot-repair-cd/
+
+USE THIS!
+*https://itsfoss.com/guide-install-linux-mint-16-dual-boot-windows/
+
+If you don't have an ISO burner program, download one. I recommend freeware programs 
+	%ImgBurn for optical drives
+	%Yumi for Windows for USB sticks. 
+	%LinuxLive USB Creator
+	%UNetbootin
+	%Etcher 
+	%Rufus
+
+
+----- OLD -----------------------------
+http://www.tecmint.com/install-ubuntu-16-04-alongside-with-windows-10-or-8-in-dual-boot/
+http://linuxbsdos.com/2016/06/05/dual-boot-ubuntu-16-04-and-windows-10-on-a-pc-with-uefi-firmware/
+https://linuxbsdos.com/2016/06/09/triple-boot-linux-mint-17-3-ubuntu-16-04-windows-10-on-a-pc-with-uefi-firmware/
+
+
+
+######################################
+upgrade Xubuntu 14.04 LTS to 16.04 LTS to 18.04 to 20.04 LTS
+#######################################
+http://askubuntu.com/questions/765403/how-to-update-xubuntu-14-04-lts-to-xubuntu-16-04-lts
+http://askubuntu.com/questions/717827/can-i-smoothly-upgrade-from-one-lts-to-next-lts-release
+
+https://linuxconfig.org/how-to-upgrade-to-ubuntu-18-04-lts-bionic-beaver
+https://linuxconfig.org/things-to-do-after-installing-ubuntu-18-04-bionic-beaver-linux
+
+https://linuxconfig.org/how-to-enable-disable-firewall-on-ubuntu-18-04-bionic-beaver-linux
+
+
+--------	a. check for Prompt=lts	---------------------
+sudo mousepad /etc/update-manager/release-upgrades
+
+# Default behavior for the release upgrader.
+
+[DEFAULT]
+# Default prompting behavior, valid options:
+#
+#  never  - Never check for a new release.
+#  normal - Check to see if a new release is available.  If more than one new
+#           release is found, the release upgrader will attempt to upgrade to
+#           the release that immediately succeeds the currently-running
+#           release.
+#  lts    - Check to see if a new LTS release is available.  The upgrader
+#           will attempt to upgrade to the first LTS release available after
+#           the currently-running one.  Note that this option should not be
+#           used if the currently-running release is not itself an LTS
+#           release, since in that case the upgrader won't be able to
+#           determine if a newer release is available.
+Prompt=lts
+
+
+--------	b. make changes as small as possible	-----------------
+
+sudo apt update &&
+sudo apt upgrade &&
+sudo apt dist-upgrade &&
+sudo apt autoremove
+
+--------	c. install the update manager utility (if needed) -----------------------
+
+sudo apt install update-manager-core
+
+
+
+--------	d. do the upgrade	----------------------------------
+
+sudo do-release-upgrade
+
+
+Updating repository information
+Third party sources disabled 
+Some third party entries in your sources.list were disabled. You can 
+re-enable them after the upgrade with the 'software-properties' tool 
+or your package manager. 
+
+Checking package manager
+Reading package lists... Done    
+Building dependency tree          
+Reading state information... Done
+Building data structures... Done 
+
+Calculating the changes
+
+Calculating the changes
+
+Do you want to start the upgrade? 
+16 installed packages are no longer supported by Canonical. You can 
+still get support from the community. 
+
+140 packages are going to be removed. 563 new packages are going to 
+be installed. 1974 packages are going to be upgraded. 
+
+You have to download a total of 1,876 M. This download will take 
+about 34 minutes with your connection. 
+
+Installing the upgrade can take several hours. Once the download has 
+finished, the process cannot be canceled. 
+
+Continue [yN]  Details [d]
+
+
+
+Configuration file '/etc/ntp.conf'
+ ==> Modified (by you or by a script) since installation.
+ ==> Package distributor has shipped an updated version.
+   What would you like to do about it ?  Your options are:
+    Y or I  : install the package maintainer's version
+    N or O  : keep your currently-installed version
+      D     : show the differences between the versions
+      Z     : start a shell to examine the situation
+ The default action is to keep your current version.
+*** ntp.conf (Y/I/N/O/D/Z) [default=N] ? 
+
+
+Configuration file '/etc/gnome/defaults.list'
+ ==> Modified (by you or by a script) since installation.
+ ==> Package distributor has shipped an updated version.
+   What would you like to do about it ?  Your options are:
+    Y or I  : install the package maintainer's version
+    N or O  : keep your currently-installed version
+      D     : show the differences between the versions
+      Z     : start a shell to examine the situation
+ The default action is to keep your current version.
+
+
+
+Configuration file '/etc/sysctl.conf'
+ ==> Modified (by you or by a script) since installation.
+ ==> Package distributor has shipped an updated version.
+   What would you like to do about it ?  Your options are:
+    Y or I  : install the package maintainer's version
+    N or O  : keep your currently-installed version
+      D     : show the differences between the versions
+      Z     : start a shell to examine the situation
+ The default action is to keep your current version.
+*** sysctl.conf (Y/I/N/O/D/Z) [default=N] ? 
+
+
+
+Configuration file '/etc/ssh/ssh_config'
+ ==> Modified (by you or by a script) since installation.
+ ==> Package distributor has shipped an updated version.
+   What would you like to do about it ?  Your options are:
+    Y or I  : install the package maintainer's version
+    N or O  : keep your currently-installed version
+      D     : show the differences between the versions
+      Z     : start a shell to examine the situation
+ The default action is to keep your current version.
+*** ssh_config (Y/I/N/O/D/Z) [default=N] ? 
+
+
+
+
+--------	e. After check sources.list, some will be commented out ==> For example, R	----
+
+	e1. make backup
+sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
+sudo sed -i 's/xenial/bionic/g' /etc/apt/sources.list		#OPTIONAL replace all xenial
+
+	e2. by hand 
+sudo mousepad /etc/apt/sources.list
+mousepad /etc/apt/sources.list.d/
+
+
+	# CRAN mirror
+# deb https://cloud.r-project.org/bin/linux/ubuntu xenial-cran35/ # disabled on upgrade to bionic
+deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/
+
+
+	# R base
+# deb http://cran.rstudio.com/bin/linux/ubuntu xenial/ # disabled on upgrade to bionic
+deb http://cran.rstudio.com/bin/linux/ubuntu bionic-cran35/ 
+
+
+
+
+	e3. update
+
+sudo apt update &&
+sudo apt upgrade &&
+sudo apt dist-upgrade &&
+sudo apt autoremove
+
+
+
+
+--------	f. activate/install misc	-------------------------
+
+	f1. activate firewall
+
+sudo ufw status verbose
+sudo ufw enable
+
+
+	f2. install gnome weather
+sudo apt install gnome-weather
+
+
+	f3. Install Third-party Codecs & Extras
+sudo apt install ubuntu-restricted-extras
+
+
+	f4. install stacer (system monitoring)
+wget -O ~/stacer.deb https://jaist.dl.sourceforge.net/project/stacer/v1.0.9/stacer_1.0.9_amd64.deb
+sudo gdebi ~/stacer.deb
+
+
+	f5. re-activate indicator plugin in top panel (Panel 0)
+
+

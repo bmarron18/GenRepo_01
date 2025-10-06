@@ -1,0 +1,114 @@
+
+
+    # change TABs Spyder
+https://stackoverflow.com/questions/36187784/changing-indentation-settings-in-the-spyder-editor-for-python
+
+
+#########
+FAQ
+########
+https://docs.spyder-ide.org/5/faq.html#using-packages-installer
+
+
+###############
+Spyder for APIs
+################
+	# use Spyder's internal Python but change interperter to virtual env ==> (ai-apis)
+
+/home/bmarron18/spyder-6/envs/ai-apis
+/home/bmarron18/spyder-6/envs/ai-apis/bin
+
+	# Activate the ai-apis virtual environment to install pkgs
+	NB. You will see (ai-apis) before at the command line
+
+$ source ./spyder-6/envs/ai-apis/bin/activate
+(ai-apis)$ pip install spyder-kernels google-genai openai nltk jiter
+(ai-apis):~$ deactivate 
+	
+
+
+Q. How do I get SPyder to work with my existing pkgs/env?
+Finally, connect Spyder to this my-env environment by changing Spyder’s default Python interpreter, following the instructions in the above answer.
+https://docs.spyder-ide.org/5/faq.html#using-existing-environment
+
+To work with an existing environment in Spyder, change the default Python interpreter for new IPython Consoles to point to this environment.
+
+To do so, open the Python interpreter section of Spyder’s preferences (Tools ‣ Preferences, or Spyder ‣ Preferences on macOS). Here, select the option Use the following Python interpreter, and use the dropdown below to select your preferred environment. If it’s not listed, see the note below.
+	
+
+
+############
+Spyder and Anaconda
+####################
+
+------ Run Spyder outside of Anaconda w/ (internal) python spyder  ----------
+
+*	just open spyder at command line
+	$ spyder
+
+
+------ Run Spyder in (base) Anaconda w/o (internal) python spyder----------
+*	Update Anaconda and Spyder---
+	$ conda activate base
+	(base) $ conda update spyder
+	(base) $ conda list spyder
+		# packages in environment at /home/bmarron/anaconda3:
+		# Name                     Version          Build               Channel
+		pyls-spyder                0.4.0            pyhd3eb1b0_0
+		spyder                     6.0.8            hd8ed1ab_0          conda-forge
+		spyder-base                6.0.8            linux_pyh62a8a7d_0  conda-forge
+		spyder-kernels             3.0.5            py313h7040dfc_0
+
+	(base) $ spyder
+			[will open spyder w/ internal python or whichever was the last setting in "wrench"]
+
+*	In Spyder under "wrench" change Python interpreter to (base) python [clic 'Apply' and 'OK']
+			==> /home/bmarron/anaconda3/bin/python
+
+
+*	Restart Spyder [now running inside (base) Anaconda env and w/o Spyder internal python]
+	(base) $ spyder
+		Python 3.13.5 | packaged by Anaconda, Inc. | (main, Jun 12 2025, 16:09:02) [GCC 11.2.0]
+		Type "copyright", "credits" or "license" for more information.
+
+		IPython 8.30.0 -- An enhanced Interactive Python. Type '?' for help.
+
+
+
+---- Create new Anaconda environment and Run Spyder in the new env -------
+
+*	Create a new environment with a specific Python version: 
+		$ conda create --name spyder_env		<== defualt Python will be most recent Anaconda python 
+													available unless stated
+
+		For Anaconda3 or Miniconda3 installers: The default Python version in new environments (if not 
+		explicitly specified) is typically Python 3.x, where 'x' is the version that was current at the 
+		time of the installer's release.
+
+*	Activate an environment:
+    	$ conda activate spyder_env
+
+
+*	Install pkgs in spyder_env (spyder-kernels, :
+		(spyder_env) $ conda install spyder-kernels			<== will install LOTS of pkgs
+			## Package Plan ##
+			environment location: /home/bmarron/anaconda3/envs/spyder_env
+
+		The following packages will be downloaded:
+			[MANY!! including python-3.13.7]
+		
+		
+*	In Spyder under "wrench" change Python interpreter [clic 'Apply' and 'OK']
+		==> /home/bmarron/anaconda3/envs/spyder_env/bin/python
+
+
+*	Restart Spyder [now running inside (spyder_env) Anaconda and w/o Spyder internal python]
+	(spyder_env) $ spyder
+		Python 3.13.7 | packaged by conda-forge | (main, Sep  3 2025, 14:30:35) [GCC 14.3.0]
+		Type "copyright", "credits" or "license" for more information.
+
+		IPython 8.37.0 -- An enhanced Interactive Python. Type '?' for help.
+	
+*	To go back to the original Spyder
+		In Spyder under "wrench" change Python interpreter [clic 'Apply' and 'OK']
+	

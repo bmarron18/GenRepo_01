@@ -1,0 +1,39 @@
+Title:				git_Reset Master Branch
+Project Description:		LANDIS-II upgrades/corrections
+Project ID:			2016SoE021
+Author:				bmarron
+Origin Date:			30 Nov 2016
+Final Date:			30 Nov 2017		
+
+
+###############################
+QAQC protocol:
+Reset Master branch to prior commit;
+add new branches
+################################
+https://stackoverflow.com/questions/5916329/cleanup-git-master-branch-and-move-some-commit-to-new-branch
+
+NB. Assumes have read/write privileges and permissions
+
+
+	a. clone upstream repo to desktop
+	b. make sure you are on the master branch
+	c. look at commits on GitHub AND in log list 
+		want this ==> 7442e3543a15ada5a3ff29b7a264255e45ac50c1 Deprecated climate library to v1.0.0.
+	d. reset master to prior commit in clone
+	e. (forced) push of HEAD to remote master (forced repo reset)
+	f. add new branches to the reset remote repo
+	g. Re-clone the remote repo (that now has the new branches)
+	h. push of material in branches up to remote with pull request in GitHub
+	   (one pull request for each branch)
+
+
+
+
+
+git clone https://github.com/LANDIS-II-Foundation/Extension-NECN-Succession.git
+git checkout master
+git log --pretty=oneline
+git reset --hard 7442e3543a15ada5a3ff29b7
+git remote -v
+git push -f origin HEAD

@@ -1,0 +1,456 @@
+
+############
+Operations
+##############
+
+COPY of entire directory w/ all files!!
+	cd ~/Desktop/LaTex/LaTex_installed_packages
+	sudo cp -r fontawesome5 /usr/local/share/texmf/tex/latex/
+	cd /usr/local/share/texmf/tex/latex/fontawesome5/
+	sudo mktexlsr
+	
+	cd ~/Desktop/LaTex/LaTex_installed_packages
+	sudo cp -r moderncv-old /usr/local/share/texmf/tex/latex/
+	cd /usr/local/share/texmf/tex/latex
+	sudo mv moderncv-old moderncv
+	cd /usr/local/share/texmf/tex/latex/moderncv/
+	sudo mktexlsr
+	
+COPY just (all) files and hidden folders
+	cp -a /source/. /dest/ 	<== -a option is an improved recursive option
+							<== The . at end of the source path is a specific cp syntax that copies 							all files and folders, including hidden ones.
+	
+MOVE entire directory w/ all files!!
+	cd /usr/share/texlive/texmf-dist/tex/latex
+	sudo mv ccicons /usr/share/texlive/texmf-dist/fonts/opentype/public
+	cd /usr/share/texlive/texmf-dist/fonts/opentype/public/ccicons
+	sudo mktexlsr
+	sudo texhash
+	
+	
+	cd /usr/share/texlive/texmf-dist/fonts/opentype/public/
+	sudo mv ccicons /usr/share/texlive/texmf-dist/fonts/type1/public
+	cd /usr/share/texlive/texmf-dist/fonts/type1/public/
+	ls
+	sudo mktexlsr
+	sudo texhash
+	
+
+DELETE all files/dir.s in a dir
+	sudo rm -r *
+
+RENAME directory
+	sudo mv moderncv-old moderncv
+
+NEW directory
+	sudo mkdir -p /usr/local/share/texmf/tex/latex/ClearSans/ &&
+	sudo cp -r /home/bmarron/Downloads/clearsans/ /usr/local/share/texmf/tex/latex/ClearSans/ &&
+	cd /usr/local/share/texmf/tex/latex/ClearSans/ &&
+	sudo mktexlsr &&
+	sudo updmap-sys --enable Map=ClearSans.map
+	
+
+FIND
+cd /usr/share/
+find ./ -name "*.otf" -type f
+
+cd /usr/share/
+find ./ -name "ocr*" -type d
+
+
+
+	--- Installing new \usepackage and \documentclass files ----------------
+
+###############
+Orientation
+#################
+
+There is 
+	TexLive
+	TexLive-LaTex
+	TexLive-Xetex
+	TexLive-LuaTex
+
+LaTeX, XeTex, and LuaTex are the recipes. The set of instructions and markup that defines the structure and ingredients of your final document. TeX Live is the kitchen, stocked with all the necessary tools and supplies—the oven, pans, utensils, and ingredients—that you need to follow the recipe and produce the finished dish. You need both a recipe (LaTeX, XeTex, LuaTex) and a kitchen (TeX Live) to create a beautifully typeset document. 
+
+
+There is 
+	BibLaTex
+	Biber
+
+Biber is the backend program that processes citation data for the
+BibLaTeX package, while BibLaTeX is the LaTeX package that provides a flexible and powerful interface for managing and formatting bibliographies and citations. In essence, BibLaTeX is the user-facing LaTeX tool, and Biber is the separate program it calls upon to handle the actual sorting, formatting, and data processing of bibliography information, offering more advanced features like full Unicode support and customizability than the older BibTeX
+
+
+
+
+################
+new compu setup
+#################
+	-- install sequence
+texlive THEN texlive-latex THEN texlive-xetex THEN latexila THEN biber
+
+	-- new installation
+Search "texlive" in Synaptic
+
+sudo aptitude install texlive-latex-base &&
+sudo aptitude install texlive-latex-extra &&
+sudo aptitude install texlive-latex-recommended &&
+sudo aptitude install texlive-xetex
+
+sudo aptitude install latexila
+
+sudo aptitude install biber
+
+
+###############
+Texlive File Structure
+TeX directory structure (TDS)	<== /usr/local/share/texmf is TDS root
+#########################
+*https://www.ctan.org/pkg/tds
+
+In short, here is a skeleton of the default directory structure, extracted from the TDS document:
+
+prefix/      installation root (/usr/local by default)
+ bin/         executables
+ man/         man pages
+ include/     C header files
+ info/        GNU info files
+ lib/         libraries (libkpathsea.*)
+ share/       architecture-independent files
+  texmf/      TDS root
+   bibtex/     BibTeX input files
+    bib/        BibTeX databases
+     base/       base distribution (e.g., �xampl.bib�)
+     misc/       single-file databases
+     pkg/       name of a package
+    bst/        BibTeX style files
+     base/       base distribution (e.g., �plain.bst�, �acm.bst�)
+     misc/       single-file styles
+     pkg/       name of a package
+   doc/         additional documentation
+   dvips/       �.pro�, �.ps�, �psfonts.map�
+   fonts/       font-related files
+    type/         file type (e.g., �tfm�, �pk�)
+     mode/          type of output device (types �pk� and �gf� only)
+      supplier/       name of a font supplier (e.g., �public�)
+       typeface/        name of a typeface (e.g., �cm�)
+        dpinnn/           font resolution (types �pk� and �gf� only)
+   metafont/    Metafont (non-font) input files
+    base/        base distribution (e.g., �plain.mf�)
+    misc/        single-file packages (e.g., �modes.mf�)
+    pkg/           name of a package (e.g., �mfpic�)
+   metapost/    MetaPost input files
+    base/        base distribution (e.g., �plain.mp�)
+    misc/        single-file packages
+    pkg/           name of a package
+    support/     support files for MetaPost-related utilities (e.g., �trfonts.map�)
+   mft/         �MFT� inputs (e.g., �plain.mft�)
+   tex/         TeX input files
+    format/         name of a format (e.g., �plain�)
+     base/        base distribution for format (e.g., �plain.tex�)
+     misc/        single-file packages (e.g., �webmac.tex�)
+     local/       local additions to or local configuration files for format
+     pkg/           name of a package (e.g., �graphics�, �mfnfss�)
+    generic/     format-independent packages
+     hyphen/      hyphenation patterns (e.g., �hyphen.tex�)
+     images/      image input files (e.g., Encapsulated PostScript)
+     misc/        single-file format-independent packages (e.g., �null.tex�).
+     pkg/           name of a package (e.g., �babel�)
+   web2c/        implementation-dependent files (.pool, .fmt, texmf.cnf, etc.)
+
+Some concrete examples for most file types:
+/usr/local/bin/tex
+/usr/local/man/man1/xdvi.1
+/usr/local/info/kpathsea.info
+/usr/local/lib/libkpathsea.a
+/usr/local/share/texmf/bibtex/bst/base/plain.bst
+/usr/local/share/texmf/fonts/pk/ljfour/public/cm/cmr10.600pk
+/usr/local/share/texmf/fonts/source/public/pandora/pnr10.mf
+/usr/local/share/texmf/fonts/tfm/public/cm/cmr10.tfm
+/usr/local/share/texmf/fonts/type1/adobe/utopia/putr.pfa
+/usr/local/share/texmf/metafont/base/plain.mf
+/usr/local/share/texmf/metapost/base/plain.mp
+/usr/local/share/texmf/tex/plain/base/plain.tex
+/usr/local/share/texmf/tex/generic/hyphen/hyphen.tex
+/usr/local/share/texmf/web2c/tex.pool
+/usr/local/share/texmf/web2c/tex.fmt
+/usr/local/share/texmf/web2c/texmf.cnf
+
+
+
+FILES IN TDS ROOT (TeXLive distro)
+$ ls /usr/share/texlive/texmf-dist
+bibtex  dvipdfmx  fonts  makeindex  metapost  scripts  tex     texdoc    web2c
+doc     dvips     ls-R   metafont   mft       source   tex4ht  texdoctk  xdvi
+
+
+
+FILES IN TDS ROOT (local user; me!!)
+$ ls /usr/local/share/texmf
+ls-R  tex/latex
+
+$ ls /usr/local/share/texmf/tex/latex
+libentry        LessonPlan    moderncv   rac2             texput.log
+biblatex        lix_textbook  nicefrac   Regenerarletter  university_letter
+chemgreek       logreq        preview    res              xstring
+cuposter        manyfoot      psuposter  siunitx
+dapper-invoice  mhchem        rac1       texMe
+
+
+
+FILES IN TDS ROOT (other)
+$ ls /etc/texmf
+dvipdfmx  dvips  tex  texdoctk  texmf.d  web2c
+
+$ ls /etc/texmf/web2c
+mktex.cnf  texmf.cnf  updmap.cfg
+VARTEXFONTS=/tmp/texfonts
+
+
+######################
+TeX ENV VARIABLES
+###################
+*https://www.overleaf.com/learn/latex/Articles/An_introduction_to_Kpathsea_and_how_TeX_engines_search_for_files
+	Table listing Kpathsea “config variables”
+
+
+texmf.cnf files contain the values for TeX env variables!! There is no easily-found list of these env variables. texmf.cnf files are searched along the paths set in the TEXMFCNF environment variable the default for which is set at compile time
+
+
+FIND *.cnf files w/ "kpsewhich"
+$ kpsewhich -var-value=TEXMFCNF
+/etc/texmf/web2c:/usr/local/share/texmf/web2c:/usr/share/texlive/texmf-dist/web2c
+
+$ kpsexpand '$TEXMFCNF'
+/etc/texmf/web2c:/usr/local/share/texmf/web2c:/usr/share/texlive/texmf-dist/web2c
+
+$ kpsewhich --expand-path '$TEXMFCNF'
+/etc/texmf/web2c:/usr/share/texlive/texmf-dist/web2c
+
+
+
+FIND *.cnf files w/ "find"
+cd etc/
+find ./ -name "*.cnf" -type f >> ~/Desktop/etc.txt
+./texmf/web2c/mktex.cnf
+./texmf/web2c/texmf.cnf
+./texmf/texmf.d/00debian.cnf
+
+cd usr/
+sudo find ./ -name "*.cnf" -type f >> ~/Desktop/usr.txt
+./share/texlive/texmf-dist/texdoc/texdoc.cnf
+./share/texlive/texmf-dist/web2c/fmtutil-hdr.cnf
+./share/texlive/texmf-dist/web2c/texmf.cnf
+./share/texlive/texmf-dist/tex/luatex/luaotfload/luaotfload-blacklist.cnf
+./share/tex-common/mktex.cnf
+
+./share/texlive/texmf-dist/texdoc/texdoc.cnf
+./share/texlive/texmf-dist/web2c/fmtutil-hdr.cnf
+./share/texlive/texmf-dist/web2c/texmf.cnf
+./share/texlive/texmf-dist/tex/luatex/luaotfload/luaotfload-blacklist.cnf
+./share/tex-common/mktex.cnf
+
+
+
+
+THE MAIN LIST OF ENV VARIABLES...HERE!
+	/usr/share/texlive/texmf-dist/web2c/texmf.cnf
+$ notepadqq /usr/share/texlive/texmf-dist/web2c/texmf.cnf
+
+NOTHING HERE
+$ notepadqq /usr/local/share/texmf/web2c/texmf.cnf
+	[nothing]
+
+ONE ENV VARIABLE
+$ notepadqq /etc/texmf/web2c/texmf.cnf
+%%% From file: /etc/texmf/texmf.d/00debian.cnf
+VARTEXFONTS=/tmp/texfonts
+%%% End of file: /etc/texmf/texmf.d/00debian.cnf	<== 00debian.cnf has VARTEXFONTS=/tmp/texfonts
+
+
+
+
+###########
+kpathsea
+kpsewhich		<== Karl's Path SEarch Library WHICH
+kpsepath		<== in texlive-extra-utils
+version 6.4.0 of the Kpathsea library, released in January 2025.
+############
+*https://www.overleaf.com/learn/latex/Articles/An_introduction_to_Kpathsea_and_how_TeX_engines_search_for_files
+
+*https://www.tug.org/texinfohtml/kpathsea.html
+	8.5.1 Unable to find files
+	
+*https://tex.stackexchange.com/questions/31339/setting-environment-variables-for-latex-and-bibtex-in-bashrc
+
+
+	*TeX uses the kpathsea library for finding files
+		-- the utility for listing kpathsea search paths is kpsepath
+		-- kpsepath calls kpsewhich via the script kpsetool. 
+		-- kpsewhich searches paths for 
+			==> .tex files
+			==> .cls files
+			==> .sty files
+			==> all types of font files 
+
+	*kpsewhich identifies three different types of paths
+		-- Paths ending with a double slash are to be searched recursively. 
+		-- Only the database (and not the entire disk) will be searched if paths are prepended by two 
+		exclamation marks. In TeX Live, most of the trees are specified with �!!�
+		-- Paths without either double slashes or exclamation marks are searched without recursion.
+
+	*Kpathsea looks for ls-R files along the TEXMFDBS path. It is best for this to contain all and 
+	only those hierarchies from $TEXMF which are specified with !!�and also to specify them with !! 
+	in TEXMFDBS.
+	
+	*ls-R is a .txt file (/usr/local/share/texmf/ls-R)The recommended way to create and maintain �ls-
+	R� is to run $ mktexlsr
+
+
+a single file
+$ kpsewhich plain.tex
+/usr/local/texlive/2024/texmf-dist/tex/plain/base/plain.tex
+
+all files by the same name (exit status 0):
+$ kpsewhich --all language.dat
+
+
+$ kpsewhich -var-value=TEXMFLOCAL
+	/usr/local/share/texmf
+	
+$ kpsewhich -var-value=TEXMFDIST
+/usr/share/texlive/texmf-dist
+
+tell you where BibTeX searches for BIB files
+$ kpsexpand '$BIBINPUTS'
+$ kpsewhich --expand-path '$BIBINPUTS'
+	
+$ kpsewhich--show-path=TEXMFLOCAL
+warning: kpsewhich: Ignoring unknown file type `TEXMFLOCAL'.
+warning: kpsewhich: Unknown file type, cannot show path: TEXMFLOCAL.
+
+
+
+$ kpsepath tex | tr : '\n'
+
+/home/bmarron/.texlive2021/texmf-config/tex/kpsewhich//
+/home/bmarron/.texlive2021/texmf-var/tex/kpsewhich//
+/home/bmarron/texmf/tex/kpsewhich//
+!!/usr/local/share/texmf/tex/kpsewhich//
+/etc/texmf/tex/kpsewhich//
+!!/var/lib/texmf/tex/kpsewhich//
+!!/usr/share/texmf/tex/kpsewhich//
+!!/usr/share/texlive/texmf-dist/tex/kpsewhich//
+/home/bmarron/.texlive2021/texmf-config/tex/generic//
+/home/bmarron/.texlive2021/texmf-var/tex/generic//
+/home/bmarron/texmf/tex/generic//
+!!/usr/local/share/texmf/tex/generic//
+/etc/texmf/tex/generic//
+!!/var/lib/texmf/tex/generic//
+!!/usr/share/texmf/tex/generic//
+!!/usr/share/texlive/texmf-dist/tex/generic//
+/home/bmarron/.texlive2021/texmf-config/tex/latex//
+/home/bmarron/.texlive2021/texmf-var/tex/latex//
+/home/bmarron/texmf/tex/latex//
+!!/usr/local/share/texmf/tex/latex//
+/etc/texmf/tex/latex//
+!!/var/lib/texmf/tex/latex//
+!!/usr/share/texmf/tex/latex//
+!!/usr/share/texlive/texmf-dist/tex/latex//
+
+/home/bmarron/.texlive2021/texmf-config/tex///
+/home/bmarron/.texlive2021/texmf-var/tex///
+/home/bmarron/texmf/tex///
+!!/usr/local/share/texmf/tex///
+/etc/texmf/tex///
+!!/var/lib/texmf/tex///
+!!/usr/share/texmf/tex///
+!!/usr/share/texlive/texmf-dist/tex///
+
+
+
+
+#################
+LaTex File Types
+#################
+
+	*Latexilla runs TexLive
+	*\documentclass[options]{name}		#eg ==> \documentclass[letter,11pt]{article}
+	*\usepackage[options]{name}			#eg ==> \usepackage[utf8]{inputenc}
+
+	* .cls ==> documentclass files
+	* .sty ==> usepackage files
+	* .dtx ==> source files (to create .cls and .sty files)
+	* .ins ==> package installation files
+
+
+#################
+LaTex File Structure
+#################
+	* LaTex directories include
+		--	/home/bmarron/.texmf-config/
+			/home/bmarron/.texmf-var/
+			/home/bmarron/texmf/tex/
+				==> the Latex user's personal directories for document classes and style packages
+
+		--	/usr/local/share/texmf/
+				==> the LaTex local directory for document classes and style packages
+
+		--	/usr/share/texmf/
+			/usr/share/texlive/texmf-dist
+				==> the the LaTex standard directory for document classes and style packages
+
+			/usr/share/texlive/texmf-dist/tex/latex/base/ 		#distro-installed .cls and .sty files
+
+
+	*look at article.cls file: /usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+%%--------------------------------------------------------------
+%% This is file `article.cls',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% classes.dtx  (with options: `article')
+%% 
+%% This is a generated file.
+%% 
+%% Copyright 1993 1994 1995 1996 1997 1998 1999 2000 2001 2002 2003 2004 2005 2006 2007 2008 2009
+%% The LaTeX3 Project and any individual authors listed elsewhere
+%% in this file.
+%% 
+%% This file was generated from file(s) of the LaTeX base system.
+%% --------------------------------------------------------------
+
+
+
+	*look at article.sty file: /usr/share/texlive/texmf-dist/tex/latex/base/article.sty
+%%------------------------------------------------------------
+%% This is file `article.sty',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% latex209.dtx  (with options: `article')
+%% 
+%% This is a generated file.
+%% 
+%% Copyright 1993 1994 1995 1996 1997 1998 1999 2000 2001 2002 2003 2004 2005 2006 2007 2008 2009
+%% The LaTeX3 Project and any individual authors listed elsewhere
+%% in this file.
+%% 
+%% This file was generated from file(s) of the LaTeX base system.
+%% --------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+

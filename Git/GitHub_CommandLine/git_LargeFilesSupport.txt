@@ -1,0 +1,62 @@
+Title:				git_PushingLargeFiles
+Project Description:		LANDIS-II upgrades/corrections
+Project ID:			2016SoE021
+Author:				bmarron
+Origin Date:			08 Nov 2017
+Final Date:			08 Nov 2017		
+
+
+###############################
+QAQC protocol:
+Adding files > 100 MB
+################################
+
+NB> https://medium.com/@AyunasCode/how-to-push-large-files-to-github-253d05cc6a09
+
+
+	a. go to git-lfs.github.com and download Git extension for versioning large files (Git LFS)
+
+git lfs install
+
+
+	b. REMOVE the large file(s) from your local repo and then set to track the large file types
+	   
+
+git lfs track "*.cab" // for AdvancedInstaller files
+git lfs track "*.msi" // for AdvancedInstaller files
+git lfs track "*.psd" // for photoshop files
+git lfs track "*.gif" // for gif video files
+etc.
+
+
+
+	c. push repo changes (ie all changes EXCEPT large files) as usual
+
+git status
+git remote -v
+git add --all  OR  git add -A
+git status
+git commit
+git push origin master
+
+
+	d. check to make sure Large Files are supported
+
+$ git lfs track "*.cab"
+"*.cab" already supported
+
+$ git lfs track "*.msi"
+"*.msi" already supported
+
+
+	e. Add large files BACK to repo
+
+	f. push repo changes as usual (now w/ large files added back in)
+
+git status
+git remote -v
+git add --all  OR  git add -A
+git status
+git commit
+git push origin master
+reset to a commit that was right BEFORE you added the file

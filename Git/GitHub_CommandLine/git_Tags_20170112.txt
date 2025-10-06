@@ -1,0 +1,524 @@
+Title:				Tags
+Project Description:		LANDIS-II upgrades/corrections
+Project ID:			2016SoE021
+Author:				bmarron
+Origin Date:			11 Jan 2017
+Revision Date:			12 Jan 2017
+
+
+
+##################
+The Skinny on Tags
+#################
+
+	a. two kinds (annotated and lightweight) but only annotated worth using 
+	b. Tags are tied to commits!
+	c. Tags can only be manipulated by cloning a repo locally then pushing back up to the remote repo
+	d. GitHub can only show Tags
+	e. clicking on a Tag in GitHub brings up the repo AS IT WAS at the time of the commit tied to the Tag 
+	f. common version coding for tags includes
+		-a	#alpha
+		-b	#beta
+		-rc	#release candidate
+	g. to deal effectively with Tags use a command-line interface 
+
+
+
+####################################
+install Windows git with "git BASH"
+(if you haven't already done so)
+####################################
+https://git-for-windows.github.io/
+
+	a. click on 'Downloads'then select the correct .exe from the Downloads options
+	a1. install defaults
+	a2. after installation there will be a git BASH terminal icon on your Desktop
+
+	b. all subsequent info in this doc assumes the installation of "git BASH"
+	b1. all commands below are prefixed with a "$" and typed into the git BASH terminal window 
+
+
+##############################
+get ProGit_v.2
+(if you haven't already done so)
+##############################
+
+	a. the ProGit manual (v2)
+	a1. download .pdf of book
+https://git-scm.com/book/
+
+	b. see p.74
+
+
+
+##############################################
+Helpful Commands for Tags in Git
+(assumes have cloned a local copy of the repo)
+###############################################
+http://stackoverflow.com/questions/1028649/how-do-you-rename-a-git-tag
+
+$ git tag					#list all tags assoc w/ the repo
+$ git tag -l "v3.1*"				#list the subset of tags beginning w/ "v3.1"
+$ git show v3.1-rc2				#output the details of tag v3.1-rc2
+
+$ git log --pretty=oneline			#list all commits for the repo as one-liners
+		
+
+$ git tag new old				#build an alias of the old tag name
+$ git tag -d old				#delete old tag
+$ git push origin :refs/tags/old		#delete the tag on your remote location(s):
+$ git push origin --tags			#add new tag to the remote location
+$ git pull --prune --tags			#make sure that the other users remove the deleted tag (if working directly fr same repo)
+
+
+
+
+
+######################################## 
+Example:
+change a Tag tied to the wrong commit
+#########################################
+
+
+	a. look at repo /bmarron18/Extension-Base-Harvest (as of 12 Jan 2017)
+	a1. clone a copy of BaseHarvest to Desktop/New_folder
+	a2. look at tags vs commits
+	a3. last tag ==> v3.1-rc2 (commit be693a9453f8253eaf1fbea0a244fac94f83b694)
+	a4. oops! tag v3.1-rc1 == tag v3.1-rc2
+		==> tag v3.1-rc2 SHOULD BE this: 059f5e2331e204b4a655a7f6ebd9d5ca87d55679 Update version to 3.1-rc2; Includes both issues #3 and #4.
+
+
+$ git clone https://github.com/bmarron18/Extension-Base-Harvest.git
+$ cd Ext*
+
+$ git tag
+v3.0
+v3.0-rc1
+v3.0-rc2
+v3.0-rc3
+v3.0-rc4
+v3.1-a1
+v3.1-a2
+v3.1-rc1
+v3.1-rc2
+
+
+$ git log --pretty=oneline
+6b0ad465bff595b1ff3d2e8984af390356ce6922 Update README.md
+87e3de240f05e64b07db28c45787bfdbac6139fb Merge pull request #9 from bmarron18/master
+5be5dd42a866f986a4661271cf408e100def7f71 Merge pull request #2 from aruzicka555/master
+5fb998c3bb14b07fd8bbf3517583d431e366e599 Changes to download directory and slight clean up
+310cb2f9f36028e369fa67941f455c38d40feb30 test scenario for Issue #3 (under construction)
+d7b89e0a433f5ceae7994259872081c26a8c13f0 Merge pull request #8 from bmarron18/master
+428adfedcbe7543ea4a532de3ccfe267d4878e80 fixed file typo
+dd8b03c79bc2da70970c5faf8b738b6cebbbcac1 complete restructuring of all directories EXCEPT /src
+4a80f764042c99a9df707aa1461b0be81d81a7ad Merge pull request #7 from bmarron18/master
+9fd1b33cab1fffc205ea5fac3f66e83a856a76c8 Fixed additional typos (Marron)
+ba86ff0f7d86ab6be42c76508e0ff03ef38d29f9 Revised and renamed ...\src\libs\ libs_readme.txt to README_2.pdf/README_2.txt (Marron)
+d3d1ce96022d9d3e81854c9e898b4700f80503b1 Revised README to README_1 (Marron)
+ae48dff56e8eccba6c3bffd927982df4024b7554 Merge pull request #6 from bmarron18/master
+8050c73346466e4de662e97da9380c45e5bac458 Background and instructions for making changes to Extension-Base-Harvest
+b3b38f2109fa6e83d6b8ad1fd8253233fe5f5a73 Removed spurious reference comments in the headers (Marron)
+11ed0bca784238ec6d6b87f6de3e1496148e2598 Clarification of .dll activity in ...\src\libs folder (Marron)
+db40f5edd7b28e67ede33b4f1025f8ae4b0eb9d0 Modified "base-harvest.csproj.user" for pedagogy; removed antiquated "base-harvest.sln" (Marron)
+ebadd741ca0de7131b8a08d3cd23f9cf1eb41f77 Merge pull request #1 from aruzicka555/master
+f093ac32093b7a454eff4e77dc45bafb5fc04bb2 Reference Path Plus Additional Info
+fb249308c02ed4b168eae70468779a1701310791 Got rid of double extension
+4238309ec2b281023e6d31407c63add88cf23d00 Added text file
+935f2d1f3c1ca646b24d45e3b14aba141d773a59 Deleted accidental file upload
+1e290cec1f458bb189637d6d0d7d1e6b935cabcf Restructure Base Harvest
+059f5e2331e204b4a655a7f6ebd9d5ca87d55679 Update version to 3.1-rc2; Includes both issues #3 and #4.
+3114abaefe1f45b48ab2f7f78101a705d9d1bfea Update version number to reflect release status
+359444d207f72bcd646ca550193573dcddfb79aa Saved updated UG as .pdf. The file name should be vX.Y User Guide.pdf. The build scripts deploy the .pdf version with the appropriate name.
+3307a77e74bfd58bb786cebf0b17202409390860 Merge branch 'issue_4' of https://github.com/LANDIS-II-Foundation/Extension-Base-Harvest into issue_4
+8502e74cf46c2053c17edaa55a8fd3503772885a Fix compilation errors with PlugIn.cs. Something strange happened with merging.
+12b76ff1c9bc3ff37a860f9c4663894072ccbbab Updated user guide.
+eaecee7457f525afcc7e1c509fd2c0df775caaa6 Merge branch 'issue_4' of https://github.com/LANDIS-II-Foundation/Extension-Base-Harvest into issue_4
+19f6a95c2e38862217279255f97fce7d36eebae0 Minor adjustment to Log Files (better names and descriptions).
+f924424a12397c901944b8fa3e14b355929cfa54 Merge branch 'master' into issue_4
+be693a9453f8253eaf1fbea0a244fac94f83b694 Address issue #3: Create plant-only prescription; Point extension at updated harvest-mgmt-lib; Update user guide; Update version to 3.1-alpha 2.
+e352f122b246c55bac2ddb4b1f122cbe817751f4 Work on issue #4. Update column names to more closely align with earlier versions of Base Harvest.
+71cbc4d691738617c00b45b414f49f596e908998 Adding small function to create output directory if it does not exist.
+ed440f6c4e64066f1822f4356b541a7086a0f095 Continue work on issue #4: Syntax problem with misplaced comment in InitializeMetadata method
+6440b296148a90bf31ff4e5b47002f11a3b1113f Attempted fix of issue with MetadataHandler.  Removed passing of Core to MetadataHandler.
+d4b83175413971547962df7d0a088198be269034 Adjusting so that user can set metadata log file output paths.
+b732c27c46ac21336c0f2a2d3b516cf82697abf0 Issue #4: Update version to 3.1-a1. Add Metadata.dll to list of files deployed with installer.
+74b2b35edcf60bb4572c91f17b373f890565cb3d Fixed minor bug with summary log.
+c11d9094aa1eef67e69355f56ec03cc8cdb91ed0 Update configuration files in use Metadata library
+1e640a6f2a85f4c95c971956026c566ec2b7f1ff Added metadata library and adjusted log files appropriately.
+514e494b5ce15b60c3ec4bb81c6cfad6352218cb Create branch to work on issue #4: Adding metadata library to extension
+a6db544a1ef040a94b883a6ecfe0ffbcc18771c8 Release v3.0
+de3e62bde16d16c1601e47841403000a1dea1fb8 Stop printing extra comma on at the end of the header and data rows in the event log. Roll version # to rc4 to indicate change.
+b14dbeaa35d1b6296d1b0faea02f140640073dc2 Add verbiage about installing v3.0 to user guide. Fix issue #2.
+7ef0eb51e9b989d674a1fcbc57e12ed6306adb60 Updates to user guide per issue #2
+51bc8b43570a5f76a9b822460d0476fe9a98a765 Update version to v3.0-rc3. Uses harvest-mgmt-lib v1.1-rc3 to keep in sync with Biomass Harvest extension.
+205d6c1cf197848203b1d8fea9954ed957c6eae6 Fix spelling error with prescriptionReported variable
+52c13fdf8ff71364e6732cf43807a4a3bf680288 Update version number to v3.0-rc2; Fix problem with duplicate lines in summaryLog (issue#4)
+af2cd804d6f301302d62194fe01cf567aed7c94b Merge branch 'master' of https://github.com/LANDIS-II-Foundation/Extension-Base-Harvest
+13a7b1e0ed7ce5635dcf24d9252fbd9811fad49e Merge branch 'master' of https://github.com/LANDIS-II-Foundation/Extension-Base-Harvest
+2cc78f54e53ad3236329c25b748ccb151eda8cf1 Add test files for v3.0, including Presalvage and %stands features.
+1233cd059bf58a09dacae48d322934f3e93025f6 Update README.md
+42e34f0719a865a6e9daa165f2ba41b046649b36 Update version information to 3.0 release candidate 1
+8c4877bf91b6cb08d0b63dabaf9c927a3d52b385 Merge remote-tracking branch 'remotes/origin/master'
+52cdc0b11e3d7032ad7a642dad5b28af8e1f8372 Add GetExternalVars() to Initialize to complete initialization of external SiteVars.
+8bbc6b427e4a0bf9077d3f38f5acd7ae6cddb26a Update assembly name and version of harvest-mgmt libraries
+3a17850c7a40e4e65e30ef4ded1e00d508921c98 Update README.md
+4410263afc84cbbb8a1866b69c157cbfdb57b384 Update README.md
+a15b3fdff41dc7e95f36bb54bc9dab5cbcca8193 Update README.md
+f892fd718f9d46d1260c9c94615dd1c83f4dc22e Update README.md
+018f65d1660138ecad40a077d2af19a5358c1be3 Update README.md
+c9e002ea09a76163fb2fff32847f4d33de905de2 Update README.md
+367aa603e81a6718562c9eac72e56ae3d0d7461b Update README.md
+13b361fb2ffd781079a2de869811eb7ca1884f07 Merge branch 'summary_log' of c:/users/rmschell/documents/git-repositories-temp/extensions-disturbance
+d856063dd1290f5bb22b704a50c4f0eb6fded26c Initial commit
+ac969bb2a839cb60eb4d348980702471dc017dc2 Only print line in summaryLog if AppliedPrescription ran during a timestep. NuGet package paths updated to use new version of harvest library.
+6f02eaa059e312186db985a21914d90b6458eeb5 Moved files to root
+
+
+
+$ git show v3.1-rc2
+commit be693a9453f8253eaf1fbea0a244fac94f83b694
+Author: Lesley <lbross@pdx.edu>
+Date:   Tue Nov 17 14:30:30 2015 -0800
+
+    Address issue #3: Create plant-only prescription; Point extension at updated harvest-mgmt-lib; Update user guide; Update version to 3.1-alpha 2.
+
+diff --git a/deploy/Base Harvest.txt b/deploy/Base Harvest.txt
+index b3c28c9..d567ddf 100644
+--- a/deploy/Base Harvest.txt   
++++ b/deploy/Base Harvest.txt   
+@@ -1,7 +1,7 @@
+ LandisData   Extension
+ 
+ Name         "Base Harvest"
+-Version      "3.0"
++Version      "3.1  (alpha 2)"^M
+ Type         disturbance:harvest
+ Assembly     Landis.Extension.BaseHarvest-3.0
+ Class        Landis.Extension.BaseHarvest.PlugIn
+diff --git a/deploy/docs/LANDIS-II Base Harvest v3.0 User Guide.docx b/deploy/docs/LANDIS-II Base Harvest v3.0 User Guide.docx
+deleted file mode 100644
+index 1034fda..0000000
+Binary files a/deploy/docs/LANDIS-II Base Harvest v3.0 User Guide.docx and /dev/null differ
+diff --git a/deploy/docs/LANDIS-II Base Harvest v3.1 User Guide.docx b/deploy/docs/LANDIS-II Base Harvest v3.1 User Guide.docx
+new file mode 100644
+index 0000000..79a5fac
+Binary files /dev/null and b/deploy/docs/LANDIS-II Base Harvest v3.1 User Guide.docx differ
+diff --git a/deploy/docs/LANDIS-II Base Harvest vX.Y User Guide.pdf b/deploy/docs/LANDIS-II Base Harvest vX.Y User Guide.pdf
+index 2e3479f..6a41d92 100644
+Binary files a/deploy/docs/LANDIS-II Base Harvest vX.Y User Guide.pdf and b/deploy/docs/LANDIS-II Base Harvest vX.Y User Guide.pdf differ
+diff --git a/src/base-harvest.csproj b/src/base-harvest.csproj
+index 6c3489b..ced2e62 100644
+--- a/src/base-harvest.csproj
++++ b/src/base-harvest.csproj
+@@ -52,8 +52,8 @@
+       <HintPath>C:\Program Files\LANDIS-II\v6\bin\extensions\Landis.Library.Cohorts.dll</HintPath>
+       <Private>False</Private>
+     </Reference>
+-    <Reference Include="Landis.Library.HarvestManagement-v1">
+-      <HintPath>packages\Landis.Library.HarvestManagement.1.1.0\lib\net35\Landis.Library.HarvestManagement-v1.dll</HintPath>
++    <Reference Include="Landis.Library.HarvestManagement-v1, Version=1.1.5767.22494, Culture=neutral, processorArchitecture=MSIL">
+^M
++      <HintPath>packages\Landis.Library.HarvestManagement.1.2.0-a1\lib\net35\Landis.Library.HarvestManagement-v1.dll</HintPath>^M
+     </Reference>
+     <Reference Include="Landis.Library.SiteHarvest-v1">
+       <HintPath>packages\Landis.Library.SiteHarvest.1.0.0\lib\net35\Landis.Library.SiteHarvest-v1.dll</HintPath>
+diff --git a/src/packages.config b/src/packages.config
+index 79d4271..0ef32d6 100644
+--- a/src/packages.config
++++ b/src/packages.config
+@@ -1,5 +1,5 @@
+ <U+FEFF><?xml version="1.0" encoding="utf-8"?>
+ <packages>
+-  <package id="Landis.Library.HarvestManagement" version="1.1.0" targetFramework="net35" />
++  <package id="Landis.Library.HarvestManagement" version="1.2.0-a1" targetFramework="net35" />^M
+   <package id="Landis.Library.SiteHarvest" version="1.0.0" targetFramework="net35" />
+ </packages>
+\ No newline at end of file
+
+
+
+
+$ git show v3.1-rc1
+commit be693a9453f8253eaf1fbea0a244fac94f83b694
+Author: Lesley <lbross@pdx.edu>
+Date:   Tue Nov 17 14:30:30 2015 -0800
+
+    Address issue #3: Create plant-only prescription; Point extension at updated harvest-mgmt-lib; Update user guide; Update version to 3.1-alpha 2.
+
+diff --git a/deploy/Base Harvest.txt b/deploy/Base Harvest.txt
+index b3c28c9..d567ddf 100644
+--- a/deploy/Base Harvest.txt   
++++ b/deploy/Base Harvest.txt   
+@@ -1,7 +1,7 @@
+ LandisData   Extension
+ 
+ Name         "Base Harvest"
+-Version      "3.0"
++Version      "3.1  (alpha 2)"^M
+ Type         disturbance:harvest
+ Assembly     Landis.Extension.BaseHarvest-3.0
+ Class        Landis.Extension.BaseHarvest.PlugIn
+diff --git a/deploy/docs/LANDIS-II Base Harvest v3.0 User Guide.docx b/deploy/docs/LANDIS-II Base Harvest v3.0 User Guide.docx
+deleted file mode 100644
+index 1034fda..0000000
+Binary files a/deploy/docs/LANDIS-II Base Harvest v3.0 User Guide.docx and /dev/null differ
+diff --git a/deploy/docs/LANDIS-II Base Harvest v3.1 User Guide.docx b/deploy/docs/LANDIS-II Base Harvest v3.1 User Guide.docx
+new file mode 100644
+index 0000000..79a5fac
+Binary files /dev/null and b/deploy/docs/LANDIS-II Base Harvest v3.1 User Guide.docx differ
+diff --git a/deploy/docs/LANDIS-II Base Harvest vX.Y User Guide.pdf b/deploy/docs/LANDIS-II Base Harvest vX.Y User Guide.pdf
+index 2e3479f..6a41d92 100644
+Binary files a/deploy/docs/LANDIS-II Base Harvest vX.Y User Guide.pdf and b/deploy/docs/LANDIS-II Base Harvest vX.Y User Guide.pdf differ
+diff --git a/src/base-harvest.csproj b/src/base-harvest.csproj
+index 6c3489b..ced2e62 100644
+--- a/src/base-harvest.csproj
++++ b/src/base-harvest.csproj
+@@ -52,8 +52,8 @@
+       <HintPath>C:\Program Files\LANDIS-II\v6\bin\extensions\Landis.Library.Cohorts.dll</HintPath>
+       <Private>False</Private>
+     </Reference>
+-    <Reference Include="Landis.Library.HarvestManagement-v1">
+-      <HintPath>packages\Landis.Library.HarvestManagement.1.1.0\lib\net35\Landis.Library.HarvestManagement-v1.dll</HintPath>
++    <Reference Include="Landis.Library.HarvestManagement-v1, Version=1.1.5767.22494, Culture=neutral, processorArchitecture=MSIL">^M
++      <HintPath>packages\Landis.Library.HarvestManagement.1.2.0-a1\lib\net35\Landis.Library.HarvestManagement-v1.dll</HintPath>^M
+     </Reference>
+     <Reference Include="Landis.Library.SiteHarvest-v1">
+       <HintPath>packages\Landis.Library.SiteHarvest.1.0.0\lib\net35\Landis.Library.SiteHarvest-v1.dll</HintPath>
+diff --git a/src/packages.config b/src/packages.config
+index 79d4271..0ef32d6 100644
+--- a/src/packages.config
++++ b/src/packages.config
+@@ -1,5 +1,5 @@
+ <U+FEFF><?xml version="1.0" encoding="utf-8"?>
+ <packages>
+-  <package id="Landis.Library.HarvestManagement" version="1.1.0" targetFramework="net35" />
++  <package id="Landis.Library.HarvestManagement" version="1.2.0-a1" targetFramework="net35" />^M
+   <package id="Landis.Library.SiteHarvest" version="1.0.0" targetFramework="net35" />
+ </packages>
+\ No newline at end of file
+
+
+
+
+
+	b. update/change tags
+	b1. tag v3.1-rc1 == tag v3.1-rc2
+		==> tag v3.1-rc2 SHOULD BE this: 059f5e2331e204b4a655a7f6ebd9d5ca87d55679 Update version to 3.1-rc2; Includes both issues #3 and #4.
+
+
+
+$ git tag -a v3.1-rc2 059f5e2331e204b4a655a7f6ebd9d5ca87d55679		#can't add/change b/c already exists
+fatal: tag 'v3.1-rc2' already exists
+
+
+
+$ git tag -d v3.1-rc2							#delete duplicate tag
+Deleted tag 'v3.1-rc2' (was be693a9)
+
+
+$ git push origin :refs/tags/v3.1-rc2					#push deletion up to the remote repo (which is a fork)
+Username for 'https://github.com': bmarron18
+Password for 'https://bmarron18@github.com': 
+To https://github.com/bmarron18/Extension-Base-Harvest.git
+ - [deleted]         v3.1-rc2
+
+
+
+$ git tag -a v3.1-rc2 059f5e2331e204b4a655a7f6ebd9d5ca87d55679		#add new tag locally
+									# the flag "-a" automatically brings up txt editor to add msg
+									# msg: 
+										deleted duplicate w/ v3.1-rc1;
+										renamed tag v3.1-rc2 to the correct commit
+
+
+$ git show v3.1-rc2
+tag v3.1-rc2
+Tagger: bmarron18 <bmarron@pdx.edu>
+Date:   Thu Jan 12 07:38:32 2017 -0800
+
+deleted duplicate w/ v3.1-rc1;
+renamed tag v3.1-rc2 to the correct commit
+
+commit 059f5e2331e204b4a655a7f6ebd9d5ca87d55679
+Author: Lesley <lbross@pdx.edu>
+Date:   Mon Dec 21 10:59:56 2015 -0800
+
+    Update version to 3.1-rc2; Includes both issues #3 and #4.
+
+diff --git a/deploy/Base Harvest.txt b/deploy/Base Harvest.txt
+index 151afb4..5a77b71 100644
+--- a/deploy/Base Harvest.txt   
++++ b/deploy/Base Harvest.txt   
+@@ -1,7 +1,7 @@
+ LandisData   Extension
+ 
+ Name         "Base Harvest"
+-Version      "3.1  (release candidate 1)"
++Version      "3.1  (release candidate 2)"^M
+ Type         disturbance:harvest
+ Assembly     Landis.Extension.BaseHarvest-3.0
+ Class        Landis.Extension.BaseHarvest.PlugIn
+diff --git a/src/base-harvest.csproj b/src/base-harvest.csproj
+index a1dcae9..d195337 100644
+--- a/src/base-harvest.csproj
++++ b/src/base-harvest.csproj
+@@ -52,8 +52,9 @@
+       <HintPath>C:\Program Files\LANDIS-II\v6\bin\extensions\Landis.Library.Cohorts.dll</HintPath>
+       <Private>False</Private>
+     </Reference>
+-    <Reference Include="Landis.Library.HarvestManagement-v1, Version=1.1.5767.22494, Culture=neutral, processorArchitecture=MSIL">
+-      <HintPath>packages\Landis.Library.HarvestManagement.1.2.0-a1\lib\net35\Landis.Library.HarvestManagement-v1.dll</HintPath>
++    <Reference Include="Landis.Library.HarvestManagement-v1, Version=1.1.5833.19078, Culture=neutral, processorArchitecture=MSIL">^M
++      <SpecificVersion>False</SpecificVersion>^M
++      <HintPath>packages\Landis.Library.HarvestManagement.1.2.0\lib\net35\Landis.Library.HarvestManagement-v1.dll</HintPath>^M
+     </Reference>
+     <Reference Include="Landis.Library.Metadata">
+       <HintPath>packages\Landis.Library.Metadata.1.0.1\lib\net35\Landis.Library.Metadata.dll</HintPath>
+diff --git a/src/packages.config b/src/packages.config
+index ab9e3c3..9488a2c 100644
+--- a/src/packages.config
++++ b/src/packages.config
+@@ -1,6 +1,6 @@
+ <U+FEFF><?xml version="1.0" encoding="utf-8"?>
+ <packages>
+-  <package id="Landis.Library.HarvestManagement" version="1.2.0-a1" targetFramework="net35" />
++  <package id="Landis.Library.HarvestManagement" version="1.2.0" targetFramework="net35" />^M
+   <package id="Landis.Library.Metadata" version="1.0.1" targetFramework="net35" />
+   <package id="Landis.Library.SiteHarvest" version="1.0.0" targetFramework="net35" />
+ </packages>
+\ No newline at end of file
+
+
+
+$ git push origin v3.1-rc2
+Username for 'https://github.com': bmarron18
+Password for 'https://bmarron18@github.com': 
+Counting objects: 1, done.
+Writing objects: 100% (1/1), 189 bytes | 0 bytes/s, done.
+Total 1 (delta 0), reused 0 (delta 0)
+To https://github.com/bmarron18/Extension-Base-Harvest.git
+ * [new tag]         v3.1-rc2 -> v3.1-rc2
+
+
+
+
+	c. check changes in remote repo 
+	c1. clone new copy
+	c2. review content of tag v3.1-rc2
+
+
+$ git clone https://github.com/bmarron18/Extension-Base-Harvest.git
+
+
+$ git tag
+v3.0
+v3.0-rc1
+v3.0-rc2
+v3.0-rc3
+v3.0-rc4
+v3.1-a1
+v3.1-a2
+v3.1-rc1
+v3.1-rc2
+
+
+$ git show v3.1-rc2
+tag v3.1-rc2
+Tagger: bmarron18 <bmarron@pdx.edu>
+Date:   Thu Jan 12 07:38:32 2017 -0800
+
+deleted duplicate w/ v3.1-rc1;
+renamed tag v3.1-rc2 to the correct commit
+
+commit 059f5e2331e204b4a655a7f6ebd9d5ca87d55679
+Author: Lesley <lbross@pdx.edu>
+Date:   Mon Dec 21 10:59:56 2015 -0800
+
+    Update version to 3.1-rc2; Includes both issues #3 and #4.
+
+diff --git a/deploy/Base Harvest.txt b/deploy/Base Harvest.txt
+index 151afb4..5a77b71 100644
+--- a/deploy/Base Harvest.txt   
++++ b/deploy/Base Harvest.txt   
+@@ -1,7 +1,7 @@
+ LandisData   Extension
+ 
+ Name         "Base Harvest"
+-Version      "3.1  (release candidate 1)"
++Version      "3.1  (release candidate 2)"^M
+ Type         disturbance:harvest
+ Assembly     Landis.Extension.BaseHarvest-3.0
+ Class        Landis.Extension.BaseHarvest.PlugIn
+diff --git a/src/base-harvest.csproj b/src/base-harvest.csproj
+index a1dcae9..d195337 100644
+--- a/src/base-harvest.csproj
++++ b/src/base-harvest.csproj
+@@ -52,8 +52,9 @@
+       <HintPath>C:\Program Files\LANDIS-II\v6\bin\extensions\Landis.Library.Cohorts.dll</HintPath>
+       <Private>False</Private>
+     </Reference>
+-    <Reference Include="Landis.Library.HarvestManagement-v1, Version=1.1.5767.22494, Culture=neutral, processorArchitecture=MSIL">
+-      <HintPath>packages\Landis.Library.HarvestManagement.1.2.0-a1\lib\net35\Landis.Library.HarvestManagement-v1.dll</HintPath>
++    <Reference Include="Landis.Library.HarvestManagement-v1, Version=1.1.5833.19078, Culture=neutral, processorArchitecture=MSIL">^M
++      <SpecificVersion>False</SpecificVersion>^M
++      <HintPath>packages\Landis.Library.HarvestManagement.1.2.0\lib\net35\Landis.Library.HarvestManagement-v1.dll</HintPath>^M
+     </Reference>
+     <Reference Include="Landis.Library.Metadata">
+       <HintPath>packages\Landis.Library.Metadata.1.0.1\lib\net35\Landis.Library.Metadata.dll</HintPath>
+diff --git a/src/packages.config b/src/packages.config
+index ab9e3c3..9488a2c 100644
+--- a/src/packages.config
++++ b/src/packages.config
+@@ -1,6 +1,6 @@
+ <U+FEFF><?xml version="1.0" encoding="utf-8"?>
+ <packages>
+-  <package id="Landis.Library.HarvestManagement" version="1.2.0-a1" targetFramework="net35" />
++  <package id="Landis.Library.HarvestManagement" version="1.2.0" targetFramework="net35" />^M
+   <package id="Landis.Library.Metadata" version="1.0.1" targetFramework="net35" />
+   <package id="Landis.Library.SiteHarvest" version="1.0.0" targetFramework="net35" />
+ </packages>
+\ No newline at end of file
+
+
+
+
+	d. pull-request to upstream repo (not sure about this)
+https://git-scm.com/docs/git-request-pull
+
+$ git remote add upstream https://github.com/LANDIS-II-Foundation/Extension-Base-Harvest.git
+
+$ git remote -v
+origin	https://github.com/bmarron18/Extension-Base-Harvest.git (fetch)
+origin	https://github.com/bmarron18/Extension-Base-Harvest.git (push)
+upstream	https://github.com/LANDIS-II-Foundation/Extension-Base-Harvest.git (fetch)
+upstream	https://github.com/LANDIS-II-Foundation/Extension-Base-Harvest.git (push)
+
+
+$ git push upstream v3.1-rc2
+Username for 'https://github.com': bmarron18
+Password for 'https://bmarron18@github.com': 
+remote: Permission to LANDIS-II-Foundation/Extension-Base-Harvest.git denied to bmarron18.
+fatal: unable to access 'https://github.com/LANDIS-II-Foundation/Extension-Base-Harvest.git/': The requested URL returned error: 403
+
+
+
+$ git request-pull v3.1-rc2 https://github.com/bmarron18/Extension-Base-Harvest.git v3.1-rc2
+The following changes since commit 059f5e2331e204b4a655a7f6ebd9d5ca87d55679:
+
+  Update version to 3.1-rc2; Includes both issues #3 and #4. (2015-12-21 10:59:56 -0800)
+
+are available in the git repository at:
+
+  https://github.com/bmarron18/Extension-Base-Harvest.git tags/v3.1-rc2
+
+for you to fetch changes up to 059f5e2331e204b4a655a7f6ebd9d5ca87d55679:
+
+  Update version to 3.1-rc2; Includes both issues #3 and #4. (2015-12-21 10:59:56 -0800)
+
+----------------------------------------------------------------
+deleted duplicate w/ v3.1-rc1;
+renamed tag v3.1-rc2 to the correct commit
+
+----------------------------------------------------------------
+

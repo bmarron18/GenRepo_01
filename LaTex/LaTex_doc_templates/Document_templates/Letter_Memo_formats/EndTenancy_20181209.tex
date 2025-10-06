@@ -1,0 +1,95 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Letter of Notice
+% LaTeX Template
+% Version 1.1 (21/11/16)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Rashadul Islam (ross08@gmail.com) with modifications by 
+% Vel (vel@LaTeXTemplates.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[11pt]{letter} % 11pt default font size, other options: 12pt and 10pt
+
+\usepackage[a4paper, top=2cm]{geometry} % Use A4 paper size
+
+\usepackage{color} % Required for color customization
+
+\usepackage{graphicx}
+
+%\usepackage{fouriernc} % Use the New Century Schoolbook font, comment this line to use the default LaTeX font or replace it with another
+
+%\usepackage{lipsum} % Required for inserting dummy text
+
+\definecolor{Navy}{RGB}{50,90,122} % Define a custom color for the heading box
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	DATE AND FROM ADDRESS
+%----------------------------------------------------------------------------------------
+
+\date{\vspace{1.5cm}\begin{flushleft}\today\end{flushleft}} % Use todays date and left-align it
+
+\begin{letter}{\large \bfseries J. Maben Hart \\ 1644 SE 40th \\ Portland, OR 97214} % From address or department
+
+%----------------------------------------------------------------------------------------
+%	HEADING BOX
+%----------------------------------------------------------------------------------------
+
+\colorbox{Navy}{ % Creates a highlight behind the text using the previously-defined navy color
+
+\parbox[t]{\linewidth}{ % Creates a box to take up the entire line width
+
+\vspace*{14pt} % Whitespace above the text
+
+\hfill \color{white} \textsc{\Large  notice of lease termination} % Right-aligned heading text
+
+\vspace*{14pt} % Whitespace below the text
+}}
+
+%----------------------------------------------------------------------------------------
+%	SIGNATURE
+%----------------------------------------------------------------------------------------
+
+\signature{
+Bruce Marron \\ % Your name
+%\textbf{Bruce Marron} \\ % Job title
+%\textsc{Initech Rentals} \\ % Company
+\small{E: soil.foodwebs@gmail.com \\ M: (503) 890-5871} % Contact information
+}
+
+%----------------------------------------------------------------------------------------
+%	LETTER CONTENT
+%----------------------------------------------------------------------------------------
+HAND-DELIVERED
+\opening{Dear Maben,}
+
+I am concerned about the flooding potential in your room and have decided that it would be best to not risk damage to your personal goods and furnishings. This letter is offical notice that I am terminating our month-to-month lease agreement effective February 15, 2019. \\
+
+As I mentioned, the passive preventive measures that I have installed over the years are sufficient to handle typical Oregon winters. My concern is that we may be subject to fierce, climate-change driven storms this winter. Also, with my new, full-time job I will not be home to readily handle the water catchment system. The water catchment system is a crucial part of preventing flooding on the property. Ultimately I think the only long-term solution is to install a sump pump in the basement which will require the basement room to be empty. Should we get a fierce storm, the room may have water seep in. All of the above reasons, taken collectively, are the cause for the termination of our rental agreement\\
+
+Recently you mentioned that you are planning to be away for a large part of January so I wanted to let you know immediately. Also, you have already paid January's rent (per our agreement) and I can offer no rent due for the two weeks in February.\\
+
+I'm very sorry about this but cannot risk your discomfort or damage to your belongings.
+
+
+\closing{Sincerely,}
+%----------------------------------------------------------------------------------------
+
+\end{letter}
+
+
+\end{document}

@@ -1,0 +1,567 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%% New Compu Installations and Removals %%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+apt-cache policy inkscape
+dpkg-query --list 'mono*'
+
+sudo apt update &&
+sudo apt autoclean &&
+sudo apt clean &&
+sudo apt autoremove &&
+sudo apt upgrade
+
+
+sudo apt list --upgradable &&
+sudo apt upgrade
+
+
+sudo apt remove gdal-bin
+sudo apt remove --auto-remove gdal-bin
+sudo apt purge gdal-bin
+sudo apt purge --auto-remove gdal-bin
+
+
+	# command line open .tar.bz2
+wget http://download.osgeo.org/geos/geos-3.6.1.tar.bz2
+tar xjf geos-3.6.1.tar.bz2
+cd geos-3.6.1
+./configure
+make
+sudo make install
+cd ..
+
+
+
+######################################
+Essential Installations / Removals
+######################################
+
+====== Software Updater ======================
+
+open Whisker menu and run Software Updater FIRST!!
+
+
+==== (Synaptic) Package Manager =============================================
+
+sudo apt update &&
+sudo apt upgrade &&
+sudo apt install synaptic
+
+
+
+========= Ubuntu Software Center =========================================
+
+Use Synaptic (listed as "software-center")
+
+
+
+
+====== aptitude ================================================
+(avoid faulty package dependencies)
+
+
+sudo apt install aptitude
+
+
+
+
+
+===== gdebi ==================
+
+If your current system already has all the prerequisite packages installed, then life is good. 
+You simply download the deb file, and install it with the dpkg command:
+
+$ sudo apt update
+$ sudo dpkg -i somelocal.deb
+
+But, if you run into package dependency problems, you are on your own. 
+The dpkg command does not resolve dependency problems for you.
+For a graphical version run gdebi-gtk
+
+
+Use Software Center
+
+OR
+
+sudo aptitude install gdebi-core
+sudo apt update
+sudo apt install gdebi
+
+
+============== Y-PPA-Manager =====================================
+http://askubuntu.com/questions/13065/how-do-i-fix-the-gpg-error-no-pubkey
+
+sudo add-apt-repository ppa:webupd8team/y-ppa-manager &&
+sudo apt update &&
+sudo aptitude install y-ppa-manager
+
+
+	#Run y-ppa-manager
+	# When the main y-ppa-manager window appears, click on "Advanced."
+	#From the list of advanced tasks, select "Try to import all missing GPG keys" and click OK.
+
+$ y-ppa-manager
+
+
+
+==== Abiword removal =================================
+
+sudo apt --purge remove abiword && 
+sudo apt autoremove
+
+
+==== Thunderbird removal =================
+
+sudo apt --purge remove thunderbird && 
+sudo apt autoremove
+
+
+
+==== latex2rtf =============
+
+Use Software Center
+
+
+NO!! maybe Atom?
+#==== Cream =================
+
+#sudo apt update &&
+#sudo apt upgrade &&
+#sudo aptitude install cream
+
+
+
+===== pandoc ======================
+
+sudo apt update &&
+sudo apt upgrade &&
+sudo apt install pandoc
+
+Suggested packages:
+  texlive-latex-recommended texlive-xetex texlive-luatex pandoc-citeproc
+  texlive-latex-extra context wkhtmltopdf librsvg2-bin groff ghc nodejs php
+  python ruby r-base-core node-katex
+
+
+
+
+===== gedit ===========================
+
+sudo apt update &&
+sudo apt upgrade &&
+sudo aptitude install gedit
+
+
+
+==== Latexila (includes tex-live) =================
+
+sudo apt update &&
+sudo apt upgrade &&
+sudo aptitude install latexila
+
+
+		# copy all the specialty .sty packages from the HP laptop to a file 'texmf'
+		(need sudo priveleges)
+$ cd /media/bruce/MASTER
+$ mkdir -p texmf
+$ sudo cp -R /usr/local/share/texmf 
+		#transfer by thumbdrive to Desktop
+		#copy into correct directory on Dell
+
+$ sudo cp -R /media/bmarron/MASTER/texmf /usr/local/share/
+
+#################
+XeLatex
+beamerthemetropolis errors
+#################
+
+sudo aptitude install texlive-xetex
+
+
+
+In LaTexilla,
+Build ==> Manage Build Tools		<< select the ones you want!  
+
+
+################
+texlive-latex-extra
+pandoc error
+####################
+
+when running pandoc
+LaTeX Error: Command \textquotesingle unavailable in encoding T1
+
+
+Texlive that does not include 'upquote' among possible other packages. 
+I think upquote was the missing package but there may have been more. 
+I did not want to install texlive-full because of the large size. 
+Searching in the Debian Texlive packages yielded texlive-latex-extra.
+
+
+sudo aptitude install texlive-latex-extra
+
+
+
+
+
+
+
+====== Adobe Reader 9.5.3 for Ubuntu ===============
+https://askubuntu.com/questions/767937/how-to-install-adobe-acrobat-in-ubuntu-16-04
+
+
+sudo add-apt-repository "deb http://archive.canonical.com/ precise partner" &&
+sudo apt update &&
+sudo apt install adobereader-enu
+
+After properly installed Adobe Reader, 
+don’t forget to remove the Canonical Partners repository for Precise:
+
+sudo add-apt-repository -r "deb http://archive.canonical.com/ precise partner"
+
+
+
+
+
+	# NO GO!
+https://adobe-reader.en.uptodown.com/ubuntu
+For a graphical version run, gdebi-gtk
+sudo gdebi AdbeRdr9.5.3-1_i386linux_enu.deb
+
+bruce@bruce-HP-Notebook:/opt/Adobe/Reader9/bin$ acroread
+/opt/Adobe/Reader9/Reader/intellinux/bin/acroread: error while loading shared libraries: libxml2.so.2: cannot open shared object file: No such file or directory
+
+bruce@bruce-HP-Notebook:/opt/Adobe/Reader9/bin$ locate libxml2.so.2
+/home/bruce/anaconda2/lib/libxml2.so.2
+/home/bruce/anaconda2/lib/libxml2.so.2.9.4
+/home/bruce/anaconda2/pkgs/libxml2-2.9.4-0/lib/libxml2.so.2
+/home/bruce/anaconda2/pkgs/libxml2-2.9.4-0/lib/libxml2.so.2.9.4
+/usr/lib/x86_64-linux-gnu/libxml2.so.2
+/usr/lib/x86_64-linux-gnu/libxml2.so.2.9.3
+
+bruce@bruce-HP-Notebook:/opt/Adobe/Reader9/bin$ sudo ln -s /usr/lib/x86_64-linux-gnu/libxml2.so.2.9.3 /opt/Adobe/Reader9/Reader/intellinux/lib/libxml2.so.2
+
+
+
+
+
+
+==== Calibre install =======================
+
+Ubuntu Software Center
+
+
+
+====== Cheese install =============================
+
+sudo apt update &&
+sudo apt upgrade &&
+sudo aptitude install cheese
+
+
+
+==== Brasero install ======================
+
+sudo apt update &&
+sudo apt upgrade &&
+sudo aptitude install brasero
+
+
+
+==== Xsane install ==================================
+
+sudo apt update &&
+sudo apt upgrade &&
+sudo aptitude install sane sane-utils libsane-extras xsane
+
+
+
+==== Git install ==============================
+
+sudo apt update &&
+sudo apt upgrade &&
+sudo aptitude install git-all
+
+
+sudo apt purge runit &&
+sudo apt purge git-all &&
+sudo apt purge git &&
+sudo apt autoremove &&
+sudo apt update &&
+sudo apt install git 
+
+
+==== HPLIP Toolbox ===========================
+
+use Ubuntu Software Center
+
+	#to locate and setup wireless printer
+$ hp-setup
+
+	#wireless
+	#HP Deskjet 3050 j610 Series
+	#192.168.0.48 (IP address)
+
+
+
+==== Gnome Disk Utility (Disks) ===============
+
+# Ubuntu Software Center
+
+
+
+==== gparted ==================
+
+sudo apt update &&
+sudo apt upgrade &&
+sudo aptitude install gparted
+
+
+
+==== Zotero ==================
+https://www.zotero.org/
+https://www.zotero.org/user/register/
+
+from Zotero website
+Install Zotero for Firefox
+
+
+in Zotero
+Actions ==> Preferences...  ==> Sync  (enter login info) ==> Reset
+	
+
+
+
+
+==== pdfgrep  =============================
+
+sudo apt update &&
+sudo apt upgrade &&
+sudo aptitude install pdfgrep
+
+
+
+
+==== wkhtmltopdf ============================
+
+sudo apt update &&
+sudo apt upgrade &&
+sudo aptitude install wkhtmltopdf 
+
+
+
+===== additional codecs (including Adobe Flash) ========================
+
+
+sudo apt update &&
+sudo apt upgrade &&
+sudo aptitude install ubuntu-restricted-extras
+
+ Remove the following packages:
+1)     libavcodec-ffmpeg56  		<<replace w/ libavcodec-ffmpeg56-extra
+
+
+
+
+
+===== Anaconda ======================
+https://www.continuum.io/downloads#linux
+http://askubuntu.com/questions/38661/how-do-i-run-sh-files
+
+
+	a. select and run
+Anaconda2-2.4.1-Linux-x86_64.sh
+bash Anaconda2-4.3.1-Linux-x86_64.sh
+
+
+	a*. alternate give execute permission script
+chmod +x ~/Downloads/Anaconda2-4.1.1-Linux-x86_64.sh
+cd ~/Downloads
+$ ./Anaconda2-4.1.1-Linux-x86_64.sh
+
+	b. updates etc
+conda update anaconda
+conda install <pkg>
+conda search <pkg>
+
+
+
+====== pip ==============================
+
+sudo apt update &&
+sudo apt upgrade &&
+sudo aptitude install python-pip
+
+
+pip install --upgrade pip
+
+
+
+
+
+========= QGIS (Essen-LTR) ============================================
+http://www.qgis.org/en/site/forusers/alldownloads.html#debian-ubuntu
+
+---- STEP1 -----------------
+wget -O - http://qgis.org/downloads/qgis-2016.gpg.key | gpg --import &&
+gpg --fingerprint 073D307A618E5811 &&
+gpg --export --armor 073D307A618E5811 | sudo apt-key add -
+
+
+---- STEP2 --------------------------------------------------
+	# When the main y-ppa-manager window appears, click on "Advanced."
+	#From the list of advanced tasks, select "Try to import all missing GPG keys" and click OK.
+
+y-ppa-manager
+
+
+---- STEP3 --------------------------------------------------
+sudo add-apt-repository "deb http://qgis.org/ubuntugis-ltr xenial main" &&
+sudo add-apt-repository "deb-src http://qgis.org/ubuntugis-ltr xenial main" &&
+sudo add-apt-repository "deb http://ppa.launchpad.net/ubuntugis/ubuntugis-unstable/ubuntu xenial main"
+
+
+check:
+sudo mousepad /etc/apt/sources.list
+
+	##QGIS
+deb http://qgis.org/ubuntugis-ltr xenial main # disabled on upgrade to xenial
+deb-src http://qgis.org/ubuntugis-ltr xenial main # disabled on upgrade to xenial
+deb http://ppa.launchpad.net/ubuntugis/ubuntugis-unstable/ubuntu xenial main # disabled on upgrade to xenial
+
+
+
+----STEP4 --------------------------------------------------------------
+sudo apt update &&
+sudo aptitude install qgis python-qgis qgis-plugin-grass
+
+
+
+
+======= inkscape ==========================
+
+https://launchpad.net/~inkscape.dev/+archive/ubuntu/stable
+0.91.0+52~ubuntu16.04.1 
+
+
+sudo add-apt-repository ppa:inkscape.dev/stable &&
+sudo apt update &&
+sudo aptitude install inkscape
+
+
+
+
+
+	
+==== R and RStudio install =============================================================
+https://www.r-bloggers.com/how-to-install-r-on-linux-ubuntu-16-04-xenial-xerus/
+https://www.rstudio.com/products/rstudio/download3/
+https://support.rstudio.com/hc/en-us/articles/200486138-Using-Different-Versions-of-R
+www.rstudio.com/products/rstudio/download
+
+
+which R
+R --version
+export RSTUDIO_WHICH_R=/usr/local/bin/R
+
+> .libPaths()						# in Rstudio
+[1] "/home/bmarron/R/i686-pc-linux-gnu-library/3.3"
+[2] "/home/bmarron/anaconda2/lib/R/library"
+    
+> library(utils)
+> remove.packages()
+
+
+
+---- uninstall/install R --------------------------------
+sudo apt purge --auto-remove r-base-core r-base-dev 
+sudo aptitude update
+sudo aptitude install r-base r-base-dev
+------------------------------------------------------------
+
+
+	#R
+$ sudo echo "deb http://cran.stat.ucla.edu/bin/linux/ubuntu xenial/" | sudo tee -a /etc/apt/sources.list &&
+gpg --keyserver keyserver.ubuntu.com --recv-key E084DAB9 &&
+gpg -a --export E084DAB9 | sudo apt-key add -
+
+	#check
+sudo mousepad /etc/apt/sources.list
+
+$ sudo apt update && 
+sudo aptitude install r-base r-base-dev
+
+
+	#RStudio (64-bit)
+$ wget https://download1.rstudio.org/rstudio-1.0.143-amd64.deb --no-check-certificate &&
+sudo gdebi -n rstudio-1.0.143-amd64.deb &&
+rm rstudio-1.0.143-amd64.deb
+
+
+	#load libraries by getting names of packages from the 32-bit library,
+	#copying them first to a  .txt file, then cut-paste .txt file into RStudio:
+	#installing to /home/bmarron/R/x86_64-pc-linux-gnu-library/3.3/
+	#RStudio accepts whitespace as separators
+~/R/i686-pc-linux-gnu-library/3.3$ ls >> ~/Desktop/R.txt
+
+
+
+==== OpenBUGS  =============================
+http://www.openbugs.net/w/Downloads
+(download tar.gz)
+
+
+sudo aptitude install g++-multilib
+
+
+tar -zxvf OpenBUGS-3.2.3.tar.gz &&
+cd OpenBUGS-3.2.3 &&
+./configure  &&
+make &&
+sudo make install
+
+NB. make install does this
+....
+chmod 755 /usr/local/bin/OpenBUGS /usr/local/bin/OpenBUGSCli
+cp ../lib/libOpenBUGS.so /usr/local/lib
+....
+
+$ OpenBUGS
+OpenBUGS version 3.2.3 rev 1012
+type 'modelQuit()' to quit
+
+
+man OpenBUGS
+
+
+
+==== Taskjuggler (requires Ruby and RubyGems) =================================
+https://rubygems.org/pages/download/
+
+$ apt-cache policy ruby
+$ apt-cache policy rubygems
+
+cd ~/Downloads
+tar xvf rubygems-2.6.12.tgz &&
+cd rubygems-2.6.12 &&
+sudo ruby setup.rb
+
+
+
+--- install Taskjuggler --------------
+$ sudo gem install taskjuggler
+
+	#installation notes
+...
+Successfully installed taskjuggler-3.6.0
+......
+
+
+
+
+
+
+
+

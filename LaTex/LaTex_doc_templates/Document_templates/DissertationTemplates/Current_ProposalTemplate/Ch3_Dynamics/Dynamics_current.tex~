@@ -1,0 +1,48 @@
+\todo{ Fill out all sections of this outline  }
+
+\section{Background}
+A history of dynamic modeling efforts for biological systems
+\begin{outline}
+ \1 Model typologies
+ \2 Generative vs. Statistical
+ \2 Causal vs. Inferential (Evidential)
+ \2 Compartmental (DEs) vs Agent-Based
+\end{outline}  
+ 
+ \section {Model }
+ 
+ 
+ 
+ 
+\section{Questions}
+\begin{outline}
+\1 To what extent are landscape successional patterns the result of disturbance-triggered dynamic changes in the assemblages of soil biota?
+\1 Which landscape patterns generate the functional soil food webs that are necessary and sufficient for agroecological mutualism?
+\1 Is it possible to develop a simple taxonomy of soil food webs classified based on morphological, semi-quantitative assessments of soil biota done \textit{in situ}?
+\1 Is it possible to correlate ANPP, nutrient cycling, and the rate of long-term soil carbon deposition (humic and fulvic acids) with taxonomic classes of soil food webs?
+\1 For agroecological mutualism to be applied to a given landscape, how do the historic disturbance regimes and successional patterns affect the appropriate state variables of the landscape?
+\1 For ecological-agricultural mutualism to be applied to a given landscape, what values of the agroecological mutualism state variables would provide maximal agricultural and ecological productivity?
+\end{outline}
+
+
+\section{Hypotheses}
+\begin{outline}[enumerate]
+\1 Following this, we hypothesize that the relationship between microbial diversity and ecosystem
+functioning is different for nutrient poor and nutrient rich ecosystems. We expect that microbial
+communities from nutrient rich ecosystems are functionally more redundant compared with
+microbial communities from nutrient poor ecosystems where microbes need specific adaptations
+to obtain resources \citep{van_der_heijden_unseen_2008}
+\1 The assemblages of soil biota with the greatest benefit for agroecological mutualism are evolved through the cycles of disturbance-succession created by a successionally-developed agroecosystem.
+\end{outline}
+
+
+\section{Aims and Objectives}
+\begin{outline}[enumerate]
+\1 Develop a detailed definition of, and rationale for, agroecological mutualism
+\1 Define the necessary and sufficient spatial, temporal, ecological, and biological state variables for agroecological mutualism using historical and modern data from the Mayan successionally developed agroecosystem
+\1 Compile distribution data for each of the state variables using the Mayan successionally developed agroecosystem as a model
+\1 Evaluate the level of agroecological mutualism for a variety of non-Mayan agricultural practices where long-term ecological and agricultural datasets are available
+\1 Correlate soil food web classes to successional stages using literature-derived data and field sample data
+\end{outline}
+
+\section{Methods}

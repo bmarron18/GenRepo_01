@@ -1,0 +1,812 @@
+Title:			Hmwk1 LOG1:Python setup, R interface, etc
+Project:		2016SoE009 (CS545_MachineLearning)
+Record:		
+Author:			bmarron
+Origin Date:		20 Jan 2016
+
+
+#############
+general info
+##############
+
+	* checked ==> python 2.7.5 installed
+
+$ apt-cache policy pythonpython:
+  Installed: 2.7.5-5ubuntu3
+  Candidate: 2.7.5-5ubuntu3
+
+
+	* checked ==> 'gedit' is a good editor for python script b/c has a python console in the bottom window
+
+$ sudo apt-get install gedit
+
+	* checked ==> python code repository
+
+http://code.activestate.com/recipes/langs/python/?query_start=1
+
+	* checked a few scripts
+
+https://blog.dbrgn.ch/2013/3/26/perceptrons-in-python/
+
+
+
+---- LOG1: download code from Nielsen ------------------------------------------
+	#Michael Nielsen, "Neural Networks and Deep Learning"
+git clone https://github.com/mnielsen/neural-networks-and-deep-learning.git
+
+
+
+---- LOG2: messing with data set using 'awk' --------------------------------
+			#Precede each line by its number in the file with a tab space
+			#send output to a new file
+$ awk '{print FNR "\t" $0}' ~/Desktop/BUGS3/CODAchain1.txt >> ~/Desktop/BUGS3/CODAchain.txt
+
+			# print only lines which match regular expression (emulates "grep")
+awk '/regex/'
+
+			# print any line where field #5 is equal to "abc123"
+awk '$5 == "abc123"'
+
+			#Unwinding this idiom, this one-liner is really equal to:
+
+awk '{ if ($5 == "abc123") { print $0 } }'
+
+
+			# Example 4: Print only lines shorter than 64 characters
+
+awk 'length < 64'
+
+This one-liner uses the length function to determine the length of the current line. If the current line is less than 64 characters in length, then length < 64 evaluates to true that instructs awk to print the line.
+
+			# print the total number of lines that contain "Beth"
+awk '/Beth/{n++}; END {print n+0}' file
+
+
+
+
+			#A much better way to do the same is to quit after seeing the first 10 lines 
+awk '1; NR == 10 { exit }'
+
+The "NR == 10 { exit }" part guarantees that as soon as the line number 10 is reached, Awk quits. For lines smaller than 10, Awk evaluates "1" that is always a true-statement. And as we just learned, true statements without the "action statements" part are equal to "{ print $0 }" that just prints the first ten lines!
+
+
+This one-liner tests to see if current line is number 52. If it is, "NR==52" evaluates to true and the line gets implicitly printed out (patterns without statements print the line unmodified).
+
+The correct way, though, is to quit after line 52:
+
+awk 'NR==52 { print; exit }'
+
+
+
+ As you know, by default, fields are separated by whitespace sequences (spaces and tabs), not by single spaces: two spaces in a row do not delimit an empty field. The default value of the field separator is a string " " containing a single space. If this value were interpreted in the usual way, each space character would separate fields, so two spaces in a row would make an empty field between them. The reason this does not happen is that a single space as the value of FS is a special case: it is taken to specify the default manner of delimiting fields.
+
+If FS is any other single character, such as ",", then each occurrence of that character separates two fields. Two consecutive occurrences delimit an empty field. If the character occurs at the beginning or the end of the line, that too delimits an empty field. The space character is the only single character which does not follow these rules. 
+
+awk 'BEGIN { FS = "," } ; { print $2 }'
+
+
+
+
+
+
+---- LOG3: extracting info from data set using 'awk' --------------------------------
+
+
+			# print the total number of lines that contain "A"
+$ awk '/A/{n++}; END {print n+0}' /home/bmarron/Desktop/PSU/PhD_EES/SoE/2016SoE009_CS545_MachineLearning/_PWFs_work/Hwk1/letter_recog_data.txt
+789
+
+			# print the total number of lines that contain "B"
+$ awk '/B/{n++}; END {print n+0}' /home/bmarron/Desktop/PSU/PhD_EES/SoE/2016SoE009_CS545_MachineLearning/_PWFs_work/Hwk1/letter_recog_data.txt
+766
+
+
+			#print last line
+$ awk 'END{print}' ~/Desktop/PSU/PhD_EES/SoE/2016SoE009_CS545_MachineLearning/_PWFs_work/Hwk1/letter_recog_data.txt 
+A,4,9,6,6,2,9,5,3,1,8,1,8,2,7,2,8
+
+
+			#print first 10 lines
+$ awk '1; NR == 10 { exit }' ~/Desktop/PSU/PhD_EES/SoE/2016SoE009_CS545_MachineLearning/_PWFs_work/Hwk1/letter_recog_data.txt 
+T,2,8,3,5,1,8,13,0,6,6,10,8,0,8,0,8
+I,5,12,3,7,2,10,5,5,4,13,3,9,2,8,4,10
+D,4,11,6,8,6,10,6,2,6,10,3,7,3,7,3,9
+N,7,11,6,6,3,5,9,4,6,4,4,10,6,10,2,8
+G,2,1,3,1,1,8,6,6,6,6,5,9,1,7,5,10
+S,4,11,5,8,3,8,8,6,9,5,6,6,0,8,9,7
+B,4,2,5,4,4,8,7,6,6,7,6,6,2,8,7,10
+A,1,1,3,2,1,8,2,2,2,8,2,8,1,6,2,7
+J,2,2,4,4,2,10,6,2,6,12,4,8,1,6,1,7
+M,11,15,13,9,7,13,2,6,2,12,1,9,8,1,1,8
+
+
+
+			#print the 10th line
+$ awk 'NR==10 { print; exit }' ~/Desktop/PSU/PhD_EES/SoE/2016SoE009_CS545_MachineLearning/_PWFs_work/Hwk1/letter_recog_data.txt 
+M,11,15,13,9,7,13,2,6,2,12,1,9,8,1,1,8
+
+			# default field separator is in place
+			# default value of the field separator is a string " " containing a single space.
+$ awk '{ print $1 }' ~/Desktop/PSU/PhD_EES/SoE/2016SoE009_CS545_MachineLearning/_PWFs_work/Hwk1/letter_recog_data.txt
+all lines printed!!! ==> awk sees ONLY one field per line!!!!
+
+			# temporarily re-set field separator (FS)
+			# print the 1st field from all lines 
+$ awk 'BEGIN { FS = "," } ; { print $1 }' ~/Desktop/PSU/PhD_EES/SoE/2016SoE009_CS545_MachineLearning/_PWFs_work/Hwk1/letter_recog_data.txt
+...
+...
+...
+D
+P
+W
+O
+E
+J
+T
+D
+C
+T
+S
+A
+
+			#print all lines containing "A" in any field
+$ awk '/A/' ~/Desktop/PSU/PhD_EES/SoE/2016SoE009_CS545_MachineLearning/_PWFs_work/Hwk1/letter_recog_data.txt
+all "A" lines printed!!
+
+			#print all lines containing "A" in the 1st field
+$ awk 'BEGIN { FS = "," } ; $1=="A" ' ~/Desktop/PSU/PhD_EES/SoE/2016SoE009_CS545_MachineLearning/_PWFs_work/Hwk1/letter_recog_data.txt
+all "A" lines printed!!
+
+
+~$ awk 'BEGIN { FS = "," } ; $1=="A" || $1=="B" ' ~/Desktop/PSU/PhD_EES/SoE/2016SoE009_CS545_MachineLearning/_PWFs_work/Hwk1/letter_recog_data.txt
+sequential listing of "A" and "B" lines printed!!
+
+
+~$ awk 'BEGIN { FS = "," } ; $1=="A" && $2=="4" ' ~/Desktop/PSU/PhD_EES/SoE/2016SoE009_CS545_MachineLearning/_PWFs_work/Hwk1/letter_recog_data.txt
+all "A,4, ..." lines printed!!!
+
+
+
+$ awk '1; NR == 10 { exit }'
+
+
+
+
+
+
+	# substitute (find and replace) "foo" with "bar" on each line
+	# replace only 1st instance
+	# replace only 4th instance
+	# replace ALL instances in a line
+
+$ awk '{sub(/foo/,"bar")}; 1'
+$ gawk '{$0=gensub(/foo/,"bar",4)}; 1'
+$ awk '{gsub(/foo/,"bar")}; 1'
+
+
+
+
+
+==== LOG4: initial Python code trials ===================================
+
+>>> np.random.randn(5, 1)
+array([[ 0.73211414],
+       [-2.35209815],
+       [-0.04271072],
+       [ 0.08639613],
+       [-1.67177323]])
+
+>>> size=[5,1]
+>>> x=size[0]
+>>> y=size[1]
+>>> np.random.randn(x, y)
+array([[-0.08576447],
+       [ 0.89736621],
+       [-2.33909807],
+       [-1.12978655],
+       [ 1.01135437]])
+---------------------------------------
+----------------------------------------
+
+
+				#code must have no intermediate blank lines
+>>> class Network(object):
+    def __init__(self, sizes):
+        self.num_layers = len(sizes)
+        self.sizes = sizes
+        self.biases = [np.random.randn(y, 1) for y in sizes[1:]]
+	print self.biases
+
+>>> Network([2,3,1])
+[array([[ 0.27921273],
+       [ 1.39785331],
+       [ 2.81219956]]), array([[-0.9613497]])]
+<__main__.Network object at 0xb636f84c>
+-----------------------------------------------
+------------------------------------------------
+
+
+>>> class Network(object):
+    def __init__(self, sizes):
+        self.num_layers = len(sizes)
+        self.sizes = sizes
+	self.y=sizes[1]
+        self.biases = [np.random.randn(self.y, 1)]
+	print self.biases
+
+>>> Network([2,3,1])
+[array([[-0.82841509],
+       [-1.78561777],
+       [ 0.77508955]])]
+<__main__.Network object at 0xb636f8cc>
+-------------------------------------------------
+-------------------------------------------------
+
+
+>>> class Network(object):
+    def __init__(self, sizes):
+        self.num_layers = len(sizes)
+        self.sizes = sizes
+        self.biases = [np.random.randn(self.sizes[0], 1)]
+	print self.biases
+
+>>> Network([10,1])
+[array([[-0.32571857],
+       [ 0.48350938],
+       [-2.33494794],
+       [ 0.59350007],
+       [ 0.89404482],
+       [ 0.37345692],
+       [ 1.12700282],
+       [ 0.75933987],
+       [ 0.13131549],
+       [ 0.46031733]])]
+<__main__.Network object at 0xb636f84c>
+-----------------------------------------------------
+------------------------------------------------------
+
+
+>>> class Network(object):
+   def __init__(self, sizes):
+        self.num_layers = len(sizes)
+        self.sizes = sizes
+        self.weights = [np.random.randn(y, x) for x, y in zip(sizes[:-1], sizes[1:])]
+	print self.weights
+
+>>> Network([3,5,1])
+[array([[ 2.33254932,  0.11238184,  1.07687119],
+       [-0.98769286, -0.21999548, -0.17992976],
+       [-0.29915467, -0.28695274, -0.06267289],
+       [-1.35289471, -0.02322206, -2.04520425],
+       [-0.77714455, -1.4946833 , -1.83302802]]), array([[ 0.82934908,  0.86901495,  0.20817612, -1.22742341,  1.17478138]])]
+<__main__.Network object at 0xb636fd0c>
+
+
+>>> size=[3,5,1]
+
+			#all minus the last one
+>>> size[:-1]
+[3, 5]
+
+			#all minus the first one (at size[0]
+>>> size[1:]
+[5, 1]
+
+			# couple 'em
+
+>>> zip(size[:-1], size[1:])
+[(3, 5), (5, 1)]
+-----------------------------------------------------------------------
+-------------------------------------------------------------------------
+
+
+>>> class Network(object):
+   def __init__(self, sizes):
+        self.num_layers = len(sizes)
+        self.sizes = sizes
+        self.weights = [np.random.randn(y, x) for x, y in zip(sizes[:-1], sizes[1:])]
+	print self.weights
+
+>>> size=[3,5,1]
+>>> zip(size[:-1], size[1:])
+[(3, 5), (5, 1)]
+
+
+>>> net=Network([3,5,1])
+[array([[-0.41505847,  1.70140038,  0.91385148],
+       [-1.01628116, -1.38484795,  0.51662871],
+       [-1.18005634, -1.727613  ,  0.62209686],
+       [ 2.08948776,  1.4766514 , -0.35686759],
+       [-1.08801132, -0.22240576, -0.58330091]]), array([[ 2.43880715, -2.26688149, -1.07132758, -0.99055838, -0.76534705]])]
+
+
+>>> net.weights[0]
+array([[-0.41505847,  1.70140038,  0.91385148],
+       [-1.01628116, -1.38484795,  0.51662871],
+       [-1.18005634, -1.727613  ,  0.62209686],
+       [ 2.08948776,  1.4766514 , -0.35686759],
+       [-1.08801132, -0.22240576, -0.58330091]])
+
+
+>>> net.weights[1]
+array([[ 2.43880715, -2.26688149, -1.07132758, -0.99055838, -0.76534705]])
+
+---------------------------------------------------------
+----------------------------------------------------------
+
+
+>>> class Network(object):
+    def __init__(self, sizes):
+        self.num_layers = len(sizes)
+        self.sizes = sizes
+        self.weights = [np.random.randn(self.sizes[0], 1)]
+    def feedforward(self, a):
+        a1 = np.vdot(self.weights, a)
+        return a1
+	print a1
+
+
+	# training set data
+B,4,2,5,4,4,8,7,6,6,7,6,6,2,8,7,10	==>1,4,2,5,4,4,8,7,6,6,7,6,6,2,8,7,10
+A,1,1,3,2,1,8,2,2,2,8,2,8,1,6,2,7	==> 1,1,1,3,2,1,8,2,2,2,8,2,8,1,6,2,7
+
+
+>>> np.random.seed(47)
+>>> net=Network([17,1])
+>>> net.feedforward([1,4,2,5,4,4,8,7,6,6,7,6,6,2,8,7,10])
+10.380052842446508
+
+---------------------------------------------------------------------------
+----------------------------------------------------------------------------
+
+	# load_data() uses numpy's genfromtxt method, and returns its own ndarray object.
+	# use load_data() if you wanted to perform numpy operations on the data, otherwise open_with_csv()
+	# files
+		f.open()
+		f.close()
+		f.read()
+		f.write()
+	# cPickle module supports serialization and de-serialization of Python objects, providing an interface and functionality nearly identical to the pickle module.
+ 	# .pkl file a serialized pickle file
+	# dtype=float32  ==> a data type
+	#
+
+
+To unpickle the data (note gzip is only needed if the file is compressed):
+import gzip
+import pickle
+with gzip.open('mnist.pkl.gz', 'rb') as f: train_set, valid_set, test_set = pickle.load(f)
+
+Where each set can be further divided (i.e. for the training set):
+train_x, train_y = train_set
+
+If you want to display the digits:
+
+import matplotlib.cm as cm
+import matplotlib.pyplot as plt
+plt.imshow(train_x[0].reshape((28, 28)), cmap = cm.Greys_r)
+plt.show()
+
+"""Return the MNIST data as a tuple containing the training data,
+    the validation data, and the test data.
+
+    The ``training_data`` is returned as a tuple with two entries.
+    The first entry contains the actual training images.  This is a
+    numpy ndarray with 50,000 entries.  Each entry is, in turn, a
+    numpy ndarray with 784 values, representing the 28 * 28 = 784
+    pixels in a single MNIST image.
+
+    The second entry in the ``training_data`` tuple is a numpy ndarray
+    containing 50,000 entries.  Those entries are just the digit
+    values (0...9) for the corresponding images contained in the first
+    entry of the tuple.
+
+    The ``validation_data`` and ``test_data`` are similar, except
+    each contains only 10,000 images.
+
+    This is a nice data format, but for use in neural networks it's
+    helpful to modify the format of the ``training_data`` a little.
+    That's done in the wrapper function ``load_data_wrapper()``, see
+    below.
+    """
+
+>>> import cPickle
+>>> import gzip
+>>> import numpy as np
+
+>>> def load_data():
+    f = gzip.open('/home/bmarron/Desktop/PSU/PhD_EES/SoE/2016SoE009_CS545_MachineLearning/_PBFs_bckgrndinfo/neural-networks-and-deep-learning/data/mnist.pkl.gz', 'rb')
+    training_data, validation_data, test_data = cPickle.load(f)
+    f.close()
+    return (training_data, validation_data, test_data)
+
+>>> mnistdata = load_data()
+
+			#three arrays in mnistdata
+>>> mnistdata
+>>> mnistdat[0]
+>>> mnistdat[1]
+>>> mnistdat[2]
+
+>>> tr_d, va_d, te_d = load_data()
+>>> tr_d[1][0]
+5
+>>> tr_x, tr_y = tr_d
+>>> tr_x
+array([[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+       [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+       [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+       ..., 
+       [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+       [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+       [ 0.,  0.,  0., ...,  0.,  0.,  0.]], dtype=float32)
+>>> tr_y
+array([5, 0, 4, ..., 8, 4, 8], dtype=int64)
+
+-----------------------------------------------------------------------------
+------------------------------------------------------------------------------
+
+>>>import os
+>>>print os.getcwd()
+/home/bmarron
+
+-------------------------------------------------------------
+----------------------------------------------------------------
+
+>>>from numpy import genfromtxt
+>>>my_data = genfromtxt('/home/bmarron/Desktop/PSU/PhD_EES/SoE/2016SoE009_CS545_MachineLearning/_PWFs_work_inprogress/Hwk1/DataFiles/test_data.txt', delimiter=',')
+
+
+>>> len(my_data)
+10000
+>>> my_data.shape
+(10000, 17)
+
+			#access columns
+>>> my_data[:,0]
+array([ nan,  nan,  nan, ...,  nan,  nan,  nan])
+>>> my_data[:,1]
+array([ 6.,  2.,  5., ...,  6.,  2.,  4.])
+>>> my_data[:,2]
+array([  9.,   9.,  10., ...,   9.,   3.,   9.])
+
+			#access rows
+>>> my_data[0,:]
+array([ nan,   6.,   9.,   9.,   7.,   6.,   8.,   8.,   4.,   1.,   7.,
+         9.,   8.,   7.,  11.,   0.,   8.])
+>>> my_data[1,:]
+array([ nan,   2.,   9.,   3.,   7.,   1.,  12.,   2.,  10.,   4.,  13.,
+         6.,  13.,   1.,   6.,   0.,   8.])
+>>> my_data[2,:]
+array([ nan,   5.,  10.,   5.,   5.,   4.,   7.,   7.,   4.,   6.,   8.,
+         5.,   7.,   5.,  10.,   6.,   6.])
+
+			#delete row
+my_data = np.delete(my_data, 0, 1)  # delete first column of C
+
+
+-----------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
+
+>>> a = array([[1,2,3],[4,5,6]])
+>>> b = array([[9,8,7],[6,5,4]])
+>>> numpy.concatenate((a,b))
+ array([[1, 2, 3],
+       [4, 5, 6],
+       [9, 8, 7],
+       [6, 5, 4]])
+
+-------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+
+>>> a = np.random.randint(0,2,size=(48,366,3))
+>>> a.shape
+(48, 366, 3)
+
+			#remove the last column
+			# equivalent
+>>> b = np.delete(a,-1,1)
+b = a[:,:-1,:]
+
+
+>>> arr
+array([[ 1,  2,  3,  4],
+       [ 5,  6,  7,  8],
+       [ 9, 10, 11, 12]])
+
+>>> np.delete(arr, 1, 0)   # delete second row of arr
+array([[ 1,  2,  3,  4],
+       [ 9, 10, 11, 12]])
+
+A = scipy.delete(A, 1, 0)  # delete second row of A
+B = scipy.delete(B, 2, 0)  # delete third row of B
+C = scipy.delete(C, 1, 1)  # delete second column of C
+
+------------------------------------------------------------------------------
+-----------------------------------------------------------------------------
+
+"""Return the number of test inputs for which the neural
+        network outputs the correct result. Note that the neural
+        network's output is assumed to be the index of whichever
+        neuron in the final layer has the highest activation."""
+
+def evaluate(self, test_data):
+	test_results = [(np.argmax(self.feedforward(x)), y) for (x, y) in test_data]
+        return sum(int(x == y) for (x, y) in test_results)
+
+
+----------------------------------------------------------------
+----------------------------------------------------------------
+
+>>> x=np.arange(9.0)
+>>> x
+array([ 0.,  1.,  2.,  3.,  4.,  5.,  6.,  7.,  8.])
+
+>>> np.split(x, [7])
+[array([ 0.,  1.,  2.,  3.,  4.,  5.,  6.]), array([ 7.,  8.])]
+
+>>> np.split(x, [8])
+[array([ 0.,  1.,  2.,  3.,  4.,  5.,  6.,  7.]), array([ 8.])]
+
+
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+>>>n=2
+>>>mini_batch_size =10
+>>>mini_batches = [tr_d[k:k+mini_batch_size] for k in xrange(0, n, mini_batch_size)]
+
+	# the first element to be one, the last element to be one less than ten, 
+	#and that we'd like each element to go up by two
+>>> for i in xrange(1, 10, 2): print(i)
+1
+3
+5
+7
+9
+
+>>> for i in xrange(0, 2, 1): print(i)
+0
+1
+
+>>>for j in xrange(10):print(j)
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+
+---------------------------------------------
+--------------------------------------------
+
+>>> np.array([[0,0,1,1]]).T
+array([[0],
+       [0],
+       [1],
+       [1]])
+
+>>> 2*np.random.random((3,1)) - 1
+array([[ 0.33021082],
+       [-0.89293423],
+       [ 0.98673978]])
+
+>>> np.array([  [0,0,1],
+                [0,1,1],
+                [1,0,1],
+                [1,1,1] ])
+array([[0, 0, 1],
+       [0, 1, 1],
+       [1, 0, 1],
+       [1, 1, 1]])
+
+
+-----------------------------------------------
+-----------------------------------------------
+
+	#set a variable to true or false by assigning True or False to it:
+>>> myFirstVar = True
+>>> myOtherVar = False
+
+	# if (not loggedDocument): instead of if (loggedDocument == False):
+
+    	#The colon (:) is significant and required. It separates the header of the compound statement from the body.
+    	#The line after the colon must be indented. It is standard in Python to use four spaces for indenting.
+    	#All lines indented the same amount after the colon will be executed whenever the BOOLEAN_EXPRESSION is true.
+
+	# ** ==> exponent
+
+
+	#If it is not true that the weight is greater than 50, then don’t do the indented part: skip printing the extra luggage charge. 
+	#In any event, when you have finished with the if statement (whether it actually does anything or not), 
+	#go on to the next statement that is not indented under the if. In this case that is the statement printing “Thank you”.
+
+weight=49
+if weight > 50:
+        print("There is a $25 charge for luggage that heavy.")
+    print("Thank you for your business.")
+IndentationError: unindent does not match any outer indentation level
+
+
+
+
+if 54 > 50:
+    print("There is a $25 charge for luggage that heavy.")
+print("Thank you for your business.")
+
+
+
+
+
+
+
+
+
+
+		#these are different b/c of indentation !!!
+def nonlin(x,deriv=False):
+    if(deriv==True):
+        return x*(1-x)
+        return 1/(1+np.exp(-x))
+>>> nonlin(0)
+>>>
+
+
+
+def nonlin(x,deriv=False):
+    if(deriv==True):
+        return x*(1-x)
+    return 1/(1+np.exp(-x))
+>>> nonlin(0)
+0.5
+
+----------------------------------------------
+----------------------------------------------
+
+>>> unit_step = lambda x: 0 if x < 0 else 1 
+>>> unit_step(.5)
+1
+>>> unit_step(-.5)
+0
+
+		#lambda functions
+		#the lambda definition does not include a "return" statement -- it always contains an expression which is returned. 
+		#Also note that you can put a lambda definition anywhere a function is expected, and you don't have to assign it to 
+		#a variable at all 
+>>> def f (x): return x**2
+... 
+>>> print f(8)
+64
+
+>>> g = lambda x: x**2 
+>>> print g(8)
+64
+------------------------------------------
+-------------------------------------------
+
+	#slicing arrays
+	# A_NEW = A[Start_index : stop_index, start_index : stop_index)]
+
+A = [[1,2,3],[4,5,6],[7,8,9],[10,11,12]]
+
+A_NEW = A[0:2,0:3]
+A_NEW = [[1,2,3],[4,5,6]]
+
+
+
+If one wants row 2 and column 2 and 3
+A_NEW = A[1:2,1:3]
+
+----------------------------------------
+---------------------------------------
+
+	# .T accesses the attribute T of the object; the transpose of the array
+
+
+
+
+#################################
+complete code per perceptron 
+#################################
+	*copy the following code into a fresh Mousepad; change all-pairs couplet w/ txt editor before re-running
+	*run 325 times
+
+
+			#sequential listing of "A" and "B" lines
+$ awk 'BEGIN { FS = "," } ; $1=="A" || $1=="B" ' ~/Desktop/PSU/PhD_EES/SoE/2016SoE009_CS545_MachineLearning/_PWFs_work_inprogress/Hwk1/DataFiles/training_data.txt >> ~/Desktop/AB.txt
+
+			#open ~/Desktop/AB.txt
+			#use txt editor to change A ==> 1, B==>0
+
+			# divide by 15
+$ awk 'BEGIN {FS=","} {for (i=2; i<=NF; i++) $i=$i/15; OFS=","; print}' ~/Desktop/AB.txt >> ~/Desktop/AB_data.txt
+
+			#import into Python
+import numpy as np
+from numpy import genfromtxt
+AB_data = genfromtxt('/home/bmarron/Desktop/AB_data.txt', delimiter=',')
+AB_data = np.array_split(AB_data, [1], axis=1)
+
+
+
+
+# input (training) dataset
+X = AB_data[1]
+
+# output (training) dataset            
+y = AB_data[0]
+
+# initialize weights randomly
+np.random.seed(47)
+rn = np.random.randn(16, 1)
+syn0 = (rn - np.fix(rn))
+
+
+for iter in xrange(10000):
+
+# forward propagation (l1 = activation output)
+l0 = X
+l1 = np.dot(l0,syn0)
+
+# evaluate activation output as a binary 
+unit_step = lambda x: 0 if x < 0 else 1
+results = []
+for x in l1:
+    results.append(unit_step(x))
+
+ao = np.hstack(results)
+
+# error
+error = y - ao
+delta = error[:,:1]
+
+# add eta
+eta = 0.2
+delta = eta * delta
+
+
+   # update weights
+syn0 += np.dot(l0.T,delta)
+
+print syn0
+
+
+---------------------------------------------------------
+----------------------------------------------------------
+
+delete the first row, do this:
+
+x = numpy.delete(x, (0), axis=0)
+
+delete the third column, do this:
+
+x = numpy.delete(x,(2), axis=1)
+
+
+-----------------------------------------
+---------------------------------------
+
+		#delete third row
+>>> all_prcptrn_wgts=np.delete(all_prcptrn_wgts, (2), axis=0)
+
+
+
+
+--------------------------------------
+-------------------------------------
+split($0, chars, "")
+  for (i=1; i <= length($0); i++) {
+    printf("%s\n", chars[i])
+  }
+
+
+
+
+
+
+
+
+

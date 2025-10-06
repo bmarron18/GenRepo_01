@@ -1,0 +1,240 @@
+
+
+############
+Python installations
+########################
+https://www.geeksforgeeks.org/python/how-to-install-python-on-linux/
+https://www.alessioligabue.it/en/blog/install-python-complete-guide
+
+https://packages.debian.org/trixie/amd64/python3.13
+https://packages.debian.org/trixie/amd64/python3.13-venv/download
+	If you are running Debian, it is strongly suggested to use a package manager like aptitude or synaptic to download and 
+	install packages, instead of doing so manually via this website.
+
+	You should be able to use any of the listed mirrors by adding a line to your /etc/apt/sources.list like this:
+		deb http://ftp.mx.debian.org/debian trixie main 
+/etc/apt$ ls
+apt.conf.d     preferences.d  sources.list.d     trustdb.gpg  trusted.gpg~
+apt-file.conf  sources.list   sources.list.save  trusted.gpg  trusted.gpg.d
+to edit:
+$ notepadqq /etc/apt/sources.list 
+
+NO GO
+$ sudo aptitude python3.13-venv
+
+
+NO GO---unmet dependencies
+Downloaded directly from website (must install both)
+	python3.13_3.13.5-2_amd64.deb
+	python3.13-venv_3.13.5-2_amd64.deb 
+
+
+
+
+
+
+Installing multiple versions
+----------------------------
+
+On Unix and Mac systems if you intend to install multiple versions of Python
+using the same installation prefix (``--prefix`` argument to the configure
+script) you must take care that your primary python executable is not
+overwritten by the installation of a different version.  All files and
+directories installed using ``make altinstall`` contain the major and minor
+version and can thus live side-by-side.  ``make install`` also creates
+``${prefix}/bin/python3`` which refers to ``${prefix}/bin/python3.X``.  
+
+If you intend to install multiple versions using the same prefix you must decide which
+version (if any) is your "primary" version.  Install that version using
+``make install``.  Install all other versions using ``make altinstall``.
+
+For example, if you want to install Python 2.7, 3.6, and 3.13 with 3.13 being the
+primary version, you would execute ``make install`` in your 3.13 build directory
+and ``make altinstall`` in the others.
+
+
+
+
+
+
+---	Find python directories on compu	------------------
+sudo find ./ -name "*python*" -type d >> ~/Desktop/py.txt
+
+
+#########
+Default
+Python distros
+running
+##################
+
+
+*	python version running **on compu**!!! ----
+	$ python3 -V
+		Python 3.10.12
+	
+	$ python
+	Python 3.10.12 (main, Aug 15 2025, 14:32:43) [GCC 11.4.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>>
+
+
+
+*	Python version running **in Spyder** (internal) ----
+		Python 3.11.13 | packaged by conda-forge | (main, Jun  4 2025, 14:48:23) [GCC 13.3.0]
+		Type "copyright", "credits" or "license" for more information.
+
+		IPython 8.37.0 -- An enhanced Interactive Python. Type '?' for help.
+
+
+*	python version running **in Conda**!!! ----
+	$ conda activate base
+	(base)$ python -V
+				Python 3.13.5
+	(base)$ conda deactivate
+	
+		
+--- version of Pyhton running---
+$ python3
+>>> import sys
+    print(sys.version)
+Python 3.10.12 (main, Aug 15 2025, 14:32:43) [GCC 11.4.0] on linux
+[cntrl-d to exit Python shell]
+
+
+In Spyder
+	import sys
+	print(sys.version)
+3.11.13 | packaged by conda-forge | (main, Jun  4 2025, 14:48:23) [GCC 13.3.0]
+
+in (ai-apis) virtual env
+(ai-apis) bmarron18@bmarron18-HP-Notebook:~$ python --version
+Python 3.10.12
+
+
+
+
+
+--- python distros and executable files on compu
+
+###############################################
+in /usr/bin find
+the python distros installed on compu
+when using $ sudo aptitude install <python-distro>
+	python3.10.12
+	python3.11-venv
+###############################################
+
+(here, actually calling python to run a command [-c cmd ])
+~$ python3 -c "import sys; print(sys.executable)"
+/usr/bin/python3										<== this is python3.10.12; python currently running on Desktop
+
+
+/usr/bin$ file python*									<== gives 	one (1) symbolic link output
+																two (2) python executable outputs
+																	python3.10.12
+																	python3.11-venv
+
+
+python3:           symbolic link to python3.10.12				<== this one (1) symbolic link output points to python3.10.12 i														in /usr/bin/python3.10
+
+													<== this is python3.10.12 currently running on the Desktop;
+														installation date unk
+python3.10:        ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=b2fd9010dc75aa747aee5296c31a07d210d124ad, for GNU/Linux 3.2.0, stripped
+python3.10-config: symbolic link to x86_64-linux-gnu-python3.10-config
+
+													<==	this is python3.11-venv installed for (ai-apis)	
+													virtual env from .deb file (Sept 2025)
+													$ sudo aptitude install python3.11-venv
+python3.11:        ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=ead95fcf0410547669743f801bc8c549efbdf7ce, for GNU/Linux 3.2.0, stripped
+	
+
+
+
+#################
+in /path-to-virtual-environment/bin
+python options available in the (ai-apis) virtual env
+#########################################
+
+~/spyder-6/envs/ai-apis/bin:~$ file python*				<== gives four (4) symbolic link outputs
+python:     symbolic link to python3
+python3:    symbolic link to /usr/bin/python3
+python3.10: symbolic link to python3					<== these three (3) outputs all point to python3.10.12 in /usr/bin
+												python3.10:        ELF 64-bit LSB pie executable, x86-64, version 1 
+												(SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, 
+												BuildID[sha1]=b2fd9010dc75aa747aee5296c31a07d210d124ad, for 
+												GNU/Linux 3.2.0, stripped
+
+
+python3.11: symbolic link to /usr/bin/python3.11			<== this one (1) output points to pyhon3.11-venv in /usr/bin
+												python3.11:        ELF 64-bit LSB executable, x86-64, version 1 
+												(SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, 
+												BuildID[sha1]=ead95fcf0410547669743f801bc8c549efbdf7ce, for 
+												GNU/Linux 3.2.0, stripped
+
+
+(ai-apis) bmarron18@bmarron18-HP-Notebook:~$ python -c "import sys; print(sys.executable)"
+/home/bmarron18/spyder-6/envs/ai-apis/bin/python				<== this is python3.10.12; a python option in (ai-apis)
+
+(ai-apis) bmarron18@bmarron18-HP-Notebook:~$ python3 -c "import sys; print(sys.executable)"
+/home/bmarron18/spyder-6/envs/ai-apis/bin/python3				<== this is python3.10.12; a python option in (ai-apis)
+
+(ai-apis) bmarron18@bmarron18-HP-Notebook:~$ python3.10 -c "import sys; print(sys.executable)"
+/home/bmarron18/spyder-6/envs/ai-apis/bin/python3.10			<== this is python3.10.12; a python option in (ai-apis)
+
+
+(ai-apis) bmarron18@bmarron18-HP-Notebook:~$ python3.11 -c "import sys; print(sys.executable)"
+/home/bmarron18/spyder-6/envs/ai-apis/bin/python3.11 			<== this is python3.11-venv; a python option in (ai-apis)
+
+
+
+
+##############
+in /path-to-spyder-runtime/bin
+the python installed with spyder and used 
+by default by spyder
+######################################################
+
+~/spyder-6/envs/spyder-runtime/bin$ file python*				<== gives 	three (3) symbolic link outputs
+																one (1) executable output
+python:            symbolic link to python3.11
+python3:           symbolic link to python3.11
+python3.1:         symbolic link to python3.11				<== ALL three (3) outputs point to python3.11.13 in 															~/spyder-6/envs/spyder-runtime/bin/python3.11
+
+													<== this is python3.11.13 installed with Spyder-6
+python3.11:        ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 2.6.32, with debug_info, not stripped
+python3.11-config: POSIX shell script, ASCII text executable, with very long lines (513)
+python3-config:    symbolic link to python3.11-config
+	
+
+To find Spyder's internal python
+	- open Spyder
+	- type the commands:
+
+[1]:	import sys; print(sys.executable)
+/home/bmarron18/spyder-6/envs/spyder-runtime/bin/python3.11		<== this is python3.11.13 installed with spyder-6
+
+
+#####################################
+Create a virtual environment
+##################################
+** Learn the fundamentals of virtual environments in python
+	https://realpython.com/python-virtual-environments-a-primer/
+	
+Python provides a package known as venv (virtual environment), which helps you isolate a program directory or package from other ones. To create a virtual environment, enter the following in the Python terminal (in this example, assume the version of Python you've installed is in the 3.8 series):
+
+$ python3.8 -m venv example		<== use a specific version of python (a new directory named "example")
+
+
+IF NEEDED
+** Install the "virtualenv" package (Python) into the Spyder directories using pip IFF have not installed 
+**
+	- Open a terminal
+	- Install "virtualenv" in a specific location in Spyder
+		$ pip install --target /spyder-6/envs/spyder-runtime/lib virtualenv						<== Linux
+		> pip install --target C:\Users\<usr-name>\AppData\Local\spyder-6\Scripts virtualenv		<== Windows
+
+      - Verify the installation and locate the executable file
+		C:\> dir /b/s virtualenv.exe
+			C:\Users\<you>\AppData\Local\spyder-6\Scripts\virtualenv.exe
+
+

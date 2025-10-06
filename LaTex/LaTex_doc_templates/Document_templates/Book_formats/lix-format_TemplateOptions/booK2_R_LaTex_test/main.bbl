@@ -1,0 +1,142 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.6 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \sortlist[entry]{nyt/global}
+    \entry{garnett}{article}{}
+      \name{author}{17}{}{%
+        {{uniquename=0,hash=d0ab868f3fc2332ab67aeace613f647c}{%
+           family={Garnett},
+           family_i={G\bibinitperiod},
+           given={T.},
+           given_i={T\bibinitperiod}}}%
+        {{uniquename=0,hash=804ca8cf371a8709c4a20ae5f0afd613}{%
+           family={Appleby},
+           family_i={A\bibinitperiod},
+           given={M.\bibnamedelimi C.},
+           given_i={M\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{uniquename=0,hash=e39131dcd06dd17acf516cd19508e1ef}{%
+           family={Balmford},
+           family_i={B\bibinitperiod},
+           given={A.},
+           given_i={A\bibinitperiod}}}%
+        {{uniquename=0,hash=42d779a41f8462d868a06747929e8d40}{%
+           family={Bateman},
+           family_i={B\bibinitperiod},
+           given={I.\bibnamedelimi J.},
+           given_i={I\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{uniquename=0,hash=2a0bc08c3263332686d4470d2b22250f}{%
+           family={Benton},
+           family_i={B\bibinitperiod},
+           given={T.\bibnamedelimi G.},
+           given_i={T\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+        {{uniquename=0,hash=2abec2d229a01232e232353f6653af4e}{%
+           family={Bloomer},
+           family_i={B\bibinitperiod},
+           given={P.},
+           given_i={P\bibinitperiod}}}%
+        {{uniquename=0,hash=c31bb005a40f9ab8926111d3e39f2602}{%
+           family={Burlingame},
+           family_i={B\bibinitperiod},
+           given={B.},
+           given_i={B\bibinitperiod}}}%
+        {{uniquename=0,hash=1a491fdb474c19750a8e4ac235c096c8}{%
+           family={Dawkins},
+           family_i={D\bibinitperiod},
+           given={M.},
+           given_i={M\bibinitperiod}}}%
+        {{uniquename=0,hash=2421df5951ed4d9294485ed6012d28a3}{%
+           family={Dolan},
+           family_i={D\bibinitperiod},
+           given={L.},
+           given_i={L\bibinitperiod}}}%
+        {{uniquename=0,hash=b0d0b7f344b7856280de63ab8a98c428}{%
+           family={Fraser},
+           family_i={F\bibinitperiod},
+           given={D.},
+           given_i={D\bibinitperiod}}}%
+        {{uniquename=0,hash=b7dd668462bc40bf6b6dc5270fefd839}{%
+           family={Herrero},
+           family_i={H\bibinitperiod},
+           given={M.},
+           given_i={M\bibinitperiod}}}%
+        {{uniquename=0,hash=6f47026e6d7c46ab745d7aa4b3dfadf8}{%
+           family={Hoffmann},
+           family_i={H\bibinitperiod},
+           given={I.},
+           given_i={I\bibinitperiod}}}%
+        {{uniquename=0,hash=d67158aca58b489563faff0797b269fd}{%
+           family={Smith},
+           family_i={S\bibinitperiod},
+           given={P.},
+           given_i={P\bibinitperiod}}}%
+        {{uniquename=0,hash=3c3f38614485237722c4eec5eae661ba}{%
+           family={Thornton},
+           family_i={T\bibinitperiod},
+           given={P.\bibnamedelimi K.},
+           given_i={P\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+        {{uniquename=0,hash=defe3defb504d86392a7e6fe93c9f28f}{%
+           family={Toulmin},
+           family_i={T\bibinitperiod},
+           given={C.},
+           given_i={C\bibinitperiod}}}%
+        {{uniquename=0,hash=dd9491f74c8d966b613427d1f6dccf62}{%
+           family={Vermeulen},
+           family_i={V\bibinitperiod},
+           given={S.\bibnamedelimi J.},
+           given_i={S\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{uniquename=0,hash=27642b4b4f4a86150edc6ecff47f5868}{%
+           family={Godfray},
+           family_i={G\bibinitperiod},
+           given={H.\bibnamedelimi C.\bibnamedelimi J.},
+           given_i={H\bibinitperiod\bibinitdelim C\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{ba33f66e021e0b62f2fcc8025d8749cc}
+      \strng{fullhash}{91cf726941ac6df4445ebc15f1e30b3c}
+      \field{sortinit}{G}
+      \field{sortinithash}{1c854ef9177a91bf894e66485bdbd3ed}
+      \field{labelyear}{2013}
+      \field{labelmonth}{07}
+      \field{datelabelsource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{issn}{0036-8075, 1095-9203}
+      \field{journaltitle}{Science}
+      \field{month}{07}
+      \field{number}{6141}
+      \field{shorttitle}{Sustainable {Intensification} in {Agriculture}}
+      \field{title}{Sustainable {Intensification} in {Agriculture}: {Premises} and {Policies}}
+      \field{urlday}{20}
+      \field{urlmonth}{10}
+      \field{urlyear}{2017}
+      \field{volume}{341}
+      \field{year}{2013}
+      \field{pages}{33\bibrangedash 34}
+      \range{pages}{2}
+      \verb{file}
+      \verb Full Text PDF:/home/bruce/.mozilla/firefox/t7591cgk.default/zotero/storage/3N5GQW6F/Garnett et al. - 2013 - Sustainable Intensification in Agriculture Premis.pdf:application/pdf;Snapshot:/home/bruce/.mozilla/firefox/t7591cgk.default/zotero/storage/255T8Q4I/33.html:text/html
+      \endverb
+    \endentry
+  \endsortlist
+\endrefsection
+\endinput
+

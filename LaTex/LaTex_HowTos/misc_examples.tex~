@@ -1,0 +1,558 @@
+\documentclass[a4paper]{report}
+\usepackage{fancyhdr}
+\usepackage[final]{pdfpages}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{listings}
+\usepackage{geometry}
+\usepackage{amsmath ,amsthm ,amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{draftwatermark}
+\usepackage{everypage}
+\usepackage{apacite}
+\usepackage[english]{babel}
+\usepackage{comment}
+\usepackage{booktabs}	%table rules
+\usepackage[all]{nowidow}
+\usepackage{threeparttable}
+\usepackage{longtable}
+\usepackage{etoolbox}
+\setlength{\LTcapwidth}{=6.95in}	%longtable caption width goes the full textwidth 
+\usepackage{verbatim}
+\usepackage{multirow}
+\usepackage[all]{nowidow}
+\usepackage{longtable}
+\usepackage{etoolbox}
+\setlength{\LTcapwidth}{=6.95in} %longtable caption width goes the full textwidth 
+\usepackage{csquotes}
+\usepackage{tikz}
+\usetikzlibrary{shapes, arrows, positioning}
+\tikzset{
+    events/.style={ellipse, draw, align=right},
+}
+
+% paragraph indent, if needed
+\newenvironment{myindentpar}[1]%
+   {\begin{list}{}%
+       {\setlength{\leftmargin}{#1}}%
+           \item[]%
+   }
+     {\end{list}}
+     
+
+%%%%%%%%%%%%%%%%%%%%%%
+%% THE TIPS %%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%
+
+% ----Import graphics from GoogleDrive shared docs ----------
+
+	a.
+	#copy figure/graphic
+	#open LibreOffice and paste graphic here
+	#save graphic as .png file to Desktop
+	#manipulate in GIMP, if needed
+	#import as graphic to LaTex
+
+
+%-------Import .txt like it was typed in LaTex ------------
+
+\begingroup
+\obeylines
+\input{/home/bmarron//Desktop/Spring_2014/STAT_505_Fountain/HW1/RandWalk1_Model.txt}
+\endgroup
+
+
+
+%----- matrices ---------------------------
+
+The \emph{characteristic polynomial} $\chi(\lambda)$ of the
+$3 \times 3$~matrix
+\[ \left( \begin{array}{ccc}
+a & b & c \\
+d & e & f \\
+g & h & i \end{array} \right)\]
+is given by the formula
+\[ \chi(\lambda) = \left| \begin{array}{ccc}
+\lambda - a & -b & -c \\
+-d & \lambda - e & -f \\
+-g & -h & \lambda - i \end{array} \right|.\]
+
+
+
+%-------referencing figures/tables in a big doc ------------------
+
+Figure~\ref{fig:bm1}
+
+\begin{figure}
+	\begin{center}
+		\includegraphics[scale=.60]{graphics/ws_map3.jpeg}
+		\caption{Location of grid points for HadGEM2 weather data.}
+		\label{fig:bm1}
+	\end{center}
+\end{figure}
+
+
+%-------horizontal line across page --------------
+
+\noindent\makebox[\linewidth]{\rule{\textwidth}{0.4pt}}
+
+
+
+
+% Signature and data macro------------------------
+\newcommand*{\SignatureAndDate}[1]{%
+    \par\noindent\makebox[2.5in]{\hrulefill} \hfill\makebox[2.0in]{\hrulefill}%
+    \par\noindent\makebox[2.5in][l]{#1}      \hfill\makebox[2.0in][l]{Date}%
+}%
+
+\SignatureAndDate{User Representative}
+
+
+
+
+%-----------frame text ----------
+\usepackage{showframe}
+
+
+
+%------------resize tables---------
+\usepackage{graphics}
+
+\begin{table}
+\resizebox{.5\columnwidth}{!}{
+\begin{tabular}{lrrrrrrrrrr}
+\toprule
+{} &    0 &    1 &    2 &    3 &    4 &    5 &    6 &    7 &    8 &    9 \\
+\midrule
+0 &  174 &    0 &    0 &    0 &    4 &    0 &    0 &    0 &    0 &    0 \\
+1 &    0 &  132 &   19 &    0 &    0 &    1 &    6 &    0 &    9 &   15 \\
+2 &    0 &    7 &  156 &    0 &    0 &    0 &    0 &    1 &   11 &    2 \\
+3 &    1 &    0 &    2 &  154 &    0 &    2 &    0 &    6 &    9 &    9 \\
+4 &    0 &    1 &    0 &    0 &  173 &    0 &    0 &    3 &    3 &    1 \\
+5 &    0 &    0 &    0 &    0 &    1 &  165 &    1 &    0 &    2 &   13 \\
+6 &    0 &    4 &    0 &    0 &    4 &    1 &  172 &    0 &    0 &    0 \\
+7 &    0 &    1 &    0 &    0 &    1 &    0 &    0 &  173 &    3 &    1 \\
+8 &    0 &   21 &    1 &    0 &    1 &    0 &    1 &    1 &  140 &    9 \\
+9 &    0 &    1 &    0 &    6 &    4 &    1 &    0 &    1 &    7 &  160 \\
+\bottomrule
+\end{tabular}
+}
+\end{table}
+
+
+
+
+
+%------output from Python ------------
+\usepackage{booktabs}	%table rules
+
+\begin{table}
+\begin{tabular}{lrrrrrrrrrr}
+\toprule
+{} &    0 &    1 &    2 &    3 &    4 &    5 &    6 &    7 &    8 &    9 \\
+\midrule
+0 &  174 &    0 &    0 &    0 &    4 &    0 &    0 &    0 &    0 &    0 \\
+1 &    0 &  132 &   19 &    0 &    0 &    1 &    6 &    0 &    9 &   15 \\
+2 &    0 &    7 &  156 &    0 &    0 &    0 &    0 &    1 &   11 &    2 \\
+3 &    1 &    0 &    2 &  154 &    0 &    2 &    0 &    6 &    9 &    9 \\
+4 &    0 &    1 &    0 &    0 &  173 &    0 &    0 &    3 &    3 &    1 \\
+5 &    0 &    0 &    0 &    0 &    1 &  165 &    1 &    0 &    2 &   13 \\
+6 &    0 &    4 &    0 &    0 &    4 &    1 &  172 &    0 &    0 &    0 \\
+7 &    0 &    1 &    0 &    0 &    1 &    0 &    0 &  173 &    3 &    1 \\
+8 &    0 &   21 &    1 &    0 &    1 &    0 &    1 &    1 &  140 &    9 \\
+9 &    0 &    1 &    0 &    6 &    4 &    1 &    0 &    1 &    7 &  160 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+
+%---- tabs -----------
+%http://www.tug.org/tutorials/latex2e/tabbing.html
+\begin{tabbing}
+\bfseries work \hspace{2.5cm}\= test \\
+\bfseries home \>  text text text text text \\
+\bfseries work \= test 
+\end{tabbing}
+
+
+
+% ---- locating graphics and textblocks in slides ---------
+%slide----------------------------------------------------------
+
+		#TikZ allows you to reference nodes outside the current picture. 
+		#This feature is enabled using the "remember picture" option. 
+
+\begin{tikzpicture}[remember picture,overlay]
+  \node[anchor=south west] at (5,-3.5) {\includegraphics[scale=.30]{graphics/fig1}};
+\end{tikzpicture}
+\clearpage
+
+%slide----------------------------------------------------------
+\section{Sometimes classification is surprisingly straightforward ...}
+
+\begin{tikzpicture}[overlay]
+  \node[anchor=south west] at (5,-3.5) {\includegraphics[scale=.30]{graphics/fig1}};
+  \node[anchor=south west] at (0,-1)
+  	{$\begin{aligned}
+  	X &= (x_{1}, x_{2}, x_{3})\\
+	C &= \{ c_1, c_2, c_3, c_4\} 
+  	\end{aligned}$
+  	};
+ \end{tikzpicture}
+\begin{textblock}{1}(0.505,.715)
+  \footnotesize \texttt{Hertzsprung-Russell diagram}
+ \end{textblock}
+\clearpage
+
+
+
+
+%---- insert complete .pdfs ---------------------
+\usepackage{pdfpages}
+\includepdf[pages={1-10}]{Experiment1b.pdf}
+
+
+
+%----sizing .png, .jpeg ----------------------
+	#.png file
+\begin{figure}
+	\includegraphics[scale = 0.25]{graphics/litrev2-ntb}
+\end{figure}
+
+
+
+% ---- sizing .pdf, .eps ----------------------
+	# .eps files
+\begin{figure}
+	\includegraphics[width=20cm]{figs/Image1c}
+\end{figure}
+
+\begin{figure}
+	\includegraphics[height=15cm]{figs/Image2}
+\end{figure}
+
+	# .pdf files
+\begin{figure}
+    \includegraphics[width=1.0\textwidth, height=6 in, page=2]{/home/bmarron//Desktop/Problems1.pdf}
+\end{figure}
+
+\begin{figure}
+	\includegraphics[width=0.35\textwidth, height=0.6\textheight]{graphics/fig1}
+\end{figure}
+
+
+% ---- indented paragraphs --------------------------
+\begin{myindentpar}{1em}
+text
+\end{myindentpar}
+
+\begin{myindentpar}{2em}
+text
+\end{myindentpar}
+
+\begin{myindentpar}{3em}
+text
+\end{myindentpar}
+
+
+
+% ---- big brackets --------------------------------------
+ \left(  
+ \right)
+automatically expand to fit the material between them.
+
+
+% ---- display fractions w/ larger num and denom ------------------
+\newcommand\ddfrac[2]{\frac{\displaystyle #1}{\displaystyle #2}}
+ $\ddfrac{TP+TN}{\Sigma Total Population}$
+
+% ---- bars ------------------------------------
+\usepackage{amsmath}
+
+$\begin{array}{r}
+a+b+c\\
+a+b^3+c\\
+a+\overline{b}+c\\
+a+\overline{b}^3+c\\
+a+\bar{b}+c\\
+a+\bar{b}^3+c\\
+a+\overline{b^3}+c\\
+a+\bar{b^3}+c\\
+a+b+c
+\end{array}$
+
+
+%------copy formulae from MathJax ----------------------
+1. Show Math As ==> Original MathML
+2. copy this to .txt file on Desktop
+3. rename to math.xml file
+4. run pandoc
+%$ pandoc -f html+tex_math_dollars -t latex ~/Desktop/math.xml
+ 
+
+%-------- copy formula from Wikipedia ---------------------
+1. highlight 
+2. Copy with "Outer HTML"
+
+
+
+
+% ----summations -------------------------------------
+\begin{align*}
+  A &= \sum_{n=-\infty}^{+\infty} f(x) \\
+%  B &= \smashoperator[r]{\sum_{n=-\infty}^{+\infty}} f(x) \\
+%  C &= \sum_{\mathclap{n=-\infty}}^{+\infty} f(x) \\
+  D &= \sum_{\substack{n={}\\-\infty}}^{+\infty} f(x) \\
+  E &= \sum_{-\infty}^{\infty}\mathop{}_{\mkern-5mu n} f(x)
+\end{align*}
+
+
+% -----verbatim text in math environment-----------------
+\begin{equation*}
+log \ (\verb!sed_n!) = \alpha + \beta_{1}\verb!slope! + \beta_{2}\verb!perc_ag! + \beta_{3}\verb!slope:perc_ag! + \varepsilon
+\end{equation*}
+
+#short verbatim
+\verb|this_tetxt|
+
+#verbatim text
+\verbatiminput{/home/bmarron//Desktop/PSU/PhD_EES/SoE/2016SoE010_GEOG694_Models/_PWFs_works_inprogress/Lab3/ascii_files_rgdal.txt}
+
+#trademark/registered symbol
+Netica\textsuperscript{\textregistered}
+
+
+#watermark
+\usepackage{everypage}
+\usepackage{draftwatermark}
+\SetWatermarkLightness{0.90}
+\SetWatermarkScale{4}
+
+
+#single line verbatim
+\verb!Q1_part(a)_1.txt! 
+
+#transposed matrix
+When there are N parameters, so that θ is a N × 1 vector 
+\theta = \begin{bmatrix} \theta_{1}, \theta_{2}, \dots , \theta_{N} \end{bmatrix}^{\mathrm T}, 
+
+#summations
+$ \mathbf{\dot x} = (A_{i}Q_{i} - D_{i})x_{i} + \sum\limits_{k\neq i}^n w_{ik}x_{k} + \phi _{i} $
+
+#cut and paste from Wikipedia!!
+$ {\left(\mathcal{I} \left(\theta \right) \right)}_{i, j} = \operatorname{E} \left[\left. \left(\frac{\partial}{\partial\theta_i} \log f(X;\theta)\right) \left(\frac{\partial}{\partial\theta_j} \log f(X;\theta)\right) \right|\theta\right] $
+
+#table1
+\begin{table}[!htbp] \centering 
+  \caption{The MLEs and asymmetric, percentile-based bootstrap confidence intervals for transition matrix values b21 and b22 for the state-space model,\ \textit{process model3}.} 
+  \label{} 
+\begin{tabular}{@{\extracolsep{5pt}}lccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+Parameter & \multicolumn{1}{c}{True value} & \multicolumn{1}{c}{MLE} & \multicolumn{1}{c}{90\% CI} \\
+\hline \\[-1.8ex]
+b21 & -.25 & -.244 & [-.271, -.073]\\
+b22 & 1.2 & 1.18 & [-.474, 1.76]\\
+\hline \\[-1.8ex]
+\end{tabular} 
+\end{table}
+
+#table2
+\begin{table}[!htbp] \centering 
+  \caption{The output statistics for three, forward addition variable selection procedures applied to the \texttt{creditscore.csv} dataset.} 
+  \label{} 
+\begin{tabular}{@{\extracolsep{5pt}}lccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+glm() & \multicolumn{1}{c}{F-ratio} & \multicolumn{1}{c}{AIC} & \multicolumn{1}{c}{BIC} \\ 
+\hline \\[-1.8ex]
+Intercept only & --- & 185.88 & 188.48 \\ 
+Intercept + IV1 & 15.75 & 168.49 & 173.70 \\
+Intercept + IV1 + IV2 & 3.95 & 165.78 & 173.59 \\
+Intercept + IV1 + IV2 + IV3 & 3.55 & 163.67 & 174.09 \\
+\hline \\[-1.8ex]
+\footnotesize IV1 = Monthly.credit.card.exp\\
+\footnotesize IV2 = Income.per.dependent\\
+\footnotesize IV3 = Self.employed\\
+\end{tabular} 
+\end{table}
+
+#longtable1
+\begin{longtable}{cccc}
+\caption{The 57 features used for the SVM in Experiment 2 ranked by the absolute value of their weight and the cumulative effect on the the SVM accuracy.} \\
+[-1.8ex]\hline \hline \\[-1.8ex] 
+ Weight Order  & Feature Number & SVM weight & Cumulative Accuracy \\
+\hline \\[-1.8ex]
+\endfirsthead
+
+{\centering {\tablename\ \thetable{} -- continued from previous page}} \\
+[1.8ex]\hline \hline \\[-1.8ex] 
+ Weight Order  & Feature Number & SVM weight & Accuracy \\
+\hline \\[-1.8ex]
+\endhead
+
+\multicolumn{4}{r}{{Continued on next page ...}} 
+\endfoot
+
+\hline 
+\endlastfoot
+
+1 & 26 & 2.4654 & 0.6098\\
+2 & 24 & 1.4083 & 0.7339\\
+3 & 30 & 1.4016 & 0.7356\\
+4 & 52 & 1.1448 & 0.7582\\
+5 & 45 & 0.9517 & 0.7864\\
+6 & 6 & 0.8817 & 0.8366\\
+7 & 15 & 0.8394 & 0.8664\\
+8 & 44 & 0.7067 & 0.8758\\
+9 & 25 & 0.6905 & 0.8780\\
+10 & 40 & 0.6637 & 0.8813\\
+11 & 41 & 0.6196 & 0.8940\\
+12 & 34 & 0.5762 & 0.8945\\
+13 & 4 & 0.4973 & 0.8984\\
+14 & 23 & 0.4647 & 0.9045\\
+15 & 55 & 0.3969 & 0.9161\\
+16 & 22 & 0.3652 & 0.9177\\
+17 & 53 & 0.3602 & 0.9210\\
+18 & 38 & 0.3255 & 0.9210\\
+19 & 3 & 0.3071 & 0.9227\\
+20 & 28 & 0.2972 & 0.9227\\
+21 & 16 & 0.2909 & 0.9199\\
+22 & 7 & 0.2876 & 0.9194\\
+23 & 43 & 0.2698 & 0.9199\\
+24 & 54 & 0.2591 & 0.9194\\
+25 & 14 & 0.2567 & 0.9194\\
+26 & 32 & 0.2440 & 0.9194\\
+27 & 51 & 0.2286 & 0.9183\\
+28 & 56 & 0.2272 & 0.9216\\
+29 & 29 & 0.2243 & 0.9232\\
+30 & 20 & 0.2226 & 0.9227\\
+31 & 21 & 0.2024 & 0.9221\\
+32 & 27 & 0.1986 & 0.9221\\
+33 & 31 & 0.1856 & 0.9210\\
+34 & 18 & 0.1719 & 0.9216\\
+35 & 48 & 0.1593 & 0.9238\\
+36 & 8 & 0.1498 & 0.9282\\
+37 & 2 & 0.1333 & 0.9177\\
+38 & 10 & 0.1115 & 0.9216\\
+39 & 47 & 0.1035 & 0.9216\\
+40 & 17 & 0.1033 & 0.9183\\
+41 & 9 & 0.0931 & 0.9210\\
+42 & 19 & 0.0911 & 0.9216\\
+43 & 0 & 0.0907 & 0.9249\\
+44 & 39 & 0.0849 & 0.9249\\
+45 & 33 & 0.0706 & 0.9249\\
+46 & 42 & 0.0680 & 0.9254\\
+47 & 46 & 0.0558 & 0.9232\\
+48 & 5 & 0.0471 & 0.9260\\
+49 & 37 & 0.0354 & 0.9249\\
+50 & 11 & 0.0301 & 0.9243\\
+51 & 13 & 0.0236 & 0.9277\\
+52 & 12 & 0.0234 & 0.9277\\
+53 & 35 & 0.0206 & 0.9260\\
+54 & 36 & 0.0187 & 0.9266\\
+55 & 49 & 0.0014 & 0.9266\\
+56 & 1 & 0.0003 & 0.9266\\
+57 & 50 & 0.00003 & 0.9266\\
+\end{longtable}
+
+
+#longtable2
+\begin{center}
+\begin{longtable}{|l|l|l|}
+\caption[Feasible triples for a highly variable Grid]{Feasible triples for 
+highly variable Grid, MLMMH.} \label{grid_mlmmh} \\
+
+\hline \multicolumn{1}{|c|}{\textbf{Time (s)}} & \multicolumn{1}{c|}{\textbf{Triple chosen}} & \multicolumn{1}{c|}{\textbf{Other feasible triples}} \\ \hline 
+\endfirsthead
+
+\multicolumn{3}{c}%
+{{\bfseries \tablename\ \thetable{} -- continued from previous page}} \\
+\hline \multicolumn{1}{|c|}{\textbf{Time (s)}} &
+\multicolumn{1}{c|}{\textbf{Triple chosen}} &
+\multicolumn{1}{c|}{\textbf{Other feasible triples}} \\ \hline 
+\endhead
+
+\hline \multicolumn{3}{|r|}{{Continued on next page}} \\ \hline
+\endfoot
+
+\hline \hline
+\endlastfoot
+
+0 & (1, 11, 13725) & (1, 12, 10980), (1, 13, 8235), (2, 2, 0), (3, 1, 0) \\
+2745 & (1, 12, 10980) & (1, 13, 8235), (2, 2, 0), (2, 3, 0), (3, 1, 0) \\
+5490 & (1, 12, 13725) & (2, 2, 2745), (2, 3, 0), (3, 1, 0) \\
+8235 & (1, 12, 16470) & (1, 13, 13725), (2, 2, 2745), (2, 3, 0), (3, 1, 0) \\
+10980 & (1, 12, 16470) & (1, 13, 13725), (2, 2, 2745), (2, 3, 0), (3, 1, 0) \\
+13725 & (1, 12, 16470) & (1, 13, 13725), (2, 2, 2745), (2, 3, 0), (3, 1, 0) \\
+16470 & (1, 13, 16470) & (2, 2, 2745), (2, 3, 0), (3, 1, 0) \\
+19215 & (1, 12, 16470) & (1, 13, 13725), (2, 2, 2745), (2, 3, 0), (3, 1, 0) \\
+21960 & (1, 12, 16470) & (1, 13, 13725), (2, 2, 2745), (2, 3, 0), (3, 1, 0) \\
+24705 & (1, 12, 16470) & (1, 13, 13725), (2, 2, 2745), (2, 3, 0), (3, 1, 0) \\
+27450 & (1, 12, 16470) & (1, 13, 13725), (2, 2, 2745), (2, 3, 0), (3, 1, 0) \\
+30195 & (2, 2, 2745) & (2, 3, 0), (3, 1, 0) \\
+32940 & (1, 13, 16470) & (2, 2, 2745), (2, 3, 0), (3, 1, 0) \\
+35685 & (1, 13, 13725) & (2, 2, 2745), (2, 3, 0), (3, 1, 0) \\
+38430 & (1, 13, 10980) & (2, 2, 2745), (2, 3, 0), (3, 1, 0) \\
+41175 & (1, 12, 13725) & (1, 13, 10980), (2, 2, 2745), (2, 3, 0), (3, 1, 0) \\
+43920 & (1, 13, 10980) & (2, 2, 2745), (2, 3, 0), (3, 1, 0) \\
+46665 & (2, 2, 2745) & (2, 3, 0), (3, 1, 0) \\
+49410 & (2, 2, 2745) & (2, 3, 0), (3, 1, 0) \\
+52155 & (1, 12, 16470) & (1, 13, 13725), (2, 2, 2745), (2, 3, 0), (3, 1, 0) \\
+54900 & (1, 13, 13725) & (2, 2, 2745), (2, 3, 0), (3, 1, 0) \\
+57645 & (1, 13, 13725) & (2, 2, 2745), (2, 3, 0), (3, 1, 0) \\
+60390 & (1, 12, 13725) & (2, 2, 2745), (2, 3, 0), (3, 1, 0) \\
+63135 & (1, 13, 16470) & (2, 2, 2745), (2, 3, 0), (3, 1, 0) \\
+65880 & (1, 13, 16470) & (2, 2, 2745), (2, 3, 0), (3, 1, 0) \\
+68625 & (2, 2, 2745) & (2, 3, 0), (3, 1, 0) \\
+71370 & (1, 13, 13725) & (2, 2, 2745), (2, 3, 0), (3, 1, 0) \\
+74115 & (1, 12, 13725) & (2, 2, 2745), (2, 3, 0), (3, 1, 0) \\
+76860 & (1, 13, 13725) & (2, 2, 2745), (2, 3, 0), (3, 1, 0) \\
+79605 & (1, 13, 13725) & (2, 2, 2745), (2, 3, 0), (3, 1, 0) \\
+82350 & (1, 12, 13725) & (2, 2, 2745), (2, 3, 0), (3, 1, 0) \\
+85095 & (1, 12, 13725) & (1, 13, 10980), (2, 2, 2745), (2, 3, 0), (3, 1, 0) \\
+87840 & (1, 13, 16470) & (2, 2, 2745), (2, 3, 0), (3, 1, 0) \\
+90585 & (1, 13, 16470) & (2, 2, 2745), (2, 3, 0), (3, 1, 0) \\
+93330 & (1, 13, 13725) & (2, 2, 2745), (2, 3, 0), (3, 1, 0) \\
+96075 & (1, 13, 16470) & (2, 2, 2745), (2, 3, 0), (3, 1, 0) \\
+98820 & (1, 13, 16470) & (2, 2, 2745), (2, 3, 0), (3, 1, 0) \\
+101565 & (1, 13, 13725) & (2, 2, 2745), (2, 3, 0), (3, 1, 0) \\
+104310 & (1, 13, 16470) & (2, 2, 2745), (2, 3, 0), (3, 1, 0) \\
+107055 & (1, 13, 13725) & (2, 2, 2745), (2, 3, 0), (3, 1, 0) \\
+109800 & (1, 13, 13725) & (2, 2, 2745), (2, 3, 0), (3, 1, 0) \\
+112545 & (1, 12, 16470) & (1, 13, 13725), (2, 2, 2745), (2, 3, 0), (3, 1, 0) \\
+115290 & (1, 13, 16470) & (2, 2, 2745), (2, 3, 0), (3, 1, 0) \\
+118035 & (1, 13, 13725) & (2, 2, 2745), (2, 3, 0), (3, 1, 0) \\
+120780 & (1, 13, 16470) & (2, 2, 2745), (2, 3, 0), (3, 1, 0) \\
+123525 & (1, 13, 13725) & (2, 2, 2745), (2, 3, 0), (3, 1, 0) \\
+126270 & (1, 12, 16470) & (1, 13, 13725), (2, 2, 2745), (2, 3, 0), (3, 1, 0) \\
+129015 & (2, 2, 2745) & (2, 3, 0), (3, 1, 0) \\
+131760 & (2, 2, 2745) & (2, 3, 0), (3, 1, 0) \\
+134505 & (1, 13, 16470) & (2, 2, 2745), (2, 3, 0), (3, 1, 0) \\
+137250 & (1, 13, 13725) & (2, 2, 2745), (2, 3, 0), (3, 1, 0) \\
+139995 & (2, 2, 2745) & (2, 3, 0), (3, 1, 0) \\
+142740 & (2, 2, 2745) & (2, 3, 0), (3, 1, 0) \\
+145485 & (1, 12, 16470) & (1, 13, 13725), (2, 2, 2745), (2, 3, 0), (3, 1, 0) \\
+148230 & (2, 2, 2745) & (2, 3, 0), (3, 1, 0) \\
+150975 & (1, 13, 16470) & (2, 2, 2745), (2, 3, 0), (3, 1, 0) \\
+153720 & (1, 12, 13725) & (2, 2, 2745), (2, 3, 0), (3, 1, 0) \\
+156465 & (1, 13, 13725) & (2, 2, 2745), (2, 3, 0), (3, 1, 0) \\
+159210 & (1, 13, 13725) & (2, 2, 2745), (2, 3, 0), (3, 1, 0) \\
+161955 & (1, 13, 16470) & (2, 2, 2745), (2, 3, 0), (3, 1, 0) \\
+164700 & (1, 13, 13725) & (2, 2, 2745), (2, 3, 0), (3, 1, 0) \\
+\end{longtable}
+\end{center}
+
+
+
+# bibliography
+\cite{mainzer_complexity_2007}
+
+\bibliographystyle{apalike}
+\bibliography{/home/bmarron//Desktop/PSU/Cert_Statistics/STAT_573_Bootstrap/Final_Project/STAT_573}
+
+\end{document}

@@ -1,0 +1,64 @@
+Title:			git Commands
+Project Descriptor:	LANDISII Upgrades Corrections Project 
+Project ID:		2016SoE021_LANDIS_Upgrades	
+Author:			bmarron
+Origin Date:		21 Sept 2015
+Revision Date:		28 Apr 2017
+
+
+
+
+git visual
+
+git ls-files		#Show information about files in the index and the working tree
+git last		#last commit
+git status
+			
+git add --all
+git status	
+git diff --staged		#line-by-line changes		
+git commit -a -m "message"	#w/o quotes
+git push origin master
+			
+gitk
+
+
+git remote show
+git remote -v
+git remote show <repository name>
+
+
+
+
+---- hub --------------------------
+https://hub.github.com/
+hub is a command-line wrapper for git that makes you better at GitHub
+
+https://github.com/github/hub/
+https://github.com/github/hub/releases
+https://chocolatey.org/
+
+The git request-pull command cannot be used to create a new Pull Request on GitHub.
+
+$ git pull-request	<< in hub
+$ git request-pull 	<<in git
+			
+
+
+------ removing files from a repo ------------------------------------------------------------							
+git ls-files
+git status
+git checkout --<filename>				#to unstage to-be-deleted files
+git rm <filename>
+git rm United_Way -r
+git commit
+git push origin master
+
+
+
+
+
+
+
+
+

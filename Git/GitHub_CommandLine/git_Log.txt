@@ -1,0 +1,31 @@
+Title:			git Log
+Project Descriptor:	LANDISII Upgrades Corrections Project 
+Project ID:		2016SoE021_LANDIS_Upgrades	
+Author:			bmarron
+Origin Date:		21 Sept 2015
+Revision Date:		28 Apr 2017
+
+
+##############
+Repo history
+##############
+
+
+
+
+	- n 			#Show only the last n commits
+	--since, --after 	#Limit the commits to those made after the specified date.
+	--until, --before 	#Limit the commits to those made before the specified date.
+	--author <name>		#Only show initial commits 
+	--committer <name>   	#Only show commits in which the committer entry matches the specified string.
+
+
+
+
+git log --since=2.weeks	#months | days | hours | minutes
+git log -n --stat
+git log -n --pretty=oneline
+git log -n --stat --graph
+git log --oneline --decorate >> Core-Model_GitHubLog_20160916.txt
+
+

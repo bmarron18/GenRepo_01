@@ -1,0 +1,422 @@
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2022/dev/Debian) (preloaded format=xetex 2025.9.3)  3 SEP 2025 18:39
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**main.tex
+(./main.tex
+! Undefined control sequence.
+l.12 \documentclass
+                   {textbook}
+? 
+! Undefined control sequence.
+l.14 \lang
+                {english}
+? 
+! Undefined control sequence.
+l.15 \title
+                {Showcasing The Textbook Class}
+? 
+! Undefined control sequence.
+l.16 \subtitle
+                {Bring Your Focus Back on Writing}
+? 
+! Undefined control sequence.
+l.17 \author
+                {Nicklas Vraa}
+? 
+! Undefined control sequence.
+l.18 \cover
+           *    {resources/textbook_front.pdf}{resources/textbook_back.pdf}
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+<to be read again> 
+                   _
+l.18 \cover*    {resources/textbook_
+                                    front.pdf}{resources/textbook_back.pdf}
+? 
+! Extra }, or forgotten $.
+l.18 \cover*    {resources/textbook_front.pdf}
+                                              {resources/textbook_back.pdf}
+? 
+! Undefined control sequence.
+l.19 \license
+                {CC}{by-nc-sa}{3.0}{The Company}
+? 
+! Undefined control sequence.
+l.20 \isbn
+                {978-0201529838}
+? 
+! Undefined control sequence.
+l.21 \publisher
+                {NV Publishing Company}
+? 
+! Undefined control sequence.
+l.22 \edition
+                {1}{2023}
+? 
+! Undefined control sequence.
+l.23 \dedicate
+                {Myself}{Because I'm cool}
+? 
+! Undefined control sequence.
+l.24 \thank
+                {Thank you to me for being the best}
+? 
+! Undefined control sequence.
+l.25 \keywords
+                {academic, template, packages}
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+<to be read again> 
+                   \par 
+l.26 
+     
+? 
+
+Overfull \hbox (910.2458pt too wide) in paragraph at lines 14--26
+[]\tenrm english Show-cas-ing The Text-book Class Bring Your Fo-cus Back on Wri
+t-ing Nick-las Vraa * resources/textbook$[]\teni ront:pdf[][][][][][][]\tenrm 1
+[][][][][]$ |
+
+\hbox(7.51782+2.86108)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm e
+.\tenrm n
+.\tenrm g
+.\tenrm l
+.etc.
+
+! Undefined control sequence.
+l.27 \note
+          {Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent...
+
+? 
+! Undefined control sequence.
+l.29 \begin
+           {document}
+? 
+! Undefined control sequence.
+l.31 \h
+       *{Non-Numbered Heading}
+? 
+! Undefined control sequence.
+l.34 \toc
+         
+? 
+! Undefined control sequence.
+l.36 \h
+       {Numbered Heading}
+? 
+! Undefined control sequence.
+l.39 \hh
+        {Subheading}
+? 
+! Undefined control sequence.
+l.42 \hhh
+         {Subsubheading}
+? 
+! Undefined control sequence.
+l.45 \hh
+        {Formats}
+? 
+! Undefined control sequence.
+l.46 ... pretium id \i{italic} sodales, dapibus \s
+                                                  {strikethrough} urna. Susp...
+
+? 
+! Undefined control sequence.
+l.48 \hh
+        {Mathematics}
+? 
+! Undefined control sequence.
+l.51     \math
+              {my_equation}{\hat{x}_i = \frac{x_i-\mu}{\sqrt{\sigma^2+\epsil...
+
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+<to be read again> 
+                   _
+l.51     \math{my_
+                  equation}{\hat{x}_i = \frac{x_i-\mu}{\sqrt{\sigma^2+\epsil...
+
+? 
+! Extra }, or forgotten $.
+l.51     \math{my_equation}
+                           {\hat{x}_i = \frac{x_i-\mu}{\sqrt{\sigma^2+\epsil...
+
+? 
+! Undefined control sequence.
+l.51     \math{my_equation}{\hat{x}_i = \frac
+                                             {x_i-\mu}{\sqrt{\sigma^2+\epsil...
+
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+<to be read again> 
+                   \par 
+l.52 
+     
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+<to be read again> 
+                   $
+<to be read again> 
+                   \par 
+l.52 
+     
+? 
+! Undefined control sequence.
+l.53 \hh
+        {Code Blocks}
+? 
+! Undefined control sequence.
+l.56     \code
+              {my_code}{python}{
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+<to be read again> 
+                   _
+l.56     \code{my_
+                  code}{python}{
+? 
+! Extra }, or forgotten $.
+l.56     \code{my_code}
+                       {python}{
+? 
+! You can't use `macro parameter character #' in math mode.
+l.57     #
+           Mauris viverra massa id lorem pretium gravida.
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+<to be read again> 
+                   \par 
+l.58 
+     
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+<to be read again> 
+                   $
+<to be read again> 
+                   \par 
+l.58 
+     
+? 
+! Undefined control sequence.
+l.71 \hh
+        {Tables}
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+<to be read again> 
+                   _
+l.74     \tabs{my_
+                  table}{cols}{
+? 
+! Extra }, or forgotten $.
+l.74     \tabs{my_table}
+                        {cols}{
+? 
+! Misplaced alignment tab character &.
+l.75     This &
+                is & a & cool & table \\
+? 
+! Misplaced alignment tab character &.
+l.75     This & is &
+                     a & cool & table \\
+? 
+! Misplaced alignment tab character &.
+l.75     This & is & a &
+                         cool & table \\
+? 
+! Misplaced alignment tab character &.
+l.75     This & is & a & cool &
+                                table \\
+? 
+! Argument of \\ has an extra }.
+<inserted text> 
+                \par 
+<to be read again> 
+                   }
+l.78     }
+          
+? 
+Runaway argument?
+ 1 & 2 & 3 & 4 & 5 \\ a & b & c & d & e 
+! Paragraph ended before \\ was complete.
+<to be read again> 
+                   \par 
+<to be read again> 
+                   }
+l.78     }
+          
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+<to be read again> 
+                   \par 
+<to be read again> 
+                   }
+l.78     }
+          
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+<to be read again> 
+                   $
+<to be read again> 
+                   \par 
+<to be read again> 
+                   }
+l.78     }
+          
+? 
+! Undefined control sequence.
+l.81 \hh
+        {Figures}
+? 
+! Undefined control sequence.
+l.84     \fig
+             {my_svg}{0.3}{resources/placeholder.svg}
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+<to be read again> 
+                   _
+l.84     \fig{my_
+                 svg}{0.3}{resources/placeholder.svg}
+? 
+! Extra }, or forgotten $.
+l.84     \fig{my_svg}
+                     {0.3}{resources/placeholder.svg}
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+<to be read again> 
+                   \par 
+l.86 
+     
+? 
+! Undefined control sequence.
+l.89 \hh
+        {Lists}
+? 
+! Undefined control sequence.
+l.92     \items
+               {
+? 
+Missing character: There is no ¤ ("A4) in font cmr10!
+Missing character: There is no ¤ ("A4) in font cmr10!
+! Undefined control sequence.
+l.95         \items
+                   {
+? 
+Missing character: There is no ¤ ("A4) in font cmr10!
+Missing character: There is no ¤ ("A4) in font cmr10!
+! Undefined control sequence.
+l.98             \items
+                       *{
+? 
+Missing character: There is no ¤ ("A4) in font cmr10!
+Missing character: There is no ¤ ("A4) in font cmr10!
+Missing character: There is no ¤ ("A4) in font cmr10!
+Missing character: There is no ¤ ("A4) in font cmr10!
+[1]
+! Undefined control sequence.
+l.109 \hh
+         {Referencing}
+? 
+! Undefined control sequence.
+l.110 Here is a hyperlink to a \url
+                                   {webpage}{https://www.overleaf.com/}. Thi...
+
+? 
+! Undefined control sequence.
+l.110 ...overleaf.com/}. This is a reference to \r
+                                                  {my_equation}, and this re...
+
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+<to be read again> 
+                   _
+l.110 ...leaf.com/}. This is a reference to \r{my_
+                                                  equation}, and this refers...
+
+? 
+! Extra }, or forgotten $.
+l.110 ...}. This is a reference to \r{my_equation}
+                                                  , and this refers to \r{my...
+
+? 
+! Undefined control sequence.
+l.110 ...to \r{my_equation}, and this refers to \r
+                                                  {my_svg}. You can also ref...
+
+? 
+! Undefined control sequence.
+l.110 ...}. You can also refer to headings like \r
+                                                  {Tables}. \R{my_code} is a...
+
+? 
+! Undefined control sequence.
+l.110 ...lso refer to headings like \r{Tables}. \R
+                                                  {my_code} is a capitalized...
+
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+<to be read again> 
+                   \par 
+l.111 
+      
+? 
+
+Overfull \hbox (651.6908pt too wide) in paragraph at lines 109--111
+[]\tenrm Referencing Here is a hy-per-link to a web-page-https://www.overleaf.c
+om/. This is a ref-er-ence to my$[]\teni quation; andthisrefersto[]:Youcanalsor
+efertoheadingslike[]:[]isacapitalizedvariant:Forallreferences; boththenameandnu
+mberarelinks:$ |
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm R
+.\tenrm e
+.\tenrm f
+.\tenrm e
+.etc.
+
+! Undefined control sequence.
+l.112 \h
+        {Conclusion}
+? 
+[2] )
+(\end occurred inside a group at level 4)
+
+### simple group (level 4) entered at line 110 ({)
+### simple group (level 3) entered at line 84 ({)
+### simple group (level 2) entered at line 51 ({)
+### simple group (level 1) entered at line 18 ({)
+### bottom level
+Output written on main.pdf (2 pages).

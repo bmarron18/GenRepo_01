@@ -1,0 +1,85 @@
+% This is a simple LaTex sample document that gives a submission format
+%   for IEEE PAMI-TC conference submissions.  Use at your own risk.
+
+% Make two column format for LaTex 2e.\
+\documentclass[12pt,twocolumn]{article} %,twocolumn
+\usepackage[dvips]{graphicx,graphics}
+\usepackage{times,amsmath,amsfonts}
+
+% Use following instead for LaTex 2.09 (may need some other mods as well).
+% \documentstyle[times,twocolumn]{article}
+
+% Set dimensions of columns, gap between columns, and paragraph indent
+\setlength{\textheight}{9.2in} \setlength{\textwidth}{6.875in}
+%\setlength{\columnsep}{0.3125in} \setlength{\topmargin}{0in}
+\setlength{\headheight}{0in} \setlength{\headsep}{-1in}
+\setlength{\parindent}{1pc}
+\setlength{\oddsidemargin}{-.1875in}  % Centers text.
+\setlength{\evensidemargin}{-.1875in}
+
+% Add the period after section numbers.  Adjust spacing.
+\newcommand{\Section}[1]{\vspace{-8pt}\section{\hskip -1em.~~#1}\vspace{-3pt}}
+\newcommand{\SubSection}[1]{\vspace{-3pt}\subsection{\hskip -1em.~~#1}
+        \vspace{-3pt}}
+\newcommand{\bqn}{\begin{eqnarray}}
+\newcommand{\eqn}{\end{eqnarray}}
+\newcommand {\diff}[1] {\frac{\partial}{\partial #1}}
+\newcommand{\jacob}[3]{\frac{\partial^2 #3}{\partial #1 \partial #2}}
+\newcommand{\der}[2]{\frac{\partial #2}{\partial #1}}
+\begin{document}
+
+% Make title bold and 14 pt font (Latex default is non-bold, 16pt)
+\title{Stat 312: Lecture 26\\
+Contingency Tables}
+% For single author (just remove % characters)
+\author{Moo K. Chung\\
+mchung@stat.wisc.edu}
+% For two authors (default example)
+\maketitle \thispagestyle{empty}
+\subsection*{Concepts}
+\begin{enumerate}
+\item Two-way contingency table: suppose there are $I$ populations
+and each population is classified into $J$ categories. Let
+$n_{ij}$ be the number of {\em observed} elements in population
+$i$ which fall into category $j$. We denote $n_{\bullet j} =
+\sum_{i=1}^I n_{ij}$ and $n_{i \bullet} = \sum_{j=1}^J n_{ij}$.
+
+
+\item Testing for {\em homogeneity}. Let $p_{ij}$ be the
+proportion of the elements in population $i$ which fall into
+category $j$. Note that $\sum_{j=1}^J p_{ij}=1$. We want to test
+if the proportions in the different categories are the same for
+all populations, i.e.
+$$H_0: p_{1j} = p_{2j} = \cdots = p_{Ij} \mbox{ for all } j.$$
+
+\item The {\em expected} number of element $\mathbb{E} N_{ij}$ in
+population $i$ which falls into category $j$. $\mathbb{E}
+N_{ij}=n_{i\bullet}p_{ij}$. Under the null hypothesis,
+$p_{ij}=\cdots=p_{Ij}=p_j$. So $\mathbb{E}N_{ij}=n_{i
+\bullet}p_j$. We estimate $p_j$ by pooling $I$ samples together.
+$\hat p_j = n_{\bullet j}/n$.
+
+\item Test statistic:
+$$\chi^2 = \sum_{i,j}
+\frac{(n_{ij}-\mathbb{E}N_{ij})^2}{\mathbb{E}N_{ij}} \sim
+\chi^2_{(I-1)(J-1)}.$$
+\end{enumerate}
+
+\subsection*{In-class problems}
+{\em Example.} Suppose that 20 out of 50 females and 10 out of 40
+males are depressed in a sample. Determine if the frequency of
+depression is related to sex.\\
+ {\em Solution.} Following the notations above, we are interested
+ in testing $H_0: p_{11}=p_{21}, p_{12}=p_{22}$. $n=90$. Under $H_0$, we
+ estimate $\hat p_1=(20+10)/(20+10+30+30) = 1/3$ and $\hat p_2=1-p_1=2/3$.
+The test statistic
+ value is $\chi^2 = $\\
+The cutoff value $\chi^2_{\alpha,1}$ for $\alpha$-level test can
+be computed from $N(0,1)$.
+$$\alpha=P(\chi^2_1 > \chi^2_{\alpha,1}) = P(Z^2>
+\chi^2_{\alpha,1})=2P(Z > \chi_{\alpha,1}).$$ So
+$\chi^2_{\alpha,1}=Z^2_{\alpha/2}$. For $\alpha=0.05$,
+$\chi^2_{\alpha,1}=1.96^2$.
+\subsection*{Self-study problems}
+Example 14.13.
+\end{document}

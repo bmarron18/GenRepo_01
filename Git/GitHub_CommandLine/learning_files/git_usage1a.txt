@@ -1,0 +1,830 @@
+Title:			git usage1
+Project Descriptor:	LANDISII Upgrades Corrections Project 
+Project ID:		2016SoE021_LANDIS_Upgrades	
+Author:			bmarron
+Origin Date:		21 Sept 2015
+Revision Date:		16 Sep 2016
+
+
+###################
+git install
+##################
+$ sudo apt update &&
+  sudo apt install git-all &&
+  sudo apt install gitk
+
+
+####################
+help
+##################
+git help <verb>
+git <verb> --help
+man git-<verb>
+
+
+###########################
+General git (local) Set-up
+###########################
+
+$ git config --list		#if on a new compu, this returns nothing
+
+==== configure global settings =========================================
+	a. '--global' stores in /home/bmarron/.gitconfig (hidden) file
+
+	a1. set these globals (username to match GitHub username)
+$ git config --global user.name "bmarron18" &&
+git config --global user.email bmarron@pdx.edu &&
+git config --global core.editor "gedit" &&
+git config --global merge.tool kdiff3 &&
+git config --global http.sslVerify false
+
+
+	a2. see last commit
+$ git config --global alias.last 'log -1 HEAD'
+
+	a3.  run external program, 'gitk' w/ command, $ git visual
+$ git config --global alias.visual '!gitk'
+
+
+	b. check config changes (command line)
+$ git config --list
+user.name=bmarron18
+user.email=bmarron@pdx.edu
+core.editor=gedit
+alias.last=log -1 HEAD
+alias.visual=!gitk
+core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/bmarron18/Core-Model
+remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
+branch.master.remote=origin
+branch.master.merge=refs/heads/master
+gui.wmstate=normal
+gui.geometry=1099x491+71+103 219 227
+
+
+	b1. check from from folder (GUI file manager)
+/home/bmarron/.gitconfig
+[user]
+	name = bmarron18
+	email = bmarron@pdx.edu
+[core]
+	editor = gedit
+[alias]
+	last = log -1 HEAD
+	visual = !gitk
+
+###################
+Repositories Set up
+####################
+
+Each 'repository' composed of an onsite repository and its offsite image 
+
+Must have:
+	*an offsite repository in GitHub (https://github.com/) already setup
+		-- username: bmarron18
+		-- password: 756vop7C (as of 16 Sept 2016)
+		-- follow instructions for new repository setup in GitHub
+
+	*an onsite repository setup by keying a compu folder with a (hidden) /.git subfolder  
+		-- (eg ~/Desktop/Projects has a /.git subfolder)
+
+
+
+
+===== STEP 1: setup the offsite repository(s) in GitHub ====================================================
+			#on-line go to: https://github.com/
+			#login
+
+user: bmarron18 or bmarron@pdx.edu
+passwrd: 756vop7C (as of 16 Sept 2016)
+
+			#GitHub charges for private repositories!!
+			#in public repositories can still choose who can commit
+
+			#select the READ ME file option so that you can check the interface
+			#to the onsite repository
+
+My personal (public) Repositories (as of 21 Sept 2015):
+
+ 				#Repository 1: Current items from ~/Desktop/MiscProjects_GitHub
+	Repo_1
+
+				#Repository 2: Current items from ~/Desktop/LANDIS32_GitHub
+	Repro_2
+
+				#Repository 3: Current items from ~/Desktop/PSU/PhD_EES
+	EES1_3
+
+#########################################
+onsite repository flash set up!
+(must copy in subdirectories and files)
+###########################################
+
+	#use 'git clone' and skip STEPS 2 - 5 below
+	#automatically creates a folder with local repository installed, branches set, fetch and pull set
+	#clones a repository into a newly created directory
+		--creates remote-tracking branches for each branch in the cloned repository (visible using git branch -r)
+		--creates and checks out an initial branch that is forked from the cloned repository’s currently active branch
+
+	#after the clone
+		-- a plain git fetch without arguments will update all the remote-tracking branches
+		-- a git pull without arguments will in addition merge the remote master branch into the current master branch, if any 
+
+
+
+	a. cd to desired directory for the clone
+
+$ cd /home/bmarron/Desktop/PSU/PhD_EES/2016SoE021_LANDIS_Upgrades/Works_InProgress/LANDIS-II-Foundation_Clones/
+
+
+	b. clone the repo
+
+$ git clone https://github.com/bmarron18/Core-Model
+Cloning into 'Core-Model'...
+remote: Counting objects: 5767, done.
+remote: Total 5767 (delta 0), reused 0 (delta 0), pack-reused 5767
+Receiving objects: 100% (5767/5767), 47.42 MiB | 1.38 MiB/s, done.
+Resolving deltas: 100% (2477/2477), done.
+Checking connectivity... done.
+
+
+	c. check repo log
+
+$ git log --oneline --decorate >> Core-Model_GitHubLog_20160916.txt
+0b68e8d (HEAD -> master, origin/master, origin/HEAD) Merge pull request #7 from jealie/master
+3139065 added a mention for the linux-specific instructions
+3cb5712 added linux instructions
+eff0bce 32 bits handling
+313ac3e remove tie to specific version of libgdal.so
+..... (3831 lines!)
+6dde98e test.
+0991b2c Reconfigured.
+1082486 Added nutrient succession extension.
+177ff15 Testing Google Code.
+4fee5bf Initial directory structure.
+
+
+	d. cd to new repo folder
+	d1. check (p.69 ProGit2)
+	d2. the clone command implicitly adds the remote named, 'origin' 
+
+~/LANDIS-II-Foundation_Clones$ cd Core-Model
+~/Core-Model$ git remote -v
+origin	https://github.com/bmarron18/Core-Model (fetch)
+origin	https://github.com/bmarron18/Core-Model (push)
+
+
+
+	e. full check of the remote named, 'origin' keyed to folder, 'Core-Model'
+
+~/Core-Model$ git remote show
+origin
+
+
+~/Core-Model$ git remote show origin
+* remote origin
+  Fetch URL: https://github.com/bmarron18/Core-Model
+  Push  URL: https://github.com/bmarron18/Core-Model
+  HEAD branch: master
+  Remote branches:
+    Widgets tracked
+    master  tracked
+  Local branch configured for 'git pull':
+    master merges with remote master
+  Local ref configured for 'git push':
+    master pushes to master (up to date)
+
+
+	f. examine the last commit
+$ git last
+commit 0b68e8df0a21713c1082df528f6691bd140c43e8
+Merge: 3ac15c8 3139065
+Author: Robert Scheller <rmscheller@gmail.com>
+Date:   Thu Aug 18 13:40:55 2016 -0700
+
+    Merge pull request #7 from jealie/master
+    
+    Resolve compatibility issues on Linux
+
+	g. set up synch to original repo
+	g1. specify a new local remote named 'upstream' that links to the ORIGINAL_OWNER/ORIGINAL_REPOSITORY
+	g2. check
+
+$ git remote add upstream https://github.com/LANDIS-II-Foundation/Core-Model.git
+
+$ git remote -v
+origin	https://github.com/bmarron18/Core-Model (fetch)
+origin	https://github.com/bmarron18/Core-Model (push)
+upstream	https://github.com/LANDIS-II-Foundation/Core-Model.git (fetch)
+upstream	https://github.com/LANDIS-II-Foundation/Core-Model.git (push)
+
+
+	h. update local (on box) repo from original LANDIS-II-Foundation repo 
+	h1. if changes from original repo, push to forked repo on GitHub (eg https://github.com/bmarron18/Core-Model)
+	h1. The push to the forked repo is what keeps the forked repo in sync
+	h2. fetch changes from ORIGINAL repo ==> merge changes from ORIGINAL repo to local (on box) repo ==> push changes to forked GitHub repo
+	h3. git push [forked repo remote name] [local repo branch name]
+
+$ git fetch upstream
+From https://github.com/LANDIS-II-Foundation/Core-Model
+ * [new branch]      Widgets    -> upstream/Widgets
+ * [new branch]      master     -> upstream/master
+bmarron@bmarron-HP-Compaq-6710b-RM406UT-ABA:~/Desktop/PSU/PhD_EES/2016SoE021_LANDIS_Upgrades/Works_InProgress/LANDIS-II-Foundation_ClonedRepos/Core-Model
+
+$ git checkout master
+Already on 'master'
+Your branch is up-to-date with 'origin/master'.
+
+$ git merge upstream/master
+Already up-to-date.
+
+$ git push origin master
+Username for 'https://github.com': bmarron18
+Password for 'https://bmarron18@github.com': 
+Everything up-to-date
+
+
+
+
+#########################################
+onsite repository step-by-step set up
+(can leave all files in place)
+##########################################
+
+==== STEP 2: set up the onsite repository(s) ====================================================
+		#select/create a folder to house an empty repository (/.git directory)
+		#go to folder address in Linux terminal
+		#use 'git init' to key the folder to the 'git' pkg and install the /.git subfolder
+		#examples
+
+~/Desktop/Projects$ git init
+Initialized empty Git repository in /home/bmarron/Desktop/Projects/.git/
+
+~/Desktop/GitHub_Shared$ git init
+Initialized empty Git repository in /home/bmarron/Desktop/GitHub_Shared/.git/
+
+~/Desktop/PSU/PhD_EES$ git init
+Initialized empty Git repository in /home/bmarron/Desktop/PSU/PhD_EES/.git/
+
+			#NOTE
+			#the presence of a README.md file in a folder means that
+			#this folder already is an onsite repository
+
+
+==== STEP 3: key the onsite repository(s) to the correct offsite repository(s) =======================================
+		# assumes already set up the offsite repository in GitHub (https://github.com/)
+		# check out the help page for 'remote'
+			--$ git help remote
+			--$ git remote ==> manage set of tracked repositories
+
+		#key an onsite (local repository in folder) to the offsite (GitHub repository)
+		#go to local repository folder address in Linux terminal
+		#use specific syntax to link local and GitHub repositories
+		#examples
+
+~/Desktop/Projects$ git remote add Repo_1 https://github.com/bmarron18/Repo_1.git
+~/Desktop/GitHub_Shared$ git remote add Repro_2 https://github.com/bmarron18/Repro_2.git
+~/Desktop/PSU/PhD_EES$ git remote add EES1_3 https://github.com/bmarron18/EES1_3.git
+
+
+		#check --- link is properly forged 
+~/Desktop/PSU/PhD_EES$ git remote -v
+EES1_3  https://github.com/bmarron18/EES1_3.git (fetch)
+EES1_3	https://github.com/bmarron18/EES1_3.git (push)
+
+
+
+		#check --- oops! Two links b/c mis-spelled name!!
+~/Desktop/GitHub_Shared$ git remote -v
+Repo_2	https://github.com/bmarron18/Repo_2.git (fetch)
+Repo_2	https://github.com/bmarron18/Repo_2.git (push)
+Repro_2	https://github.com/bmarron18/Repro_2.git (fetch)
+Repro_2	https://github.com/bmarron18/Repro_2.git (push)
+
+
+		#correct the error by removing the incorrect remote link
+~/Desktop/GitHub_Shared$ git remote rm Repo_2
+~/Desktop/GitHub_Shared$ git remote -v
+Repro_2	https://github.com/bmarron18/Repro_2.git (fetch)
+Repro_2	https://github.com/bmarron18/Repro_2.git (push)
+
+
+==== STEP 4:  interface the onsite repository to the offsite repository ===================
+
+	#two steps: fetch + merge (= pull)
+	#'git fetch <offsite name>' grabs data from branch 'master' in the offsite repository 
+	#'git merge <offsite name/branch>' creates branch 'master' and merges data to onsite repository
+	#<refspec> == <offsite name/branch> (usually)
+
+	#fetch from named offsite reposiotry, Repro_2 (= https://github.com/bmarron18/Repro_2.git)
+	#the current branch highlighted with an asterisk
+
+~/Desktop/GitHub_Shared$ git fetch Repro_2
+
+remote: Counting objects: 3, done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), done.
+From https://github.com/bmarron18/Repro_2
+ * [new branch]      master     -> Repro_2/master
+
+
+	#merge to onsite repository ==> merges the branch, 'master' 
+	#this means all files on Repro_2/master are copied to the onsite branch 'master'
+	#(ie adds the md file, READ ME to the onsite repository folder)
+
+~/Desktop/GitHub_Shared$ git merge Repro_2/master
+
+		#check branch sync
+		#option -r causes the remote-tracking branches to be listed
+		#option -a shows both local and remote branches
+
+~/Desktop/LANDIS32_GitHub$ git branch -a
+* master
+  remotes/Repro_2/master
+
+
+==== STEP 5.  status of the onsite-to-offsite connection ============================
+
+		#check --- configuration correct
+~/Desktop/Projects$ git remote show Repo_1
+* remote Repo_1
+  Fetch URL: https://github.com/bmarron18/Repo_1.git
+  Push  URL: https://github.com/bmarron18/Repo_1.git
+  HEAD branch: master
+  Remote branch:
+    master tracked
+  Local ref configured for 'git push':
+    master pushes to master (up to date)
+
+
+		#check --- configuration correct
+~/Desktop/PSU/PhD_EES$ git remote show EES1_3
+* remote EES1_3
+  Fetch URL: https://github.com/bmarron18/EES1_3.git
+  Push  URL: https://github.com/bmarron18/EES1_3.git
+  HEAD branch: master
+  Remote branch:
+    master tracked
+  Local ref configured for 'git push':
+    master pushes to master (up to date)
+
+
+		#check --- adds the md file, READ ME to the onsite repository folder
+~/Desktop/PSU/PhD_EES$ ls
+ESUR_IGERT  README.md  SoE
+
+
+
+####################################
+Tracked files in the onsite repository
+####################################
+
+==== STEP 1: set the (folders/) files to be tracked by Git ============================
+
+		#Git will only recognize changes in files/folders in the onsite repository
+		#when actual files have been added/deleted/modified
+		#set files to be tracked in /Projects
+			-- files must already be in subfolder  
+				==> /Projects/Models
+				==> /Projects/Statistics
+				==> /Projects/LANDIS_1
+
+		#The 'git add' command takes a path name for either a file or a directory
+		#if it’s a directory, the command adds all the files in that directory recursively
+
+		#track only .txt files
+~/Desktop/Projects$ git add Models/\*.txt			
+~/Desktop/Projects$ git add Statistics/\*.txt
+
+		#track all files!
+~/Desktop/Projects$ git add LANDIS_1/\*.*
+
+~/Desktop/PSU/PhD_EES$ git add ESUR_IGERT/\*.*
+~/Desktop/PSU/PhD_EES$ git add SoE/\*.*
+
+
+
+==== STEP 2. check currently tracked files in onsite repository(s) ===================================== 
+
+		#use 'git ls-files'
+		#any file not tracked is untracked
+		#note: folders are not tracked; just files
+
+~/Desktop/Projects$ git ls-files
+LANDIS_1/LANDIS_on_Linux1.txt
+LICENSE.md
+Models/Wakeland505_Project2_1.txt
+Models/Wakeland505_Project2_2.txt
+Models/Wakeland505_Project2_3.txt
+Statistics/LOG1_One-step_GibbsSampler.txt
+
+
+~/Desktop/GitHub_Shared$ git ls-files
+LANDIS/getting_started1_LANDISII.txt
+README.md
+
+
+
+==== STEP 3.  check catalog of files not to be tracked ===============================
+
+	#must set this up first
+	#catalog of files to ignore for tracking/staging/committing/pushing
+
+$ cat .gitignore						
+*.[oa]
+* ̃
+
+
+
+
+
+###############################################################################
+Files ==> tracked/untracked, staged/unstaged, committed/uncommitted, pushed
+###############################################################################
+
+==== STEP 1. check for tracked/untracked files =================
+
+		#use 'git ls-files'
+		#any file not tracked is untracked			
+
+
+
+==== STEP 2. check for staged/unstaged files ====================================
+
+		#use 'git status'
+
+~/Desktop/GitHub_Shared$ git status
+On branch master
+Changes to be committed:						
+  (use "git reset HEAD <file>..." to unstage)
+								#tracked/staged: in green
+	new file:   LANDIS/getting_started1_LANDISII.txt
+
+Untracked files:							
+  (use "git add <file>..." to include in what will be committed)
+
+								#untracked/unstaged: in red
+	LANDIS/getting_started2_LANDISII.txt
+
+
+
+==== STEP 3. stage the unstaged and check status ==============================================
+
+		#stage new files by adding them
+			--use 'git add [<folder> | <file>]' to stage specific unstaged new folders and files (since last update)
+			--use 'git add --all' to stage everything (since last update)
+
+		#stage deleted files by removing them (ie the folder and all its contents)
+			--use 'git rm [<folder> -r | <file>]' to stage the unstaged deleted files (since last update)
+
+
+
+
+------- example: unstaging files deleted since last update --------------------------------------------------------------
+
+
+		# use 'git rm <folder> -r'
+
+~/Desktop/Projects$ git status
+On branch master
+Changes to be committed:						
+  (use "git reset HEAD <file>..." to unstage)
+									#tracked/staged: in green
+	new file:   LANDIS_1/LANDIS_on_Linux1.txt
+
+Changes not staged for commit:						
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+									#deleted files since last push
+									#tracked/unstaged: in red
+	deleted:    United_Way/General_references_010715.pdf
+	deleted:    United_Way/Lit_Review_references_01072015.pdf
+	deleted:    United_Way/UnitedWay1_01072015.odt
+
+
+~/Desktop/Projects$ git rm United_Way -r
+rm 'United_Way/General_references_010715.pdf'
+rm 'United_Way/Lit_Review_references_01072015.pdf'
+rm 'United_Way/UnitedWay1_01072015.odt'
+
+~/Desktop/Projects$ git status
+On branch master
+Changes to be committed:					
+  (use "git reset HEAD <file>..." to unstage)
+								#tracked/staged: in green
+	new file:   LANDIS_1/LANDIS_on_Linux1.txt
+	deleted:    United_Way/General_references_010715.pdf
+	deleted:    United_Way/Lit_Review_references_01072015.pdf
+	deleted:    United_Way/UnitedWay1_01072015.odt
+
+
+
+
+------- example: tracking and staging all file additions and removals since last update ---------------------------------------------------------
+
+			#check status
+
+~/Desktop/GitHub_Shared$ git status
+
+On branch master
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+								#tracked/staged: in green
+	new file:   LANDIS/getting_started1_LANDISII.txt		
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+								#tracked/unstaged: in red
+	deleted:    LANDIS/getting_started1_LANDISII.txt		
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+								#untracked/unstaged: in red
+	LANDIS/LANDIS_on_Linux1.txt					
+	LANDIS/scenario1_files/
+
+
+
+		#use 'git add --all'
+
+~/Desktop/GitHub_Shared$ git add --all
+
+~/Desktop/GitHub_Shared$ git statusOn branch master
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	new file:   LANDIS/LANDIS_on_Linux1.txt
+	new file:   LANDIS/scenario1_files/age-only-scenario.txt
+	new file:   LANDIS/scenario1_files/age-only-scenario_mod1.txt
+	new file:   LANDIS/scenario1_files/age-only-succession-dynamic-inputs.txt
+	new file:   LANDIS/scenario1_files/age-only-succession.txt
+	new file:   LANDIS/scenario1_files/ecoregions.gis
+	new file:   LANDIS/scenario1_files/ecoregions.txt
+	new file:   LANDIS/scenario1_files/initial-communities.gis
+	new file:   LANDIS/scenario1_files/initial-communities.txt
+	new file:   LANDIS/scenario1_files/max-spp-age-output.txt
+	new file:   LANDIS/scenario1_files/species.txt
+
+
+
+
+==== STEP 4. commit the staged files ===============================================================
+
+	#use 'git commit -a -m "message"'
+	# -a flag ==> all staged files committed
+	# -m flag ==> adds the (required) message to the commit (o/w sends you to nano text editor)
+
+-------- example ---------------------------------------------------
+~/Desktop/Projects$ git commit -a -m "12Aug2015"
+
+[master 7831ea4] 12Aug2015
+ 4 files changed, 195 insertions(+)
+ create mode 100644 LANDIS_1/LANDIS_on_Linux1.txt
+ delete mode 100644 United_Way/General_references_010715.pdf
+ delete mode 100644 United_Way/Lit_Review_references_01072015.pdf
+ delete mode 100644 United_Way/UnitedWay1_01072015.odt
+
+
+----- example --------------------------------------------------
+~/Desktop/GitHub_Shared$ git commit -a -m "13Aug2015"
+
+[master 8ffdabf] 13Aug2015
+ 11 files changed, 415 insertions(+)
+ create mode 100644 LANDIS/LANDIS_on_Linux1.txt
+ create mode 100644 LANDIS/scenario1_files/age-only-scenario.txt
+ create mode 100644 LANDIS/scenario1_files/age-only-scenario_mod1.txt
+ create mode 100644 LANDIS/scenario1_files/age-only-succession-dynamic-inputs.txt
+ create mode 100644 LANDIS/scenario1_files/age-only-succession.txt
+ create mode 100644 LANDIS/scenario1_files/ecoregions.gis
+ create mode 100644 LANDIS/scenario1_files/ecoregions.txt
+ create mode 100644 LANDIS/scenario1_files/initial-communities.gis
+ create mode 100644 LANDIS/scenario1_files/initial-communities.txt
+ create mode 100644 LANDIS/scenario1_files/max-spp-age-output.txt
+ create mode 100644 LANDIS/scenario1_files/species.txt
+
+
+----- example --------------------------------------------------
+bmarron@bmarron-HP-Compaq-6710b-RM406UT-ABA:~/Desktop/PSU/PhD_EES$ git commit -a -m "21Sept2015"
+[master 45a551f] 21Sept2015
+ 282 files changed, 38593 insertions(+)
+ create mode 100644 ESUR_IGERT/Administrative_IGERT/2015aIGERT001/_D_description/ESUR_IGERT.pdf
+ create mode 100644 ESUR_IGERT/Administrative_IGERT/2015aIGERT001/_H_history/IGERT.pdf
+ create mode 100644 ESUR_IGERT/Administrative_IGERT/2015aIGERT001/_PMFs_mngmnt/2015aIGERT001_1.tjp
+.
+.
+.
+.
+
+
+
+
+==== STEP 5. push committed files in onsite repository to offsite repository ======
+
+	#use 'git push <offsite name> HEAD'
+	#(HEAD ==> A handy way to push the current branch to the same name in the offsite)
+
+	#use 'git push <offsite name> <onsite branch>'
+
+
+
+----- example -------------------------------------------------------------------
+~/Desktop/GitHub_Shared$ git push Repro_2 HEAD
+
+Username for 'https://github.com': bmarron18
+Password for 'https://bmarron18@github.com': 
+Counting objects: 16, done.
+Delta compression using up to 2 threads.
+Compressing objects: 100% (15/15), done.
+Writing objects: 100% (15/15), 7.82 KiB | 0 bytes/s, done.
+Total 15 (delta 1), reused 0 (delta 0)
+To https://github.com/bmarron18/Repro_2.git
+   c45ff27..8ffdabf  HEAD -> master
+
+
+----- example -------------------------------------------------------------------
+
+		#check repository name
+
+~/Desktop/PSU/PhD_EES$ git remote -v
+
+EES1_3	https://github.com/bmarron18/EES1_3.git (fetch)
+EES1_3	https://github.com/bmarron18/EES1_3.git (push)
+
+
+~/Desktop/PSU/PhD_EES$ git push EES1_3 HEAD
+
+Username for 'https://github.com': bmarron18
+Password for 'https://bmarron18@github.com': 
+Counting objects: 340, done.
+Delta compression using up to 2 threads.
+Compressing objects: 100% (324/324), done.
+Writing objects: 100% (339/339), 200.21 MiB | 114.00 KiB/s, done.
+Total 339 (delta 19), reused 0 (delta 0)
+To https://github.com/bmarron18/EES1_3.git
+   507f72f..45a551f  HEAD -> master
+
+
+-------- example ------------------------------------------------------------------------
+~/Desktop/Projects$ git push Repo_1 master
+
+Username for 'https://github.com': bmarron18
+Password for 'https://bmarron18@github.com': 			#<current>
+Counting objects: 5, done.
+Delta compression using up to 2 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (4/4), 2.69 KiB | 0 bytes/s, done.
+Total 4 (delta 0), reused 0 (delta 0)
+To https://github.com/bmarron18/Repo_1.git
+   5e01446..7831ea4  master -> master
+
+
+
+==== STEP 6: check that offsite repository has been updated ============================
+
+------ option 1 --------------------------------------------
+		#log in to GitHub (https://github.com/)
+		#go to offsite repository and look at files
+
+------ option 2 ----------------------------------------------
+		#use GUI 'gitk'
+
+~/Desktop/Projects$ gitk
+
+
+############################################################################################
+Sample work cycle: 
+make changes to a tracked file then stage it, commit it, and push it
+############################################################################################
+
+==== STEP 1. make changes and check status  ====================================
+
+		#make changes to 'LANDIS_on_Linux1.txt' file
+		#check status
+
+~/Desktop/Projects$ git status
+On branch master
+Changes not staged for commit:					#unstaged: in red
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   LANDIS_1/LANDIS_on_Linux1.txt
+
+
+
+==== STEP 2. stage and check  ===========================================
+
+		#use 'git add <filename>'
+		#stage the modified file
+
+~/Desktop/Projects$ git add LANDIS_1/LANDIS_on_Linux1.txt
+~/Desktop/Projects$ git status
+On branch master
+Changes to be committed:					#staged: in green
+  (use "git reset HEAD <file>..." to unstage)
+
+	modified:   LANDIS_1/LANDIS_on_Linux1.txt
+
+
+==== STEP 4. commit the staged file ==========================================
+
+		#use 'git commit -a -m "<message>"'
+		# -a flag ==> all staged files committed
+		# -m flag ==> adds the (required) message to the commit (o/w sends you to nano text editor)
+
+~/Desktop/Projects$ git commit -a -m "12Aug2015"
+[master e8e02ce] 12Aug2015
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+
+==== STEP 5. push the committed file ===================================
+
+		#use 'git push <offsite name> HEAD'
+		#(HEAD ==> A handy way to push the current branch to the same name in the offsite)
+
+		#use 'git push <offsite name> <onsite branch>'
+
+~/Desktop/Projects$ git push Repo_1 master
+Username for 'https://github.com': bmarron18
+Password for 'https://bmarron18@github.com': 
+Counting objects: 7, done.
+Delta compression using up to 2 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (4/4), 457 bytes | 0 bytes/s, done.
+Total 4 (delta 1), reused 0 (delta 0)
+To https://github.com/bmarron18/Repo_1.git
+   7831ea4..e8e02ce  master -> master
+
+
+
+###################
+history
+#####################
+
+==== STEP 1. use GUI, 'gitk' ===========================
+
+		#shows history AND lists files extant and deleted in offsite repository!!!
+		#enter 'gitk' in onsite repository 
+
+~/Desktop/Projects$ gitk
+
+
+==== STEP 2. can check log (see git_usage2.txt or ProGit.pdf for custom log checking) ================================
+
+~/Desktop/Projects$ git log
+
+commit e8e02ceef7319e29f4cee0c2165aea5700d809f3
+Author: bmarron <bmarron@pdx.edu>
+Date:   Wed Aug 12 21:04:59 2015 -0700
+
+    12Aug2015
+
+commit 7831ea4f5294a1385a84b376c3aa852e62486504
+Author: bmarron <bmarron@pdx.edu>
+Date:   Wed Aug 12 20:14:28 2015 -0700
+
+    12Aug2015
+
+commit 5e0144649083de46f623335f9c94f1bf4d23b096
+Author: bmarron <bmarron@pdx.edu>
+Date:   Wed Jan 7 20:58:12 2015 -0800
+
+    no big pdfs!
+
+commit 45dfb31d96e69cf42a2f6735d014c82871e46b31
+Author: bmarron <bmarron@pdx.edu>
+Date:   Tue Jan 6 22:13:58 2015 -0800
+
+    UnitedWay2
+
+commit 4ef44d5923584ee149a755bab18a4ddfea6f5fbf
+Author: bmarron <bmarron@pdx.edu>
+Date:   Tue Jan 6 15:56:42 2015 -0800
+
+    UnitedWay1 upload
+
+commit cf556a788beac0566e4b7cb37168e3a625729917
+Merge: d361ad1 40846ae
+Author: bmarron <bmarron@pdx.edu>
+Date:   Wed Dec 31 12:08:41 2014 -0800
+
+    Merge branch 'master' of https://github.com/bmarron18/Repo_1
+
+commit 40846ae26b5bd796d9099f365920eb59815727ad
+Author: bmarron18 <bmarron@pdx.edu>
+Date:   Wed Dec 31 11:35:20 2014 -0800
+
+    Create LICENSE.md
+
+commit d361ad12ddcff7da49949096867dbd87b59d511c
+Author: bmarron <bmarron@pdx.edu>
+Date:   Wed Dec 31 10:56:30 2014 -0800
+
+    very first set of files
+

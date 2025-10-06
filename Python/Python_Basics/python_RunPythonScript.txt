@@ -1,0 +1,39 @@
+Title:			Run and debug a python script from the command line
+Project:	
+Record:		
+Author:		
+Origin Date:		06 Apr 2017
+
+
+#############
+general info
+##############
+
+http://stackoverflow.com/questions/304883/what-do-i-use-on-linux-to-make-a-python-program-executable
+https://pythonconquerstheuniverse.wordpress.com/category/python-debugger/
+
+
+########
+option 1
+#########
+
+	a. add shebang line to *.py script
+#!/usr/bin/env python
+
+
+	b. Make the file executable in Linux
+$ chmod +x myfile.py
+
+
+	c. Execute
+$ ./myfile.py
+
+
+
+#########
+option 2
+#########
+
+python *.py
+
+python trello-export.py TrelloBoard_20170427.json

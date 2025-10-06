@@ -1,0 +1,77 @@
+Title:				git_RepoChanges
+Project Description:		LANDIS-II upgrades/corrections
+Project ID:			2016SoE021
+Author:				bmarron
+Origin Date:			24 Nov 2016
+Final Date:			28 Apr 2017		
+
+
+###############################
+QAQC protocol:
+tracking repo changes in GitHub
+################################
+
+	a. FORK the repo needing work
+		==> fr. https://github.com/LANDIS-II-Foundation/<name-of-your-repo-of-interest>
+		==> to https://github.com/bmarron18
+	b. make new folder on the Desktop
+	c. clone a fresh LOCAL copy of the FORKED repo to the newly-created desktop folder 
+ 		==> open Git Bash in newly-created folder
+		==> $ git clone <GitHub address>
+	d. make repo changes, as needed
+	e. check, add, commit, push
+	f. generate a GHB Pull request (to Rob)
+
+
+
+git status
+git remote -v
+git add --all  OR  git add -A
+git status
+git commit
+git push origin master
+gitk
+
+
+#################################################
+QAQC protocol:
+tracking repo changes in GitHub
+Create a branch in your existing fork instead of a second fork
+Pull request from a feature branch
+(when already have fork with changes in 'master' and need push other changes to the GitHub repo)
+###################################################
+https://stackoverflow.com/questions/28119733/how-can-i-make-a-second-fork-of-a-github-project
+https://stackoverflow.com/questions/4114095/how-to-revert-git-repository-to-a-previous-commit
+https://stackoverflow.com/questions/41233378/cloning-specific-branch
+
+
+
+Creating a pull request from a branch (similar to creating one from a fork):
+
+	a. In the forked repo on GitHub,  browse the history of 'commits'
+
+	b. When find the desired commit of return, click <> ("Browse the repo at this point in the history")
+
+	c. Once historical repo loads, create a NEW BRANCH of this historical repo 
+	   (Open "Branch:master" and type in a new branch name, like tmp1)
+
+	d. NOW clone the forked repo only for the given, historical branch
+	   by modifying the clone command (can limit history or depth, too)
+
+git clone -b <branch> --single-branch <url> --depth <number of commits>
+
+	e. OJO! make changes as usual but watch 'push'
+
+git status
+git add --all
+git commit
+git push origin <branch>
+
+	f. Go back to forked repo in GitHub to generate Pull request
+	f1. A new, mini-window is open (highlighted in yellow); allows 'Compare and Pull'
+	f2. Click green 'Compare and Pull' as usual to create Pull request to original repo 	
+
+
+
+
+

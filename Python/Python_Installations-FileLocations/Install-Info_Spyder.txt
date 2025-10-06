@@ -1,0 +1,278 @@
+
+################
+Spyder Install
+(Spyder has its own python)
+#############
+
+https://www.spyder-ide.org/
+https://docs.spyder-ide.org/current/index.html
+https://www.spyder-ide.org/download/?os=linux&arch=x64
+	-- download
+		==> Spyder-Linux-x86_64.sh
+
+$ chmod +x yourscript.sh		<== install from **.sh file
+$ ./yourscript.sh
+
+	# define simple location for Spyder install
+Spyder will now be installed into this location:
+/home/bmarron/spyder-6
+PREFIX=/home/bmarron18/spyder-6
+
+define simple location for Spyder install. For example
+		/home/bmarron/spyder-6					<== Linux and Mac OS
+		C:\Users\<username>\Appdaata\spyder-6		<== Windows
+		
+
+	# check
+sudo find ./ -name "*spyder*" -type d >> ~/Desktop/test.txt
+sudo find ./ -name "*python*" -type d >> ~/Desktop/test.txt
+
+	# Spyder python
+Python 3.11.13
+
+##############
+in /path-to-spyder-runtime/bin
+the python installed with spyder and used 
+by default by spyder
+######################################################
+
+~/spyder-6/envs/spyder-runtime/bin$ file python*				<== gives 	three (3) symbolic link outputs
+																one (1) executable output
+python:            symbolic link to python3.11
+python3:           symbolic link to python3.11
+python3.1:         symbolic link to python3.11				<== ALL three (3) outputs point to python3.11.13 in 															~/spyder-6/envs/spyder-runtime/bin/python3.11
+
+													<== this is python3.11.13 installed with Spyder-6
+python3.11:        ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 2.6.32, with debug_info, not stripped
+python3.11-config: POSIX shell script, ASCII text executable, with very long lines (513)
+python3-config:    symbolic link to python3.11-config
+	
+
+To find Spyder's internal python
+	- open Spyder
+	- type the commands:
+
+[1]:	import sys; print(sys.executable)
+/home/bmarron18/spyder-6/envs/spyder-runtime/bin/python3.11		<== this is python3.11.13 installed with spyder-6
+
+
+
+
+
+#############
+Spyder Tricks
+###############
+    # change TABs Spyder
+https://stackoverflow.com/questions/36187784/changing-indentation-settings-in-the-spyder-editor-for-python
+
+
+--- How to Configure and Run Spyder Python Editor in Virtual Environments (WINDOWS)-------------
+	https://www.youtube.com/watch?v=8vuvHAlgJZ0
+
+	#FAQs Spyder
+https://docs.spyder-ide.org/5/faq.html#using-packages-installer
+https://stackoverflow.com/questions/30170468/how-to-run-spyder-in-virtual-environment
+
+    $$$$$ The naive approach $$$$$$$$$$$  <== DOENT WORK!!
+To use Spyder with another environment, the simplest way is to just install it directly into the environment from which you'd like to use the packages in, and run it from there. This works with all Spyder versions and should require no extra configuration once the IDE is installed; however, it results in multiple installations to manage and isn't as flexible or configurable as the alternative. Therefore, when dealing with multiple environments, we recommend the modular approach.
+
+
+
+	$$$$$$$$$$$ The modular approach $$$$$$$$$$$$$$ <== THIS WORKs!!
+Starting with Spyder 3.3.1, you can install the modular spyder-kernels package into any Python environment (conda environment, virtualenv/venv, system Python, WinPython, etc) in which you wish to work, and then change the Python interpreter used by Spyder on its IPython consoles to point to the Python executable of that environment.
+
+
+--- with special install of venv  THIS WORKED!!
+
+$ python3 -m pip install --upgrade pip
+
+$ sudo aptitude install python3.11-venv			<== install venv pkg, to work with python 3.11
+										python3.11-venv_3.11.0~rc1-1~22.04_amd64.deb
+										The first release candidate of Python 3.11.orc1
+										(NO GO ==> $ pip install --target /home/bmarron18/virtualenv virtualenv)
+
+$ python3.11 -m venv ./spyder-6/envs/ai-apis		<== using python 3.11 to create venv named ai-apis
+										./home/bmarron18/spyder-6/envs/ai-apis/pyvenv.cfg
+										<== in ai-apis is python 3.10 and 3.11.orc1
+
+$ source ./spyder-6/envs/ai-apis/bin/activate
+(ai-apis) bmarron18@bmarron18-HP-Notebook:~$ pip install spyder-kernels google-genai openai nltk jiter
+
+	open Spyder and change to "wrench" to ai-apis [/home/bmarron18/spyder-6/envs/ai-apis/bin/python3.11]
+	close and reopen spyder (or close Interpreter)
+	run AI scripts
+	if desired, reset "wrench" to run Spyder outside of virtual env
+	close spyder
+	
+(ai-apis) bmarron18@bmarron18-HP-Notebook:~$ deactivate 
+
+
+############
+Versions of Python
+####################
+
+--- find path to python in different envs -------------------------
+$ python3 -c "import sys; print(sys.executable)"
+/usr/bin/python3
+
+
+(ai-apis) bmarron18@bmarron18-HP-Notebook:~$ python3 -c "import sys; print(sys.executable)"
+/home/bmarron18/spyder-6/envs/ai-apis/bin/python3
+
+
+
+
+--- There may be Different Python versions are running !!! ------------------
+
+*	python version running **on compu**!!! ----
+	$ python3 -V
+		Python 3.10.12
+
+*	python version running **in Conda**!!! ONLY WORKS in (base)
+	$ conda activate base
+	(base)$ python -V
+				Python 3.13.5
+	(base)$ conda deactivate
+
+*	Python version running **in Spyder** (internal) ----
+		Python 3.11.13 | packaged by conda-forge | (main, Jun  4 2025, 14:48:23) [GCC 13.3.0]
+		Type "copyright", "credits" or "license" for more information.
+
+		IPython 8.37.0 -- An enhanced Interactive Python. Type '?' for help.
+
+
+
+
+
+##############
+Spyder and Miniconda
+####################
+
+--- NB. Spyder with Miniconda DOESNT WORK!!! ----
+May be able to set conda Python in Spyder ==> Tools
+Try conda install spyder to install the Spyder package, as it does not come with Miniconda automatically. 
+	$ conda install spyder
+	$ conda install spyder-base
+
+Spyder-IDE won't launch after installing via Miniconda #21589
+https://github.com/spyder-ide/spyder/issues/21589
+https://github.com/conda-forge/spyder-feedstock
+	$ conda install -c conda-forge pyqt=5.15.9
+
+
+############
+Spyder and Anaconda
+###################
+
+Spyder is only available by default in your (base) environment in ANaconda
+
+  This takes a small amount of preparation and configuration, but is much "lighter" and quicker than a full Spyder installation into that environment, avoids dependency conflicts, and opens up new workflow possibilities.
+
+    To achieve this, follow these steps:
+    1- Activate the environment (e.g. myenv) in which you'd like to work (e.g. with conda activate myenv for conda, source myenv/bin/activate or workon myenv for virtualenv/venv, etc)
+    2- Install the spyder-kernels package there, with the command:
+$ conda install spyder-kernels if using conda/Anaconda,
+$ pip install spyder-kernels 		<== if using pip/virtualenv.
+    5- After installing via either method, run the following command inside the same environment:
+$ python -c "import sys; print(sys.executable)"    
+
+    and copy the path returned by that command (it should end in python, pythonw, python.exe or pythonw.exe, depending on your operating system).
+
+    6- Deactivate that environment, activate the one in which Spyder is installed (if you've installed it in its own environment) and start Spyder as you normally would.
+
+    7- After Spyder has started, navigate to Preferences > Python Interpreter > Use the following interpreter and paste the path from Step 3 into the text box.
+
+    8- Start a new IPython console. All packages installed in your myenv environment should be available there. If conda is used, the name of the current environment and its Python version should be displayed in Spyder's status bar, and hovering over it should display the path of the selected interpreter.
+
+
+
+		
+
+------ Run Spyder outside of Anaconda w/ (internal) python spyder  ----------
+
+*	just open spyder at command line
+	$ spyder
+
+
+------ Run Spyder in (base) Anaconda w/o (internal) python spyder----------
+*	Update Anaconda and Spyder---
+	$ conda activate base
+	(base) $ conda update spyder
+	(base) $ conda list spyder
+		# packages in environment at /home/bmarron/anaconda3:
+		# Name                     Version          Build               Channel
+		pyls-spyder                0.4.0            pyhd3eb1b0_0
+		spyder                     6.0.8            hd8ed1ab_0          conda-forge
+		spyder-base                6.0.8            linux_pyh62a8a7d_0  conda-forge
+		spyder-kernels             3.0.5            py313h7040dfc_0
+
+	(base) $ spyder
+			[will open spyder w/ internal python or whichever was the last setting in "wrench"]
+
+*	In Spyder under "wrench" change Python interpreter to (base) python [clic 'Apply' and 'OK']
+			==> /home/bmarron/anaconda3/bin/python
+
+
+*	Restart Spyder [now running inside (base) Anaconda env and w/o Spyder internal python]
+	(base) $ spyder
+		Python 3.13.5 | packaged by Anaconda, Inc. | (main, Jun 12 2025, 16:09:02) [GCC 11.2.0]
+		Type "copyright", "credits" or "license" for more information.
+
+		IPython 8.30.0 -- An enhanced Interactive Python. Type '?' for help.
+
+
+
+---- Create new Anaconda environment and Run Spyder in the new env -------
+
+*	Create a new environment with a specific Python version: 
+		$ conda create --name spyder_env		<== defualt Python will be most recent Anaconda python 
+													available unless stated
+
+		For Anaconda3 or Miniconda3 installers: The default Python version in new environments (if not 
+		explicitly specified) is typically Python 3.x, where 'x' is the version that was current at the 
+		time of the installer's release.
+
+*	Activate an environment:
+    	$ conda activate spyder_env
+
+
+*	Install pkgs in spyder_env (spyder-kernels, :
+		(spyder_env) $ conda install spyder-kernels			<== will install LOTS of pkgs
+			## Package Plan ##
+			environment location: /home/bmarron/anaconda3/envs/spyder_env
+
+		The following packages will be downloaded:
+			[MANY!! including python-3.13.7]
+		
+		
+*	In Spyder under "wrench" change Python interpreter [clic 'Apply' and 'OK']
+		==> /home/bmarron/anaconda3/envs/spyder_env/bin/python
+
+
+*	Restart Spyder [now running inside (spyder_env) Anaconda and w/o Spyder internal python]
+	(spyder_env) $ spyder
+		Python 3.13.7 | packaged by conda-forge | (main, Sep  3 2025, 14:30:35) [GCC 14.3.0]
+		Type "copyright", "credits" or "license" for more information.
+
+		IPython 8.37.0 -- An enhanced Interactive Python. Type '?' for help.
+	
+*	To go back to the original Spyder
+		In Spyder under "wrench" change Python interpreter [clic 'Apply' and 'OK']
+	
+
+
+
+
+############
+Spyder
+Uninstall
+#############
+https://stackoverflow.com/questions/65671238/does-spyder-download-its-own-python-with-it
+https://askubuntu.com/questions/1064682/uninstalling-spyder
+
+have to delete Spyder by hand ----
+$ locate spyder >> ~/Desktop/Spyder.txt
+$ sudo rm -rf <fill in addresses from above text file>
+	==> most spyder files are here	
+				/home/bmarron/.local/spyder-6
+

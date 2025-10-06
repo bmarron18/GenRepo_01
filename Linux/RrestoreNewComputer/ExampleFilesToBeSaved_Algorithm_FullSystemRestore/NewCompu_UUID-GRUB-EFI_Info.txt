@@ -1,0 +1,55 @@
+
+
+
+bruce@bruce-T3610:~$ lsblk -f
+NAME   FSTYPE LABEL UUID                                 MOUNTPOINT
+sr0                                                      
+sda                                                      
+├─sda4 ntfs         C222145022144C33                     
+├─sda2 ext4         cae86892-4772-4278-9b31-b4b28522a075 
+├─sda5 ext4         56165d48-b87f-4989-99b5-115d692a7d56 /
+├─sda3 ntfs         D61CBDB21CBD8E4D                     
+├─sda1 vfat         CCD3-5288                            /boot/efi
+└─sda6 swap         7d0c1652-3492-4ecf-a588-811b4901bc86 [SWAP]
+
+
+bruce@bruce-T3610:~$ sudo blkid
+/dev/sda1: UUID="CCD3-5288" TYPE="vfat" PARTLABEL="EFI System Partition" PARTUUID="0fc5f13f-cc32-4b9f-bd61-d348cf310952"
+/dev/sda2: UUID="cae86892-4772-4278-9b31-b4b28522a075" TYPE="ext4" PARTLABEL="Microsoft reserved partition" PARTUUID="588709c4-7e17-4f49-b101-f42a811b27c1"
+/dev/sda3: UUID="D61CBDB21CBD8E4D" TYPE="ntfs" PARTLABEL="Basic data partition" PARTUUID="85185ea4-dcf8-43b8-bc34-20fb574198a7"
+/dev/sda4: UUID="C222145022144C33" TYPE="ntfs" PARTUUID="79404e8d-eede-4517-984e-b78af315d4d9"
+/dev/sda5: UUID="56165d48-b87f-4989-99b5-115d692a7d56" TYPE="ext4" PARTUUID="bf6ac00f-d769-443e-9f4f-843d7f3e1e47"
+/dev/sda6: UUID="7d0c1652-3492-4ecf-a588-811b4901bc86" TYPE="swap" PARTUUID="03851ab7-7a83-4bd8-959a-179a18ca3535"
+
+bruce@bruce-T3610:~$ sudo fdisk -l
+Disk /dev/sda: 465.8 GiB, 500107862016 bytes, 976773168 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 4096 bytes
+I/O size (minimum/optimal): 4096 bytes / 4096 bytes
+Disklabel type: gpt
+Disk identifier: 9619B8EE-E84E-48ED-A926-67ECE77C51B0
+
+Device         Start       End   Sectors   Size Type
+/dev/sda1       2048   1050623   1048576   512M EFI System
+/dev/sda2    1050624   1083391     32768    16M Microsoft reserved
+/dev/sda3    1083392 565439545 564356154 269.1G Microsoft basic data
+/dev/sda4  975040512 976771071   1730560   845M Windows recovery environment
+/dev/sda5  565440512 966766591 401326080 191.4G Linux filesystem
+/dev/sda6  966766592 975040511   8273920     4G Linux swap
+
+Partition table entries are not in disk order.
+
+
+bruce@bruce-T3610:~$ sudo efibootmgr
+BootCurrent: 0002
+Timeout: 0 seconds
+BootOrder: 0002,0001
+Boot0000* Windows Boot Manager
+Boot0001* Windows Boot Manager
+Boot0002* ubuntu
+
+
+
+
+
+

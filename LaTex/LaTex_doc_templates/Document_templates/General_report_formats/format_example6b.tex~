@@ -1,0 +1,243 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Report on use of MultinomialNB with MFS dataset 1
+% 2016SoE013
+% STAT_570_Consulting
+% 
+% Date: 26 Aug 2016
+% Author: bmarron
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[twoside]{article}	%use
+
+\usepackage{lipsum} % Package to generate dummy text throughout this template
+\usepackage{csquotes}
+\usepackage{apacite}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pdfpages}
+\usepackage{verbatim}
+\usepackage{bigfoot}
+\usepackage{multirow}
+
+
+\usepackage[sc]{mathpazo} % Use the Palatino font
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\linespread{1.05} % Line spacing - Palatino needs more space between lines
+\usepackage{microtype} % Slightly tweak font spacing for aesthetics
+
+\usepackage[hmarginratio=1:1,top=32mm,columnsep=20pt]{geometry} % Document margins
+\usepackage{multicol} % Used for the two-column layout of the document
+\usepackage[hang, small,labelfont=bf,up,textfont=it,up]{caption} % Custom captions under/above floats in tables or figures
+\usepackage{booktabs} % Horizontal rules in tables
+\usepackage{float} % Required for tables and figures in the multi-column environment - they need to be placed in specific locations with the [H] (e.g. \begin{table}[H])
+%\usepackage{hyperref} % Interferes with cite.sty 
+
+%\usepackage{lettrine} % The lettrine is the first enlarged letter at the beginning of the text
+\usepackage{paralist} % Used for the compactitem environment which makes bullet points with less space between them
+
+\usepackage{abstract} % Allows abstract customization
+\renewcommand{\abstractnamefont}{\normalfont\bfseries} % Set the "Abstract" text to bold
+\renewcommand{\abstracttextfont}{\normalfont\small\itshape} % Set the abstract itself to small italic text
+
+\usepackage{titlesec} % Allows customization of titles
+\renewcommand\thesection{\Roman{section}} % Roman numerals for the sections
+\renewcommand\thesubsection{\arabic{subsection}} % Arabic numerals for subsections
+\titleformat{\section}[block]{\large\scshape\centering}{\thesection.}{1em}{} % Change the look of the section titles
+\titleformat{\subsection}[block]{\large}{\thesubsection.}{1em}{} % Change the look of the section titles
+
+\usepackage{fancyhdr} % Headers and footers
+\pagestyle{fancy} % All pages have headers and footers
+\fancyhead{} % Blank out the default header
+\fancyfoot{} % Blank out the default footer
+\fancyhead[R]{\date{\today}}
+\fancyfoot[R]{\thepage} % Custom footer text
+%\fancyhead[C]{Running title $\bullet$ November 2012 $\bullet$ Vol. XXI, No. 1} % Custom header text
+%\fancyfoot[RO,LE]{\thepage} % Custom footer text
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\title{\vspace{-15mm}\fontsize{14pt}{10pt}\selectfont\textbf{The Use of a Naive Bayes Classifier on Social Services Data}} % Article title
+
+\author{
+\large
+\textsc{Bruce Marron} \\ %\thanks{A thank you or further information}\\[2mm] % Your name
+\normalsize Portland State University \\ % Your institution
+\vspace{-5mm}
+}
+\date{}
+
+%----------------------------------------------------------------------------------------
+\begin{document}
+\maketitle % Insert title
+\thispagestyle{fancy} % All pages have headers and footers
+
+%----------------------------------------------------------------------------------------
+%	ABSTRACT
+%----------------------------------------------------------------------------------------
+
+\begin{abstract}
+\noindent A Naive Bayes classifier (MultinomialNB) was applied to a typical social services dataset as part of the Machine Learning Pilot Project (MLPP) sponsored by the United Way of the Columbia-Willamette. The original dataset was provided by Metropolitan Family Service (MFS) and contained demographic data for 6587 MFS students enrolled in the Schools Uniting Neighborhoods (SUN) program sponsored by Multnomah County, Oregon. The data were managed in compliance with all provisions, chain of custody procedures, and privacy safeguards defined by the MLPP. After substantial pre-processing the data contained 6544 records each with a feature vector of 16 variates plus 1, binary class attribute (attendance >= 30-days = 1; otherwise = 0). The data were split 75:25 for training and testing. The overall performance of the classifier was poor as judged by standard performance measures of accuracy, precision, recall, F1 score, and ROC curve. The investigation suggests that portability of machine learning methodologies to individual social service organizations may be difficult because of the effort and expertise required for data pre-processing. The results suggest that at the first level of program component assessment, machine learning tools may provide discriminant power to determine which datasets are valuable for outcome prediction and which are not.
+\end{abstract}
+
+%----------------------------------------------------------------------------------------
+%	ARTICLE CONTENTS
+%----------------------------------------------------------------------------------------
+%\begin{multicols}{2} % Two-column layout throughout the main article text, if desired
+
+\section{Introduction}
+Advances in machine learning algorithms have led to a rich selection of tools for tackling tough problems of inference \shortcite{alpaydin_introduction_2014}. A surprisingly simple and effective machine learning tool is the Naive Bayes classifier \shortcite{hand_idiots_2001, kotsiantis_supervised_2007}. Naive Bayes classifiers are supervised learning algorithms that apply Bayes' theorem with the \enquote{naive} assumption of independence between every pair of features. That is, Naive Bayes classifiers assume that each of the measurements in a feature vector is independent of every other measurement. Feature vectors are vectors of multivariate data that are associated with a perceived event outcome. Naive Bayes classifiers can be used with categorical data (e.g., ethnicity or school types), continuous data (e.g., age or time spent in program), or mixtures of both data types. Naive Bayes classifiers are fast, do not require much training data, and can be used as a baseline or first-step classifier.\\
+
+\noindent This report documents the results of an investigation into the use of a Naive Bayes classifier on a typical social services dataset. As detailed in the Machine Learning Pilot Project (MLPP) proposal document, \enquote{Machine Learning Tools for Social Service Providers Funded by the United Way of the Columbia-Willamette,} the purpose of this investigation is (1) to determine if simple machine learning tools will prove useful to individual social service organizations in helping them assess their own system of social service provisioning, and (2) to determine if the general methodology developed will be portable and applicable to the unique datasets maintained by different social service organizations.
+
+\section{Methods and Materials}
+A typical social services dataset was obtained from Metropolitan Family Service (MFS) in compliance with all provisions and using the chain of custody procedures and privacy safeguards detailed in the document, \enquote{Project Plan for the Machine Learning Pilot Project.} A copy of the signed Data Request and Use Form is provided in the Appendix. The original dataset (hereafter known as, \texttt{original-MFS-dataset1}) contained data for 6587 MFS students enrolled in the Schools Uniting Neighborhoods (SUN) program sponsored by Multnomah County, Oregon. In 2016 there were 80 SUN Community Schools in 6 school districts across Multnomah County: 36 elementary, 19 middle, 16 K-8, and 9 high schools. As defined below, the single class attribute considered for this analysis was SUN program attendance.\\
+
+\noindent A feature vector of 16 demographic variates and 1 class attribute on 6544 records were ultimately obtained from \texttt{original-MFS-dataset1} after formatting and pre-processing. Note that rarely are data "clean" and ready for analysis; \texttt{original-MFS-dataset1} was no exception. The details of formatting and pre-processing are provided in the document, \verb!LOG_FormatProcessing_MFS_dataset1.txt! which is included in the Appendix. Formatting and pre-processing created a 6544 x 17 data matrix of "clean" data. These data are contained in the file, \verb!FormatProcessedLevel3_MFS_dataset1.csv!.  The "cleaned" data (all categorical data numerically codified, extraneous data fields removed, no missing values) are summarized in Table ~\ref{tab:bm1}.\\
+
+\noindent The single class attribute (target) considered for this analysis, SUN program attendance, was determined by evaluating records against a 30-day threshold. If the value in the attendance field of \texttt{original-MFS-dataset1} was equal to or greater than 30, then the record received a "1" in the class attribute field (Field 17). Otherwise, the record received a "0" in Field 17. Of the 6544 records submitted for machine learning analysis, 2800 received class attribute "1" and 3744 received class attribute "0".
+
+\begin{table}[!htbp] \centering 
+  \caption{Field characteristics of the Level3 formatted and pre-processed Metropolitan Family Service (MFS) dataset.} 
+  \label{tab:bm1} 
+\begin{tabular}{@{\extracolsep{5pt}}lcl} 
+\toprule
+Field & \multicolumn{1}{c}{Data Type} & \multicolumn{1}{l}{Values Range} \\
+\midrule
+School Name & Categorical & 0 - 22 \\
+School District & Categorical & 0 - 4\\
+School Type & Categorical & 0 - 2\\
+Age	& Continuous & 6 - 22\\
+Gender & Categorical & 0 - 3\\
+Language & Categorical & 0 - 57\\
+African	& Binary & 0 - 1\\
+Asian & Binary & 0 - 1\\
+Black/ African American	& Binary & 0 - 1\\
+Latino/Hispanic	& Binary & 0 - 1\\
+Middle Eastern	& Binary & 0 - 1\\
+Native American/ Alaska Native	& Binary & 0 - 1\\
+Native Hawaiian/ Pacific Islander & Binary & 0 - 1\\
+Slavic & Binary & 0 - 1\\
+White & Binary & 0 - 1\\
+Declined & Binary & 0 - 1\\
+Days Attended (Class attribute) & Binary & 0 - 1\\
+\bottomrule
+\end{tabular} 
+\end{table}
+
+\noindent The categorical data in \verb!FormatProcessedLevel3_MFS_dataset1.csv! were transformed with a pre-processing algorithm called the OneHotEncoder\footnote{http://scikit-learn.org/stable/modules/preprocessing.html\#preprocessing-categorical-features} which is part of the Python-based machine learning library, \textit{sci-kit learn}.\footnote{\verb|http://scikit-learn.org/stable/modules/naive_bayes.html#naive-bayes|}. Such a transformation is often necessary because the integer representation of categorical (discrete) features cannot be used directly with many of the scikit-learn estimators and classifiers. These classifiers expect either (1) continuous input thus interpreting the categories as being ordered, or (2) count input thus interpreting the categories as counts of a single discrete variate. The OneHotEncoder uses a one-of-K or one-hot encoding to convert each categorical feature with \textit{m} possible values into \textit{m} binary features with only one feature active. For example, records in Level3 data were initially coded with the integers 1, 2, or 3 for the field 'School Type' depending on whether the student attended a grade school, a middle school, or a high school, respectively. In place of a single column for school type, the OneHotEncoder generates three separate columns where each column corresponds to one possible value of one of the features. Thus, the record of a middle school student would be represented as a (0,1,0) vector. The transformation of categorical data with the OneHotEncoder generated a Level4 dataset (\verb!FormatProcessedLevel4_MFS_dataset1.csv!). The process of transforming the Level3 dataset to the Level4 dataset is detailed in the module (Python script), \verb!FormatProcessingLevel3-4_MFS_dataset1_OneHotEncoder_v2.py! which is provided in the Appendix.\\
+
+\noindent The analysis of the data in \verb!FormatProcessedLevel4_MFS_dataset1.csv! was performed with a Naive Bayes classifier called, "MultinomialNB" which also is part of the Python-based machine learning library, \textit{sci-kit learn}."Multinomial" refers to the multinomial distribution, a multidimensional generalization of the binomial distribution. Multinomial means that instead of only two (binary) possible distinct outcomes for an event or trial, there are some number \textit{k} of distinct outcomes. The multinomial distribution reduces to the binomial distribution if there are only two possible outcomes for an event or trial. "NB" refers to Naive Bayes. The multinomial Naive Bayes classifier is suitable for classification of \textit{k} classes from \textit{n} events or trials. MultinomialNB requires discrete features and (normally) integer feature counts for each trial. As noted above, the categorical data in the Level3 MFS dataset were transformed prior to MultinomialNB analysis into a Level4 dataset precisely because the integers represented categories, not counts. Additionally, the Level4 data were randomly split (75:25) into a training dataset (n = 4908 records) and a test dataset (n = 1636 records). The details of the final analytical procedure are documented in the module, \verb!FormattedProcessedLevel4_MFS_dataset1_MNBayes.py! which is included in the Appendix.\\
+
+\noindent All data formatting, pre-processing, analyses were performed with readily available hardware and freely available, open-source software. Hardware included a HP Compaq 6710b (32-bit) machine from the non-profit, "Free Geek" located in Portland, OR. The machine used a Linux-based operating system:  
+\begin{verbatim}
+Distro:		Ubuntu 14.04 trusty
+Kernel:		3.16.0-77-generic i686 (32 bit, gcc: 4.8.4)
+Desktop: 	Xfce 4.11.8 (Gtk 2.24.23) 	
+\end{verbatim}
+
+\noindent The Python-based suite, \textit{sci-kit learn} is a set of 'simple and efficient tools for data mining and data analysis, accessible to everybody.' Python scripts for the investigation were written an executed in Spyder (Spyder 2.3.8), an integrated development environment (IDE) that is included as part of the Anaconda distribution (Anaconda 2.5.0) of Python (Python 2.7.12). 	
+
+%------------------------------------------------
+
+\section{Results}
+There are multiple performance measures for machine learning classifiers many of which are derived from the confusion matrix. The confusion matrix for the MultinomialNB classifier as applied to the test dataset is presented numerically in Table ~\ref{tab:bm2} and graphically in Figure ~\ref{fig:bm1}. From this table, the number of true positives (TP) is 463, the number of true negatives (TN) is 527, the number of false negatives (FN) is 273, and the number of false positives (FP) is 373.  Accuracy (TP + TN/Total scores), precision (TP/TP + FP), recall (TP/TP + FN), and F1 measures are given in Table ~\ref{tab:bm3}. The F1-score is the harmonic mean of precision and recall with a range of [0,1]. The F-measure is another measure of accuracy and is suitable when (1) mistakes are considered equally bad, whether they are false positives or false negatives, and (2) the number of mistakes is measured relative to the number of true positives, neglecting true negatives. To have a high F1 score, values of high precision and high recall are required.\\
+
+\noindent Another measure of performance is the receiver operator characteristic (ROC) curve. ROC curves typically plot true positive rate or recall (TP/TP + FN) on the Y-axis, and false positive rate (FP/FP + TN) on the X-axis. The top left corner of the plot is thus a \enquote{perfect point} with a false positive rate of '0' and a true positive rate of '1'. A general rubric for evaluating ROC curves, which uses the area under the ROC curve, is
+\begin{itemize}
+	\item 1.0 = perfect prediction
+	\item 0.9 = excellent prediction
+	\item 0.8 = good prediction
+	\item 0.7 = mediocre prediction
+	\item 0.6 = poor prediction
+	\item 0.5 = random prediction
+	\item <0.5 = something is wrong!
+\end{itemize}
+The ROC curve for the MultinomialNB classifier as applied to the test dataset is displayed in Figure ~\ref{fig:bm2}.
+
+\begin{table} \centering 
+  \caption{Confusion matrix of the MultinomialNB classifier applied to the test dataset. The test dataset was randomly selected from the Level4 formatted and pre-processed Metropolitan Family Service (MFS) dataset. The test dataset contained 1636 records.} 
+  \label{tab:bm2} 
+\begin{tabular}{lrr}
+\toprule
+{} &    1 &    0 \\
+\midrule
+1 &  463 &  273 \\
+0 &  373 &  527 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+\begin{figure}
+	\begin{center}
+		\includegraphics[height=8cm]{figures/MNBayes1b.pdf}
+		\caption{Confusion matrix of the MultinomialNB classifier applied to the test dataset. The test dataset was randomly selected from the Level4 formatted and pre-processed Metropolitan Family Service (MFS) dataset. The test dataset contained 1636 records.}
+		\label{fig:bm1}
+	\end{center}
+\end{figure}
+
+
+\begin{table} \centering 
+  \caption{Classification report of the MultinomialNB classifier applied to the test dataset. The test dataset was randomly selected from the Level4 formatted and pre-processed Metropolitan Family Service (MFS) dataset.} 
+  \label{tab:bm3}
+\begin{tabular}{lcccc}
+\toprule
+Accuracy & Precision & Recall & F1 Score\\
+\midrule
+0.61 & 0.61 & 0.61 & 0.61 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}
+	\begin{center}
+		\includegraphics[height=8cm]{figures/MNBayes3b.pdf}
+		\caption{Receiver operating characteristic (ROC) curve for the MultinomialNB classifier applied to the test dataset. The test dataset was randomly selected from the Level4 formatted and pre-processed Metropolitan Family Service (MFS) dataset.}
+		\label{fig:bm2}
+	\end{center}
+\end{figure}
+
+%------------------------------------------------
+
+\section{Discussion}
+The MultinomialNB preformed poorly given the Level4 MFS dataset. Possible data-related reasons include (1) too many non-responses (22 for Field 5, 36 for Field 6, 133 for Field 16), (2) the segregation of languages into too many (58) categories, and perhaps most importantly, 3) the lack of truly predictive data. Certainly, the analysis could be repeated with modifications to handle non-responses and excessive categories and the performance is likely to improve somewhat. But this analysis may in fact be quite useful exactly because it is so poorly predictive. The results raise two complementary questions: Are the data fields which were provided actually poor predictors of success in the SUN program? And if so, What are the missing, truly predictive data fields? Additional sleuthing and analyses would be required to answer these questions.\\
+
+\noindent The pre-processing of the original data required substantial effort and expertise. This suggests that the portability of the Naive Bayes machine learning methodology may be difficult regardless of the availability of pre-packaged Python scripts for actualizing the machine learning tools themselves. There are, however, options that could increase the adoption of machine learning methodologies. Two such options are first, to create and maintain a library of \enquote{data cleaning} scripts to allow for efficient data pre-processing from typical data streams, and second, to implement some level of data entry quality assurance/quality control in those social service organizations wanting to use machine learning tools.\\
+
+ 
+
+\noindent Lastly, this investigation has found that machine learning tools may prove useful to individual social service organizations in surprising ways. At the first level of program component assessment, machine learning tools may provide discriminant power to determine which datasets are valuable for outcome prediction and which are not. 
+ 
+
+%\end{multicols}
+
+%----------------------------------------------------------------------------------------
+%	REFERENCE LIST
+%----------------------------------------------------------------------------------------
+\newpage
+\bibliographystyle{/usr/local/share/texmf/tex/latex/apacite/apacite}
+\bibliography{/home/bmarron//Desktop/BibTex/My_Library_20160725}
+
+
+\newpage
+\vspace*{5cm}
+\begin{center}
+\LARGE \textbf{Appendix}
+\end{center}
+\includepdf{figures/Data_Request_Form_MFS_dataset1.pdf}
+\includepdf[pages=1-21]{figures/LOG1_FormatProcessing_MFS_dataset1.pdf}
+\includepdf[pages=1-5]{figures/LOG2_FormatProcessing_MFS_dataset1.pdf}
+\includepdf[pages=1-4]{figures/FormattedProcessedLevel2_MFS_dataset1_datachecks.pdf}
+\includepdf[pages=1-5]{figures/FormatProcessingLevel3-4_MFS_dataset1_OneHotEncoder_v2.pdf}
+\includepdf[pages=1-7]{figures/FormattedProcessedLevel4_MFS_dataset1_MNBayes.pdf}
+
+\end{document}

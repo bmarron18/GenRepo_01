@@ -1,0 +1,238 @@
+
+%%%%%%%%%%%%
+% XeTex ==> PDF
+
+% 1) xelatex report
+% 2) biber report
+% 3) xelatex report x 2
+%%%%%%%%%%%%%%
+
+\documentclass[12pt,letterpaper]{article}
+
+\include{defs}
+
+% margins
+\usepackage{geometry}
+%\geometry{hmargin=20mm,vmargin=20mm,head=0ex,foot=3ex}
+%\geometry{top=3cm,bottom=3cm,left=3.2cm,right=3.2cm,headsep=10pt}
+\geometry{scale=0.85}
+%\geometry{left=0.5in, right=0.5in, top=0.5in, bottom=0.5in}
+%\geometry{margin=0.5in}
+\linespread{1.3}
+
+
+% fonts
+%\usepackage[utf8]{inputenc}     % Required for including letters with accents
+\usepackage[T1]{fontenc}          % Use 8-bit encoding that has 256 glyphs
+\usepackage{fontspec}
+%\defaultfontfeatures{Mapping=tex-text}
+%\setmainfont [BoldFont=Lato-Bold.ttf, ItalicFont=Lato-Italic.ttf, BoldItalicFont=Lato-BoldItalic.ttf] {Lato-Regular.ttf}
+%\newfontfamily\headingfont[ItalicFont=Lato-BlackItalic.ttf]{Lato-Black.ttf}
+
+%\usepackage{mathptmx}        % Times font with math symbols from the Sym­bol, Chancery and Com­puter Modern fonts
+\usepackage{microtype}       % Slightly tweak font spacing for aesthetics
+
+%\usepackage{avant}             
+%\usepackage{times}            
+%\usepackage{newcent}
+
+
+% math
+\newcommand\ddfrac[2]{\frac{\displaystyle #1}{\displaystyle #2}}
+% example:   $\ddfrac{TP+TN}{\Sigma Total Population}$
+
+\usepackage{amsmath}
+\usepackage{calc}
+
+
+
+% graphics
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+\newcommand*{\horzbar}{\rule[0.05ex]{2.5ex}{0.5pt}}
+
+\usepackage{graphicx}
+
+
+
+% colors
+\usepackage{xcolor}
+\definecolor{color1}{HTML}{000060}
+\definecolor{color2}{HTML}{333333}
+\definecolor{ocre}{RGB}{51,102,0} 
+\definecolor{lightgray}{RGB}{229,229,229}
+%\definecolor{color1}{HTML}{8C260F}
+%\definecolor{darkgreen}{rgb}{0.0, 0.2, 0.13}
+%\definecolor{darkgreen}{rgb}{0,0.15,0}
+%\definecolor{calpolypomonagreen}{rgb}{0.12, 0.3, 0.17}
+%\definecolor{chromeyellow}{rgb}{1.0, 0.65, 0.0}
+%\definecolor{osuorange}{cmyk}{.1197,.9474,1,0.0309}
+
+
+% hyperlinks
+%\usepackage{hyperref}
+%\hypersetup{
+%    colorlinks=false,
+%    linkcolor=black,
+%    filecolor=black,
+%    urlcolor=magenta,     
+%}
+
+
+% tables
+\usepackage{booktabs}
+\usepackage{longtable}
+
+
+% captions
+\usepackage[hang]{caption}
+%\DeclareCaptionFormat{upper}{#1#2\uppercase{#3}\par}
+%\captionsetup{labelfont={bf,color=color2},textfont={normalsize,color=color2},format = upper,figurename=FIGURE,tablename=TABLE}
+\captionsetup[table]{justification=raggedright,singlelinecheck=off, labelfont=bf}
+
+\usepackage{etoolbox}
+\setlength{\LTcapwidth}{=6.95in}  %longtable caption goes full text width
+
+
+
+
+% sections
+\usepackage{titlesec}
+%\titleformat{\chapter}{\LARGE\bfseries\scshape\color{ocre!60}}{\thechapter}{1em}{}[\titlerule]
+\titleformat{\section}{\color{ocre!60}\Large\bfseries\uppercase}{\thesection}{1em}{}[\titlerule]
+\titleformat{\subsection}{\color{black}\large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\color{black}\bfseries}{\thesubsubsection}{1em}{}
+%\titleformat{\chapter}{\headingfont\LARGE\bfseries\scshape\color{color1}}{\thechapter}{1em}{}[\titlerule]
+%\titleformat{\section}{\color{color1}\headingfont\Large\bfseries\uppercase}{\thesection}{1em}{}[\titlerule]
+%\titleformat{\subsection}{\color{color1}\headingfont\large\bfseries\uppercase}{\thesubsection}{1em}{}
+%\titleformat{\subsubsection}{\color{color1}\headingfont\bfseries\uppercase}{\thesubsubsection}{1em}{}
+
+
+% toc
+\usepackage[titles]{tocloft}
+\setcounter{tocdepth}{3}         					%ToC Level Depth
+\renewcommand{\cftsecfont}{\bfseries}
+
+
+% appendices
+\usepackage[titletoc]{appendix}
+
+
+% headers and footers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{}
+\chead{}
+
+\makeatletter                              % changes the catcode of @ to 11 to modify a package internal macro
+\rhead{}
+%\rhead{\color{color2}\@date}
+\makeatother                                % changes the catcode of @ back to 12
+
+\newlength{\myheight}
+
+\lfoot{
+\settoheight{\myheight}{\thepage}
+\raisebox{-2ex-0.5\myheight}{\includegraphics[height=1.5cm, width=3cm]{graphics/RegenerarLogo3.eps}}
+}
+
+\cfoot{\textit{\color{ocre!60}Evaluation of Resampling Methodologies}}
+\rfoot{\color{color2}\thepage}
+\renewcommand\headrulewidth{0pt}
+\renewcommand\footrulewidth{0pt}
+
+
+
+
+% bibliography (biblatex)
+\usepackage[english]{babel} 
+%\usepackage[american]{babel} 
+\usepackage[style=apa,
+            sorting=nyt,
+            sortcites=true,
+            autopunct=true,
+            hyperref=true,
+            maxcitenames=2,
+            mincitenames=1,
+            maxbibnames=10,
+            uniquelist=false,
+            backref=true,
+            doi=false,
+            url=false,
+            backend=biber]{biblatex}
+\addbibresource{/home/bruce/Desktop/BibLatex/My_Library_20170125.bib} % BibTeX bibliography file
+%\defbibheading{bibempty}{}
+\DeclareLanguageMapping{american}{american-apa}    % avoid yearmonthday problems
+
+% \autocite{ABC01}      %for et al.
+% \parencite{}
+% \textcite{}            % Shields (2000) ...
+% \footcite{}
+
+
+
+% watermark
+%\usepackage{everypage} 
+%\usepackage{draftwatermark}
+%\SetWatermarkLightness{0.95}
+%\SetWatermarkScale{1}
+
+
+% misc
+\usepackage{verbatim}
+\usepackage{lipsum}
+\usepackage{csquotes}
+
+
+
+%------- Title Page (see defs.tex for additional title page entries)------------------------
+\title{\textbf{Evaluation of Resampling Methodologies}}
+\author{Bruce D. Marron}
+\date{\today}
+%----------------------------------------------------------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  BEGIN DOCUMENT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+
+% copyright page
+\newpage
+~\vfill
+\thispagestyle{empty}
+\noindent \copyright\ Re-Generar, Portland, Oregon ~ 97214
+
+\noindent Report No. 2018RG001\_20180210
+
+\noindent \textit{\today}
+\clearpage
+
+% toc
+\renewcommand\contentsname{Table of Contents}	
+\tableofcontents
+\addtocontents{toc}{~\hfill\textbf{Page}\par}
+\listoffigures
+\listoftables
+\clearpage
+
+% body
+\section{Executive Summary}
+
+\section{Background and Approach}
+
+\section{Results}
+
+\section{Recommendations}
+
+\begin{appendices}
+\section{RMarkdown File} 
+\end{appendices}
+
+\newpage
+\printbibliography
+
+
+
+\end{document}          

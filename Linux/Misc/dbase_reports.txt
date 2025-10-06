@@ -1,0 +1,8 @@
+
+===== Building Libreoffice database reports =====
+1. use report wizard
+2. select query or full database
+3. select field in the order you want them in the database
+4  try different left-margined layouts
+5. select "static' report					#Critical!! 
+6. close everything and re-open with "edit"

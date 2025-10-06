@@ -1,0 +1,127 @@
+	----- BibTex ---------
+
+#########################
+the BibTex file
+##########################
+
+@article{stoffer_resampling_2004,				#first entry is the unique record ID needed for \cite{}
+	title = {Resampling in state space models},
+	journal = {State Space and Unobserved Component Models Theory and Applications},
+	author = {Stoffer, David S. and Wall, Kent D.},
+	year = {2004},
+	pages = {227--258}					#note "--" separator
+}
+
+
+
+@book{ConcreteMath,					
+        author = {R.L. Graham and D.E. Knuth and O. Patashnik},
+        title = {Concrete mathematics},
+        publisher = {Addison-Wesley},
+        address = {Reading, MA},
+        year = {1989}
+}
+
+
+@book{Xbook,
+    author    = "",
+    title     = "",
+    publisher = "",
+    %volume   = "",
+    %number   = "",
+    %series   = "",
+    %address  = "",
+    %edition  = "",
+    year      = "XXXX",
+    %month    = "",
+    %note     = "",
+}
+
+
+@article{<unique_key>,
+	title = {},
+	author = {},
+	journal = {},
+	volume = {},
+	number = {},
+	year = {},
+	pages = {}
+}
+
+
+@incollection{<unique_key>,				#article in book compendium
+	title = {},
+	author = {},
+	year = {},
+	booktitle = {},
+	editor = {},
+	publisher = {} 
+
+}
+
+
+@manual{<unique_key>,
+	title		= {},
+	%author		= {},
+	%organization	= {},
+	%address	= {},
+	%edition	= {},
+	year		= {},
+	%month		= {},
+	%note		= {},
+}
+
+
+
+#######################
+BibTex from Zotero
+#####################
+
+
+----  Export the entire library from Zotero ----
+
+	Actions ==> Export Library... ==> Format = BibTex (w/ NO Translator Options selected!)
+
+
+---- Create a document-specific BibTex file from Zotero -------------
+
+	Left-click on item ==> Export... ==> Format = BibTex (w/ NO Translator Options selected!)
+	Left-click on folder ==> Export Collection... ==> Format = BibTex (w/ NO Translator Options selected!)
+
+
+###############################
+BibTex in LaTex
+###############################
+
+\cite{brender_prenatal_2013} 				#use the unique record ID		
+\cite{gazi_lagrangian_2013}
+
+The end of document text.
+							#just before the end of the whole document
+							#insert this code
+\bibliographystyle{apalike}
+\bibliography{/home/bmarron//Desktop/My_Library}	#DO NOT add the ".bib" (actual file, "My_Library.bib")
+
+\end{document}
+							#must run make PDF sequence multiple time
+
+¡¡OJO!! 
+LaTex will "crash" and not print the current doc IF there are syntax errors in a doc
+that has references
+
+Somehow the processing of BibTex gets confounded with the errors and then LaTex will not read the
+.bib file
+
+You will know this is happening when repeated clicks to produce a .pdf file say that all references 
+are undefined, even if they were defined and the doc ran through to produce a .pdf prior
+
+==>Cut and paste to a Leafpad and find the offending syntax error
+==>Should also check the BibTex file 
+
+
+
+
+---- styles ---------------
+Commonly used by \bibliographystyle{}: 
+plain, alpha, amsplain, amsalpha. abbrv, acm, apalike, ieeetr, siam, unsrt.
+

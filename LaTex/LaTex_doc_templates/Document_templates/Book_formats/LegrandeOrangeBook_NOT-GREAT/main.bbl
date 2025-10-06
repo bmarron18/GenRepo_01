@@ -1,0 +1,57 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.6 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \sortlist[entry]{nyt/global}
+    \entry{shields_young_2009}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=18a444381e1284a51096636653952171}{%
+           family={Shields},
+           family_i={S\bibinitperiod},
+           given={Peggy\bibnamedelima O.},
+           given_i={P\bibinitperiod\bibinitdelim O\bibinitperiod}}}%
+      }
+      \strng{namehash}{18a444381e1284a51096636653952171}
+      \strng{fullhash}{18a444381e1284a51096636653952171}
+      \field{sortinit}{S}
+      \field{sortinithash}{fd1e7c5ab79596b13dbbb67f8d70fb5a}
+      \field{labelyear}{2009}
+      \field{labelmonth}{06}
+      \field{datelabelsource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{The long‐term survival of nonprofit charitable organizations depends on the recruitment and retention of today's young adults. A segmentation strategy proposed for retirees which was consistent with previous research on volunteer motivation was found to also be relevant for the young adult market, especially if implemented with consideration of this segment's unique interests and characteristics. In addition, young adults were found to be most inclined to volunteer for organizations that were either local and personal or nationally renowned. Organizations benefiting children were also highly regarded. The higher a college student's grade point average (GPA), the more likely they were to indicate an intention of volunteering in the future. Those most likely to volunteer in the future also exhibited higher teamwork and mentoring trait scores. The young adult market was found to be multidimensional and best approached with a variety of appeals.}
+      \field{issn}{1049-5142}
+      \field{journaltitle}{Journal of Nonprofit \& Public Sector Marketing}
+      \field{month}{06}
+      \field{number}{2}
+      \field{shorttitle}{Young {Adult} {Volunteers}}
+      \field{title}{Young {Adult} {Volunteers}: {Recruitment} {Appeals} and {Other} {Marketing} {Considerations}}
+      \field{urlday}{26}
+      \field{urlmonth}{10}
+      \field{urlyear}{2017}
+      \field{volume}{21}
+      \field{year}{2009}
+      \field{pages}{139\bibrangedash 159}
+      \range{pages}{21}
+    \endentry
+  \endsortlist
+\endrefsection
+\endinput
+

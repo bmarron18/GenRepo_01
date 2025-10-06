@@ -1,0 +1,138 @@
+Title:			Queries in GitHub			
+Project:		LANDIS-II updates project
+Author:			bmarron
+Origin Date:		23 Apr 2017
+Final Date:		17 July 2017
+
+
+###############################################
+Queries That Work
+ 1) entered in main search bar by GitHub icon
+ 2) searches all of GitHub
+################################################
+
+
+
+------- comments queries -------------------------------------------
+
+commenter:bmarron18
+	==> Issues
+		==> Sort: Recently updated
+
+
+----- Name search queries ---------------------------------------------------------
+
+tom in:email
+    Matches users with the word tom in their email. 
+For privacy reasons, you cannot search by domain name.
+
+kenya in:login
+    Matches users with the word kenya in their username.
+
+bolton in:fullname
+    Matches users whose real name has the word Bolton. 
+
+
+petras in:fullname
+marron in:fullname
+
+
+----- Queries that Operate on Pull Requests and Issues -----------------------------
+
+user:bmarron18					<< my personal repos
+
+assignee:bmarron18 is:issue			<< info about Issues assigned to me
+assignee:bmarron18 is:issue is:open
+assignee:bmarron18 is:issue is:closed
+assignee:bmarron18 is:issue close in:comments
+assignee:bmarron18 is:issue is:open close in:comments
+assignee:bmarron18 is:issue is:closed close in:comments
+assignee:bmarron18 is:issue close in:comments
+assignee:bmarron18 is:issue NOT close in:comments
+
+
+
+author:bmarron18 			<< all (PullRequests PLUS Issues) AND all Commits	
+author:bmarron18 is:pr			<< (PullRequests) AND all Commits
+author:bmarron18 is:issue		<< (Issues) AND all Commits
+					<< is:pr seems to be equal to type:pr
+
+
+author:bmarron18 type:pr
+author:bmarron18 type:pr is:closed		<< in purple; all closed PullRequests
+author:bmarron18 type:pr is:open		<< in green; all open PullRequests
+author:bmarron18 type:pr is:closed is:merged	<< in purple; all merged AND closed PullRequests
+author:bmarron18 type:pr is:closed is:unmerged	<< in red; all closed AND unmerged
+author:bmarron18 type:pr is:open is:unmerged	<< in green; all open AND unmerged
+
+
+author:bmarron18 type:pr updated:>=2017-04-22	<< a sorting of recent PullRequests
+						   on 23 Apr 2017 shows three (3) PullRequests;
+						   one of each color!!
+
+
+
+
+author:aruzicka555 type:pr is:open
+author:aruzicka555 type:pr is:closed
+author:aruzicka555 type:pr is:merged
+author:aruzicka555 type:pr is:closed is:unmerged
+
+
+
+author:VSchuster type:pr is:open
+author:VSchuster type:pr is:closed
+author:VSchuster type:pr is:merged
+author:VSchuster type:pr is:closed is:unmerged
+author:VSchuster author-date:>2017-04-20 merge:true
+
+
+author:brmiranda type:pr is:open
+
+
+
+---- Queries that actually operate on Commits ----------------------------------------------
+
+author:rmscheller					<< select, Sort:Recently committed
+author:rmscheller merge:false			
+author:rmscheller merge:true
+
+
+author:rmscheller author-date:>2017-04-20 merge:true	<< Use this to track merged PullRequests
+
+
+
+
+--------- Queries that operate on Repos -------------------------------------------------
+
+LANDIS-II-Foundation in:name pushed:>=2017-04-15		<< all LANDIS-II-Foundation repos
+
+Extension-Biomass-Succession in:name pushed:>=2017-04-15		<< repo specific
+Extension-Base-Wind in:name pushed:>2017-04-15
+Extension-Biomass-Insect in:name pushed:>2017-04-15
+
+
+LANDIS Harvest in:name pushed:>=2017-01-15			<< All the Harvest repos
+
+LANDIS-II-Foundation/Extension-Base-Harvest in:name pushed:>=2017-01-15
+LANDIS-II-Foundation/Extension-Biomass-Harvest
+LANDIS-II-Foundation/Library-Biomass-Harvest
+LANDIS-II-Foundation/Library-Site-Harvest
+LANDIS-II-Foundation/Library-Harvest-Mgmt
+
+
+
+############################
+Queries That Are Suspect
+############################
+
+http://stackoverflow.com/questions/29277128/find-pull-requests-merged-by-a-specific-user
+NO GO!! ==> Find pull requests merged by a specific user
+
+
+http://stackoverflow.com/questions/18318097/delete-a-closed-pull-request-from-github
+There is no way you can delete a pull request yourself -- you and the repo owner (and all users with 
+push access to it) can close it, but it will remain in the log. This is part of the philosophy of not 
+denying/hiding what happened during development.
+
+

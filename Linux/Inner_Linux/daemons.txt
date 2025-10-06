@@ -1,0 +1,157 @@
+		
+############
+Daemons 
+############
+
+A daemon is a type of program on Unix-like operating systems that runs unobtrusively in the background, rather than under the direct control of a user, 
+waiting to be activated by the occurance of a specific event or condition. Unix-like systems typically run numerous daemons, mainly to accommodate requests 
+for services from other computers on a network, but also to respond to other programs and to hardware activity. Examples of actions or conditions that can 
+trigger daemons into activity are a specific time or date, passage of a specified time interval, a file landing in a particular directory, receipt of an 
+e-mail or a Web request made through a particular communication line. It is not necessary that the perpetrator of the action or condition be aware that a 
+daemon is listening, although programs frequently will perform an action only because they are aware that they will implicitly arouse a daemon.
+
+Daemons are usually instantiated as processes. A process is an executing (i.e., running) instance of a program. Processes are managed by the kernel (i.e., 
+the core of the operating system), which assigns each a unique process identification number (PID). There are three basic types of processes in Linux: 
+interactive, batch and daemon. Interactive processes are run interactively by a user at the command line (i.e., all-text mode). Batch processes are submitted 
+from a queue of processes and are not associated with the command line; they are well suited for performing recurring tasks when system usage is otherwise low.
+
+Daemons are recognized by the system as any processes whose parent process has a PID of one, which always represents the process init. init is always the 
+first process that is started when a Linux computer is booted up (i.e., started), and it remains on the system until the computer is turned off. init adopts 
+any process whose parent process dies (i.e., terminates) without waiting for the child process's status. Thus, the common method for launching a daemon involves 
+forking (i.e., dividing) once or twice, and making the parent (and grandparent) processes die while the child (or grandchild) process begins performing its 
+normal function.
+
+Some daemons are launched via System V init scripts, which are scripts (i.e., short programs) that are run automatically when the system is booting up. They may 
+either survive for the duration of the session or be regenerated at intervals. Many daemons are now started only as required and by a single daemon, xinetd 
+(which has replaced inetd in newer systems), rather than running continuously. xinetd, which is referred to as a TCP/IP super server, itself is started at boot 
+time, and it listens to the ports assigned to the processes listed in the /etc/inetd.conf or in /etc/xinetd.conf configuration file. Examples of daemons that it 
+starts include crond (which runs scheduled tasks), ftpd (file transfer), lpd (laser printing), rlogind (remote login), rshd (remote command execution) and 
+telnetd (telnet).
+
+In addition to being launched by the operating system and by application programs, some daemons can also be started manually. Examples of commands that launch 
+daemons include binlogd (which logs binary events to specified files), mysqld (the MySQL databse server) and apache (the Apache web server). In many Unix-like 
+operating systems, including Linux, each daemon has a single script (i.e., short program) with which it can be terminated, restarted or have its status checked. 
+The handling of these scripts is based on runlevels. A runlevel is a configuration or operating state of the system that only allows certain selected processes 
+to exist. Booting into a different runlevel can help solve certain problems, including repairing system errors.
+
+The term daemon is derived from the daemons of Greek mythology, which were supernatural beings that ranked between gods and mortals and which possessed special 
+knowledge and power1. For example, Socrates claimed to have a daemon that gave him warnings and advice but never coerced him into following it. He also claimed 
+that his daemon exhibited greater accuracy than any of the forms of divination practiced at the time. The word daemon was first used in a computer context at 
+the pioneering Project MAC (which later became the MIT Laboratory for Computer Science) using the IBM 7094 in 1963. This usage was inspired by Maxwell's daemon 
+of physics and thermodynamics, which was an imaginary agent that helped sort molecules of different speeds and worked tirelessly in the background. The term
+ was then used to describe background processes which worked tirelessly to perform system chores. The first computer daemon was a program that automatically 
+made tape backups. After the term was adopted for computer use, it was rationalized as an acronym for Disk And Execution MONitor.
+
+On the Microsoft Windows operating systems, programs called services perform the functions of daemons, although the term daemon is now sometimes being used with 
+regard to those systems as well.
+
+________
+1 A daemon should be distinguished from a demon, which is an evil spirit in some religions. 
+
+
+
+-------	excerpts from /etc/init.d/README -------------------------------------
+Configuration of System V init under Debian GNU/Linux
+
+Most Unix versions have a file here that describes how the scripts
+in this directory work, and how the links in the /etc/rc?.d/ directories
+influence system startup/shutdown.
+
+For Debian, this information is contained in the policy manual, chapter 
+"System run levels and init.d scripts".  The Debian Policy Manual is 
+available at:
+
+    http://www.debian.org/doc/debian-policy/#contents
+
+The Debian Policy Manual is also available in the Debian package
+"debian-policy".  When this package is installed, the policy manual can be
+found in directory /usr/share/doc/debian-policy. If you have a browser
+installed you can probably read it at
+
+    file://localhost/usr/share/doc/debian-policy/
+-------------------------------------------------------------------------------
+
+	* Daemon services, or just daemons, are started at boot time. They are roughly equivalent to services in the Windows world.
+	* Deamons are colored GREEN in terminal (.sh files)
+	* Every script in the /etc/init.d/ directory represents a daemon, which can be started OR restarted OR stopped manually using the following syntax:
+
+$ ~/etc/init.d/<daemon name> start | restart | stop
+
+	* daemon 'cups' running in root but not in bmarron
+$ ps aux | grep cups
+root       982  0.0  0.2   8884  5860 ?        Ss   15:23   0:02 /usr/sbin/cups-browsed
+root      2923  0.0  0.2   8468  5992 ?        Ss   15:28   0:00 /usr/sbin/cupsd -f
+bmarron  10872  0.0  0.0   4940  2040 pts/0    S+   18:10   0:00 grep --color=auto cups
+
+
+	* daemon 'rsync' not running but ready for bmarron
+$ ps aux | grep rsync
+bmarron  10884  0.0  0.0   4936  2024 pts/0    S+   18:15   0:00 grep --color=auto rsync
+
+
+
+		#daemons as of 17 Nov 2015
+$ ls -l /etc/init.d/ > ~/Desktop/daemons.txt
+
+total 268
+-rwxr-xr-x 1 root root 2243 Apr  3  2014 acpid
+-rwxr-xr-x 1 root root 2014 Feb 19  2014 anacron
+-rwxr-xr-x 1 root root 9974 Jan  7  2014 apache2
+-rwxr-xr-x 1 root root 4596 Mar 27  2014 apparmor
+-rwxr-xr-x 1 root root 2801 Feb  7  2015 apport
+-rwxr-xr-x 1 root root 2401 Dec 30  2013 avahi-daemon
+-rwxr-xr-x 1 root root 1322 Mar 30  2014 binfmt-support
+-rwxr-xr-x 1 root root 4474 Sep  4  2014 bluetooth
+-rwxr-xr-x 1 root root 2125 Mar 13  2014 brltty
+-rwxr-xr-x 1 root root 1919 Jan 18  2011 console-setup
+lrwxrwxrwx 1 root root   21 Jun 20 17:05 cron -> /lib/init/upstart-job
+-rwxr-xr-x 1 root root 3184 Apr  3  2014 cups
+-rwxr-xr-x 1 root root 1961 Apr  7  2014 cups-browsed
+-rwxr-xr-x 1 root root 2813 Nov 25  2014 dbus
+-rwxr-xr-x 1 root root 1217 Mar  7  2013 dns-clean
+lrwxrwxrwx 1 root root   21 Jun 20 17:05 friendly-recovery -> /lib/init/upstart-job
+-rwxr-xr-x 1 root root 1105 May  8  2014 grub-common
+-rwxr-xr-x 1 root root 1329 Mar 12  2014 halt
+-rwxr-xr-x 1 root root 3060 Oct 28  2012 hddtemp
+-rwxr-xr-x 1 root root 1864 Nov 12  2012 irqbalance
+-rwxr-xr-x 1 root root 3096 Mar 28  2014 kerneloops
+-rwxr-xr-x 1 root root 1293 Mar 12  2014 killprocs
+-rwxr-xr-x 1 root root 1990 Jan 22  2013 kmod
+-rwxr-xr-x 1 root root 3431 Dec 11  2014 lightdm
+-rwxr-xr-x 1 root root  869 Jan 15  2014 lm-sensors
+-rwxr-xr-x 1 root root 2420 Dec  6  2013 mdadm
+-rwxr-xr-x 1 root root 1199 Dec  6  2013 mdadm-waitidle
+-rwxr-xr-x 1 root root 4479 Mar 20  2014 networking
+-rwxr-xr-x 1 root root 1948 Apr  1  2014 nmbd
+-rwxr-xr-x 1 root root 1346 Mar 13  2015 ondemand
+-rwxr-xr-x 1 root root 7507 Feb  5  2015 postfix
+-rwxr-xr-x 1 root root  561 Nov 25  2014 pppd-dns
+-rwxr-xr-x 1 root root 1192 May 27  2013 procps
+-rwxr-xr-x 1 root root 2182 Apr  4  2014 pulseaudio
+-rwxr-xr-x 1 root root 6120 Mar 12  2014 rc
+-rwxr-xr-x 1 root root  782 Mar 12  2014 rc.local
+-rwxr-xr-x 1 root root  117 Mar 12  2014 rcS
+-rw-r--r-- 1 root root 2427 Mar 12  2014 README
+-rwxr-xr-x 1 root root  639 Mar 12  2014 reboot
+-rwxr-xr-x 1 root root 2918 Jun 13  2014 resolvconf
+-rwxr-xr-x 1 root root 4395 Apr 17  2014 rsync
+-rwxr-xr-x 1 root root 2913 Dec  4  2013 rsyslog
+-rwxr-xr-x 1 root root 1304 Apr  1  2014 samba
+-rwxr-xr-x 1 root root 2299 Apr  1  2014 samba-ad-dc
+-rwxr-xr-x 1 root root 2344 May  8  2014 saned
+-rwxr-xr-x 1 root root 3920 Mar 12  2014 sendsigs
+-rwxr-xr-x 1 root root  590 Mar 12  2014 single
+-rw-r--r-- 1 root root 4290 Mar 12  2014 skeleton
+-rwxr-xr-x 1 root root 1930 Apr  1  2014 smbd
+-rwxr-xr-x 1 root root 2117 Feb 18  2014 speech-dispatcher
+-rwxr-xr-x 1 root root  731 Feb  4  2014 sudo
+-rwxr-xr-x 1 root root 6173 Apr 13  2014 udev
+-rwxr-xr-x 1 root root 2721 Mar 12  2014 umountfs
+-rwxr-xr-x 1 root root 2260 Mar 12  2014 umountnfs.sh
+-rwxr-xr-x 1 root root 1872 Mar 12  2014 umountroot
+-rwxr-xr-x 1 root root 1361 Dec  6  2013 unattended-upgrades
+-rwxr-xr-x 1 root root 3111 Mar 12  2014 urandom
+-rwxr-xr-x 1 root root 1665 Apr  1  2014 winbind
+-rwxr-xr-x 1 root root 2666 Oct  8  2014 x11-common
+
+

@@ -1,0 +1,252 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Dissertation Proposal -- Papers Reviewed
+% 2017SoE027
+% 
+% Author: bmarron
+% Origin: 18 Jan 2017
+% Final:
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[twoside]{article}	%use
+
+\usepackage{lipsum} % Package to generate dummy text throughout this template
+\usepackage{csquotes}
+\usepackage{apacite}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pdfpages}
+\usepackage{verbatim}
+\usepackage{bigfoot}
+\usepackage{multirow}
+
+
+\usepackage[sc]{mathpazo} % Use the Palatino font and the Pazo fonts for math
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\linespread{1.05} % Line spacing - Palatino needs more space between lines
+\usepackage{microtype} % Slightly tweak font spacing for aesthetics
+
+\usepackage[hmarginratio=1:1,top=32mm,columnsep=20pt]{geometry} % Document margins
+\usepackage{multicol} % Used for the two-column layout of the document
+\usepackage[hang, small,labelfont=bf,up,textfont=it,up]{caption} % Custom captions under/above floats in tables or figures
+\usepackage{booktabs} % Horizontal rules in tables
+\usepackage{float} % Required for tables and figures in the multi-column environment - they need to be placed in specific locations with the [H] (e.g. \begin{table}[H])
+%\usepackage{hyperref} % Interferes with cite.sty 
+
+%\usepackage{lettrine} % The lettrine is the first enlarged letter at the beginning of the text
+\usepackage{paralist} % Used for the compactitem environment which makes bullet points with less space between them
+
+\usepackage{abstract} % Allows abstract customization
+\renewcommand{\abstractnamefont}{\normalfont\bfseries} % Set the "Abstract" text to bold
+\renewcommand{\abstracttextfont}{\normalfont\small\itshape} % Set the abstract itself to small italic text
+
+\usepackage{titlesec} % Allows customization of titles
+\renewcommand\thesection{\Roman{section}} % Roman numerals for the sections
+\renewcommand\thesubsection{\arabic{subsection}} % Arabic numerals for subsections
+\titleformat{\section}[block]{\large\scshape\centering}{\thesection.}{1em}{} % Change the look of the section titles
+\titleformat{\subsection}[block]{\large}{\thesubsection.}{1em}{} % Change the look of the section titles
+
+\usepackage{fancyhdr} % Headers and footers
+\pagestyle{fancy} % All pages have headers and footers
+\fancyhead{} % Blank out the default header
+\fancyfoot{} % Blank out the default footer
+\fancyhead[R]{\date{\today}}
+\fancyfoot[R]{\thepage} % Custom footer text
+%\fancyhead[C]{Running title $\bullet$ November 2012 $\bullet$ Vol. XXI, No. 1} % Custom header text
+%\fancyfoot[RO,LE]{\thepage} % Custom footer text
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\title{\vspace{-15mm}\fontsize{14pt}{10pt}\selectfont\textbf{Dissertation Proposal -- Papers Reviewed}} % Article title
+
+\author{
+\large
+\textsc{Bruce Marron} \\ %\thanks{A thank you or further information}\\[2mm] % Your name
+\normalsize Portland State University \\ % Your institution
+\vspace{-5mm}
+}
+\date{}
+
+%----------------------------------------------------------------------------------------
+\begin{document}
+\maketitle % Insert title
+\thispagestyle{fancy} % All pages have headers and footers
+
+%----------------------------------------------------------------------------------------
+%	ABSTRACT
+%----------------------------------------------------------------------------------------
+
+\begin{abstract}
+
+\end{abstract}
+
+%----------------------------------------------------------------------------------------
+%	ARTICLE CONTENTS
+%----------------------------------------------------------------------------------------
+%\begin{multicols}{2} % Two-column layout throughout the main article text, if desired
+
+\section{metrics}
+\shortcite{bollen_principal_2009} A principal component analysis of 39 scientific impact measures\\
+\shortcite{lane_lets_2010} Let's make science metrics more scientific\\
+
+%======================================================================
+\section{Google Scholar Search: "soil food web properties" (up thru 18)}
+%========================================================================
+\subsection{Google Scholar: Cited by > 1000}
+\shortcite{maeder_soil_2002} Soil fertility and biodiversity in organic farming\\
+\shortcite{polis_food_1996} Food web complexity and community dynamics\\
+\shortcite{van_der_heijden_unseen_2008} The unseen majority: soil microbes as drivers of plant diversity and productivity in terrestrial ecosystems\\
+
+\subsection{Google Scholar: Cited by 500 < x < 1000}
+\shortcite{lavelle_faunal_1997-1} Faunal activities and soil processes: adaptive strategies that determine ecosystem function\\
+\shortcite{kladivko_tillage_2001} Tillage systems and soil ecology\\
+\shortcite{doran_soil_2000-1} Soil health and sustainability: managing the biotic component of soil quality\\
+\shortcite{bongers_nematode_1999} Nematode community structure as a bioindicator in environmental monitoring
+
+\subsection{Google Scholar: Cited by 100 < x < 500}
+\shortcite{brussaard_soil_1998} Soil fauna, guilds, functional groups and ecosystem processes\\
+\shortcite{coleman_peds_2008} From peds to paradoxes: linkages between soil biota and their influences on ecological processes\\
+
+
+%===============================================
+\section{Aboveground-Belowground Links}
+%===============================================
+\shortcite{sackett_linking_2010} Linking soil food web structure to above-and belowground ecosystem processes: a meta-analysis\\
+\shortcite{kardol_how_2010} How understanding aboveground–belowground linkages can assist restoration ecology\\
+\shortcite{van_der_putten_empirical_2009} Empirical and theoretical challenges in aboveground–belowground ecology\\
+\shortcite{bardgett_belowground_2014} Belowground biodiversity and ecosystem functioning\\
+
+
+
+%========================================
+\section{Models}
+%========================================
+\shortcite{scheller_forest_2004}
+\begin{itemize}
+  \item short list of ecosystem processes ==> Ecosystem processes (e.g., net primary productivity, decomposition) (p 211)
+  \item Keep it simple ==> Based on our objectives and the computational limitations of complex landscape simulations, the biomass module was designed to minimize complexity. Biomass is calculated using a low number of parameters that can be estimated across an entire landscape (p. 213)
+  \item chose to keep cohort structure and add state variables ==> We elected to preserve the existing cohort data structure, as it has been well validated and integrated with various disturbance modules, and add new state variables that supplement the existing data and allow aboveground living and dead woody biomass calculations.
+  \item BiomassSuccession misses soil food web carbon and does not estimate belowground root mass ==> Biomass that is incorporated into the soil layer (soil organic carbon, SOC) was not modeled. (p. 214)
+  \item All simulated mortality events (the death of a species-age cohort) either transferred the living biomass for a cohort to the dead biomass pool (in the case of fire or wind) or removed the living biomass from the system (in the case of harvesting). (p. 214)
+  
+  \item 1st major assumption ==> The principle assumption was that an equilibrium condition would develop after many decades, whereas a cohort's mortality would equal growth, and [aboveground living biomass for each cohort = ($B_{ij}$)] biomass would cease to increase. (p. 214) 
+  \item 1st major assumption ==> Linear relationship: $B_{ij_{t+1}} = B_{ij} + ANPP_{ij} - M_{ij} \ \ i = spp ,\ j= age, \ ij=spp-age \ cohort \ (bin) $
+  \item 1st major assumption ==> 
+  \item 2nd major assumption ==> ... at the long time steps (10 years) modeled, disturbance does not significantly decrease maximum potential productivity by reducing available soil nitrogen. (p. 214)
+  \item 2nd major assumption ==> impact on SFWs for logging/windthrow seems ok; fire damages soil fungus but on average might be ok
+  \item 3rd major assumption ==> ... (species-age) cohort biomass data implicitly incorporates density information. Density was not explicitly calculated for either our growth or mortality functions. reductions in density over time are difficult to predict in mixed-species,mixed-age forests. Future research will explore variation in initial biomass as a function of seed rain and initial density.(p. 214)
+  \item $ANPP_{max}$ estimated a variety of ways ==> expert knowledge, Forest Inventory and Analysis (FIA) data, gap models, ecosystem process models (p. 215) ... maximum aboveground biomass (AGB) is now an input parameter....the relationship between above ground net primary productivity (ANPP) and AGB is not linear beyond $\sim 10 Mg \ ha^{-1} yr^{-1}$.... separate input for maximum AGB better accommodates shrubs and grasses that have different relationships between ANPP and AGB (p. 5 Biomass Succession v3.5 User Guide)
+  \item 
+\end{itemize}
+
+%===========================================
+\section{Plant-soil models to check out}
+%===========================================
+\shortcite{bever_incorporating_1997}
+
+
+%===============================================
+\section{Ecological networks}
+%============================================
+\shortcite{williams_simple_2010} Simple MaxEnt models explain food web degree distributions
+\begin{itemize}
+  \item the MaxEnt models shows that, in many food webs, one does not need to consider detailed ecological processes to be able to predict the consumer, resource, or undirected degree distributions. While many features of food webs are clearly nonrandom and require an ecological explanation, their degree distributions are largely explainable by a simple null model based in statistical rather than ecological theory (p. )
+\end{itemize}
+
+
+\shortcite{fath_ecological_2007} Ecological network analysis: network construction
+\begin{itemize}
+  \item assumption --- it is necessary that the network model be a partition of the environment being studied, i.e., be mutually exclusive and exhaustive
+  \item blasts reductionist approach ---  network models aim to include all ecological compartments and interactions and the analysis determines the overall relationships and significance of each. The difficulty of course lies in obtaining the data necessary to quantify all the ecological compartments and interactions. When sufficient data sets are not available, simple algorithms, called community assembly rules, have been employed to construct realistic food webs to test various food web theories. Once the network is constructed, via data or algorithms, the ENA is quite straightforward and software is available to assist in this (p.  )
+\end{itemize}
+
+
+\shortcite{bascompte_disentangling_2009}
+\begin{itemize}
+  \item These [mutually beneficial] interactions play a major role in the generation and maintenance of biodiversity on Earth and organize communities around a network of mutual dependences. (p. 417)
+  \item mutualistic networks are (i) heterogeneous, in which the bulk of species interact with a few species, and  a few species have a much higher number of interactions than would be expected from chance alone; (ii) nested, in which specialists interact with a subset of the group of species that generalists interact with; and (iii) built on weak and asymmetric links among species (for example, in some cases when a plant interacts strongly with an animal, the animal tends to depend less on the plant) (14). Therefore, mutualistic networks are neither randomly organized nor organized in isolated compartments, but built cohesively around a core of generalist species. (p 417)
+  \item the nested structure of mutualistic networks maximizes the number of coexisting species (p 418)
+  \item Studies such as (A) focus on coevolution at a community scale and set the foundation for predicting how global change will propagate through such networks. Studies such as (B) provide a framework to address the simultaneous influence of all patches on gene flow and quantify the importance of a single patch for the persistence of the entire metapopulation.
+\end{itemize}
+
+
+%=======================
+\section{Books}
+%=======================
+\shortcite{harte_maximum_2011} Maximum Entropy and Ecology
+\begin{itemize}
+  \item the concept of information theory can be applied to arbitrary prob dist. (p 123)
+  \item MaxEnt has been used to infer the distribution of numbers of linkages between nodes in an ecological web. (p. 135)
+\end{itemize}
+
+\shortcite{gianinazzi_impact_1994}
+\begin{itemize}
+  \item Plant health and productivity are rooted in the soil, and the quality of the soil depends on the diversity and viability of its biota (p. 119)
+  \item Tisdall and Oades (1979) first reported that aggregate stability and AMF status are related in ag soils (p. 119)
+  \item ... pioneering work by Tisdall and Oades (1979, 1980) on the relationships between crop rotation, fallowing, and soil stability, showing a connection between the extent of the soil mycelium and macroaggregate formation and stabilization by arbuscular mycorrhizal roots (p. 120)
+  \item ... root and fungus effects are difficult to separate but that the soil mycelium alone is capable to bring about soil effects equivalent to those of roots, while roots and fungi together affect soil aggregation synergistically (p. 120)  
+\end{itemize}
+
+\shortcite{gliessman_agroecology:_2015}
+\begin{itemize}
+  \item The greater the structural and functional similarity of an agroecosystem to the natural ecosystems in its biogeographic region the greater the likelihood that the agroecosystem will be sustainable. (p 288)
+  \item Observable and measurable values for a a range of natural processes, structures, and rates can provide benchmarks/thresholds that delineate the ecological potential for the design and management of agroecosystems in a particular area. It is the task of research to determine how close an agroecosystem needs to be to benchmark/threshold values of natural systems to be sustainable. (p 288)
+  \item plant spp diversity ==> Shannon index > 5 (p 295)
+  \item successional mosaic (p 350)
+  \item silicate clays (aluminum silicate) ==> high CEC; high productivity (p 90)
+  \item hydroxide clays (hydrated Al and Fe hydroxides) ==> low CEC; low productivity (p 90)
+  \item Productivity index = $ \frac{Total \ biomass \ accumulated}{Net \ primary \ productivity}$ (p 291)
+  \item NPP does not vary much between systems (ranging from 0 to 30 tons/ha). What really varies from system to system is standing biomass ( ranging from 0 to 800 tons/ha) (p 291)
+   
+\end{itemize}
+
+
+
+
+%=======================
+\section{Internet}
+%=======================
+
+\subsection{Soil Adsorption Ratio}
+https://en.wikipedia.org/wiki/Sodium\_adsorption\_ratio\\
+http://civil.emu.edu.tr/courses/civl553/Lec12\%20Flocculation\%20[Compatibility\%20Mode].pdf\\
+http://www.fao.org/docrep/003/T0234E/T0234E04.htm\\
+https://www.ars.usda.gov/arsuserfiles/20360500/pdf\_pubs/P2291.pdf\\
+http://ecorestoration.montana.edu/mineland/guide/analytical/chemical/solids/sar.htm
+
+\begin{itemize}
+  \item Soil Adsorption ratio $= {\frac {Na^{+}}{\sqrt {{\tfrac {1}{2}}({Ca^{2+}+Mg^{2+}})}}}$
+  \item High SAR will cause a decrease in the ability of the soil to form stable aggregates and a loss of soil structure and tilth b/c clays do not flocculate; water infiltration/drainage problems
+  \item measure with AA spectoscopy
+\end{itemize}
+
+
+\subsection{Cation exchange capacity}
+https://www.extension.purdue.edu/extmedia/ay/ay-238.html\\
+http://nmsp.cals.cornell.edu/publications/factsheets/factsheet22.pdf\\
+
+
+
+
+
+%\end{multicols}
+
+%----------------------------------------------------------------------------------------
+%	REFERENCE LIST
+%----------------------------------------------------------------------------------------
+\newpage
+\bibliographystyle{/usr/local/share/texmf/tex/latex/apacite/apacite}
+\bibliography{/home/bmarron//Desktop/BibTex/My_Library_20170125}
+
+
+
+
+\end{document}

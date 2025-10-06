@@ -1,0 +1,33 @@
+
+========= pulsaudio and sound cloud files =============
+
+
+One obvious difference is that I installed pulseaudio-git because pulseaudio broke on me. It builds relatively fast, so you could try that.
+
+I think you could try pulseaudio --kill
+
+
+Check if any pulseaudio instance is running :
+
+pulseaudio --check
+
+It normally prints no output, just exit code. 0 means running. Mine were not running, so I just advanced to step 3.
+
+If any instance is running :
+
+pulseaudio -k
+
+Finally, start pulseaudio again as a daemon :
+
+pulseaudio -D
+
+
+
+
+$ pulseaudio --check --verbose
+I: [pulseaudio] main.c: Daemon running as PID 8391
+
+
+missing codecs?
+
+

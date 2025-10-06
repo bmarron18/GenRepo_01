@@ -1,0 +1,433 @@
+	
+
+
+==============================================================================
+===== find stuff / pattern match ===========================================
+==============================================================================
+
+
+########################
+find empty directories
+########################
+
+find ./ -depth -type d -empty 	<== Using ./ OR . == located in the current working directory
+
+find / -type d -empty			<== search EVERYWHERE for empty directories
+
+
+
+
+###########
+find packages
+###############
+
+whereis parole
+
+dpkg --status texlive
+
+#######################
+find packages w/ <name>
+#########################
+
+	a. <name> = grass
+ dpkg -l | grep grass > ~/Desktop/tester.txt
+
+	b.
+locate .desktop|grep grass72
+
+									<== grep command in Linux is a command-line utility used 										for searching plain-text data sets for lines that match a 										regular expression or a fixed string. The name "grep" stands 
+									for "Global Regular Expression Print."
+
+
+
+######################################
+find and print scholarly references
+#######################################
+
+Evince is a document viewer for PDF, PostScript, DjVu, TIFF, XPS and DVI formats
+
+	a. search Zotero
+	b. locate with 'find'
+	c. view/print with 'evince'
+
+cd Desktop
+find ./ -name "*Aber*" -type f		
+
+
+evince ./Desktop/PSU/PhD_EES/2015SoE002_ESM518_LandscapeEcology/References/Why-we-dont-believ-models_Abers_1997.pdf
+evince ~/Desktop/PSU/PhD_EES/2015SoE002_ESM518_LandscapeEcology/References/Why-we-dont-believ-models_Abers_1997.pdf
+
+
+
+######################################
+find directory
+rename directory
+#######################################
+
+
+
+find ./ -name "*Freemind*" -type d
+
+find . -name '*RG*' -type d | rename 's/RG/NDS/'
+
+
+#############################
+pattern / search /  match / find / locate
+LOCATE specific files
+#############################
+
+$ find ...		case sensitive!!!
+
+
+	a1.find all .py files in /Desktop 
+find ~/Desktop -name "*.py"
+
+
+	a2. find .sty files RECURSIVELY using wildcards
+find /usr/share/texlive/texmf-dist/tex/latex/** -name "*.sty" > ~/Desktop/tester
+
+
+
+	b. locate a FILE (in the current directory)
+	b1. know the name of the file
+find /home/bmarron/Desktop -name "psulogo_horiz_msword.jpeg"
+
+
+	b2. use "*<pattern>*" (if can't remember the name)
+find ./ -name "*Wakeland*.tex" -type f
+find ./ -name "*university_recommendation*" -type f
+find ./ -name "*20160929*" -type f
+find ./ -name "*_2010*.pdf"
+
+
+	b3. find all files w/ a particular extension
+find /home/bmarron/Downloads/landis-extensions/ -iname '*.exe' >> ~/Desktop/test.txt
+
+
+
+	b4. use wildcards for intermediate directories
+find ~/Desktop/PSU/**/*/References -name "*Scheller*.pdf" -type f
+
+
+
+	c. locate a DIRECTORY in another directory 
+find /usr -name "RNet*" -type d
+find /usr -name "*Net*" -type d
+
+
+
+	d. search for a DIRECTORY in the ENTIRE file system where permissions ok; takes time
+find / -name "drop*" -type d
+
+
+	e. search EVERYWHERE on the compu; takes boo-koo time
+sudo find / -name "zotero" -type d
+
+
+	f. use "locate"
+locate ole32.dll
+
+
+
+#####################################
+pattern / search /  match / find / locate
+WITHIN  .txt, .py, .nc, etc
+##########################################
+http://stackoverflow.com/questions/865382/how-do-you-grep-through-code-that-lives-in-many-different-directories
+http://www.thegeekstuff.com/2013/12/xargs-examples
+https://www.digitalocean.com/community/tutorials/using-grep-regular-expressions-to-search-for-text-patterns-in-linux
+
+	a. flags/switches
+
+-r, -R 		recursive
+-n 		print line number
+-w		match whole word
+-e 		PATTERN	(Use PATTERN as the pattern; protect a pattern with “ <complicated pattern>”)
+
+
+
+	b. using "find" then pipe to grep
+	b1. .py files in DIRECTORY then search for PATTERN in files
+$ find DIRECTORY -name "*.py" | xargs grep PATTERN
+$ find ./ -name "*.py" | xargs grep -e THRED >> ~/Desktop/test.txt
+$ find ~/Desktop -name "*.py" | xargs grep -e THRED >> ~/Desktop/test2.txt
+$ find /home/bmarron/Desktop/ -name "*.py" | xargs grep -e "figure\(" >> test.txt
+
+
+
+	c. only search for the pattern in files which have .c or .h extensions. 
+$ grep -rnw --include=\*.{c,h}  <directory> -e PATTERN
+
+
+
+	d. exclude searching all the files ending with .o extension
+$ grep -rnw --exclude=*.o  <directory> -e PATTERN
+
+
+
+
+	e. equalities (all three equal)
+	e1. return .py files (w/ line and line numbers) that contain "random"
+$ find <directory -name "*.py" | xargs grep -n random
+$ grep -rn <directory> --include="*.py"  -e random
+
+
+
+
+
+
+	f. examples
+
+
+output to text, if needed
+>> ~/Desktop/test.txt
+
+	f1. can open a terminal in the repo of interest then,
+
+<directory> == ./
+
+
+grep -rn ./ --include="*.tex" -e "learning communit" >> $HOME/Desktop/test.txt
+grep -rn ./ --include="*.txt" -e "coda" >> $HOME/Desktop/test.txt
+
+
+grep -rn <directory> \
+--include="*.txt" \
+-e trace
+
+
+grep -rn ./ --include="*.txt" -e ggplot >> ~/Desktop/test.txt
+
+
+ -e awk 
+ -e regression 
+ -e data.frame 
+ -e structure\( 
+ -e %*% 
+ -e solve\( 
+ -e ols 
+ -e lm 
+ -e glm 
+ -e dlm 
+ -e stack\( 
+ -e boot 
+ -e ARIMA 
+ -e state-space
+ -e "state space" 
+ -e MARSS 
+ -e  ts\( 
+ -e "time series" 
+ -e ggplot 
+ -e "for (i in" 
+ -e Bonferroni 
+ -e spectral 
+
+
+ -e read.table 
+ -e sep= 
+ -e ggplot 
+ -e ols 
+ -e acf 
+ -e stack\( 
+ -e anova\( 
+ -e str_join 
+ -e goodness 
+
+
+grep -rn ./
+ --include="*.txt" -e "7.29" 
+ --include="*.xml" -e 9 
+ --include="*.py" -e "Setup application configuration"
+ --include="*.py" -e xmlreader
+ --include="*.py" -e rasterOutCellArea
+ --include="*.txt" -e Windows 
+ --include="*.txt" -e Inno 
+ --include="*.txt" -e Google
+ --include="*.txt" -e shotwell
+ --include="*.tex" -e threeparttable
+ --include="*.txt" -e Unicode
+
+
+
+#################################
+pattern / search /  match / find / locate
+WITHIN .pdf
+##################################
+https://pdfgrep.org
+http://unix.stackexchange.com/questions/6704/how-can-i-grep-in-pdf-files
+(poppler-utils installed)
+
+
+pdfgrep -r STEM
+pdfgrep -rn "environmental justice"
+
+
+	a. Print the first ten lines matching pattern and print their page number
+$ pdfgrep -n --max-count 10 pattern foo.pdf
+
+
+	b. Search all .pdf files whose names begin with foo recursively in the current directory
+$pdfgrep -r --include "foo*.pdf" pattern
+
+
+	c. Search for 'pattern' in all .pdf files that are smaller than 12M recursively in the current directory
+$ find ./ -name "*.pdf" -size -12M -print0 | xargs -0 pdfgrep pattern
+
+
+
+	d. USE THIS!! to find a .pdf; search through multiple files in old .db repo
+	d1. get title info from Zotero
+
+$ cd /home/bmarron/DataBases/Academic_Articles_db/Items/
+$ pdfgrep -R "Transformation*"
+
+
+
+
+
+	#search thru individual file as .txt (gives line numbers)
+		a. use GUI to highlight folder containing the .pdfs of interest 
+		b. Right-click to open a Terminal at the folder 
+		c. use pdfgrep at the command line
+	
+$ pdfgrep -rn recalcitrant
+./Schmidt_etal_Soil-organic-matter_2011.pdf:3:source of recalcitrant SOM. b,
+./Schmidt_etal_Soil-organic-matter_2011.pdf:5:on adding recalcitrant material to
+./Schmidt_etal_Soil-organic-matter_2011.pdf:5:for recalcitrant tissues or through
+./Schmidt_etal_Soil-organic-matter_2011.pdf:8:from recalcitrant aliphatic
+./Schmidt_etal_Soil-organic-matter_2011.pdf:8:of recalcitrant dissolved organic
+./Schmidt_etal_Soil-organic-matter_2011.pdf:8:M. What is recalcitrant soil
+./Smith_etal_AMFs-help-plants-in-stressful-environments_2009.pdf:3:recalcitrant
+
+
+$ pdfgrep -Rn SOM
+
+
+
+
+	# "convert" pdf on the fly, pipe it to grep, search for 'pattern'
+	# "-" 					pdftotext output to stdout, not to files
+	# --with-filename and --label=  	file name in the output of grep
+	# --color 				colors on the terminal
+	# search for 'recalcitrant' in Schmidt_etal_soil-organic-matter_2011.pdf
+$ pdftotext Schmidt*.pdf - | grep -n --with-filename --label=Scmidt*.pdf --color -e recalcitrant
+Scmidt*.pdf:261:postulated to be an important source of recalcitrant SOM. b, Direct highresolution in situ observations with non-destructive techniques (Observations)
+Scmidt*.pdf:503:to warming? The conventional assumption that older SOM is recalcitrant implies that this large carbon pool is highly temperature sensitive, because Arrhenius kinetics tells us that reactions with higher
+Scmidt*.pdf:522:strategies based on adding recalcitrant material to soils, whether through
+Scmidt*.pdf:523:plant selection for recalcitrant tissues or through biochar amendments,
+Scmidt*.pdf:1064:73. Kleber, M. What is recalcitrant soil organic matter? Environ. Chem. 7, 320–332
+Scmidt*.pdf:1101:carbon pool by increasing contributions from recalcitrant aliphatic
+Scmidt*.pdf:1126:97. Jiao, N. et al. Microbial production of recalcitrant dissolved organic matter:
+
+
+###########################################
+Find files ==> mv/cp to new directory
+############################################ 
+
+	
+
+https://www.cyberciti.biz/tips/howto-linux-unix-find-move-all-mp3-file.html
+$ find /folder1/folder2/ -iname "*.mp3" -exec /bin/mv {} /mnt/mp3 \;
+									<== search recursively starting in folder2
+									<== find all files that have the .mp3 extension
+									<== execute the mv command 
+									<== The string ‘{}’ is replaced by the file name 
+									<== move the files AND the directory structure to a new directory
+NB.  MUST create the directory where the files will be moved FIRST!!
+									<== \; ends /bin/mv command.
+
+
+find / -iname "*.mp3" -type f -exec /bin/mv {} /mnt/mp3 \;
+									<== move the files ONLY (skip the directory structure) to a new directory
+
+
+
+$ find /home/bmarron/Downloads/landis-extensions/ -iname '*.exe' >> ~/Desktop/test2.txt
+$ find /home/bmarron/Downloads/landis-extensions/ -iname '*.exe' -type f -exec /bin/cp {} ~/Desktop/GoogleArchive_executables \;
+
+
+
+
+
+###########################
+pattern / search /  match / find / locate
+CHANGES to files 
+############################
+
+"time" 		==> days
+"min, sec" 	==> min, sec
+
+"a" 		==> accessed
+"m" 		==> directory modified
+"c"		==> file modified; installed
+
+1440 min per 1 day
+4320 min per 3 days
+
+
+
+	#find all FILE MODIFIED (installed) in the last 40 (or so) MINUTES
+	# or last three days
+	#exclude files in the /.mozilla and /.cache directories (temp files)
+	#exclude /.* files (hidden files)
+	$ \( <expression>)\
+	#send the output to a .txt file on the Desktop
+
+$ find /home/bmarron/ -cmin +0 -cmin -40 -type f \( ! -iname ".*" \) ! -path "/home/bmarron/.*/*" >> ~/Desktop/changes.txt
+$ find /home/bmarron/ -ctime +0 -ctime -3 -type f \( ! -iname ".*" \) ! -path "/home/bmarron/.*/*" >> ~/Desktop/changes.txt
+$ find /home/bmarron/ -cmin +0 -cmin -4320 -type f \( ! -iname ".*" \) ! -path "/home/bmarron/.*/*" >> ~/Desktop/changes.txt
+
+
+
+	#all files ACCESSED from now for the last three days
+$ find -atime +0 -atime -3
+
+
+	#find only *.c or *.asm files 
+$ find /home/bmarron/ -type f \( -iname "*.c" -or -iname "*.asm" \)
+
+  
+
+	#all FILE MODIFIED between 20 and 21 DAYS ago:
+$ find -ctime +20  -ctime -21
+
+
+	#all FILE MODIFIED between 2500 and 2800 MINUTES ago
+	#1 day = 1440 min
+$ find -cmin +2500  -cmin -2800
+
+
+
+	#all directories and files in ~/.wine modified from NOW for the last 3 DAYS; output to 'changes.txt' 
+$ find ~/.wine -mtime +0  -mtime -3 > ~/Desktop/changes.txt
+
+$ find $HOME -mtime 0 | less
+$ find ~/Desktop -mtime 0
+
+
+	#all files in ~/.wine changed from NOW for the last 10 MINUTES
+$ find ~/.wine -cmin +0  -cmin -10 >> ~/Desktop/changes.txt
+
+
+	#all "*.tex" files in /home/bmarron ACCESSED in the last 5 days
+$ find ./ -name "*.tex" -type f -atime -5 >> ~/Desktop/test.txt
+
+
+	# files with *.c extension, pipe to the xargs command, execute “rm -rf” command on all the *.c files. 
+$ find ./ -name "*.c" | xargs rm -rf
+
+
+
+#######################################
+pattern / search /  match / find / locate
+LOCATE executables
+##########################################
+
+$ whereis
+
+$ which
+
+$ locate 
+
+
+===============================================================

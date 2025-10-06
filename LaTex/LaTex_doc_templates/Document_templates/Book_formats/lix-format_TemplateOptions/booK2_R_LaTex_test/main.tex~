@@ -1,0 +1,159 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The Legrand Orange Book
+% LaTeX Template
+% Version 1.4 (12/4/14)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Mathias Legrand (legrand.mathias@gmail.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+% Compiling this template:
+% This template uses biber for its bibliography and makeindex for its index.
+% When you first open the template, compile it from the command line with the 
+% commands below to make sure your LaTeX distribution is configured correctly:
+%
+% 1) pdflatex main
+% 2) makeindex main.idx -s StyleInd.ist
+% 3) biber main
+% 4) pdflatex main x 2
+%
+% After this, when you wish to update the bibliography/index use the appropriate
+% command above and make sure to compile with pdflatex several times 
+% afterwards to propagate your changes to the document.
+%
+% This template also uses a number of packages which may need to be
+% updated to the newest versions for the template to compile. It is strongly
+% recommended you update your LaTeX distribution if you have any
+% compilation errors.
+%
+% Important note:
+% Chapter heading images should have a 2:1 width:height ratio,
+% e.g. 920px width and 460px height.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[11pt,fleqn]{book} % Default font size and left-justified equations
+
+\usepackage[top=3cm,bottom=3cm,left=3.2cm,right=3.2cm,headsep=10pt,a4paper]{geometry} % Page margins
+
+\usepackage{xcolor} % Required for specifying colors by name
+\definecolor{ocre}{RGB}{243,102,25} % Define the orange color used for highlighting throughout the book
+
+% Font Settings
+\usepackage{avant} % Use the Avantgarde font for headings
+%\usepackage{times} % Use the Times font for headings
+%\usepackage{newcent} % Use the Times font for headings
+\usepackage{mathptmx} % Use the Adobe Times Roman as the default text font together with math symbols from the Sym­bol, Chancery and Com­puter Modern fonts
+
+\usepackage{microtype} % Slightly tweak font spacing for aesthetics
+\usepackage[utf8]{inputenc} % Required for including letters with accents
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+
+% Bibliography
+%\usepackage[citestyle=authoryear,sorting=nyt,sortcites=true,autopunct=true,babel=hyphen,hyperref=true,abbreviate=false,backref=true,backend=biber]{biblatex}
+\usepackage[backref=true,                % 
+            hyperref=true,               % 
+            firstinits=true,             %
+            indexing=true,               %
+            url=false,                   % 
+            style=alphabetic,            %  style=debug, alphabetic
+            backend=biber,               % 
+            doi=false,
+            texencoding=utf8,
+            bibencoding=utf8]{biblatex}
+\addbibresource{\bibliography2} % BibTeX bibliography file
+
+%\defbibheading{bibempty}{}
+\usepackage{csquotes}
+
+
+% Index
+\usepackage{calc} % For simpler calculation - used for spacing the index letter headings correctly
+\usepackage{makeidx} % Required to make an index
+\makeindex % Tells LaTeX to create the files required for indexing
+\usepackage{verbatim}
+
+%----------------------------------------------------------------------------------------
+
+\input{structure} % Insert the commands.tex file which contains the majority of the structure behind the template
+
+\begin{document}
+
+\let\cleardoublepage\clearpage
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\begingroup
+\thispagestyle{empty}
+\AddToShipoutPicture*{\put(6,5){\includegraphics[scale=1]{portal-energy-background}}} % Image background
+
+\centering
+\vspace*{9cm}
+\par\normalfont\fontsize{35}{35}\sffamily\selectfont
+Etude et estimation de la consommation totale d'électricité par calage avec ou sans réduction du nombre de variables auxiliaires.\par % Book title
+\vspace*{1cm}
+{\Huge Amin El Gareh et Cheikh Med Lmami Bezeid}\par % Author name
+\endgroup
+
+%---------------------------------------------------
+
+
+\chapterimage{background.pdf} % Chapter heading image
+
+
+\renewcommand\contentsname{Table des Matières}
+\tableofcontents
+
+%----------------------------------------------------------------------------------------
+%	CHAPTER 1
+%----------------------------------------------------------------------------------------
+
+
+\chapterimage{chapter_head_1.pdf} % Chapter heading image
+
+
+\chapter{Présentation des données d'électricité}
+
+\section{Introduction des données}
+
+On s’intéresse à des données d'électricité irlandaise de très grandes dimensions. Il s'agit de la consommation d'électricité enregistrée toutes les 30 minutes pendant 2 semaines (du lundi 5 octobre 2009 à 00:00 au dimanche 18 octobre 2009 à 23h30) pour 6291 individus: résidentiels, petites \& moyennes entreprises, et autres \citeauthor{article_key}.
+
+
+%------------------------------------------------
+
+\section{Etude descriptive des données}
+
+Notre objectif ici est d'isoler le ou les comportements de consommation d'un ensemble d'individus appartenant à une même classe: résidentiels, petites \& moyennes entreprises, ou autres. 
+
+\subsection{Consommation moyenne}
+On considère la consommation moyenne comme étant la consommation totale prise en moyenne sur toute la population et par jour de la semaine. Sur la figure 1.1, on a représenté cette consommation moyenne en fonction du temps en minutes, et les jours de la semaine y sont délimités par des traits verticals rouges. 
+L'analyse de la courbe des individus "résidentiels" et "autres", nous révèle le caractère cyclique de la consommation moyenne sur une période de 24h. La courbe des individus "petites \& moyennes entreprises" indique une consommation moyenne qui s'apparente être cyclique entre le lundi et le vendredi, mais qui ne l'est pas le week-end.
+
+
+
+
+% ----------------------------------------------------------------------------------------
+% 	BIBLIOGRAPHY
+% ----------------------------------------------------------------------------------------
+
+\chapter*{Bibliographie}
+
+\printbibliography
+
+
+
+
+%----------------------------------------------------------------------------------------
+
+\end{document}

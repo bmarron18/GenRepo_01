@@ -1,0 +1,733 @@
+
+############
+Operations
+##############
+
+COPY of entire directory w/ all files!!
+	cd ~/Desktop/LaTex/LaTex_installed_packages
+	sudo cp -r fontawesome5 /usr/local/share/texmf/tex/latex/
+	cd /usr/local/share/texmf/tex/latex/fontawesome5/
+	sudo mktexlsr
+	
+	cd ~/Desktop/LaTex/LaTex_installed_packages
+	sudo cp -r moderncv-old /usr/local/share/texmf/tex/latex/
+	cd /usr/local/share/texmf/tex/latex
+	sudo mv moderncv-old moderncv
+	cd /usr/local/share/texmf/tex/latex/moderncv/
+	sudo mktexlsr
+	
+COPY just (all) files and hidden folders
+	cp -a /source/. /dest/ 	<== -a option is an improved recursive option
+							<== The . at end of the source path is a specific cp syntax that copies 							all files and folders, including hidden ones.
+	
+MOVE entire directory w/ all files!!
+	cd /usr/share/texlive/texmf-dist/tex/latex
+	sudo mv ccicons /usr/share/texlive/texmf-dist/fonts/opentype/public
+	cd /usr/share/texlive/texmf-dist/fonts/opentype/public/ccicons
+	sudo mktexlsr
+	sudo texhash
+	
+	
+	cd /usr/share/texlive/texmf-dist/fonts/opentype/public/
+	sudo mv ccicons /usr/share/texlive/texmf-dist/fonts/type1/public
+	cd /usr/share/texlive/texmf-dist/fonts/type1/public/
+	ls
+	sudo mktexlsr
+	sudo texhash
+	
+
+DELETE all files/dir.s in a dir
+	sudo rm -r *
+
+RENAME directory
+	sudo mv moderncv-old moderncv
+
+NEW directory
+	sudo mkdir -p /usr/local/share/texmf/tex/latex/ClearSans/ &&
+	sudo cp -r /home/bmarron/Downloads/clearsans/ /usr/local/share/texmf/tex/latex/ClearSans/ &&
+	cd /usr/local/share/texmf/tex/latex/ClearSans/ &&
+	sudo mktexlsr &&
+	sudo updmap-sys --enable Map=ClearSans.map
+	
+
+FIND
+cd /usr/share/
+find ./ -name "*.otf" -type f
+
+cd /usr/share/
+find ./ -name "ocr*" -type d
+
+
+###########
+Fonts Refs
+#############
+https://www.overleaf.com/learn/latex/Questions/I_have_a_custom_font_I%27d_like_to_load_to_my_document._How_can_I_do_this%3F
+
+https://www.stat.auckland.ac.nz/~paul/Reports/dvir/type1/dvir-type1.html
+
+https://tex.stackexchange.com/questions/109703/how-to-determine-the-font-being-used-by-a-latex-document
+
+Refreshing the TeX Database 
+https://www.dickimaw-books.com/latex/novices/html/texhash.html
+
+https://tex.stackexchange.com/questions/197607/using-metafont-letters-in-latex
+
+https://tex.stackexchange.com/questions/119467/how-latex-makes-use-of-font-related-files-i-e-fd-map-enc-def-etc-whe
+
+
+##############
+Orientation
+Font Types and Files
+#####################
+
+There are:
+    -- legacy fonts: PostScript Type 1 (.pfb) or TrueType (.ttf)
+    -- modern fonts: OpenType (.otf)
+	-- metafont files (.mf)
+
+
+There are:
+	-- font files (.ttf, .otf or .pfb)
+	-- TeX font metric files (.tfm)
+	-- encoding file (.enc)
+	-- mapping files (.map)
+	-- font definition files (.fd)
+	-- generic font files (.gf)
+	-- Adobe Font Metrics file (.afm) information for a Type 1 PostScript font
+
+Make pdf? ==> Use xelatex or lualatex (from command line)...
+XeLaTeX and LuaLaTeX provide extensive support for advanced typesetting using OpenType fonts—TrueType and PostScript varieties—because their underlying TeX engines, XeTeX and LuaHBTeX, have native (built-in) capabilities to process OpenType font technologies, which pdfTeX does not. 
+
+pdflaTeX has limited font capabilities. Type 1 font is used in pdfTeX because of traditional TeX has the limit that each TeX font has at most 256 glyphs, while today most TTF or OTF fonts have more. In pdfLaTex, for each font file (.ttf, .otf or .pfb), you will need to have (or generate!) a suitable TeX font metric (.tfm) and, perhaps, an encoding file (.enc). pdfLaTeX must know how to embed document fonts into the final PDF file. To do that, it reads a font map file (pdftex.map), which you’ll need to update with details of your custom font.
+[~/texmf-var/fonts/map/pdftex/updmap/pdftex.map]
+
+
+Use fontspec pkg----
+To use OpenType fonts with XeLaTeX and LuaLaTeX, you need to load fontspec, a powerful and feature-rich package which provides an interface to the advanced typesetting capabilities of OpenType fonts. Note: You DO NOT need to use \usepackage[T1]{fontenc} (or \usepackage[utf8]{inputenc}) when using OpenType fonts with XeLaTeX or LuaLaTeX.
+
+One easy way to avoid Type 1 fonts is to use the LuaTeX engine, rather than the default LaTeX engine, because LuaTeX makes it easy to select different fonts. Then it is just a matter of selecting an Open Type or True Type font in the TeX code. 
+
+\usepackage{fontspec}
+\setmainfont[Ligatures=TeX]{Georgia}
+\setsansfont[Ligatures=TeX]{Arial}
+
+in pdflatex for Type 1 fonts use both
+\usepackage[T1]{fontenc} 
+\usepackage[utf8]{inputenc})
+
+computer modern is Latex’s default font (cm files)
+Computer Modern (CM), CM Roman, CM math, CM sans, CM typewriter
+
+
+
+
+################
+Problems????
+Font Errors in making pdfs
+
+U	== Unicode
+OT1	== opentype
+T1	== type1
+
+ccicons		== Creative Commons font
+ocrb		== 
+zi4			== RStudio font in Inconsolata font set
+
+individual error messages/lines of output from pdflatex, xelatex, lualatex build attempts -----
+"cant find file [font related]"
+! Font \U/ccicons/m/n/8=ccicons at 8pt not loadable: metric data not found or bad.
+! Font \OT1/ocrb/m/n/8=ocrb8 at 8pt not loadable: metric data not found or bad.
+! Font \T1/zi4/m/n/10=t1-zi4r-0 at 10pt not loadable: metric data not found or bad. <== inconsolata font pkg
+
+mktexpk: don't know how to create bitmap font for t1-zi4b-0	<== inconsolata font pkg
+mktexpk: perhaps t1-zi4b-0 is missing from the map file.
+kpathsea: Appending font creation commands to missfont.log.
+###############################
+These errors probably mean that the font is not installed correctly (ie kpathsea can´t find it)
+(See Font Installations below)
+
+Try--
+*Refreshing the TeX's file database
+		
+	$ sudo texhash
+	$ sudo mktexlsr
+	
+* Refresh map file for font package
+	sudo updmap-sys --enable Map=ccicons.map
+
+*checking the CTAN Font Errors Cheat Sheet to see if font file found	
+	$ kpsewhich ccicons.tfm					<== Karl's Path SEarch Library WHICH
+	[returns nothing---ie, no file]
+	If you are sure that the file .tfm is there, update TEX’s cache (texhash).
+
+	EX.
+	check if Latex can find font files---
+	/usr/share/texlive/texmf-dist/fonts$ kpsewhich ccicons.pfb
+		/usr/share/texlive/texmf-dist/fonts/type1/public/ccicons/ccicons.pfb	<== finds .pfb
+		
+	/usr/share/texlive/texmf-dist/fonts$ kpsewhich ./ ccicons.tfm
+		[returns nothing---ie, no file]
+		
+
+*check missfont.log
+		mktextfm ccicons		<== make .tfm file
+	
+* Refreshing the pdftex.map file
+	$ sudo updmap-user
+	
+* see https://www.tug.org/texinfohtml/kpathsea.html
+	6.5.2 mktex script names
+	8.5.1 Unable to find files
+	8.5.3 Unable to generate fonts
+If the fonts (or whatever) don’t already exist, 
+mktexpk or mktexmf or mktextfm will try to create them. 
+
+If these rather complicated shell scripts fail, you’ll eventually get an error message saying something like ‘Can't find font fontname’. The best solution is to fix (or at least report) the bug in mktexpk; the workaround is to generate the necessary fonts by hand with Metafont, or to grab them from a CTAN site
+
+
+
+-----	Fonts Installed (/usr/share/texmf/fonts)	-----------------------------
+
+#######################
+Font Installation: ClearSans
+(NOT a metafont)
+########################
+
+Installation
+------------
+
+1. Create the following directories in a local texmf tree:
+   
+   - fonts/enc/dvips/ClearSans
+cd /usr/share/texmf/fonts/enc/dvips
+sudo mkdir -p ClearSans &&
+cd /home/bmarron/Downloads/ClearSans &&
+sudo cp -a enc/. /usr/share/texmf/fonts/enc/dvips/ClearSans  
+   
+   
+   - fonts/map/dvips/ClearSans
+cd /usr/share/texmf/fonts/map/dvips
+sudo mkdir -p ClearSans &&
+cd /home/bmarron/Downloads/ClearSans/map &&
+sudo cp ClearSans.map /usr/share/texmf/fonts/map/dvips/ClearSans   
+   
+   
+   - fonts/tfm/public/ClearSans
+cd /usr/share/texmf/fonts/tfm/public
+sudo mkdir -p ClearSans &&
+cd /home/bmarron/Downloads/ClearSans &&
+sudo cp -a tfm/. /usr/share/texmf/fonts/tfm/public/ClearSans  
+   
+   
+   - fonts/type1/public/ClearSans
+cd /usr/share/texmf/fonts/type1/public
+sudo mkdir -p ClearSans &&
+cd /home/bmarron/Downloads/ClearSans &&
+sudo cp -a type1/. /usr/share/texmf/fonts/type1/public/ClearSans   
+   
+   
+   - fonts/opentype/public/ClearSans
+cd /usr/share/texmf/fonts/opentype/public
+sudo mkdir -p ClearSans &&
+cd /home/bmarron/Downloads/ClearSans &&
+sudo cp -a opentype/. /usr/share/texmf/fonts/opentype/public/ClearSans
+
+
+   - fonts/vf/public/ClearSans
+cd /usr/share/texmf/fonts &&
+sudo mkdir -p vf
+cd /usr/share/texmf/fonts/vf &&
+sudo mkdir -p public
+
+cd /usr/share/texmf/fonts/vf/public
+sudo mkdir -p ClearSans &&
+cd /home/bmarron/Downloads/ClearSans &&
+sudo cp -a vf/. /usr/share/texmf/fonts/vf/public/ClearSans  
+   
+   
+   - tex/latex/ClearSans
+cd /usr/share/texmf/tex/latex/
+sudo mkdir -p ClearSans &&
+cd /home/bmarron/Downloads/ClearSans &&
+sudo cp -a tex/. /usr/share/texmf/tex/latex/ClearSans  
+
+3. Copy all relevant files into the texmf tree:
+
+   - ClearSans.pdf goes to doc/latex/ClearSans
+   - ClearSans-u.enc goes to fonts/enc/dvips/ClearSans
+   - ClearSans.map goes to fonts/map/dvips/ClearSans
+   - ClearSans.tfm goes to fonts/tfm/public/ClearSans
+   - ClearSans.pfb goes to fonts/type1/public/ClearSans
+   - ClearSans.otf goes to fonts/opentype/public/ClearSans
+   - ClearSans.sty goes to tex/latex/ClearSans
+   		PLUS THESE
+	ClearSans.sty        OT1ClearSans-TLF.fd  TS1ClearSans-TLF.fd
+	LY1ClearSans-TLF.fd  T1ClearSans-TLF.fd
+
+
+
+4. Regenerate the file database:
+
+    sudo texhash
+
+5. Activate the map file by running
+
+	sudo updmap-sys --enable Map=ClearSans.map		<== a system-wide installation
+	[sudo updmap --enable Map=inconsolata.map]
+
+
+
+#######################
+Font Installation: fontawesome
+(NOT a metafont)
+########################
+
+Installation
+------------
+
+1. Create the following directories in a local texmf tree:
+   
+   - fonts/enc/dvips/fontawesome
+cd /usr/share/texmf/fonts/enc/dvips
+sudo mkdir -p fontawesome &&
+cd /home/bmarron/Downloads/fontawesome &&
+sudo cp -a enc/. /usr/share/texmf/fonts/enc/dvips/fontawesome  
+   
+   
+   - fonts/map/dvips/fontawesome
+cd /usr/share/texmf/fonts/map/dvips
+sudo mkdir -p fontawesome &&
+cd /home/bmarron/Downloads/fontawesome/map &&
+sudo cp fontawesome.map /usr/share/texmf/fonts/map/dvips/fontawesome   
+   
+   
+   - fonts/tfm/public/fontawesome
+cd /usr/share/texmf/fonts/tfm/public
+sudo mkdir -p fontawesome &&
+cd /home/bmarron/Downloads/fontawesome &&
+sudo cp -a tfm/. /usr/share/texmf/fonts/tfm/public/fontawesome  
+   
+   
+   - fonts/type1/public/fontawesome
+cd /usr/share/texmf/fonts/type1/public
+sudo mkdir -p fontawesome &&
+cd /home/bmarron/Downloads/fontawesome &&
+sudo cp -a type1/. /usr/share/texmf/fonts/type1/public/fontawesome   
+   
+   
+   - fonts/opentype/public/fontawesome
+cd /usr/share/texmf/fonts/opentype/public
+sudo mkdir -p fontawesome &&
+cd /home/bmarron/Downloads/fontawesome &&
+sudo cp -a opentype/. /usr/share/texmf/fonts/opentype/public/fontawesome      
+   
+   
+   - tex/latex/fontawesome
+cd /usr/share/texmf/tex/latex/
+sudo mkdir -p fontawesome &&
+cd /home/bmarron/Downloads/fontawesome &&
+sudo cp -a tex/. /usr/share/texmf/tex/latex/fontawesome  
+
+3. Copy all relevant files into the texmf tree:
+
+   - fontawesome.pdf goes to doc/latex/fontawesome
+   - fontawesome-u.enc goes to fonts/enc/dvips/fontawesome
+   - fontawesome.map goes to fonts/map/dvips/fontawesome
+   - fontawesome.tfm goes to fonts/tfm/public/fontawesome
+   - fontawesome.pfb goes to fonts/type1/public/fontawesome
+   - fontawesome.otf goes to fonts/opentype/public/fontawesome
+   - fontawesome.sty goes to tex/latex/fontawesome
+   		PLUS THESE
+   	fontawesome.sty                  ufontawesomeone.fd
+	fontawesomesymbols-generic.tex   ufontawesomethree.fd
+	fontawesomesymbols-pdftex.tex    ufontawesometwo.fd
+	fontawesomesymbols-xeluatex.tex
+
+
+4. Regenerate the file database:
+
+    sudo texhash
+
+5. Activate the map file by running
+
+	sudo updmap-sys --enable Map=fontawesome.map		<== a system-wide installation
+	[sudo updmap --enable Map=inconsolata.map]
+
+
+
+
+#######################
+Font Installation: fontawesome5
+(NOT a metafont)
+########################
+
+Installation
+------------
+
+1. Create the following directories in a local texmf tree:
+   
+   - fonts/enc/dvips/fontawesome5
+cd /usr/share/texmf/fonts/enc/dvips
+sudo mkdir -p fontawesome5 &&
+cd /home/bmarron/Downloads/fontawesome5 &&
+sudo cp -a enc/. /usr/share/texmf/fonts/enc/dvips/fontawesome5  
+   
+   
+   - fonts/map/dvips/fontawesome5
+cd /usr/share/texmf/fonts/map/dvips
+sudo mkdir -p fontawesome5 &&
+cd /home/bmarron/Downloads/fontawesome5/map &&
+sudo cp fontawesome5.map /usr/share/texmf/fonts/map/dvips/fontawesome5   
+   
+   
+   - fonts/tfm/public/fontawesome5
+cd /usr/share/texmf/fonts/tfm/public
+sudo mkdir -p fontawesome5 &&
+cd /home/bmarron/Downloads/fontawesome5 &&
+sudo cp -a tfm/. /usr/share/texmf/fonts/tfm/public/fontawesome5  
+   
+   
+   - fonts/type1/public/fontawesome5
+cd /usr/share/texmf/fonts/type1/public
+sudo mkdir -p fontawesome5 &&
+cd /home/bmarron/Downloads/fontawesome5 &&
+sudo cp -a type1/. /usr/share/texmf/fonts/type1/public/fontawesome5   
+   
+   
+   - fonts/opentype/public/fontawesome5
+cd /usr/share/texmf/fonts/opentype/public
+sudo mkdir -p fontawesome5 &&
+cd /home/bmarron/Downloads/fontawesome5 &&
+sudo cp -a opentype/. /usr/share/texmf/fonts/opentype/public/fontawesome5      
+   
+   
+   - tex/latex/fontawesome5
+cd /usr/share/texmf/tex/latex/
+sudo mkdir -p fontawesome5 &&
+cd /home/bmarron/Downloads/fontawesome5 &&
+sudo cp -a tex/. /usr/share/texmf/tex/latex/fontawesome5  
+
+3. Copy all relevant files into the texmf tree:
+
+   - fontawesome5.pdf goes to doc/latex/fontawesome5
+   - fontawesome5-u.enc goes to fonts/enc/dvips/fontawesome5
+   - fontawesome5.map goes to fonts/map/dvips/fontawesome5
+   - fontawesome5.tfm goes to fonts/tfm/public/fontawesome5
+   - fontawesome5.pfb goes to fonts/type1/public/fontawesome5
+   - fontawesome5.otf goes to fonts/opentype/public/fontawesome5
+   - fontawesome5.sty goes to tex/latex/fontawesome5
+   		PLUS THESE
+   		fontawesome5-generic-helper.sty  tufontawesomebrands.fd  ufontawesomefree0.fd
+		fontawesome5.lua                 tufontawesomefree.fd    ufontawesomefree1.fd
+		fontawesome5-mapping.def         tufontawesomepro.fd     ufontawesomefree2.fd
+		fontawesome5.sty                 ufontawesomebrands0.fd  ufontawesomefree3.fd
+		fontawesome5-utex-helper.sty     ufontawesomebrands1.fd
+
+
+4. Regenerate the file database:
+
+    sudo texhash
+
+5. Activate the map file by running
+
+	sudo updmap-sys --enable Map=fontawesome5.map		<== a system-wide installation
+	[sudo updmap --enable Map=inconsolata.map]
+
+
+
+
+#######################
+Font Installation: inconsolata (RStudio font)
+(NOT a metafont)
+########################
+INSTALLATION FIXED ERRORS
+! Font \T1/zi4/m/n/10=t1-zi4r-0 at 10pt not loadable: metric data not found or bad.
+		
+mktexpk: don't know how to create bitmap font for t1-zi4b-0		<== file in zi4.map!
+mktexpk: perhaps t1-zi4b-0 is missing from the map file.
+PROBLEM 	==> sudo updmap-sys --enable Map=*.map set to inconsolata.map
+			==> should be zi4.map
+FIX	1		==> sudo texhash
+			==> sudo updmap-sys --enable Map=zi4.map
+			
+			
+SAME PROBLEM AFTER FIX 1
+
+FIX 2	==> try changing lix.sty to use \usepackage{fontspec} instead of 
+			%\RequirePackage[utf8]{inputenc}
+			%\RequirePackage[T1]{fontenc}
+sudo cp ~/Desktop/LaTex/LaTex_installed_packages/lix_textbook/lix.sty /usr/local/share/texmf/tex/latex/lix_textbook
+
+worked! but now
+! error:  (file ocrb9) (type 3): font ocrb9 at 600 not found	<== this seems to be fixed by renaming ocrb to ocr and adding extra .fd files and eliminating inconsolata.map ????
+
+
+FIX 3	==> try changing lix.sty to use \usepackage{fontspec} and \usepackage{fontenc} 
+			%\RequirePackage[utf8]{inputenc}
+			\RequirePackage[T1]{fontenc}
+
+and now error back to inconsolata error
+! error:  (file t1-zi4b-0) (type 3): font t1-zi4b-0 at 480 not found
+
+
+
+
+
+
+sudo cp ~/Desktop/LaTex/LaTex_installed_packages/lix_textbook/lix.sty /usr/local/share/texmf/tex/latex/lix_textbook
+
+
+Installation
+------------
+
+1. Create the following directories in a local texmf tree:
+   
+   - fonts/enc/dvips/inconsolata
+cd /usr/share/texmf/fonts/enc/dvips
+sudo mkdir -p inconsolata &&
+cd /home/bmarron/Downloads/inconsolata &&
+sudo cp -a enc/. /usr/share/texmf/fonts/enc/dvips/inconsolata  
+   
+   
+   - fonts/map/dvips/inconsolata
+cd /usr/share/texmf/fonts/map/dvips
+sudo mkdir -p inconsolata &&
+cd /home/bmarron/Downloads/inconsolata/map &&
+sudo cp zi4.map /usr/share/texmf/fonts/map/dvips/inconsolata   
+   
+   
+   - fonts/tfm/public/inconsolata
+cd /usr/share/texmf/fonts/tfm/public
+sudo mkdir -p inconsolata &&
+cd /home/bmarron/Downloads/inconsolata &&
+sudo cp -a tfm/. /usr/share/texmf/fonts/tfm/public/inconsolata  
+   
+   
+   - fonts/type1/public/inconsolata
+cd /usr/share/texmf/fonts/type1/public
+sudo mkdir -p inconsolata &&
+cd /home/bmarron/Downloads/inconsolata &&
+sudo cp -a type1/. /usr/share/texmf/fonts/type1/public/inconsolata   
+   
+   
+   - fonts/opentype/public/inconsolata
+cd /usr/share/texmf/fonts/opentype/public
+sudo mkdir -p inconsolata &&
+cd /home/bmarron/Downloads/inconsolata &&
+sudo cp -a opentype/. /usr/share/texmf/fonts/opentype/public/inconsolata      
+   
+   
+   - tex/latex/inconsolata
+cd /usr/share/texmf/tex/latex/
+sudo mkdir -p inconsolata &&
+cd /home/bmarron/Downloads/inconsolata &&
+sudo cp -a tex/. /usr/share/texmf/tex/latex/inconsolata  
+
+3. Copy all relevant files into the texmf tree:
+
+   - inconsolata.pdf goes to doc/latex/inconsolata
+   - inconsolata-u.enc goes to fonts/enc/dvips/inconsolata
+   - inconsolata.map goes to fonts/map/dvips/inconsolata
+   - inconsolata.tfm goes to fonts/tfm/public/inconsolata
+   - inconsolata.pfb goes to fonts/type1/public/inconsolata
+   - inconsolata.otf goes to fonts/opentype/public/inconsolata
+   - 	inconsolata.sty goes to tex/latex/inconsolata
+   		PLUS THESE
+   		inconsolata.fontspec   inconsolata.sty  ot1zi4.fd  t1zi4.fd   zi4.sty
+		inconsolatan.fontspec  ly1zi4.fd        qxzi4.fd   ts1zi4.fd
+
+
+4. Regenerate the file database:
+
+    sudo texhash
+
+5. Activate the map file by running
+
+	cd /usr/share/texmf/fonts/map/dvips/inconsolata
+	sudo updmap-sys --enable Map=zi4.map		<== a system-wide installation
+	
+The updmap-sys --enable Map=GTAmerica.map command worked after issuing sudo texhash and sudo updmap-sys. After that the file gets compiled even with pdflatex.
+
+
+
+
+#######################
+Font Installation: ccicons 
+(NOT a metafont)
+########################
+FIXED ERROR
+! Font \U/ccicons/m/n/8=ccicons at 8pt not loadable: metric data not found or bad.	<== no .tfm file
+
+Installation
+------------
+1. Run `latex ccicons.ins` to generate the LaTex package.
+
+2. Create the following directories in a local texmf tree:
+   - doc/latex/ccicons
+   
+   - fonts/enc/dvips/ccicons
+cd /usr/share/texmf/fonts/enc/dvips &&
+sudo mkdir -p ccicons &&
+cd /home/bmarron/Downloads/ccicons &&
+sudo cp ccicons-u.enc /usr/share/texmf/fonts/enc/dvips/ccicons  
+   
+   
+   - fonts/map/dvips/ccicons
+cd /usr/share/texmf/fonts/map/dvips &&
+sudo mkdir -p ccicons &&
+cd /home/bmarron/Downloads/ccicons &&
+sudo cp ccicons.map /usr/share/texmf/fonts/map/dvips/ccicons   
+   
+   
+   - fonts/tfm/public/ccicons
+cd /usr/share/texmf/fonts/tfm/public
+sudo mkdir -p ccicons &&
+cd /home/bmarron/Downloads/ccicons &&
+sudo cp ccicons.tfm /usr/share/texmf/fonts/tfm/public/ccicons  
+   
+   
+   - fonts/type1/public/ccicons
+cd /usr/share/texmf/fonts/type1/public
+sudo mkdir -p ccicons &&
+cd /home/bmarron/Downloads/ccicons &&
+sudo cp ccicons.pfb /usr/share/texmf/fonts/type1/public/ccicons   
+   
+   
+   - fonts/opentype/public/ccicons
+cd /usr/share/texmf/fonts/opentype/public
+sudo mkdir -p ccicons &&
+cd /home/bmarron/Downloads/ccicons &&
+sudo cp ccicons.otf /usr/share/texmf/fonts/opentype/public/ccicons      
+   
+   
+   - tex/latex/ccicons
+cd /usr/share/texmf/tex/latex/
+sudo mkdir -p ccicons &&
+cd /home/bmarron/Downloads/ccicons &&
+sudo cp ccicons.sty /usr/share/texmf/tex/latex/ccicons  
+
+3. Copy all relevant files into the texmf tree:
+
+   - ccicons.pdf goes to doc/latex/ccicons
+   - ccicons-u.enc goes to fonts/enc/dvips/ccicons
+   - ccicons.map goes to fonts/map/dvips/ccicons
+   - ccicons.tfm goes to fonts/tfm/public/ccicons
+   - ccicons.pfb goes to fonts/type1/public/ccicons
+   - ccicons.otf goes to fonts/opentype/public/ccicons
+   - ccicons.sty goes to tex/latex/ccicons
+
+4. Regenerate the file database:
+
+    sudo texhash
+
+5. Activate the map file by running
+
+	sudo updmap-sys --enable Map=ccicons.map		<== a system-wide installation
+	[sudo updmap --enable Map=ccicons.map]
+
+
+
+#######################
+Font Installation 
+ocbr (a metafont (.mf))
+no .enc files!!
+########################
+FIXED ERROR
+! Font \OT1/ocrb/m/n/8=ocrb8 at 8pt not loadable: metric data not found or bad.
+
+from CTAN--
+	ocr-b pkg				<== has .mf but no .tfm files
+	ocr-b-outline pkg		<== has .pbf and .otf but no .tfm files
+	
+1. in ocr-b pkg (left in Downloads) generate .tfm (and .gf) files for all ocr font sizes using mf
+
+	$ mf "\mode=localfont; input ocrb5.mf"
+	$ mf "\mode=localfont; input ocrb6.mf"
+	$ mf "\mode=localfont; input ocrb7.mf"
+	$ mf "\mode=localfont; input ocrb8.mf"
+	$ mf "\mode=localfont; input ocrb9.mf"
+	$ mf "\mode=localfont; input ocrb10.mf"
+	
+2. move/copy all newly-made .tfm files into ocr-b-outline pkg so have .otf, .pbf, and .tfm for all font sizes
+
+3. cd /usr/share/texmf/fonts
+afm/public  enc/dvips  map/dvips  opentype/public  source  tfm/public  type1/public
+
+4. Create the following directories in a local texmf tree:
+
+    - fonts/map/dvips/ocr
+cd /usr/share/texmf/fonts/map/dvips
+sudo mkdir -p ocr &&
+cd /home/bmarron/Downloads/ocr/map &&
+sudo cp ocr.map /usr/share/texmf/fonts/map/dvips/ocr   
+   
+   
+   - fonts/tfm/public/ocr
+cd /usr/share/texmf/fonts/tfm/public
+sudo mkdir -p ocr &&
+cd /home/bmarron/Downloads/ocr &&
+sudo cp -a tfm/. /usr/share/texmf/fonts/tfm/public/ocr  
+   
+   
+   - fonts/type1/public/ocrb
+cd /usr/share/texmf/fonts/type1/public
+sudo mkdir -p ocr &&
+cd /home/bmarron/Downloads/ocr &&
+sudo cp -a type1/. /usr/share/texmf/fonts/type1/public/ocr   
+   
+   
+   - fonts/opentype/public/ocr
+cd /usr/share/texmf/fonts/opentype/public
+sudo mkdir -p ocr &&
+cd /home/bmarron/Downloads/ocr &&
+sudo cp -a opentype/. /usr/share/texmf/fonts/opentype/public/ocr 
+   
+   
+   - tex/latex/ocr
+cd /usr/share/texmf/tex/latex/
+sudo mkdir -p ocr &&
+cd /home/bmarron/Downloads/ocr/sty &&
+sudo cp ocr.sty /usr/share/texmf/tex/latex/ocr 
+sudo cp *.fd /usr/share/texmf/tex/latex/ocr
+sudo cp *.sfd /usr/share/texmf/tex/latex/ocr
+
+
+NB.DOES NOT WORK but has .sty file
+MOVE .fd files with .sty file to /usr/share/texmf/tex/latex/ocrb
+cd /usr/share/texlive/texmf-dist/tex/latex/ocr-latex
+ocr.sty    ot1ocra.fd  ot1ocrbn.fd   ot1ocrbo.fd
+ot1oca.fd  ot1ocrb.fd  ot1ocrbns.fd  ot1ocrbs.fd
+
+
+5. regenerate the file database:
+
+    sudo texhash
+
+5. activate the map file by running
+
+	sudo updmap-sys --enable Map=ocr.map
+
+
+
+
+NB. Update individual .cfg files by removing OLD .cfg files
+On Debian systems it is not recommendable to use --syncwithtrees.
+We recommend the following actions, according to in which updmap.cfg 
+the map is listed:
+  /usr/share/texmf/web2c/updmap.cfg
+  /usr/share/texlive/texmf-dist/web2c/updmap.cfg
+      -> please run $ sudo update-updmap
+  /etc/texmf/web2c/updmap.cfg
+  /usr/local/share/web2c/updmap.cfg
+      -> edit the file and remove the line (of old .cfg files)
+  any other place (esp under your home directory)
+      -> only used if you have user only fonts activated, otherwise
+         this file should not be there
+      -> edit it by hand
+
+
+
+
+
+
+

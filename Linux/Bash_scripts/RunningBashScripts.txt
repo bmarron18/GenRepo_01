@@ -1,0 +1,27 @@
+Title:			Bash scripts
+Project Descriptor:	
+Project ID:		
+Author:			bmarron
+Origin Date:		
+Final Date:
+
+
+##################
+make executable
+##################
+
+chmod +x filename.sh
+
+
+######
+run (Linux)
+########
+
+$ . filename.sh
+
+
+##########
+run (GRASS)
+############
+
+sh myscript.sh

@@ -1,0 +1,216 @@
+	----- BibLatex and Zotero metadata ---------
+
+https://www.sharelatex.com/blog/2013/07/31/getting-started-with-biblatex.html
+https://tex.stackexchange.com/questions/25701/bibtex-vs-biber-and-biblatex-vs-natbib
+https://tex.stackexchange.com/questions/63852/question-mark-or-bold-citation-key-instead-of-citation-number
+https://tex.stackexchange.com/questions/302779/apa-bibliography-yearmonthday
+https://tex.stackexchange.com/questions/139872/biblatex-full-citations-in-footnotes-on-every-page
+http://wheaton.libguides.com/refmanagers/zotero/PDFmetadata
+
+
+Missing citations show up differently in biblatex
+
+If you are using biblatex you will not see a question mark, but instead you will see your citation key in bold. 
+For example, if you have an item in your .bib file with the key Jones1999 you will see Jones1999 in your PDF.
+
+####################
+Orientation
+##################
+
+There is 
+	BibLaTex
+	Biber
+
+Biber is the backend program that processes citation data for the
+BibLaTeX package, while BibLaTeX is the LaTeX package that provides a flexible and powerful interface for managing and formatting bibliographies and citations. In essence, BibLaTeX is the user-facing LaTeX tool, and Biber is the separate program it calls upon to handle the actual sorting, formatting, and data processing of bibliography information, offering more advanced features like full Unicode support and customizability than the older BibTeX. A bibtex replacement for users of biblatex
+
+biber --help
+
+
+
+NB	Biblatex is installed in two places:
+	/usr/local/share/texmf/tex/latex/biblatex		<== specialty install
+	/usr/share/texlive/texmf-dist/tex/latex/			<== TexLive distro install
+	
+	
+
+=============== in document ====================================================
+
+\documentclass[a4paper,11pt]{article}
+
+% BIBLIOGRAPHY
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel} 
+ 
+\usepackage[style=verbose,			%for footnotes
+            sorting=nyt,
+            backref=true,           
+            doi=false,
+            isbn=false,
+            url=false,
+            backend=biber]{biblatex}
+\addbibresource{/home/bruce/Desktop/BibLatex/My_Library_20170125.bib} % BibTeX bibliography file
+%\defbibheading{bibempty}{}
+%\DeclareLanguageMapping{english}{american-apa}    % avoid yearmonthday problems
+
+
+
+\usepackage[style=apa,			%for documents
+            sorting=nyt,
+            backref=true,           
+            doi=false,
+            isbn=false,
+            url=false,
+            backend=biber]{biblatex}
+\addbibresource{/home/bruce/Desktop/BibLatex/My_Library_20170125.bib} % BibTeX bibliography file
+%\defbibheading{bibempty}{}
+\DeclareLanguageMapping{english}{american-apa}    % avoid yearmonthday problems
+
+
+
+
+
+
+
+
+% CITATIONS
+% \cite{}
+% \autocite{}      			%for et al.
+% \parencite{}
+% \textcite{}            % Shields (2000) ...
+%\footcite{}
+%\footfullcite{}
+%\footcite{priest_program_2001}\textsuperscript{,}\footcite{worthen_program_1990}
+
+
+% FOOTNOTES AND NUMBERINGS
+%\usepackage[multiple]{footmisc}
+     %example:
+%\footcite{priest_program_2001}\textsuperscript{,}\footcite{worthen_program_1990}
+
+
+
+\begin{document}
+As first example citation here is \cite{Chomsky1957}. 
+Here is another example citation \autocite{Labov1972}
+\printbibliography
+\end{document}
+
+======================================================================================
+
+#########################
+the .bib file
+##########################
+
+@article{stoffer_resampling_2004,				#first entry is the unique record ID needed for \cite{}
+	title = {Resampling in state space models},
+	journal = {State Space and Unobserved Component Models Theory and Applications},
+	author = {Stoffer, David S. and Wall, Kent D.},
+	year = {2004},
+	pages = {227--258}					#note "--" separator
+}
+
+
+
+@book{ConcreteMath,					
+        author = {R.L. Graham and D.E. Knuth and O. Patashnik},
+        title = {Concrete mathematics},
+        publisher = {Addison-Wesley},
+        address = {Reading, MA},
+        year = {1989}
+}
+
+
+
+@collection{newcomer_handbook_2015,
+	location = {San Francisco},
+	edition = {Fourth edition},
+	title = {Handbook of practical program evaluation},
+	isbn = {978-1-118-89360-9},
+	series = {Essential texts for nonprofit and public leadership and management},
+	publisher = {Jossey-Bass \& Pfeiffer Imprints, Wiley},
+	editor = {Newcomer, Kathryn E. and Hatry, Harry P. and Wholey, Joseph S.},
+	date = {2015},
+	keywords = {{BUSINESS} \& {ECONOMICS} / Nonprofit Organizations \& Charities, Policy sciences, Political planning, program evaluation}
+}
+
+
+@incollection{mclaughlin_2015,
+  crossref = {newcomer_handbook_2015},
+  author = {McLaughlin, J and Jordan, G},
+  title = {Using Logic Models}
+}
+
+
+@manual{<unique_key>,
+	title		= {},
+	%author		= {},
+	%organization	= {},
+	%address	= {},
+	%edition	= {},
+	year		= {},
+	%month		= {},
+	%note		= {},
+}
+
+
+
+#######################
+BibTex from Zotero
+#####################
+
+
+----  Export the entire library from Zotero ----
+
+	Actions ==> Export Library... ==> Format = BibTex (w/ NO Translator Options selected!)
+
+
+---- Create a document-specific BibTex file from Zotero -------------
+
+	Left-click on item ==> Export... ==> Format = BibTex (w/ NO Translator Options selected!)
+	Left-click on folder ==> Export Collection... ==> Format = BibTex (w/ NO Translator Options selected!)
+
+
+
+
+
+
+
+============== OLD WAY-- DO NOT USE!! ==========================================================
+###############################
+BibTex in LaTex
+###############################
+
+\cite{brender_prenatal_2013} 				#use the unique record ID		
+\cite{gazi_lagrangian_2013}
+
+The end of document text.
+							#just before the end of the whole document
+							#insert this code
+\bibliographystyle{apalike}
+\bibliography{/home/bmarron//Desktop/My_Library}	#DO NOT add the ".bib" (actual file, "My_Library.bib")
+
+\end{document}
+							#must run make PDF sequence multiple time
+
+¡¡OJO!! 
+LaTex will "crash" and not print the current doc IF there are syntax errors in a doc
+that has references
+
+Somehow the processing of BibTex gets confounded with the errors and then LaTex will not read the
+.bib file
+
+You will know this is happening when repeated clicks to produce a .pdf file say that all references 
+are undefined, even if they were defined and the doc ran through to produce a .pdf prior
+
+==>Cut and paste to a Leafpad and find the offending syntax error
+==>Should also check the BibTex file 
+
+
+
+
+---- styles ---------------
+Commonly used by \bibliographystyle{}: 
+plain, alpha, amsplain, amsalpha. abbrv, acm, apalike, ieeetr, siam, unsrt.
+

@@ -1,0 +1,193 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Dissertation Proposal -- Papers Reviewed
+% 2017SoE027
+% 
+% Author: bmarron
+% Origin: 18 Jan 2017
+% Final:
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[twoside]{article}	                         %use
+
+\usepackage{lipsum}                                        % Package to generate dummy text throughout this template
+\usepackage{csquotes}
+\usepackage[natbibapa]{apacite}                            % \citeps{godfray_food_2010} OR \citep{godfray_food_2010}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pdfpages}
+\usepackage{verbatim}
+\usepackage{bigfoot}
+\usepackage{multirow}
+\usepackage{microtype}                                      % Slightly tweak font spacing for aesthetics
+\usepackage[sc]{mathpazo}                                   % Use the Palatino font and the Pazo fonts for math
+\usepackage{multicol}                                       % Used for the two-column layout of the document
+\usepackage{booktabs}                                        % Horizontal rules in tables
+\usepackage{float}                                           % Required for tables/figures in the multi-column environment
+                                                             %(e.g. \begin{table}[H])
+\usepackage{paralist}                                        % Used for the compact item environment less space between bullet items
+
+
+\usepackage[T1]{fontenc}                                    % Use 8-bit encoding that has 256 glyphs
+\linespread{1.05}                                           % Line spacing - Palatino needs more space between lines
+
+\usepackage[hmarginratio=1:1,top=32mm,columnsep=20pt]{geometry}       % Document margins
+
+\usepackage[hang, small,labelfont=bf,up,textfont=it,up]{caption}      % Custom captions under/above floats in tables or figures
+
+\usepackage{abstract}                                        % Allows abstract customization
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}       % Set the "Abstract" text to bold
+\renewcommand{\abstracttextfont}{\normalfont\small\itshape}  % Set the abstract itself to small italic text
+
+\usepackage{titlesec}                                                  % Allows customization of titles
+\renewcommand\thesection{\Roman{section}}                              % Roman numerals for the sections
+\renewcommand\thesubsection{\arabic{subsection}}                        % Arabic numerals for subsections
+\titleformat{\section}[block]{\large\scshape\centering}{\thesection.}{1em}{}    % Change the look of the section titles
+\titleformat{\subsection}[block]{\large}{\thesubsection.}{1em}{}                % Change the look of the section titles
+
+\usepackage{fancyhdr}                                         % Headers and footers
+\pagestyle{fancy}                                             % All pages have headers and footers
+\fancyhead{}                                                  % Blank out the default header
+\fancyfoot{}                                                  % Blank out the default footer
+\fancyhead[R]{\date{\today}}
+\fancyfoot[R]{\thepage}                                                              % Custom footer text
+%\fancyhead[C]{Running title $\bullet$ November 2012 $\bullet$ Vol. XXI, No. 1}     % Custom header text
+%\fancyfoot[RO,LE]{\thepage}                                                         % Custom footer text
+
+
+
+%\usepackage{hyperref}                                        % Interferes with cite.sty 
+%\usepackage[shortlabels]{enumitem}
+%\usepackage{lettrine}                                       % The lettrine is the first enlarged letter at the beginning of the text
+
+
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\title{\vspace{-15mm}\fontsize{14pt}{10pt}\selectfont\textbf{Papers Reviewed --Ch 3}} % Article title
+
+\author{
+\large
+\textsc{Bruce Marron} \\ %\thanks{A thank you or further information}\\[2mm] % Your name
+\normalsize North Carolina State University \\ % Your institution
+\vspace{-5mm}
+}
+\date{}
+
+%----------------------------------------------------------------------------------------
+\begin{document}
+\maketitle % Insert title
+\thispagestyle{fancy} % All pages have headers and footers
+
+%----------------------------------------------------------------------------------------
+%	ABSTRACT
+%----------------------------------------------------------------------------------------
+
+%\begin{abstract}
+
+%\end{abstract}
+
+%----------------------------------------------------------------------------------------
+%	ARTICLE CONTENTS
+%----------------------------------------------------------------------------------------
+%\begin{multicols}{2} % Two-column layout throughout the main article text, if desired
+
+%=========================
+\section{Methodologies}
+%===========================
+\citep{bollen_principal_2009} A principal component analysis of 39 scientific impact measures\\
+
+\noindent \citep{clark_why_2005} Why environmental scientists are becoming Bayesians
+\begin{itemize}
+  \item watch out! w/ terminology ==> stochastic vs. variability vs. uncertainty vs. fluctuation
+  \item (p3) In this paper, I describe the underlying structure of HB that can be exploited for a broad range of ecological problems. I attempt to clarify some of the motivation for Bayesian approaches and some concepts that are often vague or contradictory, even in statistics literature. Because techniques have developed in parallel across many disciplines, the literature on uncertainty is vast and diffuse. (p4) The focus of this paper stems from an alternative view that the emergence of modern Bayes has little to do with philosophy, but comes rather from pragmatism.   
+  \item yes! ==> While HB is clearly not the only way to address uncertainty,it stands out as an approach that can accommodate complex systems in a fully consistent framework.
+  \item Note this reality (p2) ==> Models of nature, including experimental ones, routinely entail dilemmas: simplify the research problem in the interest of generality, or admit the complexity to attain some realism
+  \item  The issue  of variability vs uncertainty (p2) ==> Stochasticity is central to the complexity dilemma, because it encompasses the elements that are uncertain and those that fluctuate due to factors that cannot be fully known or quantified. Decisions concerning what will be treated deterministically in models, what is assumed stochastic, and what can be ignored are the basis for model and experimental design
+  \item What about novelty?!
+  \item Ecologist cannot predict (p3) ==> Complexity and scale challenges translate directly to prediction. Despite a long research tradition on demography, population dynamics, and species interactions, ecologists frequently have little to offer when confronted with pending climate-forced range shifts, fragmentation, design of reserves, and where and when biodiversity loss is likely to have feedback effects on ecosystem services. When challenged for answers, there is temptation to abandon all pretence of prediction and fall back on scenarios that are loosely linked to data.
+  \item  my justification ==> The capacity to more directly apply ecological understanding should be a compelling justification for research. 
+  \item yes! (p4) ==> The tension between the need for objectivity in science and the inevitable subjectivity of statistics (Berger & Berry 1988) poses a serious challenge for philosophers and statisticians. The philosophical issues can be deeply metaphysical and bear on the very nature of probability (Dawid 2004 provides a recent perspective). The points I emphasize here are (1) that these issues are not new, (2) that they will be alive and well long after HB pervades a staggering breadth of scientific disciplines, and (3) that philosophy has little to do with the transformation in statistical computation that has emerged over the last decade. 
+  \item (p6) The limitations of classical approaches become formidable as we move beyond simple problems, because they place the full burden on the likelihood. SB is likewise limited. We have added priors, which allow us to learn about parameters, but we are stuffing everything else into the likelihood.
+  \item (p6) conditional independence ==> Here data sets y1 and y2 cannot possibly be independent – they derive from the same x (Fig. 1d). How can we simply multiply them together? Again, conditioning is the answer. The two data sets are conditionally independent, each with a data model and conditioned on quantities that are also modelled
+  \item (p7) What causes us to abandon a traditional approach is the most daunting aspect of the problem: the process is hidden. We cannot count the seeds on trees in a closed stand, not even approximately.
+\end{itemize}
+
+
+
+%========================================
+\section{Models}
+%========================================
+
+\citep{scheller_forest_2004}
+\begin{itemize}
+  \item short list of ecosystem processes ==> Ecosystem processes (e.g., net primary productivity, decomposition) (p 211)
+  \item Keep it simple ==> Based on our objectives and the computational limitations of complex landscape simulations, the biomass module was designed to minimize complexity. Biomass is calculated using a low number of parameters that can be estimated across an entire landscape (p. 213)
+  \item chose to keep cohort structure and add state variables ==> We elected to preserve the existing cohort data structure, as it has been well validated and integrated with various disturbance modules, and add new state variables that supplement the existing data and allow aboveground living and dead woody biomass calculations.
+  \item BiomassSuccession misses soil food web carbon and does not estimate belowground root mass ==> Biomass that is incorporated into the soil layer (soil organic carbon, SOC) was not modeled. (p. 214)
+  \item All simulated mortality events (the death of a species-age cohort) either transferred the living biomass for a cohort to the dead biomass pool (in the case of fire or wind) or removed the living biomass from the system (in the case of harvesting). (p. 214)
+  
+  \item 1st major assumption ==> The principle assumption was that an equilibrium condition would develop after many decades, whereas a cohort's mortality would equal growth, and [aboveground living biomass for each cohort = ($B_{ij}$)] biomass would cease to increase. (p. 214) 
+  \item 1st major assumption ==> Linear relationship: $B_{ij_{t+1}} = B_{ij} + ANPP_{ij} - M_{ij} \ \ i = spp ,\ j= age, \ ij=spp-age \ cohort \ (bin) $
+  \item 1st major assumption ==> 
+  \item 2nd major assumption ==> ... at the long time steps (10 years) modeled, disturbance does not significantly decrease maximum potential productivity by reducing available soil nitrogen. (p. 214)
+  \item 2nd major assumption ==> impact on SFWs for logging/windthrow seems ok; fire damages soil fungus but on average might be ok
+  \item 3rd major assumption ==> ... (species-age) cohort biomass data implicitly incorporates density information. Density was not explicitly calculated for either our growth or mortality functions. reductions in density over time are difficult to predict in mixed-species,mixed-age forests. Future research will explore variation in initial biomass as a function of seed rain and initial density.(p. 214)
+  \item $ANPP_{max}$ estimated a variety of ways ==> expert knowledge, Forest Inventory and Analysis (FIA) data, gap models, ecosystem process models (p. 215) ... maximum aboveground biomass (AGB) is now an input parameter....the relationship between above ground net primary productivity (ANPP) and AGB is not linear beyond $\sim 10 Mg \ ha^{-1} yr^{-1}$.... separate input for maximum AGB better accommodates shrubs and grasses that have different relationships between ANPP and AGB (p. 5 Biomass Succession v3.5 User Guide)
+  \item 
+\end{itemize}
+
+
+%===========================================
+\section{Plant-soil models to check out}
+%===========================================
+\citep{bever_incorporating_1997}
+
+
+%===============================================
+\section{Ecological networks}
+%============================================
+
+\citep{williams_simple_2010} Simple MaxEnt models explain food web degree distributions
+\begin{itemize}
+  \item the MaxEnt models shows that, in many food webs, one does not need to consider detailed ecological processes to be able to predict the consumer, resource, or undirected degree distributions. While many features of food webs are clearly nonrandom and require an ecological explanation, their degree distributions are largely explainable by a simple null model based in statistical rather than ecological theory (p. )
+\end{itemize}
+
+
+\citep{fath_ecological_2007} Ecological network analysis: network construction
+\begin{itemize}
+  \item assumption --- it is necessary that the network model be a partition of the environment being studied, i.e., be mutually exclusive and exhaustive
+  \item blasts reductionist approach ---  network models aim to include all ecological compartments and interactions and the analysis determines the overall relationships and significance of each. The difficulty of course lies in obtaining the data necessary to quantify all the ecological compartments and interactions. When sufficient data sets are not available, simple algorithms, called community assembly rules, have been employed to construct realistic food webs to test various food web theories. Once the network is constructed, via data or algorithms, the ENA is quite straightforward and software is available to assist in this (p.  )
+\end{itemize}
+
+
+\citep{bascompte_disentangling_2009}
+\begin{itemize}
+  \item These [mutually beneficial] interactions play a major role in the generation and maintenance of biodiversity on Earth and organize communities around a network of mutual dependences. (p. 417)
+  \item mutualistic networks are (i) heterogeneous, in which the bulk of species interact with a few species, and  a few species have a much higher number of interactions than would be expected from chance alone; (ii) nested, in which specialists interact with a subset of the group of species that generalists interact with; and (iii) built on weak and asymmetric links among species (for example, in some cases when a plant interacts strongly with an animal, the animal tends to depend less on the plant) (14). Therefore, mutualistic networks are neither randomly organized nor organized in isolated compartments, but built cohesively around a core of generalist species. (p 417)
+  \item the nested structure of mutualistic networks maximizes the number of coexisting species (p 418)
+  \item Studies such as (A) focus on coevolution at a community scale and set the foundation for predicting how global change will propagate through such networks. Studies such as (B) provide a framework to address the simultaneous influence of all patches on gene flow and quantify the importance of a single patch for the persistence of the entire metapopulation.
+\end{itemize}
+
+
+
+
+%----------------------------------------------------------------------------------------
+%	REFERENCE LIST
+%----------------------------------------------------------------------------------------
+\newpage
+\bibliographystyle{/usr/local/share/texmf/tex/latex/apacite/apacite}
+\bibliography{/home/bruce/Desktop/BibTex/My_Library_20170125}
+
+
+
+
+\end{document}

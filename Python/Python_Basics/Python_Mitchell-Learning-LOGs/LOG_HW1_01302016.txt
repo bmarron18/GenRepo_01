@@ -1,0 +1,1977 @@
+Title:			Hmwk1 LOG3
+Project:		2016SoE009 (CS545_MachineLearning)
+Record:		
+Author:			bmarron
+Origin Date:		22 Jan 2016
+
+http://neuralnetworksanddeeplearning.com/chap1.html
+http://neuralnetworksanddeeplearning.com/chap2.html
+
+##################
+python, spyder and pandas
+###################
+
+#this is a comment in Python
+
+"""
+This is an example of a multiline
+comment that spans multiple lines
+"""
+
+==== Classes =========================================================
+Python classes provide all the standard features of Object Oriented Programming: the class inheritance mechanism allows multiple base classes, a derived class can override any methods of its base class or classes, and a method can call the method of a base class with the same name. Objects can contain arbitrary amounts and kinds of data. 
+
+
+Class instantiation uses function notation. Just pretend that the class object is a parameterless function that returns a new instance of the class. For example (assuming the above class):
+x = MyClass()
+creates a new instance of the class and assigns this object to the local variable x.
+
+---- new-style classes -------------------------------------------------------
+For new-style classes, the method resolution order changes dynamically to support cooperative calls to super(). This approach is known in some other multiple-inheritance languages as call-next-method and is more powerful than the super call found in single-inheritance languages.
+
+With new-style classes, dynamic ordering is necessary because all cases of multiple inheritance exhibit one or more diamond relationships (where at least one of the parent classes can be accessed through multiple paths from the bottommost class). For example, all new-style classes inherit from object, so any case of multiple inheritance provides more than one path to reach object. To keep the base classes from being accessed more than once, the dynamic algorithm linearizes the search order in a way that preserves the left-to-right ordering specified in each class, that calls each parent only once, and that is monotonic (meaning that a class can be subclassed without affecting the precedence order of its parents). Taken together, these properties make it possible to design reliable and extensible classes with multiple inheritance.
+
+---- special method for initial objects ----------------------------------
+Many classes like to create objects with instances customized to a specific initial state. Therefore a class may define a special method named __init__(), like this:
+
+def __init__(self):
+    self.data = []
+
+When a class defines an __init__() method, class instantiation automatically invokes __init__() for the newly-created class instance. So in this example, a new, initialized instance can be obtained by:
+
+x = MyClass()
+
+Of course, the __init__() method may have arguments for greater flexibility. In that case, arguments given to the class instantiation operator are passed on to __init__().
+
+---- tuples vs lists ---------------------------
+
+(17, 5, 26)
+[2, 3, 1]
+(17, 5, 26)
+[2, 3, 1]
+(17, 5, 26)
+[2, 3, 1]
+(17, 5, 26)
+[2, 3, 1]
+
+
+
+---- random numbers -------------------------------------------
+NNsize=(17,5,26)
+[np.random.uniform(-.26, .26, y) for y in NNsize[1:]]
+[np.random.randn(y, 1) for y in NNsize[1:]]
+NNsize[1:]]
+NNsize[1:]
+NNsize[0:]
+
+-------------------------------------------------
+-------------------------------------------------
+
+training_datatxt[0:2]
+Out[112]: 
+   1   2  3  4  5   6   7  8  9  10  11  12  13  14  15  16
+T  2   8  3  5  1   8  13  0  6   6  10   8   0   8   0   8
+I  5  12  3  7  2  10   5  5  4  13   3   9   2   8   4  10
+
+training_datatxt[1:2]
+Out[113]: 
+   1   2  3  4  5   6  7  8  9  10  11  12  13  14  15  16
+I  5  12  3  7  2  10  5  5  4  13   3   9   2   8   4  10
+
+training_datatxt[2:3]
+Out[114]: 
+   1   2  3  4  5   6  7  8  9  10  11  12  13  14  15  16
+D  4  11  6  8  6  10  6  2  6  10   3   7   3   7   3   9
+
+
+test=[training_datatxt[k:k+1] for k in xrange(0, 5, 1)]
+
+test
+Out[118]: 
+[   1  2  3  4  5  6   7  8  9  10  11  12  13  14  15  16
+ T  2  8  3  5  1  8  13  0  6   6  10   8   0   8   0   8,
+    1   2  3  4  5   6  7  8  9  10  11  12  13  14  15  16
+ I  5  12  3  7  2  10  5  5  4  13   3   9   2   8   4  10,
+    1   2  3  4  5   6  7  8  9  10  11  12  13  14  15  16
+ D  4  11  6  8  6  10  6  2  6  10   3   7   3   7   3   9,
+    1   2  3  4  5  6  7  8  9  10  11  12  13  14  15  16
+ N  7  11  6  6  3  5  9  4  6   4   4  10   6  10   2   8,
+    1  2  3  4  5  6  7  8  9  10  11  12  13  14  15  16
+ G  2  1  3  1  1  8  6  6  6   6   5   9   1   7   5  10]
+
+-----------------------------------------------------------------
+------------------------------------------------------------------
+---------------------------------------------------------------------------
+----------------------------------------------------------------------------
+
+	# load_data() uses numpy's genfromtxt method, and returns its own ndarray object.
+	# use load_data() if you wanted to perform numpy operations on the data, otherwise open_with_csv()
+	# files
+		f.open()
+		f.close()
+		f.read()
+		f.write()
+	# cPickle module supports serialization and de-serialization of Python objects, providing an interface and functionality nearly identical to the pickle module.
+ 	# .pkl file a serialized pickle file
+	# dtype=float32  ==> a data type
+	#
+
+
+To unpickle the data (note gzip is only needed if the file is compressed):
+import gzip
+import pickle
+with gzip.open('mnist.pkl.gz', 'rb') as f: train_set, valid_set, test_set = pickle.load(f)
+
+Where each set can be further divided (i.e. for the training set):
+train_x, train_y = train_set
+
+If you want to display the digits:
+
+import matplotlib.cm as cm
+import matplotlib.pyplot as plt
+plt.imshow(train_x[0].reshape((28, 28)), cmap = cm.Greys_r)
+plt.show()
+
+"""Return the MNIST data as a tuple containing the training data,
+    the validation data, and the test data.
+
+    The ``training_data`` is returned as a tuple with two entries.
+    The first entry contains the actual training images.  This is a
+    numpy ndarray with 50,000 entries.  Each entry is, in turn, a
+    numpy ndarray with 784 values, representing the 28 * 28 = 784
+    pixels in a single MNIST image.
+
+    The second entry in the ``training_data`` tuple is a numpy ndarray
+    containing 50,000 entries.  Those entries are just the digit
+    values (0...9) for the corresponding images contained in the first
+    entry of the tuple.
+
+    The ``validation_data`` and ``test_data`` are similar, except
+    each contains only 10,000 images.
+
+    This is a nice data format, but for use in neural networks it's
+    helpful to modify the format of the ``training_data`` a little.
+    That's done in the wrapper function ``load_data_wrapper()``, see
+    below.
+    """
+
+>>> import cPickle
+>>> import gzip
+>>> import numpy as np
+
+>>> def load_data():
+    f = gzip.open('/home/bmarron/Desktop/PSU/PhD_EES/SoE/2016SoE009_CS545_MachineLearning/_PBFs_bckgrndinfo/neural-networks-and-deep-learning/data/mnist.pkl.gz', 'rb')
+    training_data, validation_data, test_data = cPickle.load(f)
+    f.close()
+    return (training_data, validation_data, test_data)
+
+>>> mnistdata = load_data()
+
+			#three arrays in mnistdata
+>>> mnistdata
+>>> mnistdat[0]
+>>> mnistdat[1]
+>>> mnistdat[2]
+
+>>> tr_d, va_d, te_d = load_data()
+>>> tr_d[1][0]
+5
+>>> tr_x, tr_y = tr_d
+>>> tr_x
+array([[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+       [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+       [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+       ..., 
+       [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+       [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+       [ 0.,  0.,  0., ...,  0.,  0.,  0.]], dtype=float32)
+>>> tr_y
+array([5, 0, 4, ..., 8, 4, 8], dtype=int64)
+
+-----------------------------------------------------------------------------
+------------------------------------------------------------------------------
+
+>>>import os
+>>>print os.getcwd()
+/home/bmarron
+
+-------------------------------------------------------------
+----------------------------------------------------------------
+
+>>>from numpy import genfromtxt
+>>>my_data = genfromtxt('/home/bmarron/Desktop/PSU/PhD_EES/SoE/2016SoE009_CS545_MachineLearning/_PWFs_work_inprogress/Hwk1/DataFiles/test_data.txt', delimiter=',')
+
+
+>>> len(my_data)
+10000
+>>> my_data.shape
+(10000, 17)
+
+			#access columns
+>>> my_data[:,0]
+array([ nan,  nan,  nan, ...,  nan,  nan,  nan])
+>>> my_data[:,1]
+array([ 6.,  2.,  5., ...,  6.,  2.,  4.])
+>>> my_data[:,2]
+array([  9.,   9.,  10., ...,   9.,   3.,   9.])
+
+			#access rows
+>>> my_data[0,:]
+array([ nan,   6.,   9.,   9.,   7.,   6.,   8.,   8.,   4.,   1.,   7.,
+         9.,   8.,   7.,  11.,   0.,   8.])
+>>> my_data[1,:]
+array([ nan,   2.,   9.,   3.,   7.,   1.,  12.,   2.,  10.,   4.,  13.,
+         6.,  13.,   1.,   6.,   0.,   8.])
+>>> my_data[2,:]
+array([ nan,   5.,  10.,   5.,   5.,   4.,   7.,   7.,   4.,   6.,   8.,
+         5.,   7.,   5.,  10.,   6.,   6.])
+
+			#delete row
+my_data = np.delete(my_data, 0, 1)  # delete first column of C
+
+
+-----------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
+
+>>> a = array([[1,2,3],[4,5,6]])
+>>> b = array([[9,8,7],[6,5,4]])
+>>> numpy.concatenate((a,b))
+ array([[1, 2, 3],
+       [4, 5, 6],
+       [9, 8, 7],
+       [6, 5, 4]])
+
+-------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+
+>>> a = np.random.randint(0,2,size=(48,366,3))
+>>> a.shape
+(48, 366, 3)
+
+			#remove the last column
+			# equivalent
+>>> b = np.delete(a,-1,1)
+b = a[:,:-1,:]
+
+
+>>> arr
+array([[ 1,  2,  3,  4],
+       [ 5,  6,  7,  8],
+       [ 9, 10, 11, 12]])
+
+>>> np.delete(arr, 1, 0)   # delete second row of arr
+array([[ 1,  2,  3,  4],
+       [ 9, 10, 11, 12]])
+
+A = scipy.delete(A, 1, 0)  # delete second row of A
+B = scipy.delete(B, 2, 0)  # delete third row of B
+C = scipy.delete(C, 1, 1)  # delete second column of C
+
+------------------------------------------------------------------------------
+-----------------------------------------------------------------------------
+
+"""Return the number of test inputs for which the neural
+        network outputs the correct result. Note that the neural
+        network's output is assumed to be the index of whichever
+        neuron in the final layer has the highest activation."""
+
+def evaluate(self, test_data):
+	test_results = [(np.argmax(self.feedforward(x)), y) for (x, y) in test_data]
+        return sum(int(x == y) for (x, y) in test_results)
+
+
+----------------------------------------------------------------
+----------------------------------------------------------------
+
+>>> x=np.arange(9.0)
+>>> x
+array([ 0.,  1.,  2.,  3.,  4.,  5.,  6.,  7.,  8.])
+
+>>> np.split(x, [7])
+[array([ 0.,  1.,  2.,  3.,  4.,  5.,  6.]), array([ 7.,  8.])]
+
+>>> np.split(x, [8])
+[array([ 0.,  1.,  2.,  3.,  4.,  5.,  6.,  7.]), array([ 8.])]
+
+
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+>>>n=2
+>>>mini_batch_size =10
+>>>mini_batches = [tr_d[k:k+mini_batch_size] for k in xrange(0, n, mini_batch_size)]
+
+	# the first element to be one, the last element to be one less than ten, 
+	#and that we'd like each element to go up by two
+>>> for i in xrange(1, 10, 2): print(i)
+1
+3
+5
+7
+9
+
+>>> for i in xrange(0, 2, 1): print(i)
+0
+1
+
+>>>for j in xrange(10):print(j)
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+
+---------------------------------------------
+--------------------------------------------
+
+>>> np.array([[0,0,1,1]]).T
+array([[0],
+       [0],
+       [1],
+       [1]])
+
+>>> 2*np.random.random((3,1)) - 1
+array([[ 0.33021082],
+       [-0.89293423],
+       [ 0.98673978]])
+
+>>> np.array([  [0,0,1],
+                [0,1,1],
+                [1,0,1],
+                [1,1,1] ])
+array([[0, 0, 1],
+       [0, 1, 1],
+       [1, 0, 1],
+       [1, 1, 1]])
+
+
+-----------------------------------------------
+-----------------------------------------------
+
+	#set a variable to true or false by assigning True or False to it:
+>>> myFirstVar = True
+>>> myOtherVar = False
+
+	# if (not loggedDocument): instead of if (loggedDocument == False):
+
+    	#The colon (:) is significant and required. It separates the header of the compound statement from the body.
+    	#The line after the colon must be indented. It is standard in Python to use four spaces for indenting.
+    	#All lines indented the same amount after the colon will be executed whenever the BOOLEAN_EXPRESSION is true.
+
+	# ** ==> exponent
+
+
+	#If it is not true that the weight is greater than 50, then don’t do the indented part: skip printing the extra luggage charge. 
+	#In any event, when you have finished with the if statement (whether it actually does anything or not), 
+	#go on to the next statement that is not indented under the if. In this case that is the statement printing “Thank you”.
+
+weight=49
+if weight > 50:
+        print("There is a $25 charge for luggage that heavy.")
+    print("Thank you for your business.")
+IndentationError: unindent does not match any outer indentation level
+
+
+
+
+if 54 > 50:
+    print("There is a $25 charge for luggage that heavy.")
+print("Thank you for your business.")
+
+
+
+
+
+
+
+
+
+
+		#these are different b/c of indentation !!!
+def nonlin(x,deriv=False):
+    if(deriv==True):
+        return x*(1-x)
+        return 1/(1+np.exp(-x))
+>>> nonlin(0)
+>>>
+
+
+
+def nonlin(x,deriv=False):
+    if(deriv==True):
+        return x*(1-x)
+    return 1/(1+np.exp(-x))
+>>> nonlin(0)
+0.5
+
+----------------------------------------------
+----------------------------------------------
+
+>>> unit_step = lambda x: 0 if x < 0 else 1 
+>>> unit_step(.5)
+1
+>>> unit_step(-.5)
+0
+
+		#lambda functions
+		#the lambda definition does not include a "return" statement -- it always contains an expression which is returned. 
+		#Also note that you can put a lambda definition anywhere a function is expected, and you don't have to assign it to 
+		#a variable at all 
+>>> def f (x): return x**2
+... 
+>>> print f(8)
+64
+
+>>> g = lambda x: x**2 
+>>> print g(8)
+64
+------------------------------------------
+-------------------------------------------
+
+	#slicing arrays
+	# A_NEW = A[Start_index : stop_index, start_index : stop_index)]
+
+A = [[1,2,3],[4,5,6],[7,8,9],[10,11,12]]
+
+A_NEW = A[0:2,0:3]
+A_NEW = [[1,2,3],[4,5,6]]
+
+
+
+If one wants row 2 and column 2 and 3
+A_NEW = A[1:2,1:3]
+
+----------------------------------------
+---------------------------------------
+
+	# .T accesses the attribute T of the object; the transpose of the array
+
+
+
+
+
+			#import into Python
+import numpy as np
+from numpy import genfromtxt
+AB_data = genfromtxt('/home/bmarron/Desktop/AB_data.txt', delimiter=',')
+AB_data = np.array_split(AB_data, [1], axis=1)
+
+
+
+
+# input (training) dataset
+X = AB_data[1]
+
+# output (training) dataset            
+y = AB_data[0]
+
+# initialize weights randomly
+np.random.seed(47)
+rn = np.random.randn(16, 1)
+syn0 = (rn - np.fix(rn))
+
+
+for iter in xrange(10000):
+
+# forward propagation (l1 = activation output)
+l0 = X
+l1 = np.dot(l0,syn0)
+
+# evaluate activation output as a binary 
+unit_step = lambda x: 0 if x < 0 else 1
+results = []
+for x in l1:
+    results.append(unit_step(x))
+
+ao = np.hstack(results)
+
+# error
+error = y - ao
+delta = error[:,:1]
+
+# add eta
+eta = 0.2
+delta = eta * delta
+
+
+   # update weights
+syn0 += np.dot(l0.T,delta)
+
+print syn0
+
+
+---------------------------------------------------------
+----------------------------------------------------------
+
+delete the first row, do this:
+
+x = numpy.delete(x, (0), axis=0)
+
+delete the third column, do this:
+
+x = numpy.delete(x,(2), axis=1)
+
+
+-----------------------------------------
+---------------------------------------
+
+		#delete third row
+>>> all_prcptrn_wgts=np.delete(all_prcptrn_wgts, (2), axis=0)
+
+
+
+
+--------------------------------------
+-------------------------------------
+split($0, chars, "")
+  for (i=1; i <= length($0); i++) {
+    printf("%s\n", chars[i])
+  }
+
+
+---------------------------------------------------
+---------------------------------------------------
+weights are stored as lists of Numpy matrices. So, for example net.weights[1] is a Numpy matrix storing the weights connecting the second and third layers of neurons. (It's not the first and second layers, since Python's list indexing starts at 0.) Since net.weights[1] is rather verbose, let's just denote that matrix w. It's a matrix such that wjk is the weight for the connection between the kth neuron in the second layer, and the jth neuron in the third layer. This ordering of the j and k indices may seem strange - surely it'd make more sense to swap the j and k indices around? The big advantage of using this ordering is that it means that the vector of activations of the third layer of neurons 
+
+
+----------------------------
+-----------------------------
+import numpy as np
+np.random.seed(47)
+    #network with:
+    #16+1(bias) inputs
+    #4+1(bias) hiddens
+    #26 outputs
+NNsize=(17,5,26)
+
+
+#%%
+    #define a new-style class, 'NN'
+    #instantiation with ()
+    #dynamic ordering with 'object'
+class NN(object):
+    #define a special, initial conditions method with:
+    #no. nodes/layer
+    #random values
+    def __init__(self, NNsize):
+        self.NNlayers = len(NNsize)
+        self.weights =[np.random.uniform(-.26, .26, y) 
+                     for y in zip(NNsize[:-1], NNsize[1:])]
+        self.weights[0] = np.transpose(self.weights[0])
+        self.weights[1] = np.transpose(self.weights[1])
+
+
+>>> test=NN(NNsize)
+>>> test.NNlayers
+Out[89]: 3
+
+>>> test.weights[0].shape
+Out[87]: (5, 17)
+
+>>> test.weights[1].shape
+Out[88]: (26, 5)
+
+
+
+---- Using Neilesen's code---
+
+net=Network([17,5,26])
+
+net.weights[0].shape
+Out[93]: (5, 17)
+
+net.weights[1].shape
+Out[94]: (26, 5)
+
+
+
+-----------------------------------------------
+-----------------------------------------------
+So the function is to calculate sigmoid(X) and another to calculate its derivative (gradient). Sigmoid has the property that for
+y=sigmoid(x), dy/dx= y(1-y)
+In python for numpy this looks like:
+
+sigmoid = vectorize(lambda(x): 1.0/(1.0+exp(-x)))
+grad_sigmoid = vectorize(lambda (x): sigmoid(x)*(1-sigmoid(x)))
+
+
+These functions already exist in scipy. The sigmoid function is available as scipy.special.expit.
+In [36]: from scipy.special import expit
+
+
+THE VECTORIZED VERSION WONT WORK!!!!!!!!
+MUST USE
+
+def sigmoid(z):
+    return 1.0/(1.0+np.exp(-z))
+
+
+-------------------------------------------
+---------------------------------------------
+
+the input a is an (n, 1) Numpy ndarray, not a (n,) vector. Here, n is the number of inputs to the network.
+-------------------------------------------------------------
+---------------------------------------------------------------
+
+>>> import string
+>>> list(string.ascii_lowercase)
+>>> list(string.ascii_uppercase)
+
+>>> L = list(itertools.repeat("a", 20)) # 20 copies of "a"
+>>> L = [['x','y'] for i in xrange(20)]
+>>> L = ["a"] * 10
+>>> L = [0] * 10
+>>> L = [["x", "y"]] * 10
+
+itertools — Functions creating iterators for efficient looping
+from itertools import cycle, islice, dropwhile
+
+
+
+>>> a=[1,2,3,4,5,1,2,3,4,5,1]
+>>> for n,i in enumerate(a):
+...   if i==1:
+...      a[n]=10
+...
+>>> a
+[10, 2, 3, 4, 5, 10, 2, 3, 4, 5, 10]
+
+
+So for each element in cursor, a tuple is produced with (counter, element); the for loop binds that to row_number and row, respectively.
+
+
+
+>>> elements = ('foo', 'bar', 'baz')
+>>> for elem in elements:
+...     print elem
+... 
+foo
+bar
+baz
+>>> for count, elem in enumerate(elements):
+...     print count, elem
+... 
+0 foo
+1 bar
+2 baz
+
+
+mylist = [111, -222, 333, -444]
+for (i, item) in enumerate(mylist):
+    if item < 0:
+        mylist[i] = 0
+print mylist
+
+>>> targets=np.array([[0.1]*26]*26)
+>>>targets.shape
+Out[157]: (26, 26)
+
+
+>>> a = [[None]*7 for _ in range(7)]
+>>> a[0][1] = 3
+>>> a
+[[None, 3, None, None, None, None, None], [None, None, None, None, None, 
+
+
+return value 	#hand control back to the block
+
+for i in range(3):
+    for j,k in enumerate(letters):
+        targets[i][j]=0.9
+
+
+
+test=training_datatxt.iloc[:,0:0]
+test[0:4]
+import pandas as pd
+training_datatxt.ix[:,0]
+test=training_datatxt.ix[:,0]
+test
+test=training_datatxt.ix[:,1]
+test
+test=training_datatxt.iloc[:,0]
+test
+test=training_datatxt.iloc[:,0:0]
+
+
+MUST ADD A ROW OF COLUMN NAMES BEFORE IMPORT INTO A PANDAS DATAFRAME!!!!!
+
+----- add a new column --------------------------
+Use the original df1 indexes to create the series:
+
+	#df is a dataframe
+df1['e'] = Series(np.random.randn(sLength), index=df1.index)
+
+---------------------------------------
+
+training_datatxt.ix[0:0,0:3]
+Out[252]: 
+   1  2  3
+0  T  2  8
+
+
+Pandas Dataframe columns are a Pandas Series when you pull them out, which you can then call .tolist() on to turn them into a python list
+
+	# note the name of the column is "1"
+training_datatxt['1']
+Out[254]: 
+0       T
+1       I
+2       D
+3       N
+4       G
+5       S
+...
+9999
+
+my_list = df["cluster"].tolist()
+
+training_datatxt.ix[0:0,]
+Out[266]: 
+   1  2  3  4  5  6  7   8  9  10  11  12  13  14  15  16  17
+0  T  2  8  3  5  1  8  13  0   6   6  10   8   0   8   0   8
+
+training_datatxt.loc[0:0,]
+Out[267]: 
+   1  2  3  4  5  6  7   8  9  10  11  12  13  14  15  16  17
+0  T  2  8  3  5  1  8  13  0   6   6  10   8   0   8   0   8
+
+
+
+----------------------------------------------------------------------
+a = [1, 2, 3, 4, 5]
+b = [9, 4, 7, 6, 8]
+>>> set(a) & set(b)
+{5}
+
+if order is significant you can do it with list comprehensions like this:
+
+>>> [i for i, j in zip(a, b) if i == j]
+[5]
+
+(only works for equal-sized lists, which order-significance implies).
+
+
+
+-----------------------------------------------
+Convert b to a set and then loop over a's items and check if they exist in that set:
+a = ['a','s','d','f']
+b = ['e','d','y','a','t','v']
+
+s = set(b)
+[x for x in a if x in s]
+['a', 'd']
+
+
+------------------------------------------
+
+get a list of rows in pandas like: 
+
+map(list, df.values)
+
+-------------------------------
+If you want just the value and not a df/series then call values and index the first element [0] so just:
+
+price = purchase_group['Column_name'].values[0]
+
+	#from the "1" column, get the first element
+training_datatxt['1'].values[0]
+Out[292]: 'T'
+
+s = set(letters)
+[x for x in training_datatxt['1'].values[0] if x in s]
+Out[294]: ['T']
+
+
+----------------------
+
+wordlist = ['mississippi','miss','lake','que']
+
+letters = set('aqk')
+
+for word in wordlist:
+    if letters & set(word):
+        print word
+
+Output:
+
+lake
+que
+
+------------------------------
+----------------------------
+EUREKA!!
+
+targets = np.asarray([[0.1]*26 for _ in range(26)])
+for i in range(26):
+    targets[i][i]=0.9
+
+letters=list(string.ascii_uppercase)
+letters.index('A')
+Out[8]: 0
+
+letters.index('C')
+Out[9]: 2
+
+s = set(letters)
+match=[x for x in training_datatxt['1'].values[1] if x in s]
+targets[letters.index(match[0])]
+
+Out[317]: 
+array([ 0.1,  0.1,  0.1,  0.1,  0.1,  0.1,  0.1,  0.1,  0.9,  0.1,  0.1,
+        0.1,  0.1,  0.1,  0.1,  0.1,  0.1,  0.1,  0.1,  0.1,  0.1,  0.1,
+        0.1,  0.1,  0.1,  0.1])
+
+--------------------------------------------------
+-------------------------------------------------
+to initialize an empty list do something like
+my_list = []
+
+or
+
+my_list = list()
+
+To add elements to the standard python list you use append
+my_list.append(12)
+
+To extend the list to include the elements from another list use extend
+my_list.extend([1,2,3,4])
+my_list
+--> [12,1,2,3,4]
+
+To remove an element from a list use remove
+my_list.remove(2)
+
+
+Dictionaries represent a collection of key/value pairs also known as an associative array or a map.
+To initialize an empty dictionary use {} or dict()
+Dictionaries have keys and values
+
+my_dict = {'key':'value', 'another_key' : 0}
+
+To extend a dictionary with the contents of another dictionary you may use the update method
+my_dict.update({'third_key' : 1})
+
+--------------------------------------------------------
+
+training_data_headertxt.ix[0:1,0:1]
+Out[21]: 
+   1
+0  T
+1  I
+
+training_data_headertxt.ix[0:0,0:1]
+Out[22]: 
+   1
+0  T
+
+training_data_headertxt.ix[1:1,0:1]
+Out[23]: 
+   1
+1  I
+
+-------------------------------------
+EUREKA!!
+
+targets = np.asarray([[0.1]*26 for _ in range(26)])
+for i in range(26):
+    targets[i][i]=0.9
+
+letters=list(string.ascii_uppercase)
+s = set(letters)
+match=[x for x in training_datatxt['1'].values[0] if x in s]
+targets[letters.index(match[0])]
+
+#%%
+NNtargets =[]
+for i in range(10000):
+    match=[x for x in training_data_headertxt.ix[i:i,0:1].values[0] if x in s]
+    NNtargets.append(targets[letters.index(match[0])])
+
+-------------------------------------------------------
+EUREKA!
+
+    #to set the targets for the training data:
+    #define an array of all 0.1 then switch to 0.9 sequentially
+targets = np.asarray([[0.1]*26 for _ in range(26)])
+for i in range(26):
+    targets[i][i]=0.9
+    #define a set of uppercase letters as a set
+letters=list(string.ascii_uppercase)
+s = set(letters)
+    #populate the NN targets array by comparing each letter of each row
+    #in the training set with the set of uppercase letters using its index
+    #match the index to the targets array and append to the
+    #NN targets array
+NNtargets =[]
+for i in range(10000):
+    match=[x for x in training_data_headertxt.ix[i:i,0:1].values[0] if x in s]
+    NNtargets.append(targets[letters.index(match[0])])
+    #convert the list to numpy array
+NNtargets=np.asarray(NNtargets)
+
+
+
+-------------------------------------------------------------
+
+np.arange(200).reshape((4,5,10))
+Out[37]: 
+array([[[  0,   1,   2,   3,   4,   5,   6,   7,   8,   9],
+        [ 10,  11,  12,  13,  14,  15,  16,  17,  18,  19],
+        [ 20,  21,  22,  23,  24,  25,  26,  27,  28,  29],
+        [ 30,  31,  32,  33,  34,  35,  36,  37,  38,  39],
+        [ 40,  41,  42,  43,  44,  45,  46,  47,  48,  49]],
+
+       [[ 50,  51,  52,  53,  54,  55,  56,  57,  58,  59],
+        [ 60,  61,  62,  63,  64,  65,  66,  67,  68,  69],
+        [ 70,  71,  72,  73,  74,  75,  76,  77,  78,  79],
+        [ 80,  81,  82,  83,  84,  85,  86,  87,  88,  89],
+        [ 90,  91,  92,  93,  94,  95,  96,  97,  98,  99]],
+
+       [[100, 101, 102, 103, 104, 105, 106, 107, 108, 109],
+        [110, 111, 112, 113, 114, 115, 116, 117, 118, 119],
+        [120, 121, 122, 123, 124, 125, 126, 127, 128, 129],
+        [130, 131, 132, 133, 134, 135, 136, 137, 138, 139],
+        [140, 141, 142, 143, 144, 145, 146, 147, 148, 149]],
+
+       [[150, 151, 152, 153, 154, 155, 156, 157, 158, 159],
+        [160, 161, 162, 163, 164, 165, 166, 167, 168, 169],
+        [170, 171, 172, 173, 174, 175, 176, 177, 178, 179],
+        [180, 181, 182, 183, 184, 185, 186, 187, 188, 189],
+        [190, 191, 192, 193, 194, 195, 196, 197, 198, 199]]])
+
+NNtargets.shape
+Out[38]: (10000, 26)		==> (10000, 26, 1)
+
+------------------------------------------------------------
+data=np.arange(200).reshape((4,5,10))
+	# Iterating through a ndimensional array produces slices along
+	# the last axis. 
+	# 'for data_slice in data:'is equivalent to data[i,:,:]
+
+with file('test.txt', 'w') as outfile:
+    # I'm writing a header here just for the sake of readability
+    # Any line starting with "#" will be ignored by numpy.loadtxt
+    outfile.write('# Array shape: {0}\n'.format(data.shape))
+
+	for data_slice in data:
+		# The formatting string indicates that I'm writing out
+        	# the values in left-justified columns 7 characters in width
+       		# with 2 decimal places.
+		np.savetxt(outfile, data_slice, fmt='%-7.2f')
+
+        	# Writing out a break to indicate different slices...
+		outfile.write('# New slice\n')
+
+
+
+import pickle
+f = open(name_of_file,'w')
+pickle.dump(f,name_of_array)
+f.close()
+
+
+import cPickle
+with open("NNtargets", "wb") as output_file:
+	outfile.write('# Array shape: {0}\n'.format(data.shape))
+	cPickle.dump(NNtargets, output_file)
+# pickle_file will be closed at this point, preventing your from accessing it any further
+
+
+data=cPickle.load(open("input.pkl","rb"))
+training_data, validation_data, test_data = cPickle.load(data)
+
+
+--------------------------------------------------------------------------------
+	# Iterating through a ndimensional array produces slices along
+	# the last axis. 
+	# 'for data_slice in data:'is equivalent to data[i,:,:]
+NNtargets[0,:]
+Out[40]: 
+array([ 0.1,  0.1,  0.1,  0.1,  0.1,  0.1,  0.1,  0.1,  0.1,  0.1,  0.1,
+        0.1,  0.1,  0.1,  0.1,  0.1,  0.1,  0.1,  0.1,  0.9,  0.1,  0.1,
+        0.1,  0.1,  0.1,  0.1])
+
+NNtargets[1,:]
+Out[41]: 
+array([ 0.1,  0.1,  0.1,  0.1,  0.1,  0.1,  0.1,  0.1,  0.9,  0.1,  0.1,
+        0.1,  0.1,  0.1,  0.1,  0.1,  0.1,  0.1,  0.1,  0.1,  0.1,  0.1,
+        0.1,  0.1,  0.1,  0.1])
+
+NNtargets[2,:]
+Out[42]: 
+array([ 0.1,  0.1,  0.1,  0.9,  0.1,  0.1,  0.1,  0.1,  0.1,  0.1,  0.1,
+        0.1,  0.1,  0.1,  0.1,  0.1,  0.1,  0.1,  0.1,  0.1,  0.1,  0.1,
+        0.1,  0.1,  0.1,  0.1])
+
+
+
+---------------------------------------------------------------------
+
+
+
+The pickled file represents a tuple of 3 lists : the training set, the validation set and the testing set. (train, val, test)
+
+    Each of the three lists is a pair formed from a list of images and a list of class labels for each of the images.
+    An image is represented as numpy 1-dimensional array of 784 (28 x 28) float values between 0 and 1 (0 stands for black, 1 for white).
+    The labels are numbers between 0 and 9 indicating which digit the image represents.
+
+------------------------------------------------------------------------
+EUREKA!!!
+
+    #save and retreive Python np arrays (output)
+with open("NNtargets_output.pkl", 'wb') as f:
+    cPickle.dump(NNtargets, f, protocol=2)
+
+data=cPickle.load(open("NNtargets_output.pkl","rb"))
+
+-------------------------------------------------------------------------
+
+	#get a 3 tuple from this in spyder
+data=cPickle.load(open('/home/bmarron/Desktop/PSU/PhD_EES/SoE/2016SoE009_CS545_MachineLearning/_PWFs_work_inprogress/mnist.pkl',"rb"))
+
+
+	#get three, 2 tuples
+tr_d, te_d, va_d =cPickle.load(open('/home/bmarron/Desktop/PSU/PhD_EES/SoE/2016SoE009_CS545_MachineLearning/_PWFs_work_inprogress/mnist.pkl',"rb"))
+
+
+
+---------------------------------------------------------
+	#extracts first field of data
+cut -c1 ~/Desktop/PSU/PhD_EES/SoE/2016SoE009_CS545_MachineLearning/_PWFs_work_inprogress/Hwk2/DataFiles/training_data_raw.txt >> ~/Desktop/new_data.txt
+
+----------------------------------------------------------------
+#%%
+    #HowTo:
+    #save and retreive Python np arrays (output)
+with open("NNtargets_output.pkl", 'wb') as f:
+    cPickle.dump(NNtargets, f, protocol=2)
+
+data=cPickle.load(open("NNtargets_output.pkl","rb"))
+
+
+
+------------------------------------------------------------
+#%%
+    #The training_data is a list of tuples (x, y) 
+    #representing the training inputs and corresponding 
+    #desired outputs (targets)
+    # Nielsen unpacks and repacks these in mnist_loader.py
+    #unpickles into three, duples
+tr_d, te_d, va_d =cPickle.load(open('/home/bmarron/Desktop/PSU/PhD_EES/SoE/2016SoE009_CS545_MachineLearning/_PWFs_work_inprogress/mnist.pkl',"rb"))
+
+
+def vectorized_result(j):
+    """Return a 10-dimensional unit vector with a 1.0 in the jth
+    position and zeroes elsewhere.  This is used to convert a digit
+    (0...9) into a corresponding desired output from the neural
+    network."""
+    e = np.zeros((10, 1))
+    e[j] = 1.0
+    return e
+
+test = [vectorized_result(y) for y in te_d[1]]
+
+------------------------------------------------------
+
+in R
+	#standardize the columns to have zero mean and unit variance.
+	#If your data is in a dataframe and all the columns are numeric you can simply call the scale function
+	#on the data to do what you want.
+
+
+> training_data_noletters <- read.csv("~/Desktop/PSU/PhD_EES/SoE/2016SoE009_CS545_MachineLearning/_PWFs_work_inprogress/Hwk2/DataFiles/training_data_noletters.txt", header=FALSE, stringsAsFactors=FALSE)
+
+> tr_means <- colMeans(training_data_noletters)
+> write.csv(tr_means, file = "tr_means.txt", row.names = FALSE,
+            col.names = FALSE)
+
+> M <- as.matrix(training_data_noletters)
+> tr_sds <- apply(M, 2, sd)
+> write.csv(tr_sds, file = "tr_sds.txt", row.names = FALSE, sep = ",",
+            col.names = FALSE)
+
+> training_data_noletters <- scale(training_data_noletters)
+
+> write.csv(round(training_data_noletters, 3), file = "training_data_standardized.txt", row.names = FALSE, sep = ",",
+            col.names = TRUE)
+
+
+--------------------------------------------------------------
+
+	#OJO!! ybecomes populated as a varaible with the last entry in the cycle
+
+tst_wgts = [np.random.uniform(-.26, .26, y) for y in zip(NNsize[:-1], NNsize[1:])]
+
+tst_wgts[0].shape
+Out[130]: (17, 5)
+
+tst_wgts[1].shape
+Out[131]: (5, 26)
+
+zip(NNsize[:-1], NNsize[1:])
+Out[132]: [(17, 5), (5, 26)]
+
+y
+Out[133]: (5, 26)
+
+
+----------------------------------------------------------------------------------------
+NNsize=(17,5,26)
+tst_wgts = [np.random.uniform(-.26, .26, y) for y in zip(NNsize[:-1], NNsize[1:])]
+tst_wgts[0]=np.transpose(tst_wgts[0])
+tst_wgts[1]=np.transpose(tst_wgts[1])
+tst_nabla_w = [np.zeros(w.shape) for w in tst_wgts]
+w.shape
+Out[137]: (26, 5)
+
+w[0]
+Out[138]: array([-0.20299929, -0.24025368, -0.21980879,  0.02058201,  0.24564391])
+
+w[1]
+Out[139]: array([-0.10474474, -0.05527241, -0.06395736,  0.06636801, -0.12395888])
+
+w[25]
+Out[141]: array([ 0.09104746,  0.02455894, -0.23691472, -0.08729166,  0.02782363])
+
+------------------------------------------------------------------------------------
+
+tr_d.dtype
+Traceback (most recent call last):
+
+  File "<ipython-input-241-2d667b0dd098>", line 1, in <module>
+    tr_d.dtype
+
+AttributeError: 'list' object has no attribute 'dtype'
+
+
+The trouble is that matrix_b is defaulting to a float dtype. On my machine, checking
+matrix_b.dtype
+returns dtype('float64'). To create a numpy array that can hold anything, you can manually set dtype to object, 
+
+tr_d=np.asarray(tr_d, dtype=object)
+
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+	#problem in format!!
+	#Nielsen raw data
+Ntr_d[0][0].shape
+Out[41]: (784,)
+
+Ntr_d[0][1].shape
+Out[42]: (784,)
+
+Ntr_d[1].shape
+Out[44]: (50000,)
+
+
+	#Neilsen processing data:
+N_training_inputs[0].shape
+Out[48]: (784, 1)
+
+N_training_inputs[1].shape
+Out[49]: (784, 1)
+
+N_training_results[0].shape
+Out[53]: (10, 1)
+
+N_training_results[1].shape
+Out[54]: (10, 1)
+
+
+
+	#Neilsen processed data:
+N_training_data[0][0].shape
+Out[50]: (784, 1)
+
+N_training_data[0][1].shape
+Out[51]: (10, 1)
+
+N_training_data[1][0].shape
+Out[55]: (784, 1)
+
+N_training_data[1][1].shape
+Out[56]: (10, 1)
+
+
+
+	#Current 
+tr_d[0][0].shape
+Out[38]: (16,)
+
+tr_d[0][1].shape
+Out[39]: (26,)
+---------------------------------------------------
+----------------------------------------------------
+
+	#look at format ==> a numpy array (!list)
+training_data_standardizedtxt[0]
+Out[18]: 
+array([-1.052,  0.302, -1.051, -0.154, -1.134,  0.554,  2.349, -1.695,
+        0.341, -0.921,  1.336,  0.032, -1.3  , -0.219, -1.433,  0.138])
+
+	# format ==> a list
+test=[1,2,3,4,5]
+test
+Out[24]: [1, 2, 3, 4, 5]
+
+	#format ==> a numpy array
+test=np.asarray(test)
+test
+Out[20]: array([1, 2, 3, 4, 5])
+
+test=np.arange(6)
+test
+Out[29]: array([0, 1, 2, 3, 4, 5])
+
+	#reshape watch size!!
+test.reshape(6,1)
+Out[30]: 
+array([[0],
+       [1],
+       [2],
+       [3],
+       [4],
+       [5]])
+
+	#equivalent!!!!!!!
+training_data_standardizedtxt[0].reshape(16,1)
+Out[31]: 
+array([[-1.052],
+       [ 0.302],
+       [-1.051],
+       [-0.154],
+       [-1.134],
+       [ 0.554],
+       [ 2.349],
+       [-1.695],
+       [ 0.341],
+       [-0.921],
+       [ 1.336],
+       [ 0.032],
+       [-1.3  ],
+       [-0.219],
+       [-1.433],
+       [ 0.138]])
+
+np.reshape(training_data_standardizedtxt[0], (16,1))
+Out[33]: 
+array([[-1.052],
+       [ 0.302],
+       [-1.051],
+       [-0.154],
+       [-1.134],
+       [ 0.554],
+       [ 2.349],
+       [-1.695],
+       [ 0.341],
+       [-0.921],
+       [ 1.336],
+       [ 0.032],
+       [-1.3  ],
+       [-0.219],
+       [-1.433],
+       [ 0.138]])
+
+
+	#can't replace the [i] in the original; define it fresh
+tr_d_standardizedtxt= np.reshape(tr_d_standardizedtxt, (10000,16,1))
+
+--------------------------------------------
+--------------------------------------------
+EUREKA! (see hmwk2.py for details)
+
+tr_d[0][0].shape
+Out[67]: (16, 1)
+
+tr_d[0][1].shape
+Out[68]: (26, 1)
+
+
+----------------------------
+----------------------------
+	#same problem with biases
+
+    self.biases[0] = self.biases[0].reshape((5,1))
+
+ValueError: total size of new array must be unchanged
+
+
+self.biases = [np.random.uniform(-.26, .26, y) for y in NNsize[1:]]
+self.biases[0] = self.biases[0].reshape((5,1))
+self.biases[1] = self.biases[1].reshape((26,1))
+
+-------------------------------------------------
+------------------------------------------------
+
+	#print a class's variables
+print(theExample.itsProblem)
+
+print(theExample.itsProblem)
+
+
+
+
+-------------------------------------------------------
+-------------------------------------------------------
+¡¡¡EUREKA!!!!!!
+testnet2=NN(NNsize)
+
+testnet2.SGD(tr_d, 5, 10, .5)
+Epoch 0 complete
+Epoch 1 complete
+Epoch 2 complete
+Epoch 3 complete
+Epoch 4 complete
+
+
+----------------------------
+----------------------------
+
+	#lazily; no list created step is optional
+xrange(start, stop[, step])
+
+
+tr_d[0:1] ==> datum 1
+tr_d{1:2} ==> datum 2
+
+
+		#this prints tr_d[0:3]
+batches = [tr_d[k:k+1] for k in xrange(0, 3)]
+for batch in batches:
+    print batch
+
+----------------------------------------
+---------------------------------------
+
+
+
+--------------------------------------------------
+--------------------------------------------------
+
+another code snippet
+
+# Gradient descent. For each batch...
+    for i in xrange(0, num_passes):
+ 
+        # Forward propagation
+        z1 = X.dot(W1) + b1
+        a1 = np.tanh(z1)
+        z2 = a1.dot(W2) + b2
+        exp_scores = np.exp(z2)
+        probs = exp_scores / np.sum(exp_scores, axis=1, keepdims=True)
+ 
+        # Backpropagation
+        delta3 = probs
+        delta3[range(num_examples), y] -= 1
+        dW2 = (a1.T).dot(delta3)
+        db2 = np.sum(delta3, axis=0, keepdims=True)
+        delta2 = delta3.dot(W2.T) * (1 - np.power(a1, 2))
+        dW1 = np.dot(X.T, delta2)
+        db1 = np.sum(delta2, axis=0)
+ 
+        # Add regularization terms (b1 and b2 don't have regularization terms)
+        dW2 += reg_lambda * W2
+        dW1 += reg_lambda * W1
+ 
+        # Gradient descent parameter update
+        W1 += -epsilon * dW1
+        b1 += -epsilon * db1
+        W2 += -epsilon * dW2
+        b2 += -epsilon * db2
+
+
+-------------------------------------------------------
+-------------------------------------------------------
+
+def feedforward2(self, a):
+    zs = []
+    activations = [a]
+
+    activation = a
+    for b, w in zip(self.biases, self.weights):
+        z = np.dot(w, activation) + b
+        zs.append(z)
+        activation = sigmoid(z)
+        activations.append(activation)
+
+    return (zs, activations)
+
+
+def update_mini_batch2(self, mini_batch, eta):
+    batch_size = len(mini_batch)
+
+    # transform to (input x batch_size) matrix
+    x = np.asarray([_x.ravel() for _x, _y in mini_batch]).transpose()
+    # transform to (output x batch_size) matrix
+    y = np.asarray([_y.ravel() for _x, _y in mini_batch]).transpose()
+
+    nabla_b, nabla_w = self.backprop2(x, y)
+    self.weights = [w - (eta / batch_size) * nw for w, nw in zip(self.weights, nabla_w)]
+    self.biases = [b - (eta / batch_size) * nb for b, nb in zip(self.biases, nabla_b)]
+
+    return
+
+def backprop2(self, x, y):
+
+    nabla_b = [0 for i in self.biases]
+    nabla_w = [0 for i in self.weights]
+
+    # feedforward
+    zs, activations = self.feedforward2(x)
+
+    # backward pass
+    delta = self.cost_derivative(activations[-1], y) * sigmoid_prime(zs[-1])
+    nabla_b[-1] = delta.sum(1).reshape([len(delta), 1]) # reshape to (n x 1) matrix
+    nabla_w[-1] = np.dot(delta, activations[-2].transpose())
+
+    for l in xrange(2, self.num_layers):
+        z = zs[-l]
+        sp = sigmoid_prime(z)
+        delta = np.dot(self.weights[-l + 1].transpose(), delta) * sp
+        nabla_b[-l] = delta.sum(1).reshape([len(delta), 1]) # reshape to (n x 1) matrix
+        nabla_w[-l] = np.dot(delta, activations[-l - 1].transpose())
+
+    return (nabla_b, nabla_w)
+
+--------------------------------------------------
+---------------------------------------------------
+
+Suppose you have a series of matrices which you want to (right) multiply by another matrix. This is messy with the matrix object, where you need to do list comprehension, but nice as pie with the array object.
+	
+#matrix version
+A = [np.mat(np.random.randn(2,2)) for i in range(100)]
+B = np.mat(np.random.randn(2,2))
+AB = [a*B for a in A]
+ 
+#array version
+A = np.random.randn(100,2,2)	# a hundred 2x2 arrays
+B = np.random.randn(2,2)
+AB = np.dot(A,B)
+
+
+-------------------------------------------------------
+-------------------------------------------------------
+
+test=np.arange(0,7)
+
+test
+Out[60]: array([0, 1, 2, 3, 4, 5, 6])
+
+test[0]
+Out[58]: 0
+			#wraps around!!!!
+test[-1]
+Out[59]: 6
+
+------------------------------------------------------------
+-------------------------------------------------------------
+
+Calculate derivative of error on the neuron's inputs via the chain rule:
+E = -(target - output)^2
+
+dE/dinput = dE/doutput * doutput/dinput
+
+Work out dinput/doutput:
+output = sigmoid (input)
+doutput/dinput = output * (1 - output)    (derivative of sigmoid function)
+
+therefore:
+dE/dinput = 2 * (target - output) * (derivative of sigmoid function)
+
+
+
+-----------------------------------------------------------------------------
+-----------------------------------------------------------------------------
+
+#%%Using Neilsen's original reshaping
+""" EUREKA!! """
+
+NNsize=[16,4,26]
+
+biases = [np.random.uniform(-.26, .26, y) for y in NNsize[1:]]
+biases[0] = biases[0].reshape((NNsize[1], 1))
+biases[1] = biases[1].reshape((NNsize[2], 1))
+
+weights =[np.random.uniform(-.26, .26, y) for y in zip(NNsize[:-1], NNsize[1:])]
+weights[0] = weights[0].reshape(NNsize[1], NNsize[0])
+weights[1] = weights[1].reshape(NNsize[2], NNsize[1])
+
+
+x = tr_d[0][0]
+
+    # feedforward
+    # z = raw NN output
+activation1 = x  #activation from nodes L1 in tr_d 
+activations = [x]
+layers = [] 
+
+l_2 = np.dot(weights[0], activation1) + biases[0]
+layers.append(l_2)  #(4 x 1)
+activation2 = sigmoid(l_2)
+activations.append(activation2)
+
+l_3 = np.dot(weights[1], activation2) + biases[1]
+layers.append(l_3)
+activation3 = sigmoid(l_3)
+activations.append(activation3)
+
+    # backward propagation
+nabla_b = [np.zeros(b.shape) for b in biases]
+nabla_w = [np.zeros(w.shape) for w in weights]
+
+def error(output_activations, y): 
+    return (output_activations-y)
+    
+output_activations = activations[-1]
+y = tr_d[0][1]
+
+delta_error = error(activations[-1], y) * sigmoid_prime(layers[-1])
+nabla_b[-1] = delta_error
+nabla_w[-1] = np.dot(delta_error, activations[-2].T)
+        
+z = layers[-2]
+sp = sigmoid_prime(z)
+delta_error2 = np.dot(weights[-1].T, delta_error) * sp
+nabla_b[-2] = delta_error2
+nabla_w[-2] = np.dot(delta_error2, activations[-3].T)
+
+
+--------------------------------------------------------
+---------------------------------------------------------
+
+the elementwise product of the two vectors == Hadamard product
+The * operator for numpy arrays is element wise multiplication (similar to the Hadamard product for arrays of the same dimension), not matrix multiply.
+
+For example, if we're using the quadratic cost function then 
+
+C=1/2∑(yj−aj)^2 
+
+and so 
+
+∂C/∂aLj=(aj−yj) which obviously is easily computable (in LaTex):
+
+	#the "nabla" is the del symbol
+\begin{eqnarray} 
+  \delta^L = \nabla_a C \odot \sigma'(z^L).
+\tag{BP1a}
+\end{eqnarray}
+
+\begin{eqnarray} 
+  \delta^L = (a^L-y) \odot \sigma'(z^L).
+\tag{30}
+\end{eqnarray}
+
+
+
+To understand how the cost varies with earlier weights and biases repeatedly apply the chain rule, working backward through the layers
+
+---------------------------------------------------------
+----------------------------------------------------------
+
+#%%Using Neilsen's original reshaping
+"""EUREKA!!"""
+
+NNsize=[16,4,26]
+
+biases = [np.random.uniform(-.26, .26, y) for y in NNsize[1:]]
+biases[0] = biases[0].reshape((NNsize[1], 1))
+biases[1] = biases[1].reshape((NNsize[2], 1))
+
+weights =[np.random.uniform(-.26, .26, y) for y in zip(NNsize[:-1], NNsize[1:])]
+weights[0] = weights[0].reshape(NNsize[1], NNsize[0])
+weights[1] = weights[1].reshape(NNsize[2], NNsize[1])
+
+
+x = tr_d[0][0]
+
+    # feedforward
+    # z == raw NN output
+    #x == activation from L1 nodes (ie, tr_d[0][0], tr_d[1][0], etc) 
+a_L1 = x  
+a_values = [x]
+z_values = [] 
+
+z_L2 = np.dot(weights[0], a_L1) + biases[0]
+z_values.append(z_L2)  #(4 x 1)
+a_L2 = sigmoid(z_L2)
+a_values.append(a_L2)
+
+z_L3 = np.dot(weights[1], a_L2) + biases[1]
+z_values.append(z_L3)
+a_L3 = sigmoid(z_L3)
+a_values.append(a_L3)
+
+# backward propagation
+#(1) delta_error == the derivative of the error function with respect to the 
+#neuron's inputs. Neglect multiplicative constant (=2)
+#(2) nabla_b[-1].shape = (26 x 1)
+#(3) nabla_w[-1].shape  = (26 x 16)
+nabla_b = [np.zeros(b.shape) for b in biases]
+nabla_w = [np.zeros(w.shape) for w in weights]
+
+def error(a_L3, y): 
+    return (a_L3-y)
+    
+a_L3 = a_values[-1]
+y = tr_d[0][1]
+
+del_error_L3 = error(a_values[-1], y) * sigmoid_prime(z_values[-1])
+nabla_b[-1] = del_error_L3
+nabla_w[-1] = np.dot(del_error_L3, a_values[-2].T)
+
+
+del_error_L2 = np.dot(weights[-1].T, del_error_L3) * sigmoid_prime(z_values[-2])
+nabla_b[-2] = del_error_L2
+nabla_w[-2] = np.dot(del_error_L2, a_values[-3].T)
+
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+
+a=13
+b=7
+int(a==b)
+Out[31]: 0
+
+b=13
+int(a==b)
+Out[33]: 1
+
+
+-----------------------------------------------------
+---------------------------------------------------
+a = ['a1', 'a2', 'a3']
+b = ['b1', 'b2']
+
+# will iterate 3 times,
+# the last iteration, b will be None
+print "Map:"
+for x, y in map(None, a, b):
+  print x, y
+
+# will iterate 2 times,
+# the third value of a will not be used
+print "Zip:"
+for x, y in zip(a, b):
+  print x, y
+
+# will iterate 6 times,
+# it will iterate over each b, for each a
+# producing a slightly different outpu
+print "List:"
+for x, y in [(x,y) for x in a for y in b]:
+    print x, y
+
+
+----------------------------------------------------------------
+----------------------------------------------------------------
+#%%Using Neilsen's original reshaping
+"""EUREKA!!"""
+
+NNsize=[16,4,26]
+
+biases = [np.random.uniform(-.26, .26, y) for y in NNsize[1:]]
+biases[0] = biases[0].reshape((NNsize[1], 1))
+biases[1] = biases[1].reshape((NNsize[2], 1))
+
+weights =[np.random.uniform(-.26, .26, y) for y in zip(NNsize[:-1], NNsize[1:])]
+weights[0] = weights[0].reshape(NNsize[1], NNsize[0])
+weights[1] = weights[1].reshape(NNsize[2], NNsize[1])
+
+
+x = tr_d[0][0]
+
+    # feedforward
+    # z == raw NN output
+    #x == activation from L1 nodes (ie, tr_d[0][0], tr_d[1][0], etc) 
+a_L1 = x  
+a_values = [x]
+z_values = [] 
+
+z_L2 = np.dot(weights[0], a_L1) + biases[0]
+z_values.append(z_L2)  #(4 x 1)
+a_L2 = sigmoid(z_L2)
+a_values.append(a_L2)
+
+z_L3 = np.dot(weights[1], a_L2) + biases[1]
+z_values.append(z_L3)
+a_L3 = sigmoid(z_L3)
+a_values.append(a_L3)
+
+# backward propagation
+#(1) delta_error == the derivative of the error function with respect to the 
+#neuron's inputs. Neglect multiplicative constant (=2)
+#(2) nabla_b[-1].shape = (26 x 1)
+#(3) nabla_w[-1].shape  = (26 x 16)
+nabla_b = [np.zeros(b.shape) for b in biases]
+nabla_w = [np.zeros(w.shape) for w in weights]
+
+def error(a_L3, y): 
+    return (a_L3-y)
+    
+a_L3 = a_values[-1]
+y = tr_d[0][1]
+
+del_error_L3 = error(a_values[-1], y) * sigmoid_prime(z_values[-1])
+nabla_b[-1] = del_error_L3
+nabla_w[-1] = np.dot(del_error_L3, a_values[-2].T)
+
+
+del_error_L2 = np.dot(weights[-1].T, del_error_L3) * sigmoid_prime(z_values[-2])
+nabla_b[-2] = del_error_L2
+nabla_w[-2] = np.dot(del_error_L2, a_values[-3].T)
+
+---------------------------------------------------------------------
+-----------------------------------------------------------------------
+#%%testing
+
+a1 = np.linspace(0,-31, 32).reshape(32, 1)
+a2 = np.arange(32).reshape(32, 1)
+a=[a1,a2]
+b=[a,a]
+
+#%%
+for (x, y) in b:
+     test_results = [np.argmax(x), np.argmax(y)]
+
+test_results
+Out[30]: [0, 31]
+
+
+---------------------------------------------------------
+--------------------------------------------------------
+
+choicePairs = list()
+buttonSetup = [(310, 350), (311, 310),
+               (312, 270)]
+for (x, y) in buttonSetup:
+   button = (x, y)
+   choicePairs.append(button)
+
+
+
+buttonSetup = [(310, 350), (311, 310),
+               (312, 270)]
+for (x, y) in buttonSetup:
+   choicePairs = list()
+   button = sum((x, y))
+   choicePairs.append(button)
+
+
+
+
+sum(i for i, j in list_of_pairs)
+sum(i for i, _ in list_of_pairs)
+
+Note:
+Using the variable _(or __ to avoid confliction with the alias of gettext) instead of j has at least two benefits:
+    "_"(which stands for placeholder) has better readability
+    pylint won't complain: "Unused variable 'j'"
+
+
+import operator
+import itertools
+idx0 = operator.itemgetter(0)
+list_of_pairs = [(0, 1), (2, 3), (5, 7), (2, 1)]
+sum(itertools.imap(idx0, list_of_pairs)
+
+------------------------------------------------------
+-------------------------------------------------------
+
+#%%
+for i in xrange(0,2):
+    results=[]
+    result=(int(np.argmax(b[i][0]))==int(np.argmax(b[i][1])))
+    results.extend(result)
+
+TypeError: 'bool' object is not iterable
+
+--------------------------------------------------------------
+--------------------------------------------------------------
+
+
+for x in xrange(1, 11):
+    for y in xrange(1, 11):
+        print '%d * %d = %d' % (x, y, x*y)
+1 * 1 = 1
+1 * 2 = 2
+1 * 3 = 3
+1 * 4 = 4
+1 * 5 = 5
+1 * 6 = 6
+1 * 7 = 7
+1 * 8 = 8
+1 * 9 = 9
+1 * 10 = 10
+2 * 1 = 2
+2 * 2 = 4
+2 * 3 = 6
+2 * 4 = 8
+2 * 5 = 10
+2 * 6 = 12
+2 * 7 = 14
+2 * 8 = 16
+2 * 9 = 18
+2 * 10 = 20
+3 * 1 = 3
+3 * 2 = 6
+3 * 3 = 9
+3 * 4 = 12
+3 * 5 = 15
+3 * 6 = 18
+3 * 7 = 21
+3 * 8 = 24
+3 * 9 = 27
+3 * 10 = 30
+4 * 1 = 4
+4 * 2 = 8
+4 * 3 = 12
+4 * 4 = 16
+4 * 5 = 20
+4 * 6 = 24
+4 * 7 = 28
+4 * 8 = 32
+4 * 9 = 36
+4 * 10 = 40
+5 * 1 = 5
+5 * 2 = 10
+5 * 3 = 15
+5 * 4 = 20
+5 * 5 = 25
+5 * 6 = 30
+5 * 7 = 35
+5 * 8 = 40
+5 * 9 = 45
+5 * 10 = 50
+6 * 1 = 6
+6 * 2 = 12
+6 * 3 = 18
+6 * 4 = 24
+6 * 5 = 30
+6 * 6 = 36
+6 * 7 = 42
+6 * 8 = 48
+6 * 9 = 54
+6 * 10 = 60
+7 * 1 = 7
+7 * 2 = 14
+7 * 3 = 21
+7 * 4 = 28
+7 * 5 = 35
+7 * 6 = 42
+7 * 7 = 49
+7 * 8 = 56
+7 * 9 = 63
+7 * 10 = 70
+8 * 1 = 8
+8 * 2 = 16
+8 * 3 = 24
+8 * 4 = 32
+8 * 5 = 40
+8 * 6 = 48
+8 * 7 = 56
+8 * 8 = 64
+8 * 9 = 72
+8 * 10 = 80
+9 * 1 = 9
+9 * 2 = 18
+9 * 3 = 27
+9 * 4 = 36
+9 * 5 = 45
+9 * 6 = 54
+9 * 7 = 63
+9 * 8 = 72
+9 * 9 = 81
+9 * 10 = 90
+10 * 1 = 10
+10 * 2 = 20
+10 * 3 = 30
+10 * 4 = 40
+10 * 5 = 50
+10 * 6 = 60
+10 * 7 = 70
+10 * 8 = 80
+10 * 9 = 90
+10 * 10 = 100
+
+
+---------------------------
+---------------------------
+
+a[start:end] # items start through end-1
+a[start:]    # items start through the rest of the array
+a[:end]      # items from the beginning through end-1
+a[:]         # a copy of the whole array
+
+
+
+
+-----------------------------------------------
+-----------------------------------------------
+
+f you use numpy, this is easy:
+slice = arr[:2,:2]
+
+or if you want the 0's,
+slice = arr[0:2,0:2]
+
+You'll get the same result.
+
+
+
+Another way, if you're working with lists of lists*:
+slice = [arr[i][0:2] for i in range(0,2)]
+
+(Note that the 0's here are unnecessary: [arr[i][:2] for i in range(2)] would also work.).
+
+What I did here is that I take each desired row 1 at a time (arr[i]). I then slice the columns I want out of that row and add it to the list that I'm building.
+
+If you naively try: arr[0:2] You get the first 2 rows which if you then slice again arr[0:2][0:2], you're just slicing the first two rows over again.
+
+##################
+network test1
+#################
+
+test1=NN(NNsize)
+test1.evaluate(tr_d)
+Out[51]: 366
+
+test1.SGD(tr_d, 1, .3, .3)
+Epoch 0 complete
+
+test1.evaluate(tr_d)
+Out[53]: 297
+
+test1.SGD(tr_d, 10, .3, .3)
+Epoch 0 complete
+Epoch 1 complete
+Epoch 2 complete
+Epoch 3 complete
+Epoch 4 complete
+Epoch 5 complete
+Epoch 6 complete
+Epoch 7 complete
+Epoch 8 complete
+Epoch 9 complete
+
+test1.evaluate(tr_d)
+Out[55]: 301
+
+
+
+
+###############################
+network test2 (w/0 momentum)
+#################################
+
+
+
+
+
+
+
+

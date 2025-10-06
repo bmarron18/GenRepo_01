@@ -1,0 +1,105 @@
+\BOOKMARK [1][-]{toc1.1}{Contents}{}% 1
+\BOOKMARK [1][-]{section.0.1}{1 Introduction}{}% 2
+\BOOKMARK [1][-]{section.0.2}{2 Installation}{}% 3
+\BOOKMARK [1][-]{section.0.3}{3 siunitx for the impatient}{}% 4
+\BOOKMARK [1][-]{section.0.4}{4 Using the siunitx package}{}% 5
+\BOOKMARK [2][-]{subsection.0.4.1}{4.1 Loading the package}{section.0.4}% 6
+\BOOKMARK [2][-]{subsection.0.4.2}{4.2 Numbers}{section.0.4}% 7
+\BOOKMARK [2][-]{subsection.0.4.3}{4.3 Units}{section.0.4}% 8
+\BOOKMARK [2][-]{subsection.0.4.4}{4.4 The unit macros}{section.0.4}% 9
+\BOOKMARK [2][-]{subsection.0.4.5}{4.5 Creating new macros}{section.0.4}% 10
+\BOOKMARK [2][-]{subsection.0.4.6}{4.6 Tabular material}{section.0.4}% 11
+\BOOKMARK [1][-]{section.0.5}{5 Comprehensive details of package control options}{}% 12
+\BOOKMARK [2][-]{subsection.0.5.1}{5.1 The key\205value control system}{section.0.5}% 13
+\BOOKMARK [2][-]{subsection.0.5.2}{5.2 Detecting fonts}{section.0.5}% 14
+\BOOKMARK [2][-]{subsection.0.5.3}{5.3 Font settings}{section.0.5}% 15
+\BOOKMARK [2][-]{subsection.0.5.4}{5.4 Parsing numbers}{section.0.5}% 16
+\BOOKMARK [2][-]{subsection.0.5.5}{5.5 Post-processing numbers}{section.0.5}% 17
+\BOOKMARK [2][-]{subsection.0.5.6}{5.6 Printing numbers}{section.0.5}% 18
+\BOOKMARK [2][-]{subsection.0.5.7}{5.7 Multi-part numbers}{section.0.5}% 19
+\BOOKMARK [2][-]{subsection.0.5.8}{5.8 Lists and ranges of numbers}{section.0.5}% 20
+\BOOKMARK [2][-]{subsection.0.5.9}{5.9 Angles}{section.0.5}% 21
+\BOOKMARK [2][-]{subsection.0.5.10}{5.10 Creating units}{section.0.5}% 22
+\BOOKMARK [2][-]{subsection.0.5.11}{5.11 Loading additional units}{section.0.5}% 23
+\BOOKMARK [2][-]{subsection.0.5.12}{5.12 Using units}{section.0.5}% 24
+\BOOKMARK [2][-]{subsection.0.5.13}{5.13 Numbers with units}{section.0.5}% 25
+\BOOKMARK [2][-]{subsection.0.5.14}{5.14 Tabular material}{section.0.5}% 26
+\BOOKMARK [2][-]{subsection.0.5.15}{5.15 Symbols}{section.0.5}% 27
+\BOOKMARK [2][-]{subsection.0.5.16}{5.16 Other options}{section.0.5}% 28
+\BOOKMARK [2][-]{subsection.0.5.17}{5.17 Local configurations}{section.0.5}% 29
+\BOOKMARK [1][-]{section.0.6}{6 Localisation}{}% 30
+\BOOKMARK [1][-]{section.0.7}{7 Hints for using siunitx}{}% 31
+\BOOKMARK [2][-]{subsection.0.7.1}{7.1 Ensuring text or math output}{section.0.7}% 32
+\BOOKMARK [2][-]{subsection.0.7.2}{7.2 Expanding content in tables}{section.0.7}% 33
+\BOOKMARK [2][-]{subsection.0.7.3}{7.3 Using siunitx with datatool}{section.0.7}% 34
+\BOOKMARK [2][-]{subsection.0.7.4}{7.4 Using units such as \265m/s in headings}{section.0.7}% 35
+\BOOKMARK [2][-]{subsection.0.7.5}{7.5 A left-aligned column visually centred under a heading}{section.0.7}% 36
+\BOOKMARK [2][-]{subsection.0.7.6}{7.6 Symbols and XeTeX}{section.0.7}% 37
+\BOOKMARK [2][-]{subsection.0.7.7}{7.7 Scaled document fonts with XeTeX}{section.0.7}% 38
+\BOOKMARK [2][-]{subsection.0.7.8}{7.8 Interaction with tex4ht}{section.0.7}% 39
+\BOOKMARK [2][-]{subsection.0.7.9}{7.9 Maximising performance}{section.0.7}% 40
+\BOOKMARK [2][-]{subsection.0.7.10}{7.10 Transferring settings to pgf}{section.0.7}% 41
+\BOOKMARK [2][-]{subsection.0.7.11}{7.11 Using siunitx with the cellspace package}{section.0.7}% 42
+\BOOKMARK [2][-]{subsection.0.7.12}{7.12 Special considerations for the \134kWh unit}{section.0.7}% 43
+\BOOKMARK [2][-]{subsection.0.7.13}{7.13 Adding items after the last column of a tabular}{section.0.7}% 44
+\BOOKMARK [2][-]{subsection.0.7.14}{7.14 Creating a column with numbers and units}{section.0.7}% 45
+\BOOKMARK [2][-]{subsection.0.7.15}{7.15 Tables with heading rows}{section.0.7}% 46
+\BOOKMARK [2][-]{subsection.0.7.16}{7.16 Associating a locale with a babel language}{section.0.7}% 47
+\BOOKMARK [1][-]{section.0.8}{8 Information for those upgrading}{}% 48
+\BOOKMARK [2][-]{subsection.0.8.1}{8.1 Upgrading from version 1}{section.0.8}% 49
+\BOOKMARK [2][-]{subsection.0.8.2}{8.2 Upgrading from version 2.0 or 2.1}{section.0.8}% 50
+\BOOKMARK [2][-]{subsection.0.8.3}{8.3 Upgrading from version 2.2}{section.0.8}% 51
+\BOOKMARK [2][-]{subsection.0.8.4}{8.4 Upgrading from version 2.3}{section.0.8}% 52
+\BOOKMARK [2][-]{subsection.0.8.5}{8.5 Upgrading from version 2.4}{section.0.8}% 53
+\BOOKMARK [2][-]{subsection.0.8.6}{8.6 Upgrading from version 2.5}{section.0.8}% 54
+\BOOKMARK [1][-]{section.0.9}{9 Correct application of \(SI\) units}{}% 55
+\BOOKMARK [2][-]{subsection.0.9.1}{9.1 Units}{section.0.9}% 56
+\BOOKMARK [2][-]{subsection.0.9.2}{9.2 Mathematical meaning}{section.0.9}% 57
+\BOOKMARK [2][-]{subsection.0.9.3}{9.3 Graphs and tables}{section.0.9}% 58
+\BOOKMARK [1][-]{section.0.10}{10 Making suggestions and reporting bugs}{}% 59
+\BOOKMARK [1][-]{section.0.11}{11 Code level interfaces}{}% 60
+\BOOKMARK [1][-]{section.0.12}{12 Thanks}{}% 61
+\BOOKMARK [1][-]{section.0.13}{13 Implementation}{}% 62
+\BOOKMARK [2][-]{subsection.0.13.1}{13.1 Preliminaries}{section.0.13}% 63
+\BOOKMARK [2][-]{subsection.0.13.2}{13.2 Font detection}{section.0.13}% 64
+\BOOKMARK [2][-]{subsection.0.13.3}{13.3 Font macros}{section.0.13}% 65
+\BOOKMARK [2][-]{subsection.0.13.4}{13.4 Output control}{section.0.13}% 66
+\BOOKMARK [2][-]{subsection.0.13.5}{13.5 Pre-processing numbers}{section.0.13}% 67
+\BOOKMARK [2][-]{subsection.0.13.6}{13.6 Parsing numbers}{section.0.13}% 68
+\BOOKMARK [2][-]{subsection.0.13.7}{13.7 Post-processing numbers}{section.0.13}% 69
+\BOOKMARK [2][-]{subsection.0.13.8}{13.8 Formatting numbers for output}{section.0.13}% 70
+\BOOKMARK [2][-]{subsection.0.13.9}{13.9 Numerical output}{section.0.13}% 71
+\BOOKMARK [2][-]{subsection.0.13.10}{13.10 Angles}{section.0.13}% 72
+\BOOKMARK [2][-]{subsection.0.13.11}{13.11 Creating unit macros}{section.0.13}% 73
+\BOOKMARK [2][-]{subsection.0.13.12}{13.12 Creating body unit macros}{section.0.13}% 74
+\BOOKMARK [2][-]{subsection.0.13.13}{13.13 Initial unit processing}{section.0.13}% 75
+\BOOKMARK [2][-]{subsection.0.13.14}{13.14 Parsing macro units}{section.0.13}% 76
+\BOOKMARK [2][-]{subsection.0.13.15}{13.15 Unit formatting}{section.0.13}% 77
+\BOOKMARK [2][-]{subsection.0.13.16}{13.16 Unit output}{section.0.13}% 78
+\BOOKMARK [2][-]{subsection.0.13.17}{13.17 Numbers with units}{section.0.13}% 79
+\BOOKMARK [2][-]{subsection.0.13.18}{13.18 Lists of numbers}{section.0.13}% 80
+\BOOKMARK [2][-]{subsection.0.13.19}{13.19 Ranges}{section.0.13}% 81
+\BOOKMARK [2][-]{subsection.0.13.20}{13.20 Setting up tables}{section.0.13}% 82
+\BOOKMARK [2][-]{subsection.0.13.21}{13.21 Collecting tokens in tables}{section.0.13}% 83
+\BOOKMARK [2][-]{subsection.0.13.22}{13.22 Table printing: general code}{section.0.13}% 84
+\BOOKMARK [2][-]{subsection.0.13.23}{13.23 Printing units in s columns}{section.0.13}% 85
+\BOOKMARK [2][-]{subsection.0.13.24}{13.24 Formatting and printing in tables}{section.0.13}% 86
+\BOOKMARK [2][-]{subsection.0.13.25}{13.25 Printing the S column with the decimal marker centred}{section.0.13}% 87
+\BOOKMARK [2][-]{subsection.0.13.26}{13.26 Printing the S column with space reserved}{section.0.13}% 88
+\BOOKMARK [2][-]{subsection.0.13.27}{13.27 Direct printing in S columns}{section.0.13}% 89
+\BOOKMARK [2][-]{subsection.0.13.28}{13.28 Table settings}{section.0.13}% 90
+\BOOKMARK [2][-]{subsection.0.13.29}{13.29 Symbols}{section.0.13}% 91
+\BOOKMARK [2][-]{subsection.0.13.30}{13.30 Working with other packages}{section.0.13}% 92
+\BOOKMARK [2][-]{subsection.0.13.31}{13.31 Messages}{section.0.13}% 93
+\BOOKMARK [2][-]{subsection.0.13.32}{13.32 Design-level macros}{section.0.13}% 94
+\BOOKMARK [2][-]{subsection.0.13.33}{13.33 Document macros}{section.0.13}% 95
+\BOOKMARK [2][-]{subsection.0.13.34}{13.34 Precautions for section headings}{section.0.13}% 96
+\BOOKMARK [2][-]{subsection.0.13.35}{13.35 Physical units}{section.0.13}% 97
+\BOOKMARK [2][-]{subsection.0.13.36}{13.36 Strict application of the rules}{section.0.13}% 98
+\BOOKMARK [2][-]{subsection.0.13.37}{13.37 Locales}{section.0.13}% 99
+\BOOKMARK [2][-]{subsection.0.13.38}{13.38 Localisation}{section.0.13}% 100
+\BOOKMARK [2][-]{subsection.0.13.39}{13.39 Loading additional configurations}{section.0.13}% 101
+\BOOKMARK [2][-]{subsection.0.13.40}{13.40 Support for version one}{section.0.13}% 102
+\BOOKMARK [2][-]{subsection.0.13.41}{13.41 Abbreviated units}{section.0.13}% 103
+\BOOKMARK [2][-]{subsection.0.13.42}{13.42 Binary units}{section.0.13}% 104
+\BOOKMARK [1][-]{bib2.1}{References}{}% 105

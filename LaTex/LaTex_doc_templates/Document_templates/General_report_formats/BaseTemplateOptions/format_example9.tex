@@ -1,0 +1,138 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Quarter 2 Report
+% IGERT Project
+% GEOG694_Models
+% (2015pIGERT001)
+% (2016SoE010)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[12pt]{article}
+
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{extramarks} % Required for headers and footers
+\usepackage{graphicx} % Required to insert images
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{apacite}
+\usepackage[english]{babel}
+\usepackage{comment}
+\usepackage{lipsum}
+\usepackage{multirow}
+\usepackage[all]{nowidow}
+\usepackage{longtable}
+\usepackage{etoolbox}
+\setlength{\LTcapwidth}{=6.95in} %longtable caption width goes the full textwidth 
+
+
+\usepackage{tikz}
+\usetikzlibrary{shapes, arrows, positioning}
+\tikzset{
+    events/.style={ellipse, draw, align=right},
+}
+
+%----------------------------------------------------------------------------------------
+%	MARGINS, LINE SPACING, HEADERS, FOOTERS
+%----------------------------------------------------------------------------------------
+% Margins
+\topmargin= -0.25in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.95in
+\textheight=9.0in
+\headsep=0.15in %distance between header and text
+
+%line spacing
+\linespread{1.5} % Line spacing
+
+% headers and footers
+\pagestyle{fancy}
+\lhead{} % Top left header
+\chead{} % Top center header
+\rhead{} % Top right header
+\lfoot{\lastxmark} % Bottom left footer
+\cfoot{} % Bottom center footer
+\rfoot{Page\ \thepage\ of\ \pageref{LastPage}} % Bottom right footer
+%\renewcommand\headrulewidth{0.4pt} % Size of the header rule
+\renewcommand\footrulewidth{0.4pt} % Size of the footer rule
+
+%paragraphs and counters
+\setlength\parindent{0pt} % Removes all indentation from paragraphs
+% 
+\newenvironment{myindentpar}[1]% special command for paragraph indent, if needed
+   {\begin{list}{}%
+       {\setlength{\leftmargin}{#1}}%
+           \item[]%
+   }
+     {\end{list}}
+
+\setcounter{secnumdepth}{0} % Removes default section numbers
+
+   
+%----------------------------------------------------------------------------------------
+%	CLASS, AUTHORS, INSTRUCTOR
+%----------------------------------------------------------------------------------------
+
+\newcommand{\hmwkClass}{Methods and Models in Ecosystem Services (GEOG 694),
+Portland State University, Winter 2016} % Course/class
+\newcommand{\hmwkTitle}{Climate Change and Disturbance Impacts on Land Cover and Hydrology in the Clackamas River Basin} % Assignment title
+\newcommand{\hmwkAuthorName}{Harvey Hembree, Bruce Marron, Nick Turman-Bryant} % Your name
+%\newcommand{\hmwkClassInstructor}{} % Teacher/lecturer
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title{
+\vspace{1in}
+\textmd{\textbf{\hmwkTitle}}\\
+\textit{\normalsize \hmwkClass}
+\vspace{3in}
+}
+\author{\textbf{\hmwkAuthorName}}
+\date{11 March 2016} % Insert date here if you want it to appear below your name
+
+
+%----------------------------------------
+%	BEGIN DOC
+%----------------------------------------
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+\clearpage\maketitle
+
+\linespread{1.0}
+
+%200 wrds
+\begin{abstract}
+\noindent \textit{\lipsum[1]}
+\end{abstract}
+
+%750 wrds
+\subsection{Introduction}
+\lipsum[2]
+
+\subsection{Model Description}
+\lipsum[2]
+
+\subsection{Methods}
+\lipsum[2]
+
+\subsection{Results and Discussion}
+\lipsum[2]
+
+\subsection{Conclusions}
+\lipsum[1]
+
+
+\renewcommand{\refname}{\normalfont\selectfont \large  \textbf{References}} 
+\bibliographystyle{/usr/local/share/texmf/tex/latex/apacite/apacite}
+\bibliography{/home/bmarron//Desktop/BibTex/My_Library20160226}
+
+\end{document}

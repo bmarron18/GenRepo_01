@@ -1,0 +1,54 @@
+\select@language {english}
+\contentsline {chapter}{LIST OF FIGURES}{iii}
+\contentsline {chapter}{LIST OF TABLES}{iv}
+\contentsline {chapter}{LIST OF MAPS}{v}
+\contentsline {chapter}{LIST OF ABBREVIATIONS}{vi}
+\mbox { }\newline \noindent {\bf CHAPTER}\newline 
+\hbox { }
+\hbox { }
+\contentsline {chap}{\numberline {\hbox { }\hfill \bf I.\hspace {5pt}}{\bf A Complex Problem}}{1}
+\hbox { }
+\contentsline {section}{\numberline {1.1}Introduction}{1}
+\contentsline {section}{\numberline {1.2}The Harsh Realities of Modern Industrial Agriculture}{3}
+\contentsline {section}{\numberline {1.3}A Compound Problem Statement}{3}
+\contentsline {subsection}{\numberline {1.3.1}Element 1}{3}
+\contentsline {subsection}{\numberline {1.3.2}Element 2}{3}
+\contentsline {subsection}{\numberline {1.3.3}Element 3}{4}
+\hbox { }
+\contentsline {chap}{\numberline {\hbox { }\hfill \bf II.\hspace {5pt}}{\bf Assumptions and Logic}}{5}
+\hbox { }
+\contentsline {section}{\numberline {2.1}Research Program Assumptions}{5}
+\contentsline {section}{\numberline {2.2}Research Program Logic}{8}
+\hbox { }
+\contentsline {chap}{\numberline {\hbox { }\hfill \bf III.\hspace {5pt}}{\bf Fundamental Dynamics for Agroecological Mutualism}}{11}
+\hbox { }
+\contentsline {section}{\numberline {3.1}Background}{11}
+\contentsline {section}{\numberline {3.2}Model }{11}
+\contentsline {section}{\numberline {3.3}Questions}{11}
+\contentsline {section}{\numberline {3.4}Hypotheses}{12}
+\contentsline {section}{\numberline {3.5}Aims and Objectives}{12}
+\contentsline {section}{\numberline {3.6}Methods}{13}
+\hbox { }
+\contentsline {chap}{\numberline {\hbox { }\hfill \bf IV.\hspace {5pt}}{\bf The AgroEV Extension for LANDIS-II}}{14}
+\hbox { }
+\contentsline {section}{\numberline {4.1}Background}{14}
+\contentsline {section}{\numberline {4.2}Questions}{14}
+\contentsline {section}{\numberline {4.3}Hypotheses}{15}
+\contentsline {section}{\numberline {4.4}Objectives}{15}
+\contentsline {section}{\numberline {4.5}Methods}{16}
+\contentsline {subsection}{\numberline {4.5.1}Theoretical Relationships}{16}
+\contentsline {subsection}{\numberline {4.5.2}Model Construction}{20}
+\hbox { }
+\contentsline {chap}{\numberline {\hbox { }\hfill \bf V.\hspace {5pt}}{\bf Applications of the AgroEV Extension}}{21}
+\hbox { }
+\contentsline {section}{\numberline {5.1}Background}{21}
+\contentsline {section}{\numberline {5.2}Questions}{21}
+\contentsline {section}{\numberline {5.3}Hypotheses}{22}
+\contentsline {section}{\numberline {5.4}Aims and Objectives}{22}
+\contentsline {section}{\numberline {5.5}Methods}{22}
+\contentsline {chapter}{APPENDICES}{23}
+\contentsline {section}{\numberline {A.1}The US Congress Idea}{24}
+\contentsline {section}{\numberline {A.2}The USDA Idea}{24}
+\contentsline {section}{\numberline {A.3}The EU Idea (the 'Evergreen Revolution')}{25}
+\contentsline {section}{\numberline {A.4}The Union of Concerned Scientists Idea}{25}
+\contentsline {chapter}{BIBLIOGRAPHY}{26}

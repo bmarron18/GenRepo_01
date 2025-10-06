@@ -1,0 +1,181 @@
+Title:			git usage2
+Project Descriptor:	LANDISII Upgrades Corrections Project 
+Project ID:		2016SoE021_LANDIS_Upgrades	
+Author:			bmarron
+Origin Date:		21 Sept 2015
+Revision Date:		16 Sep 2016
+
+#############
+references
+###############
+
+https://github.com/LANDIS-II-Foundation
+https://git-scm.com/book/en/v2
+https://guides.github.com/
+
+https://help.github.com/categories/github-pages-basics/
+
+https://help.github.com/articles/creating-a-new-organization-from-scratch/
+https://developer.github.com/v3/orgs/#list-all-organizations
+https://help.github.com/enterprise/2.7/admin/guides/installation/
+
+file:///usr/share/doc/git/html/gitworkflows.html
+http://kdiff3.sourceforge.net/doc/index.html
+
+p.171 ProGit2
+Then you need to push your work up to it. It’s easiest to push the topic
+branch you’re working on up to your repository, rather than merging into your
+master branch and pushing that up. The reason is that if the work isn’t accept-
+ed or is cherry picked, you don’t have to rewind your master branch.
+
+
+##########################
+quick guide: Developer
+#########################
+
+===== work cycle sequence =======================
+
+	a. open a Linux command line terminal
+	a1. go to git-tracked folder (local repository)
+
+
+	b. work with the gitk GUI?
+	b1. previously set, $ git config --global alias.visual '!gitk'
+	b2. File ==> Start git gui
+$ git visual
+
+
+
+
+
+$ git ls-files
+$ git status
+			#ok for deleted files, too!
+$ git add --all
+$ git status
+			#skip if don't want to see line-by-line changes
+#$ git diff --staged
+
+			#w/o quotes
+$ git commit -a -m "message"	
+
+			#check for the name of the offsite repository
+$ git remote show
+
+			#push changes up-line
+			#Need ==> Username for 'https://github.com': bmarron18
+			#Need ==> Password for 'https://bmarron18@github.com': <current>
+
+$ git push <offsite name> HEAD
+$ gitk
+
+
+=== history w/ 'log' ==============================================================
+$ git log --since=2.weeks	#days, hours, minutes
+
+	- n 			#Show only the last n commits
+	--since, --after 	#Limit the commits to those made after the specified date.
+	--until, --before 	#Limit the commits to those made before the specified date.
+	--author <name>		#Only show initial commits 
+	--committer <name>   	#Only show commits in which the committer entry matches the specified string.
+
+
+$ git log -n --stat
+$ git log -n --pretty=oneline
+$ git log -n --stat --graph
+$ git log --oneline --decorate >> Core-Model_GitHubLog_20160916.txt
+
+
+==== checking the onsite/offsite repository connections ==================================
+
+		#from an onsite repository folder
+$ git remote show
+$ git remote -v
+$ git remote show <repository name>
+
+
+==== pull == fetch + merge (upstream) ================================================================================
+
+		#runs 'git fetch' with the given parameters and calls 'git merge' to merge the 
+		#retrieved branch heads into the current branch
+		#<refspec> ==> usually the name of a branch in the remote repository
+		
+$ git pull <named repository> <refspec>		
+
+
+
+
+---- staging, commiting, pushing files -------------------------------------------------------------------------------- 
+
+$ git ls-files		#Show information about files in the index and the working tree
+
+	# set an alias to see last commit
+$ git config --global alias.last 'log -1 HEAD'
+$ git last	
+
+
+##############################
+##### STAGING ################
+##############################
+
+	# use 'git add [<folder> | <file>]' to stage specific unstaged new folders and files (since last update)
+	# stage everything (since last update)
+
+$ git add --all 
+
+
+	# use 'git rm [<folder> -r | <file>]' to stage the unstaged deleted files (since last update)
+	##stage deleted files by removing them (ie the folder and all its contents)
+				
+$ git rm United_Way -r
+
+
+	#check on staged files before commit
+$ git diff --staged
+
+
+##############################
+##### COMMITING ##############
+##############################
+
+	# the -a flag adds all modified files to the staging area and then commits them
+
+$ git commit -a -m "message"		
+					
+
+
+##############################
+##### PUSHING ################
+##############################
+
+	#upload files to remote repository
+	#example
+
+$ git push origin master			
+Username for 'https://github.com': bmarron18
+Password for 'https://bmarron18@github.com': 
+To https://github.com/bmarron18/Repo_1.git
+   cf556a7..4ef44d5  master -> master
+
+
+------ removing files ------------------------------------------------------------							
+$ git ls-files
+$ git status
+$ git checkout -- <filename>				#to unstage deleted files
+$ git rm <filename>
+$ git commit
+$ git push origin master
+
+
+$ git checkout -- United_Way/United_Way_2013-2016_Strategic_Plan.pdf
+
+
+$ git rm United_Way/United_Way_2013-2016_Strategic_Plan.pdf
+rm 'United_Way/United_Way_2013-2016_Strategic_Plan.pdf'
+						
+
+
+
+
+
+

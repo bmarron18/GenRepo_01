@@ -1,0 +1,305 @@
+Title:			git usage3
+Project Descriptor:	LANDISII Upgrades Corrections Project 
+Project ID:		2016SoE021_LANDIS_Upgrades	
+Author:			bmarron
+Origin Date:		21 Sept 2015
+Revision Date:		16 Sep 2016
+
+#############
+references
+###############
+
+file:///usr/share/doc/git/html/gitworkflows.html
+http://kdiff3.sourceforge.net/
+
+https://help.github.com/articles/configuring-protected-branches/
+
+
+p. 89 ProGit2
+To create a branch and switch to it at the
+same time, you can run the git checkout command with the -b switch
+
+p. 91 ProGit2
+note that if your working directory or staging
+area has uncommitted changes that conflict with the branch you’re checking
+out, Git won’t let you switch branches. It’s best to have a clean working state
+when you switch branches. There are ways to get around this (namely, stashing
+and commit amending) that we’ll cover later on, in “Stashing and Cleaning”.
+For now, let’s assume you’ve committed all your changes, so you can switch
+back to your master branch:
+
+p. 93 ProGit2
+After your super-important fix is deployed, you’re ready to switch back to the
+work you were doing before you were interrupted. However, first you’ll delete
+the hotfix branch, because you no longer need it – the master branch points
+at the same place. You can delete it with the -d option to git branch :
+
+p. 94 ProGit2
+Suppose you’ve decided that your issue #53 work is complete and ready to be
+merged into your master branch. In order to do that, you’ll merge your iss53
+branch into master , much like you merged your hotfix branch earlier. All you
+have to do is check out the branch you wish to merge into and then run the git
+merge command:
+
+$ git checkout master
+$ git merge iss53
+
+
+
+p. 186 ProGit2
+If you have a more important project, you might want to use a two-phase
+merge cycle. In this scenario, you have two long-running branches, master and
+develop , in which you determine that master is updated only when a very sta-
+ble release is cut and all new code is integrated into the develop branch. You
+regularly push both of these branches to the public repository. Each time you
+have a new topic branch to merge in (Figure 5-22), you merge it into develop
+(Figure 5-23); then, when you tag a release, you fast-forward master to wher-
+ever the now-stable develop branch is
+
+p. 222 ProGit2
+If you’re working with other people who you want to give commit access to, you
+need to add them as “collaborators”. If Ben, Jeff, and Louise all sign up for acounts on 
+GitHub, and you want to give them push access to your repository,
+you can add them to your project. Doing so will give them “push” access, which
+means they have both read and write access to the project and Git repository.
+
+
+p.100 ProGit2
+Many Git developers have a workflow that embraces this approach, such as
+having only code that is entirely stable in their master branch – possibly only
+code that has been or will be released. They have another parallel branch
+named develop or next that they work from or use to test stability – it isn’t
+necessarily always stable, but whenever it gets to a stable state, it can be
+merged into master . It’s used to pull in topic branches (short-lived branches,
+like your earlier iss53 branch) when they’re ready, to make sure they pass all
+the tests and don’t introduce bugs.
+
+
+##########################
+workflow guide: Maintainer
+#########################
+
+==== Fork LANDIS repos ==========================
+
+	a. Set browser to https://github.com/LANDIS-II-Foundation
+	a1. Select repo
+	a2. Fork (clone) the to-be-modified LANDIS repo using the 'fork' symbol on GitHub to maintainer's GitHub
+		from https://github.com/LANDIS-II-Foundation/<name of LANDIS repo>
+		to https://github.com/bmarron18/<name of LANDIS repo>
+
+
+
+==== Setup local repo (image of the forked repo) on local box ==============================
+
+	a. create directory for the LANDIS Forks on Maintainer's local box
+	a1. cd to directory for the LANDIS Forks
+
+$ cd /home/bmarron/Desktop/PSU/PhD_EES/2016SoE021_LANDIS_Upgrades/Works_InProgress/LANDIS-II-Foundation_ForkedRepos/
+
+
+	b. clone the forked repo to the local box from Maintainer's GitHub
+		from https://github.com/bmarron18/<name of LANDIS repo>
+		to  /home/bmarron/Desktop/PSU/PhD_EES/2016SoE021_LANDIS_Upgrades/Works_InProgress/LANDIS-II-Foundation_ForkedRepos/<name of LANDIS repo>
+	b1. NB: the clone command implicitly adds a remote link, named 'origin' to  https://github.com/bmarron18/<name of LANDIS repo>
+
+$ git clone https://github.com/bmarron18/<name of LANDIS repo>
+$ git remote show
+$ git remote -v
+$ git remote show origin
+$ git last
+
+
+==== Set up sync to keep Maintainer's GitHub current with ORIGINAL_REPOSITORY ==================
+
+	a. specify a new local remote on local box named, 'upstream' that links to the ORIGINAL_OWNER/ORIGINAL_REPOSITORY
+	a1. check this (should have two repos, 'origin' and 'upstream' with fetch and push capabilities)
+
+$ git remote add upstream https://github.com/LANDIS-II-Foundation/<name of LANDIS repo>.git
+$ git remote -v
+
+	b. update the local repo from the ORIGINAL_REPOSITORY. If there have been changes made to
+	the ORIGINAL_REPOSITORY compared to the local version, then push changes back up to forked 
+version of repo on GitHub:
+	fetch changes from ORIGINAL repo ==> merge changes from ORIGINAL repo to local repo ==> 
+	push changes to forked repo
+
+	b1. The push to the forked repo is what keeps the forked repo in sync
+	b2. $ git push [forked repo remote name] [local repo branch name] requires collaborator authetication!!
+
+
+$ cd /home/bmarron/Desktop/PSU/PhD_EES/2016SoE021_LANDIS_Upgrades/Works_InProgress/LANDIS-II-Foundation_ForkedRepos/<name of LANDIS repo>
+$ git fetch upstream
+$ git checkout master
+$ git merge upstream/master
+$ git push origin master
+Username for 'https://github.com': bmarron18
+Password for 'https://bmarron18@github.com': 756vop7C
+Everything up-to-date
+
+
+
+
+===== Setup two, long-running, topic branches; keep 'master' protected =======================
+
+	a. go to git-tracked folder (local repository)
+	a1. create 'issues' branch and 'posttest' branch
+	a2. workflow: developers select issues per repo ==> checkout 'issues' branch to re-code ==> merge to (local) 'issues' w/ comment
+	==>  push to bmarron18 repo 'issues' ==> Marron runs tests if passes, Marron merges to posttest; o/w developer re-codes
+	a3. 'posttest should be clean (maybe a few fixes) and ready to push to 'master'  
+	a2. $ git push <remote> <branch>
+
+$ cd /home/bmarron/Desktop/PSU/PhD_EES/2016SoE021_LANDIS_Upgrades/Works_InProgress/LANDIS-II-Foundation_ForkedRepos/<name of LANDIS repo>
+
+$ git branch issues master
+$ git branch posttest master
+$ git branch -v
+$ git visual
+$ git status
+
+$ git remote -v
+$ git push origin issues
+$ git push origin posttest
+
+
+
+	b. login to GitHub and select repo
+	b1. Settings ==> Branches
+
+
+Branch protection for master
+	Protect this branch
+	Disables force-pushes to this branch and prevents it from being deleted.
+
+	Require pull request reviews before merging 
+	One approved review, with no changes requested, is required before branches may merge into master. 
+
+
+
+
+======= Setup collaborators (push access) ===============================================
+
+	a. login to GitHub and select repo
+	a1. Settings ==> Collaborators
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+=== history w/ 'log' ==============================================================
+$ git log --since=2.weeks	#months | days | hours | minutes
+
+	- n 			#Show only the last n commits
+	--since, --after 	#Limit the commits to those made after the specified date.
+	--until, --before 	#Limit the commits to those made before the specified date.
+	--author <name>		#Only show initial commits 
+	--committer <name>   	#Only show commits in which the committer entry matches the specified string.
+
+
+$ git log -n --stat
+$ git log -n --pretty=oneline
+$ git log -n --stat --graph
+$ git log --oneline --decorate >> Core-Model_GitHubLog_20160916.txt
+
+
+==== checking the onsite/offsite repository connections ==================================
+
+		#from an onsite repository folder
+$ git remote show
+$ git remote -v
+$ git remote show <repository name>
+
+
+==== pull == fetch + merge (upstream) ================================================================================
+
+		#runs 'git fetch' with the given parameters and calls 'git merge' to merge the 
+		#retrieved branch heads into the current branch
+		#<refspec> ==> usually the name of a branch in the remote repository
+		
+$ git pull <named repository> <refspec>		
+
+
+
+
+---- staging, commiting, pushing files -------------------------------------------------------------------------------- 
+
+$ git ls-files		#Show information about files in the index and the working tree
+
+	# set an alias to see last commit
+$ git config --global alias.last 'log -1 HEAD'
+$ git last	
+
+
+##############################
+##### STAGING ################
+##############################
+
+	# use 'git add [<folder> | <file>]' to stage specific unstaged new folders and files (since last update)
+	# stage everything (since last update)
+
+$ git add --all 
+
+
+	# use 'git rm [<folder> -r | <file>]' to stage the unstaged deleted files (since last update)
+	##stage deleted files by removing them (ie the folder and all its contents)
+				
+$ git rm United_Way -r
+
+
+	#check on staged files before commit
+$ git diff --staged
+
+
+##############################
+##### COMMITING ##############
+##############################
+
+	# the -a flag adds all modified files to the staging area and then commits them
+
+$ git commit -a -m "message"		
+					
+
+
+##############################
+##### PUSHING ################
+##############################
+
+	#upload files to remote repository
+	#example
+
+$ git push origin master			
+Username for 'https://github.com': bmarron18
+Password for 'https://bmarron18@github.com': 
+To https://github.com/bmarron18/Repo_1.git
+   cf556a7..4ef44d5  master -> master
+
+
+------ removing files ------------------------------------------------------------							
+$ git ls-files
+$ git status
+$ git checkout -- <filename>				#to unstage deleted files
+$ git rm <filename>
+$ git commit
+$ git push origin master
+
+
+$ git checkout -- United_Way/United_Way_2013-2016_Strategic_Plan.pdf
+
+
+$ git rm United_Way/United_Way_2013-2016_Strategic_Plan.pdf
+rm 'United_Way/United_Way_2013-2016_Strategic_Plan.pdf'
+						
+
+
+
+
+
+

@@ -1,0 +1,41 @@
+Title:			RGB Color Codes
+Project:		
+Project ID:		
+Records Class:	
+Author:			
+Origin Date:		
+Current Date:
+
+	
+
+
+##############
+websites
+################
+
+https://www.rapidtables.com/web/color/RGB_Color.html
+
+
+RGB color space or RGB color system, constructs all the colors from the combination of the 
+Red, Green and Blue colors.
+
+The red, green and blue use 8 bits each, which have integer values from 0 to 255. 
+This makes 256*256*256=16777216 possible colors.
+
+
+\usepackage{xcolor} % Required for specifying colors by name
+\definecolor{ocre}{RGB}{51,102,0} 
+\definecolor{lightgray}{RGB}{229,229,229}
+
+
+--OR--
+
+
+Compute 0/255, 32/255, and 96/255:
+\usepackage{xcolor} % Required for specifying colors by name
+\definecolor{ultramarine}{rgb}{0, 0.125, 0.376}
+
+
+--OR--
+
+html
