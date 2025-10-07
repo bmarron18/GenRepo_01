@@ -11,7 +11,9 @@ https://docs.spyder-ide.org/5/faq.html#using-packages-installer
 
 
 ###############
-Spyder for APIs
+Spyder for
+	APIs
+	Stats
 ################
 	# use Spyder's internal Python but change interperter to virtual env ==> (ai-apis)
 

@@ -1,4 +1,6 @@
 
+
+
 ################
 Spyder Install
 (Spyder has its own python)
@@ -27,8 +29,23 @@ define simple location for Spyder install. For example
 sudo find ./ -name "*spyder*" -type d >> ~/Desktop/test.txt
 sudo find ./ -name "*python*" -type d >> ~/Desktop/test.txt
 
+
+
 	# Spyder python
 Python 3.11.13
+
+--- Update 10/06/25
+Python 3.12.11 | packaged by conda-forge | (main, Jun  4 2025, 14:45:31) [GCC 13.3.0]
+Type "copyright", "credits" or "license" for more information.
+IPython 9.6.0 -- An enhanced Interactive Python. Type '?' for help.
+
+--- needed spyder-kernel updates as well 
+$ source ./spyder-6/envs/ai-apis/bin/activate
+(ai-apis) bmarron18@bmarron18-HP-Notebook:~$ pip install spyder-kernels==3.1.*
+(ai-apis) bmarron18@bmarron18-HP-Notebook:~$ deactivate 
+
+
+
 
 ##############
 in /path-to-spyder-runtime/bin
@@ -104,6 +121,13 @@ $ source ./spyder-6/envs/ai-apis/bin/activate
 	if desired, reset "wrench" to run Spyder outside of virtual env
 	close spyder
 	
+(ai-apis) bmarron18@bmarron18-HP-Notebook:~$ deactivate 
+
+
+
+
+$ source ./spyder-6/envs/ai-apis/bin/activate
+(ai-apis) bmarron18@bmarron18-HP-Notebook:~$ pip install spyder-kernels==3.1.*
 (ai-apis) bmarron18@bmarron18-HP-Notebook:~$ deactivate 
 
 

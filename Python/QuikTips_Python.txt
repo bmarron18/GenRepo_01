@@ -5,6 +5,32 @@ Author:
 Origin Date:		20 Oct 2015
 
 
+
+* Output to file on Desktop
+>>> in Python --------------------------------------
+from pathlib import Path
+import os
+
+    # create paths to files
+    # Retrieve files as PosixPaths
+    
+doc_dir = "/home/bmarron18/Desktop"
+OUTPUT_FILE = "PandaTests.txt"
+output_filepath = os.path.join(doc_dir, OUTPUT_FILE)
+output_f = Path(output_filepath)
+
+test = pd.test() 
+
+   # Output
+with open(output_f, "w", encoding="utf-8") as f:
+     f.write(test)
+	
+
+= 649 failed, 186260 passed, 13952 skipped, 3921 deselected, 1088 xfailed, 79 xpassed, 109 warnings, 637 errors in 1865.55s (0:31:05) =
+An exception has occurred, use %tb to see the full traceback.
+	
+>>> -------------------------------------------------------
+
 *	Windows weirdness in Python
 	1. Path separators (forward slashes) must be DOUBLED (escape the fist slash )
     2. Windows adds a HIDDEN .pdf extension to pdf files!! and maybe other file types???

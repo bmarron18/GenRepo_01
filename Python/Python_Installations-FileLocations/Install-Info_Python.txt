@@ -1,4 +1,48 @@
 
+###########
+pandas
+##########
+https://pandas.pydata.org/docs/getting_started/install.html
+
+
+Libraries for Statistical Analysis
+Three of the most widely used are NumPy, Pandas, and SciPy stats.
+
+SciPy
+https://docs.scipy.org/doc/scipy/reference/stats.html
+
+One tool that shines in Python is ggplot. Built on the grammar of graphics, ggplot offers a straightforward way to make beautiful plots. This article will dive into ggplot's features and why it's such a valuable tool for visualizing data in Python.
+
+--- Installations --------------------------------
+Virtual Environment
+	/home/bmarron18/spyder-6/envs/ai-apis
+	/home/bmarron18/spyder-6/envs/ai-apis/bin
+
+	# Activate the ai-apis virtual environment to install pkgs
+$ source ./spyder-6/envs/ai-apis/bin/activate
+(ai-apis)$ pip install pandas NumPy python-dateutil pytz tzdata
+(ai-apis)$ pip install "pandas[performance]"
+(ai-apis)$ pip install "pandas[computation]"
+(ai-apis)$ pip install "pandas[test]"
+(ai-apis):~$ deactivate 
+
+
+"pandas[performance]" contains:
+	numexpr
+	bottleneck
+	numba
+	
+"pandas[computation]" contains:
+	SciPy
+	xarray
+
+
+--- Running the test suite
+>>> import pandas as pd
+>>> pd.test()
+
+
+
 
 ############
 Python installations
