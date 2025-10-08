@@ -1,0 +1,8 @@
+	--- R plot direct output---------------------
+
+---- example ----------------------------------
+fit <- lm(some ~ model)
+
+png(filename="your/file/location/name.png")
+plot(fit)
+dev.off()

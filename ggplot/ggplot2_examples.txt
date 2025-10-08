@@ -1,0 +1,217 @@
+Title:			using ggplot2 in Python (plotnine)
+Project:		
+Project ID:		
+Records Class:	
+Author:			
+Origin Date:		
+Current Date: 
+
+####################
+Websites
+######################
+http://zevross.com/blog/2014/08/04/beautiful-plotting-in-r-a-ggplot2-cheatsheet-3/
+https://www.r-bloggers.com/pretty-scatter-plots-with-ggplot2/
+
+
+
+from plotnine import ggplot, aes, labs, geom_line, geom_col, ggsave
+
+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+# output to .jpeg
+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+ggsave(theta3, "theta3.jpeg")
+
+
+
+############
+CDF plot
+multiple title lines
+######################
+
+ggplot(upwork_sd, aes(x = screens, y = percentile)) + 
+geom_point() + 
+geom_line() +
+ggtitle("Monte Carlo bootstrap distribution of \n
+standard deviations plotted as possible CDF") +
+theme(plot.title = element_text(size=14, lineheight=.6, face="bold")) 
+
+
+
+##############
+histograms
+###############
+http://t-redactyl.io/blog/2016/02/creating-plots-in-r-using-ggplot2-part-7-histograms.html
+
+
+
+	# with superimposed function (normal curve)
+barfill <- "#4271AE"
+barlines <- "#1F3552"
+
+hist_x.mean2 <- ggplot(method2_df, aes(x = x_mean2)) +
+        geom_histogram(aes(y = ..density..), 
+        binwidth = 0.05, 
+        colour = barlines, 
+        fill = barfill) +
+        ggtitle("Bootstrap Test: Method2") +
+        theme(plot.title = element_text(size=18, lineheight=.6, face="bold")) +
+        stat_function(fun = dnorm, colour = "red",
+                      args = list(
+                      mean = mean(method2_df$x_mean2),
+                      sd = sd(method2_df$x_mean2)
+                      )
+                  )
+hist_x.mean2
+
+
+	# The Economist style
+library(ggthemes)
+
+barfill <- "#4271AE"
+barlines <- "#1F3552"
+
+p7 <- ggplot(airquality, aes(x = Ozone)) +
+        geom_histogram(aes(y = ..count..), binwidth = 5,
+                   colour = barlines, fill = barfill) +
+        scale_x_continuous(name = "Mean ozone in\nparts per billion",
+                              breaks = seq(0, 175, 25),
+                              limits=c(0, 175)) +
+        scale_y_continuous(name = "Count") +
+        ggtitle("Frequency histogram of mean ozone") +
+        theme_economist() +
+        theme(legend.position = "bottom", legend.direction = "horizontal",
+              legend.box = "horizontal",
+              legend.key.size = unit(1, "cm"),
+              plot.title = element_text(family="Tahoma"),
+              text = element_text(family = "Tahoma"),
+              axis.title = element_text(size = 12),
+              legend.text = element_text(size = 9),
+              legend.title=element_text(face = "bold", size = 9))
+
+
+
+	# with red line
+barfill <- "#4271AE"
+barlines <- "#1F3552"
+
+p7 <- ggplot(airquality, aes(x = Ozone)) +
+        geom_histogram(aes(y = ..count..), binwidth = 5,
+                       colour = barlines, fill = barfill) +
+        scale_x_continuous(name = "Mean ozone in\nparts per billion",
+                           breaks = seq(0, 175, 25),
+                           limits=c(0, 175)) +
+        scale_y_continuous(name = "Count") +
+        ggtitle("Frequency histogram of mean ozone") +
+        theme_bw() +
+        theme(axis.line = element_line(size=1, colour = "black"),
+              panel.grid.major = element_line(colour = "#d3d3d3"),
+              panel.grid.minor = element_blank(),
+              panel.border = element_blank(), panel.background = element_blank(),
+              plot.title = element_text(size = 14, family = "Tahoma", face = "bold"),
+              text=element_text(family="Tahoma"),
+              axis.text.x=element_text(colour="black", size = 9),
+              axis.text.y=element_text(colour="black", size = 9)) +
+        geom_vline(xintercept = 75, size = 1, colour = "#FF3721",
+                   linetype = "dashed")
+
+
+
+
+%%%%%%%%%%%%%%%%% Complete Example %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Given a dataset, perform a LOESS regression and plot along with scatter points
+
+==== data entry ==========================================
+
+	#Data provided in spreadsheet, Items_sold.xlsx
+	#Linux commandline utility, 'ssconvert'
+	#in Linux,
+
+ssconvert Items_sold.xlsx Items_sold.csv
+
+
+	#in R,
+items.data1 <- read.csv("~/Desktop/Spring_2015/STAT_566 (Exp Design II)/Final/Items_sold.csv")
+str(items.data1)
+'data.frame':	168 obs. of  2 variables:
+ $ Day  : int  1 2 3 4 5 6 7 8 9 10 ...
+ $ Items: int  129 113 106 112 109 75 77 117 129 143 ...
+
+
+
+==== plots =========================================
+library(ggplot2)
+
+
+ggplot(items.data1, aes(x = Day, y = Items)) + 
+geom_point() + 
+ggtitle("LOESS Smoothing") +
+theme(plot.title = element_text(lineheight=.8, face="bold")) +
+stat_smooth(aes(colour="0.15"), method = "loess", degree = 2, span = 0.15, normalize = TRUE,family = "gaussian",se = F) +
+stat_smooth(aes(colour="0.75"), method = "loess", degree = 2, span = 0.75, normalize = TRUE,family = "gaussian",se = F) +
+stat_smooth(aes(colour="0.35"), method = "loess", degree = 2, span = 0.35, normalize = TRUE,family = "gaussian",se = F) +
+scale_colour_manual(values=c("blue", "green", "red"), name = "LOESS fit\n (span)")
+
+
+
+
+
+---- syntax for scale_fil_manual() -----------------------------------
+
+
+scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9"), 
+                       name="Experimental\nCondition",
+                       breaks=c("ctrl", "trt1", "trt2"),
+                       labels=c("Control", "Treatment 1", "Treatment 2"))
+
+
+
+
+--- from DEQ reports -----------------------------------
+g1 <- ggplot(df_S, aes(date)) +
+  geom_point(aes(y=y1)) +
+  geom_line(aes(y=y2),color="green", size=1) +
+#  geom_smooth(aes(y=y2), method = "glm", se = FALSE) +
+  
+  geom_point(aes(x=max(df_S$date), y=max(df_S$y2)), color="blue", shape=8, size=3)+
+#  geom_point(aes(x=max(df_S$date), y=stat5.1), color="blue", shape=8, size=2)+
+#  geom_point(aes(x=max(df_S$date), y=(stat6.1)), color="red", shape=8, size=2)+
+  labs(x = "Dates", y = "Standard Rebate Awards")+
+  
+  annotate("text", x=df_S$date[50], y=6000, label="Total Standard rebates awarded = 10334", colour="black", text=element_text(size=8)) +
+  
+  annotate("text", x=df_S$date[50], y=7000, label="Standard rebates awarded DEQ = 7074", colour="black", text=element_text(size=8)) +
+  
+  annotate("text", x=df_S$date[50], y=8000, label="Standard rebates awarded CSE = 3260", colour="black", text=element_text(size=8)) +
+  
+  ggtitle("Standard Rebate Awards", subtitle="Black dots are the number of Standard rebates awarded per PaymentList date. The \ncumulative number of Standard rebates awarded is shown in green. The total number \nof Standard rebates awarded is shown by the blue star.") +
+  
+  
+### annotate("text", x=df_S$date[14], y=1250, label="Processing rate = 60 rebates awarded/wk", colour="black", text=element_text(size=8)) +
+  
+###  ggtitle("Standard Rebate Awards", subtitle="Black dots are the number of Standard rebates awarded per PaymentList date. The \ncumulative number of Standard rebates awarded is shown in green. The total number \nof DEQ-awarded Standard rebates is shown by the blue star. The total \nnumber of CSE-awarded Standard rebates is shown by the red star." ) +
+  
+  theme(plot.title = element_text(size=14, lineheight=.6, face="bold"))
+
+g1
+# http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/
+
+## The color blind palette with black: (black, organe, light blue, dark green, yellow, dark blue, dark orange, purple)
+cbPalette <- c("#000000", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
+
+# combine counts for S and CA in new df
+df_SCA <- merge(df_S, df_CA, all = TRUE)
+df_SCA$y2<-cumsum(df_SCA$y1)
+
+gweb1 <- ggplot(df_SCA, aes(date)) +
+    geom_line(aes(y=y2),color=cbPalette[4], size=1) +
+    labs(x = "", y = " ", caption="*Both Standard and Charge Ahead rebates are included.") +
+    ggtitle("Total EV Rebates Awarded*" ) + 
+    theme(plot.title = element_text(size=14, lineheight=.6, face="bold", hjust = 0.5))
+
+gweb1
+
+
+
+
+

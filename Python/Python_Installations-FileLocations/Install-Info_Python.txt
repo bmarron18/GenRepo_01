@@ -1,4 +1,29 @@
 
+##########
+plotnine
+PyMC
+#########
+
+--- Installations --------------------------------
+	# Virtual Environment
+		/home/bmarron18/spyder-6/envs/ai-apis
+		/home/bmarron18/spyder-6/envs/ai-apis/bin
+
+	# Activate the ai-apis virtual environment to install pkgs
+$ source ./spyder-6/envs/ai-apis/bin/activate
+(ai-apis)$ pip install plotnine 
+(ai-apis)$ pip install pymc==5.25.1				
+(ai-apis):~$ deactivate 
+----------------------------------------------------------------
+
+	# plotnine
+Installing collected packages: pyparsing, pillow, patsy, kiwisolver, fonttools, cycler, contourpy, matplotlib, statsmodels, mizani, plotnine
+Successfully installed contourpy-1.3.3 cycler-0.12.1 fonttools-4.60.1 kiwisolver-1.4.9 matplotlib-3.10.6 mizani-0.14.2 patsy-1.0.1 pillow-11.3.0 plotnine-0.15.0 pyparsing-3.2.5 statsmodels-0.14.5
+
+	# pymc
+Requirement already satisfied: pymc==5.25.1 in ./spyder-6/envs/ai-apis/lib/python3.11/site-packages (5.25.1)
+
+
 ###########
 pandas
 ##########
@@ -10,6 +35,7 @@ Three of the most widely used are NumPy, Pandas, and SciPy stats.
 
 SciPy
 https://docs.scipy.org/doc/scipy/reference/stats.html
+
 
 One tool that shines in Python is ggplot. Built on the grammar of graphics, ggplot offers a straightforward way to make beautiful plots. This article will dive into ggplot's features and why it's such a valuable tool for visualizing data in Python.
 
@@ -35,7 +61,7 @@ $ source ./spyder-6/envs/ai-apis/bin/activate
 "pandas[computation]" contains:
 	SciPy
 	xarray
-
+------------------------------------------------------
 
 --- Running the test suite
 >>> import pandas as pd

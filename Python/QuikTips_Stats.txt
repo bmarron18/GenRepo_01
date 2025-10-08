@@ -1,0 +1,35 @@
+
+###########
+Stats in Python
+################
+NumPy
+
+Pandas
+	tabular data, time series functionality, interfaces to other statistical languages
+
+plotnine (aka, ggplot2)
+	https://blog.tidy-intelligence.com/posts/ggplot2-vs-plotnine/
+	https://www.geeksforgeeks.org/data-visualization/data-visualization-using-plotnine-and-ggplot2-in-python/
+
+
+PyMC
+	Bayesian statistical modeling, probabilistic machine learning
+	https://www.pymc.io/welcome.html
+	
+Seaborn
+	statistical data visualization.
+
+rpy2
+	Python to R bridge
+
+SciPy
+	https://docs.scipy.org/doc/scipy/reference/stats.html
+
+
+scikit-learn
+	classification, regression, model selection
+
+
+statsmodels
+	regression, linear models, time series analysis
+
