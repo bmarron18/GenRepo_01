@@ -2,6 +2,7 @@
 ##########
 plotnine
 PyMC
+fpdf
 #########
 
 --- Installations --------------------------------
@@ -11,7 +12,7 @@ PyMC
 
 	# Activate the ai-apis virtual environment to install pkgs
 $ source ./spyder-6/envs/ai-apis/bin/activate
-(ai-apis)$ pip install plotnine 
+(ai-apis)$ pip install plotnine fpdf
 (ai-apis)$ pip install pymc==5.25.1				
 (ai-apis):~$ deactivate 
 ----------------------------------------------------------------

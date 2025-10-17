@@ -28,10 +28,8 @@ $ source ./spyder-6/envs/ai-apis/bin/activate
 (ai-apis):~$ deactivate 
 	
 
-
-Q. How do I get SPyder to work with my existing pkgs/env?
-Finally, connect Spyder to this my-env environment by changing Spyder’s default Python interpreter, following the instructions in the above answer.
 https://docs.spyder-ide.org/5/faq.html#using-existing-environment
+Q. How do I get SPyder to work with my existing pkgs/env?
 
 To work with an existing environment in Spyder, change the default Python interpreter for new IPython Consoles to point to this environment.
 
