@@ -33,6 +33,7 @@ print (os.getcwd())
 INFO
     Generating a unique word list from texts
     Gives single words for student vocab lists
+    Regex
 '''
 
 https://stackoverflow.com/questions/43025188/regular-expression-re-findall-for-set-of-all-alphabetic-words
@@ -167,7 +168,7 @@ with chdir('/home/bmarron18/Desktop'):
     with open('Test2.txt','r') as f:
         data = f.read()
 
-    search_word = "state"
+    search_word = "galio"
     list_of_words = data.split()
     next_word = list_of_words[list_of_words.index(search_word) + 1]
     prev_word = list_of_words[list_of_words.index(search_word) - 1]
