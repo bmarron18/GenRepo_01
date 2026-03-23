@@ -106,7 +106,7 @@ with chdir('/home/bmarron18/Desktop'):
 STEP 2
     USE THIS to remove end of line returns from text file
     End of line returns are coded as, /n
-    tr is truncate Linux command
+    "tr" == truncate (Linux command)
 
         # delete all newlines
     $ tr --delete '\n' < yourfile.txt

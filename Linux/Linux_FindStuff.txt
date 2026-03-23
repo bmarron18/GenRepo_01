@@ -5,6 +5,10 @@
 ===== find stuff / pattern match ===========================================
 ==============================================================================
 
+open terminal in directory of choice--
+Search INSIDE text files
+grep  -rIH "vibe" --include "*.txt" >> ~/Desktop/Search.txt
+
 
 ########################
 find empty directories

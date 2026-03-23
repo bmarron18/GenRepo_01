@@ -52,10 +52,15 @@ NEW directory
 	
 
 FIND
-cd /usr/share/
+Search INSIDE text files
+open terminal in directory of choice then
+	grep  -rIH "vibe" --include "*.txt" >> ~/Desktop/Search.txt
+
+
+File types
 sudo find ./ -name "*.otf" -type f >> ~/Desktop/test.txt
 
-cd /usr/share/
+Directories names
 sudo find ./ -name "ocr*" -type d
 
 
