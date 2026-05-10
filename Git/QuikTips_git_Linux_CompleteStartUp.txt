@@ -67,20 +67,17 @@ $ git config --list		#if on a new compu, this returns nothing
 
 ==== configure global settings =========================================
 	a. '--global' stores in /home/bmarron/.gitconfig (hidden) file
-
 	a1. set these globals (username to match GitHub username)
 	
-
-
 $ git config --global user.name "bmarron18" &&
 git config --global user.email "soil.foodwebs@gmail.com" &&
-git config --global core.editor "notepadqq"&&
+git config --global core.editor "subl"&&
 git config --global http.sslVerify false &&
 git config --global alias.visual '!gitk'&&
 git config --global alias.last 'log -1 HEAD' &&
 git config --global --unset credential.helper
 
-$ git config -l
+$ git config --list
 
 
 	a2. $ git config --global alias.last 'log -1 HEAD'			<== see last commit

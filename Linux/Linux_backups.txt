@@ -46,7 +46,7 @@ MASTER11 ???? check mount point with "disks" before running
 sudo rsync -av --delete /home/bmarron/Desktop/ /media/bmarron/MASTER1/Desktop/
 
 	% Desktop backup HP-black (old) to USB
-sudo rsync -av --delete /home/bmarron18/Desktop/ /media/bmarron18/MASTER11/Desktop/
+sudo rsync -av --delete /home/bruce-mx/Desktop/ /media/bruce-mx/MASTER1/Desktop/
 
 
 

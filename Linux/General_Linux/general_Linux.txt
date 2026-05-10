@@ -3176,59 +3176,6 @@ $ sudo mkdir -p /home/chope/a/b/c
 
 
 
-#################
-LINUX
-update password
-change password
-change passwrd
-password change
-#################
-
-18AV1dd*67R
-62c69F*Antas
-47Co59*LupM		<== Windows Password on HPs AND password for Security Boot (MOK Management)
-797*Venta13
-797*VENTA13
-c7f4*CLEF19		
-zz4698*BUFF
-1e776355*GB
-36ffaa714T*
-794dd992G*1
-e873MTA*973
-A19d9d57#QT
-4775LEE8i8*
-9cfbJJ#8656	
-
-
-
-
-	#generate random password options
-uuidgen
-
-	#follow instructions to change password
-sudo passwd
-[sudo] password for bruce: 			<< enter current password
-Enter new UNIX password: 
-Retype new UNIX password: 
-
-
-	#update password here, too
-	# Mint will ask for Authentication (use old password)
-		System Settings > Administration > Users and Groups > 
-	# Xubuntu
-		Settings > Users and Groups > User Settings > Password: Asked on login > Change....
-		System Settings > Preferences > Account Details > 
-		
-
-
-	# may need this too ==> password change for the keyring 
-Open Applications -> Accessories -> Password and Encryption Keys (Seahorse)
-Right-click on the "login" keyring
-Select "Change password"
-Enter your old password and leave the new password blank
-Press ok, 
-
-
 
 
 #################

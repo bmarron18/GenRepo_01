@@ -8,8 +8,8 @@ apt-cache policy inkscape		<< is it installed? available?
 apt-cache rdepends runit		<<reverse dependencies
 
 
---maintenance -----				
-sudo apt update &&			<< general cleaning sequence
+--maintenance and general cleaning sequence-----				
+sudo apt update &&			
 sudo apt autoclean &&
 sudo apt clean &&
 sudo apt autoremove
@@ -22,114 +22,12 @@ sudo apt-get purge gdal-bin
 sudo apt-get purge --auto-remove gdal-bin
 
 
---- install from .tar.bz2 ------
-wget http://download.osgeo.org/geos/geos-3.6.1.tar.bz2
-tar xjf geos-3.6.1.tar.bz2
-cd geos-3.6.1
-./configure
-make
-sudo make install
-cd ..
-
---- install from .deb ------
-wget https://download1.rstudio.org/rstudio-1.0.136-i386.deb --no-check-certificate &&
-sudo gdebi -n rstudio-1.0.136-i386.deb &&
-rm rstudio-1.0.136-i386.deb
-
--- use different configs -----
-sudo update-alternatives --config java
-
-
-============== Updates ==========================================================================
-	#can run Software Updater but if problems (ie only a partial upgrade allowed)
-	 run from command line
-	#update problems from 
-		1) bad items in /etc/apt/sources.list
-		2) bad items in ppa list (https://launchpad.net/<package>)
-		3) bad ppa keys
-	# Personal Package Archives (PPA) allow you to upload Ubuntu source packages to be built 
-	  and published as an apt repository by Launchpad.
-	# Launchpad generates a unique key for each PPA and uses it to sign any packages built in that PPA. 
-
-sudo apt update
-apt list --upgradable
-sudo apt upgrade
-
-
-checks:
-sudo mousepad /etc/apt/sources.list
-y-ppa-manager
-
-	# When the main y-ppa-manager window appears, click on "Advanced."
-	# From the list of advanced tasks, select "Try to import all missing GPG keys" and click OK.
-	# Manage PPAs ==> <select PPA> ==> List packages
-
-	# example of problem when updating
-ppa:latexila/ppa (xenial)
-
-deb http://ppa.launchpad.net/latexila/ppa/ubuntu xenial main
-# deb-src http://ppa.launchpad.net/latexila/ppa/ubuntu xenial main
-
-from https://launchpad.net/latexila:
-Downloads
-LaTeXila does not have any download files registered with Launchpad.
-
-
-
-	# examples added to  /etc/apt/sources.list
-sudo add-apt-repository "deb http://qgis.org/ubuntugis-ltr xenial main"
-sudo add-apt-repository "deb-src http://qgis.org/ubuntugis-ltr xenial main"
-sudo add-apt-repository "deb http://ppa.launchpad.net/ubuntugis/ubuntugis-unstable/ubuntu xenial main"
-sudo apt-get update
-sudo apt-get install qgis python-qgis qgis-plugin-grass
-
-
-if needed: 
-sudo apt install ppa-purge && 
-sudo ppa-purge ppa:jonathonf/texlive
-
-
-
 
 =================================================================================================
 ===================================================================================================
 			NEW COMPU
 ==================================================================================================
 =================================================================================================
-###############
-install Xubuntu
-################
-Load Xubuntu DVD
-Press F12			<<load from DVD
-*Install Xubuntu
-
-If need to erase ENTIRE hard drive must REFORMAT partition table
-Select "Something else" from Xubuntu installation disk; allows reformating partition table
-Delete partions with MINUS sign until have erased all partitions then rebuild partition tables
-
-Use this (example on a 500 GB drive):
-/dev/sda
-  /dev/sda1  efi	100MB
-  /dev/sda2  ext4 	495100 		<<set this partition to root mount point (ie, / )
-  /dev/sda3  swap	5000 MB
-
-
-
-post-install:
-sudo apt update &&
-sudo apt upgrade
-
-
-
-post-install: Add Panel
-	a. Right-click on Panel 0
-	b. Select Panel ==> Panel Preferences
-	c. Click the green PLUS sign to add Panel 1
-	d. Verical; Automatially hide panel Always
-
-
-check:
-sudo mousepad /etc/apt/sources.list
 
 ################
 install Synaptic
@@ -150,17 +48,6 @@ not installed as default on Ubuntu systems can work wonders for faulty package d
 sudo apt install aptitude 
 
 
-######################
-install y-ppa-manager
-#########################
-sudo add-apt-repository ppa:webupd8team/y-ppa-manager
-sudo apt-get update
-sudo apt-get install y-ppa-manager
-
-	# When the main y-ppa-manager window appears, click on "Advanced."
-	#From the list of advanced tasks, select "Try to import all missing GPG keys" and click OK.
-$ y-ppa-manager
-
 
 #############
 install gdebi
@@ -175,23 +62,14 @@ sudo apt install gdebi
 install Ubuntu Software Center
 ###################################
 
-version 1:
-sudo add-apt-repository ppa:lubuntu-desktop/ppa
-sudo apt update
-sudo aptitude install lubuntu-software-center
+Linux Mint has Software Manager (store)
 
 version 2 (use this one):
-sudo aptitude install software-center
+sudo aptitude install gnome-software
 
+open in terminal
+    gnome-software
 
-
-#########
-install HPLIP
-#########
-
-HPLIP Toolbox: HP Printing System Control Center
-
-Use Ubuntu Software Center
 
 
 ##############################
@@ -204,52 +82,74 @@ install "open-jdk-8-jre" and "open-jdk-8-jre-headless"
 Use Synaptic ==> default-jre
 
 
-
-############
-install Chrome
-############
-https://www.google.com/chrome/?brand=CHBD&ds_kid=43700010857921609&gclid=EAIaIQobChMIwquh6p3i2QIVArvsCh0AWAM0EAAYASAAEgLyIPD_BwE&gclsrc=aw.ds&dclid=CPi19uud4tkCFVF7fgodYLQP4w
-
-	#download and use GDebi
-google-chrome-stable_current_amd64.deb
-Unpacking google-chrome-stable (65.0.3325.146-1)
-
-
-
-
 #################
 install LaTex
 install XeLatex
 #################
-http://tipsonubuntu.com/2016/09/16/install-tex-live-2016-ubuntu-16-04-14-04/
+There is no official, active PPA for the absolute latest version of TeX Live on Linux Mint or Ubuntu. Because Linux Mint is based on Ubuntu/Debian, the TeX Live packages in the standard repositories are updated infrequently (often trailing by 1–2 years).To get the most current version of TeX Live (2026, as of March 2026), the recommended approach is a manual installation from the TeX Users Group
 
+If you do not need the absolute latest packages, you can install the version provided by Linux Mint:
 
-sudo add-apt-repository ppa:jonathonf/texlive
-sudo apt update && 
 sudo aptitude install texlive-full &&
 sudo aptitude install texlive-xetex &&
 sudo aptitude install texlive-latex-extra &&
 sudo aptitude install xelatex
 
 
-if needed: 
-sudo apt install ppa-purge && 
-sudo ppa-purge ppa:jonathonf/texlive
-
-
-
+############
+Sublime Text
 ##############
+
+install with Software Manager (store)
+
+
+#############
 LaTexila
 #############
-https://www.linuxhelp.com/how-to-install-latexila-editor-in-ubuntu/
-https://www.ubuntuupdates.org/package/core/artful/universe/base/latexila
-https://launchpad.net/ubuntu/+source/latexila
-(3.22.1 available but Synaptic says 3.16.1 is latest version)
+ 
+install with Software Manager (store)
 
-Ubuntu Software Center
+##########
+install git
+###########
+https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 
-latexila -V
-LaTeXila 3.16.1
+$ sudo aptitude install git-all
+$ sudo aptitude install gitk
+
+
+==== configure global settings =========================================
+	a. '--global' stores in /home/bmarron/.gitconfig (hidden) file
+	a1. set these globals (username to match GitHub username)
+	
+$ git config --global user.name "bmarron18" &&
+git config --global user.email "soil.foodwebs@gmail.com" &&
+git config --global core.editor "subl"&&
+git config --global http.sslVerify false &&
+git config --global alias.visual '!gitk'&&
+git config --global alias.last 'log -1 HEAD' &&
+git config --global --unset credential.helper
+
+$ git config --list
+user.name=bmarron18
+user.email=soil.foodwebs@gmail.com
+core.editor=subl
+http.sslverify=false
+alias.visual=!gitk
+alias.last=log -1 HEAD
+
+
+	b. check from .git folder (GUI file manager)
+$ subl /home/bruce-mx/.gitconfig
+[user]
+	name = bmarron18
+	email = marron.bruce.mx@gmail.com
+[core]
+	editor = gedit
+[alias]
+	last = log -1 HEAD
+	visual = !gitk
+
 
 
 
@@ -279,48 +179,6 @@ sudo rsync -av --delete /media/bmarron/PNY_32GB/texmf/ /usr/local/share/texmf/
 
 
 
-
-###################
-install wkhtmltopdf
-(.html to .pdf)
-####################
-
-sudo aptitude install wkhtmltopdf
-
-wkhtmltopdf file:///home/bmarron/Desktop/PSU/PhD_EES/2016SoE021_LANDIS_Upgrades_Project/ProjectMngmnt/TJ_ProjectManagement/LANDIS_Project_Status.html ~/Desktop/test.pdf
-wkhtmltopdf http://qt-project.org/doc/qt-4.8/qstring.html qstring.pdf
-
-
-
-
-########################################################
-install Writer2latex, Writer2xhtml, Writer2BibTeX, Calc2xhtml
-(converts documents in OpenDocument format 
-into other formats; a collection of four converters)
-##########################################################
-
-
-sudo aptitude install writer2latex
-This is Writer2LaTeX, Version 1.0.2 (2010-05-31)
-
-
-
-###################
-install latex2rtf
-##################
-
-sudo aptitude install latex2rtf
-
-
-
-##################
-install GnuCash
-################
-
-sudo aptitude install gnucash
-
-
-
 ##################
 install XSane
 (inmage scanning)
@@ -330,9 +188,128 @@ Use Ubuntu Software Center
 
 
 
+############
+install GIMP
+############
+
+sudo add-apt-repository ppa:otto-kesselgulasch/gimp
+sudo apt update
+sudo aptitude install gimp
+
+
+
+
+
+
+
+
+========= NO!! s =================================
+
+#############
+NOT 5/9/26
+install imagemagick
+(.png to .jpeg)
+################
+http://ubuntuhandbook.org/index.php/2013/07/how-to-convert-png-to-jpg-on-ubuntu-via-command/
+https://graphicdesign.stackexchange.com/questions/5446/making-the-background-of-an-image-transparent-in-gimp/5454
+
+sudo aptitude install imagemagick
+
+
+The "checkerboard" pattern you see indicates a transparent area setting.
+It is merely a "placeholder" to indicate to the designer that the area so marked is transparent. 
+If you save your image in a format that supports transparency (such as GIF or PNG) then it will retain the transparency; 
+if you save it as a JPEG, it will be converted to the background color (black)
+
+	a. open .png in GIMP and remove transparency layer; save
+Layer → Tranparency → Remove Alpha Channel
+
+	b. convert .png to .jpg w/ imagemagick
+convert ubuntuhandbook.png ubuntuhandbook.jpg
+convert ubuntuhandbook.png -quality 90 ubuntuhandbook.jpg
+
+
+
+
+#########
+NOT 5/9/26
+installl unix2dos
+dos2unix
+#########
+
+sudo aptitude install dos2unix
+
+
+
+
+##########
+install Freemind
+###########
+
+Taking the Concept-Mapping approach to Human-Computer Interface design. A mind mapper, and at the 
+same time an easy-to-operate hierarchical editor with strong emphasis on folding. These two are 
+not really two different things, just two different descriptions of a single application. Often 
+used for knowledge and content management.
+
+
+https://sourceforge.net/projects/freemind/
+
+freemind-bin-max-1.0.1.zip			<<Extract Here...
+cd ~/Downloads/freemind-bin-max-1.0.1
+chmod +x freemind.sh				<< make executable
+./freemind.sh
+
+
+
+##########
+NOT 5/9/26
+install PipeViewer
+############
+https://linux.die.net/man/1/pv
+http://igorpopov.io/2013/12/25/pipe-viewer-the-linux-flow-meter/
+
+
+sudo aptitude install pv
+
+
+
+#######
+NOT 5/9/26
+install shotwell
+(pics, photos and .jpegs)
+########
+
+sudo add-apt-repository ppa:yg-jensge/shotwell &&
+sudo apt update &&
+apt list --upgradable &&
+sudo apt upgrade &&
+sudo aptitude install shotwell
+
+	a. to open
+$ shotwell
+
+
+
+
+
+#############
+NOT 5/9/26
+install Brasero
+install dvdauthor
+##############
+http://diarium.usal.es/pmgallardo/2015/12/31/how-to-burn-a-video-file-e-g-mpeg-avi-to-watch-it-on-a-dvd-player-on-ubuntu/
+
+Devede is a free tool to create video CDs and DVDs that can be played in home DVD players. 
+It creates a CD/DVD image (*.iso file) from the video/s file/s that can be later burn on a CD/DVD 
+using the suitable program. Brasero converts.avi to MPEG2 format
+
+
+use Software Center
+
 
 
 ###########
+NOT 5/9/26
 install R
 ##########
 https://askubuntu.com/questions/431380/how-do-i-install-upgrade-r-base-to-the-latest-version
@@ -349,6 +326,7 @@ sudo aptitude install r-base r-base-dev
 
 
 #################
+NOT 5/9/26
 install RStudio
 ##################
 
@@ -363,6 +341,7 @@ sudo apt-get install libgdal-dev libproj-dev
 
 
 ###############
+NOT 5/9/26
 install pandoc
 ###############
 
@@ -372,6 +351,7 @@ sudo aptitude install pandoc
 
 
 #################
+NOT 5/9/26
 install OpenBUGS
 ###################
 http://www.openbugs.net/w/Downloads
@@ -411,6 +391,7 @@ sudo apt install libc6-dev-i386
 
 
 ##############
+NOT 5/9/26
 install Zotero (stand alone)
 ###################
 
@@ -432,6 +413,7 @@ May have to use CrashPlan to reload then re-upload to zotero.org
 
 
 ############
+NOT 5/9/26
 install Atom
 (text editor/IDE from GitHub)
 #############
@@ -456,6 +438,7 @@ sudo apt -f install
 
 
 ##############
+NOT 5/9/26
 install GRASS 7.2.0
 ##############
 http://gis.stackexchange.com/questions/139727/how-to-fix-the-grass7-package-available-from-the-ubuntugis-unstable-ppa
@@ -467,6 +450,7 @@ sudo aptitude install grass grass-core grass-doc grass-gui grass-dev
 
 
 ###################
+NOT 5/9/26
 install TaskJuggler
 ##################
 http://www.taskjuggler.org/tj3/manual/Installation.html
@@ -477,6 +461,7 @@ sudo gem install taskjuggler
 
 
 ###############
+NOT 5/9/26
 install Inkscape
 ###############
 
@@ -485,135 +470,86 @@ sudo apt update
 sudo aptitude install inkscape
 
 
+
 ############
-install GIMP
+NO!!
+install Chrome
 ############
+https://www.google.com/chrome/?brand=CHBD&ds_kid=43700010857921609&gclid=EAIaIQobChMIwquh6p3i2QIVArvsCh0AWAM0EAAYASAAEgLyIPD_BwE&gclsrc=aw.ds&dclid=CPi19uud4tkCFVF7fgodYLQP4w
 
-sudo add-apt-repository ppa:otto-kesselgulasch/gimp
-sudo apt update
-sudo aptitude install gimp
+	#download and use GDebi
+google-chrome-stable_current_amd64.deb
+Unpacking google-chrome-stable (65.0.3325.146-1)
+
+
+###################
+NOT 5/9/26
+install wkhtmltopdf
+(.html to .pdf)
+####################
+
+sudo aptitude install wkhtmltopdf
+
+wkhtmltopdf file:///home/bmarron/Desktop/PSU/PhD_EES/2016SoE021_LANDIS_Upgrades_Project/ProjectMngmnt/TJ_ProjectManagement/LANDIS_Project_Status.html ~/Desktop/test.pdf
+wkhtmltopdf http://qt-project.org/doc/qt-4.8/qstring.html qstring.pdf
 
 
 
-#############
-install imagemagick
-(.png to .jpeg)
+
+########################################################
+NOT 5/9/26
+install Writer2latex, Writer2xhtml, Writer2BibTeX, Calc2xhtml
+(converts documents in OpenDocument format 
+into other formats; a collection of four converters)
+##########################################################
+
+
+sudo aptitude install writer2latex
+This is Writer2LaTeX, Version 1.0.2 (2010-05-31)
+
+
+
+###################
+NOT 5/9/26
+install latex2rtf
+##################
+
+sudo aptitude install latex2rtf
+
+
+
+##################
+NOT 5/9/26
+install GnuCash
 ################
-http://ubuntuhandbook.org/index.php/2013/07/how-to-convert-png-to-jpg-on-ubuntu-via-command/
-https://graphicdesign.stackexchange.com/questions/5446/making-the-background-of-an-image-transparent-in-gimp/5454
 
-sudo aptitude install imagemagick
-
-
-The "checkerboard" pattern you see indicates a transparent area setting.
-It is merely a "placeholder" to indicate to the designer that the area so marked is transparent. 
-If you save your image in a format that supports transparency (such as GIF or PNG) then it will retain the transparency; 
-if you save it as a JPEG, it will be converted to the background color (black)
-
-	a. open .png in GIMP and remove transparency layer; save
-Layer → Tranparency → Remove Alpha Channel
-
-	b. convert .png to .jpg w/ imagemagick
-convert ubuntuhandbook.png ubuntuhandbook.jpg
-convert ubuntuhandbook.png -quality 90 ubuntuhandbook.jpg
-
-
+sudo aptitude install gnucash
 
 
 
 
 #########
-installl unix2dos
-dos2unix
+No longer available
+install HPLIP
 #########
+HPLIP Toolbox: HP Printing System Control Center
 
-sudo aptitude install dos2unix
+Printer Settings is installed
 
+######################
+NO!!
+install y-ppa-manager
+#########################
+sudo add-apt-repository ppa:webupd8team/y-ppa-manager
+sudo apt-get update
+sudo apt-get install y-ppa-manager
 
-
-
-##########
-install Freemind
-###########
-
-Taking the Concept-Mapping approach to Human-Computer Interface design. A mind mapper, and at the 
-same time an easy-to-operate hierarchical editor with strong emphasis on folding. These two are 
-not really two different things, just two different descriptions of a single application. Often 
-used for knowledge and content management.
-
-
-https://sourceforge.net/projects/freemind/
-
-freemind-bin-max-1.0.1.zip			<<Extract Here...
-cd ~/Downloads/freemind-bin-max-1.0.1
-chmod +x freemind.sh				<< make executable
-./freemind.sh
-
-
-
-##########
-install PipeViewer
-############
-https://linux.die.net/man/1/pv
-http://igorpopov.io/2013/12/25/pipe-viewer-the-linux-flow-meter/
-
-
-sudo aptitude install pv
-
-
-
-
-
-#######
-install shotwell
-(pics, photos and .jpegs)
-########
-
-sudo add-apt-repository ppa:yg-jensge/shotwell &&
-sudo apt update &&
-apt list --upgradable &&
-sudo apt upgrade &&
-sudo aptitude install shotwell
-
-	a. to open
-$ shotwell
-
-
-
-
+	# When the main y-ppa-manager window appears, click on "Advanced."
+	#From the list of advanced tasks, select "Try to import all missing GPG keys" and click OK.
+$ y-ppa-manager
 
 #############
-install Brasero
-install dvdauthor
-##############
-http://diarium.usal.es/pmgallardo/2015/12/31/how-to-burn-a-video-file-e-g-mpeg-avi-to-watch-it-on-a-dvd-player-on-ubuntu/
-
-Devede is a free tool to create video CDs and DVDs that can be played in home DVD players. 
-It creates a CD/DVD image (*.iso file) from the video/s file/s that can be later burn on a CD/DVD 
-using the suitable program. Brasero converts.avi to MPEG2 format
-
-
-use Software Center
-
-
-
-
-
-##########
-install git
-###########
-https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
-
-$ sudo aptitude install git-all
-$ sudo aptitude gitk
-
-
-
-
-
-
-
-#############
+NOT 5/9/26
 install Skype
 16.04 xenial
 ##############
@@ -634,20 +570,8 @@ sudo apt-get install skype
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 ############
+NOT 5/9/26
 automake
 ##############
 http://askubuntu.com/questions/484237/how-do-i-get-the-latest-automake
@@ -659,13 +583,8 @@ sudo apt-get install automake
 
 
 
-
-
-
-
-
-
 ###########
+already installed
 LibreOffice
 ############
 http://askubuntu.com/questions/505368/how-do-i-update-libreoffice-to-next-point-release-in-14-04
