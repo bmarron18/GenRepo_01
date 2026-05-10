@@ -4,7 +4,19 @@ Project Descriptor:	UTECA Translator APIs
 Project ID:		
 Author:			bmarron
 Origin Date:		25 Dec 2024
-Revision Date:		
+Revision Date:	10 May 2026
+
+
+
+##############
+Workflow
+###############
+
+$ git status
+$ git add --all
+$ git commit -a -m "10May2026"
+$ git push origin --all
+
 
 
 ###################

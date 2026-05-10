@@ -139,19 +139,27 @@ alias.visual=!gitk
 alias.last=log -1 HEAD
 
 
-	b. check from .git folder (GUI file manager)
+	b. double-check from .git folder (GUI file manager)
 $ subl /home/bruce-mx/.gitconfig
-[user]
-	name = bmarron18
-	email = marron.bruce.mx@gmail.com
-[core]
-	editor = gedit
-[alias]
-	last = log -1 HEAD
-	visual = !gitk
 
 
 
+##################
+install XSane
+(inmage scanning)
+###################
+
+install with Software Manager (store)
+
+
+############
+install GIMP
+############
+
+install with Software Manager (store)
+
+
+START HERE
 
 ################
 biber
@@ -175,27 +183,6 @@ sudo rsync -av --delete /usr/local/share/texmf/ /media/bruce/PNY_32GB/texmf/
 
 	#FROM BACKUP
 sudo rsync -av --delete /media/bmarron/PNY_32GB/texmf/ /usr/local/share/texmf/ 
-
-
-
-
-##################
-install XSane
-(inmage scanning)
-###################
-
-Use Ubuntu Software Center
-
-
-
-############
-install GIMP
-############
-
-sudo add-apt-repository ppa:otto-kesselgulasch/gimp
-sudo apt update
-sudo aptitude install gimp
-
 
 
 
