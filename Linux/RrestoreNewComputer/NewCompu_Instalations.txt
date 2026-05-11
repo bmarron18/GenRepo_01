@@ -159,8 +159,6 @@ install GIMP
 install with Software Manager (store)
 
 
-START HERE
-
 ################
 biber
 ################
@@ -169,23 +167,44 @@ https://tex.stackexchange.com/questions/25701/bibtex-vs-biber-and-biblatex-vs-na
 sudo aptitude install biber
 
 
-
 #########################
  install .sty files for LaTex
 /usr/local/share/texmf
 #########################
 
+check:
 kpsewhich -var-value TEXMFLOCAL
-/usr/local/share/texmf
+	/usr/local/share/texmf
 
 	#TO BACKUP
 sudo rsync -av --delete /usr/local/share/texmf/ /media/bruce/PNY_32GB/texmf/
 
 	#FROM BACKUP
-sudo rsync -av --delete /media/bmarron/PNY_32GB/texmf/ /usr/local/share/texmf/ 
+sudo rsync -av --delete /media/bruce-mx/MASTER1/texmf/ /usr/local/share/texmf/ 
 
 
+############
+Spyder
+############
+https://www.spyder-ide.org/
 
+
+$ chmod +x yourscript.sh		<== install from **.sh file
+$ ./yourscript.sh
+
+	# define simple location for Spyder install
+Spyder will now be installed into this location:
+/home/bmarron/spyder-6
+PREFIX=/home/bmarron18/spyder-6
+
+define simple location for Spyder install. For example
+		/home/bmarron/spyder-6					<== Linux and Mac OS
+		C:\Users\<username>\Appdaata\spyder-6		<== Windows
+		
+
+	# check
+sudo find ./ -name "*spyder*" -type d >> ~/Desktop/test.txt
+sudo find ./ -name "*python*" -type d >> ~/Desktop/test.txt
 
 
 

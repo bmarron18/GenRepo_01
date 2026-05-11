@@ -12,16 +12,18 @@ https://www.spyder-ide.org/download/?os=linux&arch=x64
 	-- download
 		==> Spyder-Linux-x86_64.sh
 
-$ chmod +x yourscript.sh		<== install from **.sh file
-$ ./yourscript.sh
+
+in Downloads (install from **.sh file):
+$ chmod +x Spyder-Linux-x86_64.sh &&
+./Spyder-Linux-x86_64.sh
 
 	# define simple location for Spyder install
-Spyder will now be installed into this location:
-/home/bmarron/spyder-6
-PREFIX=/home/bmarron18/spyder-6
+[/home/bruce-mx/.local/spyder-6] >>> /home/bruce-mx/spyder-6             
+PREFIX=/home/bruce-mx/spyder-6
+
 
 define simple location for Spyder install. For example
-		/home/bmarron/spyder-6					<== Linux and Mac OS
+		/home/bruce-mx/spyder-6					<== Linux and Mac OS
 		C:\Users\<username>\Appdaata\spyder-6		<== Windows
 		
 
