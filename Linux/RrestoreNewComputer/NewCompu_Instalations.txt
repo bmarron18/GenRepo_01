@@ -103,6 +103,13 @@ Sublime Text
 install with Software Manager (store)
 
 
+##############
+Okular
+(pdf reader)
+#############
+
+Software Manager (store)
+
 #############
 LaTexila
 #############
@@ -205,6 +212,67 @@ define simple location for Spyder install. For example
 	# check
 sudo find ./ -name "*spyder*" -type d >> ~/Desktop/test.txt
 sudo find ./ -name "*python*" -type d >> ~/Desktop/test.txt
+
+
+#########
+Python
+(independent of Spyder)
+###########
+
+- Python website will auto-download a tar.xz file as
+  the latest stable distro
+		https://www.python.org/downloads/
+		
+		Python 3.14.5 - 14 May 2026
+			Python-3.14.5.tar.xz				<== from Pyhton website
+
+BUT the stable Linux Mint distros will be different............
+As of early 2026, the latest stable release for Python 3 on Linux Mint is typically managed via the default system repositories, which usually provide Python 3.12 on Mint 22.x or Python 3.10 on Mint 21.x. The absolute newest upstream stable version is Python 3.14.5 (May 2026), but Mint defaults to a stable, system-compatible version
+
+		Stable Release	on Linux Mint: 
+		Python 3.12.3-0ubuntu2.16 	<== as of 15 May 2026
+
+
+		DO THIS............
+		sudo apt update &&								
+		sudo apt upgrade &&
+		sudo aptitude install python3 python3-pip python3-dev python3-venv build-essential
+
+
+python3 is already installed at the requested version (3.12.3-0ubuntu2.1)
+build-essential is already installed at the requested version (12.10ubuntu1)
+python3 is already installed at the requested version (3.12.3-0ubuntu2.1)
+build-essential is already installed at the requested version (12.10ubuntu1)
+The following NEW packages will be installed:
+  libexpat1-dev{a} libjs-sphinxdoc{a} libjs-underscore{a} libpython3-dev{a} 
+  libpython3.12-dev{a} python3-dev python3-pip python3-pip-whl{a} 
+  python3-setuptools{a} python3-setuptools-whl{a} python3-venv 
+  python3-wheel{a} python3.12-dev{a} python3.12-venv{a} zlib1g-dev{a} 
+0 packages upgraded, 15 newly installed, 0 to remove and 0 not upgraded.
+Need to get 11.7 MB of archives. After unpacking 45.5 MB will be used.
+Do you want to continue? [Y/n/?]
+
+
+- Display current "pip" version
+	$ python3 -m pip --version	
+	pip 24.0 from /usr/lib/python3/dist-packages/pip (python 3.12).
+
+
+- Check "venv" package installed (from top of file system)
+	$ sudo find ./ -name "*venv*" -type d >> ~/Desktop/test.txt
+		/usr/lib/python3.12/venv
+		./home/bruce-mx/spyder-6/envs/spyder-runtime/lib/python3.12/venv
+
+To install and use a virtual environment in Python, 
+	built-in "venv" module (recommended for most users) or 
+	the third-party "virtualenv" package for more advanced features
+
+
+
+
+
+
+
 
 
 
