@@ -1,3 +1,56 @@
+#################
+Install Python
+(as of May 2026)
+################
+	- IF Follow the instructions on Pyhton website
+		https://www.python.org/downloads/
+		
+		Python 3.14.5 - 14 May 2026
+			Download Windows installer (64-bit)				<== Windows
+			Download macOS 64-bit universal installer		<== MacOS
+			Python-3.14.5.tar.xz							<== Linux
+
+	- NB. On Windows machines, be sure to INSTALL Python HERE,
+		C:\Users\<your-user-name>\AppData\Local\Programs\Python3.14
+
+
+As of early 2026, the latest stable release for Python 3 on Linux Mint is typically managed via the default system repositories, which usually provide Python 3.12 on Mint 22.x or Python 3.10 on Mint 21.x. The absolute newest upstream stable version is Python 3.14.5 (May 2026), but Mint defaults to a stable, system-compatible version
+
+		For Stable Releases	on LinuxMint: Python 3.12.3-0ubuntu2.1
+		----------------
+		sudo apt update &&								
+		sudo apt upgrade $$
+		sudo aptitude install python3 python3-pip python3-dev python3-venv build-essential		
+		
+python3 is already installed at the requested version (3.12.3-0ubuntu2.1)
+build-essential is already installed at the requested version (12.10ubuntu1)
+python3 is already installed at the requested version (3.12.3-0ubuntu2.1)
+build-essential is already installed at the requested version (12.10ubuntu1)
+The following NEW packages will be installed:
+  libexpat1-dev{a} libjs-sphinxdoc{a} libjs-underscore{a} libpython3-dev{a} 
+  libpython3.12-dev{a} python3-dev python3-pip python3-pip-whl{a} 
+  python3-setuptools{a} python3-setuptools-whl{a} python3-venv 
+  python3-wheel{a} python3.12-dev{a} python3.12-venv{a} zlib1g-dev{a} 
+0 packages upgraded, 15 newly installed, 0 to remove and 0 not upgraded.
+Need to get 11.7 MB of archives. After unpacking 45.5 MB will be used.
+Do you want to continue? [Y/n/?]
+
+
+** Verify the Python installation
+	- Open a terminal and go to the top of the file system		<== Linux/MacOS
+		$ cd .. (repeated)
+	- Check the Python installation
+		$ python3 --version or python3 -V
+			Python 3.12.3 						<== comes auto-installed w/ Linux Mint 22.3
+
+		$ find ./ -name "*python*" -type d >> ~/Desktop/test.txt			
+
+
+
+
+
+
+
 
 ##########
 plotnine

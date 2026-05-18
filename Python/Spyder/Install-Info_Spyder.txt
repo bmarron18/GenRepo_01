@@ -18,14 +18,10 @@ $ chmod +x Spyder-Linux-x86_64.sh &&
 ./Spyder-Linux-x86_64.sh
 
 	# define simple location for Spyder install
-[/home/bruce-mx/.local/spyder-6] >>> /home/bruce-mx/spyder-6             
+[/home/bruce-mx/.local/spyder-6] >>> /home/bruce-mx/spyder-6     <== as of May 2026 on HP (old)       
 PREFIX=/home/bruce-mx/spyder-6
 
 
-define simple location for Spyder install. For example
-		/home/bruce-mx/spyder-6					<== Linux and Mac OS
-		C:\Users\<username>\Appdaata\spyder-6		<== Windows
-		
 
 	# check
 sudo find ./ -name "*spyder*" -type d >> ~/Desktop/test.txt
@@ -33,46 +29,129 @@ sudo find ./ -name "*python*" -type d >> ~/Desktop/test.txt
 
 
 
-	# Spyder python
-Python 3.11.13
-
---- Spyder Python Update 10/06/25
+	# Spyder 6 default python (as of May 2026)
 Python 3.12.11 | packaged by conda-forge | (main, Jun  4 2025, 14:45:31) [GCC 13.3.0]
 Type "copyright", "credits" or "license" for more information.
-IPython 9.6.0 -- An enhanced Interactive Python. Type '?' for help.
-
---- needed spyder-kernel updates as well in ai-apis
-$ source ./spyder-6/envs/ai-apis/bin/activate
-(ai-apis) bmarron18@bmarron18-HP-Notebook:~$ pip install spyder-kernels==3.1.*
-(ai-apis) bmarron18@bmarron18-HP-Notebook:~$ deactivate 
+IPython 9.12.0 -- An enhanced Interactive Python. Type '?' for help.
 
 
 
 
-##############
-in /path-to-spyder-runtime/bin
-the python installed with spyder and used 
-by default by spyder
+
+######################################
+check the python installed/used with Spyder
+(found in ~/spyder-6/envs/spyder-runtime/bin)
 ######################################################
 
-~/spyder-6/envs/spyder-runtime/bin$ file python*				<== gives 	three (3) symbolic link outputs
-																one (1) executable output
-python:            symbolic link to python3.11
-python3:           symbolic link to python3.11
-python3.1:         symbolic link to python3.11				<== ALL three (3) outputs point to python3.11.13 in 															~/spyder-6/envs/spyder-runtime/bin/python3.11
+-------
 
-													<== this is python3.11.13 installed with Spyder-6
-python3.11:        ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 2.6.32, with debug_info, not stripped
-python3.11-config: POSIX shell script, ASCII text executable, with very long lines (513)
-python3-config:    symbolic link to python3.11-config
-	
+	# Use Linux 'file' command to determine THE TYPE OF A FILE by examining its actual contents rather than relying on its file extension; check files named "python*"
 
-To find Spyder's internal python
+$ cd ~/spyder-6/envs/spyder-runtime/bin
+$ file python*
+											
+python:            symbolic link to python3.12
+python3:           symbolic link to python3.12
+python3.1:         symbolic link to python3.12
+
+python3.12:        ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 2.6.32, with debug_info, not stripped
+
+python3.12-config: POSIX shell script, ASCII text executable, with very long lines (511)
+python3-config:    symbolic link to python3.12-config
+
+
+	output gives three (3) symbolic links and one (1) executable
+	ALL three (3) links point to python3.12.11 in ~/spyder-6/envs/spyder-runtime/bin/python3.12
+	this is python3.12.11 installed with Spyder-6 and used as the default Python
+
+
+------
+
+	# check default Python used by Spyder
 	- open Spyder
-	- type the commands:
+	- type commands in Python interpreter
 
 [1]:	import sys; print(sys.executable)
-/home/bmarron18/spyder-6/envs/spyder-runtime/bin/python3.11		<== this is python3.11.13 installed with spyder-6
+/home/bruce-mx/spyder-6/envs/spyder-runtime/bin/python3.12
+
+
+
+
+###############
+set up for virtual env
+#####################
+
+
+--------
+
+	# Create the virtual environment, (ai-apis) using non-Spyder Python
+
+$ cd ~/spyder-6/envs
+$ python3 -m venv ai-apis
+
+
+-------
+
+	# Activate the (ai-apis) virtual environment
+$ ~/spyder-6/envs	
+$ source ./ai-apis/bin/activate
+
+now,
+(ai-apis) bruce-mx@brucemx-HP-Notebook:~/spyder-6/envs$
+
+
+	# install packages into (ai-apis)
+(ai-apis) bruce-mx@brucemx-HP-Notebook:~/spyder-6/envs$ pip install spyder-kernels google-genai openai nltk jiter
+
+
+	# deactivate (ai-apis)
+(ai-apis) bruce-mx@brucemx-HP-Notebook:~/spyder-6/envs$ deactivate
+
+now,
+bruce-mx@brucemx-HP-Notebook:~/spyder-6/envs$ 
+
+
+----------
+
+	# Set Spyder to run in (ai-apis)
+
+open Spyder and clic on the "wrench" in the toolbar to open the Preferences window
+	- in left-hand column clic on "Python Interpreter"
+	- in the right-hand window clic on the button "Use the following interpreter:"
+		-- in the empty box search your compu directory until you find the directory
+
+			/home/bruce-mx/spyder-6/envs/ai-apis/bin
+
+		-- open the "bin" directory and select
+			the "python3.12" executable icon
+
+		-- at the bottom of the window clic 'Apply' and then 'OK
+		-- close the "Preferences" window
+
+	- back in the Spyder main windows, find the IPython interpreter window (bottom right)
+		-- find the tab that says, "Console 1/a"
+		-- close the tab by clicking on the "X"
+		-- Spyder will try to re-start using Python in (ai-apis)
+			
+	# Verify Spyder is operating in the (ai-apis) virtual environment
+	- if all good, you will see a green-colored "In [1]" in the IPython interpreter window (bottom right)
+	- if an Error Box appears in the interpreter window something went wrong (try closing and re-opening Spyder)
+
+
+---------
+
+	# compare Pythons used by Spyder
+
+Spyder 6 default Python.....
+	Python 3.12.11 | packaged by conda-forge | (main, Jun  4 2025, 14:45:31) [GCC 13.3.0]
+	Type "copyright", "credits" or "license" for more information.
+	IPython 9.12.0 -- An enhanced Interactive Python. Type '?' for help.
+
+Spyder in (ai-apis) Python....
+	Python 3.12.3 (main, Mar 23 2026, 19:04:32) [GCC 13.3.0]
+	Type "copyright", "credits" or "license" for more information.
+	IPython 9.13.0 -- An enhanced Interactive Python. Type '?' for help.
+
 
 
 
@@ -92,11 +171,7 @@ https://stackoverflow.com/questions/36187784/changing-indentation-settings-in-th
 https://docs.spyder-ide.org/5/faq.html#using-packages-installer
 https://stackoverflow.com/questions/30170468/how-to-run-spyder-in-virtual-environment
 
-    $$$$$ The naive approach $$$$$$$$$$$  <== DOENT WORK!!
-To use Spyder with another environment, the simplest way is to just install it directly into the environment from which you'd like to use the packages in, and run it from there. This works with all Spyder versions and should require no extra configuration once the IDE is installed; however, it results in multiple installations to manage and isn't as flexible or configurable as the alternative. Therefore, when dealing with multiple environments, we recommend the modular approach.
-
-
-
+ 
 	$$$$$$$$$$$ The modular approach $$$$$$$$$$$$$$ <== THIS WORKs!!
 Starting with Spyder 3.3.1, you can install the modular spyder-kernels package into any Python environment (conda environment, virtualenv/venv, system Python, WinPython, etc) in which you wish to work, and then change the Python interpreter used by Spyder on its IPython consoles to point to the Python executable of that environment.
 
