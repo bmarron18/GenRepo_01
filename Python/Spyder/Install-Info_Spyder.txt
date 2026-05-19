@@ -77,9 +77,9 @@ python3-config:    symbolic link to python3.12-config
 
 
 
-###############
-set up for virtual env
-#####################
+##############################
+set up Spyder for virtual env
+##############################
 
 
 --------
@@ -147,7 +147,7 @@ Spyder 6 default Python.....
 	Type "copyright", "credits" or "license" for more information.
 	IPython 9.12.0 -- An enhanced Interactive Python. Type '?' for help.
 
-Spyder in (ai-apis) Python....
+Spyder 6 Python in (ai-apis) [should be same as compu default Python] ....
 	Python 3.12.3 (main, Mar 23 2026, 19:04:32) [GCC 13.3.0]
 	Type "copyright", "credits" or "license" for more information.
 	IPython 9.13.0 -- An enhanced Interactive Python. Type '?' for help.
@@ -168,7 +168,6 @@ https://stackoverflow.com/questions/36187784/changing-indentation-settings-in-th
 	https://www.youtube.com/watch?v=8vuvHAlgJZ0
 
 	#FAQs Spyder
-https://docs.spyder-ide.org/5/faq.html#using-packages-installer
 https://stackoverflow.com/questions/30170468/how-to-run-spyder-in-virtual-environment
 
  
@@ -176,70 +175,15 @@ https://stackoverflow.com/questions/30170468/how-to-run-spyder-in-virtual-enviro
 Starting with Spyder 3.3.1, you can install the modular spyder-kernels package into any Python environment (conda environment, virtualenv/venv, system Python, WinPython, etc) in which you wish to work, and then change the Python interpreter used by Spyder on its IPython consoles to point to the Python executable of that environment.
 
 
---- with special install of venv  THIS WORKED!!
 
-$ python3 -m pip install --upgrade pip
-
-$ sudo aptitude install python3.11-venv			<== install venv pkg, to work with python 3.11
-										python3.11-venv_3.11.0~rc1-1~22.04_amd64.deb
-										The first release candidate of Python 3.11.orc1
-										(NO GO ==> $ pip install --target /home/bmarron18/virtualenv virtualenv)
-
-$ python3.11 -m venv ./spyder-6/envs/ai-apis		<== using python 3.11 to create venv named ai-apis
-										./home/bmarron18/spyder-6/envs/ai-apis/pyvenv.cfg
-										<== in ai-apis is python 3.10 and 3.11.orc1
-
-$ source ./spyder-6/envs/ai-apis/bin/activate
-(ai-apis) bmarron18@bmarron18-HP-Notebook:~$ pip install spyder-kernels google-genai openai nltk jiter
-
-	open Spyder and change to "wrench" to ai-apis [/home/bmarron18/spyder-6/envs/ai-apis/bin/python3.11]
-	close and reopen spyder (or close Interpreter)
-	run AI scripts
-	if desired, reset "wrench" to run Spyder outside of virtual env
-	close spyder
-	
-(ai-apis) bmarron18@bmarron18-HP-Notebook:~$ deactivate 
-
-
-
-
-$ source ./spyder-6/envs/ai-apis/bin/activate
-(ai-apis) bmarron18@bmarron18-HP-Notebook:~$ pip install spyder-kernels==3.1.*
-(ai-apis) bmarron18@bmarron18-HP-Notebook:~$ deactivate 
 
 
 ############
 Versions of Python
 ####################
 
---- find path to python in different envs -------------------------
-$ python3 -c "import sys; print(sys.executable)"
-/usr/bin/python3
-
-
-(ai-apis) bmarron18@bmarron18-HP-Notebook:~$ python3 -c "import sys; print(sys.executable)"
-/home/bmarron18/spyder-6/envs/ai-apis/bin/python3
-
-
-
-
---- There may be Different Python versions are running !!! ------------------
-
-*	python version running **on compu**!!! ----
-	$ python3 -V
-		Python 3.10.12
-
-*	python version running **in Conda**!!! ONLY WORKS in (base)
-	$ conda activate base
-	(base)$ python -V
-				Python 3.13.5
-	(base)$ conda deactivate
-
-*	Python version running **in Spyder** (internal) ----
-		Python 3.11.13 | packaged by conda-forge | (main, Jun  4 2025, 14:48:23) [GCC 13.3.0]
-		Type "copyright", "credits" or "license" for more information.
-
-		IPython 8.37.0 -- An enhanced Interactive Python. Type '?' for help.
+See 
+/home/bruce-mx/Desktop/GenRepo_01/Python/Python_Installations-FileLocations.txt
 
 
 

@@ -48,118 +48,9 @@ Do you want to continue? [Y/n/?]
 
 
 
-
-
-
-
-##########
-plotnine
-PyMC
-fpdf
-#########
-
---- Installations --------------------------------
-	# Virtual Environment
-		/home/bmarron18/spyder-6/envs/ai-apis
-		/home/bmarron18/spyder-6/envs/ai-apis/bin
-
-	# Activate the ai-apis virtual environment to install pkgs
-$ source ./spyder-6/envs/ai-apis/bin/activate
-(ai-apis)$ pip install plotnine fpdf
-(ai-apis)$ pip install pymc==5.25.1				
-(ai-apis):~$ deactivate 
-----------------------------------------------------------------
-
-	# plotnine
-Installing collected packages: pyparsing, pillow, patsy, kiwisolver, fonttools, cycler, contourpy, matplotlib, statsmodels, mizani, plotnine
-Successfully installed contourpy-1.3.3 cycler-0.12.1 fonttools-4.60.1 kiwisolver-1.4.9 matplotlib-3.10.6 mizani-0.14.2 patsy-1.0.1 pillow-11.3.0 plotnine-0.15.0 pyparsing-3.2.5 statsmodels-0.14.5
-
-	# pymc
-Requirement already satisfied: pymc==5.25.1 in ./spyder-6/envs/ai-apis/lib/python3.11/site-packages (5.25.1)
-
-
-###########
-pandas
-##########
-https://pandas.pydata.org/docs/getting_started/install.html
-
-
-Libraries for Statistical Analysis
-Three of the most widely used are NumPy, Pandas, and SciPy stats.
-
-SciPy
-https://docs.scipy.org/doc/scipy/reference/stats.html
-
-
-One tool that shines in Python is ggplot. Built on the grammar of graphics, ggplot offers a straightforward way to make beautiful plots. This article will dive into ggplot's features and why it's such a valuable tool for visualizing data in Python.
-
---- Installations --------------------------------
-Virtual Environment
-	/home/bmarron18/spyder-6/envs/ai-apis
-	/home/bmarron18/spyder-6/envs/ai-apis/bin
-
-	# Activate the ai-apis virtual environment to install pkgs
-$ source ./spyder-6/envs/ai-apis/bin/activate
-(ai-apis)$ pip install pandas NumPy python-dateutil pytz tzdata
-(ai-apis)$ pip install "pandas[performance]"
-(ai-apis)$ pip install "pandas[computation]"
-(ai-apis)$ pip install "pandas[test]"
-(ai-apis):~$ deactivate 
-
-
-"pandas[performance]" contains:
-	numexpr
-	bottleneck
-	numba
-	
-"pandas[computation]" contains:
-	SciPy
-	xarray
-------------------------------------------------------
-
---- Running the test suite
->>> import pandas as pd
->>> pd.test()
-
-
-
-
-############
-Python installations
-########################
-https://www.geeksforgeeks.org/python/how-to-install-python-on-linux/
-https://www.alessioligabue.it/en/blog/install-python-complete-guide
-
-https://packages.debian.org/trixie/amd64/python3.13
-https://packages.debian.org/trixie/amd64/python3.13-venv/download
-	If you are running Debian, it is strongly suggested to use a package manager like aptitude or synaptic to download and 
-	install packages, instead of doing so manually via this website.
-
-	You should be able to use any of the listed mirrors by adding a line to your /etc/apt/sources.list like this:
-		deb http://ftp.mx.debian.org/debian trixie main 
-/etc/apt$ ls
-apt.conf.d     preferences.d  sources.list.d     trustdb.gpg  trusted.gpg~
-apt-file.conf  sources.list   sources.list.save  trusted.gpg  trusted.gpg.d
-to edit:
-$ notepadqq /etc/apt/sources.list 
-
-NO GO
-$ sudo aptitude python3.13-venv
-
-
-NO GO---unmet dependencies
-Downloaded directly from website (must install both)
-	python3.13_3.13.5-2_amd64.deb
-	python3.13-venv_3.13.5-2_amd64.deb 
-
-
-
-
-
-
+###############################
 Installing multiple versions
-----------------------------
-
+################################
 On Unix and Mac systems if you intend to install multiple versions of Python
 using the same installation prefix (``--prefix`` argument to the configure
 script) you must take care that your primary python executable is not
@@ -178,67 +69,37 @@ and ``make altinstall`` in the others.
 
 
 
-
-
-
 ---	Find python directories on compu	------------------
 sudo find ./ -name "*python*" -type d >> ~/Desktop/py.txt
 
 
 #########
-Default
 Python distros
 running
+(as of May 2026)
 ##################
 
 
 *	python version running **on compu**!!! ----
 	$ python3 -V
-		Python 3.10.12
+	Python 3.12.3 
+
+
+
+Spyder 6 default Python.....
+	Python 3.12.11 | packaged by conda-forge | (main, Jun  4 2025, 14:45:31) [GCC 13.3.0]
+	Type "copyright", "credits" or "license" for more information.
+	IPython 9.12.0 -- An enhanced Interactive Python. Type '?' for help.
+
+
 	
-	$ python
-	Python 3.10.12 (main, Aug 15 2025, 14:32:43) [GCC 11.4.0] on linux
-Type "help", "copyright", "credits" or "license" for more information.
->>>
+in (ai-apis) virtual env....
+(ai-apis) bruce-mx@brucemx-HP-Notebook:~/spyder-6/envs$ python --version
+	Python 3.12.3 
 
 
 
-*	Python version running **in Spyder** (internal) ----
-		Python 3.11.13 | packaged by conda-forge | (main, Jun  4 2025, 14:48:23) [GCC 13.3.0]
-		Type "copyright", "credits" or "license" for more information.
-
-		IPython 8.37.0 -- An enhanced Interactive Python. Type '?' for help.
-
-
-*	python version running **in Conda**!!! ----
-	$ conda activate base
-	(base)$ python -V
-				Python 3.13.5
-	(base)$ conda deactivate
-	
-		
---- version of Pyhton running---
-$ python3
->>> import sys
-    print(sys.version)
-Python 3.10.12 (main, Aug 15 2025, 14:32:43) [GCC 11.4.0] on linux
-[cntrl-d to exit Python shell]
-
-
-In Spyder
-	import sys
-	print(sys.version)
-3.11.13 | packaged by conda-forge | (main, Jun  4 2025, 14:48:23) [GCC 13.3.0]
-
-in (ai-apis) virtual env
-(ai-apis) bmarron18@bmarron18-HP-Notebook:~$ python --version
-Python 3.10.12
-
-
-
-
-
---- python distros and executable files on compu
+UPDATE START HERE
 
 ###############################################
 in /usr/bin find
@@ -338,27 +199,48 @@ To find Spyder's internal python
 /home/bmarron18/spyder-6/envs/spyder-runtime/bin/python3.11		<== this is python3.11.13 installed with spyder-6
 
 
-#####################################
-Create a virtual environment
-##################################
-** Learn the fundamentals of virtual environments in python
-	https://realpython.com/python-virtual-environments-a-primer/
+
+###########
+pandas
+##########
+https://pandas.pydata.org/docs/getting_started/install.html
+
+
+Libraries for Statistical Analysis
+Three of the most widely used are NumPy, Pandas, and SciPy stats.
+
+SciPy
+https://docs.scipy.org/doc/scipy/reference/stats.html
+
+
+One tool that shines in Python is ggplot. Built on the grammar of graphics, ggplot offers a straightforward way to make beautiful plots. This article will dive into ggplot's features and why it's such a valuable tool for visualizing data in Python.
+
+--- Install into venv (ai-apis)--------------------------------
+
+	# Activate the ai-apis virtual environment to install pkgs
+$ source ./spyder-6/envs/ai-apis/bin/activate
+(ai-apis)$ pip install pandas NumPy python-dateutil pytz tzdata
+(ai-apis)$ pip install "pandas[performance]"
+(ai-apis)$ pip install "pandas[computation]"
+(ai-apis)$ pip install "pandas[test]"
+(ai-apis):~$ deactivate 
+
+
+"pandas[performance]" contains:
+	numexpr
+	bottleneck
+	numba
 	
-Python provides a package known as venv (virtual environment), which helps you isolate a program directory or package from other ones. To create a virtual environment, enter the following in the Python terminal (in this example, assume the version of Python you've installed is in the 3.8 series):
+"pandas[computation]" contains:
+	SciPy
+	xarray
 
-$ python3.8 -m venv example		<== use a specific version of python (a new directory named "example")
+------------------------------------------------------
+
+--- Running the test suite
+>>> import pandas as pd
+>>> pd.test()
 
 
-IF NEEDED
-** Install the "virtualenv" package (Python) into the Spyder directories using pip IFF have not installed 
-**
-	- Open a terminal
-	- Install "virtualenv" in a specific location in Spyder
-		$ pip install --target /spyder-6/envs/spyder-runtime/lib virtualenv						<== Linux
-		> pip install --target C:\Users\<usr-name>\AppData\Local\spyder-6\Scripts virtualenv		<== Windows
-
-      - Verify the installation and locate the executable file
-		C:\> dir /b/s virtualenv.exe
-			C:\Users\<you>\AppData\Local\spyder-6\Scripts\virtualenv.exe
 
 
