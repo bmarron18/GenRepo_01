@@ -1,0 +1,181 @@
+
+####################
+Orientation
+##################
+
+There is 
+	BibLaTex
+	Biber
+
+Biber is the backend program that processes citation data for the BibLaTeX package, while BibLaTeX is the LaTeX package that provides a flexible and powerful interface for managing and formatting bibliographies and citations. In essence, BibLaTeX is the user-facing LaTeX tool, and Biber is the separate program it calls upon to handle the actual sorting, formatting, and data processing of bibliography information, offering more advanced features like full Unicode support and customizability than the older BibTeX. 
+
+biber --help
+
+
+
+------------
+ERROR: your biber (2.19) and biblatex (3.21) versions are incompatible.
+
+
+
+FIX:	Biblatex may be installed in two places. As discussed in the comments, it turned out that there may be a local installation of an outdated version of biblatex that masked the system installed version (TexLive), which matches the Biber version.
+
+	# check
+$ kpsewhich -all biblatex.sty
+	/usr/local/share/texmf/tex/latex/biblatex/latex/biblatex.sty 	<== specialty install (this can cause problems 																	being out of sync with biber)
+
+	/usr/share/texlive/texmf-dist/tex/latex/biblatex/biblatex.sty 	<== TexLive distro install
+
+
+	# Deleting the local installation of biblatex completely resolves the problem
+$ cd /usr/local/share/texmf/tex/latex
+$ sudo rm -r biblatex
+	
+
+----------
+Using the New Way (biber+biblatex) to create a BIBLIOGRAPHY 
+
+
+
+
+\documentclass[a4paper,11pt]{article}
+
+
+% BIBLIOGRAPHY
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel} 
+ 
+\usepackage[style=verbose,			%<== for footnotes
+            sorting=nyt,
+            backref=true,           
+            doi=false,
+            isbn=false,
+            url=false,
+            backend=biber]{biblatex}
+\addbibresource{~/Desktop/GenRepo_01/BibLatex/MyCurrent_Library/My_Library_20201129.bib} % BibTeX bibliography file
+
+
+
+\usepackage[style=apa,			% <== for documents
+            sorting=nyt,
+            backref=true,           
+            doi=false,
+            isbn=false,
+            url=false,
+            backend=biber]{biblatex}
+\addbibresource{~/Desktop/GenRepo_01/BibLatex/MyCurrent_Library/My_Library_20201129.bib} 
+\DeclareLanguageMapping{english}{american-apa}    % avoid yearmonthday problems
+
+
+
+
+% CITATION OPTIONS
+% \cite{}
+% \autocite{}      			%for et al.
+% \parencite{}
+% \textcite{}            % Shields (2000) ...
+%\footcite{}
+%\footfullcite{}
+%\footcite{priest_program_2001}\textsuperscript{,}\footcite{worthen_program_1990}
+
+
+% FOOTNOTES AND NUMBERINGS
+%\usepackage[multiple]{footmisc}
+     %example:
+%\footcite{priest_program_2001}\textsuperscript{,}\footcite{worthen_program_1990}
+
+
+% PRINT BIBLIOGRAPHY
+\begin{document}
+
+As first example citation here is \cite{Chomsky1957}. 
+Here is another example citation \autocite{Labov1972}
+....
+
+\newpage
+\printbibliography
+\end{document}
+
+
+
+
+#########################
+ sample .bib file entries
+##########################
+
+@article{stoffer_resampling_2004,				#first entry is the unique record ID needed for \cite{}
+	title = {Resampling in state space models},
+	journal = {State Space and Unobserved Component Models Theory and Applications},
+	author = {Stoffer, David S. and Wall, Kent D.},
+	year = {2004},
+	pages = {227--258}					#note "--" separator
+}
+
+
+
+@book{ConcreteMath,					
+        author = {R.L. Graham and D.E. Knuth and O. Patashnik},
+        title = {Concrete mathematics},
+        publisher = {Addison-Wesley},
+        address = {Reading, MA},
+        year = {1989}
+}
+
+
+
+@collection{newcomer_handbook_2015,
+	location = {San Francisco},
+	edition = {Fourth edition},
+	title = {Handbook of practical program evaluation},
+	isbn = {978-1-118-89360-9},
+	series = {Essential texts for nonprofit and public leadership and management},
+	publisher = {Jossey-Bass \& Pfeiffer Imprints, Wiley},
+	editor = {Newcomer, Kathryn E. and Hatry, Harry P. and Wholey, Joseph S.},
+	date = {2015},
+	keywords = {{BUSINESS} \& {ECONOMICS} / Nonprofit Organizations \& Charities, Policy sciences, Political planning, program evaluation}
+}
+
+
+@incollection{mclaughlin_2015,
+  crossref = {newcomer_handbook_2015},
+  author = {McLaughlin, J and Jordan, G},
+  title = {Using Logic Models}
+}
+
+
+@manual{<unique_key>,
+	title		= {},
+	%author		= {},
+	%organization	= {},
+	%address	= {},
+	%edition	= {},
+	year		= {},
+	%month		= {},
+	%note		= {},
+}
+
+
+
+#######################
+.bib from Zotero
+#####################
+
+
+----  Export the entire library from Zotero ----
+
+	Actions ==> Export Library... ==> Format = BibTex (w/ NO Translator Options selected!)
+
+
+---- Create a document-specific BibTex file from Zotero -------------
+
+	Left-click on item ==> Export... ==> Format = BibTex (w/ NO Translator Options selected!)
+	Left-click on folder ==> Export Collection... ==> Format = BibTex (w/ NO Translator Options selected!)
+
+
+--- cleqn up the exported file
+
+
+
+
+

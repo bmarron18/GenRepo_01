@@ -5,7 +5,20 @@ Author:			bmarron
 Origin Date:		20 Aug 2016
 
 
+	----- BibLatex and Zotero metadata ---------
 
+https://www.sharelatex.com/blog/2013/07/31/getting-started-with-biblatex.html
+https://tex.stackexchange.com/questions/25701/bibtex-vs-biber-and-biblatex-vs-natbib
+https://tex.stackexchange.com/questions/63852/question-mark-or-bold-citation-key-instead-of-citation-number
+https://tex.stackexchange.com/questions/302779/apa-bibliography-yearmonthday
+https://tex.stackexchange.com/questions/139872/biblatex-full-citations-in-footnotes-on-every-page
+http://wheaton.libguides.com/refmanagers/zotero/PDFmetadata
+
+
+Missing citations show up differently in biblatex
+
+If you are using biblatex you will not see a question mark, but instead you will see your citation key in bold. 
+For example, if you have an item in your .bib file with the key Jones1999 you will see Jones1999 in your PDF.
 
 =====================================================
 EXAMPLE:
