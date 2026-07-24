@@ -121,7 +121,7 @@ p7 <- ggplot(airquality, aes(x = Ozone)) +
 %%%%%%%%%%%%%%%%% Complete Example %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Given a dataset, perform a LOESS regression and plot along with scatter points
 
-==== data entry ==========================================
+==== data entry R ==========================================
 
 	#Data provided in spreadsheet, Items_sold.xlsx
 	#Linux commandline utility, 'ssconvert'

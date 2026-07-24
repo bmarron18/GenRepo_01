@@ -38,15 +38,97 @@ Do you want to continue? [Y/n/?]
 
 ** Verify the Python installation
 	- Open a terminal and go to the top of the file system		<== Linux/MacOS
-		$ cd .. (repeated)
+$ cd .. (repeated)
+
 	- Check the Python installation
-		$ python3 --version or python3 -V
-			Python 3.12.3 						<== comes auto-installed w/ Linux Mint 22.3
+$ python3 --version or python3 -V
+Python 3.12.3 						<== comes auto-installed w/ Linux Mint 22.3
 
-		$ find ./ -name "*python*" -type d >> ~/Desktop/test.txt			
+	- Find python (d)irectories
+$ sudo find ./ -name "*python*" -type d >> ~/Desktop/test.txt
+
+/usr/lib/python3.12 															<== general compu installation
+																											Python 3.12.3
+
+./spyder-6/envs/spyder-runtime/lib/python3.12  		<== Spyder Python
+																											Python 3.12.11
+
+
+./spyder-6/envs/ai-apis/lib/python3.12 						<== Python in the virtual env (ai-apis)
+																									<== the same as compu installation bc used
+																											venv to create (ai-apis)
+																											Python 3.12.3
+
+#########
+Python distros
+running
+(as of May 2026)
+##################
+
+
+*	python version running **on compu**!!! ----
+	$ python3 -V
+Python 3.12.3 
+
+
+* Spyder 6 default Python.....
+	Python 3.12.11 | packaged by conda-forge | (main, Jun  4 2025, 14:45:31) [GCC 13.3.0]
+	Type "copyright", "credits" or "license" for more information.
+	IPython 9.12.0 -- An enhanced Interactive Python. Type '?' for help.
+
+	
+* Python in (ai-apis) virtual env....
+(ai-apis) bruce-mx@brucemx-HP-Notebook:~/spyder-6/envs$ python --version
+Python 3.12.3 
+
+
+###########
+pandas
+##########
+https://pandas.pydata.org/docs/getting_started/install.html
+
+
+Libraries for Statistical Analysis
+Three of the most widely used are NumPy, Pandas, and SciPy stats.
+
+SciPy
+https://docs.scipy.org/doc/scipy/reference/stats.html
+
+
+One tool that shines in Python is ggplot. Built on the grammar of graphics, ggplot offers a straightforward way to make beautiful plots. This article will dive into ggplot's features and why it's such a valuable tool for visualizing data in Python.
+
+--- Install into venv (ai-apis)--------------------------------
+
+	# Activate the ai-apis virtual environment to install pkgs
+$ source ./spyder-6/envs/ai-apis/bin/activate
+(ai-apis)$ pip install pandas NumPy python-dateutil pytz tzdata
+(ai-apis)$ pip install "pandas[performance]"
+(ai-apis)$ pip install "pandas[computation]"
+(ai-apis)$ pip install "pandas[test]"
+(ai-apis):~$ deactivate 
+
+
+"pandas[performance]" contains:
+	numexpr
+	bottleneck
+	numba
+	
+"pandas[computation]" contains:
+	SciPy
+	xarray
+
+------------------------------------------------------
+
+--- Running the test suite
+>>> import pandas as pd
+>>> pd.test()
 
 
 
+
+
+
+UPDATE ==> START HERE
 
 ###############################
 Installing multiple versions
@@ -68,45 +150,10 @@ primary version, you would execute ``make install`` in your 3.13 build directory
 and ``make altinstall`` in the others.
 
 
-
----	Find python directories on compu	------------------
-sudo find ./ -name "*python*" -type d >> ~/Desktop/py.txt
-
-
-#########
-Python distros
-running
-(as of May 2026)
-##################
-
-
-*	python version running **on compu**!!! ----
-	$ python3 -V
-	Python 3.12.3 
-
-
-
-Spyder 6 default Python.....
-	Python 3.12.11 | packaged by conda-forge | (main, Jun  4 2025, 14:45:31) [GCC 13.3.0]
-	Type "copyright", "credits" or "license" for more information.
-	IPython 9.12.0 -- An enhanced Interactive Python. Type '?' for help.
-
-
-	
-in (ai-apis) virtual env....
-(ai-apis) bruce-mx@brucemx-HP-Notebook:~/spyder-6/envs$ python --version
-	Python 3.12.3 
-
-
-
-UPDATE START HERE
-
 ###############################################
 in /usr/bin find
 the python distros installed on compu
 when using $ sudo aptitude install <python-distro>
-	python3.10.12
-	python3.11-venv
 ###############################################
 
 (here, actually calling python to run a command [-c cmd ])
@@ -200,46 +247,6 @@ To find Spyder's internal python
 
 
 
-###########
-pandas
-##########
-https://pandas.pydata.org/docs/getting_started/install.html
-
-
-Libraries for Statistical Analysis
-Three of the most widely used are NumPy, Pandas, and SciPy stats.
-
-SciPy
-https://docs.scipy.org/doc/scipy/reference/stats.html
-
-
-One tool that shines in Python is ggplot. Built on the grammar of graphics, ggplot offers a straightforward way to make beautiful plots. This article will dive into ggplot's features and why it's such a valuable tool for visualizing data in Python.
-
---- Install into venv (ai-apis)--------------------------------
-
-	# Activate the ai-apis virtual environment to install pkgs
-$ source ./spyder-6/envs/ai-apis/bin/activate
-(ai-apis)$ pip install pandas NumPy python-dateutil pytz tzdata
-(ai-apis)$ pip install "pandas[performance]"
-(ai-apis)$ pip install "pandas[computation]"
-(ai-apis)$ pip install "pandas[test]"
-(ai-apis):~$ deactivate 
-
-
-"pandas[performance]" contains:
-	numexpr
-	bottleneck
-	numba
-	
-"pandas[computation]" contains:
-	SciPy
-	xarray
-
-------------------------------------------------------
-
---- Running the test suite
->>> import pandas as pd
->>> pd.test()
 
 
 

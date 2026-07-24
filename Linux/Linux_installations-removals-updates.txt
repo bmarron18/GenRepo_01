@@ -58,9 +58,9 @@ cd ..
 
 --- install .tar.xz
 Decompress:
-tar xf [filename]		<== This will expand the contents of the file to a folder. 
+tar xf [entire filename]		<== This will expand the contents of the file to a folder. 
 
-Then the commands are, from the newly-created folder:
+Then the commands are, from in the newly-created folder:
 ./configure &&
 make &&
 sudo make install

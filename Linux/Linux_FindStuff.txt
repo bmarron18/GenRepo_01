@@ -8,6 +8,7 @@
 open terminal in directory of choice--
 Search INSIDE text files
 grep  -rIH "vibe" --include "*.txt" >> ~/Desktop/Search.txt
+grep  -rIH "critique of \"Charlotte" --include "*.txt" >> ~/Desktop/Search.txt
 
 
 ########################

@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 Created on Fri Feb 28 09:33:46 2025
+Updated: 30 Jun 2026
 
 @author: bmarron
 """
@@ -246,33 +247,38 @@ with chdir('/home/bmarron/Desktop'):
 
 """
 pypdf module
+Successfully installed pypdf-6.14.2
 """
 https://pypdf.readthedocs.io/en/stable/user/installation.html
 https://pypdf.readthedocs.io/en/stable/user/adding-pdf-annotations.html
 
 Hence I would distinguish three types of PDF documents:
+#Digitally-born PDF files: The file was created digitally on the computer. It can contain images, texts, links, outline items (a.k.a., bookmarks), JavaScript, … If you Zoom in a lot, the text still looks sharp.
+#Scanned PDF files: Any number of pages was scanned. The images were then stored in a PDF file. Hence the file is just a container for those images. You cannot copy the text, you don’t have links, outline items, JavaScript.
+#OCRed PDF files: The scanner ran OCR software and put the recognized text in the background of the image. Hence you can copy the text, but it still looks like a scan. If you zoom in enough, you can recognize pixels.
 
-    #Digitally-born PDF files: The file was created digitally on the computer. It can contain images, texts, links, outline items (a.k.a., bookmarks), JavaScript, … If you Zoom in a lot, the text still looks sharp.
+If you have activated a virtual environment (like venv or virtualenv), 
+pip completely bypasses your global system folders. It isolates your installations here
 
-    #Scanned PDF files: Any number of pages was scanned. The images were then stored in a PDF file. Hence the file is just a container for those images. You cannot copy the text, you don’t have links, outline items, JavaScript.
+Install pypdf into a virtual envirnment:
+    /home/bruce-mx/spyder-6/envs/ai-apis/bin/python3.12
 
-    #OCRed PDF files: The scanner ran OCR software and put the recognized text in the background of the image. Hence you can copy the text, but it still looks like a scan. If you zoom in enough, you can recognize pixels.
+    $ cd ~/spyder-6/envs
+	$ python3 -m venv ai-apis
+	$ source ./ai-apis/bin/activate
+
+the following packages have been installed into (ai-apis):
+
+    (ai-apis)$ pip install spyder-kernels google-genai openai
+    (ai-apis)$ pip install pandas NumPy python-dateutil pytz tzdata
+    (ai-apis)$ pip install "pandas[performance]"
+    (ai-apis)$ pip install "pandas[computation]"
+    (ai-apis)$ pip install plotnine
+    (ai-apis)$ pip install pypdf[full]
+
+(ai-apis):~$ deactivate
 
 
-
-$ cd ~ 
-pip install pypdf[full]
-
-# Spyder py modules here
-/home/bmarron/.local/spyder-6/envs/spyder-runtime/lib/python3.11/site-packages
-
-# move pypdf and Pillow
-$ cd ~/.local/lib/python3.10/site-packages
-mv -R pypd* ~/.local/spyder-6/envs/spyder-runtime/lib/python3.11/site-packages/
-
-
-$ cd /usr/lib/python3/dist-packages
-$ sudo mv Pillo* ~/.local/spyder-6/envs/spyder-runtime/lib/python3.11/site-packages/
 
 
 # %%
@@ -328,8 +334,67 @@ text_to_pdf(text, output_filename)
 
 
 # %%
+'''
+Merge pdf files
+'''
+
+'''
+NOTE: To shrink the size of a .pdf, use GIMP
+    * import the .pdf as image (not layers) and reduce resolution (try setting at 200)
+    * select "Export as..." to export the file as a new .pdf smaller in size
+'''
 
 
+
+from pypdf import PdfWriter
+from pathlib import Path
+import os
+
+    # label of output file
+OUTPUT_FILE = "combined_output.pdf"
+      
+    # set up the file paths for the OUTPUT_FILE
+    # set the file path to your Desktop
+    # Path() represents file+directory paths in a platform-independent manner.
+doc_to_print = OUTPUT_FILE
+doc_dir = "/home/bruce-mx/Desktop"   #<== Old HP
+
+    # create paths to files
+    # Retrieve files as PosixPaths
+output_filepath = os.path.join(doc_dir, doc_to_print)
+output_f = Path(output_filepath)
+
+
+# set input files to be merged
+INPUT_FILE_01 =  Path(os.path.join(doc_dir,"05_Traduccion_Part1.pdf"))
+INPUT_FILE_02 =  Path(os.path.join(doc_dir,"05_Traduccion_Part2.pdf"))
+INPUT_FILE_03 =  Path(os.path.join(doc_dir,"Bulletin_ 2014-2015.pdf"))
+#INPUT_FILE_04 =  Path(os.path.join(doc_dir,"Complete_Acta-de-nacimiento_p4.pdf"))
+#INPUT_FILE_05 =  Path(os.path.join(doc_dir,"Complete_Acta-de-nacimiento_p5.pdf"))
+
+
+# call PdfWriter
+writer = PdfWriter()
+
+# Add your PDFs to merge
+writer.append(INPUT_FILE_01)
+writer.append(INPUT_FILE_02)
+writer.append(INPUT_FILE_03)
+#writer.append(INPUT_FILE_04)
+#writer.append(INPUT_FILE_05)
+
+
+# Save the combined file
+writer.write(output_f)
+writer.close()
+
+
+
+
+
+
+
+# %%
 
 """
 Add text box comment
