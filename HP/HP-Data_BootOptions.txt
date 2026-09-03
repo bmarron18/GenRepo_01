@@ -1,0 +1,21 @@
+
+HP Laptop 15-fd0161la
+s/n 5CD616132ZL
+p/n DF2V6LA#ABM
+
+
+
+-----------------
+Accessing the Boot Menu or BIOS
+Power off your computer completely.
+Turn it on and tap the Esc key right away to open the Startup Menu.
+Press F9 for the Boot Menu to pick your USB drive directly, or press F10 to enter the BIOS Setup.
+
+----------------
+Changing Boot Order in BIOS
+Go to System Configuration or Storage using the arrow keys.
+Select Boot Options.
+Find the USB Diskette on Key or USB Hard Drive entry and move it to the top of the boot order list (use F5/F6 or follow on-screen directions).
+Turn off 
+Secure Boot under the Security tab if your USB drive fails to show up or boot.
+Press F10 to Save and Exit, then confirm to restart your computer from the USB.

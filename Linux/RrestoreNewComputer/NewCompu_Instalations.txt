@@ -110,6 +110,21 @@ LaTexila
  
 install with Software Manager (store)
 
+
+##################
+install XSane
+(inmage scanning)
+###################
+
+install with Software Manager (store)
+
+
+############
+install GIMP
+############
+
+install with Software Manager (store)
+
 ##########
 install git
 ###########
@@ -146,20 +161,6 @@ $ subl /home/bruce-mx/.gitconfig
 
 
 
-##################
-install XSane
-(inmage scanning)
-###################
-
-install with Software Manager (store)
-
-
-############
-install GIMP
-############
-
-install with Software Manager (store)
-
 
 ################
 biber
@@ -182,7 +183,7 @@ kpsewhich -var-value TEXMFLOCAL
 sudo rsync -av --delete /usr/local/share/texmf/ /media/bruce/PNY_32GB/texmf/
 
 	#FROM BACKUP
-sudo rsync -av --delete /media/bruce-mx/MASTER1/texmf/ /usr/local/share/texmf/ 
+sudo rsync -av --delete /media/bruce-vdb/MASTER1/texmf/ /usr/local/share/texmf/ 
 
 
 ############
@@ -194,15 +195,23 @@ https://www.spyder-ide.org/
 $ chmod +x Spyder-Linux-x86_64.sh		<== install from **.sh file
 $ ./Spyder-Linux-x86_64.sh
 
+-----------
+Spyder will now be installed into this location:
+/home/bruce-vdb/.local/spyder-6
+
+  - Press ENTER to confirm the location
+  - Press CTRL-C to abort the installation
+  - Or specify a different location below
+
+[/home/bruce-vdb/.local/spyder-6] >>> /home/bruce-vdb/spyder-6
+
+----------------
 	# define simple location for Spyder install
 Spyder will now be installed into this location:
-/home/bmarron/spyder-6
-PREFIX=/home/bmarron18/spyder-6
+/home/bruce-vdb/spyder-6
+PREFIX=/home/bruce-vdb/spyder-6
 
-define simple location for Spyder install. For example
-		/home/bm18/spyder-6					<== Linux and Mac OS
 
-		
 
 	# check
 sudo find ./ -name "*spyder*" -type d >> ~/Desktop/test.txt

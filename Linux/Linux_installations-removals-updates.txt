@@ -60,7 +60,7 @@ cd ..
 Decompress:
 tar xf [entire filename]		<== This will expand the contents of the file to a folder. 
 
-Then the commands are, from in the newly-created folder:
+Then from inside the newly-created folder:
 ./configure &&
 make &&
 sudo make install
@@ -123,7 +123,7 @@ sudo add-apt-repository ppa:ubuntuhandbook1/audacity
 sudo apt-get update
 
 
----- install from **.sh file
+---- install from **.sh file (bash script)
 chmod +x yourscript.sh
 ./yourscript.sh
 

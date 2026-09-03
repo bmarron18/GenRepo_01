@@ -43,7 +43,7 @@ MASTER11 ???? check mount point with "disks" before running
 
 
 --------- Desktop backup HP-silver (new) to USB
-$ sudo rsync -av --delete /home/bmarron/Desktop/ /media/bmarron/MASTER1/Desktop/
+$ sudo rsync -av --delete /home/bruce-vdb/Desktop/ /media/bruce-vdb/MASTER1/Desktop/
 
 -------- Desktop backup HP-black (old) to USB
 $ sudo rsync -av --delete /home/bruce-mx/Desktop/ /media/bruce-mx/MASTER1/Desktop/
@@ -54,12 +54,12 @@ $ sudo rsync -av --delete /home/bruce-mx/Desktop/ /media/bruce-mx/MASTER1/Deskto
 
 DATA TRANSFERS (USB)
 ----------------sync HP(new) ==> HP (old)
-sudo rsync -av --delete /media/bmarron18/MASTER/Desktop /home/bmarron18/
+sudo rsync -av --delete /media/bruce-mx/MASTER/Desktop /home/bruce-mx/
 
 
 
 ----------------sync HP(old) ==> HP (new)
-sudo rsync -av --delete /media/bm18/MASTER1/Desktop /home/bm18/
+sudo rsync -av --delete /media/bruce-vdb/MASTER1/Desktop /home/bruce-vdb/
 
 
 
